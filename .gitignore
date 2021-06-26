@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/gtk_d
+gtk_d.so
+gtk_d.dylib
+gtk_d.dll
+gtk_d.a
+gtk_d.lib
+gtk_d-test-*
+*.exe
+*.o
+*.obj
+*.lst
+*.a

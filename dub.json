@@ -1,0 +1,19 @@
+{
+	"authors": [
+		"KonstantIMP"
+	],
+	"copyright": "Copyright © 2021, KonstantIMP",
+	"description": "A full Gtk binding for D.",
+	"license": "proprietary",
+	"name": "gtk_d",
+	"targetType": "none",
+	"subPackages": [
+		{
+			"name": "linker",
+			"targetType": "library",
+			"targetName": "linker",
+			"importPaths": ["source/linker"],
+			"sourcePaths": ["source/linker"]
+		}
+	]
+}
