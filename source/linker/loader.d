@@ -119,7 +119,8 @@ public class Linker {
      * Returns: true if the lib was loaded
      */
     public static bool isLoaded(string lib) {
-        return lib in loadedLibs;
+        if(lib in loadedLibs) return true;
+        return false;
     }
 
     /** 
