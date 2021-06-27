@@ -1,0 +1,2 @@
+﻿wrap: graphene
+file: Graphene-1.0.gir

@@ -24,6 +24,17 @@
 			"dependencies": {
 				"gtk_d:linker" : "*"
 			}
+		},
+		{
+			"name": "graphene",
+			"targetType": "library",
+			"targetName": "graphene",
+			"importPaths": ["source/generated/graphene"],
+			"sourcePaths": ["source/generated/graphene"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*"
+			}
 		}
 	]
 }

@@ -6,6 +6,9 @@ lookup: APILookupGLib.txt
 lookup: APILookupGThread.txt
 lookup: APILookupGObject.txt
 
+srcDir: graphene
+lookup: APILookupGraphene.txt
+
 #lookup: APILookupGio.txt
 #lookup: APILookupCairo.txt
 #lookup: APILookupRsvg.txt
@@ -16,5 +19,5 @@ lookup: APILookupGObject.txt
 #lookup: APILookupGdk.txt
 #lookup: APILookupGsk.txt
 #lookup: APILookupGtk.txt
-#lookup: APILookupGraphene.txt
+#
 
