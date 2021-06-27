@@ -194,6 +194,18 @@
 				"gtk_d:glib" : "*",
 				"gtk_d:gtk" : "*"
 			}
+		},
+		{
+			"name": "soup",
+			"targetType": "library",
+			"targetName": "soup",
+			"importPaths": ["source/generated/soup"],
+			"sourcePaths": ["source/generated/soup"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:gio" : "*"
+			}
 		}
 	]
 }

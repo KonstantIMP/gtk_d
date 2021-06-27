@@ -46,6 +46,9 @@ lookup: APILookupAdw.txt
 srcDir: sourceview
 lookup: APILookupSourceView.txt
 
+srcDir: soup
+lookup: APILookupSoup.txt
+
 srcDir: gstreamer
 lookup: APILookupGStreamer.txt
 lookup: APILookupGstApp.txt
