@@ -70,6 +70,17 @@
 				"gtk_d:cairo" : "*",
 				"gtk_d:harfbuzz" : "*"
 			}
+		},
+		{
+			"name": "gio",
+			"targetType": "library",
+			"targetName": "gio",
+			"importPaths": ["source/generated/gio"],
+			"sourcePaths": ["source/generated/gio"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*"
+			}
 		}
 	]
 }

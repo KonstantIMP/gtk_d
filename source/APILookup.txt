@@ -19,6 +19,12 @@ lookup: APILookupHarfBuzz.txt
 srcDir: pango
 lookup: APILookupPango.txt
 
+srcDir: gio
+lookup: APILookupGio.txt
+
+#srcDir: gdkpixbuf
+#lookup: APILookupGdkPixbuf.txt
+
 #srcDir: rsvg
 #lookup: APILookupRsvg.txt
 
@@ -28,7 +34,7 @@ lookup: APILookupPango.txt
 #ookup: APILookupHarfBuzz.txt
 #ookup: APILookupPango.txt
 #lookup: APILookupAtk.txt
-#lookup: APILookupGdkPixbuf.txt
+#
 #lookup: APILookupGdk.txt
 #lookup: APILookupGsk.txt
 #lookup: APILookupGtk.txt
