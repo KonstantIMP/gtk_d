@@ -22,8 +22,8 @@ lookup: APILookupPango.txt
 srcDir: gio
 lookup: APILookupGio.txt
 
-#srcDir: gdkpixbuf
-#lookup: APILookupGdkPixbuf.txt
+srcDir: gdkpixbuf
+lookup: APILookupGdkPixbuf.txt
 
 #srcDir: rsvg
 #lookup: APILookupRsvg.txt

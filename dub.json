@@ -81,6 +81,18 @@
 				"gtk_d:linker" : "*",
 				"gtk_d:glib" : "*"
 			}
+		},
+		{
+			"name": "gdkpixbuf",
+			"targetType": "library",
+			"targetName": "gdkpixbuf",
+			"importPaths": ["source/generated/gdkpixbuf"],
+			"sourcePaths": ["source/generated/gdkpixbuf"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:gio" : "*"
+			}
 		}
 	]
 }
