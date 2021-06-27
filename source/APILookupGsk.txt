@@ -1,0 +1,2 @@
+﻿wrap: gsk
+file: Gsk-4.0.gir

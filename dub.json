@@ -132,6 +132,20 @@
 				"gtk_d:cairo" : "*",
 				"gtk_d:gdkpixbuf" : "*"
 			}
+		},
+		{
+			"name": "gsk",
+			"targetType": "library",
+			"targetName": "gsk",
+			"importPaths": ["source/generated/gsk"],
+			"sourcePaths": ["source/generated/gsk"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:cairo" : "*",
+				"gtk_d:graphene" : "*",
+				"gtk_d:gdk" : "*"
+			}
 		}
 	]
 }

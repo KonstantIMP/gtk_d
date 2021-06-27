@@ -31,12 +31,11 @@ lookup: APILookupGdk.txt
 srcDir: atk
 lookup: APILookupAtk.txt
 
-#srcDir: gsk
-#lookup: APILookupGsk.txt
-
 srcDir: rsvg
 lookup: APILookupRsvg.txt
 
+srcDir: gsk
+lookup: APILookupGsk.txt
 
 
 #lookup: APILookupGio.txt
