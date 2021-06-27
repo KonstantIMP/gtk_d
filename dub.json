@@ -19,8 +19,8 @@
 			"name": "glib",
 			"targetType": "library",
 			"targetName": "glib",
-			"importPaths": ["source/generated/glib", "source/generated/gobject"],
-			"sourcePaths": ["source/generated/glib", "source/generated/gobject"],
+			"importPaths": ["source/generated/glib"],
+			"sourcePaths": ["source/generated/glib"],
 			"dependencies": {
 				"gtk_d:linker" : "*"
 			}

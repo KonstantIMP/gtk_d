@@ -1,0 +1,20 @@
+includeComments: y
+outputRoot: generated
+
+srcDir: glib
+lookup: APILookupGLib.txt
+lookup: APILookupGThread.txt
+lookup: APILookupGObject.txt
+
+#lookup: APILookupGio.txt
+#lookup: APILookupCairo.txt
+#lookup: APILookupRsvg.txt
+#ookup: APILookupHarfBuzz.txt
+#ookup: APILookupPango.txt
+#lookup: APILookupAtk.txt
+#lookup: APILookupGdkPixbuf.txt
+#lookup: APILookupGdk.txt
+#lookup: APILookupGsk.txt
+#lookup: APILookupGtk.txt
+#lookup: APILookupGraphene.txt
+

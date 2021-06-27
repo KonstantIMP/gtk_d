@@ -1,0 +1,43 @@
+﻿wrap: gthread
+
+struct: Cond
+namespace:
+code: start
+	public  import glib.Cond;
+code: end
+
+struct: Mutex
+namespace:
+code: start
+	public  import glib.Mutex;
+code: end
+
+struct: Once
+namespace:
+code: start
+	public  import glib.Once;
+code: end
+
+struct: Private
+namespace:
+code: start
+	public  import glib.Private;
+code: end
+
+struct: RecMutex
+namespace:
+code: start
+	public  import glib.RecMutex;
+code: end
+
+struct: RWLock
+namespace:
+code: start
+	public  import glib.RWLock;
+code: end
+
+struct: Thread
+namespace:
+code: start
+	public  import glib.Thread;
+code: end
