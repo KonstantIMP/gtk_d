@@ -93,6 +93,21 @@
 				"gtk_d:glib" : "*",
 				"gtk_d:gio" : "*"
 			}
+		},
+		{
+			"name": "gdk",
+			"targetType": "library",
+			"targetName": "gdk",
+			"importPaths": ["source/generated/gdk"],
+			"sourcePaths": ["source/generated/gdk"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:cairo" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:gio" : "*",
+				"gtk_d:gdkpixbuf" : "*",
+				"gtk_d:pango" : "*"
+			}
 		}
 	]
 }

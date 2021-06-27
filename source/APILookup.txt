@@ -25,6 +25,12 @@ lookup: APILookupGio.txt
 srcDir: gdkpixbuf
 lookup: APILookupGdkPixbuf.txt
 
+srcDir: gdk
+lookup: APILookupGdk.txt
+
+#srcDir: gsk
+#lookup: APILookupGsk.txt
+
 #srcDir: rsvg
 #lookup: APILookupRsvg.txt
 
@@ -36,7 +42,7 @@ lookup: APILookupGdkPixbuf.txt
 #lookup: APILookupAtk.txt
 #
 #lookup: APILookupGdk.txt
-#lookup: APILookupGsk.txt
+#
 #lookup: APILookupGtk.txt
 #
 
