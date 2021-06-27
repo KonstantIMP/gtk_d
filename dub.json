@@ -57,6 +57,19 @@
 				"gtk_d:linker" : "*",
 				"gtk_d:glib" : "*"
 			}
+		},
+		{
+			"name": "pango",
+			"targetType": "library",
+			"targetName": "pango",
+			"importPaths": ["source/generated/pango"],
+			"sourcePaths": ["source/generated/pango"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:cairo" : "*",
+				"gtk_d:harfbuzz" : "*"
+			}
 		}
 	]
 }

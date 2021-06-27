@@ -16,11 +16,11 @@ lookup: APILookupCairo.txt
 srcDir: harfbuzz
 lookup: APILookupHarfBuzz.txt
 
+srcDir: pango
+lookup: APILookupPango.txt
+
 #srcDir: rsvg
 #lookup: APILookupRsvg.txt
-
-#srcDir: pango
-#lookup: APILookupPango.txt
 
 
 
