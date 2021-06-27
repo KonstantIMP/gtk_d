@@ -46,6 +46,17 @@
 				"gtk_d:linker" : "*",
 				"gtk_d:glib" : "*"
 			}
+		},
+		{
+			"name": "harfbuzz",
+			"targetType": "library",
+			"targetName": "harfbuzz",
+			"importPaths": ["source/generated/harfbuzz"],
+			"sourcePaths": ["source/generated/harfbuzz"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*"
+			}
 		}
 	]
 }
