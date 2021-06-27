@@ -95,6 +95,17 @@
 			}
 		},
 		{
+			"name": "atk",
+			"targetType": "library",
+			"targetName": "atk",
+			"importPaths": ["source/generated/atk"],
+			"sourcePaths": ["source/generated/atk"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*"
+			}
+		},
+		{
 			"name": "gdk",
 			"targetType": "library",
 			"targetName": "gdk",

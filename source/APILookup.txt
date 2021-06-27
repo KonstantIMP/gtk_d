@@ -28,6 +28,9 @@ lookup: APILookupGdkPixbuf.txt
 srcDir: gdk
 lookup: APILookupGdk.txt
 
+srcDir: atk
+lookup: APILookupAtk.txt
+
 #srcDir: gsk
 #lookup: APILookupGsk.txt
 
