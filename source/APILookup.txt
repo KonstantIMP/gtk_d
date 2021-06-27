@@ -9,8 +9,18 @@ lookup: APILookupGObject.txt
 srcDir: graphene
 lookup: APILookupGraphene.txt
 
+srcDir: cairo
+copy: cairo
+lookup: APILookupCairo.txt
+
+#srcDir: pango
+#lookup: APILookupPango.txt
+
+#srcDir: rsvg
+#lookup: APILookupRsvg.txt
+
 #lookup: APILookupGio.txt
-#lookup: APILookupCairo.txt
+#
 #lookup: APILookupRsvg.txt
 #ookup: APILookupHarfBuzz.txt
 #ookup: APILookupPango.txt

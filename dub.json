@@ -35,6 +35,17 @@
 				"gtk_d:linker" : "*",
 				"gtk_d:glib" : "*"
 			}
+		},
+		{
+			"name": "cairo",
+			"targetType": "library",
+			"targetName": "cairo",
+			"importPaths": ["source/generated/cairo"],
+			"sourcePaths": ["source/generated/cairo"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*"
+			}
 		}
 	]
 }
