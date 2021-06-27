@@ -43,9 +43,12 @@ lookup: APILookupGtk.txt
 srcDir: adw
 lookup: APILookupAdw.txt
 
+srcDir: sourceview
+lookup: APILookupSourceView.txt
+
 srcDir: gstreamer
 lookup: APILookupGStreamer.txt
-lookup: APILookupGstAllocators.txlookup: APILookupGstApp.txt
+lookup: APILookupGstApp.txt
 lookup: APILookupGstBase.txt
 lookup: APILookupGstInterfaces.txt
 lookup: APILookupGstMpegts.txt

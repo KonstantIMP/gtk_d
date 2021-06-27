@@ -182,6 +182,18 @@
 				"gtk_d:linker" : "*",
 				"gtk_d:glib" : "*"
 			}
+		},
+		{
+			"name": "sourceview",
+			"targetType": "library",
+			"targetName": "sourceview",
+			"importPaths": ["source/generated/sourceview"],
+			"sourcePaths": ["source/generated/sourceview"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:gtk" : "*"
+			}
 		}
 	]
 }
