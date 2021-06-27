@@ -1,0 +1,58 @@
+wrap: shumate
+file: Shumate-0.0.gir
+
+struct: MapSourceRegistry
+import: glib.ConstructionException
+noCode: new
+noCode: new_with_defaults
+code: start
+/**
+	 * Create a new #ShumateMapSourceRegistry.
+	 *
+	 * Returns: a newly created #ShumateMapSourceRegistry
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(bool defaults = false)
+	{
+		ShumateMapSourceRegistry* __p;
+        
+        if (!defaults) __p = shumate_map_source_registry_new();
+        else __p = shumate_map_source_registry_new_with_defaults();
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new");
+		}
+
+		this(cast(ShumateMapSourceRegistry*) __p, true);
+	}
+code: end
+
+struct: View
+import: glib.ConstructionException
+noCode: new
+noCode: new_simple
+code: start
+    /**
+	 * Creates an instance of #ShumateView.
+	 *
+	 * Returns: a new #ShumateView ready to be used as a #GtkWidget.
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(bool simple = false)
+	{
+		ShumateView* __p;
+
+        if (simple) __p = shumate_view_new_simple();
+        else __p = shumate_view_new();
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new");
+		}
+
+		this(cast(ShumateView*) __p);
+	}
+code: end
