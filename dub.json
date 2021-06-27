@@ -171,6 +171,17 @@
 				"gtk_d:linker" : "*",
 				"gtk_d:gtk" : "*"
 			}
+		},
+		{
+			"name": "gstreamer",
+			"targetType": "library",
+			"targetName": "gstreamer",
+			"importPaths": ["source/generated/gstreamer"],
+			"sourcePaths": ["source/generated/gstreamer"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*"
+			}
 		}
 	]
 }

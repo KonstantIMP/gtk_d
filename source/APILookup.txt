@@ -43,13 +43,11 @@ lookup: APILookupGtk.txt
 srcDir: adw
 lookup: APILookupAdw.txt
 
-#lookup: APILookupGio.txt
-#ookup: APILookupHarfBuzz.txt
-#ookup: APILookupPango.txt
-#lookup: APILookupAtk.txt
-#
-#lookup: APILookupGdk.txt
-#
-#lookup: APILookupGtk.txt
-#
+srcDir: gstreamer
+lookup: APILookupGStreamer.txt
+lookup: APILookupGstApp.txt
+lookup: APILookupGstBase.txt
+lookup: APILookupGstInterfaces.txt
+lookup: APILookupGstMpegts.txt
+
 
