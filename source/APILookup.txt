@@ -34,8 +34,8 @@ lookup: APILookupAtk.txt
 #srcDir: gsk
 #lookup: APILookupGsk.txt
 
-#srcDir: rsvg
-#lookup: APILookupRsvg.txt
+srcDir: rsvg
+lookup: APILookupRsvg.txt
 
 
 

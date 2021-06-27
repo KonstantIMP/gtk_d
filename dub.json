@@ -119,6 +119,19 @@
 				"gtk_d:gdkpixbuf" : "*",
 				"gtk_d:pango" : "*"
 			}
+		},
+		{
+			"name": "rsvg",
+			"targetType": "library",
+			"targetName": "rsvg",
+			"importPaths": ["source/generated/rsvg"],
+			"sourcePaths": ["source/generated/rsvg"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:cairo" : "*",
+				"gtk_d:gdkpixbuf" : "*"
+			}
 		}
 	]
 }
