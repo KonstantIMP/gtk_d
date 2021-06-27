@@ -40,6 +40,9 @@ lookup: APILookupGsk.txt
 srcDir: gtk
 lookup: APILookupGtk.txt
 
+srcDir: adw
+lookup: APILookupAdw.txt
+
 #lookup: APILookupGio.txt
 #ookup: APILookupHarfBuzz.txt
 #ookup: APILookupPango.txt

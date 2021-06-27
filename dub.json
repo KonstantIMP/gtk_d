@@ -160,6 +160,17 @@
 				"gtk_d:graphene" : "*",
 				"gtk_d:gsk" : "*"
 			}
+		},
+		{
+			"name": "adw",
+			"targetType": "library",
+			"targetName": "adw",
+			"importPaths": ["source/generated/adw"],
+			"sourcePaths": ["source/generated/adw"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:gtk" : "*"
+			}
 		}
 	]
 }
