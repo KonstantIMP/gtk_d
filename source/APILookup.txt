@@ -37,6 +37,8 @@ lookup: APILookupRsvg.txt
 srcDir: gsk
 lookup: APILookupGsk.txt
 
+srcDir: gtk
+lookup: APILookupGtk.txt
 
 #lookup: APILookupGio.txt
 #ookup: APILookupHarfBuzz.txt

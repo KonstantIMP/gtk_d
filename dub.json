@@ -146,6 +146,20 @@
 				"gtk_d:graphene" : "*",
 				"gtk_d:gdk" : "*"
 			}
+		},
+		{
+			"name": "gtk",
+			"targetType": "library",
+			"targetName": "gtk",
+			"importPaths": ["source/generated/gtk"],
+			"sourcePaths": ["source/generated/gtk"],
+			"dependencies": {
+				"gtk_d:linker" : "*",
+				"gtk_d:glib" : "*",
+				"gtk_d:gdk" : "*",
+				"gtk_d:graphene" : "*",
+				"gtk_d:gsk" : "*"
+			}
 		}
 	]
 }
