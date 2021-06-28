@@ -1,0 +1,13 @@
+{
+	"authors": [
+		"KonstantIMP"
+	],
+	"copyright": "Copyright © 2021, KonstantIMP",
+	"description": "An exampleof using AdwAvatar",
+	"license": "LGPL-3.0",
+	"name": "avatar",
+	"dependencies": {
+		"gtk_d:gtk" : "*",
+		"gtk_d:adw" : "*"
+	}
+}

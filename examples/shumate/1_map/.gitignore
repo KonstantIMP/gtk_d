@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/map
+map.so
+map.dylib
+map.dll
+map.a
+map.lib
+map-test-*
+*.exe
+*.o
+*.obj
+*.lst

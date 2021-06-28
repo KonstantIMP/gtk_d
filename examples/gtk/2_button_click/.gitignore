@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/button_click
+button_click.so
+button_click.dylib
+button_click.dll
+button_click.a
+button_click.lib
+button_click-test-*
+*.exe
+*.o
+*.obj
+*.lst

@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"KonstantIMP"
+	],
+	"copyright": "Copyright © 2021, KonstantIMP",
+	"description": "A test gtk application with button and reveler",
+	"license": "LGPL-3.0",
+	"name": "button_click",
+	"dependencies": {
+		"gtk_d:gtk" : "*"
+	}
+}
