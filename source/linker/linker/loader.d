@@ -183,7 +183,7 @@ public class Linker {
          * Returns: True if everything is ok
          */
         private static bool unloadLibraryOS(void * lib) {
-            return FreeLibrary(lib);
+            return cast(bool)FreeLibrary(lib);
         }
 
         /** 
@@ -193,7 +193,7 @@ public class Linker {
         private static string getLastErrorMessageOS() {
             import core.sys.windows.winbase : GetLastError, FormatMessageA, FORMAT_MESSAGE_FROM_SYSTEM, FORMAT_MESSAGE_ARGUMENT_ARRAY;
             import core.sys.windows.winnt : LANG_NEUTRAL;
-            import core.stds.string : memset;
+            import core.stdc.string : memset;
 
             char [] buffer = new char[2048];
             memset(buffer.ptr, '\0', 2048);
