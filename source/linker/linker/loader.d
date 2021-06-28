@@ -7,6 +7,11 @@ module linker.loader;
 import linker.exception;
 import std.string : toStringz, fromStringz;
 
+/** Extern function for setting path for dll loading */
+extern(Windows)	{
+    int SetDllDirectoryA(const(char)* path);
+}
+
 /** 
  * Class for runtime libraries loading
  */
@@ -148,11 +153,6 @@ public class Linker {
         /** Specific imports */
         import core.sys.windows.winnt : IMAGE_FILE_MACHINE_AMD64, IMAGE_FILE_MACHINE_I386;
         import core.sys.windows.winbase : LoadLibraryA, GetProcAddress, FreeLibrary;
-
-        /** Extern function for setting path for dll loading */
-        extern(Windows)	{
-		    static int SetDllDirectoryA(const(char)* path);
-	    }
 
         /** 
          * Load library by using OS-specific functions
