@@ -12,6 +12,7 @@
 			"name": "linker",
 			"targetType": "library",
 			"targetName": "linker",
+			"version" : "1.0.0",
 			"importPaths": ["source/linker"],
 			"sourcePaths": ["source/linker"]
 		},
@@ -19,6 +20,7 @@
 			"name": "glib",
 			"targetType": "library",
 			"targetName": "glib",
+			"version" : "2.68.1",
 			"importPaths": ["source/generated/glib"],
 			"sourcePaths": ["source/generated/glib"],
 			"dependencies": {
@@ -29,6 +31,7 @@
 			"name": "graphene",
 			"targetType": "library",
 			"targetName": "graphene",
+			"version" : "1.10.6",
 			"importPaths": ["source/generated/graphene"],
 			"sourcePaths": ["source/generated/graphene"],
 			"dependencies": {
@@ -40,6 +43,7 @@
 			"name": "cairo",
 			"targetType": "library",
 			"targetName": "cairo",
+			"version" : "1.17.4",
 			"importPaths": ["source/generated/cairo"],
 			"sourcePaths": ["source/generated/cairo"],
 			"dependencies": {
@@ -51,6 +55,7 @@
 			"name": "harfbuzz",
 			"targetType": "library",
 			"targetName": "harfbuzz",
+			"version" : "2.8.1",
 			"importPaths": ["source/generated/harfbuzz"],
 			"sourcePaths": ["source/generated/harfbuzz"],
 			"dependencies": {
@@ -62,6 +67,7 @@
 			"name": "pango",
 			"targetType": "library",
 			"targetName": "pango",
+			"version" : "1.48",
 			"importPaths": ["source/generated/pango"],
 			"sourcePaths": ["source/generated/pango"],
 			"dependencies": {
@@ -75,6 +81,7 @@
 			"name": "gio",
 			"targetType": "library",
 			"targetName": "gio",
+			"version" : "2.66.7",
 			"importPaths": ["source/generated/gio"],
 			"sourcePaths": ["source/generated/gio"],
 			"dependencies": {
@@ -86,6 +93,7 @@
 			"name": "gdkpixbuf",
 			"targetType": "library",
 			"targetName": "gdkpixbuf",
+			"version" : "2.42.6",
 			"importPaths": ["source/generated/gdkpixbuf"],
 			"sourcePaths": ["source/generated/gdkpixbuf"],
 			"dependencies": {
@@ -98,6 +106,7 @@
 			"name": "atk",
 			"targetType": "library",
 			"targetName": "atk",
+			"version" : "2.36.0",
 			"importPaths": ["source/generated/atk"],
 			"sourcePaths": ["source/generated/atk"],
 			"dependencies": {
@@ -109,6 +118,7 @@
 			"name": "gdk",
 			"targetType": "library",
 			"targetName": "gdk",
+			"version" : "4.2.1",
 			"importPaths": ["source/generated/gdk"],
 			"sourcePaths": ["source/generated/gdk"],
 			"dependencies": {
@@ -124,6 +134,7 @@
 			"name": "rsvg",
 			"targetType": "library",
 			"targetName": "rsvg",
+			"version" : "2.50.7",
 			"importPaths": ["source/generated/rsvg"],
 			"sourcePaths": ["source/generated/rsvg"],
 			"dependencies": {
@@ -137,6 +148,7 @@
 			"name": "gsk",
 			"targetType": "library",
 			"targetName": "gsk",
+			"version" : "4.2.1",
 			"importPaths": ["source/generated/gsk"],
 			"sourcePaths": ["source/generated/gsk"],
 			"dependencies": {
@@ -151,6 +163,7 @@
 			"name": "gtk",
 			"targetType": "library",
 			"targetName": "gtk",
+			"version" : "4.2.1",
 			"importPaths": ["source/generated/gtk"],
 			"sourcePaths": ["source/generated/gtk"],
 			"dependencies": {
@@ -165,6 +178,7 @@
 			"name": "adw",
 			"targetType": "library",
 			"targetName": "adw",
+			"version" : "1.0.0",
 			"importPaths": ["source/generated/adw"],
 			"sourcePaths": ["source/generated/adw"],
 			"dependencies": {
@@ -176,6 +190,7 @@
 			"name": "gstreamer",
 			"targetType": "library",
 			"targetName": "gstreamer",
+			"version" : "1.18.4",
 			"importPaths": ["source/generated/gstreamer"],
 			"sourcePaths": ["source/generated/gstreamer"],
 			"dependencies": {
@@ -187,6 +202,7 @@
 			"name": "sourceview",
 			"targetType": "library",
 			"targetName": "sourceview",
+			"version" : "5.0.0",
 			"importPaths": ["source/generated/sourceview"],
 			"sourcePaths": ["source/generated/sourceview"],
 			"dependencies": {
@@ -199,6 +215,7 @@
 			"name": "soup",
 			"targetType": "library",
 			"targetName": "soup",
+			"version" : "2.72.0",
 			"importPaths": ["source/generated/soup"],
 			"sourcePaths": ["source/generated/soup"],
 			"dependencies": {
@@ -211,13 +228,35 @@
 			"name": "shumate",
 			"targetType": "library",
 			"targetName": "shumate",
+			"version" : "0.0.0",
 			"importPaths": ["source/generated/shumate"],
 			"sourcePaths": ["source/generated/shumate"],
 			"dependencies": {
 				"gtk_d:linker" : "*",
 				"gtk_d:glib" : "*",
-				"gtk_d:gtk" : "*"
+				"gtk_d:gtk" : "*",
+				"gtk_d:soup" : "*"
 			}
 		}
-	]
+	],
+	"dependencies": {
+		"gtk_d:linker" : "*",
+		"gtk_d:glib" : "*",
+		"gtk_d:graphene" : "*",
+		"gtk_d:cairo" : "*",
+		"gtk_d:harfbuzz" : "*",
+		"gtk_d:pango" : "*",
+		"gtk_d:gio" : "*",
+		"gtk_d:gdkpixbuf" : "*",
+		"gtk_d:atk" : "*",
+		"gtk_d:gdk" : "*",
+		"gtk_d:rsvg" : "*",
+		"gtk_d:gsk" : "*",
+		"gtk_d:gtk" : "*",
+		"gtk_d:adw" : "*",
+		"gtk_d:gstreamer" : "*",
+		"gtk_d:sourceview" : "*",
+		"gtk_d:soup" : "*",
+		"gtk_d:shumate" : "*"
+	}
 }
