@@ -151,7 +151,7 @@ public class Linker {
 
         /** Extern function for setting path for dll loading */
         extern(Windows)	{
-		    int SetDllDirectoryA(const(char)* path);
+		    static int SetDllDirectoryA(const(char)* path);
 	    }
 
         /** 
@@ -249,7 +249,7 @@ public class Linker {
          *   dll_path = Path to the dll for check
          * Returns: true if the dll is compatible with the machine
          */
-        private bool checkDLLArch(string dll_path) {
+        private static bool checkDLLArch(string dll_path) {
             import std.stdio : File;
 
             File dll = File(dll_path);
@@ -267,8 +267,6 @@ public class Linker {
             version(Win64) {
                 return win_type == IMAGE_FILE_MACHINE_AMD64;
             }
-
-            return false;
         }
     } 
     else {
