@@ -187,18 +187,6 @@
 			}
 		},
 		{
-			"name": "gstreamer",
-			"targetType": "library",
-			"targetName": "gstreamer",
-			"version" : "1.18.4",
-			"importPaths": ["source/generated/gstreamer"],
-			"sourcePaths": ["source/generated/gstreamer"],
-			"dependencies": {
-				"gtk_d:linker" : "*",
-				"gtk_d:glib" : "*"
-			}
-		},
-		{
 			"name": "sourceview",
 			"targetType": "library",
 			"targetName": "sourceview",
@@ -254,7 +242,6 @@
 		"gtk_d:gsk" : "*",
 		"gtk_d:gtk" : "*",
 		"gtk_d:adw" : "*",
-		"gtk_d:gstreamer" : "*",
 		"gtk_d:sourceview" : "*",
 		"gtk_d:soup" : "*",
 		"gtk_d:shumate" : "*"

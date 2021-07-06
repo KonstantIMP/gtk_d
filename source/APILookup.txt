@@ -54,11 +54,11 @@ lookup: APILookupSoup.txt
 srcDir: shumate
 lookup: APILookupShumate.txt
 
-srcDir: gstreamer
-lookup: APILookupGStreamer.txt
-lookup: APILookupGstApp.txt
-lookup: APILookupGstBase.txt
-lookup: APILookupGstInterfaces.txt
-lookup: APILookupGstMpegts.txt
+#srcDir: gstreamer
+#lookup: APILookupGStreamer.txt
+#lookup: APILookupGstApp.txt
+#lookup: APILookupGstBase.txt
+#lookup: APILookupGstInterfaces.txt
+#lookup: APILookupGstMpegts.txt
 
 

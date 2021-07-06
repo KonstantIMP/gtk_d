@@ -34,11 +34,6 @@ dmd -o- -D -X -Xfdocs/docs.json -Dddocs/temp\
         source/generated/glib/gthread/*.d source/generated/glib/gthread/c/*.d \
         source/generated/graphene/graphene/*.d source/generated/graphene/graphene/c/*.d \
         source/generated/gsk/gsk/*.d source/generated/gsk/gsk/c/*.d \
-        source/generated/gstreamer/gst/app/*.d source/generated/gstreamer/gst/app/c/*.d \
-        source/generated/gstreamer/gst/base/*.d source/generated/gstreamer/gst/base/c/*.d \
-        source/generated/gstreamer/gst/mpegts/*.d source/generated/gstreamer/gst/mpegts/c/*.d \
-        source/generated/gstreamer/gstinterfaces/*.d source/generated/gstreamer/gstinterfaces/c/*.d \
-        source/generated/gstreamer/gstreamer/*.d source/generated/gstreamer/gstreamer/c/*.d \
         source/generated/gtk/gtk/*.d source/generated/gtk/gtk/c/*.d \
         source/generated/harfbuzz/harfbuzz/*.d source/generated/harfbuzz/harfbuzz/c/*.d \
         source/generated/pango/pango/*.d source/generated/pango/pango/c/*.d \
