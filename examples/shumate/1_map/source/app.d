@@ -8,7 +8,7 @@ module map;
 import gtk.Application, gtk.ApplicationWindow;
 
 /** Import shumate */
-import shumate.View;
+import shumate.Map;
 
 /** 
  * Start point of the app
@@ -26,7 +26,7 @@ int main(string [] args) {
 		auto map_win = new ApplicationWindow(map_app);
 		map_win.setTitle("Example 1. Shumate");
 
-		auto map_view = new View(true);
+		auto map_view = new Map(true);
 
 		map_win.setChild(map_view);
 		map_win.show();
