@@ -63,7 +63,7 @@ public class EntryBuffer : ObjectG
 	 * Optionally, specify initial text to set in the buffer.
 	 *
 	 * Params:
-	 *     initialChars = initial buffer text, or %NULL
+	 *     initialChars = initial buffer text
 	 *     nInitialChars = number of characters in @initial_chars, or -1
 	 *
 	 * Returns: A new `GtkEntryBuffer` object.
@@ -157,7 +157,7 @@ public class EntryBuffer : ObjectG
 	 * Retrieves the maximum allowed length of the text in @buffer.
 	 *
 	 * Returns: the maximum allowed number of characters
-	 *     in #GtkEntryBuffer, or 0 if there is no maximum.
+	 *     in `GtkEntryBuffer`, or 0 if there is no maximum.
 	 */
 	public int getMaxLength()
 	{

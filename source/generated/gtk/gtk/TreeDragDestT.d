@@ -21,7 +21,7 @@ public template TreeDragDestT(TStruct)
 
 
 	/**
-	 * Asks the #GtkTreeDragDest to insert a row before the path @dest,
+	 * Asks the `GtkTreeDragDest` to insert a row before the path @dest,
 	 * deriving the contents of the row from @value. If @dest is
 	 * outside the tree so that inserting before it is impossible, %FALSE
 	 * will be returned. Also, %FALSE may be returned if the new row is

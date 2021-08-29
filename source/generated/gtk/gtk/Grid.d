@@ -28,8 +28,8 @@ public  import gtk.c.types;
  * # GtkGrid as GtkBuildable
  * 
  * Every child in a `GtkGrid` has access to a custom [iface@Gtk.Buildable]
- * element, called ´<layout>´. It can by used to specify a position in the
- * grid and optionally spans. All properties that can be used in the ´<layout>´
+ * element, called `<layout>`. It can by used to specify a position in the
+ * grid and optionally spans. All properties that can be used in the `<layout>`
  * element are implemented by [class@Gtk.GridLayoutChild].
  * 
  * It is implemented by `GtkWidget` using [class@Gtk.LayoutManager].
@@ -81,9 +81,9 @@ public  import gtk.c.types;
  * 
  * It organizes the first two buttons side-by-side in one cell each.
  * The third button is in the last column but spans across two rows.
- * This is defined by the ´row-span´ property. The last button is
+ * This is defined by the `row-span` property. The last button is
  * located in the second row and spans across two columns, which is
- * defined by the ´column-span´ property.
+ * defined by the `column-span` property.
  * 
  * # CSS nodes
  * 
@@ -177,8 +177,8 @@ public class Grid : Widget, OrientableIF
 	 * left or right placement) or column 0 (for top or bottom placement),
 	 * at the end indicated by @side.
 	 *
-	 * Attaching widgets labeled [1], [2], [3] with @sibling == %NULL and
-	 * @side == %GTK_POS_LEFT yields a layout of [3][2][1].
+	 * Attaching widgets labeled `[1]`, `[2]`, `[3]` with `@sibling == %NULL` and
+	 * `@side == %GTK_POS_LEFT` yields a layout of `[3][2][1]`.
 	 *
 	 * Params:
 	 *     child = the widget to add
@@ -211,7 +211,7 @@ public class Grid : Widget, OrientableIF
 	 *     column = the left edge of the cell
 	 *     row = the top edge of the cell
 	 *
-	 * Returns: the child at the given position, or %NULL
+	 * Returns: the child at the given position
 	 */
 	public Widget getChildAt(int column, int row)
 	{

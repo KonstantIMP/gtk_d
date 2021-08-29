@@ -180,7 +180,7 @@ public class Seat : ObjectG
 	 *
 	 * The tool may later be assigned to a device (i.e. on
 	 * proximity with a tablet). The device will emit the
-	 * [signalGdkDevice::tool-changed] signal accordingly.
+	 * [signal@Gdk.Device::tool-changed] signal accordingly.
 	 *
 	 * A same tool may be used by several devices.
 	 *

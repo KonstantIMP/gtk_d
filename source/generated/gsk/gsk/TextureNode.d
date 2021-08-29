@@ -10,7 +10,7 @@ public  import gsk.c.types;
 
 
 /**
- * A render node for a #GdkTexture.
+ * A render node for a `GdkTexture`.
  */
 public class TextureNode : RenderNode
 {

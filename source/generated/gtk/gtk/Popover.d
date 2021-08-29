@@ -256,10 +256,8 @@ public class Popover : Widget, NativeIF, ShortcutManagerIF
 	/**
 	 * Pops @popover down.
 	 *
-	 * This is different from a [method@Gtk.Widget.hide] call
-	 * in that it may show the popover with a transition. If
-	 * you want to hide the popover without a transition, just
-	 * use [method@Gtk.Widget.hide].
+	 * This may have the side-effect of closing a parent popover
+	 * as well. See [property@Gtk.Popover:cascade-popdown].
 	 */
 	public void popdown()
 	{
@@ -268,11 +266,6 @@ public class Popover : Widget, NativeIF, ShortcutManagerIF
 
 	/**
 	 * Pops @popover up.
-	 *
-	 * This is different from a [method@Gtk.Widget.show() call
-	 * in that it may show the popover with a transition. If
-	 * you want to show the popover without a transition, just
-	 * use [method@Gtk.Widget.show].
 	 */
 	public void popup()
 	{
@@ -291,8 +284,8 @@ public class Popover : Widget, NativeIF, ShortcutManagerIF
 	 * Sets whether @popover is modal.
 	 *
 	 * A modal popover will grab the keyboard focus on it when being
-	 * displayed. Clicking outside the popover area or pressing Esc
-	 * will dismiss the popover.
+	 * displayed. Focus will wrap around within the popover. Clicking
+	 * outside the popover area or pressing Esc will dismiss the popover.
 	 *
 	 * Called this function on an already showing popup with a new
 	 * autohide value different from the current one, will cause the

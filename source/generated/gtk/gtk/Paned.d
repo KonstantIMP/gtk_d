@@ -254,7 +254,7 @@ public class Paned : Widget, OrientableIF
 	 *
 	 * Params:
 	 *     position = pixel position of divider, a negative value means that the position
-	 *         is unset.
+	 *         is unset
 	 */
 	public void setPosition(int position)
 	{
@@ -393,7 +393,7 @@ public class Paned : Widget, OrientableIF
 	 * This is a [keybinding signal](class.SignalAction.html).
 	 *
 	 * Params:
-	 *     scrollType = a #GtkScrollType
+	 *     scrollType = a `GtkScrollType`
 	 */
 	gulong addOnMoveHandle(bool delegate(GtkScrollType, Paned) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

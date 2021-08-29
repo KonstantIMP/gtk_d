@@ -5,6 +5,7 @@ private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
 private import gtk.PrintContext;
+private import gtk.TextTag;
 private import sourceview.Buffer;
 private import sourceview.View;
 private import sourceview.c.functions;
@@ -391,6 +392,20 @@ public class PrintCompositor : ObjectG
 	public GtkWrapMode getWrapMode()
 	{
 		return gtk_source_print_compositor_get_wrap_mode(gtkSourcePrintCompositor);
+	}
+
+	/**
+	 * Specifies a tag whose style should be ignored when compositing the
+	 * document to the printable page.
+	 *
+	 * Params:
+	 *     tag = a #GtkTextTag
+	 *
+	 * Since: 5.2
+	 */
+	public void ignoreTag(TextTag tag)
+	{
+		gtk_source_print_compositor_ignore_tag(gtkSourcePrintCompositor, (tag is null) ? null : tag.getTextTagStruct());
 	}
 
 	/**

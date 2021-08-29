@@ -141,7 +141,7 @@ public class Stack : Widget
 	 *
 	 * Params:
 	 *     child = the widget to add
-	 *     name = the name for @child or %NULL
+	 *     name = the name for @child
 	 *
 	 * Returns: the `GtkStackPage` for @child
 	 */
@@ -217,7 +217,7 @@ public class Stack : Widget
 	}
 
 	/**
-	 * Returns whether the #GtkStack is set up to interpolate between
+	 * Returns whether the `GtkStack` is set up to interpolate between
 	 * the sizes of children on page switch.
 	 *
 	 * Returns: %TRUE if child sizes are interpolated
@@ -417,7 +417,7 @@ public class Stack : Widget
 	}
 
 	/**
-	 * Sets the #GtkStack to be vertically homogeneous or not.
+	 * Sets the `GtkStack` to be vertically homogeneous or not.
 	 *
 	 * If it is homogeneous, the `GtkStack` will request the same
 	 * height for all its children. If it isn't, the stack

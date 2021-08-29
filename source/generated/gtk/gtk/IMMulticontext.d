@@ -10,8 +10,8 @@ public  import gtk.c.types;
 
 
 /**
- * `GtkIMMulticontext` is input method supporting multiple, switchable input
- * methods.
+ * `GtkIMMulticontext` is an input method context supporting multiple,
+ * switchable input methods.
  * 
  * Text widgets such as `GtkText` or `GtkTextView` use a `GtkIMMultiContext`
  * to implement their `im-module` property for switching between different
@@ -86,6 +86,10 @@ public class IMMulticontext : IMContext
 	 *
 	 * This causes the currently active delegate of @context to be
 	 * replaced by the delegate corresponding to the new context id.
+	 *
+	 * Setting this to a non-%NULL value overrides the system-wide
+	 * IM module setting. See the [property@Gtk.Settings:gtk-im-module]
+	 * property.
 	 *
 	 * Params:
 	 *     contextId = the id to use

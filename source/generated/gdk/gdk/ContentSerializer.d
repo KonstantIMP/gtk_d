@@ -23,7 +23,7 @@ private import gobject.Value;
  * 
  * GTK provides serializers and deserializers for common data types
  * such as text, colors, images or file lists. To register your own
- * serialization functions, use [func@content_register_serializer].
+ * serialization functions, use [func@Gdk.content_register_serializer].
  * 
  * Also see [class@Gdk.ContentDeserializer].
  */
@@ -68,7 +68,7 @@ public class ContentSerializer : ObjectG, AsyncResultIF
 	/**
 	 * Gets the cancellable for the current operation.
 	 *
-	 * This is the `GCancellable` that was passed to [content_serialize_async].
+	 * This is the `GCancellable` that was passed to [func@content_serialize_async].
 	 *
 	 * Returns: the cancellable for the current operation
 	 */
@@ -184,7 +184,7 @@ public class ContentSerializer : ObjectG, AsyncResultIF
 	 */
 	public void returnError(ErrorG error)
 	{
-		gdk_content_serializer_return_error(gdkContentSerializer, (error is null) ? null : error.getErrorGStruct());
+		gdk_content_serializer_return_error(gdkContentSerializer, (error is null) ? null : error.getErrorGStruct(true));
 	}
 
 	/**

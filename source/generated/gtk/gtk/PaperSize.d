@@ -78,7 +78,7 @@ public class PaperSize
 	 * see [func@Gtk.PaperSize.get_default].
 	 *
 	 * Params:
-	 *     name = a paper size name, or %NULL
+	 *     name = a paper size name
 	 *
 	 * Returns: a new `GtkPaperSize`, use [method@Gtk.PaperSize.free]
 	 *     to free it
@@ -189,8 +189,7 @@ public class PaperSize
 	 *     groupName = the name of the group in the key file to read,
 	 *         or %NULL to read the first group
 	 *
-	 * Returns: a new `GtkPaperSize` object with the restored
-	 *     paper size, or %NULL if an error occurred
+	 * Returns: a new `GtkPaperSize` object with the restored paper size
 	 *
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.

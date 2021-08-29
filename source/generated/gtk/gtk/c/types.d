@@ -87,7 +87,7 @@ public enum GtkAccessibleProperty
 	 * Indicates whether inputting text
 	 * could trigger display of one or more predictions of the user's intended
 	 * value for a combobox, searchbox, or textbox and specifies how predictions
-	 * would be presented if they were made. Value type: #GtkAccessibleAutocomplete
+	 * would be presented if they were made. Value type: `GtkAccessibleAutocomplete`
 	 */
 	AUTOCOMPLETE = 0,
 	/**
@@ -136,7 +136,7 @@ public enum GtkAccessibleProperty
 	/**
 	 * Indicates whether the element's
 	 * orientation is horizontal, vertical, or unknown/ambiguous. Value type:
-	 * #GtkOrientation
+	 * `GtkOrientation`
 	 */
 	ORIENTATION = 9,
 	/**
@@ -164,7 +164,7 @@ public enum GtkAccessibleProperty
 	/**
 	 * Indicates if items in a table or grid are
 	 * sorted in ascending or descending order. Possible property values are in
-	 * the #GtkAccessibleSort enumeration. Value type: #GtkAccessibleSort
+	 * the `GtkAccessibleSort` enumeration. Value type: `GtkAccessibleSort`
 	 */
 	SORT = 14,
 	/**
@@ -388,7 +388,7 @@ public enum GtkAccessibleRole
 	GRID_CELL = 17,
 	/**
 	 * An element that groups multiple widgets. GTK uses
-	 * this role for various containers, like #GtkBox, #GtkViewport, and #GtkHeaderBar.
+	 * this role for various containers, like `GtkBox`, `GtkViewport`, and `GtkHeaderBar`.
 	 */
 	GROUP = 18,
 	/**
@@ -678,24 +678,24 @@ public enum GtkAccessibleState
 	BUSY = 0,
 	/**
 	 * A “checked” state; indicates the current
-	 * state of a #GtkCheckButton. Value type: #GtkAccessibleTristate
+	 * state of a `GtkCheckButton`. Value type: `GtkAccessibleTristate`
 	 */
 	CHECKED = 1,
 	/**
 	 * A “disabled” state; corresponds to the
-	 * #GtkWidget:sensitive property on #GtkWidget. It indicates a UI element
+	 * `GtkWidget:sensitive` property on `GtkWidget`. It indicates a UI element
 	 * that is perceivable, but not editable or operable. Value type: boolean
 	 */
 	DISABLED = 2,
 	/**
 	 * An “expanded” state; corresponds to the
-	 * #GtkExpander:expanded property on #GtkExpander. Value type: boolean
+	 * `GtkExpander:expanded` property on `GtkExpander`. Value type: boolean
 	 * or undefined
 	 */
 	EXPANDED = 3,
 	/**
 	 * A “hidden” state; corresponds to the
-	 * #GtkWidget:visible property on #GtkWidget. You can use this state
+	 * `GtkWidget:visible` property on `GtkWidget`. You can use this state
 	 * explicitly on UI elements that should not be exposed to an assistive
 	 * technology. Value type: boolean
 	 * See also: %GTK_ACCESSIBLE_STATE_DISABLED
@@ -703,12 +703,12 @@ public enum GtkAccessibleState
 	HIDDEN = 4,
 	/**
 	 * An “invalid” state; set when a widget
-	 * is showing an error. Value type: #GtkAccessibleInvalidState
+	 * is showing an error. Value type: `GtkAccessibleInvalidState`
 	 */
 	INVALID = 5,
 	/**
 	 * A “pressed” state; indicates the current
-	 * state of a #GtkToggleButton. Value type: #GtkAccessibleTristate
+	 * state of a `GtkToggleButton`. Value type: `GtkAccessibleTristate`
 	 * enumeration
 	 */
 	PRESSED = 6,
@@ -770,23 +770,20 @@ public enum GtkAlign
 	 */
 	FILL = 0,
 	/**
-	 * snap to left or top side, leaving space on right
-	 * or bottom
+	 * snap to left or top side, leaving space on right or bottom
 	 */
 	START = 1,
 	/**
-	 * snap to right or bottom side, leaving space on left
-	 * or top
+	 * snap to right or bottom side, leaving space on left or top
 	 */
 	END = 2,
 	/**
-	 * center natural width of widget inside the
-	 * allocation
+	 * center natural width of widget inside the allocation
 	 */
 	CENTER = 3,
 	/**
-	 * align the widget according to the baseline. See
-	 * #GtkWidget
+	 * align the widget according to the baseline.
+	 * See [class@Gtk.Widget].
 	 */
 	BASELINE = 4,
 }
@@ -978,7 +975,7 @@ alias GtkBorderStyle BorderStyle;
  * The list of flags that can be passed to gtk_builder_create_closure().
  *
  * New values may be added in the future for new features, so external
- * implementations of [interface@Gtk.BuilderScope] should test the flags
+ * implementations of [iface@Gtk.BuilderScope] should test the flags
  * for unknown values and raise a %GTK_BUILDER_ERROR_INVALID_ATTRIBUTE error
  * when they encounter one.
  */
@@ -994,32 +991,32 @@ alias GtkBuilderClosureFlags BuilderClosureFlags;
 
 /**
  * Error codes that identify various errors that can occur while using
- * #GtkBuilder.
+ * `GtkBuilder`.
  */
 public enum GtkBuilderError
 {
 	/**
 	 * A type-func attribute didn’t name
-	 * a function that returns a #GType.
+	 * a function that returns a `GType`.
 	 */
 	INVALID_TYPE_FUNCTION = 0,
 	/**
-	 * The input contained a tag that #GtkBuilder
+	 * The input contained a tag that `GtkBuilder`
 	 * can’t handle.
 	 */
 	UNHANDLED_TAG = 1,
 	/**
 	 * An attribute that is required by
-	 * #GtkBuilder was missing.
+	 * `GtkBuilder` was missing.
 	 */
 	MISSING_ATTRIBUTE = 2,
 	/**
-	 * #GtkBuilder found an attribute that
+	 * `GtkBuilder` found an attribute that
 	 * it doesn’t understand.
 	 */
 	INVALID_ATTRIBUTE = 3,
 	/**
-	 * #GtkBuilder found a tag that
+	 * `GtkBuilder` found a tag that
 	 * it doesn’t understand.
 	 */
 	INVALID_TAG = 4,
@@ -1029,7 +1026,7 @@ public enum GtkBuilderError
 	 */
 	MISSING_PROPERTY_VALUE = 5,
 	/**
-	 * #GtkBuilder couldn’t parse
+	 * `GtkBuilder` couldn’t parse
 	 * some attribute value.
 	 */
 	INVALID_VALUE = 6,
@@ -1278,7 +1275,7 @@ alias GtkConstraintRelation ConstraintRelation;
 /**
  * The strength of a constraint, expressed as a symbolic constant.
  *
- * The strength of a #GtkConstraint can be expressed with any positive
+ * The strength of a `GtkConstraint` can be expressed with any positive
  * integer; the values of this enumeration can be used for readability.
  */
 public enum GtkConstraintStrength
@@ -1378,8 +1375,7 @@ public enum GtkCssParserError
 	 */
 	FAILED = 0,
 	/**
-	 * The given text does not form valid
-	 * syntax
+	 * The given text does not form valid syntax
 	 */
 	SYNTAX = 1,
 	/**
@@ -1391,8 +1387,7 @@ public enum GtkCssParserError
 	 */
 	NAME = 3,
 	/**
-	 * The given value is not
-	 * correct
+	 * The given value is not correct
 	 */
 	UNKNOWN_VALUE = 4,
 }
@@ -1401,7 +1396,7 @@ alias GtkCssParserError CssParserError;
 /**
  * Warnings that can occur while parsing CSS.
  *
- * Unlike #GtkCssParserErrors, warnings do not cause the parser to
+ * Unlike `GtkCssParserError`s, warnings do not cause the parser to
  * skip any input, but they indicate issues that should be fixed.
  */
 public enum GtkCssParserWarning
@@ -1417,33 +1412,96 @@ public enum GtkCssParserWarning
 	 */
 	SYNTAX = 1,
 	/**
-	 * A feature is not
-	 * implemented
+	 * A feature is not implemented
 	 */
 	UNIMPLEMENTED = 2,
 }
 alias GtkCssParserWarning CssParserWarning;
 
+/**
+ * Flags to use with gtk_set_debug_flags().
+ *
+ * Settings these flags causes GTK to print out different
+ * types of debugging information. Some of these flags are
+ * only available when GTK has been configured with `-Ddebug=true`.
+ */
 public enum GtkDebugFlags
 {
+	/**
+	 * Information about GtkTextView
+	 */
 	TEXT = 1,
+	/**
+	 * Information about GtkTreeView
+	 */
 	TREE = 2,
+	/**
+	 * Information about keyboard shortcuts
+	 */
 	KEYBINDINGS = 4,
+	/**
+	 * Information about modules and extensions
+	 */
 	MODULES = 8,
+	/**
+	 * Information about size allocation
+	 */
 	GEOMETRY = 16,
+	/**
+	 * Information about icon themes
+	 */
 	ICONTHEME = 32,
+	/**
+	 * Information about printing
+	 */
 	PRINTING = 64,
+	/**
+	 * Trace GtkBuilder operation
+	 */
 	BUILDER = 128,
+	/**
+	 * Information about size requests
+	 */
 	SIZE_REQUEST = 256,
+	/**
+	 * Disable the style property cache
+	 */
 	NO_CSS_CACHE = 512,
+	/**
+	 * Open the GTK inspector
+	 */
 	INTERACTIVE = 1024,
+	/**
+	 * Pretend the pointer is a touchscreen
+	 */
 	TOUCHSCREEN = 2048,
+	/**
+	 * Information about actions and menu models
+	 */
 	ACTIONS = 4096,
+	/**
+	 * Information from layout managers
+	 */
 	LAYOUT = 8192,
+	/**
+	 * Include debug render nodes in the generated snapshots
+	 */
 	SNAPSHOT = 16384,
+	/**
+	 * Information from the constraints solver
+	 */
 	CONSTRAINTS = 32768,
+	/**
+	 * Log unused GtkBuilder objects
+	 */
 	BUILDER_OBJECTS = 65536,
+	/**
+	 * Information about accessibility state changes
+	 */
 	A11Y = 131072,
+	/**
+	 * Information about icon fallback. Since: 4.2
+	 */
 	ICONFALLBACK = 262144,
 }
 alias GtkDebugFlags DebugFlags;
@@ -1891,11 +1949,11 @@ public enum GtkImageType
 	 */
 	ICON_NAME = 1,
 	/**
-	 * the widget contains a #GIcon
+	 * the widget contains a `GIcon`
 	 */
 	GICON = 2,
 	/**
-	 * the widget contains a #GdkPaintable
+	 * the widget contains a `GdkPaintable`
 	 */
 	PAINTABLE = 3,
 }
@@ -2490,7 +2548,7 @@ public enum GtkPickFlags
 	 */
 	INSENSITIVE = 1,
 	/**
-	 * Include widgets that are marked as non-targetable. See #GtkWidget:can-target
+	 * Include widgets that are marked as non-targetable. See `GtkWidget:can-target`
 	 */
 	NON_TARGETABLE = 2,
 }
@@ -2838,7 +2896,7 @@ public enum GtkPropagationLimit
 	NONE = 0,
 	/**
 	 * Events are only handled if their target
-	 * is in the same #GtkNative as the event controllers widget. Note
+	 * is in the same `GtkNative` as the event controllers widget. Note
 	 * that some event types have two targets (origin and destination).
 	 */
 	SAME_NATIVE = 1,
@@ -2877,7 +2935,7 @@ public enum GtkPropagationPhase
 alias GtkPropagationPhase PropagationPhase;
 
 /**
- * Error codes for #GtkRecentManager operations
+ * Error codes for `GtkRecentManager` operations
  */
 public enum GtkRecentManagerError
 {
@@ -3226,7 +3284,7 @@ public enum GtkShortcutScope
 	LOCAL = 0,
 	/**
 	 * Shortcuts are handled by
-	 * the first ancestor that is a #GtkShortcutManager
+	 * the first ancestor that is a `GtkShortcutManager`
 	 */
 	MANAGED = 1,
 	/**
@@ -3387,7 +3445,7 @@ alias GtkSorterChange SorterChange;
 public enum GtkSorterOrder
 {
 	/**
-	 * A partial order. Any #GtkOrdering is possible.
+	 * A partial order. Any `GtkOrdering` is possible.
 	 */
 	PARTIAL = 0,
 	/**
@@ -3413,12 +3471,12 @@ alias GtkSorterOrder SorterOrder;
 public enum GtkSpinButtonUpdatePolicy
 {
 	/**
-	 * When refreshing your #GtkSpinButton, the value is
+	 * When refreshing your `GtkSpinButton`, the value is
 	 * always displayed
 	 */
 	ALWAYS = 0,
 	/**
-	 * When refreshing your #GtkSpinButton, the value is
+	 * When refreshing your `GtkSpinButton`, the value is
 	 * only displayed if it is valid within the bounds of the spin button's
 	 * adjustment
 	 */
@@ -3694,7 +3752,7 @@ public enum GtkStyleContextPrintFlags
 alias GtkStyleContextPrintFlags StyleContextPrintFlags;
 
 /**
- * Values that can be passed to the GtkWidgetClass.system_setting_changed
+ * Values that can be passed to the [vfunc@Gtk.Widget.system_setting_changed]
  * vfunc.
  *
  * The values indicate which system setting has changed.
@@ -3707,19 +3765,21 @@ alias GtkStyleContextPrintFlags StyleContextPrintFlags;
 public enum GtkSystemSetting
 {
 	/**
-	 * the #GtkSettings:gtk-xft-dpi setting has changed
+	 * the [property@Gtk.Settings:gtk-xft-dpi] setting has changed
 	 */
 	DPI = 0,
 	/**
-	 * The #GtkSettings:gtk-font-name setting has changed
+	 * The [property@Gtk.Settings:gtk-font-name] setting has changed
 	 */
 	FONT_NAME = 1,
 	/**
 	 * The font configuration has changed in a way that
 	 * requires text to be redrawn. This can be any of the
-	 * #GtkSettings:gtk-xft-antialias, #GtkSettings:gtk-xft-hinting,
-	 * #GtkSettings:gtk-xft-hintstyle, #GtkSettings:gtk-xft-rgba or
-	 * #GtkSettings:gtk-fontconfig-timestamp settings
+	 * [property@Gtk.Settings:gtk-xft-antialias],
+	 * [property@Gtk.Settings:gtk-xft-hinting],
+	 * [property@Gtk.Settings:gtk-xft-hintstyle],
+	 * [property@Gtk.Settings:gtk-xft-rgba] or
+	 * [property@Gtk.Settings:gtk-fontconfig-timestamp] settings
 	 */
 	FONT_CONFIG = 2,
 	/**
@@ -3756,7 +3816,7 @@ alias GtkTextDirection TextDirection;
 
 /**
  * Granularity types that extend the text selection. Use the
- * #GtkTextView::extend-selection signal to customize the selection.
+ * `GtkTextView::extend-selection` signal to customize the selection.
  */
 public enum GtkTextExtendSelection
 {
@@ -3801,7 +3861,7 @@ public enum GtkTextSearchFlags
 alias GtkTextSearchFlags TextSearchFlags;
 
 /**
- * Used to reference the layers of #GtkTextView for the purpose of customized
+ * Used to reference the layers of `GtkTextView` for the purpose of customized
  * drawing with the ::snapshot_layer vfunc.
  */
 public enum GtkTextViewLayer
@@ -3818,7 +3878,7 @@ public enum GtkTextViewLayer
 alias GtkTextViewLayer TextViewLayer;
 
 /**
- * Used to reference the parts of #GtkTextView.
+ * Used to reference the parts of `GtkTextView`.
  */
 public enum GtkTextWindowType
 {
@@ -3850,11 +3910,11 @@ public enum GtkTextWindowType
 alias GtkTextWindowType TextWindowType;
 
 /**
- * These flags indicate various properties of a #GtkTreeModel.
+ * These flags indicate various properties of a `GtkTreeModel`.
  *
- * They are returned by gtk_tree_model_get_flags(), and must be
+ * They are returned by [method@Gtk.TreeModel.get_flags], and must be
  * static for the lifetime of the object. A more complete description
- * of #GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
+ * of %GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
  * this section.
  */
 public enum GtkTreeModelFlags
@@ -4017,7 +4077,7 @@ struct GtkActionableInterface
 	 *
 	 * Params:
 	 *     actionable = a `GtkActionable` widget
-	 * Returns: the action name, or %NULL if none is set
+	 * Returns: the action name
 	 */
 	extern(C) const(char)* function(GtkActionable* actionable) getActionName;
 	/** */
@@ -4208,11 +4268,11 @@ struct GtkBuildableIface
 	/**
 	 *
 	 * Params:
-	 *     buildable = a #GtkBuildable
-	 *     builder = a #GtkBuilder used to construct this object
+	 *     buildable = a `GtkBuildable`
+	 *     builder = a `GtkBuilder` used to construct this object
 	 *     child = child object or %NULL for non-child tags
 	 *     tagname = name of tag
-	 *     parser = a #GtkBuildableParser to fill in
+	 *     parser = a `GtkBuildableParser` to fill in
 	 *     data = return location for user data that will be passed in
 	 *         to parser functions
 	 * Returns: %TRUE if an object has a custom implementation, %FALSE
@@ -4228,8 +4288,8 @@ struct GtkBuildableIface
 	/**
 	 *
 	 * Params:
-	 *     buildable = a #GtkBuildable
-	 *     builder = a #GtkBuilder
+	 *     buildable = a `GtkBuildable`
+	 *     builder = a `GtkBuilder`
 	 *     childname = name of child
 	 * Returns: the internal child of the buildable object
 	 */
@@ -4275,7 +4335,7 @@ struct GtkBuilderListItemFactoryClass;
 struct GtkBuilderScope;
 
 /**
- * The virtual function table to implement for #GtkBuilderScope implementations.
+ * The virtual function table to implement for `GtkBuilderScope` implementations.
  * Default implementations for each function do exist, but they usually just fail,
  * so it is suggested that implementations implement all of them.
  */
@@ -4339,12 +4399,12 @@ struct GtkCellAreaClass
 	/**
 	 *
 	 * Params:
-	 *     area = a #GtkCellArea
-	 *     context = the #GtkCellAreaContext for this row of data.
-	 *     widget = the #GtkWidget that @area is rendering to
-	 *     event = the #GdkEvent to handle
+	 *     area = a `GtkCellArea`
+	 *     context = the `GtkCellArea`Context for this row of data.
+	 *     widget = the `GtkWidget` that @area is rendering to
+	 *     event = the `GdkEvent` to handle
 	 *     cellArea = the @widget relative coordinates for @area
-	 *     flags = the #GtkCellRendererState for @area in this row.
+	 *     flags = the `GtkCellRenderer`State for @area in this row.
 	 * Returns: %TRUE if the event was handled by @area.
 	 */
 	extern(C) int function(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, GdkEvent* event, GdkRectangle* cellArea, GtkCellRendererState flags) event;
@@ -4355,23 +4415,23 @@ struct GtkCellAreaClass
 	/**
 	 *
 	 * Params:
-	 *     area = a #GtkCellArea
-	 * Returns: a newly created #GtkCellAreaContext which can be used with @area.
+	 *     area = a `GtkCellArea`
+	 * Returns: a newly created `GtkCellArea`Context which can be used with @area.
 	 */
 	extern(C) GtkCellAreaContext* function(GtkCellArea* area) createContext;
 	/**
 	 *
 	 * Params:
-	 *     area = a #GtkCellArea
-	 *     context = the #GtkCellAreaContext to copy
-	 * Returns: a newly created #GtkCellAreaContext copy of @context.
+	 *     area = a `GtkCellArea`
+	 *     context = the `GtkCellArea`Context to copy
+	 * Returns: a newly created `GtkCellArea`Context copy of @context.
 	 */
 	extern(C) GtkCellAreaContext* function(GtkCellArea* area, GtkCellAreaContext* context) copyContext;
 	/**
 	 *
 	 * Params:
-	 *     area = a #GtkCellArea
-	 * Returns: The #GtkSizeRequestMode preferred by @area.
+	 *     area = a `GtkCellArea`
+	 * Returns: The `GtkSizeRequestMode` preferred by @area.
 	 */
 	extern(C) GtkSizeRequestMode function(GtkCellArea* area) getRequestMode;
 	/** */
@@ -4389,26 +4449,26 @@ struct GtkCellAreaClass
 	/**
 	 *
 	 * Params:
-	 *     area = a #GtkCellArea
-	 *     direction = the #GtkDirectionType
+	 *     area = a `GtkCellArea`
+	 *     direction = the `GtkDirectionType`
 	 * Returns: %TRUE if focus remains inside @area as a result of this call.
 	 */
 	extern(C) int function(GtkCellArea* area, GtkDirectionType direction) focus;
 	/**
 	 *
 	 * Params:
-	 *     area = a #GtkCellArea
+	 *     area = a `GtkCellArea`
 	 * Returns: whether @area can do anything when activated.
 	 */
 	extern(C) int function(GtkCellArea* area) isActivatable;
 	/**
 	 *
 	 * Params:
-	 *     area = a #GtkCellArea
-	 *     context = the #GtkCellAreaContext in context with the current row data
-	 *     widget = the #GtkWidget that @area is rendering on
+	 *     area = a `GtkCellArea`
+	 *     context = the `GtkCellArea`Context in context with the current row data
+	 *     widget = the `GtkWidget` that @area is rendering on
 	 *     cellArea = the size and location of @area relative to @widget’s allocation
-	 *     flags = the #GtkCellRendererState flags for @area for this row of data.
+	 *     flags = the `GtkCellRenderer`State flags for @area for this row of data.
 	 *     editOnly = if %TRUE then only cell renderers that are %GTK_CELL_RENDERER_MODE_EDITABLE
 	 *         will be activated.
 	 * Returns: Whether @area was successfully activated.
@@ -4473,7 +4533,7 @@ struct GtkCellLayoutIface
 	/**
 	 *
 	 * Params:
-	 *     cellLayout = a #GtkCellLayout
+	 *     cellLayout = a `GtkCellLayout`
 	 * Returns: a list of cell renderers. The list, but not the renderers has
 	 *     been newly allocated and should be freed with g_list_free()
 	 *     when no longer needed.
@@ -4482,9 +4542,8 @@ struct GtkCellLayoutIface
 	/**
 	 *
 	 * Params:
-	 *     cellLayout = a #GtkCellLayout
-	 * Returns: the cell area used by @cell_layout,
-	 *     or %NULL in case no cell area is used.
+	 *     cellLayout = a `GtkCellLayout`
+	 * Returns: the cell area used by @cell_layout
 	 */
 	extern(C) GtkCellArea* function(GtkCellLayout* cellLayout) getArea;
 }
@@ -4503,8 +4562,8 @@ struct GtkCellRendererClass
 	/**
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer    instance
-	 * Returns: The #GtkSizeRequestMode preferred by this renderer.
+	 *     cell = a `GtkCellRenderer` instance
+	 * Returns: The `GtkSizeRequestMode` preferred by this renderer.
 	 */
 	extern(C) GtkSizeRequestMode function(GtkCellRenderer* cell) getRequestMode;
 	/** */
@@ -4522,11 +4581,11 @@ struct GtkCellRendererClass
 	/**
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer
-	 *     event = a #GdkEvent
+	 *     cell = a `GtkCellRenderer`
+	 *     event = a `GdkEvent`
 	 *     widget = widget that received the event
 	 *     path = widget-dependent string representation of the event location;
-	 *         e.g. for #GtkTreeView, a string representation of #GtkTreePath
+	 *         e.g. for `GtkTreeView`, a string representation of `GtkTreePath`
 	 *     backgroundArea = background area as passed to gtk_cell_renderer_render()
 	 *     cellArea = cell area as passed to gtk_cell_renderer_render()
 	 *     flags = render flags
@@ -4536,15 +4595,15 @@ struct GtkCellRendererClass
 	/**
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer
-	 *     event = a #GdkEvent
+	 *     cell = a `GtkCellRenderer`
+	 *     event = a `GdkEvent`
 	 *     widget = widget that received the event
 	 *     path = widget-dependent string representation of the event location;
-	 *         e.g. for #GtkTreeView, a string representation of #GtkTreePath
+	 *         e.g. for `GtkTreeView`, a string representation of `GtkTreePath`
 	 *     backgroundArea = background area as passed to gtk_cell_renderer_render()
 	 *     cellArea = cell area as passed to gtk_cell_renderer_render()
 	 *     flags = render flags
-	 * Returns: A new #GtkCellEditable for editing this
+	 * Returns: A new `GtkCellEditable` for editing this
 	 *     @cell, or %NULL if editing is not possible
 	 */
 	extern(C) GtkCellEditable* function(GtkCellRenderer* cell, GdkEvent* event, GtkWidget* widget, const(char)* path, GdkRectangle* backgroundArea, GdkRectangle* cellArea, GtkCellRendererState flags) startEditing;
@@ -4723,9 +4782,8 @@ struct GtkCssLocation
 	 */
 	size_t chars;
 	/**
-	 * number of full lines that have been parsed
-	 * If you want to display this as a line number, you
-	 * need to add 1 to this.
+	 * number of full lines that have been parsed. If you want to
+	 * display this as a line number, you need to add 1 to this.
 	 */
 	size_t lines;
 	/**
@@ -4733,8 +4791,7 @@ struct GtkCssLocation
 	 */
 	size_t lineBytes;
 	/**
-	 * Number of characters parsed since the last line
-	 * break
+	 * Number of characters parsed since the last line break
 	 */
 	size_t lineChars;
 }
@@ -4867,8 +4924,8 @@ struct GtkEditableInterface
 	 *
 	 * Params:
 	 *     editable = a `GtkEditable`
-	 *     startPos = location to store the starting position, or %NULL
-	 *     endPos = location to store the end position, or %NULL
+	 *     startPos = location to store the starting position
+	 *     endPos = location to store the end position
 	 * Returns: %TRUE if there is a non-empty selection, %FALSE otherwise
 	 */
 	extern(C) int function(GtkEditable* editable, int* startPos, int* endPos) getSelectionBounds;
@@ -4958,7 +5015,7 @@ struct GtkEntryBufferClass
 }
 
 /**
- * Class structure for #GtkEntry. All virtual functions have a default
+ * Class structure for `GtkEntry`. All virtual functions have a default
  * implementation. Derived classes may set the virtual function pointers for the
  * signal handlers to %NULL, but must keep @get_text_area_size and
  * @get_frame_size non-%NULL; either use the default implementation, or provide
@@ -5046,7 +5103,7 @@ struct GtkFilterClass
 	/**
 	 *
 	 * Params:
-	 *     self = a #GtkFilter
+	 *     self = a `GtkFilter`
 	 * Returns: the strictness of @self
 	 */
 	extern(C) GtkFilterMatch function(GtkFilter* self) getStrictness;
@@ -5136,8 +5193,7 @@ struct GtkFontChooserIface
 	 * Params:
 	 *     fontchooser = a `GtkFontChooser`
 	 * Returns: A `PangoFontFamily` representing the
-	 *     selected font family, or %NULL. The returned object is owned by @fontchooser
-	 *     and must not be modified or freed.
+	 *     selected font family
 	 */
 	extern(C) PangoFontFamily* function(GtkFontChooser* fontchooser) getFontFamily;
 	/**
@@ -5145,8 +5201,7 @@ struct GtkFontChooserIface
 	 * Params:
 	 *     fontchooser = a `GtkFontChooser`
 	 * Returns: A `PangoFontFace` representing the
-	 *     selected font group details, or %NULL. The returned object is owned by
-	 *     @fontchooser and must not be modified or freed.
+	 *     selected font group details
 	 */
 	extern(C) PangoFontFace* function(GtkFontChooser* fontchooser) getFontFace;
 	/**
@@ -5167,7 +5222,7 @@ struct GtkFontChooserIface
 	 *
 	 * Params:
 	 *     fontchooser = a `GtkFontChooser`
-	 * Returns: a `PangoFontMap`, or %NULL
+	 * Returns: a `PangoFontMap`
 	 */
 	extern(C) PangoFontMap* function(GtkFontChooser* fontchooser) getFontMap;
 	void*[10] padding;
@@ -5356,7 +5411,7 @@ struct GtkIMContextClass
 	/**
 	 *
 	 * Params:
-	 *     context = a #GtkIMContext
+	 *     context = a `GtkIMContext`
 	 *     text = location to store a UTF-8 encoded
 	 *         string of text holding context around the insertion point.
 	 *         If the function returns %TRUE, then you must free the result
@@ -5449,7 +5504,7 @@ struct GtkLayoutManager
 /**
  * The `GtkLayoutManagerClass` structure contains only private data, and
  * should only be accessed through the provided API, or when subclassing
- * #GtkLayoutManager.
+ * `GtkLayoutManager`.
  */
 struct GtkLayoutManagerClass
 {
@@ -5461,16 +5516,16 @@ struct GtkLayoutManagerClass
 	/** */
 	extern(C) void function(GtkLayoutManager* manager, GtkWidget* widget, int width, int height, int baseline) allocate;
 	/**
-	 * the type of #GtkLayoutChild used by this layout manager
+	 * the type of `GtkLayoutChild` used by this layout manager
 	 */
 	GType layoutChildType;
 	/**
 	 *
 	 * Params:
-	 *     manager = the #GtkLayoutManager
+	 *     manager = the `GtkLayoutManager`
 	 *     widget = the widget using the @manager
 	 *     forChild = the child of @widget
-	 * Returns: a #GtkLayoutChild
+	 * Returns: a `GtkLayoutChild`
 	 */
 	extern(C) GtkLayoutChild* function(GtkLayoutManager* manager, GtkWidget* widget, GtkWidget* forChild) createLayoutChild;
 	/** */
@@ -5679,7 +5734,7 @@ struct GtkNativeDialog
 }
 
 /**
- * Class structure for #GtkNativeDialog.
+ * Class structure for `GtkNativeDialog`.
  */
 struct GtkNativeDialogClass
 {
@@ -5777,7 +5832,7 @@ struct GtkPadActionEntry
 	 */
 	const(char)* label;
 	/**
-	 * action name that will be activated in the #GActionGroup.
+	 * action name that will be activated in the `GActionGroup`.
 	 */
 	const(char)* actionName;
 }
@@ -5817,6 +5872,13 @@ struct GtkParamSpecExpression
 }
 
 struct GtkPasswordEntry;
+
+struct GtkPasswordEntryBuffer;
+
+struct GtkPasswordEntryBufferClass
+{
+	GtkEntryBufferClass parentClass;
+}
 
 struct GtkPasswordEntryClass;
 
@@ -6014,7 +6076,7 @@ struct GtkRecentManager
 }
 
 /**
- * #GtkRecentManagerClass contains only private data.
+ * `GtkRecentManagerClass` contains only private data.
  */
 struct GtkRecentManagerClass
 {
@@ -6131,8 +6193,8 @@ struct GtkSelectionFilterModelClass
 struct GtkSelectionModel;
 
 /**
- * The list of virtual functions for the #GtkSelectionModel interface.
- * No function must be implemented, but unless #GtkSelectionModel::is_selected()
+ * The list of virtual functions for the `GtkSelectionModel` interface.
+ * No function must be implemented, but unless `GtkSelectionModel::is_selected()`
  * is implemented, it will not be possible to select items in the set.
  *
  * The model does not need to implement any functions to support either
@@ -6140,7 +6202,7 @@ struct GtkSelectionModel;
  * it means that users cannot select or unselect items in a list widget
  * using the model.
  *
- * All selection functions fall back to #GtkSelectionModel::set_selection()
+ * All selection functions fall back to `GtkSelectionModel::set_selection()`
  * so it is sufficient to implement just that function for full selection
  * support.
  */
@@ -6226,8 +6288,7 @@ struct GtkSelectionModelInterface
 	 *
 	 * Params:
 	 *     model = a `GtkSelectionModel`
-	 *     selected = bitmask specifying if items should be selected or
-	 *         unselected
+	 *     selected = bitmask specifying if items should be selected or unselected
 	 *     mask = bitmask specifying which items should be updated
 	 * Returns: %TRUE if this action was supported and no fallback should be
 	 *     tried. This does not mean that all items were updated according
@@ -6262,10 +6323,11 @@ struct GtkShortcutLabelClass;
 struct GtkShortcutManager;
 
 /**
- * The list of functions that can be implemented for the #GtkShortcutManager interface.
+ * The list of functions that can be implemented for the `GtkShortcutManager`
+ * interface.
  *
- * Note that no function is mandatory to implement, the default implementation will work
- * fine.
+ * Note that no function is mandatory to implement, the default implementation
+ * will work fine.
  */
 struct GtkShortcutManagerInterface
 {
@@ -6457,7 +6519,7 @@ struct GtkTextBuffer
 }
 
 /**
- * The class structure for #GtkTextBuffer.
+ * The class structure for `GtkTextBuffer`.
  */
 struct GtkTextBufferClass
 {
@@ -6638,7 +6700,7 @@ struct GtkTreeDragDestIface
 	/**
 	 *
 	 * Params:
-	 *     dragDest = a #GtkTreeDragDest
+	 *     dragDest = a `GtkTreeDragDest`
 	 *     dest = row to drop in front of
 	 *     value = data to drop
 	 * Returns: whether a new row was created before position @dest
@@ -6647,7 +6709,7 @@ struct GtkTreeDragDestIface
 	/**
 	 *
 	 * Params:
-	 *     dragDest = a #GtkTreeDragDest
+	 *     dragDest = a `GtkTreeDragDest`
 	 *     destPath = destination row
 	 *     value = the data being dropped
 	 * Returns: %TRUE if a drop is possible before @dest_path
@@ -6663,7 +6725,7 @@ struct GtkTreeDragSourceIface
 	/**
 	 *
 	 * Params:
-	 *     dragSource = a #GtkTreeDragSource
+	 *     dragSource = a `GtkTreeDragSource`
 	 *     path = row on which user is initiating a drag
 	 * Returns: %TRUE if the row can be dragged
 	 */
@@ -6671,16 +6733,16 @@ struct GtkTreeDragSourceIface
 	/**
 	 *
 	 * Params:
-	 *     dragSource = a #GtkTreeDragSource
+	 *     dragSource = a `GtkTreeDragSource`
 	 *     path = row that was dragged
-	 * Returns: a #GdkContentProvider for the
-	 *     given @path or %NULL if none exists
+	 * Returns: a `GdkContentProvider` for the
+	 *     given @path
 	 */
 	extern(C) GdkContentProvider* function(GtkTreeDragSource* dragSource, GtkTreePath* path) dragDataGet;
 	/**
 	 *
 	 * Params:
-	 *     dragSource = a #GtkTreeDragSource
+	 *     dragSource = a `GtkTreeDragSource`
 	 *     path = row that was being dragged
 	 * Returns: %TRUE if the row was successfully deleted
 	 */
@@ -6771,21 +6833,21 @@ struct GtkTreeModelIface
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
+	 *     treeModel = a `GtkTreeModel`
 	 * Returns: the flags supported by this interface
 	 */
 	extern(C) GtkTreeModelFlags function(GtkTreeModel* treeModel) getFlags;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
+	 *     treeModel = a `GtkTreeModel`
 	 * Returns: the number of columns
 	 */
 	extern(C) int function(GtkTreeModel* treeModel) getNColumns;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
+	 *     treeModel = a `GtkTreeModel`
 	 *     index = the column index
 	 * Returns: the type of the column
 	 */
@@ -6793,18 +6855,18 @@ struct GtkTreeModelIface
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the uninitialized #GtkTreeIter-struct
-	 *     path = the #GtkTreePath-struct
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the uninitialized `GtkTreeIter`
+	 *     path = the `GtkTreePath`
 	 * Returns: %TRUE, if @iter was set
 	 */
 	extern(C) int function(GtkTreeModel* treeModel, GtkTreeIter* iter, GtkTreePath* path) getIter;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the #GtkTreeIter-struct
-	 * Returns: a newly-created #GtkTreePath-struct
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the `GtkTreeIter`
+	 * Returns: a newly-created `GtkTreePath`
 	 */
 	extern(C) GtkTreePath* function(GtkTreeModel* treeModel, GtkTreeIter* iter) getPath;
 	/** */
@@ -6812,50 +6874,50 @@ struct GtkTreeModelIface
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the #GtkTreeIter-struct
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the `GtkTreeIter`
 	 * Returns: %TRUE if @iter has been changed to the next node
 	 */
 	extern(C) int function(GtkTreeModel* treeModel, GtkTreeIter* iter) iterNext;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the #GtkTreeIter-struct
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the `GtkTreeIter`
 	 * Returns: %TRUE if @iter has been changed to the previous node
 	 */
 	extern(C) int function(GtkTreeModel* treeModel, GtkTreeIter* iter) iterPrevious;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the new #GtkTreeIter-struct to be set to the child
-	 *     parent = the #GtkTreeIter-struct, or %NULL
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the new `GtkTreeIter` to be set to the child
+	 *     parent = the `GtkTreeIter`
 	 * Returns: %TRUE, if @iter has been set to the first child
 	 */
 	extern(C) int function(GtkTreeModel* treeModel, GtkTreeIter* iter, GtkTreeIter* parent) iterChildren;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the #GtkTreeIter-struct to test for children
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the `GtkTreeIter` to test for children
 	 * Returns: %TRUE if @iter has children
 	 */
 	extern(C) int function(GtkTreeModel* treeModel, GtkTreeIter* iter) iterHasChild;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the #GtkTreeIter-struct, or %NULL
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the `GtkTreeIter`
 	 * Returns: the number of children of @iter
 	 */
 	extern(C) int function(GtkTreeModel* treeModel, GtkTreeIter* iter) iterNChildren;
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the #GtkTreeIter-struct to set to the nth child
-	 *     parent = the #GtkTreeIter-struct to get the child from, or %NULL.
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the `GtkTreeIter` to set to the nth child
+	 *     parent = the `GtkTreeIter` to get the child from
 	 *     n = the index of the desired child
 	 * Returns: %TRUE, if @parent has an @n-th child
 	 */
@@ -6863,9 +6925,9 @@ struct GtkTreeModelIface
 	/**
 	 *
 	 * Params:
-	 *     treeModel = a #GtkTreeModel
-	 *     iter = the new #GtkTreeIter-struct to set to the parent
-	 *     child = the #GtkTreeIter-struct
+	 *     treeModel = a `GtkTreeModel`
+	 *     iter = the new `GtkTreeIter` to set to the parent
+	 *     child = the `GtkTreeIter`
 	 * Returns: %TRUE, if @iter is set to the parent of @child
 	 */
 	extern(C) int function(GtkTreeModel* treeModel, GtkTreeIter* iter, GtkTreeIter* child) iterParent;
@@ -6905,9 +6967,9 @@ struct GtkTreeSortableIface
 	/**
 	 *
 	 * Params:
-	 *     sortable = A #GtkTreeSortable
+	 *     sortable = A `GtkTreeSortable`
 	 *     sortColumnId = The sort column id to be filled in
-	 *     order = The #GtkSortType to be filled in
+	 *     order = The `GtkSortType` to be filled in
 	 * Returns: %TRUE if the sort column is not one of the special sort
 	 *     column ids.
 	 */
@@ -6921,7 +6983,7 @@ struct GtkTreeSortableIface
 	/**
 	 *
 	 * Params:
-	 *     sortable = A #GtkTreeSortable
+	 *     sortable = A `GtkTreeSortable`
 	 * Returns: %TRUE, if the model has a default sort function
 	 */
 	extern(C) int function(GtkTreeSortable* sortable) hasDefaultSortFunc;
@@ -7186,7 +7248,7 @@ public alias extern(C) int function(int currentPage, void* data) GtkAssistantPag
 
 /**
  * The type of the callback functions used for iterating over the
- * cell renderers and their allocated areas inside a #GtkCellArea,
+ * cell renderers and their allocated areas inside a `GtkCellArea`,
  * see gtk_cell_area_foreach_alloc().
  *
  * Params:
@@ -7203,7 +7265,7 @@ public alias extern(C) int function(GtkCellRenderer* renderer, GdkRectangle* cel
 
 /**
  * The type of the callback functions used for iterating over
- * the cell renderers of a #GtkCellArea, see gtk_cell_area_foreach().
+ * the cell renderers of a `GtkCellArea`, see gtk_cell_area_foreach().
  *
  * Params:
  *     renderer = the cell renderer to operate on
@@ -7218,10 +7280,10 @@ public alias extern(C) int function(GtkCellRenderer* renderer, void* data) GtkCe
  * as appropriate.
  *
  * Params:
- *     cellLayout = a #GtkCellLayout
+ *     cellLayout = a `GtkCellLayout`
  *     cell = the cell renderer whose value is to be set
  *     treeModel = the model
- *     iter = a #GtkTreeIter indicating the row to set the value for
+ *     iter = a `GtkTreeIter` indicating the row to set the value for
  *     data = user data passed to gtk_cell_layout_set_cell_data_func()
  */
 public alias extern(C) void function(GtkCellLayout* cellLayout, GtkCellRenderer* cell, GtkTreeModel* treeModel, GtkTreeIter* iter, void* data) GtkCellLayoutDataFunc;
@@ -7252,7 +7314,7 @@ public alias extern(C) void function(GtkWidget* widget, int width, int height, i
 public alias extern(C) int function(void* item, void* userData) GtkCustomFilterFunc;
 
 /**
- * A function to be used by #GtkCustomLayout to measure a widget.
+ * A function to be used by `GtkCustomLayout` to measure a widget.
  *
  * Params:
  *     widget = the widget to be measured
@@ -7282,7 +7344,7 @@ public alias extern(C) GtkSizeRequestMode function(GtkWidget* widget) GtkCustomR
  * and must not call any widget functions that cause changes.
  *
  * Params:
- *     drawingArea = the #GtkDrawingArea to redraw
+ *     drawingArea = the `GtkDrawingArea` to redraw
  *     cr = the context to draw to
  *     width = the actual width of the contents. This value will be at least
  *         as wide as GtkDrawingArea:width.
@@ -7302,9 +7364,9 @@ public alias extern(C) void function(GtkDrawingArea* drawingArea, cairo_t* cr, i
  * `gtk_editable_get_text (GTK_EDITABLE (gtk_entry_completion_get_entry ()))`.
  *
  * Params:
- *     completion = the #GtkEntryCompletion
+ *     completion = the `GtkEntryCompletion`
  *     key = the string to match, normalized and case-folded
- *     iter = a #GtkTreeIter indicating the row to match
+ *     iter = a `GtkTreeIter` indicating the row to match
  *     userData = user data given to gtk_entry_completion_set_match_func()
  *
  * Returns: %TRUE if @iter should be displayed as a possible completion
@@ -7381,8 +7443,8 @@ public alias extern(C) int function(GtkFlowBoxChild* child1, GtkFlowBoxChild* ch
  * See [method@Gtk.FontChooser.set_filter_func].
  *
  * Params:
- *     family = a #PangoFontFamily
- *     face = a #PangoFontFace belonging to @family
+ *     family = a `PangoFontFamily`
+ *     face = a `PangoFontFace` belonging to @family
  *     data = user data passed to gtk_font_chooser_set_filter_func()
  *
  * Returns: %TRUE if the font should be displayed
@@ -7396,8 +7458,8 @@ public alias extern(C) int function(PangoFontFamily* family, PangoFontFace* face
  * It will be called on every selected row in the view.
  *
  * Params:
- *     iconView = a #GtkIconView
- *     path = The #GtkTreePath of a selected row
+ *     iconView = a `GtkIconView`
+ *     path = The `GtkTreePath` of a selected row
  *     data = user data
  */
 public alias extern(C) void function(GtkIconView* iconView, GtkTreePath* path, void* data) GtkIconViewForeachFunc;
@@ -7476,8 +7538,7 @@ public alias extern(C) void function(GtkListBoxRow* row, GtkListBoxRow* before, 
  *     item = The item to map
  *     userData = user data
  *
- * Returns: The item to map to.
- *     This function may not return %NULL
+ * Returns: The item to map to
  */
 public alias extern(C) void* function(void* item, void* userData) GtkMapListModelMapFunc;
 
@@ -7490,7 +7551,7 @@ public alias extern(C) void* function(void* item, void* userData) GtkMapListMode
  * or [method@Gtk.MenuButton.set_menu_model].
  *
  * Params:
- *     menuButton = the #GtkMenuButton
+ *     menuButton = the `GtkMenuButton`
  *     userData = User data passed to gtk_menu_button_set_create_popup_func()
  */
 public alias extern(C) void function(GtkMenuButton* menuButton, void* userData) GtkMenuButtonCreatePopupFunc;
@@ -7503,7 +7564,7 @@ public alias extern(C) void function(GtkMenuButton* menuButton, void* userData) 
  * is dismissed, and also serves as destroy notify for @data.
  *
  * Params:
- *     pageSetup = the #GtkPageSetup that has been passed to
+ *     pageSetup = the `GtkPageSetup` that has been passed to
  *         gtk_print_run_page_setup_dialog_async()
  *     data = user data that has been passed to
  *         gtk_print_run_page_setup_dialog_async()
@@ -7516,9 +7577,9 @@ public alias extern(C) void function(GtkPageSetup* pageSetup, void* data) GtkPag
  * It is called when the print job has been completely sent.
  *
  * Params:
- *     printJob = the #GtkPrintJob
+ *     printJob = the `GtkPrintJob`
  *     userData = user data that has been passed to gtk_print_job_send()
- *     error = a #GError that contains error information if the sending
+ *     error = a `GError` that contains error information if the sending
  *         of the print job failed, otherwise %NULL
  */
 public alias extern(C) void function(GtkPrintJob* printJob, void* userData, GError* error) GtkPrintJobCompleteFunc;
@@ -7533,7 +7594,7 @@ public alias extern(C) void function(const(char)* key, const(char)* value, void*
  * a reference to it after the function has returned.
  *
  * Params:
- *     printer = a #GtkPrinter
+ *     printer = a `GtkPrinter`
  *     data = user data passed to gtk_enumerate_printers()
  *
  * Returns: %TRUE to stop the enumeration, %FALSE to continue
@@ -7543,7 +7604,7 @@ public alias extern(C) int function(GtkPrinter* printer, void* data) GtkPrinterF
 /**
  *
  * Params:
- *     scale = The #GtkScale
+ *     scale = The `GtkScale`
  *     value = The numeric value to format
  *     userData = user data
  * Returns: A newly allocated string describing a textual representation
@@ -7608,10 +7669,10 @@ public alias extern(C) int function(GtkWidget* widget, GdkFrameClock* frameClock
  * See also: gtk_tree_view_column_set_cell_data_func()
  *
  * Params:
- *     treeColumn = A #GtkTreeViewColumn
- *     cell = The #GtkCellRenderer that is being rendered by @tree_column
- *     treeModel = The #GtkTreeModel being rendered
- *     iter = A #GtkTreeIter of the current row rendered
+ *     treeColumn = A `GtkTreeViewColumn`
+ *     cell = The `GtkCellRenderer` that is being rendered by @tree_column
+ *     treeModel = The `GtkTreeModel` being rendered
+ *     iter = A `GtkTreeIter` of the current row rendered
  *     data = user data
  */
 public alias extern(C) void function(GtkTreeViewColumn* treeColumn, GtkCellRenderer* cell, GtkTreeModel* treeModel, GtkTreeIter* iter, void* data) GtkTreeCellDataFunc;
@@ -7622,7 +7683,7 @@ public alias extern(C) void function(GtkTreeViewColumn* treeColumn, GtkCellRende
  * respectively.
  *
  * If two iters compare as equal, their order in the sorted model
- * is undefined. In order to ensure that the #GtkTreeSortable behaves as
+ * is undefined. In order to ensure that the `GtkTreeSortable` behaves as
  * expected, the GtkTreeIterCompareFunc must define a partial order on
  * the model, i.e. it must be reflexive, antisymmetric and transitive.
  *
@@ -7631,9 +7692,9 @@ public alias extern(C) void function(GtkTreeViewColumn* treeColumn, GtkCellRende
  * `price_of(@a) - price_of(@b)`.
  *
  * Params:
- *     model = The #GtkTreeModel the comparison is within
- *     a = A #GtkTreeIter in @model
- *     b = Another #GtkTreeIter in @model
+ *     model = The `GtkTreeModel` the comparison is within
+ *     a = A `GtkTreeIter` in @model
+ *     b = Another `GtkTreeIter` in @model
  *     userData = Data passed when the compare func is assigned e.g. by
  *         gtk_tree_sortable_set_sort_func()
  *
@@ -7647,16 +7708,16 @@ public alias extern(C) int function(GtkTreeModel* model, GtkTreeIter* a, GtkTree
  * gtk_tree_list_row_set_expanded() is called.
  *
  * This function can return %NULL to indicate that @item is guaranteed to be
- * a leaf node and will never have children.
- * If it does not have children but may get children later, it should return
- * an empty model that is filled once children arrive.
+ * a leaf node and will never have children. If it does not have children but
+ * may get children later, it should return an empty model that is filled once
+ * children arrive.
  *
  * Params:
  *     item = The item that is being expanded
  *     userData = User data passed when registering the function
  *
- * Returns: The model tracking the children of @item or %NULL if
- *     @item can never have children
+ * Returns: The model tracking the children of
+ *     @item or %NULL if @item can never have children
  */
 public alias extern(C) GListModel* function(void* item, void* userData) GtkTreeListModelCreateModelFunc;
 
@@ -7669,9 +7730,9 @@ public alias extern(C) GListModel* function(void* item, void* userData) GtkTreeL
  * particularly efficient operation.
  *
  * Params:
- *     model = the #GtkTreeModelFilter
- *     iter = a #GtkTreeIter pointing to the row whose display values are determined
- *     value = A #GValue which is already initialized for
+ *     model = the `GtkTreeModelFilter`
+ *     iter = a `GtkTreeIter` pointing to the row whose display values are determined
+ *     value = A `GValue` which is already initialized for
  *         with the correct type for the column @column.
  *     column = the column whose display value is determined
  *     data = user data given to gtk_tree_model_filter_set_modify_func()
@@ -7682,8 +7743,8 @@ public alias extern(C) void function(GtkTreeModel* model, GtkTreeIter* iter, GVa
  * A function which decides whether the row indicated by @iter is visible.
  *
  * Params:
- *     model = the child model of the #GtkTreeModelFilter
- *     iter = a #GtkTreeIter pointing to the row in @model whose visibility
+ *     model = the child model of the `GtkTreeModelFilter`
+ *     iter = a `GtkTreeIter` pointing to the row in @model whose visibility
  *         is determined
  *     data = user data given to gtk_tree_model_filter_set_visible_func()
  *
@@ -7696,9 +7757,9 @@ public alias extern(C) int function(GtkTreeModel* model, GtkTreeIter* iter, void
  * iterate over the rows in a tree model.
  *
  * Params:
- *     model = the #GtkTreeModel being iterated
- *     path = the current #GtkTreePath
- *     iter = the current #GtkTreeIter
+ *     model = the `GtkTreeModel` being iterated
+ *     path = the current `GtkTreePath`
+ *     iter = the current `GtkTreeIter`
  *     data = The user data passed to gtk_tree_model_foreach()
  *
  * Returns: %TRUE to stop iterating, %FALSE to continue
@@ -7710,9 +7771,9 @@ public alias extern(C) int function(GtkTreeModel* model, GtkTreePath* path, GtkT
  * selected rows.  It will be called on every selected row in the view.
  *
  * Params:
- *     model = The #GtkTreeModel being viewed
- *     path = The #GtkTreePath of a selected row
- *     iter = A #GtkTreeIter pointing to a selected row
+ *     model = The `GtkTreeModel` being viewed
+ *     path = The `GtkTreePath` of a selected row
+ *     iter = A `GtkTreeIter` pointing to a selected row
  *     data = user data
  */
 public alias extern(C) void function(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, void* data) GtkTreeSelectionForeachFunc;
@@ -7726,9 +7787,9 @@ public alias extern(C) void function(GtkTreeModel* model, GtkTreePath* path, Gtk
  * change the selection.
  *
  * Params:
- *     selection = A #GtkTreeSelection
- *     model = A #GtkTreeModel being viewed
- *     path = The #GtkTreePath of the row in question
+ *     selection = A `GtkTreeSelection`
+ *     model = A `GtkTreeModel` being viewed
+ *     path = The `GtkTreePath` of the row in question
  *     pathCurrentlySelected = %TRUE, if the path is currently selected
  *     data = user data
  *
@@ -7747,10 +7808,10 @@ public alias extern(C) int function(GtkTreeSelection* selection, GtkTreeModel* m
  * spot to the user.
  *
  * Params:
- *     treeView = A #GtkTreeView
- *     column = The #GtkTreeViewColumn being dragged
- *     prevColumn = A #GtkTreeViewColumn on one side of @column
- *     nextColumn = A #GtkTreeViewColumn on the other side of @column
+ *     treeView = A `GtkTreeView`
+ *     column = The `GtkTreeViewColumn` being dragged
+ *     prevColumn = A `GtkTreeViewColumn` on one side of @column
+ *     nextColumn = A `GtkTreeViewColumn` on the other side of @column
  *     data = user data
  *
  * Returns: %TRUE, if @column can be dropped in this spot
@@ -7761,7 +7822,7 @@ public alias extern(C) int function(GtkTreeView* treeView, GtkTreeViewColumn* co
  * Function used for gtk_tree_view_map_expanded_rows().
  *
  * Params:
- *     treeView = A #GtkTreeView
+ *     treeView = A `GtkTreeView`
  *     path = The path that’s expanded
  *     userData = user data
  */
@@ -7770,12 +7831,12 @@ public alias extern(C) void function(GtkTreeView* treeView, GtkTreePath* path, v
 /**
  * Function type for determining whether the row pointed to by @iter should
  * be rendered as a separator. A common way to implement this is to have a
- * boolean column in the model, whose values the #GtkTreeViewRowSeparatorFunc
+ * boolean column in the model, whose values the `GtkTreeViewRowSeparatorFunc`
  * returns.
  *
  * Params:
- *     model = the #GtkTreeModel
- *     iter = a #GtkTreeIter pointing at a row in @model
+ *     model = the `GtkTreeModel`
+ *     iter = a `GtkTreeIter` pointing at a row in @model
  *     data = user data
  *
  * Returns: %TRUE if the row is a separator
@@ -7789,10 +7850,10 @@ public alias extern(C) int function(GtkTreeModel* model, GtkTreeIter* iter, void
  * has some similarity to strcmp() returning 0 for equal strings.
  *
  * Params:
- *     model = the #GtkTreeModel being searched
+ *     model = the `GtkTreeModel` being searched
  *     column = the search column set by gtk_tree_view_set_search_column()
  *     key = the key string to compare with
- *     iter = a #GtkTreeIter pointing the row of @model that should be compared
+ *     iter = a `GtkTreeIter` pointing the row of @model that should be compared
  *         with @key.
  *     searchData = user data from gtk_tree_view_set_search_equal_func()
  *
@@ -7825,7 +7886,7 @@ alias GTK_ACCESSIBLE_VALUE_UNDEFINED = ACCESSIBLE_VALUE_UNDEFINED;
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum BINARY_AGE = 201;
+enum BINARY_AGE = 400;
 alias GTK_BINARY_AGE = BINARY_AGE;
 
 enum IM_MODULE_EXTENSION_POINT_NAME = "gtk-im-module";
@@ -7845,23 +7906,37 @@ alias GTK_INPUT_ERROR = INPUT_ERROR;
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum INTERFACE_AGE = 1;
+enum INTERFACE_AGE = 0;
 alias GTK_INTERFACE_AGE = INTERFACE_AGE;
 
 /**
- * The name used for the stock full offset included by #GtkLevelBar.
+ * The value used to refer to a guaranteed invalid position
+ * in a `GListModel`.
+ *
+ * This value may be returned from some functions, others may
+ * accept it as input. Its interpretation may differ for different
+ * functions.
+ *
+ * Refer to each function's documentation for if this value is
+ * allowed and what it does.
+ */
+enum INVALID_LIST_POSITION = 4294967295;
+alias GTK_INVALID_LIST_POSITION = INVALID_LIST_POSITION;
+
+/**
+ * The name used for the stock full offset included by `GtkLevelBar`.
  */
 enum LEVEL_BAR_OFFSET_FULL = "full";
 alias GTK_LEVEL_BAR_OFFSET_FULL = LEVEL_BAR_OFFSET_FULL;
 
 /**
- * The name used for the stock high offset included by #GtkLevelBar.
+ * The name used for the stock high offset included by `GtkLevelBar`.
  */
 enum LEVEL_BAR_OFFSET_HIGH = "high";
 alias GTK_LEVEL_BAR_OFFSET_HIGH = LEVEL_BAR_OFFSET_HIGH;
 
 /**
- * The name used for the stock low offset included by #GtkLevelBar.
+ * The name used for the stock low offset included by `GtkLevelBar`.
  */
 enum LEVEL_BAR_OFFSET_LOW = "low";
 alias GTK_LEVEL_BAR_OFFSET_LOW = LEVEL_BAR_OFFSET_LOW;
@@ -7885,7 +7960,7 @@ alias GTK_MEDIA_FILE_EXTENSION_POINT_NAME = MEDIA_FILE_EXTENSION_POINT_NAME;
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum MICRO_VERSION = 1;
+enum MICRO_VERSION = 0;
 alias GTK_MICRO_VERSION = MICRO_VERSION;
 
 /**
@@ -7893,7 +7968,7 @@ alias GTK_MICRO_VERSION = MICRO_VERSION;
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum MINOR_VERSION = 2;
+enum MINOR_VERSION = 4;
 alias GTK_MINOR_VERSION = MINOR_VERSION;
 
 /**
@@ -8085,7 +8160,7 @@ alias GTK_STYLE_PROVIDER_PRIORITY_FALLBACK = STYLE_PROVIDER_PRIORITY_FALLBACK;
  * The priority used for style information provided
  * via `GtkSettings`.
  *
- * This priority is higher than #GTK_STYLE_PROVIDER_PRIORITY_THEME
+ * This priority is higher than %GTK_STYLE_PROVIDER_PRIORITY_THEME
  * to let settings override themes.
  */
 enum STYLE_PROVIDER_PRIORITY_SETTINGS = 400;
@@ -8116,7 +8191,7 @@ enum TEXT_VIEW_PRIORITY_VALIDATE = 125;
 alias GTK_TEXT_VIEW_PRIORITY_VALIDATE = TEXT_VIEW_PRIORITY_VALIDATE;
 
 /**
- * Uses the default sort function in a [interface@Gtk.TreeSortable].
+ * Uses the default sort function in a [iface@Gtk.TreeSortable].
  *
  * See also: [method@Gtk.TreeSortable.set_sort_column_id]
  */
@@ -8124,7 +8199,7 @@ enum TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID = -1;
 alias GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID = TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID;
 
 /**
- * Disables sorting in a [interface@Gtk.TreeSortable].
+ * Disables sorting in a [iface@Gtk.TreeSortable].
  *
  * See also: [method@Gtk.TreeSortable.set_sort_column_id]
  */

@@ -115,7 +115,7 @@ public class BuilderCScope : ObjectG, BuilderScopeIF
 	 *     callbackName = The name of the callback
 	 *
 	 * Returns: The callback symbol
-	 *     in @builder for @callback_name, or %NULL
+	 *     in @builder for @callback_name
 	 */
 	public GCallback lookupCallbackSymbol(string callbackName)
 	{

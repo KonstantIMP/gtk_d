@@ -33,8 +33,8 @@ public  import gtk.c.types;
  * of a toplevel `<menu>` element, which contains one or more `<item>`
  * elements. Each `<item>` element contains `<attribute>` and `<link>`
  * elements with a mandatory name attribute. `<link>` elements have the
- * same content model as `<menu>`. Instead of `<link name="submenu>` or
- * `<link name="section">`, you can use `<submenu>` or `<section>`
+ * same content model as `<menu>`. Instead of `<link name="submenu">`
+ * or `<link name="section">`, you can use `<submenu>` or `<section>`
  * elements.
  * 
  * ```xml
@@ -60,7 +60,7 @@ public  import gtk.c.types;
  * content. `<attribute>` elements can be marked for translation with a
  * `translatable="yes"` attribute. It is also possible to specify message
  * context and translator comments, using the context and comments attributes.
- * To make use of this, the #GtkBuilder must have been given the gettext
+ * To make use of this, the `GtkBuilder` must have been given the gettext
  * domain to use.
  * 
  * The following attributes are used when constructing menu items:
@@ -69,8 +69,8 @@ public  import gtk.c.types;
  * - "action": the prefixed name of the action to trigger
  * - "target": the parameter to use when activating the action
  * - "icon" and "verb-icon": names of icons that may be displayed
- * - "submenu-action": name of an action that may be used to determine
- * if a submenu can be opened
+ * - "submenu-action": name of an action that may be used to track
+ * whether a submenu is open
  * - "hidden-when": a string used to determine when the item will be hidden.
  * Possible values include "action-disabled", "action-missing", "macos-menubar".
  * This is mainly useful for exported menus, see [method@Gtk.Application.set_menubar].
@@ -164,7 +164,7 @@ public class PopoverMenu : Popover
 	 * to control this.
 	 *
 	 * Params:
-	 *     model = a `GMenuModel`, or %NULL
+	 *     model = a `GMenuModel`
 	 *
 	 * Returns: the new `GtkPopoverMenu`
 	 *
@@ -271,7 +271,7 @@ public class PopoverMenu : Popover
 	 * to @model.
 	 *
 	 * Params:
-	 *     model = a `GMenuModel`, or %NULL
+	 *     model = a `GMenuModel`
 	 */
 	public void setMenuModel(MenuModel model)
 	{

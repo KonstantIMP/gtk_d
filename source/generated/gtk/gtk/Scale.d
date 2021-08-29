@@ -171,7 +171,7 @@ public class Scale : Range
 	 *     max = maximum value
 	 *     step = step increment (tick size) used with keyboard shortcuts
 	 *
-	 * Returns: a new #GtkScale
+	 * Returns: a new `GtkScale`
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -201,12 +201,11 @@ public class Scale : Range
 	 * Params:
 	 *     value = the value at which the mark is placed, must be between
 	 *         the lower and upper limits of the scales’ adjustment
-	 *     position = where to draw the mark. For a horizontal scale, #GTK_POS_TOP
+	 *     position = where to draw the mark. For a horizontal scale, %GTK_POS_TOP
 	 *         and %GTK_POS_LEFT are drawn above the scale, anything else below.
-	 *         For a vertical scale, #GTK_POS_LEFT and %GTK_POS_TOP are drawn to
+	 *         For a vertical scale, %GTK_POS_LEFT and %GTK_POS_TOP are drawn to
 	 *         the left of the scale, anything else to the right.
-	 *     markup = Text to be shown at the mark, using
-	 *         Pango markup, or %NULL
+	 *     markup = Text to be shown at the mark, using Pango markup
 	 */
 	public void addMark(double value, GtkPositionType position, string markup)
 	{
@@ -285,8 +284,8 @@ public class Scale : Range
 	 * values are undefined.
 	 *
 	 * Params:
-	 *     x = location to store X offset of layout, or %NULL
-	 *     y = location to store Y offset of layout, or %NULL
+	 *     x = location to store X offset of layout
+	 *     y = location to store Y offset of layout
 	 */
 	public void getLayoutOffsets(out int x, out int y)
 	{

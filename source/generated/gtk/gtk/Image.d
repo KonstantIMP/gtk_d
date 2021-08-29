@@ -178,7 +178,7 @@ public class Image : Widget
 	 * its size and contents in response to it.
 	 *
 	 * Params:
-	 *     paintable = a `GdkPaintable`, or %NULL
+	 *     paintable = a `GdkPaintable`
 	 *
 	 * Returns: a new `GtkImage`
 	 *
@@ -211,7 +211,7 @@ public class Image : Widget
 	 * want that, you should use [ctor@Gtk.Image.new_from_icon_name].
 	 *
 	 * Params:
-	 *     pixbuf = a `GdkPixbuf`, or %NULL
+	 *     pixbuf = a `GdkPixbuf`
 	 *
 	 * Returns: a new `GtkImage`
 	 *
@@ -245,7 +245,7 @@ public class Image : Widget
 	 * The caller of this function does not own a reference to the
 	 * returned `GIcon`.
 	 *
-	 * Returns: a `GIcon`, or %NULL
+	 * Returns: a `GIcon`
 	 */
 	public IconIF getGicon()
 	{
@@ -267,7 +267,7 @@ public class Image : Widget
 	 * The returned string is owned by the `GtkImage` and should not
 	 * be freed.
 	 *
-	 * Returns: the icon name, or %NULL
+	 * Returns: the icon name
 	 */
 	public string getIconName()
 	{
@@ -292,8 +292,7 @@ public class Image : Widget
 	 * The caller of this function does not own a reference to the
 	 * returned paintable.
 	 *
-	 * Returns: the displayed paintable,
-	 *     or %NULL if the image is empty
+	 * Returns: the displayed paintable
 	 */
 	public PaintableIF getPaintable()
 	{
@@ -337,7 +336,7 @@ public class Image : Widget
 	 * See [ctor@Gtk.Image.new_from_file] for details.
 	 *
 	 * Params:
-	 *     filename = a filename or %NULL
+	 *     filename = a filename
 	 */
 	public void setFromFile(string filename)
 	{
@@ -363,7 +362,7 @@ public class Image : Widget
 	 * See [ctor@Gtk.Image.new_from_icon_name] for details.
 	 *
 	 * Params:
-	 *     iconName = an icon name or %NULL
+	 *     iconName = an icon name
 	 */
 	public void setFromIconName(string iconName)
 	{
@@ -376,7 +375,7 @@ public class Image : Widget
 	 * See [ctor@Gtk.Image.new_from_paintable] for details.
 	 *
 	 * Params:
-	 *     paintable = a `GdkPaintable` or %NULL
+	 *     paintable = a `GdkPaintable`
 	 */
 	public void setFromPaintable(PaintableIF paintable)
 	{
@@ -406,7 +405,7 @@ public class Image : Widget
 	 * See [ctor@Gtk.Image.new_from_resource] for details.
 	 *
 	 * Params:
-	 *     resourcePath = a resource path or %NULL
+	 *     resourcePath = a resource path
 	 */
 	public void setFromResource(string resourcePath)
 	{

@@ -16,6 +16,7 @@ private import gtk.TextMark;
 private import gtk.Widget;
 private import gtk.c.functions;
 public  import gtk.c.types;
+private import pango.PgContext;
 private import pango.PgTabArray;
 private import std.algorithm;
 
@@ -54,7 +55,7 @@ private import std.algorithm;
  * 
  * ## Accessibility
  * 
- * `GtkTextView` uses the #GTK_ACCESSIBLE_ROLE_TEXT_BOX role.
+ * `GtkTextView` uses the %GTK_ACCESSIBLE_ROLE_TEXT_BOX role.
  */
 public class TextView : Widget, ScrollableIF
 {
@@ -167,10 +168,10 @@ public class TextView : Widget, ScrollableIF
 	 * @child will scroll with the text view.
 	 *
 	 * If instead you want a widget that will not move with the
-	 * `GtkTextView` contents see #GtkOverlay.
+	 * `GtkTextView` contents see `GtkOverlay`.
 	 *
 	 * Params:
-	 *     child = a #GtkWidget
+	 *     child = a `GtkWidget`
 	 *     xpos = X position of child in window coordinates
 	 *     ypos = Y position of child in window coordinates
 	 */
@@ -225,11 +226,11 @@ public class TextView : Widget, ScrollableIF
 	 * Converts buffer coordinates to window coordinates.
 	 *
 	 * Params:
-	 *     win = a #GtkTextWindowType
+	 *     win = a `GtkTextWindowType`
 	 *     bufferX = buffer x coordinate
 	 *     bufferY = buffer y coordinate
-	 *     windowX = window x coordinate return location or %NULL
-	 *     windowY = window y coordinate return location or %NULL
+	 *     windowX = window x coordinate return location
+	 *     windowY = window y coordinate return location
 	 */
 	public void bufferToWindowCoords(GtkTextWindowType win, int bufferX, int bufferY, out int windowX, out int windowY)
 	{
@@ -279,7 +280,7 @@ public class TextView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Returns whether pressing the Tab key inserts a tab characters.
+	 * Returns whether pressing the <kbd>Tab</kbd> key inserts a tab characters.
 	 *
 	 * See [method@Gtk.TextView.set_accepts_tab].
 	 *
@@ -345,10 +346,8 @@ public class TextView : Widget, ScrollableIF
 	 *
 	 * Params:
 	 *     iter = a `GtkTextIter`
-	 *     strong = location to store the strong
-	 *         cursor position (may be %NULL)
-	 *     weak = location to store the weak
-	 *         cursor position (may be %NULL)
+	 *     strong = location to store the strong cursor position
+	 *     weak = location to store the weak cursor position
 	 */
 	public void getCursorLocations(TextIter iter, out GdkRectangle strong, out GdkRectangle weak)
 	{
@@ -406,7 +405,7 @@ public class TextView : Widget, ScrollableIF
 	 * Params:
 	 *     win = a `GtkTextWindowType`
 	 *
-	 * Returns: a `GtkWidget` or %NULL
+	 * Returns: a `GtkWidget`
 	 */
 	public Widget getGutter(GtkTextWindowType win)
 	{
@@ -590,6 +589,28 @@ public class TextView : Widget, ScrollableIF
 	}
 
 	/**
+	 * Gets the `PangoContext` that is used for rendering LTR directed
+	 * text layouts.
+	 *
+	 * The context may be replaced when CSS changes occur.
+	 *
+	 * Returns: a `PangoContext`
+	 *
+	 * Since: 4.4
+	 */
+	public PgContext getLtrContext()
+	{
+		auto __p = gtk_text_view_get_ltr_context(gtkTextView);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgContext)(cast(PangoContext*) __p);
+	}
+
+	/**
 	 * Gets whether the `GtkTextView` uses monospace styling.
 	 *
 	 * Returns: %TRUE if monospace fonts are desired
@@ -656,6 +677,28 @@ public class TextView : Widget, ScrollableIF
 	public int getRightMargin()
 	{
 		return gtk_text_view_get_right_margin(gtkTextView);
+	}
+
+	/**
+	 * Gets the `PangoContext` that is used for rendering RTL directed
+	 * text layouts.
+	 *
+	 * The context may be replaced when CSS changes occur.
+	 *
+	 * Returns: a `PangoContext`
+	 *
+	 * Since: 4.4
+	 */
+	public PgContext getRtlContext()
+	{
+		auto __p = gtk_text_view_get_rtl_context(gtkTextView);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgContext)(cast(PangoContext*) __p);
 	}
 
 	/**
@@ -930,7 +973,7 @@ public class TextView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Sets the behavior of the text widget when the Tab key is pressed.
+	 * Sets the behavior of the text widget when the <kbd>Tab</kbd> key is pressed.
 	 *
 	 * If @accepts_tab is %TRUE, a tab character is inserted. If @accepts_tab
 	 * is %FALSE the keyboard focus is moved to the next widget in the focus
@@ -1029,7 +1072,7 @@ public class TextView : Widget, ScrollableIF
 	 *
 	 * Params:
 	 *     win = a `GtkTextWindowType`
-	 *     widget = a `GtkWidget` or %NULL
+	 *     widget = a `GtkWidget`
 	 */
 	public void setGutter(GtkTextWindowType win, Widget widget)
 	{
@@ -1192,7 +1235,7 @@ public class TextView : Widget, ScrollableIF
 	 * Tags in the buffer may override the default.
 	 *
 	 * Params:
-	 *     tabs = tabs as a #PangoTabArray
+	 *     tabs = tabs as a `PangoTabArray`
 	 */
 	public void setTabs(PgTabArray tabs)
 	{
@@ -1245,11 +1288,11 @@ public class TextView : Widget, ScrollableIF
 	 * coordinates.
 	 *
 	 * Params:
-	 *     win = a #GtkTextWindowType
+	 *     win = a `GtkTextWindowType`
 	 *     windowX = window x coordinate
 	 *     windowY = window y coordinate
-	 *     bufferX = buffer x coordinate return location or %NULL
-	 *     bufferY = buffer y coordinate return location or %NULL
+	 *     bufferX = buffer x coordinate return location
+	 *     bufferY = buffer y coordinate return location
 	 */
 	public void windowToBufferCoords(GtkTextWindowType win, int windowX, int windowY, out int bufferX, out int bufferY)
 	{
@@ -1312,7 +1355,7 @@ public class TextView : Widget, ScrollableIF
 	 * deleting a word backwards.
 	 *
 	 * Params:
-	 *     type = the granularity of the deletion, as a #GtkDeleteType
+	 *     type = the granularity of the deletion, as a `GtkDeleteType`
 	 *     count = the number of @type units to delete
 	 */
 	gulong addOnDeleteFromCursor(void delegate(GtkDeleteType, int, TextView) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
@@ -1393,7 +1436,7 @@ public class TextView : Widget, ScrollableIF
 	 * move horizontally by pages
 	 *
 	 * Params:
-	 *     step = the granularity of the move, as a #GtkMovementStep
+	 *     step = the granularity of the move, as a `GtkMovementStep`
 	 *     count = the number of @step units to move
 	 *     extendSelection = %TRUE if the move should extend the selection
 	 */
@@ -1413,7 +1456,7 @@ public class TextView : Widget, ScrollableIF
 	 * There are no default bindings for this signal.
 	 *
 	 * Params:
-	 *     step = the granularity of the movement, as a #GtkScrollStep
+	 *     step = the granularity of the movement, as a `GtkScrollStep`
 	 *     count = the number of @step units to move
 	 */
 	gulong addOnMoveViewport(void delegate(GtkScrollStep, int, TextView) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)

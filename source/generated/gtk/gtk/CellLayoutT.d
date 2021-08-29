@@ -12,12 +12,12 @@ public  import gtk.c.types;
 /**
  * An interface for packing cells
  * 
- * #GtkCellLayout is an interface to be implemented by all objects which
- * want to provide a #GtkTreeViewColumn like API for packing cells,
+ * `GtkCellLayout` is an interface to be implemented by all objects which
+ * want to provide a `GtkTreeViewColumn` like API for packing cells,
  * setting attributes and data funcs.
  * 
  * One of the notable features provided by implementations of
- * GtkCellLayout are attributes. Attributes let you set the properties
+ * `GtkCellLayout` are attributes. Attributes let you set the properties
  * in flexible ways. They can just be set to constant values like regular
  * properties. But they can also be mapped to a column of the underlying
  * tree model with gtk_cell_layout_set_attributes(), which means that the value
@@ -29,8 +29,8 @@ public  import gtk.c.types;
  * # GtkCellLayouts as GtkBuildable
  * 
  * Implementations of GtkCellLayout which also implement the GtkBuildable
- * interface (#GtkCellView, #GtkIconView, #GtkComboBox,
- * #GtkEntryCompletion, #GtkTreeViewColumn) accept GtkCellRenderer objects
+ * interface (`GtkCellView`, `GtkIconView`, `GtkComboBox`,
+ * `GtkEntryCompletion`, `GtkTreeViewColumn`) accept `GtkCellRenderer` objects
  * as <child> elements in UI definitions. They support a custom <attributes>
  * element for their children, which can contain multiple <attribute>
  * elements. Each <attribute> element has a name attribute which specifies
@@ -49,7 +49,7 @@ public  import gtk.c.types;
  * </object>
  * ]|
  * 
- * Furthermore for implementations of GtkCellLayout that use a #GtkCellArea
+ * Furthermore for implementations of GtkCellLayout that use a `GtkCellArea`
  * to lay out cells (all GtkCellLayouts in GTK use a GtkCellArea)
  * [cell properties][cell-properties] can also be defined in the format by
  * specifying the custom <cell-packing> attribute which can contain multiple
@@ -71,9 +71,9 @@ public  import gtk.c.types;
  * 
  * # Subclassing GtkCellLayout implementations
  * 
- * When subclassing a widget that implements #GtkCellLayout like
- * #GtkIconView or #GtkComboBox, there are some considerations related
- * to the fact that these widgets internally use a #GtkCellArea.
+ * When subclassing a widget that implements `GtkCellLayout` like
+ * `GtkIconView` or `GtkComboBox`, there are some considerations related
+ * to the fact that these widgets internally use a `GtkCellArea`.
  * The cell area is exposed as a construct-only property by these
  * widgets. This means that it is possible to e.g. do
  * 
@@ -131,13 +131,14 @@ public template CellLayoutT(TStruct)
 	 * Adds an attribute mapping to the list in @cell_layout.
 	 *
 	 * The @column is the column of the model to get a value from, and the
-	 * @attribute is the parameter on @cell to be set from the value. So for
+	 * @attribute is the property on @cell to be set from that value. So for
 	 * example if column 2 of the model contains strings, you could have the
-	 * “text” attribute of a #GtkCellRendererText get its values from column 2.
+	 * “text” attribute of a `GtkCellRendererText` get its values from column 2.
+	 * In this context "attribute" and "property" are used interchangeably.
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer
-	 *     attribute = an attribute on the renderer
+	 *     cell = a `GtkCellRenderer`
+	 *     attribute = a property on the renderer
 	 *     column = the column position on the model to get the attribute from
 	 */
 	public void addAttribute(CellRenderer cell, string attribute, int column)
@@ -159,7 +160,7 @@ public template CellLayoutT(TStruct)
 	 * gtk_cell_layout_set_attributes().
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer to clear the attribute mapping on
+	 *     cell = a `GtkCellRenderer` to clear the attribute mapping on
 	 */
 	public void clearAttributes(CellRenderer cell)
 	{
@@ -167,12 +168,11 @@ public template CellLayoutT(TStruct)
 	}
 
 	/**
-	 * Returns the underlying #GtkCellArea which might be @cell_layout
-	 * if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
+	 * Returns the underlying `GtkCellArea` which might be @cell_layout
+	 * if called on a `GtkCellArea` or might be %NULL if no `GtkCellArea`
 	 * is used by @cell_layout.
 	 *
-	 * Returns: the cell area used by @cell_layout,
-	 *     or %NULL in case no cell area is used.
+	 * Returns: the cell area used by @cell_layout
 	 */
 	public CellArea getArea()
 	{
@@ -213,7 +213,7 @@ public template CellLayoutT(TStruct)
 	 * Note that reusing the same cell renderer is not supported.
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer
+	 *     cell = a `GtkCellRenderer`
 	 *     expand = %TRUE if @cell is to be given extra space allocated to @cell_layout
 	 */
 	public void packEnd(CellRenderer cell, bool expand)
@@ -229,7 +229,7 @@ public template CellLayoutT(TStruct)
 	 * Note that reusing the same cell renderer is not supported.
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer
+	 *     cell = a `GtkCellRenderer`
 	 *     expand = %TRUE if @cell is to be given extra space allocated to @cell_layout
 	 */
 	public void packStart(CellRenderer cell, bool expand)
@@ -244,7 +244,7 @@ public template CellLayoutT(TStruct)
 	 * for this to function properly.
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer to reorder
+	 *     cell = a `GtkCellRenderer` to reorder
 	 *     position = new position to insert @cell at
 	 */
 	public void reorder(CellRenderer cell, int position)
@@ -253,7 +253,7 @@ public template CellLayoutT(TStruct)
 	}
 
 	/**
-	 * Sets the #GtkCellLayoutDataFunc to use for @cell_layout.
+	 * Sets the `GtkCellLayout`DataFunc to use for @cell_layout.
 	 *
 	 * This function is used instead of the standard attributes mapping
 	 * for setting the column value, and should set the value of @cell_layout’s
@@ -262,8 +262,8 @@ public template CellLayoutT(TStruct)
 	 * @func may be %NULL to remove a previously set function.
 	 *
 	 * Params:
-	 *     cell = a #GtkCellRenderer
-	 *     func = the #GtkCellLayoutDataFunc to use, or %NULL
+	 *     cell = a `GtkCellRenderer`
+	 *     func = the `GtkCellLayout`DataFunc to use
 	 *     funcData = user data for @func
 	 *     destroy = destroy notify for @func_data
 	 */

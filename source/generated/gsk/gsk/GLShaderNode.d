@@ -68,7 +68,7 @@ public class GLShaderNode : RenderNode
 	 * renderer before using it.
 	 *
 	 * Params:
-	 *     shader = the #GskGLShader
+	 *     shader = the `GskGLShader`
 	 *     bounds = the rectangle to render the shader into
 	 *     args = Arguments for the uniforms
 	 *     children = array of child nodes, these will
@@ -99,7 +99,7 @@ public class GLShaderNode : RenderNode
 	/**
 	 * Gets args for the node.
 	 *
-	 * Returns: A #GBytes with the uniform arguments
+	 * Returns: A `GBytes` with the uniform arguments
 	 */
 	public Bytes getArgs()
 	{
@@ -146,7 +146,7 @@ public class GLShaderNode : RenderNode
 	/**
 	 * Gets shader code for the node.
 	 *
-	 * Returns: the #GskGLShader shader
+	 * Returns: the `GskGLShader` shader
 	 */
 	public GLShader getShader()
 	{

@@ -50,8 +50,9 @@ public class PgAttributeFontDesc : PgAttribute
 	 * Params:
 	 *     desc = the font description
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */

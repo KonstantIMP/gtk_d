@@ -60,7 +60,7 @@ public class PgLanguage
 	 * as sample text in a font selection dialog.
 	 *
 	 * If @language is %NULL, the default language as found by
-	 * [type_func@Pango.Language.get_default] is used.
+	 * [func@Pango.Language.get_default] is used.
 	 *
 	 * If Pango does not have a sample string for @language, the classic
 	 * "The quick brown fox..." is returned.  This can be detected by
@@ -71,8 +71,7 @@ public class PgLanguage
 	 * pango_language_get_sample_string (pango_language_from_string ("xx"))
 	 * ```
 	 *
-	 * Returns: the sample string. This value is owned by Pango
-	 *     and should not be freed.
+	 * Returns: the sample string
 	 */
 	public string getSampleString()
 	{
@@ -97,19 +96,17 @@ public class PgLanguage
 	 * though, except that it is positive if the return value is not
 	 * %NULL, and it is a small number.
 	 *
-	 * The [method@Pango.Language.includes_script] function uses this function
-	 * internally.
+	 * The [method@Pango.Language.includes_script] function uses this
+	 * function internally.
 	 *
 	 * Note: while the return value is declared as `PangoScript`, the
 	 * returned values are from the `GUnicodeScript` enumeration, which
 	 * may have more values. Callers need to handle unknown values.
 	 *
-	 * Returns: An array of
-	 *     `PangoScript` values, with the number of entries in the array
-	 *     stored in @num_scripts, or %NULL if Pango does not have any
-	 *     information about this particular language tag (also the case
-	 *     if @language is %NULL). The returned array is owned by Pango
-	 *     and should not be modified or freed.
+	 * Returns: An array of `PangoScript` values, with the number of entries in
+	 *     the array stored in @num_scripts, or %NULL if Pango does not have
+	 *     any information about this particular language tag (also the case
+	 *     if @language is %NULL).
 	 *
 	 * Since: 1.22
 	 */
@@ -124,10 +121,11 @@ public class PgLanguage
 
 	/**
 	 * Determines if @script is one of the scripts used to
-	 * write @language. The returned value is conservative;
-	 * if nothing is known about the language tag @language,
-	 * %TRUE will be returned, since, as far as Pango knows,
-	 * @script might be used to write @language.
+	 * write @language.
+	 *
+	 * The returned value is conservative; if nothing is known about
+	 * the language tag @language, %TRUE will be returned, since, as
+	 * far as Pango knows, @script might be used to write @language.
 	 *
 	 * This routine is used in Pango's itemization process when
 	 * determining if a supplied language tag is relevant to
@@ -154,18 +152,17 @@ public class PgLanguage
 	 * Checks if a language tag matches one of the elements in a list of
 	 * language ranges.
 	 *
-	 * A language tag is considered to match a range
-	 * in the list if the range is '*', the range is exactly the tag,
-	 * or the range is a prefix of the tag, and the character after it
-	 * in the tag is '-'.
+	 * A language tag is considered to match a range in the list if the
+	 * range is '*', the range is exactly the tag, or the range is a prefix
+	 * of the tag, and the character after it in the tag is '-'.
 	 *
 	 * Params:
 	 *     rangeList = a list of language ranges, separated by ';', ':',
 	 *         ',', or space characters.
 	 *         Each element must either be '*', or a RFC 3066 language range
-	 *         canonicalized as by [type_func@Pango.Language.from_string]
+	 *         canonicalized as by [func@Pango.Language.from_string]
 	 *
-	 * Returns: %TRUE if a match was found.
+	 * Returns: %TRUE if a match was found
 	 */
 	public bool matches(string rangeList)
 	{
@@ -175,8 +172,7 @@ public class PgLanguage
 	/**
 	 * Gets the RFC-3066 format string representing the given language tag.
 	 *
-	 * Returns: a string representing the language tag. This is owned by
-	 *     Pango and should not be freed.
+	 * Returns (transfer none): a string representing the language tag
 	 */
 	public override string toString()
 	{
@@ -194,15 +190,13 @@ public class PgLanguage
 	 * lowercase, mapping '_' to '-', and stripping all characters other
 	 * than letters and '-'.
 	 *
-	 * Use [type_func@Pango.Language.get_default] if you want to get the `PangoLanguage`
-	 * for the current locale of the process.
+	 * Use [func@Pango.Language.get_default] if you want to get the
+	 * `PangoLanguage` for the current locale of the process.
 	 *
 	 * Params:
-	 *     language = a string representing a language tag, or %NULL
+	 *     language = a string representing a language tag
 	 *
-	 * Returns: an opaque pointer to a
-	 *     `PangoLanguage` structure, or %NULL if @language was %NULL. The
-	 *     returned pointer will be valid forever after, and should not be freed.
+	 * Returns: a `PangoLanguage`
 	 */
 	public static PgLanguage fromString(string language)
 	{
@@ -245,8 +239,7 @@ public class PgLanguage
 	 *
 	 * Note that the default language can change over the life of an application.
 	 *
-	 * Returns: the default language as a
-	 *     `PangoLanguage`, must not be freed.
+	 * Returns: the default language as a `PangoLanguage`
 	 *
 	 * Since: 1.16
 	 */
@@ -265,17 +258,18 @@ public class PgLanguage
 	/**
 	 * Returns the list of languages that the user prefers.
 	 *
-	 * The list is specified by the `PANGO_LANGUAGE` or `LANGUAGE` environment
-	 * variables, in order of preference. Note that this list does not necessarily
-	 * include the language returned by [type_func@Pango.Language.get_default].
+	 * The list is specified by the `PANGO_LANGUAGE` or `LANGUAGE`
+	 * environment variables, in order of preference. Note that this
+	 * list does not necessarily include the language returned by
+	 * [func@Pango.Language.get_default].
 	 *
 	 * When choosing language-specific resources, such as the sample
-	 * text returned by [method@Pango.Language.get_sample_string], you should
-	 * first try the default language, followed by the languages returned
-	 * by this function.
+	 * text returned by [method@Pango.Language.get_sample_string],
+	 * you should first try the default language, followed by the
+	 * languages returned by this function.
 	 *
-	 * Returns: a %NULL-terminated array of
-	 *     `PangoLanguage`*
+	 * Returns: a %NULL-terminated array
+	 *     of `PangoLanguage`*
 	 *
 	 * Since: 1.48
 	 */

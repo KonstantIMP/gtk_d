@@ -68,14 +68,15 @@ private import std.algorithm;
  * 
  * # GtkInfoBar as GtkBuildable
  * 
- * The `GtkInfoBar` implementation of the `GtkBuildable` interface exposes
- * the content area and action area as internal children with the names
- * “content_area” and “action_area”.
- * 
  * `GtkInfoBar` supports a custom <action-widgets> element, which can contain
  * multiple <action-widget> elements. The “response” attribute specifies a
  * numeric response, and the content of the element is the id of widget
  * (which should be a child of the dialogs @action_area).
+ * 
+ * `GtkInfoBar` supports adding action widgets by specifying “action” as
+ * the “type” attribute of a `<child>` element. The widget will be added
+ * either to the action area. The response id has to be associated
+ * with the action widget using the `<action-widgets>` element.
  * 
  * # CSS nodes
  * 
@@ -283,7 +284,7 @@ public class InfoBar : Widget
 	 * GTK uses this type to determine how the message is displayed.
 	 *
 	 * Params:
-	 *     messageType = a #GtkMessageType
+	 *     messageType = a `GtkMessageType`
 	 */
 	public void setMessageType(GtkMessageType messageType)
 	{

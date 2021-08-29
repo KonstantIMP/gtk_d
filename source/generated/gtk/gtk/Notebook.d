@@ -187,7 +187,7 @@ public class Notebook : Widget
 	 *         for the page, or %NULL to use the default label, “page N”
 	 *     menuLabel = the widget to use as a label for the
 	 *         page-switch menu, if that is enabled. If %NULL, and @tab_label
-	 *         is a #GtkLabel or %NULL, then the menu label will be a newly
+	 *         is a `GtkLabel` or %NULL, then the menu label will be a newly
 	 *         created label with the same text as @tab_label; if @tab_label
 	 *         is not a `GtkLabel`, @menu_label must be specified if the
 	 *         page-switch menu is to be used.
@@ -509,9 +509,9 @@ public class Notebook : Widget
 	 *         for the page, or %NULL to use the default label, “page N”
 	 *     menuLabel = the widget to use as a label for the
 	 *         page-switch menu, if that is enabled. If %NULL, and @tab_label
-	 *         is a #GtkLabel or %NULL, then the menu label will be a newly
+	 *         is a `GtkLabel` or %NULL, then the menu label will be a newly
 	 *         created label with the same text as @tab_label; if @tab_label
-	 *         is not a #GtkLabel, @menu_label must be specified if the
+	 *         is not a `GtkLabel`, @menu_label must be specified if the
 	 *         page-switch menu is to be used.
 	 *     position = the index (starting at 0) at which to insert the page,
 	 *         or -1 to append the page after all other pages.
@@ -573,7 +573,7 @@ public class Notebook : Widget
 	 *
 	 * Params:
 	 *     child = the `GtkWidget` to use as the contents of the page
-	 *     tabLabel = the #GtkWidget to be used as the label
+	 *     tabLabel = the `GtkWidget` to be used as the label
 	 *         for the page, or %NULL to use the default label, “page N”
 	 *
 	 * Returns: the index (starting from 0) of the prepended
@@ -594,9 +594,9 @@ public class Notebook : Widget
 	 *         for the page, or %NULL to use the default label, “page N”
 	 *     menuLabel = the widget to use as a label for the
 	 *         page-switch menu, if that is enabled. If %NULL, and @tab_label
-	 *         is a #GtkLabel or %NULL, then the menu label will be a newly
+	 *         is a `GtkLabel` or %NULL, then the menu label will be a newly
 	 *         created label with the same text as @tab_label; if @tab_label
-	 *         is not a #GtkLabel, @menu_label must be specified if the
+	 *         is not a `GtkLabel`, @menu_label must be specified if the
 	 *         page-switch menu is to be used.
 	 *
 	 * Returns: the index (starting from 0) of the prepended
@@ -654,7 +654,7 @@ public class Notebook : Widget
 	 * more than one widget on the same side.
 	 *
 	 * Params:
-	 *     widget = a #GtkWidget
+	 *     widget = a `GtkWidget`
 	 *     packType = pack type of the action widget
 	 */
 	public void setActionWidget(Widget widget, GtkPackType packType)
@@ -884,8 +884,8 @@ public class Notebook : Widget
 	 * Params:
 	 *     page = the tab of @notebook that is being detached
 	 *
-	 * Returns: a `GtkNotebook` that @page should be
-	 *     added to, or %NULL.
+	 * Returns: a `GtkNotebook` that
+	 *     @page should be added to
 	 */
 	gulong addOnCreateWindow(Notebook delegate(Widget, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -909,7 +909,7 @@ public class Notebook : Widget
 	 * right after a page is added to the notebook.
 	 *
 	 * Params:
-	 *     child = the child #GtkWidget affected
+	 *     child = the child `GtkWidget` affected
 	 *     pageNum = the new page number for @child
 	 */
 	gulong addOnPageAdded(void delegate(Widget, uint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
@@ -922,7 +922,7 @@ public class Notebook : Widget
 	 * right after a page is removed from the notebook.
 	 *
 	 * Params:
-	 *     child = the child #GtkWidget affected
+	 *     child = the child `GtkWidget` affected
 	 *     pageNum = the @child page number
 	 */
 	gulong addOnPageRemoved(void delegate(Widget, uint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
@@ -935,7 +935,7 @@ public class Notebook : Widget
 	 * right after a page has been reordered.
 	 *
 	 * Params:
-	 *     child = the child #GtkWidget affected
+	 *     child = the child `GtkWidget` affected
 	 *     pageNum = the new page number for @child
 	 */
 	gulong addOnPageReordered(void delegate(Widget, uint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)

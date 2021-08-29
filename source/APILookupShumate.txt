@@ -29,30 +29,28 @@ code: start
 	}
 code: end
 
-struct: View
+struct: Map
 import: glib.ConstructionException
 noCode: new
 noCode: new_simple
-code: start
-    /**
-	 * Creates an instance of #ShumateView.
+code:start
+/**
+	 * Creates an instance of #ShumateMap.
 	 *
-	 * Returns: a new #ShumateView ready to be used as a #GtkWidget.
+	 * Returns: a new #ShumateMap ready to be used as a #GtkWidget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this(bool simple = false)
 	{
-		ShumateView* __p;
-
-        if (simple) __p = shumate_view_new_simple();
-        else __p = shumate_view_new();
+		auto __p = (simple ? shumate_map_new_simple() : shumate_map_new());
 
 		if(__p is null)
 		{
 			throw new ConstructionException("null returned by new");
 		}
 
-		this(cast(ShumateView*) __p);
+		this(cast(ShumateMap*) __p);
 	}
-code: end
+code:end
+

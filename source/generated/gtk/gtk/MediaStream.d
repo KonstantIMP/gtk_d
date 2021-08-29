@@ -70,10 +70,12 @@ public class MediaStream : ObjectG, PaintableIF
 	/**
 	 * Pauses the media stream and marks it as ended.
 	 *
-	 * This is a hint only, calls to GtkMediaStream.play()
+	 * This is a hint only, calls to [method@Gtk.MediaStream.play]
 	 * may still happen.
 	 *
 	 * The media stream must be prepared when this function is called.
+	 *
+	 * Deprecated: Use [method@Gtk.MediaStream.stream_ended] instead
 	 */
 	public void ended()
 	{
@@ -309,16 +311,9 @@ public class MediaStream : ObjectG, PaintableIF
 	}
 
 	/**
-	 * Called by `GtkMediaStream` implementations to advertise the stream
-	 * being ready to play and providing details about the stream.
+	 * Same as gtk_media_stream_stream_prepared().
 	 *
-	 * Note that the arguments are hints. If the stream implementation
-	 * cannot determine the correct values, it is better to err on the
-	 * side of caution and return %TRUE. User interfaces will use those
-	 * values to determine what controls to show.
-	 *
-	 * This function may not be called again until the stream has been
-	 * reset via [method@Gtk.MediaStream.unprepared].
+	 * Deprecated: Use [method@Gtk.MediaStream.stream_prepared] instead.
 	 *
 	 * Params:
 	 *     hasAudio = %TRUE if the stream should advertise audio support
@@ -475,11 +470,63 @@ public class MediaStream : ObjectG, PaintableIF
 	}
 
 	/**
+	 * Pauses the media stream and marks it as ended.
+	 *
+	 * This is a hint only, calls to [method@Gtk.MediaStream.play]
+	 * may still happen.
+	 *
+	 * The media stream must be prepared when this function is called.
+	 *
+	 * Since: 4.4
+	 */
+	public void streamEnded()
+	{
+		gtk_media_stream_stream_ended(gtkMediaStream);
+	}
+
+	/**
+	 * Called by `GtkMediaStream` implementations to advertise the stream
+	 * being ready to play and providing details about the stream.
+	 *
+	 * Note that the arguments are hints. If the stream implementation
+	 * cannot determine the correct values, it is better to err on the
+	 * side of caution and return %TRUE. User interfaces will use those
+	 * values to determine what controls to show.
+	 *
+	 * This function may not be called again until the stream has been
+	 * reset via [method@Gtk.MediaStream.stream_unprepared].
+	 *
+	 * Params:
+	 *     hasAudio = %TRUE if the stream should advertise audio support
+	 *     hasVideo = %TRUE if the stream should advertise video support
+	 *     seekable = %TRUE if the stream should advertise seekability
+	 *     duration = The duration of the stream or 0 if unknown
+	 *
+	 * Since: 4.4
+	 */
+	public void streamPrepared(bool hasAudio, bool hasVideo, bool seekable, long duration)
+	{
+		gtk_media_stream_stream_prepared(gtkMediaStream, hasAudio, hasVideo, seekable, duration);
+	}
+
+	/**
 	 * Resets a given media stream implementation.
 	 *
-	 * [method@Gtk.MediaStream.prepared] can then be called again.
+	 * [method@Gtk.MediaStream.stream_prepared] can then be called again.
 	 *
 	 * This function will also reset any error state the stream was in.
+	 *
+	 * Since: 4.4
+	 */
+	public void streamUnprepared()
+	{
+		gtk_media_stream_stream_unprepared(gtkMediaStream);
+	}
+
+	/**
+	 * Same as gtk_media_stream_stream_unprepared().
+	 *
+	 * Deprecated: Use [method@Gtk.MediaStream.stream_unprepared] instead.
 	 */
 	public void unprepared()
 	{

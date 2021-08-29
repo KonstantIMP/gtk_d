@@ -105,7 +105,7 @@ public  import gtk.c.types;
  * There can be "constant" and "multiplier" attributes.
  * 
  * Additionally, the "constraints" element can also contain a description
- * of the #GtkConstraintGuides used by the layout:
+ * of the `GtkConstraintGuides` used by the layout:
  * 
  * ```xml
  * <constraints>

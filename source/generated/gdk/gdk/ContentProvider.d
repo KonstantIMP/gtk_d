@@ -127,7 +127,7 @@ public class ContentProvider : ObjectG
 	 * ```
 	 *
 	 * Params:
-	 *     providers = The #GdkContentProviders to present the union of
+	 *     providers = The `GdkContentProvider`s to present the union of
 	 *
 	 * Returns: a new `GdkContentProvider`
 	 *
@@ -166,7 +166,7 @@ public class ContentProvider : ObjectG
 	 * provided in. This given `GType` does not need to be listed in the formats
 	 * returned by [method@Gdk.ContentProvider.ref_formats]. However, if the
 	 * given `GType` is not supported, this operation can fail and
-	 * #G_IO_ERROR_NOT_SUPPORTED will be reported.
+	 * `G_IO_ERROR_NOT_SUPPORTED` will be reported.
 	 *
 	 * Params:
 	 *     value = the `GValue` to fill
@@ -239,7 +239,7 @@ public class ContentProvider : ObjectG
 	 *
 	 * The given mime type does not need to be listed in the formats returned by
 	 * [method@Gdk.ContentProvider.ref_formats]. However, if the given `GType` is
-	 * not supported, #G_IO_ERROR_NOT_SUPPORTED will be reported.
+	 * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
 	 *
 	 * The given @stream will not be closed.
 	 *

@@ -156,7 +156,7 @@ public class ApplicationWindow : Window, ActionGroupIF, ActionMapIF
 	 * See [method@Gtk.ApplicationWindow.set_help_overlay].
 	 *
 	 * Returns: the help overlay associated
-	 *     with @window, or %NULL
+	 *     with @window
 	 */
 	public ShortcutsWindow getHelpOverlay()
 	{

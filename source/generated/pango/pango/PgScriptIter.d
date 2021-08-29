@@ -56,10 +56,12 @@ public class PgScriptIter
 	}
 
 	/**
-	 * Create a new #PangoScriptIter, used to break a string of
-	 * Unicode text into runs by Unicode script. No copy is made of
-	 * @text, so the caller needs to make sure it remains valid until
-	 * the iterator is freed with pango_script_iter_free().
+	 * Create a new `PangoScriptIter`, used to break a string of
+	 * Unicode text into runs by Unicode script.
+	 *
+	 * No copy is made of @text, so the caller needs to make
+	 * sure it remains valid until the iterator is freed with
+	 * [method@Pango.ScriptIter.free].
 	 *
 	 * Params:
 	 *     text = a UTF-8 string
@@ -67,7 +69,7 @@ public class PgScriptIter
 	 *
 	 * Returns: the new script iterator, initialized
 	 *     to point at the first range in the text, which should be
-	 *     freed with pango_script_iter_free(). If the string is
+	 *     freed with [method@Pango.ScriptIter.free]. If the string is
 	 *     empty, it will point at an empty range.
 	 *
 	 * Since: 1.4
@@ -87,7 +89,7 @@ public class PgScriptIter
 	}
 
 	/**
-	 * Frees a #PangoScriptIter created with pango_script_iter_new().
+	 * Frees a `PangoScriptIter`.
 	 *
 	 * Since: 1.4
 	 */
@@ -103,14 +105,14 @@ public class PgScriptIter
 	 * (That is, it doesn't include the character stored at *end)
 	 *
 	 * Note that while the type of the @script argument is declared
-	 * as PangoScript, as of Pango 1.18, this function simply returns
+	 * as `PangoScript`, as of Pango 1.18, this function simply returns
 	 * GUnicodeScript values. Callers must be prepared to handle unknown
 	 * values.
 	 *
 	 * Params:
-	 *     start = location to store start position of the range, or %NULL
-	 *     end = location to store end position of the range, or %NULL
-	 *     script = location to store script for range, or %NULL
+	 *     start = location to store start position of the range
+	 *     end = location to store end position of the range
+	 *     script = location to store script for range
 	 *
 	 * Since: 1.4
 	 */
@@ -126,11 +128,12 @@ public class PgScriptIter
 	}
 
 	/**
-	 * Advances a #PangoScriptIter to the next range. If @iter
-	 * is already at the end, it is left unchanged and %FALSE
-	 * is returned.
+	 * Advances a `PangoScriptIter` to the next range.
 	 *
-	 * Returns: %TRUE if @iter was successfully advanced.
+	 * If @iter is already at the end, it is left unchanged
+	 * and %FALSE is returned.
+	 *
+	 * Returns: %TRUE if @iter was successfully advanced
 	 *
 	 * Since: 1.4
 	 */

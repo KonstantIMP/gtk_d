@@ -4,7 +4,7 @@ private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
-private import shumate.TileSource;
+private import shumate.MapSource;
 private import shumate.c.functions;
 public  import shumate.c.types;
 
@@ -13,7 +13,7 @@ public  import shumate.c.types;
  * The #ShumateNetworkTileSource structure contains only private data
  * and should be accessed using the provided API
  */
-public class NetworkTileSource : TileSource
+public class NetworkTileSource : MapSource
 {
 	/** the main Gtk struct */
 	protected ShumateNetworkTileSource* shumateNetworkTileSource;
@@ -38,7 +38,7 @@ public class NetworkTileSource : TileSource
 	public this (ShumateNetworkTileSource* shumateNetworkTileSource, bool ownedRef = false)
 	{
 		this.shumateNetworkTileSource = shumateNetworkTileSource;
-		super(cast(ShumateTileSource*)shumateNetworkTileSource, ownedRef);
+		super(cast(ShumateMapSource*)shumateNetworkTileSource, ownedRef);
 	}
 
 

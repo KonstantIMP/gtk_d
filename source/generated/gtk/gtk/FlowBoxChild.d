@@ -115,7 +115,7 @@ public class FlowBoxChild : Widget
 	 * Gets the current index of the @child in its `GtkFlowBox` container.
 	 *
 	 * Returns: the index of the @child, or -1 if the @child is not
-	 *     in a flow box.
+	 *     in a flow box
 	 */
 	public int getIndex()
 	{

@@ -484,18 +484,18 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * For widgets that can be “activated” (buttons, menu items, etc.)
+	 * For widgets that can be “activated” (buttons, menu items, etc.),
 	 * this function activates them.
 	 *
 	 * The activation will emit the signal set using
-	 * gtk_widget_class_set_activate_signal() during class initialization.
+	 * [method@Gtk.WidgetClass.set_activate_signal] during class initialization.
 	 *
-	 * Activation is what happens when you press Enter on a widget during
-	 * key navigation.
+	 * Activation is what happens when you press <kbd>Enter</kbd>
+	 * on a widget during key navigation.
 	 *
 	 * If you wish to handle the activation keybinding yourself, it is
-	 * recommended to use gtk_widget_class_add_shortcut() with an action
-	 * created with gtk_signal_action_new().
+	 * recommended to use [method@Gtk.WidgetClass.add_shortcut] with an action
+	 * created with [ctor@Gtk.SignalAction.new].
 	 *
 	 * If @widget isn't activatable, the function returns %FALSE.
 	 *
@@ -520,7 +520,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * Params:
 	 *     name = the name of the action to activate
-	 *     args = parameters to use, or %NULL
+	 *     args = parameters to use
 	 *
 	 * Returns: %TRUE if the action was activated, %FALSE if the
 	 *     action does not exist.
@@ -545,7 +545,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * creating any kind of [class@Gtk.EventController].
 	 *
 	 * Params:
-	 *     controller = a #GtkEventController that hasn't been
+	 *     controller = a `GtkEventController` that hasn't been
 	 *         added to a widget yet
 	 */
 	public void addController(EventController controller)
@@ -577,8 +577,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * See [method@Gtk.Widget.list_mnemonic_labels]. Note the
 	 * list of mnemonic labels for the widget is cleared when the
 	 * widget is destroyed, so the caller must make sure to update
-	 * its internal state at this point as well, by using a connection
-	 * to the [signal@Gtk.Widget::destroy] signal or a weak notifier.
+	 * its internal state at this point as well.
 	 *
 	 * Params:
 	 *     label = a `GtkWidget` that acts as a mnemonic label for @widget
@@ -599,7 +598,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * frame or every few frames. The tick callback does not automatically
 	 * imply a relayout or repaint. If you want a repaint or relayout, and
 	 * aren’t changing widget properties that would trigger that (for example,
-	 * changing the text of a #GtkLabel), then you will have to call
+	 * changing the text of a `GtkLabel`), then you will have to call
 	 * [method@Gtk.Widget.queue_resize] or [method@Gtk.Widget.queue_draw]
 	 * yourself.
 	 *
@@ -766,15 +765,16 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Computes a matrix suitable to describe a transformation from
 	 * @widget's coordinate system into @target's coordinate system.
 	 *
+	 * The transform can not be computed in certain cases, for example
+	 * when @widget and @target do not share a common ancestor. In that
+	 * case @out_transform gets set to the identity matrix.
+	 *
 	 * Params:
 	 *     target = the target widget that the matrix will transform to
 	 *     outTransform = location to
 	 *         store the final transformation
 	 *
-	 * Returns: %TRUE if the transform could be computed, %FALSE otherwise.
-	 *     The transform can not be computed in certain cases, for example when
-	 *     @widget and @target do not share a common ancestor. In that
-	 *     case @out_transform gets set to the identity matrix.
+	 * Returns: %TRUE if the transform could be computed, %FALSE otherwise
 	 */
 	public bool computeTransform(Widget target, out Matrix outTransform)
 	{
@@ -836,7 +836,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * of the [property@Gtk.Widget:root] property on the widget.
 	 *
 	 * Params:
-	 *     text = text to set on the layout (can be %NULL)
+	 *     text = text to set on the layout
 	 *
 	 * Returns: the new `PangoLayout`
 	 */
@@ -956,8 +956,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Params:
 	 *     widgetType = ancestor type
 	 *
-	 * Returns: the ancestor widget,
-	 *     or %NULL if not found
+	 * Returns: the ancestor widget
 	 */
 	public Widget getAncestor(GType widgetType)
 	{
@@ -1019,7 +1018,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Note that this function always works, even when @widget is not
 	 * realized yet.
 	 *
-	 * Returns: the appropriate clipboard object.
+	 * Returns: the appropriate clipboard object
 	 */
 	public Clipboard getClipboard()
 	{
@@ -1038,7 +1037,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * Returns: a %NULL-terminated list of
 	 *     css classes currently applied to @widget. The returned
-	 *     list can be freed using g_strfreev().
+	 *     list must freed using g_strfreev().
 	 */
 	public string[] getCssClasses()
 	{
@@ -1064,7 +1063,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * See [method@Gtk.Widget.set_cursor] for details.
 	 *
 	 * Returns: the cursor
-	 *     currently in use or %NULL to use the default.
+	 *     currently in use or %NULL if the cursor is inherited
 	 */
 	public Cursor getCursor()
 	{
@@ -1139,7 +1138,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Returns the current focus child of @widget.
 	 *
 	 * Returns: The current focus
-	 *     child of @widget, or %NULL in case the focus child is unset.
+	 *     child of @widget
 	 */
 	public Widget getFocusChild()
 	{
@@ -1184,7 +1183,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * See [method@Gtk.Widget.set_font_map].
 	 *
-	 * Returns: A `PangoFontMap`, or %NULL
+	 * Returns: A `PangoFontMap`
 	 */
 	public PgFontMap getFontMap()
 	{
@@ -1199,13 +1198,12 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Returns the `cairo_font_options_t` used for Pango rendering.
+	 * Returns the `cairo_font_options_t` of widget.
 	 *
-	 * When not set, the defaults font options for the `GdkDisplay`
-	 * will be used.
+	 * Seee [method@Gtk.Widget.set_font_options].
 	 *
 	 * Returns: the `cairo_font_options_t`
-	 *     or %NULL if not set
+	 *     of widget
 	 */
 	public FontOption getFontOptions()
 	{
@@ -1243,8 +1241,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * Unrealized widgets do not have a frame clock.
 	 *
-	 * Returns: a `GdkFrameClock`,
-	 *     or %NULL if widget is unrealized
+	 * Returns: a `GdkFrameClock`
 	 */
 	public FrameClock getFrameClock()
 	{
@@ -1286,9 +1283,9 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	/**
 	 * Returns the content height of the widget.
 	 *
-	 * This function returns the size passed to its
-	 * size-allocate implementation, which is the size you
-	 * should be using in GtkWidgetClass.snapshot().
+	 * This function returns the height passed to its
+	 * size-allocate implementation, which is the height you
+	 * should be using in [vfunc@Gtk.Widget.snapshot].
 	 *
 	 * For pointer events, see [method@Gtk.Widget.contains].
 	 *
@@ -1363,7 +1360,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Retrieves the layout manager used by @widget
+	 * Retrieves the layout manager used by @widget.
 	 *
 	 * See [method@Gtk.Widget.set_layout_manager].
 	 *
@@ -1445,15 +1442,14 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Returns the `GtkNative` widget that contains @widget.
+	 * Returns the nearest `GtkNative` ancestor of @widget.
 	 *
 	 * This function will return %NULL if the widget is not
 	 * contained inside a widget tree with a native ancestor.
 	 *
 	 * `GtkNative` widgets will return themselves here.
 	 *
-	 * Returns: the `GtkNative`
-	 *     widget of @widget, or %NULL
+	 * Returns: the `GtkNative` ancestor of @widget
 	 */
 	public NativeIF getNative()
 	{
@@ -1536,8 +1532,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	/**
 	 * Returns the parent widget of @widget.
 	 *
-	 * Returns: the parent widget of @widget,
-	 *     or %NULL
+	 * Returns: the parent widget of @widget
 	 */
 	public Widget getParent()
 	{
@@ -1568,8 +1563,8 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Use [id@gtk_widget_measure] if you want to support baseline alignment.
 	 *
 	 * Params:
-	 *     minimumSize = location for storing the minimum size, or %NULL
-	 *     naturalSize = location for storing the natural size, or %NULL
+	 *     minimumSize = location for storing the minimum size
+	 *     naturalSize = location for storing the natural size
 	 */
 	public void getPreferredSize(out Requisition minimumSize, out Requisition naturalSize)
 	{
@@ -1610,7 +1605,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Note that this function always works, even when @widget is not
 	 * realized yet.
 	 *
-	 * Returns: the appropriate clipboard object.
+	 * Returns: the appropriate clipboard object
 	 */
 	public Clipboard getPrimaryClipboard()
 	{
@@ -1673,8 +1668,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * `GtkRoot` widgets will return themselves here.
 	 *
-	 * Returns: the root widget of @widget,
-	 *     or %NULL
+	 * Returns: the root widget of @widget
 	 */
 	public RootIF getRoot()
 	{
@@ -1727,9 +1721,9 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Note that this function can only be called when the `GtkWidget`
 	 * is attached to a toplevel, since the settings object is specific
 	 * to a particular `GdkDisplay`. If you want to monitor the widget for
-	 * changes in its settings, connect to notify::display.
+	 * changes in its settings, connect to the `notify::display` signal.
 	 *
-	 * Returns: the relevant #GtkSettings object
+	 * Returns: the relevant `GtkSettings` object
 	 */
 	public Settings getSettings()
 	{
@@ -1776,8 +1770,8 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * this function.
 	 *
 	 * Params:
-	 *     width = return location for width, or %NULL
-	 *     height = return location for height, or %NULL
+	 *     width = return location for width
+	 *     height = return location for height
 	 */
 	public void getSizeRequest(out int width, out int height)
 	{
@@ -1808,8 +1802,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * The returned object is guaranteed to be the same
 	 * for the lifetime of @widget.
 	 *
-	 * Returns: a `GtkStyleContext`. This memory
-	 *     is owned by @widget and must not be freed.
+	 * Returns: the widgets `GtkStyleContext`
 	 */
 	public StyleContext getStyleContext()
 	{
@@ -1836,7 +1829,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * bindings which cannot easily make use of the GObject structure offsets.
 	 *
 	 * Params:
-	 *     widgetType = The #GType to get a template child for
+	 *     widgetType = The `GType` to get a template child for
 	 *     name = The “id” of the child defined in the template XML
 	 *
 	 * Returns: The object built in the template XML with
@@ -1940,9 +1933,9 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	/**
 	 * Returns the content width of the widget.
 	 *
-	 * This function returns the size passed to its
-	 * size-allocate implementation, which is the size you
-	 * should be using in GtkWidgetClass.snapshot().
+	 * This function returns the width passed to its
+	 * size-allocate implementation, which is the width you
+	 * should be using in [vfunc@Gtk.Widget.snapshot].
 	 *
 	 * For pointer events, see [method@Gtk.Widget.contains].
 	 *
@@ -1956,9 +1949,9 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	/**
 	 * Causes @widget to have the keyboard focus for the `GtkWindow` it's inside.
 	 *
-	 * If @widget is not focusable, or its ::grab_focus implementation cannot
-	 * transfer the focus to a descendant of @widget that is focusable, it will
-	 * not take focus and %FALSE will be returned.
+	 * If @widget is not focusable, or its [vfunc@Gtk.Widget.grab_focus]
+	 * implementation cannot transfer the focus to a descendant of @widget
+	 * that is focusable, it will not take focus and %FALSE will be returned.
 	 *
 	 * Calling [method@Gtk.Widget.grab_focus] on an already focused widget
 	 * is allowed, should not have an effect, and return %TRUE.
@@ -2097,7 +2090,8 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * Params:
 	 *     name = the prefix for actions in @group
-	 *     group = a #GActionGroup, or %NULL
+	 *     group = a `GActionGroup`, or %NULL to remove
+	 *         the previously inserted group for @name
 	 */
 	public void insertActionGroup(string name, ActionGroupIF group)
 	{
@@ -2122,7 +2116,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * Params:
 	 *     parent = the parent `GtkWidget` to insert @widget into
-	 *     previousSibling = the new previous sibling of @widget or %NULL
+	 *     previousSibling = the new previous sibling of @widget
 	 */
 	public void insertAfter(Widget parent, Widget previousSibling)
 	{
@@ -2146,7 +2140,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * Params:
 	 *     parent = the parent `GtkWidget` to insert @widget into
-	 *     nextSibling = the new next sibling of @widget or %NULL
+	 *     nextSibling = the new next sibling of @widget
 	 */
 	public void insertBefore(Widget parent, Widget nextSibling)
 	{
@@ -2185,9 +2179,9 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * toplevel.
 	 *
 	 * This does not mean that the [property@Gtk.Widget:has-focus]
-	 * property is necessarily set; [property@Gtk,Widget:has-focus]
+	 * property is necessarily set; [property@Gtk.Widget:has-focus]
 	 * will only be set if the toplevel widget additionally has the
-	 * global input focus.)
+	 * global input focus.
 	 *
 	 * Returns: %TRUE if the widget is the focus widget.
 	 */
@@ -2242,7 +2236,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * The default [signal@Gtk.Widget::keynav-failed] handler returns
 	 * %FALSE for %GTK_DIR_TAB_FORWARD and %GTK_DIR_TAB_BACKWARD.
-	 * For the other values of #GtkDirectionType it returns %TRUE.
+	 * For the other values of `GtkDirectionType` it returns %TRUE.
 	 *
 	 * Whenever the default handler returns %TRUE, it also calls
 	 * [method@Gtk.Widget.error_bell] to notify the user of the
@@ -2313,7 +2307,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * if it is allocated at a height of 300 pixels.
 	 *
 	 * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-	 * a more details on implementing #GtkWidgetClass.measure().
+	 * a more details on implementing `GtkWidgetClass.measure()`.
 	 *
 	 * Params:
 	 *     orientation = the orientation to measure
@@ -2322,12 +2316,12 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *         the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL
 	 *         case is analogous. This way, both height-for-width and width-for-height
 	 *         requests can be implemented. If no size is known, -1 can be passed.
-	 *     minimum = location to store the minimum size, or %NULL
-	 *     natural = location to store the natural size, or %NULL
+	 *     minimum = location to store the minimum size
+	 *     natural = location to store the natural size
 	 *     minimumBaseline = location to store the baseline
-	 *         position for the minimum size, or %NULL
+	 *         position for the minimum size
 	 *     naturalBaseline = location to store the baseline
-	 *         position for the natural size, or %NULL
+	 *         position for the natural size
 	 */
 	public void measure(GtkOrientation orientation, int forSize, out int minimum, out int natural, out int minimumBaseline, out int naturalBaseline)
 	{
@@ -2335,7 +2329,9 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Emits the `GtkWidget`::mnemonic-activate signal.
+	 * Emits the ::mnemonic-activate signal.
+	 *
+	 * See [signal@Gtk.Widget::mnemonic-activate].
 	 *
 	 * Params:
 	 *     groupCycling = %TRUE if there are other widgets with the same mnemonic
@@ -2397,8 +2393,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Finds the descendant of @widget closest
-	 * to the screen at the point (@x, @y).
+	 * Finds the descendant of @widget closest to the point (@x, @y).
 	 *
 	 * The point must be given in widget coordinates, so (0, 0) is assumed
 	 * to be the top left of @widget's content area.
@@ -2419,7 +2414,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *     flags = Flags to influence what is picked
 	 *
 	 * Returns: The widget descendant at
-	 *     the given coordinate or %NULL if none.
+	 *     the given point
 	 */
 	public Widget pick(double x, double y, GtkPickFlags flags)
 	{
@@ -2434,7 +2429,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Flags the widget for a rerun of the GtkWidgetClass::size_allocate
+	 * Flags the widget for a rerun of the [vfunc@Gtk.Widget.size_allocate]
 	 * function.
 	 *
 	 * Use this function instead of [method@Gtk.Widget.queue_resize]
@@ -2451,10 +2446,10 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Schedules this widget to be redrawn in paint phase of the
-	 * current or the next frame.
+	 * Schedules this widget to be redrawn in the paint phase
+	 * of the current or the next frame.
 	 *
-	 * This means @widget's GtkWidgetClass.snapshot()
+	 * This means @widget's [vfunc@Gtk.Widget.snapshot]
 	 * implementation will be called.
 	 */
 	public void queueDraw()
@@ -2471,9 +2466,9 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * enough space for the new text.
 	 *
 	 * Note that you cannot call gtk_widget_queue_resize() on a widget
-	 * from inside its implementation of the GtkWidgetClass::size_allocate
+	 * from inside its implementation of the [vfunc@Gtk.Widget.size_allocate]
 	 * virtual method. Calls to gtk_widget_queue_resize() from inside
-	 * GtkWidgetClass::size_allocate will be silently ignored.
+	 * [vfunc@Gtk.Widget.size_allocate] will be silently ignored.
 	 *
 	 * This function is only for use in widget implementations.
 	 */
@@ -2515,7 +2510,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * are destroyed, there is normally no need to call this function.
 	 *
 	 * Params:
-	 *     controller = a #GtkEventController
+	 *     controller = a `GtkEventController`
 	 */
 	public void removeController(EventController controller)
 	{
@@ -2629,7 +2624,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Will clear all style classes applied to @widget
+	 * Clear all style classes applied to @widget
 	 * and replace them with @classes.
 	 *
 	 * Params:
@@ -2648,8 +2643,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * inherited from the parent widget.
 	 *
 	 * Params:
-	 *     cursor = the new cursor or %NULL to use
-	 *         the default cursor
+	 *     cursor = the new cursor
 	 */
 	public void setCursor(Cursor cursor)
 	{
@@ -2670,8 +2664,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * with a %NULL cursor.
 	 *
 	 * Params:
-	 *     name = The name of the cursor or %NULL to use
-	 *         the default cursor
+	 *     name = The name of the cursor
 	 */
 	public void setCursorFromName(string name)
 	{
@@ -2703,8 +2696,6 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 
 	/**
 	 * Set @child as the current focus child of @widget.
-	 *
-	 * The previous focus child will be unset.
 	 *
 	 * This function is only suitable for widget implementations.
 	 * If you want a certain widget to get the input focus, call
@@ -2786,8 +2777,8 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * will be used.
 	 *
 	 * Params:
-	 *     options = a #cairo_font_options_t, or %NULL
-	 *         to unset any previously set default font options.
+	 *     options = a `cairo_font_options_t`
+	 *         to unset any previously set default font options
 	 */
 	public void setFontOptions(FontOption options)
 	{
@@ -2878,9 +2869,8 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	}
 
 	/**
-	 * Sets the layout manager delegate instance that
-	 * provides an implementation for measuring and
-	 * allocating the children of @widget.
+	 * Sets the layout manager delegate instance that provides an
+	 * implementation for measuring and allocating the children of @widget.
 	 *
 	 * Params:
 	 *     layoutManager = a `GtkLayoutManager`
@@ -3264,10 +3254,10 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 * Snapshot the a child of @widget.
 	 *
 	 * When a widget receives a call to the snapshot function,
-	 * it must send synthetic `GtkWidget`Class.snapshot() calls
+	 * it must send synthetic [vfunc@Gtk.Widget.snapshot] calls
 	 * to all children. This function provides a convenient way
 	 * of doing this. A widget, when it receives a call to its
-	 * `GtkWidget`Class.snapshot() function, calls
+	 * [vfunc@Gtk.Widget.snapshot] function, calls
 	 * gtk_widget_snapshot_child() once for each child, passing in
 	 * the @snapshot the widget received.
 	 *
@@ -3278,7 +3268,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *
 	 * Params:
 	 *     child = a child of @widget
-	 *     snapshot = #GtkSnapshot as passed to the widget. In particular, no
+	 *     snapshot = `GtkSnapshot` as passed to the widget. In particular, no
 	 *         calls to gtk_snapshot_translate() or other transform calls should
 	 *         have been made.
 	 */
@@ -3481,7 +3471,7 @@ public class Widget : ObjectG, AccessibleIF, BuildableIF, ConstraintTargetIF
 	 *     y = the y coordinate of the cursor position where the request has
 	 *         been emitted, relative to @widget's top
 	 *     keyboardMode = %TRUE if the tooltip was triggered using the keyboard
-	 *     tooltip = a #GtkTooltip
+	 *     tooltip = a `GtkTooltip`
 	 *
 	 * Returns: %TRUE if @tooltip should be shown right now, %FALSE otherwise.
 	 */

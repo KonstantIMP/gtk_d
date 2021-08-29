@@ -24,7 +24,7 @@ public  import pango.c.types;
  * A `PangoContext` stores global information used to control the
  * itemization process.
  * 
- * The information stored by `PangoContext includes the fontmap used
+ * The information stored by `PangoContext` includes the fontmap used
  * to look up fonts, and default values such as the default language,
  * default gravity, or default font.
  * 
@@ -180,7 +180,7 @@ public class PgContext : ObjectG
 	 *
 	 * This is similar to [method@Pango.Context.get_base_gravity],
 	 * except for when the base gravity is %PANGO_GRAVITY_AUTO for
-	 * which [type_func@Pango.Gravity.get_for_matrix] is used to return the
+	 * which [func@Pango.Gravity.get_for_matrix] is used to return the
 	 * gravity from the current context matrix.
 	 *
 	 * Returns: the resolved gravity for the context.
@@ -266,7 +266,7 @@ public class PgContext : ObjectG
 	 *     language = language tag used to determine which script to get
 	 *         the metrics for. %NULL means that the language tag from the context
 	 *         will be used. If no language tag is set on the context, metrics
-	 *         for the default language (as determined by [type_func@Pango.Language.get_default]
+	 *         for the default language (as determined by [func@Pango.Language.get_default]
 	 *         will be returned.
 	 *
 	 * Returns: a `PangoFontMetrics` object. The caller must call
@@ -467,7 +467,7 @@ public class PgContext : ObjectG
 	 * Sets the global language tag for the context.
 	 *
 	 * The default language for the locale of the running process
-	 * can be found using [type_func@Pango.Language.get_default].
+	 * can be found using [func@Pango.Language.get_default].
 	 *
 	 * Params:
 	 *     language = the new language tag.
@@ -540,19 +540,20 @@ public class PgContext : ObjectG
 	}
 
 	/**
-	 * Determines possible line, word, and character breaks for a string of
-	 * Unicode text with a single analysis.
+	 * Determines possible line, word, and character breaks
+	 * for a string of Unicode text with a single analysis.
 	 *
-	 * For most purposes you may want to use pango_get_log_attrs().
+	 * For most purposes you may want to use
+	 * [func@Pango.get_log_attrs].
 	 *
-	 * Deprecated: Use pango_default_break() and pango_tailor_break()
+	 * Deprecated: Use [func@Pango.default_break] and
+	 * [func@Pango.tailor_break]
 	 *
 	 * Params:
 	 *     text = the text to process. Must be valid UTF-8
 	 *     length = length of @text in bytes (may be -1 if @text is nul-terminated)
-	 *     analysis = #PangoAnalysis structure from pango_itemize()
-	 *     attrs = an array to store character
-	 *         information in
+	 *     analysis = `PangoAnalysis` structure for @text
+	 *     attrs = an array to store character information in
 	 */
 	public static void pangoBreak(string text, int length, PangoAnalysis* analysis, PangoLogAttr[] attrs)
 	{
@@ -562,15 +563,16 @@ public class PgContext : ObjectG
 	/**
 	 * This is the default break algorithm.
 	 *
-	 * It applies Unicode rules without language-specific tailoring, therefore
-	 * the @analyis argument is unused and can be %NULL.
+	 * It applies Unicode rules without language-specific
+	 * tailoring, therefore the @analyis argument is unused
+	 * and can be %NULL.
 	 *
-	 * See pango_tailor_break() for language-specific breaks.
+	 * See [func@Pango.tailor_break] for language-specific breaks.
 	 *
 	 * Params:
 	 *     text = text to break. Must be valid UTF-8
 	 *     length = length of text in bytes (may be -1 if @text is nul-terminated)
-	 *     analysis = a #PangoAnalysis for the @text
+	 *     analysis = a `PangoAnalysis` structure for the @text
 	 *     attrs = logical attributes to fill in
 	 *     attrsLen = size of the array passed as @attrs
 	 */
@@ -600,15 +602,18 @@ public class PgContext : ObjectG
 	/**
 	 * Locates a paragraph boundary in @text.
 	 *
-	 * A boundary is caused by delimiter characters, such as a newline, carriage
-	 * return, carriage return-newline pair, or Unicode paragraph separator character.
-	 * The index of the run of delimiters is returned in @paragraph_delimiter_index.
-	 * The index of the start of the paragrap (index after all delimiters) is stored
+	 * A boundary is caused by delimiter characters, such as
+	 * a newline, carriage return, carriage return-newline pair,
+	 * or Unicode paragraph separator character.
+	 *
+	 * The index of the run of delimiters is returned in
+	 * @paragraph_delimiter_index. The index of the start
+	 * of the paragrap (index after all delimiters) is stored
 	 * in @next_paragraph_start.
 	 *
-	 * If no delimiters are found, both @paragraph_delimiter_index and
-	 * @next_paragraph_start are filled with the length of @text (an index one
-	 * off the end).
+	 * If no delimiters are found, both @paragraph_delimiter_index
+	 * and @next_paragraph_start are filled with the length of @text
+	 * (an index one off the end).
 	 *
 	 * Params:
 	 *     text = UTF-8 text
@@ -626,11 +631,13 @@ public class PgContext : ObjectG
 	/**
 	 * Computes a `PangoLogAttr` for each character in @text.
 	 *
-	 * The @log_attrs array must have one `PangoLogAttr` for each position in @text;
-	 * if @text contains N characters, it has N+1 positions, including the last
-	 * position at the end of the text. @text should be an entire paragraph; logical
-	 * attributes can't be computed without context (for example you need to see
-	 * spaces on either side of a word to know the word is a word).
+	 * The @log_attrs array must have one `PangoLogAttr` for
+	 * each position in @text; if @text contains N characters,
+	 * it has N+1 positions, including the last position at the
+	 * end of the text. @text should be an entire paragraph;
+	 * logical attributes can't be computed without context
+	 * (for example you need to see spaces on either side of
+	 * a word to know the word is a word).
 	 *
 	 * Params:
 	 *     text = text to process. Must be valid UTF-8
@@ -687,7 +694,7 @@ public class PgContext : ObjectG
 	 *     length = the number of bytes (not characters) to process
 	 *         after @start_index. This must be >= 0.
 	 *     attrs = the set of attributes that apply to @text.
-	 *     cachedIter = Cached attribute iterator, or %NULL
+	 *     cachedIter = Cached attribute iterator
 	 *
 	 * Returns: a `GList` of
 	 *     [struct@Pango.Item] structures. The items should be freed using
@@ -721,7 +728,7 @@ public class PgContext : ObjectG
 	 *     length = the number of bytes (not characters) to process
 	 *         after @start_index. This must be >= 0.
 	 *     attrs = the set of attributes that apply to @text.
-	 *     cachedIter = Cached attribute iterator, or %NULL
+	 *     cachedIter = Cached attribute iterator
 	 *
 	 * Returns: a `GList` of
 	 *     [struct@Pango.Item] structures. The items should be freed using
@@ -747,16 +754,16 @@ public class PgContext : ObjectG
 	 * The visual order is determined from the associated directional
 	 * levels of the items. The original list is unmodified.
 	 *
+	 * (Please open a bug if you use this function.
+	 * It is not a particularly convenient interface, and the code
+	 * is duplicated elsewhere in Pango for that reason.)
+	 *
 	 * Params:
 	 *     logicalItems = a `GList` of `PangoItem`
 	 *         in logical order.
 	 *
-	 * Returns: a #GList
-	 *     of #PangoItem structures in visual order.
-	 *
-	 *     (Please open a bug if you use this function.
-	 *     It is not a particularly convenient interface, and the code
-	 *     is duplicated elsewhere in Pango for that reason.)
+	 * Returns: a `GList`
+	 *     of `PangoItem` structures in visual order.
 	 */
 	public static ListG reorderItems(ListG logicalItems)
 	{
@@ -839,7 +846,7 @@ public class PgContext : ObjectG
 	 * This function is useful to categorize characters into left-to-right
 	 * letters, right-to-left letters, and everything else. If full Unicode
 	 * bidirectional type of a character is needed,
-	 * [type_func@Pango.BidiType.for_unichar] can be used instead.
+	 * [func@Pango.BidiType.for_unichar] can be used instead.
 	 *
 	 * Params:
 	 *     ch = a Unicode character

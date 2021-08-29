@@ -145,15 +145,16 @@ public final class PgLayoutLine
 	}
 
 	/**
-	 * Computes the logical and ink extents of a layout line. See
-	 * [method@Pango.Font.get_glyph_extents] for details about the
-	 * interpretation of the rectangles.
+	 * Computes the logical and ink extents of a layout line.
+	 *
+	 * See [method@Pango.Font.get_glyph_extents] for details
+	 * about the interpretation of the rectangles.
 	 *
 	 * Params:
 	 *     inkRect = rectangle used to store the extents of
-	 *         the glyph string as drawn, or %NULL
+	 *         the glyph string as drawn
 	 *     logicalRect = rectangle used to store the logical
-	 *         extents of the glyph string, or %NULL
+	 *         extents of the glyph string
 	 */
 	public void getExtents(out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
@@ -184,9 +185,9 @@ public final class PgLayoutLine
 	 *
 	 * Params:
 	 *     inkRect = rectangle used to store the extents of
-	 *         the glyph string as drawn, or %NULL
+	 *         the glyph string as drawn
 	 *     logicalRect = rectangle used to store the logical
-	 *         extents of the glyph string, or %NULL
+	 *         extents of the glyph string
 	 */
 	public void getPixelExtents(out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
@@ -195,6 +196,7 @@ public final class PgLayoutLine
 
 	/**
 	 * Gets a list of visual ranges corresponding to a given logical range.
+	 *
 	 * This list is not necessarily minimal - there may be consecutive
 	 * ranges which are adjacent. The ranges will be sorted from left to
 	 * right. The ranges are with respect to the left edge of the entire
@@ -233,7 +235,7 @@ public final class PgLayoutLine
 	 *     index = byte offset of a grapheme within the layout
 	 *     trailing = an integer indicating the edge of the grapheme to retrieve
 	 *         the position of. If > 0, the trailing edge of the grapheme,
-	 *         if 0, the leading of the grapheme.
+	 *         if 0, the leading of the grapheme
 	 *     xPos = location to store the x_offset (in Pango units)
 	 */
 	public void indexToX(int index, bool trailing, out int xPos)
@@ -263,6 +265,7 @@ public final class PgLayoutLine
 
 	/**
 	 * Decrease the reference count of a `PangoLayoutLine` by one.
+	 *
 	 * If the result is zero, the line and all associated memory
 	 * will be freed.
 	 */
@@ -273,20 +276,21 @@ public final class PgLayoutLine
 
 	/**
 	 * Converts from x offset to the byte index of the corresponding character
-	 * within the text of the layout. If @x_pos is outside the line, @index_ and
-	 * @trailing will point to the very first or very last position in the line.
-	 * This determination is based on the resolved direction of the paragraph;
-	 * for example, if the resolved direction is right-to-left, then an X position
-	 * to the right of the line (after it) results in 0 being stored in @index_
-	 * and @trailing. An X position to the left of the line results in @index_
-	 * pointing to the (logical) last grapheme in the line and @trailing being
-	 * set to the number of characters in that grapheme. The reverse is true for
-	 * a left-to-right line.
+	 * within the text of the layout.
+	 *
+	 * If @x_pos is outside the line, @index_ and @trailing will point to the very
+	 * first or very last position in the line. This determination is based on the
+	 * resolved direction of the paragraph; for example, if the resolved direction
+	 * is right-to-left, then an X position to the right of the line (after it)
+	 * results in 0 being stored in @index_ and @trailing. An X position to the
+	 * left of the line results in @index_ pointing to the (logical) last grapheme
+	 * in the line and @trailing being set to the number of characters in that
+	 * grapheme. The reverse is true for a left-to-right line.
 	 *
 	 * Params:
 	 *     xPos = the X offset (in Pango units) from the left edge of the line.
 	 *     index = location to store calculated byte index for the grapheme
-	 *         in which the user clicked.
+	 *         in which the user clicked
 	 *     trailing = location to store an integer indicating where in the
 	 *         grapheme the user clicked. It will either be zero, or the number of
 	 *         characters in the grapheme. 0 represents the leading edge of the grapheme.

@@ -94,11 +94,10 @@ public final class PgGlyphItem
 	 * Splits a shaped item (`PangoGlyphItem`) into multiple items based
 	 * on an attribute list.
 	 *
-	 * The idea is that if you have attributes
-	 * that don't affect shaping, such as color or underline, to avoid
-	 * affecting shaping, you filter them out ([method@Pango.AttrList.filter]),
-	 * apply the shaping process and then reapply them to the result using
-	 * this function.
+	 * The idea is that if you have attributes that don't affect shaping,
+	 * such as color or underline, to avoid affecting shaping, you filter
+	 * them out ([method@Pango.AttrList.filter]), apply the shaping process
+	 * and then reapply them to the result using this function.
 	 *
 	 * All attributes that start or end inside a cluster are applied
 	 * to that cluster; for instance, if half of a cluster is underlined
@@ -136,9 +135,7 @@ public final class PgGlyphItem
 	/**
 	 * Make a deep copy of an existing `PangoGlyphItem` structure.
 	 *
-	 * Returns: the newly allocated `PangoGlyphItem`, which should
-	 *     be freed with pango_glyph_item_free(), or %NULL
-	 *     if @orig was %NULL.
+	 * Returns: the newly allocated `PangoGlyphItem`
 	 *
 	 * Since: 1.20
 	 */
@@ -166,11 +163,11 @@ public final class PgGlyphItem
 	}
 
 	/**
-	 * Given a `PangoGlyphItem` and the corresponding text, determine the width
-	 * corresponding to each character.
+	 * Given a `PangoGlyphItem` and the corresponding text, determine the
+	 * width corresponding to each character.
 	 *
-	 * When multiple characters compose a single cluster, the width of the entire
-	 * cluster is divided equally among the characters.
+	 * When multiple characters compose a single cluster, the width of the
+	 * entire cluster is divided equally among the characters.
 	 *
 	 * See also [method@Pango.GlyphString.get_logical_widths].
 	 *
@@ -179,9 +176,8 @@ public final class PgGlyphItem
 	 *         (glyph_item->item->offset is an offset from the
 	 *         start of @text)
 	 *     logicalWidths = an array whose length is the number of
-	 *         characters in glyph_item (equal to
-	 *         glyph_item->item->num_chars) to be filled in with
-	 *         the resulting character widths.
+	 *         characters in glyph_item (equal to glyph_item->item->num_chars)
+	 *         to be filled in with the resulting character widths.
 	 *
 	 * Since: 1.26
 	 */
@@ -217,18 +213,18 @@ public final class PgGlyphItem
 	 * returns a new item that covers the text before @split_index that
 	 * used to be in @orig.
 	 *
-	 * You can think of @split_index as the length of
-	 * the returned item. @split_index may not be 0, and it may not be
-	 * greater than or equal to the length of @orig (that is, there must
-	 * be at least one byte assigned to each item, you can't create a
-	 * zero-length item).
+	 * You can think of @split_index as the length of the returned item.
+	 * @split_index may not be 0, and it may not be greater than or equal
+	 * to the length of @orig (that is, there must be at least one byte
+	 * assigned to each item, you can't create a zero-length item).
 	 *
 	 * This function is similar in function to pango_item_split() (and uses
 	 * it internally.)
 	 *
 	 * Params:
 	 *     text = text to which positions in @orig apply
-	 *     splitIndex = byte index of position to split item, relative to the start of the item
+	 *     splitIndex = byte index of position to split item, relative to the
+	 *         start of the item
 	 *
 	 * Returns: the newly allocated item representing text before
 	 *     @split_index, which should be freed

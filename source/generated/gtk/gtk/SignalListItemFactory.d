@@ -44,7 +44,7 @@ private import std.algorithm;
  * was emitted on a listitem, the listitem will be destroyed and not be used again.
  * 
  * Note that during the signal emissions, changing properties on the
- * #GtkListItems passed will not trigger notify signals as the listitem's
+ * `GtkListItem`s passed will not trigger notify signals as the listitem's
  * notifications are frozen. See g_object_freeze_notify() for details.
  * 
  * For tracking changes in other properties in the `GtkListItem`, the
@@ -120,7 +120,7 @@ public class SignalListItemFactory : ListItemFactory
 	 * in this signal.
 	 *
 	 * Params:
-	 *     listitem = The #GtkListItem to bind
+	 *     listitem = The `GtkListItem` to bind
 	 */
 	gulong addOnBind(void delegate(ListItem, SignalListItemFactory) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -136,7 +136,7 @@ public class SignalListItemFactory : ListItemFactory
 	 * of this signal and can be used to undo everything done in this signal.
 	 *
 	 * Params:
-	 *     listitem = The #GtkListItem to set up
+	 *     listitem = The `GtkListItem` to set up
 	 */
 	gulong addOnSetup(void delegate(ListItem, SignalListItemFactory) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -152,7 +152,7 @@ public class SignalListItemFactory : ListItemFactory
 	 * signal and should be used to undo everything done in that signal.
 	 *
 	 * Params:
-	 *     listitem = The #GtkListItem to teardown
+	 *     listitem = The `GtkListItem` to teardown
 	 */
 	gulong addOnTeardown(void delegate(ListItem, SignalListItemFactory) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -167,7 +167,7 @@ public class SignalListItemFactory : ListItemFactory
 	 * signal and should be used to undo everything done in that signal.
 	 *
 	 * Params:
-	 *     listitem = The #GtkListItem to unbind
+	 *     listitem = The `GtkListItem` to unbind
 	 */
 	gulong addOnUnbind(void delegate(ListItem, SignalListItemFactory) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

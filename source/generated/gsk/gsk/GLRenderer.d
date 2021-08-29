@@ -46,8 +46,7 @@ public class GLRenderer : Renderer
 	}
 
 	/**
-	 * Creates a new #GskRenderer using OpenGL. This is the default renderer
-	 * used by GTK.
+	 * Creates a new `GskRenderer` using OpenGL.
 	 *
 	 * Returns: a new GL renderer
 	 *

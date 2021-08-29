@@ -92,10 +92,8 @@ public interface PaintableIF{
 	 *         no other constraints were given
 	 *     defaultHeight = the height @paintable would be drawn into if
 	 *         no other constraints were given
-	 *     concreteWidth = will be set to the concrete width
-	 *         computed.
-	 *     concreteHeight = will be set to the concrete height
-	 *         computed.
+	 *     concreteWidth = will be set to the concrete width computed
+	 *     concreteHeight = will be set to the concrete height computed
 	 */
 	public void computeConcreteSize(double specifiedWidth, double specifiedHeight, double defaultWidth, double defaultHeight, out double concreteWidth, out double concreteHeight);
 
@@ -108,7 +106,7 @@ public interface PaintableIF{
 	 * If the @paintable is already immutable, it will return itself.
 	 *
 	 * Returns: An immutable paintable for the current
-	 *     contents of @paintable.
+	 *     contents of @paintable
 	 */
 	public PaintableIF getCurrentImage();
 

@@ -178,8 +178,7 @@ public class SpinButton : Widget, CellEditableIF, EditableIF, OrientableIF
 	 * Creates a new `GtkSpinButton`.
 	 *
 	 * Params:
-	 *     adjustment = the `GtkAdjustment` that this spin
-	 *         button should use, or %NULL
+	 *     adjustment = the `GtkAdjustment` that this spin button should use
 	 *     climbRate = specifies by how much the rate of change in the value will
 	 *         accelerate if you continue to hold down an up/down button or arrow key
 	 *     digits = the number of decimal places to display
@@ -297,8 +296,8 @@ public class SpinButton : Widget, CellEditableIF, EditableIF, OrientableIF
 	 * See [method@Gtk.SpinButton.set_increments].
 	 *
 	 * Params:
-	 *     step = location to store step increment, or %NULL
-	 *     page = location to store page increment, or %NULL
+	 *     step = location to store step increment
+	 *     page = location to store page increment
 	 */
 	public void getIncrements(out double step, out double page)
 	{
@@ -321,8 +320,8 @@ public class SpinButton : Widget, CellEditableIF, EditableIF, OrientableIF
 	 * See [method@Gtk.SpinButton.set_range].
 	 *
 	 * Params:
-	 *     min = location to store minimum allowed value, or %NULL
-	 *     max = location to store maximum allowed value, or %NULL
+	 *     min = location to store minimum allowed value
+	 *     max = location to store maximum allowed value
 	 */
 	public void getRange(out double min, out double max)
 	{
@@ -546,7 +545,7 @@ public class SpinButton : Widget, CellEditableIF, EditableIF, OrientableIF
 	 * The default bindings for this signal are Up/Down and PageUp/PageDown.
 	 *
 	 * Params:
-	 *     scroll = a #GtkScrollType to specify the speed and amount of change
+	 *     scroll = a `GtkScrollType` to specify the speed and amount of change
 	 */
 	gulong addOnChangeValue(void delegate(GtkScrollType, SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

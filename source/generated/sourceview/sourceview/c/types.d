@@ -833,3 +833,22 @@ struct GtkSourceViewClass
  * Since: 3.14
  */
 public alias extern(C) GMountOperation* function(GtkSourceFile* file, void* userdata) GtkSourceMountOperationFactory;
+
+/**
+ * This function is called incrementally to process additional background work.
+ * A deadline is provided which can be checked using g_get_monotonic_time() so
+ * that additional work can be processed each frame.
+ *
+ * This is useful for situations where you are incrementally performing
+ * background work such as spell checking or semantic syntax highlighting.
+ *
+ * Params:
+ *     deadline = the time the callback should complete by
+ *     userData = closure data provided when registering callback
+ *
+ * Returns: %TRUE if there is more work to process, otherwise %FALSE and the
+ *     handler is unregistered.
+ *
+ * Since: 5.2
+ */
+public alias extern(C) int function(long deadline, void* userData) GtkSourceSchedulerCallback;

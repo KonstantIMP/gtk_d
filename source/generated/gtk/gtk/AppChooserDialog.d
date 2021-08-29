@@ -72,7 +72,7 @@ public class AppChooserDialog : Dialog, AppChooserIF
 	 * The dialog will show applications that can open the file.
 	 *
 	 * Params:
-	 *     parent = a `GtkWindow`, or %NULL
+	 *     parent = a `GtkWindow`
 	 *     flags = flags for this dialog
 	 *     file = a `GFile`
 	 *
@@ -98,7 +98,7 @@ public class AppChooserDialog : Dialog, AppChooserIF
 	 * The dialog will show applications that can open the content type.
 	 *
 	 * Params:
-	 *     parent = a `GtkWindow`, or %NULL
+	 *     parent = a `GtkWindow`
 	 *     flags = flags for this dialog
 	 *     contentType = a content type string
 	 *

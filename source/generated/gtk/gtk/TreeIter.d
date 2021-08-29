@@ -7,8 +7,8 @@ private import linker.loader;
 
 
 /**
- * The #GtkTreeIter is the primary structure
- * for accessing a #GtkTreeModel. Models are expected to put a unique
+ * The `GtkTreeIter` is the primary structure
+ * for accessing a `GtkTreeModel`. Models are expected to put a unique
  * integer in the @stamp member, and put
  * model-specific data in the three @user_data
  * members.

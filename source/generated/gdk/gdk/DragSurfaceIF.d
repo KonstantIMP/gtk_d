@@ -5,7 +5,7 @@ public  import gdk.c.types;
 
 
 /**
- * A #GdkDragSurface is an interface for surfaces used during DND.
+ * A `GdkDragSurface` is an interface for surfaces used during DND.
  */
 public interface DragSurfaceIF{
 	/** Get the main Gtk struct */

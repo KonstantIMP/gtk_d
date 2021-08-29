@@ -61,8 +61,8 @@ public class PageSetupUnixDialog : Dialog
 	 * Creates a new page setup dialog.
 	 *
 	 * Params:
-	 *     title = the title of the dialog, or %NULL
-	 *     parent = transient parent of the dialog, or %NULL
+	 *     title = the title of the dialog
+	 *     parent = transient parent of the dialog
 	 *
 	 * Returns: the new `GtkPageSetupUnixDialog`
 	 *

@@ -60,7 +60,7 @@ public class SliceListModel : ObjectG, ListModelIF
 	 * of the given @model.
 	 *
 	 * Params:
-	 *     model = The model to use, or %NULL
+	 *     model = The model to use
 	 *     offset = the offset of the slice
 	 *     size = maximum size of the slice
 	 *

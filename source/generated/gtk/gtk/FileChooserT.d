@@ -163,7 +163,7 @@ public template FileChooserT(TStruct)
 	}
 
 	/**
-	 * Gets the current folder of @chooser as #GFile.
+	 * Gets the current folder of @chooser as `GFile`.
 	 *
 	 * Returns: the `GFile` for the current folder.
 	 */
@@ -226,7 +226,7 @@ public template FileChooserT(TStruct)
 
 	/**
 	 * Lists all the selected files and subfolders in the current folder
-	 * of @chooser as #GFile.
+	 * of @chooser as `GFile`.
 	 *
 	 * Returns: a list model containing a `GFile` for each
 	 *     selected file and subfolder in the current folder. Free the returned
@@ -247,7 +247,7 @@ public template FileChooserT(TStruct)
 	/**
 	 * Gets the current filter.
 	 *
-	 * Returns: the current filter, or %NULL
+	 * Returns: the current filter
 	 */
 	public FileFilter getFilter()
 	{
@@ -410,7 +410,7 @@ public template FileChooserT(TStruct)
 	}
 
 	/**
-	 * Sets the current folder for @chooser from a #GFile.
+	 * Sets the current folder for @chooser from a `GFile`.
 	 *
 	 * Params:
 	 *     file = the `GFile` for the new folder
@@ -465,7 +465,7 @@ public template FileChooserT(TStruct)
 	 * the file’s base name will also appear in the dialog’s file name entry.
 	 *
 	 * If the file name isn’t in the current folder of @chooser, then the current
-	 * folder of @chooser will be changed to the folder containing @filename.
+	 * folder of @chooser will be changed to the folder containing @file.
 	 *
 	 * Note that the file must exist, or nothing will be done except
 	 * for the directory change.

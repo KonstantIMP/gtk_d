@@ -47,7 +47,7 @@ public class BuildableParseContext
 	 * give the element_name as passed to those functions. For the parent
 	 * elements, see gtk_buildable_parse_context_get_element_stack().
 	 *
-	 * Returns: the name of the currently open element, or %NULL
+	 * Returns: the name of the currently open element
 	 */
 	public string getElement()
 	{
@@ -57,7 +57,7 @@ public class BuildableParseContext
 	/**
 	 * Retrieves the element stack from the internal state of the parser.
 	 *
-	 * The returned #GPtrArray is an array of strings where the last item is
+	 * The returned `GPtrArray` is an array of strings where the last item is
 	 * the currently open tag (as would be returned by
 	 * gtk_buildable_parse_context_get_element()) and the previous item is its
 	 * immediate parent.
@@ -88,8 +88,8 @@ public class BuildableParseContext
 	 * "the best number we could come up with for error messages."
 	 *
 	 * Params:
-	 *     lineNumber = return location for a line number, or %NULL
-	 *     charNumber = return location for a char-on-line number, or %NULL
+	 *     lineNumber = return location for a line number
+	 *     charNumber = return location for a char-on-line number
 	 */
 	public void getPosition(out int lineNumber, out int charNumber)
 	{
@@ -122,7 +122,7 @@ public class BuildableParseContext
 	 * Temporarily redirects markup data to a sub-parser.
 	 *
 	 * This function may only be called from the start_element handler of
-	 * a #GtkBuildableParser. It must be matched with a corresponding call to
+	 * a `GtkBuildableParser`. It must be matched with a corresponding call to
 	 * gtk_buildable_parse_context_pop() in the matching end_element handler
 	 * (except in the case that the parser aborts due to an error).
 	 *
@@ -150,8 +150,8 @@ public class BuildableParseContext
 	 * has the same kind of API.
 	 *
 	 * Params:
-	 *     parser = a #GtkBuildableParser
-	 *     userData = user data to pass to #GtkBuildableParser functions
+	 *     parser = a `GtkBuildableParser`
+	 *     userData = user data to pass to `GtkBuildableParser` functions
 	 */
 	public void push(GtkBuildableParser* parser, void* userData)
 	{

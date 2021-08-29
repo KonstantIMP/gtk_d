@@ -62,14 +62,15 @@ public class RecentInfo
 	/**
 	 * Creates a `GAppInfo` for the specified `GtkRecentInfo`
 	 *
+	 * In case of error, @error will be set either with a
+	 * %GTK_RECENT_MANAGER_ERROR or a %G_IO_ERROR
+	 *
 	 * Params:
 	 *     appName = the name of the application that should
 	 *         be mapped to a `GAppInfo`; if %NULL is used then the default
 	 *         application for the MIME type is used
 	 *
-	 * Returns: the newly created `GAppInfo`,
-	 *     or %NULL. In case of error, @error will be set either with a
-	 *     %GTK_RECENT_MANAGER_ERROR or a %G_IO_ERROR
+	 * Returns: the newly created `GAppInfo`
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -108,7 +109,7 @@ public class RecentInfo
 	 * Gets the the time when the resource
 	 * was added to the recently used resources list.
 	 *
-	 * Returns: a #GDateTime for the time
+	 * Returns: a `GDateTime` for the time
 	 *     when the resource was added
 	 */
 	public DateTime getAdded()
@@ -212,8 +213,7 @@ public class RecentInfo
 	/**
 	 * Retrieves the icon associated to the resource MIME type.
 	 *
-	 * Returns: a #GIcon containing the icon, or %NULL.
-	 *     Use g_object_unref() when finished using the icon
+	 * Returns: a `GIcon` containing the icon
 	 */
 	public IconIF getGicon()
 	{
@@ -261,7 +261,7 @@ public class RecentInfo
 	 * Gets the time when the meta-data
 	 * for the resource was last modified.
 	 *
-	 * Returns: a #GDateTime for the time
+	 * Returns: a `GDateTime` for the time
 	 *     when the resource was last modified
 	 */
 	public DateTime getModified()
@@ -341,7 +341,7 @@ public class RecentInfo
 	 * Gets the time when the meta-data
 	 * for the resource was last visited.
 	 *
-	 * Returns: a #GDateTime for the time
+	 * Returns: a `GDateTime` for the time
 	 *     when the resource was last visited
 	 */
 	public DateTime getVisited()

@@ -676,7 +676,7 @@ public class PrintSettings : ObjectG
 	 *
 	 * Params:
 	 *     key = a key
-	 *     value = a string value, or %NULL
+	 *     value = a string value
 	 */
 	public void set(string key, string value)
 	{
@@ -744,7 +744,7 @@ public class PrintSettings : ObjectG
 	 * Sets the value of %GTK_PRINT_SETTINGS_DUPLEX.
 	 *
 	 * Params:
-	 *     duplex = a #GtkPrintDuplex value
+	 *     duplex = a `GtkPrintDuplex` value
 	 */
 	public void setDuplex(GtkPrintDuplex duplex)
 	{
@@ -826,7 +826,7 @@ public class PrintSettings : ObjectG
 	 * Sets the value of %GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT.
 	 *
 	 * Params:
-	 *     numberUpLayout = a #GtkNumberUpLayout value
+	 *     numberUpLayout = a `GtkNumberUpLayout` value
 	 */
 	public void setNumberUpLayout(GtkNumberUpLayout numberUpLayout)
 	{
@@ -870,7 +870,7 @@ public class PrintSettings : ObjectG
 	 * Sets the value of %GTK_PRINT_SETTINGS_PAGE_SET.
 	 *
 	 * Params:
-	 *     pageSet = a #GtkPageSet value
+	 *     pageSet = a `GtkPageSet` value
 	 */
 	public void setPageSet(GtkPageSet pageSet)
 	{
@@ -918,7 +918,7 @@ public class PrintSettings : ObjectG
 	 * Sets the value of %GTK_PRINT_SETTINGS_PRINT_PAGES.
 	 *
 	 * Params:
-	 *     pages = a #GtkPrintPages value
+	 *     pages = a `GtkPrintPages` value
 	 */
 	public void setPrintPages(GtkPrintPages pages)
 	{
@@ -952,7 +952,7 @@ public class PrintSettings : ObjectG
 	 * Sets the value of %GTK_PRINT_SETTINGS_QUALITY.
 	 *
 	 * Params:
-	 *     quality = a #GtkPrintQuality value
+	 *     quality = a `GtkPrintQuality` value
 	 */
 	public void setQuality(GtkPrintQuality quality)
 	{

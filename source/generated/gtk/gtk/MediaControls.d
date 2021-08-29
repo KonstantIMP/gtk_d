@@ -54,8 +54,7 @@ public class MediaControls : Widget
 	 * Creates a new `GtkMediaControls` managing the @stream passed to it.
 	 *
 	 * Params:
-	 *     stream = a #GtkMediaStream to
-	 *         manage or %NULL for none.
+	 *     stream = a `GtkMediaStream` to manage
 	 *
 	 * Returns: a new `GtkMediaControls`
 	 *
@@ -94,7 +93,7 @@ public class MediaControls : Widget
 	 * Sets the stream that is controlled by @controls.
 	 *
 	 * Params:
-	 *     stream = a `GtkMediaStream`, or %NULL
+	 *     stream = a `GtkMediaStream`
 	 */
 	public void setMediaStream(MediaStream stream)
 	{

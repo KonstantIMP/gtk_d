@@ -47,8 +47,9 @@ public class PgAttributeLanguage : PgAttribute
 	 * Params:
 	 *     language = language tag
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */

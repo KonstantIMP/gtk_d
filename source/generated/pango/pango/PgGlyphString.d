@@ -81,9 +81,7 @@ public class PgGlyphString
 	/**
 	 * Copy a glyph string and associated storage.
 	 *
-	 * Returns: the newly allocated `PangoGlyphString`,
-	 *     which should be freed with [method@Pango.GlyphString.free],
-	 *     or %NULL if @string was %NULL.
+	 * Returns: the newly allocated `PangoGlyphString`
 	 */
 	public PgGlyphString copy()
 	{
@@ -109,10 +107,8 @@ public class PgGlyphString
 	 *
 	 * Params:
 	 *     font = a `PangoFont`
-	 *     inkRect = rectangle used to store the extents of the glyph string
-	 *         as drawn or %NULL to indicate that the result is not needed.
-	 *     logicalRect = rectangle used to store the logical extents of the
-	 *         glyph string or %NULL to indicate that the result is not needed.
+	 *     inkRect = rectangle used to store the extents of the glyph string as drawn
+	 *     logicalRect = rectangle used to store the logical extents of the glyph string
 	 */
 	public void extents(PgFont font, out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
@@ -132,11 +128,9 @@ public class PgGlyphString
 	 *         indices such that start <= index < end)
 	 *     font = a `PangoFont`
 	 *     inkRect = rectangle used to
-	 *         store the extents of the glyph string range as drawn or
-	 *         %NULL to indicate that the result is not needed.
+	 *         store the extents of the glyph string range as drawn
 	 *     logicalRect = rectangle used to
-	 *         store the logical extents of the glyph string range or
-	 *         %NULL to indicate that the result is not needed.
+	 *         store the logical extents of the glyph string range
 	 */
 	public void extentsRange(int start, int end, PgFont font, out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
@@ -166,9 +160,8 @@ public class PgGlyphString
 	 *     length = the length of @text, in bytes
 	 *     embeddingLevel = the embedding level of the string
 	 *     logicalWidths = an array whose length is the number of
-	 *         characters in text (equal to g_utf8_strlen (text,
-	 *         length) unless text has NUL bytes) to be filled in
-	 *         with the resulting character widths.
+	 *         characters in text (equal to `g_utf8_strlen (text, length)` unless
+	 *         text has `NUL` bytes) to be filled in with the resulting character widths.
 	 */
 	public void getLogicalWidths(string text, int length, int embeddingLevel, int[] logicalWidths)
 	{
@@ -217,7 +210,7 @@ public class PgGlyphString
 	 * Resize a glyph string to the given length.
 	 *
 	 * Params:
-	 *     newLen = the new length of the string.
+	 *     newLen = the new length of the string
 	 */
 	public void setSize(int newLen)
 	{
@@ -239,9 +232,8 @@ public class PgGlyphString
 	 *     analysis = the analysis information return from [func@itemize]
 	 *     xPos = the x offset (in Pango units)
 	 *     index = location to store calculated byte index within @text
-	 *     trailing = location to store a boolean indicating
-	 *         whether the user clicked on the leading or trailing
-	 *         edge of the character.
+	 *     trailing = location to store a boolean indicating whether the
+	 *         user clicked on the leading or trailing edge of the character
 	 */
 	public void xToIndex(string text, int length, PangoAnalysis* analysis, int xPos, out int index, out int trailing)
 	{

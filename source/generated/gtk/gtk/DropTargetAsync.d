@@ -142,7 +142,7 @@ public class DropTargetAsync : EventController
 	 * the data.
 	 *
 	 * Params:
-	 *     drop = the #GdkDrop of an ongoing drag operation
+	 *     drop = the `GdkDrop` of an ongoing drag operation
 	 */
 	public void rejectDrop(Drop drop)
 	{
@@ -164,8 +164,7 @@ public class DropTargetAsync : EventController
 	 * Sets the data formats that this drop target will accept.
 	 *
 	 * Params:
-	 *     formats = the supported data formats or %NULL for
-	 *         any format.
+	 *     formats = the supported data formats or %NULL for any format
 	 */
 	public void setFormats(ContentFormats formats)
 	{
@@ -190,7 +189,7 @@ public class DropTargetAsync : EventController
 	 * reject the drop later, it should call [method@Gtk.DropTargetAsync.reject_drop].
 	 *
 	 * Params:
-	 *     drop = the #GdkDrop
+	 *     drop = the `GdkDrop`
 	 *
 	 * Returns: %TRUE if @drop is accepted
 	 */
@@ -205,7 +204,7 @@ public class DropTargetAsync : EventController
 	 * It can be used to set up custom highlighting.
 	 *
 	 * Params:
-	 *     drop = the #GdkDrop
+	 *     drop = the `GdkDrop`
 	 *     x = the x coordinate of the current pointer position
 	 *     y = the y coordinate of the current pointer position
 	 *
@@ -223,7 +222,7 @@ public class DropTargetAsync : EventController
 	 * `GtkDropTargetAsync`::drag-enter.
 	 *
 	 * Params:
-	 *     drop = the #GdkDrop
+	 *     drop = the `GdkDrop`
 	 */
 	gulong addOnDragLeave(void delegate(Drop, DropTargetAsync) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -234,7 +233,7 @@ public class DropTargetAsync : EventController
 	 * Emitted while the pointer is moving over the drop target.
 	 *
 	 * Params:
-	 *     drop = the #GdkDrop
+	 *     drop = the `GdkDrop`
 	 *     x = the x coordinate of the current pointer position
 	 *     y = the y coordinate of the current pointer position
 	 *
@@ -262,7 +261,7 @@ public class DropTargetAsync : EventController
 	 * [method@Gdk.Drop.read_value_async].
 	 *
 	 * Params:
-	 *     drop = the #GdkDrop
+	 *     drop = the `GdkDrop`
 	 *     x = the x coordinate of the current pointer position
 	 *     y = the y coordinate of the current pointer position
 	 *

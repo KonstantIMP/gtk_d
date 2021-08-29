@@ -66,7 +66,7 @@ public class TextTag : ObjectG
 	 * Creates a `GtkTextTag`.
 	 *
 	 * Params:
-	 *     name = tag name, or %NULL
+	 *     name = tag name
 	 *
 	 * Returns: a new `GtkTextTag`
 	 *

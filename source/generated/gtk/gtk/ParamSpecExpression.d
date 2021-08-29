@@ -6,7 +6,7 @@ public  import gtk.c.types;
 
 
 /**
- * A #GParamSpec for properties holding a #GtkExpression.
+ * A `GParamSpec` for properties holding a `GtkExpression`.
  */
 public class ParamSpecExpression : ParamSpec
 {

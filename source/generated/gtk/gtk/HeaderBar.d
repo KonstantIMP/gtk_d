@@ -162,8 +162,7 @@ public class HeaderBar : Widget
 	 *
 	 * See [method@Gtk.HeaderBar.set_title_widget].
 	 *
-	 * Returns: the title widget
-	 *     of the header, or %NULL if none has been set explicitly.
+	 * Returns: the title widget of the header
 	 */
 	public Widget getTitleWidget()
 	{
@@ -182,7 +181,7 @@ public class HeaderBar : Widget
 	 * end of the @bar.
 	 *
 	 * Params:
-	 *     child = the #GtkWidget to be added to @bar
+	 *     child = the `GtkWidget` to be added to @bar
 	 */
 	public void packEnd(Widget child)
 	{
@@ -194,7 +193,7 @@ public class HeaderBar : Widget
 	 * start of the @bar.
 	 *
 	 * Params:
-	 *     child = the #GtkWidget to be added to @bar
+	 *     child = the `GtkWidget` to be added to @bar
 	 */
 	public void packStart(Widget child)
 	{
@@ -237,8 +236,7 @@ public class HeaderBar : Widget
 	 * on the left, and minimize, maximize and close buttons on the right.
 	 *
 	 * Params:
-	 *     layout = a decoration layout, or %NULL to
-	 *         unset the layout
+	 *     layout = a decoration layout, or %NULL to unset the layout
 	 */
 	public void setDecorationLayout(string layout)
 	{

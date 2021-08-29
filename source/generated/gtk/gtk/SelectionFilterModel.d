@@ -56,7 +56,7 @@ public class SelectionFilterModel : ObjectG, ListModelIF
 	 * selected items from the underlying selection model.
 	 *
 	 * Params:
-	 *     model = the selection model to filter, or %NULL
+	 *     model = the selection model to filter
 	 *
 	 * Returns: a new `GtkSelectionFilterModel`
 	 *

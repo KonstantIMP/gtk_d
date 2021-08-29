@@ -31,6 +31,9 @@ private import std.stdio;
  * [text widget conceptual overview](section-text-widget.html),
  * which gives an overview of all the objects and data types
  * related to the text widget and how they work together.
+ * 
+ * GtkTextBuffer can support undoing changes to the buffer
+ * content, see [method@Gtk.TextBuffer.set_enable_undo].
  */
 public class TextBuffer : ObjectG
 {
@@ -222,8 +225,8 @@ public this(TextTagTable table)
  * is not %NULL then there must not be another mark in the buffer
  * with the same name.
  *
- * Emits the `GtkTextBuffer`::mark-set signal as notification of
- * the mark's initial placement.
+ * Emits the [signal@Gtk.TextBuffer::mark-set] signal as notification
+ * of the mark's initial placement.
  *
  * Params:
  *     mark = the mark to add
@@ -318,8 +321,8 @@ public bool backspace(TextIter iter, bool interactive, bool defaultEditable)
  * [method@Gtk.TextBuffer.end_irreversible_action] after the irreversible
  * action has completed.
  *
- * You may nest calls to gtk_text_buffer_begin_irreversible_action() and
- * gtk_text_buffer_end_irreversible_action() pairs.
+ * You may nest calls to gtk_text_buffer_begin_irreversible_action()
+ * and gtk_text_buffer_end_irreversible_action() pairs.
  */
 public void beginIrreversibleAction()
 {
@@ -403,19 +406,19 @@ public TextChildAnchor createChildAnchor(TextIter iter)
  * side of the text you’re typing).
  *
  * The caller of this function does not own a
- * reference to the returned #GtkTextMark, so you can ignore the
+ * reference to the returned `GtkTextMark`, so you can ignore the
  * return value if you like. Marks are owned by the buffer and go
  * away when the buffer does.
  *
- * Emits the `GtkTextBuffer`::mark-set signal as notification of
- * the mark's initial placement.
+ * Emits the [signal@Gtk.TextBuffer::mark-set] signal as notification
+ * of the mark's initial placement.
  *
  * Params:
- *     markName = name for mark, or %NULL
+ *     markName = name for mark
  *     where = location to place mark
  *     leftGravity = whether the mark has left gravity
  *
- * Returns: the new #GtkTextMark object
+ * Returns: the new `GtkTextMark` object
  */
 public TextMark createMark(string markName, TextIter where, bool leftGravity)
 {
@@ -544,11 +547,11 @@ public bool deleteSelection(bool interactive, bool defaultEditable)
  * queue to be cleared.
  *
  * This should be called after completing modifications to the
- * text buffer after gtk_text_buffer_begin_irreversible_action()
+ * text buffer after [method@Gtk.TextBuffer.begin_irreversible_action]
  * was called.
  *
- * You may nest calls to gtk_text_buffer_begin_irreversible_action() and
- * gtk_text_buffer_end_irreversible_action() pairs.
+ * You may nest calls to gtk_text_buffer_begin_irreversible_action()
+ * and gtk_text_buffer_end_irreversible_action() pairs.
  */
 public void endIrreversibleAction()
 {
@@ -839,7 +842,7 @@ public int getLineCount()
  * Params:
  *     name = a mark name
  *
- * Returns: a #GtkTextMark, or %NULL
+ * Returns: a `GtkTextMark`
  */
 public TextMark getMark(string name)
 {
@@ -1192,7 +1195,7 @@ public void insertPaintable(TextIter iter, PaintableIF paintable)
  * images and tags. If @start and @end are in a different buffer from
  * @buffer, the two buffers must share the same tag table.
  *
- * Implemented via emissions of the insert_text and apply_tag signals,
+ * Implemented via emissions of the ::insert-text and ::apply-tag signals,
  * so expect those.
  *
  * Params:
@@ -1231,8 +1234,8 @@ public bool insertRangeInteractive(TextIter iter, TextIter start, TextIter end, 
 /**
  * Moves @mark to the new location @where.
  *
- * Emits the `GtkTextBuffer`::mark-set
- * signal as notification of the move.
+ * Emits the [signal@Gtk.TextBuffer::mark-set] signal
+ * as notification of the move.
  *
  * Params:
  *     mark = a `GtkTextMark`
@@ -1270,7 +1273,7 @@ public void moveMarkByName(string name, TextIter where)
  *
  * Params:
  *     clipboard = the `GdkClipboard` to paste from
- *     overrideLocation = location to insert pasted text, or %NULL
+ *     overrideLocation = location to insert pasted text
  *     defaultEditable = whether the buffer is editable by default
  */
 public void pasteClipboard(Clipboard clipboard, TextIter overrideLocation, bool defaultEditable)
@@ -1391,6 +1394,9 @@ public void selectRange(TextIter ins, TextIter bound)
 
 /**
  * Sets whether or not to enable undoable actions in the text buffer.
+ *
+ * Undoable actions in this context are changes to the text content of
+ * the buffer. Changes to tags and marks are not tracked.
  *
  * If enabled, the user will be able to undo the last number of actions
  * up to [method@Gtk.TextBuffer.get_max_undo_levels].
@@ -1604,7 +1610,7 @@ gulong addOnInsertPaintable(void delegate(TextIter, PaintableIF, TextBuffer) dlg
  * revalidate it). The default signal handler revalidates
  * it to point to the end of the inserted text.
  *
- * See also: [method@Gtk,TextBuffer.insert],
+ * See also: [method@Gtk.TextBuffer.insert],
  * [method@Gtk.TextBuffer.insert_range].
  *
  * Params:

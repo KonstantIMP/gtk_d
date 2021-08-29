@@ -2,6 +2,8 @@ module gtk.StackSwitcher;
 
 private import glib.ConstructionException;
 private import gobject.ObjectG;
+private import gtk.OrientableIF;
+private import gtk.OrientableT;
 private import gtk.Stack;
 private import gtk.Widget;
 private import gtk.c.functions;
@@ -36,8 +38,14 @@ public  import gtk.c.types;
  * 
  * `GtkStackSwitcher` uses the %GTK_ACCESSIBLE_ROLE_TAB_LIST role
  * and uses the %GTK_ACCESSIBLE_ROLE_TAB for its buttons.
+ * 
+ * # Orientable
+ * 
+ * Since GTK 4.4, `GtkStackSwitcher` implements `GtkOrientable` allowing
+ * the stack switcher to be made vertical with
+ * `gtk_orientable_set_orientation()`.
  */
-public class StackSwitcher : Widget
+public class StackSwitcher : Widget, OrientableIF
 {
 	/** the main Gtk struct */
 	protected GtkStackSwitcher* gtkStackSwitcher;
@@ -64,6 +72,9 @@ public class StackSwitcher : Widget
 		this.gtkStackSwitcher = gtkStackSwitcher;
 		super(cast(GtkWidget*)gtkStackSwitcher, ownedRef);
 	}
+
+	// add the Orientable capabilities
+	mixin OrientableT!(GtkStackSwitcher);
 
 
 	/** */
@@ -94,8 +105,7 @@ public class StackSwitcher : Widget
 	/**
 	 * Retrieves the stack.
 	 *
-	 * Returns: the stack, or %NULL if
-	 *     none has been set explicitly.
+	 * Returns: the stack
 	 */
 	public Stack getStack()
 	{

@@ -159,7 +159,7 @@ public class CssSection
 	 * 1 to 23 in the file `gtk.css`.
 	 *
 	 * Params:
-	 *     string_ = a #GString to print to
+	 *     string_ = a `GString` to print to
 	 */
 	public void print(StringG string_)
 	{

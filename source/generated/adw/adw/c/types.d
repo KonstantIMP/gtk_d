@@ -83,6 +83,24 @@ public enum AdwFlapTransitionType
 alias AdwFlapTransitionType FlapTransitionType;
 
 /**
+ * Determines when [class@Adw.Flap] and [class@Adw.Leaflet] will fold.
+ *
+ * Since: 1.0
+ */
+public enum AdwFoldThresholdPolicy
+{
+	/**
+	 * Folding is based on the minimum size
+	 */
+	MINIMUM = 0,
+	/**
+	 * Folding is based on the natural size
+	 */
+	NATURAL = 1,
+}
+alias AdwFoldThresholdPolicy FoldThresholdPolicy;
+
+/**
  * Describes the possible transitions in a [class@Adw.Leaflet] widget.
  *
  * New values may be added to this enumeration over time.
@@ -472,6 +490,20 @@ struct AdwTabViewClass
 struct AdwValueObject;
 
 struct AdwValueObjectClass
+{
+	GObjectClass parentClass;
+}
+
+struct AdwViewStack;
+
+struct AdwViewStackClass
+{
+	GtkWidgetClass parentClass;
+}
+
+struct AdwViewStackPage;
+
+struct AdwViewStackPageClass
 {
 	GObjectClass parentClass;
 }

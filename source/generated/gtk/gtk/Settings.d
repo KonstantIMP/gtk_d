@@ -34,7 +34,7 @@ public  import gtk.c.types;
  * configuration facility.
  * 
  * There is one `GtkSettings` instance per display. It can be obtained with
- * [type_func@GtkSettings.get_for_display], but in many cases, it is more
+ * [func@Gtk.Settings.get_for_display], but in many cases, it is more
  * convenient to use [method@Gtk.Widget.get_settings].
  */
 public class Settings : ObjectG, StyleProviderIF
@@ -79,7 +79,7 @@ public class Settings : ObjectG, StyleProviderIF
 	 * Gets the `GtkSettings` object for the default display, creating
 	 * it if necessary.
 	 *
-	 * See [type_func@Gtk.Settings.get_for_display].
+	 * See [func@Gtk.Settings.get_for_display].
 	 *
 	 * Returns: a `GtkSettings` object. If there is
 	 *     no default display, then returns %NULL.

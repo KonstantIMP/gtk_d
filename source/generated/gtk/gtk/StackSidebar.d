@@ -82,7 +82,7 @@ public class StackSidebar : Widget
 	/**
 	 * Retrieves the stack.
 	 *
-	 * Returns: the associated #GtkStack or
+	 * Returns: the associated `GtkStack` or
 	 *     %NULL if none has been set explicitly
 	 */
 	public Stack getStack()

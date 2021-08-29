@@ -39,9 +39,10 @@ public struct PgScript
 	/**
 	 * Finds a language tag that is reasonably representative of @script.
 	 *
-	 * The language will usually be the most widely spoken or used language written
-	 * in that script: for instance, the sample language for %PANGO_SCRIPT_CYRILLIC
-	 * is ru (Russian), the sample language for %PANGO_SCRIPT_ARABIC is ar.
+	 * The language will usually be the most widely spoken or used language
+	 * written in that script: for instance, the sample language for
+	 * %PANGO_SCRIPT_CYRILLIC is ru (Russian), the sample language for
+	 * %PANGO_SCRIPT_ARABIC is ar.
 	 *
 	 * For some scripts, no sample language will be returned because
 	 * there is no language that is sufficiently representative. The
@@ -70,7 +71,7 @@ public struct PgScript
 	 *     script = a `PangoScript`
 	 *
 	 * Returns: a `PangoLanguage` that is representative
-	 *     of the script, or %NULL if no such language exists.
+	 *     of the script
 	 *
 	 * Since: 1.4
 	 */

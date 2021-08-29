@@ -9,8 +9,8 @@ private import std.algorithm;
 /**
  * The interface for sortable models used by GtkTreeView
  * 
- * #GtkTreeSortable is an interface to be implemented by tree models which
- * support sorting. The #GtkTreeView uses the methods provided by this interface
+ * `GtkTreeSortable` is an interface to be implemented by tree models which
+ * support sorting. The `GtkTreeView` uses the methods provided by this interface
  * to sort the model.
  */
 public interface TreeSortableIF{
@@ -35,7 +35,7 @@ public interface TreeSortableIF{
 	 *
 	 * Params:
 	 *     sortColumnId = The sort column id to be filled in
-	 *     order = The #GtkSortType to be filled in
+	 *     order = The `GtkSortType` to be filled in
 	 *
 	 * Returns: %TRUE if the sort column is not one of the special sort
 	 *     column ids.
@@ -64,15 +64,15 @@ public interface TreeSortableIF{
 	 *
 	 * Params:
 	 *     sortFunc = The comparison function
-	 *     userData = User data to pass to @sort_func, or %NULL
-	 *     destroy = Destroy notifier of @user_data, or %NULL
+	 *     userData = User data to pass to @sort_func
+	 *     destroy = Destroy notifier of @user_data
 	 */
 	public void setDefaultSortFunc(GtkTreeIterCompareFunc sortFunc, void* userData, GDestroyNotify destroy);
 
 	/**
 	 * Sets the current sort column to be @sort_column_id. The @sortable will
 	 * resort itself to reflect this change, after emitting a
-	 * #GtkTreeSortable::sort-column-changed signal. @sort_column_id may either be
+	 * `GtkTreeSortable::sort-column-changed` signal. @sort_column_id may either be
 	 * a regular column id, or one of the following special values:
 	 *
 	 * - %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID: the default sort function
@@ -94,13 +94,13 @@ public interface TreeSortableIF{
 	 * Params:
 	 *     sortColumnId = the sort column id to set the function for
 	 *     sortFunc = The comparison function
-	 *     userData = User data to pass to @sort_func, or %NULL
-	 *     destroy = Destroy notifier of @user_data, or %NULL
+	 *     userData = User data to pass to @sort_func
+	 *     destroy = Destroy notifier of @user_data
 	 */
 	public void setSortFunc(int sortColumnId, GtkTreeIterCompareFunc sortFunc, void* userData, GDestroyNotify destroy);
 
 	/**
-	 * Emits a #GtkTreeSortable::sort-column-changed signal on @sortable.
+	 * Emits a `GtkTreeSortable::sort-column-changed` signal on @sortable.
 	 */
 	public void sortColumnChanged();
 

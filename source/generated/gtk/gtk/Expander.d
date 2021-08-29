@@ -187,7 +187,7 @@ public class Expander : Widget
 	}
 
 	/**
-	 * Queries a #GtkExpander and returns its current state.
+	 * Queries a `GtkExpander` and returns its current state.
 	 *
 	 * Returns %TRUE if the child widget is revealed.
 	 *
@@ -218,8 +218,7 @@ public class Expander : Widget
 	/**
 	 * Retrieves the label widget for the frame.
 	 *
-	 * Returns: the label widget,
-	 *     or %NULL if there is none
+	 * Returns: the label widget
 	 */
 	public Widget getLabelWidget()
 	{

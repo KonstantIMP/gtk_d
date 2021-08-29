@@ -17,38 +17,38 @@ private import std.algorithm;
 /**
  * An object for rendering a single cell
  * 
- * The #GtkCellRenderer is a base class of a set of objects used for
- * rendering a cell to a #cairo_t.  These objects are used primarily by
- * the #GtkTreeView widget, though they aren’t tied to them in any
- * specific way.  It is worth noting that #GtkCellRenderer is not a
- * #GtkWidget and cannot be treated as such.
+ * The `GtkCellRenderer` is a base class of a set of objects used for
+ * rendering a cell to a `cairo_t`.  These objects are used primarily by
+ * the `GtkTreeView` widget, though they aren’t tied to them in any
+ * specific way.  It is worth noting that `GtkCellRenderer` is not a
+ * `GtkWidget` and cannot be treated as such.
  * 
- * The primary use of a #GtkCellRenderer is for drawing a certain graphical
- * elements on a #cairo_t. Typically, one cell renderer is used to
+ * The primary use of a `GtkCellRenderer` is for drawing a certain graphical
+ * elements on a `cairo_t`. Typically, one cell renderer is used to
  * draw many cells on the screen.  To this extent, it isn’t expected that a
  * CellRenderer keep any permanent state around.  Instead, any state is set
- * just prior to use using #GObjects property system.  Then, the
+ * just prior to use using `GObject`s property system.  Then, the
  * cell is measured using gtk_cell_renderer_get_preferred_size(). Finally, the cell
  * is rendered in the correct location using gtk_cell_renderer_snapshot().
  * 
  * There are a number of rules that must be followed when writing a new
- * #GtkCellRenderer.  First and foremost, it’s important that a certain set
+ * `GtkCellRenderer`.  First and foremost, it’s important that a certain set
  * of properties will always yield a cell renderer of the same size,
- * barring a style change. The #GtkCellRenderer also has a number of
+ * barring a style change. The `GtkCellRenderer` also has a number of
  * generic properties that are expected to be honored by all children.
  * 
  * Beyond merely rendering a cell, cell renderers can optionally
  * provide active user interface elements. A cell renderer can be
- * “activatable” like #GtkCellRendererToggle,
+ * “activatable” like `GtkCellRenderer`Toggle,
  * which toggles when it gets activated by a mouse click, or it can be
- * “editable” like #GtkCellRendererText, which
+ * “editable” like `GtkCellRenderer`Text, which
  * allows the user to edit the text using a widget implementing the
- * #GtkCellEditable interface, e.g. #GtkEntry.
+ * `GtkCellEditable` interface, e.g. `GtkEntry`.
  * To make a cell renderer activatable or editable, you have to
- * implement the #GtkCellRendererClass.activate or
- * #GtkCellRendererClass.start_editing virtual functions, respectively.
+ * implement the `GtkCellRenderer`Class.activate or
+ * `GtkCellRenderer`Class.start_editing virtual functions, respectively.
  * 
- * Many properties of #GtkCellRenderer and its subclasses have a
+ * Many properties of `GtkCellRenderer` and its subclasses have a
  * corresponding “set” property, e.g. “cell-background-set” corresponds
  * to “cell-background”. These “set” properties reflect whether a property
  * has been set or not. You should not set them independently.
@@ -90,14 +90,14 @@ public class CellRenderer : ObjectG
 
 	/**
 	 * Passes an activate event to the cell renderer for possible processing.
-	 * Some cell renderers may use events; for example, #GtkCellRendererToggle
+	 * Some cell renderers may use events; for example, `GtkCellRendererToggle`
 	 * toggles when it gets a mouse click.
 	 *
 	 * Params:
-	 *     event = a #GdkEvent
+	 *     event = a `GdkEvent`
 	 *     widget = widget that received the event
 	 *     path = widget-dependent string representation of the event location;
-	 *         e.g. for #GtkTreeView, a string representation of #GtkTreePath
+	 *         e.g. for `GtkTreeView`, a string representation of `GtkTreePath`
 	 *     backgroundArea = background area as passed to gtk_cell_renderer_render()
 	 *     cellArea = cell area as passed to gtk_cell_renderer_render()
 	 *     flags = render flags
@@ -114,7 +114,7 @@ public class CellRenderer : ObjectG
 	 * the appropriate edit and focus rectangle.
 	 *
 	 * Params:
-	 *     widget = the #GtkWidget this cell will be rendering to
+	 *     widget = the `GtkWidget` this cell will be rendering to
 	 *     flags = render flags
 	 *     cellArea = cell area which would be passed to gtk_cell_renderer_render()
 	 *     alignedArea = the return location for the space inside @cell_area
@@ -129,8 +129,8 @@ public class CellRenderer : ObjectG
 	 * Fills in @xalign and @yalign with the appropriate values of @cell.
 	 *
 	 * Params:
-	 *     xalign = location to fill in with the x alignment of the cell, or %NULL
-	 *     yalign = location to fill in with the y alignment of the cell, or %NULL
+	 *     xalign = location to fill in with the x alignment of the cell
+	 *     yalign = location to fill in with the y alignment of the cell
 	 */
 	public void getAlignment(out float xalign, out float yalign)
 	{
@@ -141,8 +141,8 @@ public class CellRenderer : ObjectG
 	 * Fills in @width and @height with the appropriate size of @cell.
 	 *
 	 * Params:
-	 *     width = location to fill in with the fixed width of the cell, or %NULL
-	 *     height = location to fill in with the fixed height of the cell, or %NULL
+	 *     width = location to fill in with the fixed width of the cell
+	 *     height = location to fill in with the fixed height of the cell
 	 */
 	public void getFixedSize(out int width, out int height)
 	{
@@ -150,7 +150,7 @@ public class CellRenderer : ObjectG
 	}
 
 	/**
-	 * Checks whether the given #GtkCellRenderer is expanded.
+	 * Checks whether the given `GtkCellRenderer` is expanded.
 	 *
 	 * Returns: %TRUE if the cell renderer is expanded
 	 */
@@ -160,7 +160,7 @@ public class CellRenderer : ObjectG
 	}
 
 	/**
-	 * Checks whether the given #GtkCellRenderer is an expander.
+	 * Checks whether the given `GtkCellRenderer` is an expander.
 	 *
 	 * Returns: %TRUE if @cell is an expander, and %FALSE otherwise
 	 */
@@ -173,8 +173,8 @@ public class CellRenderer : ObjectG
 	 * Fills in @xpad and @ypad with the appropriate values of @cell.
 	 *
 	 * Params:
-	 *     xpad = location to fill in with the x padding of the cell, or %NULL
-	 *     ypad = location to fill in with the y padding of the cell, or %NULL
+	 *     xpad = location to fill in with the x padding of the cell
+	 *     ypad = location to fill in with the y padding of the cell
 	 */
 	public void getPadding(out int xpad, out int ypad)
 	{
@@ -185,9 +185,9 @@ public class CellRenderer : ObjectG
 	 * Retrieves a renderer’s natural size when rendered to @widget.
 	 *
 	 * Params:
-	 *     widget = the #GtkWidget this cell will be rendering to
-	 *     minimumSize = location to store the minimum size, or %NULL
-	 *     naturalSize = location to store the natural size, or %NULL
+	 *     widget = the `GtkWidget` this cell will be rendering to
+	 *     minimumSize = location to store the minimum size
+	 *     naturalSize = location to store the natural size
 	 */
 	public void getPreferredHeight(Widget widget, out int minimumSize, out int naturalSize)
 	{
@@ -199,10 +199,10 @@ public class CellRenderer : ObjectG
 	 * @widget with the specified @width.
 	 *
 	 * Params:
-	 *     widget = the #GtkWidget this cell will be rendering to
+	 *     widget = the `GtkWidget` this cell will be rendering to
 	 *     width = the size which is available for allocation
-	 *     minimumHeight = location for storing the minimum size, or %NULL
-	 *     naturalHeight = location for storing the preferred size, or %NULL
+	 *     minimumHeight = location for storing the minimum size
+	 *     naturalHeight = location for storing the preferred size
 	 */
 	public void getPreferredHeightForWidth(Widget widget, int width, out int minimumHeight, out int naturalHeight)
 	{
@@ -214,9 +214,9 @@ public class CellRenderer : ObjectG
 	 * into account the widget’s preference for height-for-width management.
 	 *
 	 * Params:
-	 *     widget = the #GtkWidget this cell will be rendering to
-	 *     minimumSize = location for storing the minimum size, or %NULL
-	 *     naturalSize = location for storing the natural size, or %NULL
+	 *     widget = the `GtkWidget` this cell will be rendering to
+	 *     minimumSize = location for storing the minimum size
+	 *     naturalSize = location for storing the natural size
 	 */
 	public void getPreferredSize(Widget widget, out Requisition minimumSize, out Requisition naturalSize)
 	{
@@ -233,9 +233,9 @@ public class CellRenderer : ObjectG
 	 * Retrieves a renderer’s natural size when rendered to @widget.
 	 *
 	 * Params:
-	 *     widget = the #GtkWidget this cell will be rendering to
-	 *     minimumSize = location to store the minimum size, or %NULL
-	 *     naturalSize = location to store the natural size, or %NULL
+	 *     widget = the `GtkWidget` this cell will be rendering to
+	 *     minimumSize = location to store the minimum size
+	 *     naturalSize = location to store the natural size
 	 */
 	public void getPreferredWidth(Widget widget, out int minimumSize, out int naturalSize)
 	{
@@ -247,10 +247,10 @@ public class CellRenderer : ObjectG
 	 * @widget with the specified @height.
 	 *
 	 * Params:
-	 *     widget = the #GtkWidget this cell will be rendering to
+	 *     widget = the `GtkWidget` this cell will be rendering to
 	 *     height = the size which is available for allocation
-	 *     minimumWidth = location for storing the minimum size, or %NULL
-	 *     naturalWidth = location for storing the preferred size, or %NULL
+	 *     minimumWidth = location for storing the minimum size
+	 *     naturalWidth = location for storing the preferred size
 	 */
 	public void getPreferredWidthForHeight(Widget widget, int height, out int minimumWidth, out int naturalWidth)
 	{
@@ -261,7 +261,7 @@ public class CellRenderer : ObjectG
 	 * Gets whether the cell renderer prefers a height-for-width layout
 	 * or a width-for-height layout.
 	 *
-	 * Returns: The #GtkSizeRequestMode preferred by this renderer.
+	 * Returns: The `GtkSizeRequestMode` preferred by this renderer.
 	 */
 	public GtkSizeRequestMode getRequestMode()
 	{
@@ -279,12 +279,12 @@ public class CellRenderer : ObjectG
 	}
 
 	/**
-	 * Translates the cell renderer state to #GtkStateFlags,
+	 * Translates the cell renderer state to `GtkStateFlags`,
 	 * based on the cell renderer and widget sensitivity, and
-	 * the given #GtkCellRendererState.
+	 * the given `GtkCellRenderer`State.
 	 *
 	 * Params:
-	 *     widget = a #GtkWidget, or %NULL
+	 *     widget = a `GtkWidget`
 	 *     cellState = cell renderer state
 	 *
 	 * Returns: the widget state flags applying to @cell
@@ -339,7 +339,7 @@ public class CellRenderer : ObjectG
 	}
 
 	/**
-	 * Sets whether the given #GtkCellRenderer is expanded.
+	 * Sets whether the given `GtkCellRenderer` is expanded.
 	 *
 	 * Params:
 	 *     isExpanded = whether @cell should be expanded
@@ -350,7 +350,7 @@ public class CellRenderer : ObjectG
 	}
 
 	/**
-	 * Sets whether the given #GtkCellRenderer is an expander.
+	 * Sets whether the given `GtkCellRenderer` is an expander.
 	 *
 	 * Params:
 	 *     isExpander = whether @cell is an expander
@@ -395,16 +395,16 @@ public class CellRenderer : ObjectG
 	}
 
 	/**
-	 * Invokes the virtual render function of the #GtkCellRenderer. The three
+	 * Invokes the virtual render function of the `GtkCellRenderer`. The three
 	 * passed-in rectangles are areas in @cr. Most renderers will draw within
-	 * @cell_area; the xalign, yalign, xpad, and ypad fields of the #GtkCellRenderer
+	 * @cell_area; the xalign, yalign, xpad, and ypad fields of the `GtkCellRenderer`
 	 * should be honored with respect to @cell_area. @background_area includes the
 	 * blank space around the cell, and also the area containing the tree expander;
 	 * so the @background_area rectangles for all cells tile to cover the entire
 	 * @window.
 	 *
 	 * Params:
-	 *     snapshot = a #GtkSnapshot to draw to
+	 *     snapshot = a `GtkSnapshot` to draw to
 	 *     widget = the widget owning @window
 	 *     backgroundArea = entire cell area (including tree expanders and maybe
 	 *         padding on the sides)
@@ -417,19 +417,19 @@ public class CellRenderer : ObjectG
 	}
 
 	/**
-	 * Starts editing the contents of this @cell, through a new #GtkCellEditable
-	 * widget created by the #GtkCellRendererClass.start_editing virtual function.
+	 * Starts editing the contents of this @cell, through a new `GtkCellEditable`
+	 * widget created by the `GtkCellRenderer`Class.start_editing virtual function.
 	 *
 	 * Params:
-	 *     event = a #GdkEvent
+	 *     event = a `GdkEvent`
 	 *     widget = widget that received the event
 	 *     path = widget-dependent string representation of the event location;
-	 *         e.g. for #GtkTreeView, a string representation of #GtkTreePath
+	 *         e.g. for `GtkTreeView`, a string representation of `GtkTreePath`
 	 *     backgroundArea = background area as passed to gtk_cell_renderer_render()
 	 *     cellArea = cell area as passed to gtk_cell_renderer_render()
 	 *     flags = render flags
 	 *
-	 * Returns: A new #GtkCellEditable for editing this
+	 * Returns: A new `GtkCellEditable` for editing this
 	 *     @cell, or %NULL if editing is not possible
 	 */
 	public CellEditableIF startEditing(Event event, Widget widget, string path, GdkRectangle* backgroundArea, GdkRectangle* cellArea, GtkCellRendererState flags)
@@ -447,11 +447,11 @@ public class CellRenderer : ObjectG
 	/**
 	 * Informs the cell renderer that the editing is stopped.
 	 * If @canceled is %TRUE, the cell renderer will emit the
-	 * #GtkCellRenderer::editing-canceled signal.
+	 * `GtkCellRenderer`::editing-canceled signal.
 	 *
 	 * This function should be called by cell renderer implementations
-	 * in response to the #GtkCellEditable::editing-done signal of
-	 * #GtkCellEditable.
+	 * in response to the `GtkCellEditable::editing-done` signal of
+	 * `GtkCellEditable`.
 	 *
 	 * Params:
 	 *     canceled = %TRUE if the editing has been canceled
@@ -476,8 +476,8 @@ public class CellRenderer : ObjectG
 	/**
 	 * This signal gets emitted when a cell starts to be edited.
 	 * The intended use of this signal is to do special setup
-	 * on @editable, e.g. adding a #GtkEntryCompletion or setting
-	 * up additional columns in a #GtkComboBox.
+	 * on @editable, e.g. adding a `GtkEntryCompletion` or setting
+	 * up additional columns in a `GtkComboBox`.
 	 *
 	 * See gtk_cell_editable_start_editing() for information on the lifecycle of
 	 * the @editable and a way to do setup that doesn’t depend on the @renderer.
@@ -505,7 +505,7 @@ public class CellRenderer : ObjectG
 	 * ]|
 	 *
 	 * Params:
-	 *     editable = the #GtkCellEditable
+	 *     editable = the `GtkCellEditable`
 	 *     path = the path identifying the edited cell
 	 */
 	gulong addOnEditingStarted(void delegate(CellEditableIF, string, CellRenderer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)

@@ -38,7 +38,7 @@ private import std.algorithm;
  * 
  * # Accessibility
  * 
- * `GtkLinkButton` uses the #GTK_ACCESSIBLE_ROLE_LINK role.
+ * `GtkLinkButton` uses the %GTK_ACCESSIBLE_ROLE_LINK role.
  */
 public class LinkButton : Button
 {

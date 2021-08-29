@@ -61,22 +61,24 @@ public struct PgMiscellaneous
 	/**
 	 * Parses an enum type and stores the result in @value.
 	 *
-	 * If @str does not match the nick name of any of the possible values for the
-	 * enum and is not an integer, %FALSE is returned, a warning is issued
-	 * if @warn is %TRUE, and a
-	 * string representing the list of possible values is stored in
-	 * @possible_values.  The list is slash-separated, eg.
-	 * "none/start/middle/end".  If failed and @possible_values is not %NULL,
-	 * returned string should be freed using g_free().
+	 * If @str does not match the nick name of any of the possible values
+	 * for the enum and is not an integer, %FALSE is returned, a warning
+	 * is issued if @warn is %TRUE, and a string representing the list of
+	 * possible values is stored in @possible_values. The list is
+	 * slash-separated, eg. "none/start/middle/end".
+	 *
+	 * If failed and @possible_values is not %NULL, returned string should
+	 * be freed using g_free().
 	 *
 	 * Params:
-	 *     type = enum type to parse, eg. %PANGO_TYPE_ELLIPSIZE_MODE.
-	 *     str = string to parse.  May be %NULL.
-	 *     value = integer to store the result in, or %NULL.
-	 *     warn = if %TRUE, issue a g_warning() on bad input.
-	 *     possibleValues = place to store list of possible values on failure, or %NULL.
+	 *     type = enum type to parse, eg. %PANGO_TYPE_ELLIPSIZE_MODE
+	 *     str = string to parse
+	 *     value = integer to store the result in
+	 *     warn = if %TRUE, issue a g_warning() on bad input
+	 *     possibleValues = place to store list of possible
+	 *         values on failure
 	 *
-	 * Returns: %TRUE if @str was successfully parsed.
+	 * Returns: %TRUE if @str was successfully parsed
 	 *
 	 * Since: 1.16
 	 */
@@ -198,7 +200,7 @@ public struct PgMiscellaneous
 	 *     pos = in/out string position
 	 *     out_ = an int into which to write the result
 	 *
-	 * Returns: %FALSE if a parse error occurred.
+	 * Returns: %FALSE if a parse error occurred
 	 */
 	public static bool scanInt(ref string pos, out int out_)
 	{
@@ -212,7 +214,7 @@ public struct PgMiscellaneous
 	}
 
 	/**
-	 * Scans a string into a #GString buffer.
+	 * Scans a string into a `GString` buffer.
 	 *
 	 * The string may either be a sequence of non-white-space characters,
 	 * or a quoted string with '"'. Instead a quoted string, '\"' represents
@@ -220,9 +222,9 @@ public struct PgMiscellaneous
 	 *
 	 * Params:
 	 *     pos = in/out string position
-	 *     out_ = a #GString into which to write the result
+	 *     out_ = a `GString` into which to write the result
 	 *
-	 * Returns: %FALSE if a parse error occurred.
+	 * Returns: %FALSE if a parse error occurred
 	 */
 	public static bool scanString(ref string pos, StringG out_)
 	{
@@ -236,16 +238,16 @@ public struct PgMiscellaneous
 	}
 
 	/**
-	 * Scans a word into a #GString buffer.
+	 * Scans a word into a `GString` buffer.
 	 *
 	 * A word consists of [A-Za-z_] followed by zero or more
 	 * [A-Za-z_0-9]. Leading white space is skipped.
 	 *
 	 * Params:
 	 *     pos = in/out string position
-	 *     out_ = a #GString into which to write the result
+	 *     out_ = a `GString` into which to write the result
 	 *
-	 * Returns: %FALSE if a parse error occurred.
+	 * Returns: %FALSE if a parse error occurred
 	 */
 	public static bool scanWord(ref string pos, StringG out_)
 	{
@@ -324,7 +326,7 @@ public struct PgMiscellaneous
 	 *
 	 * Params:
 	 *     stream = a stdio stream
-	 *     str = #GString buffer into which to write the result
+	 *     str = `GString` buffer into which to write the result
 	 *
 	 * Returns: 0 if the stream was already at an %EOF character,
 	 *     otherwise the number of lines read (this is useful for maintaining

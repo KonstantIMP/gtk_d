@@ -125,7 +125,7 @@ public  import gtk.c.types;
  * and %GTK_RESPONSE_CANCEL if he pressed cancel. It can also return
  * %GTK_RESPONSE_DELETE_EVENT if the window was unexpectedly closed.
  * 
- * ## Differences from #GtkFileChooserDialog
+ * ## Differences from `GtkFileChooserDialog`
  * 
  * There are a few things in the [iface@Gtk.FileChooser] interface that
  * are not possible to use with `GtkFileChooserNative`, as such use would
@@ -202,8 +202,8 @@ public class FileChooserNative : NativeDialog, FileChooserIF
 	 * Creates a new `GtkFileChooserNative`.
 	 *
 	 * Params:
-	 *     title = Title of the native, or %NULL
-	 *     parent = Transient parent of the native, or %NULL
+	 *     title = Title of the native
+	 *     parent = Transient parent of the native
 	 *     action = Open or save mode for the dialog
 	 *     acceptLabel = text to go in the accept button, or %NULL for the default
 	 *     cancelLabel = text to go in the cancel button, or %NULL for the default
@@ -227,8 +227,7 @@ public class FileChooserNative : NativeDialog, FileChooserIF
 	/**
 	 * Retrieves the custom label text for the accept button.
 	 *
-	 * Returns: The custom label, or %NULL for the default.
-	 *     This string is owned by GTK and should not be modified or freed
+	 * Returns: The custom label
 	 */
 	public string getAcceptLabel()
 	{
@@ -238,8 +237,7 @@ public class FileChooserNative : NativeDialog, FileChooserIF
 	/**
 	 * Retrieves the custom label text for the cancel button.
 	 *
-	 * Returns: The custom label, or %NULL for the default.
-	 *     This string is owned by GTK and should not be modified or freed
+	 * Returns: The custom label
 	 */
 	public string getCancelLabel()
 	{
@@ -257,7 +255,7 @@ public class FileChooserNative : NativeDialog, FileChooserIF
 	 * Pressing Alt and that key should activate the button.
 	 *
 	 * Params:
-	 *     acceptLabel = custom label or %NULL for the default
+	 *     acceptLabel = custom label
 	 */
 	public void setAcceptLabel(string acceptLabel)
 	{
@@ -275,7 +273,7 @@ public class FileChooserNative : NativeDialog, FileChooserIF
 	 * Pressing Alt and that key should activate the button.
 	 *
 	 * Params:
-	 *     cancelLabel = custom label or %NULL for the default
+	 *     cancelLabel = custom label
 	 */
 	public void setCancelLabel(string cancelLabel)
 	{

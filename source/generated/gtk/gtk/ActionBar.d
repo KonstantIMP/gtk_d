@@ -22,7 +22,23 @@ public  import gtk.c.types;
  * 
  * # CSS nodes
  * 
- * `GtkActionBar` has a single CSS node with name actionbar.
+ * ```
+ * actionbar
+ * ╰── revealer
+ * ╰── box
+ * ├── box.start
+ * │   ╰── [start children]
+ * ├── [center widget]
+ * ╰── box.end
+ * ╰── [end children]
+ * ```
+ * 
+ * A `GtkActionBar`'s CSS node is called `actionbar`. It contains a `revealer`
+ * subnode, which contains a `box` subnode, which contains two `box` subnodes at
+ * the start and end of the action bar, with `start` and `end style classes
+ * respectively, as well as a center node that represents the center child.
+ * 
+ * Each of the boxes contains children packed for that side.
  */
 public class ActionBar : Widget
 {
@@ -81,7 +97,7 @@ public class ActionBar : Widget
 	/**
 	 * Retrieves the center bar widget of the bar.
 	 *
-	 * Returns: the center `GtkWidget` or %NULL.
+	 * Returns: the center `GtkWidget`
 	 */
 	public Widget getCenterWidget()
 	{
@@ -99,7 +115,7 @@ public class ActionBar : Widget
 	 * Gets whether the contents of the action bar are revealed.
 	 *
 	 * Returns: the current value of the [property@Gtk.ActionBar:revealed]
-	 *     property.
+	 *     property
 	 */
 	public bool getRevealed()
 	{

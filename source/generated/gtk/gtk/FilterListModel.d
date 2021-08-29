@@ -63,8 +63,8 @@ public class FilterListModel : ObjectG, ListModelIF
 	 * @filter.
 	 *
 	 * Params:
-	 *     model = the model to sort, or %NULL
-	 *     filter = filter or %NULL to not filter items
+	 *     model = the model to sort
+	 *     filter = filter
 	 *
 	 * Returns: a new `GtkFilterListModel`
 	 *
@@ -86,7 +86,6 @@ public class FilterListModel : ObjectG, ListModelIF
 	 * Gets the `GtkFilter` currently set on @self.
 	 *
 	 * Returns: The filter currently in use
-	 *     or %NULL if the list isn't filtered
 	 */
 	public Filter getFilter()
 	{
@@ -158,7 +157,7 @@ public class FilterListModel : ObjectG, ListModelIF
 	 * Sets the filter used to filter items.
 	 *
 	 * Params:
-	 *     filter = filter to use or %NULL to not filter items
+	 *     filter = filter to use
 	 */
 	public void setFilter(Filter filter)
 	{

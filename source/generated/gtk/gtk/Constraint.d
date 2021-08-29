@@ -195,7 +195,7 @@ public class Constraint : ObjectG
 	 * If the targe is set to `NULL` at creation, the constraint will use
 	 * the widget using the [class@Gtk.ConstraintLayout] as the target.
 	 *
-	 * Returns: a #GtkConstraintTarget
+	 * Returns: a `GtkConstraintTarget`
 	 */
 	public ConstraintTargetIF getTarget()
 	{

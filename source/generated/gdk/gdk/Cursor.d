@@ -128,7 +128,7 @@ public class Cursor : ObjectG
 	 *     texture = the texture providing the pixel data
 	 *     hotspotX = the horizontal offset of the “hotspot” of the cursor
 	 *     hotspotY = the vertical offset of the “hotspot” of the cursor
-	 *     fallback = %NULL or the `GdkCursor` to fall back to when
+	 *     fallback = the `GdkCursor` to fall back to when
 	 *         this one cannot be supported
 	 *
 	 * Returns: a new `GdkCursor`
@@ -157,7 +157,7 @@ public class Cursor : ObjectG
 	 * it is used on does not support textured cursors.
 	 *
 	 * Returns: the fallback of the cursor or %NULL
-	 *     to use the default cursor as fallback.
+	 *     to use the default cursor as fallback
 	 */
 	public Cursor getFallback()
 	{

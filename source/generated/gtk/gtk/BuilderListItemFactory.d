@@ -140,8 +140,7 @@ public class BuilderListItemFactory : ListItemFactory
 	/**
 	 * If the data references a resource, gets the path of that resource.
 	 *
-	 * Returns: The path to the resource or %NULL
-	 *     if none
+	 * Returns: The path to the resource
 	 */
 	public string getResource()
 	{

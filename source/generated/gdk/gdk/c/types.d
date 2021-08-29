@@ -558,7 +558,7 @@ public enum GdkGLError
 alias GdkGLError GLError;
 
 /**
- * Defines the reference point of a surface and is used in #GdkPopupLayout.
+ * Defines the reference point of a surface and is used in `GdkPopupLayout`.
  */
 public enum GdkGravity
 {
@@ -678,8 +678,8 @@ alias GdkKeyMatch KeyMatch;
  * CAIRO_FORMAT_ARGB32 is represented by different `GdkMemoryFormats`
  * on architectures with different endiannesses.
  *
- * Its naming is modelled after VkFormat (see
- * https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFormat
+ * Its naming is modelled after
+ * [VkFormat](https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFormat)
  * for details).
  */
 public enum GdkMemoryFormat
@@ -1004,6 +1004,14 @@ public enum GdkSurfaceEdge
 }
 alias GdkSurfaceEdge SurfaceEdge;
 
+public enum GdkTitlebarGesture
+{
+	DOUBLE_CLICK = 1,
+	RIGHT_CLICK = 2,
+	MIDDLE_CLICK = 3,
+}
+alias GdkTitlebarGesture TitlebarGesture;
+
 /**
  * Specifies the state of a toplevel surface.
  *
@@ -1126,7 +1134,7 @@ public enum GdkTouchpadGesturePhase
 alias GdkTouchpadGesturePhase TouchpadGesturePhase;
 
 /**
- * Error enumeration for #GdkVulkanContext.
+ * Error enumeration for `GdkVulkanContext`.
  */
 public enum GdkVulkanError
 {
@@ -1162,7 +1170,7 @@ struct GdkContentProvider
 }
 
 /**
- * Class structure for #GdkContentProvider.
+ * Class structure for `GdkContentProvider`.
  */
 struct GdkContentProviderClass
 {
@@ -1176,14 +1184,14 @@ struct GdkContentProviderClass
 	/**
 	 *
 	 * Params:
-	 *     provider = a #GdkContentProvider
+	 *     provider = a `GdkContentProvider`
 	 * Returns: The formats of the provider
 	 */
 	extern(C) GdkContentFormats* function(GdkContentProvider* provider) refFormats;
 	/**
 	 *
 	 * Params:
-	 *     provider = a #GdkContentProvider
+	 *     provider = a `GdkContentProvider`
 	 * Returns: The storable formats of the provider
 	 */
 	extern(C) GdkContentFormats* function(GdkContentProvider* provider) refStorableFormats;
@@ -1323,10 +1331,10 @@ struct GdkPaintable;
  * The list of functions that can be implemented for the `GdkPaintable`
  * interface.
  *
- * Note that apart from the #GdkPaintableInterface.snapshot() function, no
- * virtual function of this interface is mandatory to implement, though it
- * is a good idea to implement #GdkPaintableInterface.get_current_image()
- * for non-static paintables and #GdkPaintableInterface.get_flags() if the
+ * Note that apart from the [vfunc@Gdk.PaintableInterface.snapshot] function,
+ * no virtual function of this interface is mandatory to implement, though it
+ * is a good idea to implement [vfunc@Gdk.PaintableInterface.get_current_image]
+ * for non-static paintables and [vfunc@Gdk.PaintableInterface.get_flags] if the
  * image is not dynamic as the default implementation returns no flags and
  * that will make the implementation likely quite slow.
  */
@@ -1340,7 +1348,7 @@ struct GdkPaintableInterface
 	 * Params:
 	 *     paintable = a `GdkPaintable`
 	 * Returns: An immutable paintable for the current
-	 *     contents of @paintable.
+	 *     contents of @paintable
 	 */
 	extern(C) GdkPaintable* function(GdkPaintable* paintable) getCurrentImage;
 	/**
@@ -1459,12 +1467,12 @@ struct GdkTexture;
 struct GdkTextureClass;
 
 /**
- * A #GdkTimeCoord stores a single event in a motion history.
+ * A `GdkTimeCoord` stores a single event in a motion history.
  */
 struct GdkTimeCoord
 {
 	/**
-	 * The timestamp for this event.
+	 * The timestamp for this event
 	 */
 	uint time;
 	/**
@@ -1499,7 +1507,7 @@ struct GdkVulkanContext;
  * operation.
  *
  * Params:
- *     deserializer = a #GdkContentDeserializer
+ *     deserializer = a `GdkContentDeserializer`
  */
 public alias extern(C) void function(GdkContentDeserializer* deserializer) GdkContentDeserializeFunc;
 
@@ -1511,7 +1519,7 @@ public alias extern(C) void function(GdkContentDeserializer* deserializer) GdkCo
  * operation.
  *
  * Params:
- *     serializer = a #GdkContentSerializer
+ *     serializer = a `GdkContentSerializer`
  */
 public alias extern(C) void function(GdkContentSerializer* serializer) GdkContentSerializeFunc;
 

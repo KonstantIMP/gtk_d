@@ -244,7 +244,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	}
 
 	/**
-	 * Opens or closes the [interactive debugger](#interactive-debugging).
+	 * Opens or closes the [interactive debugger](running.html#interactive-debugging).
 	 *
 	 * The debugger offers access to the widget hierarchy of the application
 	 * and to useful debugging tools.
@@ -318,7 +318,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	/**
 	 * Gets the `GtkApplication` associated with the window.
 	 *
-	 * Returns: a `GtkApplication`, or %NULL
+	 * Returns: a `GtkApplication`
 	 */
 	public Application getApplication()
 	{
@@ -367,8 +367,8 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	 * “natural” size of the window will be used.
 	 *
 	 * Params:
-	 *     width = location to store the default width, or %NULL
-	 *     height = location to store the default height, or %NULL
+	 *     width = location to store the default width
+	 *     height = location to store the default height
 	 */
 	public void getDefaultSize(out int width, out int height)
 	{
@@ -378,8 +378,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	/**
 	 * Returns the default widget for @window.
 	 *
-	 * Returns: the default widget, or %NULL
-	 *     if there is none.
+	 * Returns: the default widget
 	 */
 	public Widget getDefaultWidget()
 	{
@@ -421,8 +420,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	 * is not focused then `gtk_widget_has_focus (widget)` will
 	 * not be %TRUE for the widget.
 	 *
-	 * Returns: the currently focused widget,
-	 *     or %NULL if there is none.
+	 * Returns: the currently focused widget
 	 */
 	public Widget getFocus()
 	{
@@ -493,8 +491,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	/**
 	 * Returns the name of the themed icon for the window.
 	 *
-	 * Returns: the icon name or %NULL if the window has
-	 *     no themed icon
+	 * Returns: the icon name
 	 */
 	public string getIconName()
 	{
@@ -536,9 +533,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	/**
 	 * Retrieves the title of the window.
 	 *
-	 * Returns: the title of the window, or %NULL if none has
-	 *     been set explicitly. The returned string is owned by the widget
-	 *     and must not be modified or freed.
+	 * Returns: the title of the window
 	 */
 	public string getTitle()
 	{
@@ -549,7 +544,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	 * Returns the custom titlebar that has been set with
 	 * gtk_window_set_titlebar().
 	 *
-	 * Returns: the custom titlebar, or %NULL
+	 * Returns: the custom titlebar
 	 */
 	public Widget getTitlebar()
 	{
@@ -566,8 +561,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	/**
 	 * Fetches the transient parent for this window.
 	 *
-	 * Returns: the transient parent for this
-	 *     window, or %NULL if no transient parent has been set.
+	 * Returns: the transient parent for this window
 	 */
 	public Window getTransientFor()
 	{
@@ -831,7 +825,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	 * presses Enter in a dialog (for example).
 	 *
 	 * Params:
-	 *     defaultWidget = widget to be the default, or %NULL
+	 *     defaultWidget = widget to be the default
 	 *         to unset the default widget for the toplevel
 	 */
 	public void setDefaultWidget(Widget defaultWidget)
@@ -1082,7 +1076,7 @@ public class Window : Widget, NativeIF, RootIF, ShortcutManagerIF
 	 * much as the window manager would have done on X.
 	 *
 	 * Params:
-	 *     parent = parent window, or %NULL
+	 *     parent = parent window
 	 */
 	public void setTransientFor(Window parent)
 	{

@@ -75,7 +75,7 @@ public class DragIcon : Widget, NativeIF, RootIF
 	 * If GTK does not know how to create a widget for a given value,
 	 * it will return %NULL.
 	 *
-	 * This method is used to set the default drag icon on drag'n'drop
+	 * This method is used to set the default drag icon on drag-and-drop
 	 * operations started by `GtkDragSource`, so you don't need to set
 	 * a drag icon using this function there.
 	 *
@@ -141,7 +141,7 @@ public class DragIcon : Widget, NativeIF, RootIF
 	/**
 	 * Gets the widget currently used as drag icon.
 	 *
-	 * Returns: The drag icon or %NULL if none.
+	 * Returns: The drag icon
 	 */
 	public Widget getChild()
 	{
@@ -159,7 +159,7 @@ public class DragIcon : Widget, NativeIF, RootIF
 	 * Sets the widget to display as the drag icon.
 	 *
 	 * Params:
-	 *     child = a `GtkWidget` or %NULL
+	 *     child = a `GtkWidget`
 	 */
 	public void setChild(Widget child)
 	{

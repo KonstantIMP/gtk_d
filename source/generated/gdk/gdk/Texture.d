@@ -101,7 +101,7 @@ public class Texture : ObjectG, PaintableIF
 	 * Params:
 	 *     file = `GFile` to load
 	 *
-	 * Returns: A newly-created `GdkTexture` or %NULL if an error occurred.
+	 * Returns: A newly-created `GdkTexture`
 	 *
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.

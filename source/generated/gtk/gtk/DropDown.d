@@ -82,8 +82,8 @@ public class DropDown : Widget
 	 * to set up a way to map its items to widgets.
 	 *
 	 * Params:
-	 *     model = the model to use or %NULL for none
-	 *     expression = the expression to use or %NULL for none
+	 *     model = the model to use
+	 *     expression = the expression to use
 	 *
 	 * Returns: a new `GtkDropDown`
 	 *
@@ -139,7 +139,7 @@ public class DropDown : Widget
 	 *
 	 * See [method@Gtk.DropDown.set_expression].
 	 *
-	 * Returns: a `GtkExpression` or %NULL
+	 * Returns: a `GtkExpression`
 	 */
 	public Expression getExpression()
 	{
@@ -258,7 +258,7 @@ public class DropDown : Widget
 	 * a value type of %G_TYPE_STRING.
 	 *
 	 * Params:
-	 *     expression = a `GtkExpression`, or %NULL
+	 *     expression = a `GtkExpression`
 	 */
 	public void setExpression(Expression expression)
 	{
@@ -269,7 +269,7 @@ public class DropDown : Widget
 	 * Sets the `GtkListItemFactory` to use for populating list items.
 	 *
 	 * Params:
-	 *     factory = the factory to use or %NULL for none
+	 *     factory = the factory to use
 	 */
 	public void setFactory(ListItemFactory factory)
 	{
@@ -280,7 +280,7 @@ public class DropDown : Widget
 	 * Sets the `GtkListItemFactory` to use for populating list items in the popup.
 	 *
 	 * Params:
-	 *     factory = the factory to use or %NULL for none
+	 *     factory = the factory to use
 	 */
 	public void setListFactory(ListItemFactory factory)
 	{
@@ -291,7 +291,7 @@ public class DropDown : Widget
 	 * Sets the `GListModel` to use.
 	 *
 	 * Params:
-	 *     model = the model to use or %NULL for none
+	 *     model = the model to use
 	 */
 	public void setModel(ListModelIF model)
 	{

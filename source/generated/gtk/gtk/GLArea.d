@@ -41,7 +41,7 @@ private import std.algorithm;
  * render (GtkGLArea *area, GdkGLContext *context)
  * {
  * // inside this function it's safe to use GL; the given
- * // #GdkGLContext has been made current to the drawable
+ * // GdkGLContext has been made current to the drawable
  * // surface used by the `GtkGLArea` and the viewport has
  * // already been set to be the size of the allocation
  * 
@@ -86,7 +86,7 @@ private import std.algorithm;
  * 
  * // If there were errors during the initialization or
  * // when trying to make the context current, this
- * // function will return a #GError for you to catch
+ * // function will return a GError for you to catch
  * if (gtk_gl_area_get_error (area) != NULL)
  * return;
  * 
@@ -215,7 +215,7 @@ public class GLArea : Widget
 	/**
 	 * Gets the current error set on the @area.
 	 *
-	 * Returns: the #GError or %NULL
+	 * Returns: the `GError`
 	 */
 	public ErrorG getError()
 	{
@@ -389,7 +389,7 @@ public class GLArea : Widget
 	/**
 	 * Sets whether the @area should create an OpenGL or an OpenGL ES context.
 	 *
-	 * You should check the capabilities of the #GdkGLContext before drawing
+	 * You should check the capabilities of the `GdkGLContext` before drawing
 	 * with either API.
 	 *
 	 * Params:

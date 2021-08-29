@@ -9,13 +9,14 @@ public  import pango.c.types;
 
 
 /**
- * A #PangoCoverage structure is a map from Unicode characters
- * to #PangoCoverageLevel values.
+ * A `PangoCoverage` structure is a map from Unicode characters
+ * to [enum@Pango.CoverageLevel] values.
  * 
- * It is often necessary in Pango to determine if a particular font can
- * represent a particular character, and also how well it can represent
- * that character. The #PangoCoverage is a data structure that is used to
- * represent that information. It is an opaque structure with no public fields.
+ * It is often necessary in Pango to determine if a particular
+ * font can represent a particular character, and also how well
+ * it can represent that character. The `PangoCoverage` is a data
+ * structure that is used to represent that information. It is an
+ * opaque structure with no public fields.
  */
 public class PgCoverage : ObjectG
 {
@@ -55,10 +56,9 @@ public class PgCoverage : ObjectG
 	/**
 	 * Create a new `PangoCoverage`
 	 *
-	 * Returns: the newly allocated `PangoCoverage`,
-	 *     initialized to %PANGO_COVERAGE_NONE
-	 *     with a reference count of one, which
-	 *     should be freed with pango_coverage_unref().
+	 * Returns: the newly allocated `PangoCoverage`, initialized
+	 *     to %PANGO_COVERAGE_NONE with a reference count of one, which
+	 *     should be freed with [method@Pango.Coverage.unref].
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -75,8 +75,8 @@ public class PgCoverage : ObjectG
 	}
 
 	/**
-	 * Convert data generated from pango_coverage_to_bytes() back
-	 * to a `PangoCoverage`.
+	 * Convert data generated from pango_coverage_to_bytes()
+	 * back to a `PangoCoverage`.
 	 *
 	 * Deprecated: This returns %NULL
 	 *
@@ -84,8 +84,7 @@ public class PgCoverage : ObjectG
 	 *     bytes = binary data
 	 *         representing a `PangoCoverage`
 	 *
-	 * Returns: a newly allocated
-	 *     `PangoCoverage`, or %NULL if the data was invalid.
+	 * Returns: a newly allocated `PangoCoverage`
 	 */
 	public static PgCoverage fromBytes(char[] bytes)
 	{
@@ -103,8 +102,8 @@ public class PgCoverage : ObjectG
 	 * Copy an existing `PangoCoverage`.
 	 *
 	 * Returns: the newly allocated `PangoCoverage`,
-	 *     with a reference count of one, which should be freed
-	 *     with pango_coverage_unref().
+	 *     with a reference count of one, which should be freed with
+	 *     [method@Pango.Coverage.unref].
 	 */
 	public PgCoverage copy()
 	{

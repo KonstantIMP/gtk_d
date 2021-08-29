@@ -178,7 +178,7 @@ public class PageSetup : ObjectG
 	 *
 	 * Params:
 	 *     keyFile = the `GKeyFile` to retrieve the page_setup from
-	 *     groupName = the name of the group in the key_file to read, or %NULL
+	 *     groupName = the name of the group in the key_file to read
 	 *         to use the default name “Page Setup”
 	 *
 	 * Returns: the restored `GtkPageSetup`
@@ -401,7 +401,7 @@ public class PageSetup : ObjectG
 	 *
 	 * Params:
 	 *     keyFile = the `GKeyFile` to retrieve the page_setup from
-	 *     groupName = the name of the group in the key_file to read, or %NULL
+	 *     groupName = the name of the group in the key_file to read
 	 *         to use the default name “Page Setup”
 	 *
 	 * Returns: %TRUE on success
@@ -450,7 +450,7 @@ public class PageSetup : ObjectG
 	 * Sets the page orientation of the `GtkPageSetup`.
 	 *
 	 * Params:
-	 *     orientation = a #GtkPageOrientation value
+	 *     orientation = a `GtkPageOrientation` value
 	 */
 	public void setOrientation(GtkPageOrientation orientation)
 	{
@@ -464,7 +464,7 @@ public class PageSetup : ObjectG
 	 * See [method@Gtk.PageSetup.set_paper_size_and_default_margins].
 	 *
 	 * Params:
-	 *     size = a #GtkPaperSize
+	 *     size = a `GtkPaperSize`
 	 */
 	public void setPaperSize(PaperSize size)
 	{
@@ -476,7 +476,7 @@ public class PageSetup : ObjectG
 	 * the margins according to the new paper size.
 	 *
 	 * Params:
-	 *     size = a #GtkPaperSize
+	 *     size = a `GtkPaperSize`
 	 */
 	public void setPaperSizeAndDefaultMargins(PaperSize size)
 	{
@@ -534,7 +534,7 @@ public class PageSetup : ObjectG
 	/**
 	 * Serialize page setup to an a{sv} variant.
 	 *
-	 * Returns: a new, floating, #GVariant
+	 * Returns: a new, floating, `GVariant`
 	 */
 	public Variant toGvariant()
 	{

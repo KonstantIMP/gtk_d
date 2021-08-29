@@ -36,12 +36,12 @@ public struct PgVertical
 	 * pass %PANGO_GRAVITY_AUTO and %PANGO_GRAVITY_HINT_STRONG in.
 	 *
 	 * Params:
-	 *     script = #PangoScript to query
+	 *     script = `PangoScript` to query
 	 *     baseGravity = base gravity of the paragraph
 	 *     hint = orientation hint
 	 *
 	 * Returns: resolved gravity suitable to use for a run of text
-	 *     with @script.
+	 *     with @script
 	 *
 	 * Since: 1.16
 	 */
@@ -57,7 +57,7 @@ public struct PgVertical
 	 * The gravity is determined based on the script, East Asian width,
 	 * base gravity, and hint,
 	 *
-	 * This function is similar to [type_func@Pango.Gravity.get_for_script] except
+	 * This function is similar to [func@Pango.Gravity.get_for_script] except
 	 * that this function makes a distinction between narrow/half-width and
 	 * wide/full-width characters also. Wide/full-width characters always
 	 * stand *upright*, that is, they always take the base gravity,
@@ -68,7 +68,7 @@ public struct PgVertical
 	 * preferred gravity of @script.
 	 *
 	 * Params:
-	 *     script = #PangoScript to query
+	 *     script = `PangoScript` to query
 	 *     wide = %TRUE for wide characters as returned by g_unichar_iswide()
 	 *     baseGravity = base gravity of the paragraph
 	 *     hint = orientation hint
@@ -84,7 +84,7 @@ public struct PgVertical
 	}
 
 	/**
-	 * Converts a #PangoGravity value to its natural rotation in radians.
+	 * Converts a `PangoGravity` value to its natural rotation in radians.
 	 *
 	 * Note that [method@Pango.Matrix.rotate] takes angle in degrees, not radians.
 	 * So, to call [method@Pango.Matrix,rotate] with the output of this function

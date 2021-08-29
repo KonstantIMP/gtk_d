@@ -93,7 +93,7 @@ public class TextMark : ObjectG
 	 * right side of the text you’re typing).
 	 *
 	 * Params:
-	 *     name = mark name or %NULL
+	 *     name = mark name
 	 *     leftGravity = whether the mark should have left gravity
 	 *
 	 * Returns: new `GtkTextMark`

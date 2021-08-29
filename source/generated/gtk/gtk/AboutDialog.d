@@ -129,12 +129,11 @@ public class AboutDialog : Window
 	}
 
 	/**
-	 * Returns the string which are displayed in the "Artists" tab
-	 * of the secondary credits dialog.
+	 * Returns the names of the artists which are displayed
+	 * in the credits page.
 	 *
 	 * Returns: A
-	 *     `NULL`-terminated string array containing the artists. The array is
-	 *     owned by the about dialog and must not be modified.
+	 *     `NULL`-terminated string array containing the artists
 	 */
 	public string[] getArtists()
 	{
@@ -142,12 +141,11 @@ public class AboutDialog : Window
 	}
 
 	/**
-	 * Returns the string which are displayed in the authors tab
-	 * of the secondary credits dialog.
+	 * Returns the names of the authors which are displayed
+	 * in the credits page.
 	 *
 	 * Returns: A
-	 *     `NULL`-terminated string array containing the authors. The array is
-	 *     owned by the about dialog and must not be modified.
+	 *     `NULL`-terminated string array containing the authors
 	 */
 	public string[] getAuthors()
 	{
@@ -157,8 +155,7 @@ public class AboutDialog : Window
 	/**
 	 * Returns the comments string.
 	 *
-	 * Returns: The comments. The string is owned by the about
-	 *     dialog and must not be modified.
+	 * Returns: The comments
 	 */
 	public string getComments()
 	{
@@ -168,8 +165,7 @@ public class AboutDialog : Window
 	/**
 	 * Returns the copyright string.
 	 *
-	 * Returns: The copyright string. The string is owned by the about
-	 *     dialog and must not be modified.
+	 * Returns: The copyright string
 	 */
 	public string getCopyright()
 	{
@@ -177,12 +173,11 @@ public class AboutDialog : Window
 	}
 
 	/**
-	 * Returns the string which are displayed in the "Documenters"
-	 * tab of the secondary credits dialog.
+	 * Returns the name of the documenters which are displayed
+	 * in the credits page.
 	 *
 	 * Returns: A
-	 *     `NULL`-terminated string array containing the documenters. The
-	 *     array is owned by the about dialog and must not be modified.
+	 *     `NULL`-terminated string array containing the documenters
 	 */
 	public string[] getDocumenters()
 	{
@@ -192,8 +187,7 @@ public class AboutDialog : Window
 	/**
 	 * Returns the license information.
 	 *
-	 * Returns: The license information. The string is owned by the about
-	 *     dialog and must not be modified.
+	 * Returns: The license information
 	 */
 	public string getLicense()
 	{
@@ -215,8 +209,7 @@ public class AboutDialog : Window
 	 *
 	 * Returns: the paintable displayed as
 	 *     logo or `NULL` if the logo is unset or has been set via
-	 *     [method@Gtk.AboutDialog.set_logo_icon_name]. The
-	 *     paintable is owned by the about dialog.
+	 *     [method@Gtk.AboutDialog.set_logo_icon_name]
 	 */
 	public PaintableIF getLogo()
 	{
@@ -234,8 +227,7 @@ public class AboutDialog : Window
 	 * Returns the icon name displayed as logo in the about dialog.
 	 *
 	 * Returns: the icon name displayed as logo,
-	 *     or `NULL` if the logo has been set via [method@Gtk.AboutDialog.set_logo].
-	 *     The string is owned by the dialog.
+	 *     or `NULL` if the logo has been set via [method@Gtk.AboutDialog.set_logo]
 	 */
 	public string getLogoIconName()
 	{
@@ -245,8 +237,7 @@ public class AboutDialog : Window
 	/**
 	 * Returns the program name displayed in the about dialog.
 	 *
-	 * Returns: The program name. The string is owned by the about
-	 *     dialog and must not be modified.
+	 * Returns: The program name
 	 */
 	public string getProgramName()
 	{
@@ -265,9 +256,9 @@ public class AboutDialog : Window
 
 	/**
 	 * Returns the translator credits string which is displayed
-	 * in the translators tab of the secondary credits dialog.
+	 * in the credits page.
 	 *
-	 * Returns: The translator credits string.
+	 * Returns: The translator credits string
 	 */
 	public string getTranslatorCredits()
 	{
@@ -277,8 +268,7 @@ public class AboutDialog : Window
 	/**
 	 * Returns the version string.
 	 *
-	 * Returns: The version string. The string is owned by the about
-	 *     dialog and must not be modified.
+	 * Returns: The version string
 	 */
 	public string getVersion()
 	{
@@ -298,7 +288,7 @@ public class AboutDialog : Window
 	/**
 	 * Returns the label used for the website link.
 	 *
-	 * Returns: The label used for the website link.
+	 * Returns: The label used for the website link
 	 */
 	public string getWebsiteLabel()
 	{
@@ -317,8 +307,8 @@ public class AboutDialog : Window
 	}
 
 	/**
-	 * Sets the strings which are displayed in the "Artists" tab
-	 * of the secondary credits dialog.
+	 * Sets the names of the artists to be displayed
+	 * in the "Credits" page.
 	 *
 	 * Params:
 	 *     artists = the authors of the artwork
@@ -330,8 +320,8 @@ public class AboutDialog : Window
 	}
 
 	/**
-	 * Sets the strings which are displayed in the "Authors" tab
-	 * of the secondary credits dialog.
+	 * Sets the names of the authors which are displayed
+	 * in the "Credits" page of the about dialog.
 	 *
 	 * Params:
 	 *     authors = the authors of the application
@@ -368,8 +358,8 @@ public class AboutDialog : Window
 	}
 
 	/**
-	 * Sets the strings which are displayed in the "Documenters" tab
-	 * of the credits dialog.
+	 * Sets the names of the documenters which are displayed
+	 * in the "Credits" page.
 	 *
 	 * Params:
 	 *     documenters = the authors of the documentation
@@ -381,10 +371,10 @@ public class AboutDialog : Window
 	}
 
 	/**
-	 * Sets the license information to be displayed in the secondary
-	 * license dialog.
+	 * Sets the license information to be displayed in the
+	 * about dialog.
 	 *
-	 * If `license` is `NULL`, the license button is hidden.
+	 * If `license` is `NULL`, the license page is hidden.
 	 *
 	 * Params:
 	 *     license = the license information
@@ -434,7 +424,8 @@ public class AboutDialog : Window
 	/**
 	 * Sets the name to display in the about dialog.
 	 *
-	 * If `name` is not set, it defaults to `g_get_application_name()`.
+	 * If `name` is not set, the string returned
+	 * by `g_get_application_name()` is used.
 	 *
 	 * Params:
 	 *     name = the program name
@@ -449,7 +440,7 @@ public class AboutDialog : Window
 	 * dialog.
 	 *
 	 * If `system_information` is `NULL`, the system information
-	 * tab is hidden.
+	 * page is hidden.
 	 *
 	 * See [property@Gtk.AboutDialog:system-information].
 	 *
@@ -463,7 +454,7 @@ public class AboutDialog : Window
 
 	/**
 	 * Sets the translator credits string which is displayed in
-	 * the translators tab of the secondary credits dialog.
+	 * the credits page.
 	 *
 	 * The intended use for this string is to display the translator
 	 * of the language which is currently used in the user interface.
@@ -476,10 +467,10 @@ public class AboutDialog : Window
 	 * _("translator-credits"));
 	 * ```
 	 *
-	 * It is a good idea to use the customary `msgid` “translator-credits” for this
-	 * purpose, since translators will already know the purpose of that `msgid`, and
-	 * since `GtkAboutDialog` will detect if “translator-credits” is untranslated
-	 * and hide the tab.
+	 * It is a good idea to use the customary `msgid` “translator-credits”
+	 * for this purpose, since translators will already know the purpose of
+	 * that `msgid`, and since `GtkAboutDialog` will detect if “translator-credits”
+	 * is untranslated and omit translator credits.
 	 *
 	 * Params:
 	 *     translatorCredits = the translator credits

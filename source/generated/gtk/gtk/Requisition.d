@@ -9,7 +9,7 @@ private import linker.loader;
 
 
 /**
- * A #GtkRequisition-struct represents the desired size of a widget. See
+ * A `GtkRequisition` represents the desired size of a widget. See
  * [GtkWidget’s geometry management section][geometry-management] for
  * more information.
  */

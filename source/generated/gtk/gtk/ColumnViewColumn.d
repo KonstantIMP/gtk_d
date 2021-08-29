@@ -155,7 +155,7 @@ public class ColumnViewColumn : ObjectG
 	 * Gets the menu model that is used to create the context menu
 	 * for the column header.
 	 *
-	 * Returns: the #GMenuModel, or %NULL
+	 * Returns: the `GMenuModel`
 	 */
 	public MenuModel getHeaderMenu()
 	{
@@ -235,7 +235,7 @@ public class ColumnViewColumn : ObjectG
 	 * column.
 	 *
 	 * Params:
-	 *     factory = the factory to use or %NULL for none
+	 *     factory = the factory to use
 	 */
 	public void setFactory(ListItemFactory factory)
 	{
@@ -262,7 +262,7 @@ public class ColumnViewColumn : ObjectG
 	 * for the column header.
 	 *
 	 * Params:
-	 *     menu = a `GMenuModel`, or %NULL
+	 *     menu = a `GMenuModel`
 	 */
 	public void setHeaderMenu(MenuModel menu)
 	{

@@ -44,7 +44,7 @@ public class NglRenderer : Renderer
 	}
 
 	/**
-	 * Creates a new #GskRenderer using the new OpenGL renderer.
+	 * Creates a new `GskRenderer` using the new OpenGL renderer.
 	 *
 	 * Returns: a new NGL renderer
 	 *

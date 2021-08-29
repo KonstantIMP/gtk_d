@@ -5,10 +5,12 @@ private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
+private import gobject.Signals;
 private import gtk.Popover;
 private import gtk.Widget;
 private import gtk.c.functions;
 public  import gtk.c.types;
+private import std.algorithm;
 
 
 /**
@@ -57,6 +59,10 @@ public  import gtk.c.types;
  * `GtkMenuButton` has a single CSS node with name `menubutton`
  * which contains a `button` node with a `.toggle` style class.
  * 
+ * If the button contains only an icon or an arrow, it will have the
+ * `.image-button` style class, if it contains both, it will have the
+ * `.arrow-button` style class.
+ * 
  * Inside the toggle button content, there is an `arrow` node for
  * the indicator, which will carry one of the `.none`, `.up`, `.down`,
  * `.left` or `.right` style classes to indicate the direction that
@@ -68,7 +74,7 @@ public  import gtk.c.types;
  * 
  * # Accessibility
  * 
- * `GtkMenuButton` uses the #GTK_ACCESSIBLE_ROLE_BUTTON role.
+ * `GtkMenuButton` uses the %GTK_ACCESSIBLE_ROLE_BUTTON role.
  */
 public class MenuButton : Widget
 {
@@ -129,6 +135,18 @@ public class MenuButton : Widget
 	}
 
 	/**
+	 * Gets whether to show a dropdown arrow even when using an icon.
+	 *
+	 * Returns: whether to show a dropdown arrow even when using an icon
+	 *
+	 * Since: 4.4
+	 */
+	public bool getAlwaysShowArrow()
+	{
+		return gtk_menu_button_get_always_show_arrow(gtkMenuButton) != 0;
+	}
+
+	/**
 	 * Returns the direction the popup will be pointing at when popped up.
 	 *
 	 * Returns: a `GtkArrowType` value
@@ -171,7 +189,7 @@ public class MenuButton : Widget
 	/**
 	 * Returns the `GMenuModel` used to generate the popup.
 	 *
-	 * Returns: a `GMenuModel` or %NULL
+	 * Returns: a `GMenuModel`
 	 */
 	public MenuModel getMenuModel()
 	{
@@ -206,6 +224,18 @@ public class MenuButton : Widget
 	}
 
 	/**
+	 * Returns whether the menu button acts as a primary menu.
+	 *
+	 * Returns: %TRUE if the button is a primary menu
+	 *
+	 * Since: 4.4
+	 */
+	public bool getPrimary()
+	{
+		return gtk_menu_button_get_primary(gtkMenuButton) != 0;
+	}
+
+	/**
 	 * Returns whether an embedded underline in the text indicates a
 	 * mnemonic.
 	 *
@@ -231,6 +261,19 @@ public class MenuButton : Widget
 	public void popup()
 	{
 		gtk_menu_button_popup(gtkMenuButton);
+	}
+
+	/**
+	 * Sets whether to show a dropdown arrow even when using an icon.
+	 *
+	 * Params:
+	 *     alwaysShowArrow = hether to show a dropdown arrow even when using an icon
+	 *
+	 * Since: 4.4
+	 */
+	public void setAlwaysShowArrow(bool alwaysShowArrow)
+	{
+		gtk_menu_button_set_always_show_arrow(gtkMenuButton, alwaysShowArrow);
 	}
 
 	/**
@@ -350,6 +393,21 @@ public class MenuButton : Widget
 	}
 
 	/**
+	 * Sets whether menu button acts as a primary menu.
+	 *
+	 * Primary menus can be opened with the <kbd>F10</kbd> key.
+	 *
+	 * Params:
+	 *     primary = whether the menubutton should act as a primary menu
+	 *
+	 * Since: 4.4
+	 */
+	public void setPrimary(bool primary)
+	{
+		gtk_menu_button_set_primary(gtkMenuButton, primary);
+	}
+
+	/**
 	 * If true, an underline in the text indicates a mnemonic.
 	 *
 	 * Params:
@@ -358,5 +416,18 @@ public class MenuButton : Widget
 	public void setUseUnderline(bool useUnderline)
 	{
 		gtk_menu_button_set_use_underline(gtkMenuButton, useUnderline);
+	}
+
+	/**
+	 * Emitted to when the menu button is activated.
+	 *
+	 * The `::activate` signal on `GtkMenuButton` is an action signal and
+	 * emitting it causes the button to pop up its menu.
+	 *
+	 * Since: 4.4
+	 */
+	gulong addOnActivate(void delegate(MenuButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "activate", dlg, connectFlags ^ ConnectFlags.SWAPPED);
 	}
 }

@@ -48,9 +48,10 @@ public class PropertyExpression : Expression
 	}
 
 	/**
-	 * Creates an expression that looks up a property via the
-	 * given `expression` or the `this` argument when `expression`
-	 * is `NULL`.
+	 * Creates an expression that looks up a property.
+	 *
+	 * The object to use is found by evaluating the `expression`,
+	 * or using the `this` argument when `expression` is `NULL`.
 	 *
 	 * If the resulting object conforms to `this_type`, its property named
 	 * `property_name` will be queried. Otherwise, this expression's
@@ -82,9 +83,10 @@ public class PropertyExpression : Expression
 	}
 
 	/**
-	 * Creates an expression that looks up a property via the
-	 * given `expression` or the `this` argument when `expression`
-	 * is `NULL`.
+	 * Creates an expression that looks up a property.
+	 *
+	 * The object to use is found by evaluating the `expression`,
+	 * or using the `this` argument when `expression` is `NULL`.
 	 *
 	 * If the resulting object conforms to `this_type`, its
 	 * property specified by `pspec` will be queried.

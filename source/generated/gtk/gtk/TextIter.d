@@ -155,7 +155,7 @@ public class TextIter
 	 * Params:
 	 *     pred = function to be called on each character
 	 *     userData = user data for @pred
-	 *     limit = search limit, or %NULL for none
+	 *     limit = search limit
 	 *
 	 * Returns: whether a match was found
 	 */
@@ -213,8 +213,8 @@ public class TextIter
 	 * Params:
 	 *     str = search string
 	 *     flags = bitmask of flags affecting the search
-	 *     matchStart = return location for start of match, or %NULL
-	 *     matchEnd = return location for end of match, or %NULL
+	 *     matchStart = return location for start of match
+	 *     matchEnd = return location for end of match
 	 *     limit = location of last possible @match_start, or %NULL for start of buffer
 	 *
 	 * Returns: whether a match was found
@@ -275,7 +275,7 @@ public class TextIter
 	 * if no toggle is found.
 	 *
 	 * Params:
-	 *     tag = a `GtkTextTag`, or %NULL
+	 *     tag = a `GtkTextTag`
 	 *
 	 * Returns: whether we found a tag toggle before @iter
 	 */
@@ -474,7 +474,7 @@ public class TextIter
 	 * of text.
 	 *
 	 * Non-editable text is “locked” and can’t be changed by the
-	 * user via #GtkTextView. If no tags applied to this text affect
+	 * user via `GtkTextView`. If no tags applied to this text affect
 	 * editability, @default_setting will be returned.
 	 *
 	 * You don’t want to use this function to decide whether text can be
@@ -540,7 +540,7 @@ public class TextIter
 	 * %FALSE for the same parameters.
 	 *
 	 * Params:
-	 *     tag = a `GtkTextTag`, or %NULL
+	 *     tag = a `GtkTextTag`
 	 *
 	 * Returns: whether @iter is the end of a range tagged with @tag
 	 */
@@ -667,7 +667,7 @@ public class TextIter
 	 * Params:
 	 *     pred = a function to be called on each character
 	 *     userData = user data for @pred
-	 *     limit = search limit, or %NULL for none
+	 *     limit = search limit
 	 *
 	 * Returns: whether a match was found
 	 */
@@ -728,8 +728,8 @@ public class TextIter
 	 * Params:
 	 *     str = a search string
 	 *     flags = flags affecting how the search is done
-	 *     matchStart = return location for start of match, or %NULL
-	 *     matchEnd = return location for end of match, or %NULL
+	 *     matchStart = return location for start of match
+	 *     matchEnd = return location for end of match
 	 *     limit = location of last possible @match_end, or %NULL for the end of the buffer
 	 *
 	 * Returns: whether a match was found
@@ -822,7 +822,7 @@ public class TextIter
 	 * if no toggle is found.
 	 *
 	 * Params:
-	 *     tag = a `GtkTextTag`, or %NULL
+	 *     tag = a `GtkTextTag`
 	 *
 	 * Returns: whether we found a tag toggle after @iter
 	 */
@@ -1578,7 +1578,7 @@ public class TextIter
 	 * will also return %TRUE for the same parameters.
 	 *
 	 * Params:
-	 *     tag = a `GtkTextTag`, or %NULL
+	 *     tag = a `GtkTextTag`
 	 *
 	 * Returns: whether @iter is the start of a range tagged with @tag
 	 */
@@ -1608,7 +1608,7 @@ public class TextIter
 	 * gtk_text_iter_ends_tag())
 	 *
 	 * Params:
-	 *     tag = a `GtkTextTag`, or %NULL
+	 *     tag = a `GtkTextTag`
 	 *
 	 * Returns: whether @tag is toggled on or off at @iter
 	 */

@@ -164,7 +164,7 @@ public class TreeExpander : Widget
 	 * Sets the content widget to display.
 	 *
 	 * Params:
-	 *     child = a `GtkWidget`, or %NULL
+	 *     child = a `GtkWidget`
 	 */
 	public void setChild(Widget child)
 	{
@@ -175,7 +175,7 @@ public class TreeExpander : Widget
 	 * Sets the tree list row that this expander should manage.
 	 *
 	 * Params:
-	 *     listRow = a `GtkTreeListRow`, or %NULL
+	 *     listRow = a `GtkTreeListRow`
 	 */
 	public void setListRow(TreeListRow listRow)
 	{

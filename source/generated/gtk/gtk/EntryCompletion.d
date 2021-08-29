@@ -126,7 +126,7 @@ public class EntryCompletion : ObjectG, BuildableIF, CellLayoutIF
 	 * `GtkTreeViewColumn` for the drop-down menu.
 	 *
 	 * Params:
-	 *     area = the #GtkCellArea used to layout cells
+	 *     area = the `GtkCellArea` used to layout cells
 	 *
 	 * Returns: A newly created `GtkEntryCompletion` object
 	 *
@@ -167,7 +167,7 @@ public class EntryCompletion : ObjectG, BuildableIF, CellLayoutIF
 	 *     key = The text to complete for
 	 *
 	 * Returns: The common prefix all rows
-	 *     starting with @key or %NULL if no row matches @key.
+	 *     starting with @key
 	 */
 	public string computePrefix(string key)
 	{
@@ -241,8 +241,7 @@ public class EntryCompletion : ObjectG, BuildableIF, CellLayoutIF
 	 *
 	 * Returns %NULL if the model is unset.
 	 *
-	 * Returns: A #GtkTreeModel, or %NULL if none
-	 *     is currently being used
+	 * Returns: A `GtkTreeModel`
 	 */
 	public TreeModelIF getModel()
 	{
@@ -410,8 +409,7 @@ public class EntryCompletion : ObjectG, BuildableIF, CellLayoutIF
 	 * are using [property@Gtk.EntryCompletion:inline-completion].
 	 *
 	 * Params:
-	 *     popupSingleMatch = %TRUE if the popup should appear even for a single
-	 *         match
+	 *     popupSingleMatch = %TRUE if the popup should appear even for a single match
 	 */
 	public void setPopupSingleMatch(bool popupSingleMatch)
 	{
@@ -468,7 +466,7 @@ public class EntryCompletion : ObjectG, BuildableIF, CellLayoutIF
 	 *
 	 * Applications may connect to this signal in order to insert only a
 	 * smaller part of the @prefix into the entry - e.g. the entry used in
-	 * the #GtkFileChooser inserts only the part of the prefix up to the
+	 * the `GtkFileChooser` inserts only the part of the prefix up to the
 	 * next '/'.
 	 *
 	 * Params:

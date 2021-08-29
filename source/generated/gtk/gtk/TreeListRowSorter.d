@@ -65,7 +65,7 @@ public class TreeListRowSorter : Sorter
 	 * being %FALSE as it can only sort [class@Gtk.TreeListRow]s.
 	 *
 	 * Params:
-	 *     sorter = a `GtkSorter`, or %NULL
+	 *     sorter = a `GtkSorter`
 	 *
 	 * Returns: a new `GtkTreeListRowSorter`
 	 *
@@ -107,7 +107,7 @@ public class TreeListRowSorter : Sorter
 	 * the tree list rows passed to @self.
 	 *
 	 * Params:
-	 *     sorter = The sorter to use, or %NULL
+	 *     sorter = The sorter to use
 	 */
 	public void setSorter(Sorter sorter)
 	{

@@ -81,7 +81,6 @@ public class ShortcutTrigger : ObjectG
 	 *     string_ = the string to parse
 	 *
 	 * Returns: a new `GtkShortcutTrigger`
-	 *     or %NULL on error
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -98,8 +97,8 @@ public class ShortcutTrigger : ObjectG
 	}
 
 	/**
-	 * The types of @trigger1 and @trigger2 are #gconstpointer only to allow
-	 * use of this function as a #GCompareFunc.
+	 * The types of @trigger1 and @trigger2 are `gconstpointer` only to allow
+	 * use of this function as a `GCompareFunc`.
 	 *
 	 * They must each be a `GtkShortcutTrigger`.
 	 *
@@ -118,8 +117,8 @@ public class ShortcutTrigger : ObjectG
 	/**
 	 * Checks if @trigger1 and @trigger2 trigger under the same conditions.
 	 *
-	 * The types of @one and @two are #gconstpointer only to allow use of this
-	 * function with #GHashTable. They must each be a `GtkShortcutTrigger`.
+	 * The types of @one and @two are `gconstpointer` only to allow use of this
+	 * function with `GHashTable`. They must each be a `GtkShortcutTrigger`.
 	 *
 	 * Params:
 	 *     trigger2 = a `GtkShortcutTrigger`
@@ -139,8 +138,8 @@ public class ShortcutTrigger : ObjectG
 	 * architectures or even different versions of GTK. Do not use this
 	 * function as a basis for building protocols or file formats.
 	 *
-	 * The types of @trigger is #gconstpointer only to allow use of this
-	 * function with #GHashTable. They must each be a `GtkShortcutTrigger`.
+	 * The types of @trigger is `gconstpointer` only to allow use of this
+	 * function with `GHashTable`. They must each be a `GtkShortcutTrigger`.
 	 *
 	 * Returns: a hash value corresponding to @trigger
 	 */

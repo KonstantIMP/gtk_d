@@ -37,7 +37,7 @@ private import pango.PgLayout;
  * gtk_snapshot_pop() to change the current node.
  * 
  * The typical way to obtain a `GtkSnapshot` object is as an argument to
- * the GtkWidgetClass.snapshot() vfunc. If you need to create your own
+ * the [vfunc@Gtk.Widget.snapshot] vfunc. If you need to create your own
  * `GtkSnapshot`, use [ctor@Gtk.Snapshot.new].
  */
 public class Snapshot : DGdkSnapshot
@@ -217,7 +217,7 @@ public class Snapshot : DGdkSnapshot
 	 * will become the initial node.
 	 *
 	 * Params:
-	 *     node = a #GskRenderNode
+	 *     node = a `GskRenderNode`
 	 */
 	public void appendNode(RenderNode node)
 	{
@@ -619,8 +619,8 @@ public class Snapshot : DGdkSnapshot
 	 *     x = X origin
 	 *     y = Y origin
 	 *     layout = the `PangoLayout` of the text
-	 *     index = the index in the #PangoLayout
-	 *     direction = the #PangoDirection of the text
+	 *     index = the index in the `PangoLayout`
+	 *     direction = the `PangoDirection` of the text
 	 */
 	public void renderInsertionCursor(StyleContext context, double x, double y, PgLayout layout, int index, PangoDirection direction)
 	{
@@ -636,7 +636,7 @@ public class Snapshot : DGdkSnapshot
 	 *     context = the `GtkStyleContext` to use
 	 *     x = X origin of the rectangle
 	 *     y = Y origin of the rectangle
-	 *     layout = the #PangoLayout to render
+	 *     layout = the `PangoLayout` to render
 	 */
 	public void renderLayout(StyleContext context, double x, double y, PgLayout layout)
 	{
@@ -761,7 +761,7 @@ public class Snapshot : DGdkSnapshot
 	 *     size = The size of the resulting paintable
 	 *         or %NULL to use the bounds of the snapshot
 	 *
-	 * Returns: a new #GdkPaintable
+	 * Returns: a new `GdkPaintable`
 	 */
 	public PaintableIF toPaintable(Size size)
 	{

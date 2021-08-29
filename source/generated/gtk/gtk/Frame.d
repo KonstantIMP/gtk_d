@@ -157,8 +157,7 @@ public class Frame : Widget
 	/**
 	 * Retrieves the label widget for the frame.
 	 *
-	 * Returns: the label widget, or %NULL if
-	 *     there is none.
+	 * Returns: the label widget
 	 */
 	public Widget getLabelWidget()
 	{

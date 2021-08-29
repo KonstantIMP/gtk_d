@@ -110,7 +110,7 @@ public class GLContext : DrawContext
 	/**
 	 * Retrieves the current `GdkGLContext`.
 	 *
-	 * Returns: the current `GdkGLContext`, or %NULL
+	 * Returns: the current `GdkGLContext`
 	 */
 	public static GLContext getCurrent()
 	{
@@ -139,7 +139,7 @@ public class GLContext : DrawContext
 	/**
 	 * Retrieves the display the @context is created for
 	 *
-	 * Returns: a `GdkDisplay` or %NULL
+	 * Returns: a `GdkDisplay`
 	 */
 	public override Display getDisplay()
 	{
@@ -180,9 +180,15 @@ public class GLContext : DrawContext
 	}
 
 	/**
-	 * Retrieves the `GdkGLContext` that this @context share data with.
+	 * Used to retrieves the `GdkGLContext` that this @context share data with.
 	 *
-	 * Returns: a `GdkGLContext` or %NULL
+	 * As many contexts can share data now and no single shared context exists
+	 * anymore, this function has been deprecated and now always returns %NULL.
+	 *
+	 * Deprecated: Use [method@Gdk.GLContext.is_shared] to check if contexts
+	 * can be shared.
+	 *
+	 * Returns: %NULL
 	 */
 	public GLContext getSharedContext()
 	{
@@ -199,7 +205,7 @@ public class GLContext : DrawContext
 	/**
 	 * Retrieves the surface used by the @context.
 	 *
-	 * Returns: a `GdkSurface` or %NULL
+	 * Returns: a `GdkSurface`
 	 */
 	public override Surface getSurface()
 	{
@@ -260,6 +266,32 @@ public class GLContext : DrawContext
 	public bool isLegacy()
 	{
 		return gdk_gl_context_is_legacy(gdkGLContext) != 0;
+	}
+
+	/**
+	 * Checks if the two GL contexts can share resources.
+	 *
+	 * When they can, the texture IDs from @other can be used in @self. This
+	 * is particularly useful when passing `GdkGLTexture` objects between
+	 * different contexts.
+	 *
+	 * Contexts created for the same display with the same properties will
+	 * always be compatible, even if they are created for different surfaces.
+	 * For other contexts it depends on the GL backend.
+	 *
+	 * Both contexts must be realized for this check to succeed. If either one
+	 * is not, this function will return %FALSE.
+	 *
+	 * Params:
+	 *     other = the `GdkGLContext` that should be compatible with @self
+	 *
+	 * Returns: %TRUE if the two GL contexts are compatible.
+	 *
+	 * Since: 4.4
+	 */
+	public bool isShared(GLContext other)
+	{
+		return gdk_gl_context_is_shared(gdkGLContext, (other is null) ? null : other.getGLContextStruct()) != 0;
 	}
 
 	/**

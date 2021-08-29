@@ -54,7 +54,7 @@ public class BorderNode : RenderNode
 	 * The 4 sides of the border can have different widths and colors.
 	 *
 	 * Params:
-	 *     outline = a #GskRoundedRect describing the outline of the border
+	 *     outline = a `GskRoundedRect` describing the outline of the border
 	 *     borderWidth = the stroke width of the border on
 	 *         the top, right, bottom and left side respectively.
 	 *     borderColor = the color used on the top, right,
@@ -85,7 +85,7 @@ public class BorderNode : RenderNode
 	/**
 	 * Retrieves the colors of the border.
 	 *
-	 * Returns: an array of 4 #GdkRGBA structs
+	 * Returns: an array of 4 `GdkRGBA` structs
 	 *     for the top, right, bottom and left color of the border
 	 */
 	public RGBA getColors()

@@ -242,6 +242,19 @@ public class AppChooserButton : Widget, AppChooserIF
 	}
 
 	/**
+	 * Emitted to when the button is activated.
+	 *
+	 * The `::activate` signal on `GtkAppChooserButton` is an action signal and
+	 * emitting it causes the button to pop up its dialog.
+	 *
+	 * Since: 4.4
+	 */
+	gulong addOnActivate(void delegate(AppChooserButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "activate", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
 	 * Emitted when the active application changes.
 	 */
 	gulong addOnChanged(void delegate(AppChooserButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)

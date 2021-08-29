@@ -48,8 +48,7 @@ public interface FontChooserIF{
 	 * font descriptions.
 	 *
 	 * Returns: A string with the name
-	 *     of the current font, or %NULL if  no font is selected. You must
-	 *     free this string with g_free().
+	 *     of the current font
 	 */
 	public string getFont();
 
@@ -66,7 +65,7 @@ public interface FontChooserIF{
 	 * font descriptions.
 	 *
 	 * Returns: A `PangoFontDescription` for the
-	 *     current font, or %NULL if  no font is selected.
+	 *     current font
 	 */
 	public PgFontDescription getFontDesc();
 
@@ -77,8 +76,7 @@ public interface FontChooserIF{
 	 * If the selected font is not installed, returns %NULL.
 	 *
 	 * Returns: A `PangoFontFace` representing the
-	 *     selected font group details, or %NULL. The returned object is owned by
-	 *     @fontchooser and must not be modified or freed.
+	 *     selected font group details
 	 */
 	public PgFontFace getFontFace();
 
@@ -90,8 +88,7 @@ public interface FontChooserIF{
 	 * If the selected font is not installed, returns %NULL.
 	 *
 	 * Returns: A `PangoFontFamily` representing the
-	 *     selected font family, or %NULL. The returned object is owned by @fontchooser
-	 *     and must not be modified or freed.
+	 *     selected font family
 	 */
 	public PgFontFamily getFontFamily();
 
@@ -106,7 +103,7 @@ public interface FontChooserIF{
 	 * Gets the custom font map of this font chooser widget,
 	 * or %NULL if it does not have one.
 	 *
-	 * Returns: a `PangoFontMap`, or %NULL
+	 * Returns: a `PangoFontMap`
 	 */
 	public PgFontMap getFontMap();
 
@@ -151,7 +148,7 @@ public interface FontChooserIF{
 	 * in the font chooser.
 	 *
 	 * Params:
-	 *     filter = a `GtkFontFilterFunc`, or %NULL
+	 *     filter = a `GtkFontFilterFunc`
 	 *     userData = data to pass to @filter
 	 *     destroy = function to call to free @data when it is no longer needed
 	 */

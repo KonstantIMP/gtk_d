@@ -75,8 +75,7 @@ public class PgFontset : ObjectG
 	 * Params:
 	 *     wc = a Unicode character
 	 *
-	 * Returns: a `PangoFont`. The caller must call
-	 *     g_object_unref() when finished with the font.
+	 * Returns: a `PangoFont`
 	 */
 	public PgFont getFont(uint wc)
 	{
@@ -93,8 +92,7 @@ public class PgFontset : ObjectG
 	/**
 	 * Get overall metric information for the fonts in the fontset.
 	 *
-	 * Returns: a #PangoFontMetrics object. The caller must call pango_font_metrics_unref()
-	 *     when finished using the object.
+	 * Returns: a `PangoFontMetrics` object
 	 */
 	public PgFontMetrics getMetrics()
 	{

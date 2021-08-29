@@ -11,8 +11,7 @@ public  import gtk.c.types;
  * 
  * Every accessible implementation has:
  * 
- * - a “role”, represented by a value of the [enum@Gtk.AccessibleRole]
- * enumeration
+ * - a “role”, represented by a value of the [enum@Gtk.AccessibleRole] enumeration
  * - an “attribute”, represented by a set of [enum@Gtk.AccessibleState],
  * [enum@Gtk.AccessibleProperty] and [enum@Gtk.AccessibleRelation] values
  * 

@@ -151,8 +151,7 @@ public class Surface : ObjectG
 	 * Before using the returned `GdkGLContext`, you will need to
 	 * call [method@Gdk.GLContext.make_current] or [method@Gdk.GLContext.realize].
 	 *
-	 * Returns: the newly created `GdkGLContext`,
-	 *     or %NULL on error
+	 * Returns: the newly created `GdkGLContext`
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -265,10 +264,9 @@ public class Surface : ObjectG
 	 * If the return value is %NULL then there is no custom cursor set on
 	 * the surface, and it is using the cursor for its parent surface.
 	 *
-	 * Returns: a `GdkCursor`, or %NULL. The
-	 *     returned object is owned by the `GdkSurface` and should not be
-	 *     unreferenced directly. Use [method@Gdk.Surface.set_cursor] to
-	 *     unset the cursor of the surface
+	 * Use [method@Gdk.Surface.set_cursor] to unset the cursor of the surface.
+	 *
+	 * Returns: a `GdkCursor`
 	 */
 	public Cursor getCursor()
 	{
@@ -289,13 +287,12 @@ public class Surface : ObjectG
 	 * If the return value is %NULL then there is no custom cursor set on the
 	 * specified surface, and it is using the cursor for its parent surface.
 	 *
+	 * Use [method@Gdk.Surface.set_cursor] to unset the cursor of the surface.
+	 *
 	 * Params:
 	 *     device = a pointer `GdkDevice`
 	 *
-	 * Returns: a `GdkCursor`, or %NULL. The
-	 *     returned object is owned by the `GdkSurface` and should not be
-	 *     unreferenced directly. Use [method@Gdk.Surface.set_cursor] to unset
-	 *     the cursor of the surface
+	 * Returns: a `GdkCursor`
 	 */
 	public Cursor getDeviceCursor(Device device)
 	{
@@ -317,9 +314,9 @@ public class Surface : ObjectG
 	 *
 	 * Params:
 	 *     device = pointer `GdkDevice` to query to
-	 *     x = return locatio for the X coordinate of @device, or %NULL
-	 *     y = return location for the Y coordinate of @device, or %NULL
-	 *     mask = return location for the modifier mask, or %NULL
+	 *     x = return location for the X coordinate of @device
+	 *     y = return location for the Y coordinate of @device
+	 *     mask = return location for the modifier mask
 	 *
 	 * Returns: %TRUE if the device is over the surface
 	 */
@@ -544,10 +541,11 @@ public class Surface : ObjectG
 	 * GTK will update this property automatically if the @surface background
 	 * is opaque, as we know where the opaque regions are. If your surface
 	 * background is not opaque, please update this property in your
-	 * #GtkWidgetClass.css_changed() handler.
+	 * [vfunc@Gtk.Widget.css_changed] handler.
 	 *
 	 * Params:
-	 *     region = a region, or %NULL
+	 *     region = a region, or %NULL to make the entire
+	 *         surface opaque
 	 */
 	public void setOpaqueRegion(Region region)
 	{

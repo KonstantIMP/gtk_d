@@ -135,8 +135,8 @@ public class PgTabArray
 	 *
 	 * Params:
 	 *     tabIndex = tab stop index
-	 *     alignment = location to store alignment, or %NULL
-	 *     location = location to store tab position, or %NULL
+	 *     alignment = location to store alignment
+	 *     location = location to store tab position
 	 */
 	public void getTab(int tabIndex, out PangoTabAlign alignment, out int location)
 	{
@@ -152,9 +152,9 @@ public class PgTabArray
 	 *
 	 * Params:
 	 *     alignments = location to store an array of tab
-	 *         stop alignments, or %NULL
+	 *         stop alignments
 	 *     locations = location to store an array
-	 *         of tab positions, or %NULL
+	 *         of tab positions
 	 */
 	public void getTabs(out PangoTabAlign* alignments, out int[] locations)
 	{

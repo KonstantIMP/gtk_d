@@ -164,9 +164,7 @@ public final class PgMatrix
 	/**
 	 * Copies a `PangoMatrix`.
 	 *
-	 * Returns: the newly allocated `PangoMatrix`, which
-	 *     should be freed with [method@Pango.Matrix.free], or %NULL if
-	 *     @matrix was %NULL.
+	 * Returns: the newly allocated `PangoMatrix`
 	 *
 	 * Since: 1.6
 	 */
@@ -220,8 +218,8 @@ public final class PgMatrix
 	 * Note that output numbers will always be non-negative.
 	 *
 	 * Params:
-	 *     xscale = output scale factor in the x direction, or %NULL
-	 *     yscale = output scale factor perpendicular to the x direction, or %NULL
+	 *     xscale = output scale factor in the x direction
+	 *     yscale = output scale factor perpendicular to the x direction
 	 *
 	 * Since: 1.38
 	 */
@@ -303,7 +301,7 @@ public final class PgMatrix
 	 * using [func@extents_to_pixels]'s first argument.
 	 *
 	 * Params:
-	 *     rect = in/out bounding box in device units, or %NULL
+	 *     rect = in/out bounding box in device units
 	 *
 	 * Since: 1.16
 	 */
@@ -347,7 +345,7 @@ public final class PgMatrix
 	 * example).
 	 *
 	 * Params:
-	 *     rect = in/out bounding box in Pango units, or %NULL
+	 *     rect = in/out bounding box in Pango units
 	 *
 	 * Since: 1.16
 	 */
@@ -392,8 +390,8 @@ public final class PgMatrix
 	 * as @nearest.
 	 *
 	 * Params:
-	 *     inclusive = rectangle to round to pixels inclusively, or %NULL.
-	 *     nearest = rectangle to round to nearest pixels, or %NULL.
+	 *     inclusive = rectangle to round to pixels inclusively
+	 *     nearest = rectangle to round to nearest pixels
 	 *
 	 * Since: 1.16
 	 */

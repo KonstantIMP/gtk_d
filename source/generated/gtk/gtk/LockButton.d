@@ -126,7 +126,7 @@ public class LockButton : Button
 	 * Sets the `GPermission` object that controls @button.
 	 *
 	 * Params:
-	 *     permission = a `GPermission` object, or %NULL
+	 *     permission = a `GPermission` object
 	 */
 	public void setPermission(Permission permission)
 	{

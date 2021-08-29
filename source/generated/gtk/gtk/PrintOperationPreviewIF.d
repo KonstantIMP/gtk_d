@@ -86,7 +86,7 @@ public interface PrintOperationPreviewIF{
 	 * A handler for this signal can be used for setup tasks.
 	 *
 	 * Params:
-	 *     context = the current #GtkPrintContext
+	 *     context = the current `GtkPrintContext`
 	 */
 	gulong addOnReady(void delegate(PrintContext, PrintOperationPreviewIF) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 }

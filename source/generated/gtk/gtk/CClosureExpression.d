@@ -46,8 +46,10 @@ public class CClosureExpression : Expression
 	}
 
 	/**
+	 * Creates a `GtkExpression` that calls `callback_func` when it is evaluated.
+	 *
 	 * This function is a variant of [ctor@Gtk.ClosureExpression.new] that
-	 * creates a `GClosure` by calling `g_cclosure_new()` with the given
+	 * creates a `GClosure` by calling g_cclosure_new() with the given
 	 * `callback_func`, `user_data` and `user_destroy`.
 	 *
 	 * Params:

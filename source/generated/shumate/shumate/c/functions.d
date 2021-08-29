@@ -13,6 +13,13 @@ else
 
 shared static this()
 {
+	// shumate.Compass
+
+	Linker.link(shumate_compass_get_type, "shumate_compass_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_compass_new, "shumate_compass_new", LIBRARY_SHUMATE);
+	Linker.link(shumate_compass_get_viewport, "shumate_compass_get_viewport", LIBRARY_SHUMATE);
+	Linker.link(shumate_compass_set_viewport, "shumate_compass_set_viewport", LIBRARY_SHUMATE);
+
 	// shumate.Coordinate
 
 	Linker.link(shumate_coordinate_get_type, "shumate_coordinate_get_type", LIBRARY_SHUMATE);
@@ -59,6 +66,28 @@ shared static this()
 	Linker.link(shumate_location_get_longitude, "shumate_location_get_longitude", LIBRARY_SHUMATE);
 	Linker.link(shumate_location_set_location, "shumate_location_set_location", LIBRARY_SHUMATE);
 
+	// shumate.Map
+
+	Linker.link(shumate_map_get_type, "shumate_map_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_new, "shumate_map_new", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_new_simple, "shumate_map_new_simple", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_add_layer, "shumate_map_add_layer", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_center_on, "shumate_map_center_on", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_get_animate_zoom, "shumate_map_get_animate_zoom", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_get_go_to_duration, "shumate_map_get_go_to_duration", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_get_state, "shumate_map_get_state", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_get_viewport, "shumate_map_get_viewport", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_get_zoom_on_double_click, "shumate_map_get_zoom_on_double_click", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_go_to, "shumate_map_go_to", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_insert_layer_above, "shumate_map_insert_layer_above", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_insert_layer_behind, "shumate_map_insert_layer_behind", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_remove_layer, "shumate_map_remove_layer", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_set_animate_zoom, "shumate_map_set_animate_zoom", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_set_go_to_duration, "shumate_map_set_go_to_duration", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_set_map_source, "shumate_map_set_map_source", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_set_zoom_on_double_click, "shumate_map_set_zoom_on_double_click", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_stop_go_to, "shumate_map_stop_go_to", LIBRARY_SHUMATE);
+
 	// shumate.MapLayer
 
 	Linker.link(shumate_map_layer_get_type, "shumate_map_layer_get_type", LIBRARY_SHUMATE);
@@ -82,8 +111,17 @@ shared static this()
 	Linker.link(shumate_map_source_get_projection, "shumate_map_source_get_projection", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_source_get_row_count, "shumate_map_source_get_row_count", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_source_get_tile_size, "shumate_map_source_get_tile_size", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_get_tile_size_at_zoom, "shumate_map_source_get_tile_size_at_zoom", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_source_get_x, "shumate_map_source_get_x", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_source_get_y, "shumate_map_source_get_y", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_id, "shumate_map_source_set_id", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_license, "shumate_map_source_set_license", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_license_uri, "shumate_map_source_set_license_uri", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_max_zoom_level, "shumate_map_source_set_max_zoom_level", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_min_zoom_level, "shumate_map_source_set_min_zoom_level", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_name, "shumate_map_source_set_name", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_projection, "shumate_map_source_set_projection", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_source_set_tile_size, "shumate_map_source_set_tile_size", LIBRARY_SHUMATE);
 
 	// shumate.MapSourceRegistry
 
@@ -226,43 +264,6 @@ shared static this()
 	Linker.link(shumate_tile_set_y, "shumate_tile_set_y", LIBRARY_SHUMATE);
 	Linker.link(shumate_tile_set_zoom_level, "shumate_tile_set_zoom_level", LIBRARY_SHUMATE);
 
-	// shumate.TileSource
-
-	Linker.link(shumate_tile_source_get_type, "shumate_tile_source_get_type", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_id, "shumate_tile_source_set_id", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_license, "shumate_tile_source_set_license", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_license_uri, "shumate_tile_source_set_license_uri", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_max_zoom_level, "shumate_tile_source_set_max_zoom_level", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_min_zoom_level, "shumate_tile_source_set_min_zoom_level", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_name, "shumate_tile_source_set_name", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_projection, "shumate_tile_source_set_projection", LIBRARY_SHUMATE);
-	Linker.link(shumate_tile_source_set_tile_size, "shumate_tile_source_set_tile_size", LIBRARY_SHUMATE);
-
-	// shumate.View
-
-	Linker.link(shumate_view_get_type, "shumate_view_get_type", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_new, "shumate_view_new", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_new_simple, "shumate_view_new_simple", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_add_layer, "shumate_view_add_layer", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_add_overlay_source, "shumate_view_add_overlay_source", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_center_on, "shumate_view_center_on", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_get_animate_zoom, "shumate_view_get_animate_zoom", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_get_go_to_duration, "shumate_view_get_go_to_duration", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_get_overlay_sources, "shumate_view_get_overlay_sources", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_get_state, "shumate_view_get_state", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_get_viewport, "shumate_view_get_viewport", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_get_zoom_on_double_click, "shumate_view_get_zoom_on_double_click", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_go_to, "shumate_view_go_to", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_insert_layer_above, "shumate_view_insert_layer_above", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_insert_layer_behind, "shumate_view_insert_layer_behind", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_remove_layer, "shumate_view_remove_layer", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_remove_overlay_source, "shumate_view_remove_overlay_source", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_set_animate_zoom, "shumate_view_set_animate_zoom", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_set_go_to_duration, "shumate_view_set_go_to_duration", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_set_map_source, "shumate_view_set_map_source", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_set_zoom_on_double_click, "shumate_view_set_zoom_on_double_click", LIBRARY_SHUMATE);
-	Linker.link(shumate_view_stop_go_to, "shumate_view_stop_go_to", LIBRARY_SHUMATE);
-
 	// shumate.Viewport
 
 	Linker.link(shumate_viewport_get_type, "shumate_viewport_get_type", LIBRARY_SHUMATE);
@@ -270,21 +271,28 @@ shared static this()
 	Linker.link(shumate_viewport_get_max_zoom_level, "shumate_viewport_get_max_zoom_level", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_get_min_zoom_level, "shumate_viewport_get_min_zoom_level", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_get_reference_map_source, "shumate_viewport_get_reference_map_source", LIBRARY_SHUMATE);
+	Linker.link(shumate_viewport_get_rotation, "shumate_viewport_get_rotation", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_get_zoom_level, "shumate_viewport_get_zoom_level", LIBRARY_SHUMATE);
-	Linker.link(shumate_viewport_latitude_to_widget_y, "shumate_viewport_latitude_to_widget_y", LIBRARY_SHUMATE);
-	Linker.link(shumate_viewport_longitude_to_widget_x, "shumate_viewport_longitude_to_widget_x", LIBRARY_SHUMATE);
+	Linker.link(shumate_viewport_location_to_widget_coords, "shumate_viewport_location_to_widget_coords", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_set_max_zoom_level, "shumate_viewport_set_max_zoom_level", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_set_min_zoom_level, "shumate_viewport_set_min_zoom_level", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_set_reference_map_source, "shumate_viewport_set_reference_map_source", LIBRARY_SHUMATE);
+	Linker.link(shumate_viewport_set_rotation, "shumate_viewport_set_rotation", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_set_zoom_level, "shumate_viewport_set_zoom_level", LIBRARY_SHUMATE);
-	Linker.link(shumate_viewport_widget_x_to_longitude, "shumate_viewport_widget_x_to_longitude", LIBRARY_SHUMATE);
-	Linker.link(shumate_viewport_widget_y_to_latitude, "shumate_viewport_widget_y_to_latitude", LIBRARY_SHUMATE);
+	Linker.link(shumate_viewport_widget_coords_to_location, "shumate_viewport_widget_coords_to_location", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_zoom_in, "shumate_viewport_zoom_in", LIBRARY_SHUMATE);
 	Linker.link(shumate_viewport_zoom_out, "shumate_viewport_zoom_out", LIBRARY_SHUMATE);
 }
 
 __gshared extern(C)
 {
+
+	// shumate.Compass
+
+	GType function() c_shumate_compass_get_type;
+	ShumateCompass* function(ShumateViewport* viewport) c_shumate_compass_new;
+	ShumateViewport* function(ShumateCompass* compass) c_shumate_compass_get_viewport;
+	void function(ShumateCompass* compass, ShumateViewport* viewport) c_shumate_compass_set_viewport;
 
 	// shumate.Coordinate
 
@@ -332,6 +340,28 @@ __gshared extern(C)
 	double function(ShumateLocation* location) c_shumate_location_get_longitude;
 	void function(ShumateLocation* location, double latitude, double longitude) c_shumate_location_set_location;
 
+	// shumate.Map
+
+	GType function() c_shumate_map_get_type;
+	ShumateMap* function() c_shumate_map_new;
+	ShumateMap* function() c_shumate_map_new_simple;
+	void function(ShumateMap* self, ShumateLayer* layer) c_shumate_map_add_layer;
+	void function(ShumateMap* self, double latitude, double longitude) c_shumate_map_center_on;
+	int function(ShumateMap* self) c_shumate_map_get_animate_zoom;
+	uint function(ShumateMap* self) c_shumate_map_get_go_to_duration;
+	ShumateState function(ShumateMap* self) c_shumate_map_get_state;
+	ShumateViewport* function(ShumateMap* self) c_shumate_map_get_viewport;
+	int function(ShumateMap* self) c_shumate_map_get_zoom_on_double_click;
+	void function(ShumateMap* self, double latitude, double longitude) c_shumate_map_go_to;
+	void function(ShumateMap* self, ShumateLayer* layer, ShumateLayer* nextSibling) c_shumate_map_insert_layer_above;
+	void function(ShumateMap* self, ShumateLayer* layer, ShumateLayer* nextSibling) c_shumate_map_insert_layer_behind;
+	void function(ShumateMap* self, ShumateLayer* layer) c_shumate_map_remove_layer;
+	void function(ShumateMap* self, int value) c_shumate_map_set_animate_zoom;
+	void function(ShumateMap* self, uint duration) c_shumate_map_set_go_to_duration;
+	void function(ShumateMap* self, ShumateMapSource* mapSource) c_shumate_map_set_map_source;
+	void function(ShumateMap* self, int value) c_shumate_map_set_zoom_on_double_click;
+	void function(ShumateMap* self) c_shumate_map_stop_go_to;
+
 	// shumate.MapLayer
 
 	GType function() c_shumate_map_layer_get_type;
@@ -355,8 +385,17 @@ __gshared extern(C)
 	ShumateMapProjection function(ShumateMapSource* mapSource) c_shumate_map_source_get_projection;
 	uint function(ShumateMapSource* mapSource, uint zoomLevel) c_shumate_map_source_get_row_count;
 	uint function(ShumateMapSource* mapSource) c_shumate_map_source_get_tile_size;
+	double function(ShumateMapSource* mapSource, double zoomLevel) c_shumate_map_source_get_tile_size_at_zoom;
 	double function(ShumateMapSource* mapSource, double zoomLevel, double longitude) c_shumate_map_source_get_x;
 	double function(ShumateMapSource* mapSource, double zoomLevel, double latitude) c_shumate_map_source_get_y;
+	void function(ShumateMapSource* mapSource, const(char)* id) c_shumate_map_source_set_id;
+	void function(ShumateMapSource* mapSource, const(char)* license) c_shumate_map_source_set_license;
+	void function(ShumateMapSource* mapSource, const(char)* licenseUri) c_shumate_map_source_set_license_uri;
+	void function(ShumateMapSource* mapSource, uint zoomLevel) c_shumate_map_source_set_max_zoom_level;
+	void function(ShumateMapSource* mapSource, uint zoomLevel) c_shumate_map_source_set_min_zoom_level;
+	void function(ShumateMapSource* mapSource, const(char)* name) c_shumate_map_source_set_name;
+	void function(ShumateMapSource* mapSource, ShumateMapProjection projection) c_shumate_map_source_set_projection;
+	void function(ShumateMapSource* mapSource, uint tileSize) c_shumate_map_source_set_tile_size;
 
 	// shumate.MapSourceRegistry
 
@@ -499,43 +538,6 @@ __gshared extern(C)
 	void function(ShumateTile* self, uint y) c_shumate_tile_set_y;
 	void function(ShumateTile* self, uint zoomLevel) c_shumate_tile_set_zoom_level;
 
-	// shumate.TileSource
-
-	GType function() c_shumate_tile_source_get_type;
-	void function(ShumateTileSource* tileSource, const(char)* id) c_shumate_tile_source_set_id;
-	void function(ShumateTileSource* tileSource, const(char)* license) c_shumate_tile_source_set_license;
-	void function(ShumateTileSource* tileSource, const(char)* licenseUri) c_shumate_tile_source_set_license_uri;
-	void function(ShumateTileSource* tileSource, uint zoomLevel) c_shumate_tile_source_set_max_zoom_level;
-	void function(ShumateTileSource* tileSource, uint zoomLevel) c_shumate_tile_source_set_min_zoom_level;
-	void function(ShumateTileSource* tileSource, const(char)* name) c_shumate_tile_source_set_name;
-	void function(ShumateTileSource* tileSource, ShumateMapProjection projection) c_shumate_tile_source_set_projection;
-	void function(ShumateTileSource* tileSource, uint tileSize) c_shumate_tile_source_set_tile_size;
-
-	// shumate.View
-
-	GType function() c_shumate_view_get_type;
-	ShumateView* function() c_shumate_view_new;
-	ShumateView* function() c_shumate_view_new_simple;
-	void function(ShumateView* view, ShumateLayer* layer) c_shumate_view_add_layer;
-	void function(ShumateView* view, ShumateMapSource* mapSource) c_shumate_view_add_overlay_source;
-	void function(ShumateView* view, double latitude, double longitude) c_shumate_view_center_on;
-	int function(ShumateView* view) c_shumate_view_get_animate_zoom;
-	uint function(ShumateView* self) c_shumate_view_get_go_to_duration;
-	GList* function(ShumateView* view) c_shumate_view_get_overlay_sources;
-	ShumateState function(ShumateView* view) c_shumate_view_get_state;
-	ShumateViewport* function(ShumateView* self) c_shumate_view_get_viewport;
-	int function(ShumateView* view) c_shumate_view_get_zoom_on_double_click;
-	void function(ShumateView* view, double latitude, double longitude) c_shumate_view_go_to;
-	void function(ShumateView* view, ShumateLayer* layer, ShumateLayer* nextSibling) c_shumate_view_insert_layer_above;
-	void function(ShumateView* view, ShumateLayer* layer, ShumateLayer* nextSibling) c_shumate_view_insert_layer_behind;
-	void function(ShumateView* view, ShumateLayer* layer) c_shumate_view_remove_layer;
-	void function(ShumateView* view, ShumateMapSource* mapSource) c_shumate_view_remove_overlay_source;
-	void function(ShumateView* view, int value) c_shumate_view_set_animate_zoom;
-	void function(ShumateView* self, uint duration) c_shumate_view_set_go_to_duration;
-	void function(ShumateView* view, ShumateMapSource* mapSource) c_shumate_view_set_map_source;
-	void function(ShumateView* view, int value) c_shumate_view_set_zoom_on_double_click;
-	void function(ShumateView* view) c_shumate_view_stop_go_to;
-
 	// shumate.Viewport
 
 	GType function() c_shumate_viewport_get_type;
@@ -543,19 +545,26 @@ __gshared extern(C)
 	uint function(ShumateViewport* self) c_shumate_viewport_get_max_zoom_level;
 	uint function(ShumateViewport* self) c_shumate_viewport_get_min_zoom_level;
 	ShumateMapSource* function(ShumateViewport* self) c_shumate_viewport_get_reference_map_source;
+	double function(ShumateViewport* self) c_shumate_viewport_get_rotation;
 	double function(ShumateViewport* self) c_shumate_viewport_get_zoom_level;
-	double function(ShumateViewport* self, GtkWidget* widget, double latitude) c_shumate_viewport_latitude_to_widget_y;
-	double function(ShumateViewport* self, GtkWidget* widget, double longitude) c_shumate_viewport_longitude_to_widget_x;
+	void function(ShumateViewport* self, GtkWidget* widget, double latitude, double longitude, double* x, double* y) c_shumate_viewport_location_to_widget_coords;
 	void function(ShumateViewport* self, uint maxZoomLevel) c_shumate_viewport_set_max_zoom_level;
 	void function(ShumateViewport* self, uint minZoomLevel) c_shumate_viewport_set_min_zoom_level;
 	void function(ShumateViewport* self, ShumateMapSource* mapSource) c_shumate_viewport_set_reference_map_source;
+	void function(ShumateViewport* self, double rotation) c_shumate_viewport_set_rotation;
 	void function(ShumateViewport* self, double zoomLevel) c_shumate_viewport_set_zoom_level;
-	double function(ShumateViewport* self, GtkWidget* widget, double x) c_shumate_viewport_widget_x_to_longitude;
-	double function(ShumateViewport* self, GtkWidget* widget, double y) c_shumate_viewport_widget_y_to_latitude;
+	void function(ShumateViewport* self, GtkWidget* widget, double x, double y, double* latitude, double* longitude) c_shumate_viewport_widget_coords_to_location;
 	void function(ShumateViewport* self) c_shumate_viewport_zoom_in;
 	void function(ShumateViewport* self) c_shumate_viewport_zoom_out;
 }
 
+
+// shumate.Compass
+
+alias c_shumate_compass_get_type shumate_compass_get_type;
+alias c_shumate_compass_new shumate_compass_new;
+alias c_shumate_compass_get_viewport shumate_compass_get_viewport;
+alias c_shumate_compass_set_viewport shumate_compass_set_viewport;
 
 // shumate.Coordinate
 
@@ -603,6 +612,28 @@ alias c_shumate_location_get_latitude shumate_location_get_latitude;
 alias c_shumate_location_get_longitude shumate_location_get_longitude;
 alias c_shumate_location_set_location shumate_location_set_location;
 
+// shumate.Map
+
+alias c_shumate_map_get_type shumate_map_get_type;
+alias c_shumate_map_new shumate_map_new;
+alias c_shumate_map_new_simple shumate_map_new_simple;
+alias c_shumate_map_add_layer shumate_map_add_layer;
+alias c_shumate_map_center_on shumate_map_center_on;
+alias c_shumate_map_get_animate_zoom shumate_map_get_animate_zoom;
+alias c_shumate_map_get_go_to_duration shumate_map_get_go_to_duration;
+alias c_shumate_map_get_state shumate_map_get_state;
+alias c_shumate_map_get_viewport shumate_map_get_viewport;
+alias c_shumate_map_get_zoom_on_double_click shumate_map_get_zoom_on_double_click;
+alias c_shumate_map_go_to shumate_map_go_to;
+alias c_shumate_map_insert_layer_above shumate_map_insert_layer_above;
+alias c_shumate_map_insert_layer_behind shumate_map_insert_layer_behind;
+alias c_shumate_map_remove_layer shumate_map_remove_layer;
+alias c_shumate_map_set_animate_zoom shumate_map_set_animate_zoom;
+alias c_shumate_map_set_go_to_duration shumate_map_set_go_to_duration;
+alias c_shumate_map_set_map_source shumate_map_set_map_source;
+alias c_shumate_map_set_zoom_on_double_click shumate_map_set_zoom_on_double_click;
+alias c_shumate_map_stop_go_to shumate_map_stop_go_to;
+
 // shumate.MapLayer
 
 alias c_shumate_map_layer_get_type shumate_map_layer_get_type;
@@ -626,8 +657,17 @@ alias c_shumate_map_source_get_name shumate_map_source_get_name;
 alias c_shumate_map_source_get_projection shumate_map_source_get_projection;
 alias c_shumate_map_source_get_row_count shumate_map_source_get_row_count;
 alias c_shumate_map_source_get_tile_size shumate_map_source_get_tile_size;
+alias c_shumate_map_source_get_tile_size_at_zoom shumate_map_source_get_tile_size_at_zoom;
 alias c_shumate_map_source_get_x shumate_map_source_get_x;
 alias c_shumate_map_source_get_y shumate_map_source_get_y;
+alias c_shumate_map_source_set_id shumate_map_source_set_id;
+alias c_shumate_map_source_set_license shumate_map_source_set_license;
+alias c_shumate_map_source_set_license_uri shumate_map_source_set_license_uri;
+alias c_shumate_map_source_set_max_zoom_level shumate_map_source_set_max_zoom_level;
+alias c_shumate_map_source_set_min_zoom_level shumate_map_source_set_min_zoom_level;
+alias c_shumate_map_source_set_name shumate_map_source_set_name;
+alias c_shumate_map_source_set_projection shumate_map_source_set_projection;
+alias c_shumate_map_source_set_tile_size shumate_map_source_set_tile_size;
 
 // shumate.MapSourceRegistry
 
@@ -770,43 +810,6 @@ alias c_shumate_tile_set_x shumate_tile_set_x;
 alias c_shumate_tile_set_y shumate_tile_set_y;
 alias c_shumate_tile_set_zoom_level shumate_tile_set_zoom_level;
 
-// shumate.TileSource
-
-alias c_shumate_tile_source_get_type shumate_tile_source_get_type;
-alias c_shumate_tile_source_set_id shumate_tile_source_set_id;
-alias c_shumate_tile_source_set_license shumate_tile_source_set_license;
-alias c_shumate_tile_source_set_license_uri shumate_tile_source_set_license_uri;
-alias c_shumate_tile_source_set_max_zoom_level shumate_tile_source_set_max_zoom_level;
-alias c_shumate_tile_source_set_min_zoom_level shumate_tile_source_set_min_zoom_level;
-alias c_shumate_tile_source_set_name shumate_tile_source_set_name;
-alias c_shumate_tile_source_set_projection shumate_tile_source_set_projection;
-alias c_shumate_tile_source_set_tile_size shumate_tile_source_set_tile_size;
-
-// shumate.View
-
-alias c_shumate_view_get_type shumate_view_get_type;
-alias c_shumate_view_new shumate_view_new;
-alias c_shumate_view_new_simple shumate_view_new_simple;
-alias c_shumate_view_add_layer shumate_view_add_layer;
-alias c_shumate_view_add_overlay_source shumate_view_add_overlay_source;
-alias c_shumate_view_center_on shumate_view_center_on;
-alias c_shumate_view_get_animate_zoom shumate_view_get_animate_zoom;
-alias c_shumate_view_get_go_to_duration shumate_view_get_go_to_duration;
-alias c_shumate_view_get_overlay_sources shumate_view_get_overlay_sources;
-alias c_shumate_view_get_state shumate_view_get_state;
-alias c_shumate_view_get_viewport shumate_view_get_viewport;
-alias c_shumate_view_get_zoom_on_double_click shumate_view_get_zoom_on_double_click;
-alias c_shumate_view_go_to shumate_view_go_to;
-alias c_shumate_view_insert_layer_above shumate_view_insert_layer_above;
-alias c_shumate_view_insert_layer_behind shumate_view_insert_layer_behind;
-alias c_shumate_view_remove_layer shumate_view_remove_layer;
-alias c_shumate_view_remove_overlay_source shumate_view_remove_overlay_source;
-alias c_shumate_view_set_animate_zoom shumate_view_set_animate_zoom;
-alias c_shumate_view_set_go_to_duration shumate_view_set_go_to_duration;
-alias c_shumate_view_set_map_source shumate_view_set_map_source;
-alias c_shumate_view_set_zoom_on_double_click shumate_view_set_zoom_on_double_click;
-alias c_shumate_view_stop_go_to shumate_view_stop_go_to;
-
 // shumate.Viewport
 
 alias c_shumate_viewport_get_type shumate_viewport_get_type;
@@ -814,14 +817,14 @@ alias c_shumate_viewport_new shumate_viewport_new;
 alias c_shumate_viewport_get_max_zoom_level shumate_viewport_get_max_zoom_level;
 alias c_shumate_viewport_get_min_zoom_level shumate_viewport_get_min_zoom_level;
 alias c_shumate_viewport_get_reference_map_source shumate_viewport_get_reference_map_source;
+alias c_shumate_viewport_get_rotation shumate_viewport_get_rotation;
 alias c_shumate_viewport_get_zoom_level shumate_viewport_get_zoom_level;
-alias c_shumate_viewport_latitude_to_widget_y shumate_viewport_latitude_to_widget_y;
-alias c_shumate_viewport_longitude_to_widget_x shumate_viewport_longitude_to_widget_x;
+alias c_shumate_viewport_location_to_widget_coords shumate_viewport_location_to_widget_coords;
 alias c_shumate_viewport_set_max_zoom_level shumate_viewport_set_max_zoom_level;
 alias c_shumate_viewport_set_min_zoom_level shumate_viewport_set_min_zoom_level;
 alias c_shumate_viewport_set_reference_map_source shumate_viewport_set_reference_map_source;
+alias c_shumate_viewport_set_rotation shumate_viewport_set_rotation;
 alias c_shumate_viewport_set_zoom_level shumate_viewport_set_zoom_level;
-alias c_shumate_viewport_widget_x_to_longitude shumate_viewport_widget_x_to_longitude;
-alias c_shumate_viewport_widget_y_to_latitude shumate_viewport_widget_y_to_latitude;
+alias c_shumate_viewport_widget_coords_to_location shumate_viewport_widget_coords_to_location;
 alias c_shumate_viewport_zoom_in shumate_viewport_zoom_in;
 alias c_shumate_viewport_zoom_out shumate_viewport_zoom_out;

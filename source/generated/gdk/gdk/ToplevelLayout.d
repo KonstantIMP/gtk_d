@@ -70,7 +70,7 @@ public class ToplevelLayout
 	 * The size is in ”application pixels”, not
 	 * ”device pixels” (see gdk_surface_get_scale_factor()).
 	 *
-	 * Returns: newly created instance of #GdkToplevelLayout
+	 * Returns: newly created instance of `GdkToplevelLayout`
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -87,7 +87,7 @@ public class ToplevelLayout
 	}
 
 	/**
-	 * Create a new #GdkToplevelLayout and copy the contents of @layout into it.
+	 * Create a new `GdkToplevelLayout` and copy the contents of @layout into it.
 	 *
 	 * Returns: a copy of @layout.
 	 */
@@ -107,7 +107,7 @@ public class ToplevelLayout
 	 * Check whether @layout and @other has identical layout properties.
 	 *
 	 * Params:
-	 *     other = another #GdkToplevelLayout
+	 *     other = another `GdkToplevelLayout`
 	 *
 	 * Returns: %TRUE if @layout and @other have identical layout properties,
 	 *     otherwise %FALSE.

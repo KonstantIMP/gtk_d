@@ -79,7 +79,7 @@ public interface PopupIF{
 	public GdkGravity getSurfaceAnchor();
 
 	/**
-	 * Present @popup after having processed the #GdkPopupLayout rules.
+	 * Present @popup after having processed the `GdkPopupLayout` rules.
 	 *
 	 * If the popup was previously now showing, it will be showed,
 	 * otherwise it will change position according to @layout.

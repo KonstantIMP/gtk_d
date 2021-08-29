@@ -246,7 +246,7 @@ public class AppChooserWidget : Widget, AppChooserIF
 	 * Return or Enter.
 	 *
 	 * Params:
-	 *     application = the activated #GAppInfo
+	 *     application = the activated `GAppInfo`
 	 */
 	gulong addOnApplicationActivated(void delegate(AppInfoIF, AppChooserWidget) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -257,7 +257,7 @@ public class AppChooserWidget : Widget, AppChooserIF
 	 * Emitted when an application item is selected from the widget's list.
 	 *
 	 * Params:
-	 *     application = the selected #GAppInfo
+	 *     application = the selected `GAppInfo`
 	 */
 	gulong addOnApplicationSelected(void delegate(AppInfoIF, AppChooserWidget) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

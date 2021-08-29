@@ -73,7 +73,7 @@ public class WidgetPaintable : ObjectG, PaintableIF
 	 * Creates a new widget paintable observing the given widget.
 	 *
 	 * Params:
-	 *     widget = a `GtkWidget` or %NULL
+	 *     widget = a `GtkWidget`
 	 *
 	 * Returns: a new `GtkWidgetPaintable`
 	 *
@@ -112,7 +112,7 @@ public class WidgetPaintable : ObjectG, PaintableIF
 	 * Sets the widget that should be observed.
 	 *
 	 * Params:
-	 *     widget = the widget to observe or %NULL
+	 *     widget = the widget to observe
 	 */
 	public void setWidget(Widget widget)
 	{

@@ -77,7 +77,7 @@ public class NumericSorter : Sorter
 	/**
 	 * Gets the expression that is evaluated to obtain numbers from items.
 	 *
-	 * Returns: a `GtkExpression`, or %NULL
+	 * Returns: a `GtkExpression`
 	 */
 	public Expression getExpression()
 	{
@@ -111,7 +111,7 @@ public class NumericSorter : Sorter
 	 * numerically, such as %G_TYPE_INT or %G_TYPE_DOUBLE.
 	 *
 	 * Params:
-	 *     expression = a `GtkExpression`, or %NULL
+	 *     expression = a `GtkExpression`
 	 */
 	public void setExpression(Expression expression)
 	{

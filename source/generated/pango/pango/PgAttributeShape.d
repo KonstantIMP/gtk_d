@@ -43,16 +43,18 @@ public class PgAttributeShape : PgAttribute
 	/**
 	 * Create a new shape attribute.
 	 *
-	 * A shape is used to impose a particular ink and logical rectangle
-	 * on the result of shaping a particular glyph. This might be used,
-	 * for instance, for embedding a picture or a widget inside a `PangoLayout`.
+	 * A shape is used to impose a particular ink and logical
+	 * rectangle on the result of shaping a particular glyph.
+	 * This might be used, for instance, for embedding a picture
+	 * or a widget inside a `PangoLayout`.
 	 *
 	 * Params:
 	 *     inkRect = ink rectangle to assign to each character
 	 *     logicalRect = logical rectangle to assign to each character
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -71,20 +73,23 @@ public class PgAttributeShape : PgAttribute
 	/**
 	 * Creates a new shape attribute.
 	 *
-	 * Like pango_attr_shape_new(), but a user data pointer is also
-	 * provided; this pointer can be accessed when later rendering the glyph.
+	 * Like [func@Pango.AttrShape.new], but a user data pointer
+	 * is also provided; this pointer can be accessed when later
+	 * rendering the glyph.
 	 *
 	 * Params:
 	 *     inkRect = ink rectangle to assign to each character
 	 *     logicalRect = logical rectangle to assign to each character
 	 *     data = user data pointer
 	 *     copyFunc = function to copy @data when the
-	 *         attribute is copied. If %NULL, @data is simply copied as a pointer.
+	 *         attribute is copied. If %NULL, @data is simply copied
+	 *         as a pointer
 	 *     destroyFunc = function to free @data when the
-	 *         attribute is freed, or %NULL
+	 *         attribute is freed
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.8
 	 *

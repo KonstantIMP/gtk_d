@@ -151,7 +151,7 @@ public class SearchEntry : Widget, EditableIF
 	 * [method@Gtk.EventControllerKey.forward].
 	 *
 	 * Params:
-	 *     widget = a #GtkWidget
+	 *     widget = a `GtkWidget`
 	 */
 	public void setKeyCaptureWidget(Widget widget)
 	{

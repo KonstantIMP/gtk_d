@@ -29,13 +29,13 @@ public GType gdkRectangleGetType()
 }
 
 /**
- * Returns #TRUE if @rect contains the point described by @x and @y.
+ * Returns %TRUE if @rect contains the point described by @x and @y.
  *
  * Params:
  *     x = X coordinate
  *     y = Y coordinate
  *
- * Returns: #TRUE if @rect contains the point
+ * Returns: %TRUE if @rect contains the point
  */
 public bool containsPoint(GdkRectangle* rect, int x, int y)
 {
@@ -67,7 +67,7 @@ public bool equal(GdkRectangle* rect1, GdkRectangle* rect2)
  * Params:
  *     src2 = a `GdkRectangle`
  *     dest = return location for the
- *         intersection of @src1 and @src2, or %NULL
+ *         intersection of @src1 and @src2
  *
  * Returns: %TRUE if the rectangles intersect.
  */

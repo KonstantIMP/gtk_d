@@ -131,7 +131,7 @@ public class ListBoxRow : Widget, ActionableIF
 	 * there is a header set already, and if so to update
 	 * the state of it.
 	 *
-	 * Returns: the current header, or %NULL if none
+	 * Returns: the current header
 	 */
 	public Widget getHeader()
 	{
@@ -207,7 +207,7 @@ public class ListBoxRow : Widget, ActionableIF
 	 * and be shown in front of the row in the listbox.
 	 *
 	 * Params:
-	 *     header = the header, or %NULL
+	 *     header = the header
 	 */
 	public void setHeader(Widget header)
 	{

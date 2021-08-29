@@ -13,9 +13,9 @@ public  import gtk.c.types;
 
 
 /**
- * A GtkTreeModel which hides parts of an underlying tree model
+ * A `GtkTreeModel` which hides parts of an underlying tree model
  * 
- * A #GtkTreeModelFilter is a tree model which wraps another tree model,
+ * A `GtkTreeModelFilter` is a tree model which wraps another tree model,
  * and can do the following things:
  * 
  * - Filter specific rows, based on data from a “visible column”, a column
@@ -30,21 +30,21 @@ public  import gtk.c.types;
  * on the given child model.
  * 
  * - Set a different root node, also known as a “virtual root”. You can pass
- * in a #GtkTreePath indicating the root node for the filter at construction
+ * in a `GtkTreePath` indicating the root node for the filter at construction
  * time.
  * 
- * The basic API is similar to #GtkTreeModelSort. For an example on its usage,
- * see the section on #GtkTreeModelSort.
+ * The basic API is similar to `GtkTreeModelSort`. For an example on its usage,
+ * see the section on `GtkTreeModelSort`.
  * 
- * When using #GtkTreeModelFilter, it is important to realize that
- * #GtkTreeModelFilter maintains an internal cache of all nodes which are
+ * When using `GtkTreeModelFilter`, it is important to realize that
+ * `GtkTreeModelFilter` maintains an internal cache of all nodes which are
  * visible in its clients. The cache is likely to be a subtree of the tree
- * exposed by the child model. #GtkTreeModelFilter will not cache the entire
+ * exposed by the child model. `GtkTreeModelFilter` will not cache the entire
  * child model when unnecessary to not compromise the caching mechanism
  * that is exposed by the reference counting scheme. If the child model
  * implements reference counting, unnecessary signals may not be emitted
- * because of reference counting rule 3, see the #GtkTreeModel
- * documentation. (Note that e.g. #GtkTreeStore does not implement
+ * because of reference counting rule 3, see the `GtkTreeModel`
+ * documentation. (Note that e.g. `GtkTreeStore` does not implement
  * reference counting and will always emit all signals, even when
  * the receiving node is not visible).
  * 
@@ -54,29 +54,29 @@ public  import gtk.c.types;
  * or its parents. Usually, having a dependency on the state of any child
  * node is not possible, unless references are taken on these explicitly.
  * When no such reference exists, no signals may be received for these child
- * nodes (see reference counting rule number 3 in the #GtkTreeModel section).
+ * nodes (see reference counting rule number 3 in the `GtkTreeModel` section).
  * 
  * Determining the visibility state of a given node based on the state
  * of its child nodes is a frequently occurring use case. Therefore,
- * #GtkTreeModelFilter explicitly supports this. For example, when a node
+ * `GtkTreeModelFilter` explicitly supports this. For example, when a node
  * does not have any children, you might not want the node to be visible.
  * As soon as the first row is added to the node’s child level (or the
  * last row removed), the node’s visibility should be updated.
  * 
  * This introduces a dependency from the node on its child nodes. In order
- * to accommodate this, #GtkTreeModelFilter must make sure the necessary
+ * to accommodate this, `GtkTreeModelFilter` must make sure the necessary
  * signals are received from the child model. This is achieved by building,
- * for all nodes which are exposed as visible nodes to #GtkTreeModelFilter's
+ * for all nodes which are exposed as visible nodes to `GtkTreeModelFilter`'s
  * clients, the child level (if any) and take a reference on the first node
  * in this level. Furthermore, for every row-inserted, row-changed or
  * row-deleted signal (also these which were not handled because the node
- * was not cached), #GtkTreeModelFilter will check if the visibility state
+ * was not cached), `GtkTreeModelFilter` will check if the visibility state
  * of any parent node has changed.
  * 
  * Beware, however, that this explicit support is limited to these two
  * cases. For example, if you want a node to be visible only if two nodes
  * in a child’s child level (2 levels deeper) are visible, you are on your
- * own. In this case, either rely on #GtkTreeStore to emit all signals
+ * own. In this case, either rely on `GtkTreeStore` to emit all signals
  * because it does not implement reference counting, or for models that
  * do implement reference counting, obtain references on these child levels
  * yourself.
@@ -141,8 +141,8 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	 * returned.
 	 *
 	 * Params:
-	 *     filterIter = An uninitialized #GtkTreeIter.
-	 *     childIter = A valid #GtkTreeIter pointing to a row on the child model.
+	 *     filterIter = An uninitialized `GtkTreeIter`
+	 *     childIter = A valid `GtkTreeIter` pointing to a row on the child model.
 	 *
 	 * Returns: %TRUE, if @filter_iter was set, i.e. if @child_iter is a
 	 *     valid iterator pointing to a visible row in child model.
@@ -166,9 +166,9 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	 * is returned.
 	 *
 	 * Params:
-	 *     childPath = A #GtkTreePath to convert.
+	 *     childPath = A `GtkTreePath` to convert.
 	 *
-	 * Returns: A newly allocated #GtkTreePath, or %NULL.
+	 * Returns: A newly allocated `GtkTreePath`
 	 */
 	public TreePath convertChildPathToPath(TreePath childPath)
 	{
@@ -186,8 +186,8 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	 * Sets @child_iter to point to the row pointed to by @filter_iter.
 	 *
 	 * Params:
-	 *     childIter = An uninitialized #GtkTreeIter.
-	 *     filterIter = A valid #GtkTreeIter pointing to a row on @filter.
+	 *     childIter = An uninitialized `GtkTreeIter`
+	 *     filterIter = A valid `GtkTreeIter` pointing to a row on @filter.
 	 */
 	public void convertIterToChildIter(out TreeIter childIter, TreeIter filterIter)
 	{
@@ -205,9 +205,9 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	 * does not point to a location in the child model, %NULL is returned.
 	 *
 	 * Params:
-	 *     filterPath = A #GtkTreePath to convert.
+	 *     filterPath = A `GtkTreePath` to convert.
 	 *
-	 * Returns: A newly allocated #GtkTreePath, or %NULL.
+	 * Returns: A newly allocated `GtkTreePath`
 	 */
 	public TreePath convertPathToChildPath(TreePath filterPath)
 	{
@@ -224,7 +224,7 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	/**
 	 * Returns a pointer to the child model of @filter.
 	 *
-	 * Returns: A pointer to a #GtkTreeModel.
+	 * Returns: A pointer to a `GtkTreeModel`
 	 */
 	public TreeModelIF getModel()
 	{
@@ -260,10 +260,10 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	 * can only be called once for a given filter model.
 	 *
 	 * Params:
-	 *     types = The #GTypes of the columns.
-	 *     func = A #GtkTreeModelFilterModifyFunc
-	 *     data = User data to pass to the modify function, or %NULL.
-	 *     destroy = Destroy notifier of @data, or %NULL.
+	 *     types = The `GType`s of the columns.
+	 *     func = A `GtkTreeModelFilterModifyFunc`
+	 *     data = User data to pass to the modify function
+	 *     destroy = Destroy notifier of @data
 	 */
 	public void setModifyFunc(GType[] types, GtkTreeModelFilterModifyFunc func, void* data, GDestroyNotify destroy)
 	{
@@ -281,7 +281,7 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	 * once for a given filter model.
 	 *
 	 * Params:
-	 *     column = A #int which is the column containing the visible information
+	 *     column = A `int` which is the column containing the visible information
 	 */
 	public void setVisibleColumn(int column)
 	{
@@ -326,9 +326,9 @@ public class TreeModelFilter : ObjectG, TreeDragSourceIF, TreeModelIF
 	 * once for a given filter model.
 	 *
 	 * Params:
-	 *     func = A #GtkTreeModelFilterVisibleFunc, the visible function
-	 *     data = User data to pass to the visible function, or %NULL
-	 *     destroy = Destroy notifier of @data, or %NULL
+	 *     func = A `GtkTreeModelFilterVisibleFunc`, the visible function
+	 *     data = User data to pass to the visible function
+	 *     destroy = Destroy notifier of @data
 	 */
 	public void setVisibleFunc(GtkTreeModelFilterVisibleFunc func, void* data, GDestroyNotify destroy)
 	{

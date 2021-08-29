@@ -162,6 +162,29 @@ public class DropTarget : EventController
 	 * If no drop operation is going on, %NULL is returned.
 	 *
 	 * Returns: The current drop
+	 *
+	 * Since: 4.4
+	 */
+	public Drop getCurrentDrop()
+	{
+		auto __p = gtk_drop_target_get_current_drop(gtkDropTarget);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(Drop)(cast(GdkDrop*) __p);
+	}
+
+	/**
+	 * Gets the currently handled drop operation.
+	 *
+	 * If no drop operation is going on, %NULL is returned.
+	 *
+	 * Deprecated: Use [method@Gtk.DropTarget.get_current_drop] instead
+	 *
+	 * Returns: The current drop
 	 */
 	public Drop getDrop()
 	{
@@ -195,12 +218,12 @@ public class DropTarget : EventController
 	}
 
 	/**
-	 * Gets the list of supported `GTypes` for @self.
+	 * Gets the list of supported `GType`s that can be dropped on the target.
 	 *
-	 * If no type have been set, %NULL will be returned.
+	 * If no types have been set, `NULL` will be returned.
 	 *
-	 * Returns: %G_TYPE_INVALID-terminated array of types included in
-	 *     @formats or %NULL if none.
+	 * Returns: the `G_TYPE_INVALID`-terminated array of types included in
+	 *     formats
 	 */
 	public GType[] getGtypes()
 	{
@@ -241,7 +264,7 @@ public class DropTarget : EventController
 	/**
 	 * Rejects the ongoing drop operation.
 	 *
-	 * If no drop operation is ongoing, i.e when [property@Gtk.DropTarget:drop]
+	 * If no drop operation is ongoing, i.e when [property@Gtk.DropTarget:current-drop]
 	 * is %NULL, this function does nothing.
 	 *
 	 * This function should be used when delaying the decision
@@ -268,7 +291,8 @@ public class DropTarget : EventController
 	 * Sets the supported `GTypes` for this drop target.
 	 *
 	 * Params:
-	 *     types = all supported #GTypes that can be dropped
+	 *     types = all supported `GType`s
+	 *         that can be dropped on the target
 	 */
 	public void setGtypes(GType[] types)
 	{
@@ -322,11 +346,11 @@ public class DropTarget : EventController
 	 * and no further processing is necessary.
 	 *
 	 * Otherwise, the handler returns %TRUE. In this case, this handler will
-	 * accept the drop. The handler is responsible for rading the given @value
+	 * accept the drop. The handler is responsible for using the given @value
 	 * and performing the drop operation.
 	 *
 	 * Params:
-	 *     value = the #GValue being dropped
+	 *     value = the `GValue` being dropped
 	 *     x = the x coordinate of the current pointer position
 	 *     y = the y coordinate of the current pointer position
 	 *

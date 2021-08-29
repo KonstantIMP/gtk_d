@@ -20,15 +20,15 @@ public  import gtk.c.types;
 /**
  * A widget displaying a single row of a GtkTreeModel
  * 
- * A #GtkCellView displays a single row of a #GtkTreeModel using a #GtkCellArea
- * and #GtkCellAreaContext. A #GtkCellAreaContext can be provided to the
- * #GtkCellView at construction time in order to keep the cellview in context
+ * A `GtkCellView` displays a single row of a `GtkTreeModel` using a `GtkCellArea`
+ * and `GtkCellAreaContext`. A `GtkCellAreaContext` can be provided to the
+ * `GtkCellView` at construction time in order to keep the cellview in context
  * of a group of cell views, this ensures that the renderers displayed will
  * be properly aligned with each other (like the aligned cells in the menus
- * of #GtkComboBox).
+ * of `GtkComboBox`).
  * 
- * #GtkCellView is #GtkOrientable in order to decide in which orientation
- * the underlying #GtkCellAreaContext should be allocated. Taking the #GtkComboBox
+ * `GtkCellView` is `GtkOrientable` in order to decide in which orientation
+ * the underlying `GtkCellAreaContext` should be allocated. Taking the `GtkComboBox`
  * menu as an example, cellviews should be oriented horizontally if the menus are
  * listed top-to-bottom and thus all share the same width but may have separate
  * individual heights (left-to-right menus should be allocated vertically since
@@ -80,9 +80,9 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	}
 
 	/**
-	 * Creates a new #GtkCellView widget.
+	 * Creates a new `GtkCellView` widget.
 	 *
-	 * Returns: A newly created #GtkCellView widget.
+	 * Returns: A newly created `GtkCellView` widget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -99,8 +99,8 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	}
 
 	/**
-	 * Creates a new #GtkCellView widget with a specific #GtkCellArea
-	 * to layout cells and a specific #GtkCellAreaContext.
+	 * Creates a new `GtkCellView` widget with a specific `GtkCellArea`
+	 * to layout cells and a specific `GtkCellAreaContext`.
 	 *
 	 * Specifying the same context for a handful of cells lets
 	 * the underlying area synchronize the geometry for those cells,
@@ -108,10 +108,10 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	 * possible.
 	 *
 	 * Params:
-	 *     area = the #GtkCellArea to layout cells
-	 *     context = the #GtkCellAreaContext in which to calculate cell geometry
+	 *     area = the `GtkCellArea` to layout cells
+	 *     context = the `GtkCellAreaContext` in which to calculate cell geometry
 	 *
-	 * Returns: A newly created #GtkCellView widget.
+	 * Returns: A newly created `GtkCellView` widget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -128,14 +128,14 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	}
 
 	/**
-	 * Creates a new #GtkCellView widget, adds a #GtkCellRendererText
-	 * to it, and makes it show @markup. The text can be
-	 * marked up with the [Pango text markup language][PangoMarkupFormat].
+	 * Creates a new `GtkCellView` widget, adds a `GtkCellRendererText`
+	 * to it, and makes it show @markup. The text can be marked up with
+	 * the [Pango text markup language](https://docs.gtk.org/Pango/pango_markup.html).
 	 *
 	 * Params:
 	 *     markup = the text to display in the cell view
 	 *
-	 * Returns: A newly created #GtkCellView widget.
+	 * Returns: A newly created `GtkCellView` widget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -152,13 +152,13 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	}
 
 	/**
-	 * Creates a new #GtkCellView widget, adds a #GtkCellRendererPixbuf
+	 * Creates a new `GtkCellView` widget, adds a `GtkCellRendererPixbuf`
 	 * to it, and makes it show @texture.
 	 *
 	 * Params:
 	 *     texture = the image to display in the cell view
 	 *
-	 * Returns: A newly created #GtkCellView widget.
+	 * Returns: A newly created `GtkCellView` widget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -175,11 +175,11 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	}
 
 	/**
-	 * Returns a #GtkTreePath referring to the currently
+	 * Returns a `GtkTreePath` referring to the currently
 	 * displayed row. If no row is currently displayed,
 	 * %NULL is returned.
 	 *
-	 * Returns: the currently displayed row or %NULL
+	 * Returns: the currently displayed row
 	 */
 	public TreePath getDisplayedRow()
 	{
@@ -207,10 +207,10 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 
 	/**
 	 * Gets whether @cell_view is configured to request space
-	 * to fit the entire #GtkTreeModel.
+	 * to fit the entire `GtkTreeModel`.
 	 *
 	 * Returns: whether @cell_view requests space to fit
-	 *     the entire #GtkTreeModel.
+	 *     the entire `GtkTreeModel`.
 	 */
 	public bool getFitModel()
 	{
@@ -221,7 +221,7 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	 * Returns the model for @cell_view. If no model is used %NULL is
 	 * returned.
 	 *
-	 * Returns: a #GtkTreeModel used or %NULL
+	 * Returns: a `GtkTreeModel` used
 	 */
 	public TreeModelIF getModel()
 	{
@@ -237,14 +237,14 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 
 	/**
 	 * Sets the row of the model that is currently displayed
-	 * by the #GtkCellView. If the path is unset, then the
+	 * by the `GtkCellView`. If the path is unset, then the
 	 * contents of the cellview “stick” at their last value;
 	 * this is not normally a desired result, but may be
 	 * a needed intermediate state if say, the model for
-	 * the #GtkCellView becomes temporarily empty.
+	 * the `GtkCellView` becomes temporarily empty.
 	 *
 	 * Params:
-	 *     path = a #GtkTreePath or %NULL to unset.
+	 *     path = a `GtkTreePath` or %NULL to unset.
 	 */
 	public void setDisplayedRow(TreePath path)
 	{
@@ -253,7 +253,7 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 
 	/**
 	 * Sets whether @cell_view should draw all of its
-	 * cells in a sensitive state, this is used by #GtkComboBox menus
+	 * cells in a sensitive state, this is used by `GtkComboBox` menus
 	 * to ensure that rows with insensitive cells that contain
 	 * children appear sensitive in the parent menu item.
 	 *
@@ -266,9 +266,9 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	}
 
 	/**
-	 * Sets whether @cell_view should request space to fit the entire #GtkTreeModel.
+	 * Sets whether @cell_view should request space to fit the entire `GtkTreeModel`.
 	 *
-	 * This is used by #GtkComboBox to ensure that the cell view displayed on
+	 * This is used by `GtkComboBox` to ensure that the cell view displayed on
 	 * the combo box’s button always gets enough space and does not resize
 	 * when selection changes.
 	 *
@@ -286,7 +286,7 @@ public class CellView : Widget, CellLayoutIF, OrientableIF
 	 * %NULL, then it will unset the old model.
 	 *
 	 * Params:
-	 *     model = a #GtkTreeModel
+	 *     model = a `GtkTreeModel`
 	 */
 	public void setModel(TreeModelIF model)
 	{

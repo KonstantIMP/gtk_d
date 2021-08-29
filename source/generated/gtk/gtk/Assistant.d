@@ -152,7 +152,7 @@ public class Assistant : Window
 	 *
 	 * Returns: The index (starting from 0) of the current
 	 *     page in the @assistant, or -1 if the @assistant has no pages,
-	 *     or no current page.
+	 *     or no current page
 	 */
 	public int getCurrentPage()
 	{
@@ -374,7 +374,7 @@ public class Assistant : Window
 	 * next visible page.
 	 *
 	 * Params:
-	 *     pageFunc = the `GtkAssistant`PageFunc, or %NULL
+	 *     pageFunc = the `GtkAssistantPageFunc`, or %NULL
 	 *         to use the default one
 	 *     data = user data for @page_func
 	 *     destroy = destroy notifier for @data

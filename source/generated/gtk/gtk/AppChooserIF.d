@@ -47,8 +47,7 @@ public interface AppChooserIF{
 	 * Returns the currently selected application.
 	 *
 	 * Returns: a `GAppInfo` for the
-	 *     currently selected application, or %NULL if none is selected.
-	 *     Free with g_object_unref()
+	 *     currently selected application
 	 */
 	public AppInfoIF getAppInfo();
 

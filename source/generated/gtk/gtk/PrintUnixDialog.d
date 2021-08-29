@@ -132,8 +132,8 @@ public static GType getType()
  * Creates a new `GtkPrintUnixDialog`.
  *
  * Params:
- *     title = Title of the dialog, or %NULL
- *     parent = Transient parent of the dialog, or %NULL
+ *     title = Title of the dialog
+ *     parent = Transient parent of the dialog
  *
  * Returns: a new `GtkPrintUnixDialog`
  *
@@ -329,7 +329,7 @@ public void setPageSetup(PageSetup pageSetup)
  * is shown.
  *
  * Params:
- *     settings = a `GtkPrintSettings`, or %NULL
+ *     settings = a `GtkPrintSettings`
  */
 public void setSettings(PrintSettings settings)
 {

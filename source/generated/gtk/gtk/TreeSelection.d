@@ -16,15 +16,15 @@ private import std.algorithm;
 /**
  * The selection object for GtkTreeView
  * 
- * The #GtkTreeSelection object is a helper object to manage the selection
- * for a #GtkTreeView widget.  The #GtkTreeSelection object is
- * automatically created when a new #GtkTreeView widget is created, and
+ * The `GtkTreeSelection` object is a helper object to manage the selection
+ * for a `GtkTreeView` widget.  The `GtkTreeSelection` object is
+ * automatically created when a new `GtkTreeView` widget is created, and
  * cannot exist independently of this widget.  The primary reason the
- * #GtkTreeSelection objects exists is for cleanliness of code and API.
+ * `GtkTreeSelection` objects exists is for cleanliness of code and API.
  * That is, there is no conceptual reason all these functions could not be
- * methods on the #GtkTreeView widget instead of a separate function.
+ * methods on the `GtkTreeView` widget instead of a separate function.
  * 
- * The #GtkTreeSelection object is gotten from a #GtkTreeView by calling
+ * The `GtkTreeSelection` object is gotten from a `GtkTreeView` by calling
  * gtk_tree_view_get_selection().  It can be manipulated to check the
  * selection status of the tree, as well as select and deselect individual
  * rows.  Selection is done completely view side.  As a result, multiple
@@ -34,9 +34,9 @@ private import std.algorithm;
  * first.
  * 
  * One of the important things to remember when monitoring the selection of
- * a view is that the #GtkTreeSelection::changed signal is mostly a hint.
+ * a view is that the `GtkTreeSelection`::changed signal is mostly a hint.
  * That is, it may only emit one signal when a range of rows is selected.
- * Additionally, it may on occasion emit a #GtkTreeSelection::changed signal
+ * Additionally, it may on occasion emit a `GtkTreeSelection`::changed signal
  * when nothing has happened (mostly as a result of programmers calling
  * select_row on an already selected row).
  */
@@ -108,14 +108,14 @@ public class TreeSelection : ObjectG
 
 	/**
 	 * Sets @iter to the currently selected node if @selection is set to
-	 * #GTK_SELECTION_SINGLE or #GTK_SELECTION_BROWSE.  @iter may be NULL if you
+	 * %GTK_SELECTION_SINGLE or %GTK_SELECTION_BROWSE.  @iter may be NULL if you
 	 * just want to test if @selection has any selected nodes.  @model is filled
 	 * with the current model as a convenience.  This function will not work if you
-	 * use @selection is #GTK_SELECTION_MULTIPLE.
+	 * use @selection is %GTK_SELECTION_MULTIPLE.
 	 *
 	 * Params:
-	 *     model = A pointer to set to the #GtkTreeModel, or NULL.
-	 *     iter = The #GtkTreeIter, or NULL.
+	 *     model = A pointer to set to the `GtkTreeModel`
+	 *     iter = The `GtkTreeIter`
 	 *
 	 * Returns: TRUE, if there is a selected node.
 	 */
@@ -135,7 +135,7 @@ public class TreeSelection : ObjectG
 	/**
 	 * Creates a list of path of all selected rows. Additionally, if you are
 	 * planning on modifying the model after calling this function, you may
-	 * want to convert the returned list into a list of #GtkTreeRowReferences.
+	 * want to convert the returned list into a list of `GtkTreeRowReference`s.
 	 * To do this, you can use gtk_tree_row_reference_new().
 	 *
 	 * To free the return value, use:
@@ -144,9 +144,9 @@ public class TreeSelection : ObjectG
 	 * ]|
 	 *
 	 * Params:
-	 *     model = A pointer to set to the #GtkTreeModel, or %NULL.
+	 *     model = A pointer to set to the `GtkTreeModel`
 	 *
-	 * Returns: A #GList containing a #GtkTreePath for each selected row.
+	 * Returns: A `GList` containing a `GtkTreePath` for each selected row.
 	 */
 	public ListG getSelectedRows(out TreeModelIF model)
 	{
@@ -167,7 +167,7 @@ public class TreeSelection : ObjectG
 	/**
 	 * Returns the tree view associated with @selection.
 	 *
-	 * Returns: A #GtkTreeView
+	 * Returns: A `GtkTreeView`
 	 */
 	public TreeView getTreeView()
 	{
@@ -195,7 +195,7 @@ public class TreeSelection : ObjectG
 	 * Returns %TRUE if the row at @iter is currently selected.
 	 *
 	 * Params:
-	 *     iter = A valid #GtkTreeIter
+	 *     iter = A valid `GtkTreeIter`
 	 *
 	 * Returns: %TRUE, if @iter is selected
 	 */
@@ -209,7 +209,7 @@ public class TreeSelection : ObjectG
 	 * does not point to a valid location, %FALSE is returned
 	 *
 	 * Params:
-	 *     path = A #GtkTreePath to check selection on.
+	 *     path = A `GtkTreePath` to check selection on.
 	 *
 	 * Returns: %TRUE if @path is selected.
 	 */
@@ -219,7 +219,7 @@ public class TreeSelection : ObjectG
 	}
 
 	/**
-	 * Selects all the nodes. @selection must be set to #GTK_SELECTION_MULTIPLE
+	 * Selects all the nodes. @selection must be set to %GTK_SELECTION_MULTIPLE
 	 * mode.
 	 */
 	public void selectAll()
@@ -231,7 +231,7 @@ public class TreeSelection : ObjectG
 	 * Selects the specified iterator.
 	 *
 	 * Params:
-	 *     iter = The #GtkTreeIter to be selected.
+	 *     iter = The `GtkTreeIter` to be selected.
 	 */
 	public void selectIter(TreeIter iter)
 	{
@@ -242,7 +242,7 @@ public class TreeSelection : ObjectG
 	 * Select the row at @path.
 	 *
 	 * Params:
-	 *     path = The #GtkTreePath to be selected.
+	 *     path = The `GtkTreePath` to be selected.
 	 */
 	public void selectPath(TreePath path)
 	{
@@ -251,7 +251,7 @@ public class TreeSelection : ObjectG
 
 	/**
 	 * Selects a range of nodes, determined by @start_path and @end_path inclusive.
-	 * @selection must be set to #GTK_SELECTION_MULTIPLE mode.
+	 * @selection must be set to %GTK_SELECTION_MULTIPLE mode.
 	 *
 	 * Params:
 	 *     startPath = The initial node of the range.
@@ -278,7 +278,7 @@ public class TreeSelection : ObjectG
 
 	/**
 	 * Sets the selection mode of the @selection.  If the previous type was
-	 * #GTK_SELECTION_MULTIPLE, then the anchor is kept selected, if it was
+	 * %GTK_SELECTION_MULTIPLE, then the anchor is kept selected, if it was
 	 * previously selected.
 	 *
 	 * Params:
@@ -319,7 +319,7 @@ public class TreeSelection : ObjectG
 	 * Unselects the specified iterator.
 	 *
 	 * Params:
-	 *     iter = The #GtkTreeIter to be unselected.
+	 *     iter = The `GtkTreeIter` to be unselected.
 	 */
 	public void unselectIter(TreeIter iter)
 	{
@@ -330,7 +330,7 @@ public class TreeSelection : ObjectG
 	 * Unselects the row at @path.
 	 *
 	 * Params:
-	 *     path = The #GtkTreePath to be unselected.
+	 *     path = The `GtkTreePath` to be unselected.
 	 */
 	public void unselectPath(TreePath path)
 	{

@@ -182,17 +182,18 @@ public class PgFont : ObjectG
 	/**
 	 * Gets the font map for which the font was created.
 	 *
-	 * Note that the font maintains a *weak* reference to the font map, so if
-	 * all references to font map are dropped, the font map will be finalized
-	 * even if there are fonts created with the font map that are still alive.
+	 * Note that the font maintains a *weak* reference to
+	 * the font map, so if all references to font map are
+	 * dropped, the font map will be finalized even if there
+	 * are fonts created with the font map that are still alive.
 	 * In that case this function will return %NULL.
 	 *
-	 * It is the responsibility of the user to ensure that the font map is kept
-	 * alive. In most uses this is not an issue as a #PangoContext holds
-	 * a reference to the font map.
+	 * It is the responsibility of the user to ensure that the
+	 * font map is kept alive. In most uses this is not an issue
+	 * as a `PangoContext` holds a reference to the font map.
 	 *
-	 * Returns: the `PangoFontMap` for the
-	 *     font, or %NULL if @font is %NULL.
+	 * Returns: the `PangoFontMap`
+	 *     for the font
 	 *
 	 * Since: 1.10
 	 */
@@ -223,10 +224,8 @@ public class PgFont : ObjectG
 	 *
 	 * Params:
 	 *     glyph = the glyph index
-	 *     inkRect = rectangle used to store the extents of the glyph
-	 *         as drawn or %NULL to indicate that the result is not needed.
-	 *     logicalRect = rectangle used to store the logical extents of
-	 *         the glyph or %NULL to indicate that the result is not needed.
+	 *     inkRect = rectangle used to store the extents of the glyph as drawn
+	 *     logicalRect = rectangle used to store the logical extents of the glyph
 	 */
 	public void getGlyphExtents(PangoGlyph glyph, out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
@@ -236,11 +235,12 @@ public class PgFont : ObjectG
 	/**
 	 * Get a `hb_font_t` object backing this font.
 	 *
-	 * Note that the objects returned by this function are cached and immutable.
-	 * If you need to make changes to the `hb_font_t`, use hb_font_create_sub_font().
+	 * Note that the objects returned by this function are cached
+	 * and immutable. If you need to make changes to the `hb_font_t`,
+	 * use hb_font_create_sub_font().
 	 *
-	 * Returns: the `hb_font_t` object backing the
-	 *     font, or %NULL if the font does not have one
+	 * Returns: the `hb_font_t` object
+	 *     backing the font
 	 *
 	 * Since: 1.44
 	 */

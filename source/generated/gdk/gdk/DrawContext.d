@@ -72,7 +72,7 @@ public class DrawContext : ObjectG
 	 * Note that the @region passed to this function is the minimum region that
 	 * needs to be drawn and depending on implementation, windowing system and
 	 * hardware in use, it might be necessary to draw a larger region. Drawing
-	 * implementation must use [method@Gdk.DrawContext.get_frame_region() to
+	 * implementation must use [method@Gdk.DrawContext.get_frame_region] to
 	 * query the region that must be drawn.
 	 *
 	 * When using GTK, the widget system automatically places calls to
@@ -106,7 +106,7 @@ public class DrawContext : ObjectG
 	/**
 	 * Retrieves the `GdkDisplay` the @context is created for
 	 *
-	 * Returns: a `GdkDisplay` or %NULL
+	 * Returns: the `GdkDisplay`
 	 */
 	public Display getDisplay()
 	{
@@ -130,8 +130,7 @@ public class DrawContext : ObjectG
 	 * If @context is not in between calls to [method@Gdk.DrawContext.begin_frame]
 	 * and [method@Gdk.DrawContext.end_frame], %NULL will be returned.
 	 *
-	 * Returns: a Cairo region or %NULL if not drawing
-	 *     a frame.
+	 * Returns: a Cairo region
 	 */
 	public Region getFrameRegion()
 	{
@@ -148,7 +147,7 @@ public class DrawContext : ObjectG
 	/**
 	 * Retrieves the surface that @context is bound to.
 	 *
-	 * Returns: a #GdkSurface or %NULL
+	 * Returns: a `GdkSurface`
 	 */
 	public Surface getSurface()
 	{

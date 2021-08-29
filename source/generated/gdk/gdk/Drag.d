@@ -83,8 +83,7 @@ public class Drag : ObjectG
 	 *     dx = the x offset to @device's position where the drag nominally started
 	 *     dy = the y offset to @device's position where the drag nominally started
 	 *
-	 * Returns: a newly created [class@Gdk.Drag]
-	 *     or %NULL on error
+	 * Returns: a newly created `GdkDrag`
 	 */
 	public static Drag begin(Surface surface, Device device, ContentProvider content, GdkDragAction actions, double dx, double dy)
 	{
@@ -189,7 +188,7 @@ public class Drag : ObjectG
 	 * drag operation. The surface is owned by @drag and will be destroyed
 	 * when the drag operation is over.
 	 *
-	 * Returns: the drag surface, or %NULL
+	 * Returns: the drag surface
 	 */
 	public Surface getDragSurface()
 	{

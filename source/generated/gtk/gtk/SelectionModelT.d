@@ -214,8 +214,7 @@ public template SelectionModelT(TStruct)
 	 * be selected.
 	 *
 	 * Params:
-	 *     selected = bitmask specifying if items should be selected or
-	 *         unselected
+	 *     selected = bitmask specifying if items should be selected or unselected
 	 *     mask = bitmask specifying which items should be updated
 	 *
 	 * Returns: %TRUE if this action was supported and no fallback should be

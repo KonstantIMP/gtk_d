@@ -22,9 +22,8 @@ public struct PgCairo
 	 * Retrieves any font rendering options previously set with
 	 * [func@PangoCairo.context_set_font_options].
 	 *
-	 * This function
-	 * does not report options that are derived from the target
-	 * surface by [func@update_context].
+	 * This function does not report options that are derived from
+	 * the target surface by [func@update_context].
 	 *
 	 * Params:
 	 *     context = a `PangoContext`, from a pangocairo font map
@@ -49,6 +48,7 @@ public struct PgCairo
 
 	/**
 	 * Gets the resolution for the context.
+	 *
 	 * See [func@PangoCairo.context_set_resolution]
 	 *
 	 * Params:
@@ -76,7 +76,7 @@ public struct PgCairo
 	 *
 	 * Params:
 	 *     context = a `PangoContext`, from a pangocairo font map
-	 *     data = Pointer to #gpointer to return user data
+	 *     data = Pointer to `gpointer` to return user data
 	 *
 	 * Returns: the shape rendering callback
 	 *     previously set on the context, or %NULL if no shape rendering callback
@@ -110,10 +110,9 @@ public struct PgCairo
 	/**
 	 * Sets the resolution for the context.
 	 *
-	 * This is a scale factor between
-	 * points specified in a `PangoFontDescription` and Cairo units. The
-	 * default value is 96, meaning that a 10 point font will be 13
-	 * units high. (10 * 96. / 72. = 13.3).
+	 * This is a scale factor between points specified in a `PangoFontDescription`
+	 * and Cairo units. The default value is 96, meaning that a 10 point font will
+	 * be 13 units high. (10 * 96. / 72. = 13.3).
 	 *
 	 * Params:
 	 *     context = a `PangoContext`, from a pangocairo font map
@@ -140,7 +139,7 @@ public struct PgCairo
 	 *         type %PANGO_ATTR_SHAPE, or %NULL to disable shape rendering.
 	 *     data = User data that will be passed to @func.
 	 *     dnotify = Callback that will be called when the
-	 *         context is freed to release @data, or %NULL.
+	 *         context is freed to release @data
 	 *
 	 * Since: 1.18
 	 */
@@ -164,8 +163,7 @@ public struct PgCairo
 	 * Params:
 	 *     cr = a Cairo context
 	 *
-	 * Returns: the newly created `PangoContext`.
-	 *     Free with g_object_unref().
+	 * Returns: the newly created `PangoContext`
 	 *
 	 * Since: 1.22
 	 */
@@ -185,9 +183,8 @@ public struct PgCairo
 	 * Creates a layout object set up to match the current transformation
 	 * and target surface of the Cairo context.
 	 *
-	 * This layout can then be
-	 * used for text measurement with functions like
-	 * [method@Pango.Layout.get_size] or drawing with functions like
+	 * This layout can then be used for text measurement with functions
+	 * like [method@Pango.Layout.get_size] or drawing with functions like
 	 * [func@show_layout]. If you change the transformation or target
 	 * surface for @cr, you need to call [func@update_layout].
 	 *
@@ -199,8 +196,7 @@ public struct PgCairo
 	 * Params:
 	 *     cr = a Cairo context
 	 *
-	 * Returns: the newly created `PangoLayout`.
-	 *     Free with g_object_unref().
+	 * Returns: the newly created `PangoLayout`
 	 *
 	 * Since: 1.10
 	 */
@@ -221,9 +217,8 @@ public struct PgCairo
 	 * approximately covers the given rectangle in the style of an underline used
 	 * to indicate a spelling error.
 	 *
-	 * The width of the underline is rounded to an
-	 * integer number of up/down segments and the resulting rectangle is centered
-	 * in the original rectangle.
+	 * The width of the underline is rounded to an integer number of up/down
+	 * segments and the resulting rectangle is centered in the original rectangle.
 	 *
 	 * Params:
 	 *     cr = a Cairo context
@@ -262,8 +257,8 @@ public struct PgCairo
 	 * Adds the text in `PangoLayoutLine` to the current path in the
 	 * specified cairo context.
 	 *
-	 * The origin of the glyphs (the left edge
-	 * of the line) will be at the current point of the cairo context.
+	 * The origin of the glyphs (the left edge of the line) will be
+	 * at the current point of the cairo context.
 	 *
 	 * Params:
 	 *     cr = a Cairo context
@@ -280,8 +275,8 @@ public struct PgCairo
 	 * Adds the text in a `PangoLayout` to the current path in the
 	 * specified cairo context.
 	 *
-	 * The top-left corner of the `PangoLayout`
-	 * will be at the current point of the cairo context.
+	 * The top-left corner of the `PangoLayout` will be at the
+	 * current point of the cairo context.
 	 *
 	 * Params:
 	 *     cr = a Cairo context
@@ -399,9 +394,8 @@ public struct PgCairo
 	 * match the current transformation and target surface of a Cairo
 	 * context.
 	 *
-	 * If any layouts have been created for the context,
-	 * it's necessary to call [method@Pango.Layout.context_changed] on those
-	 * layouts.
+	 * If any layouts have been created for the context, it's necessary
+	 * to call [method@Pango.Layout.context_changed] on those layouts.
 	 *
 	 * Params:
 	 *     cr = a Cairo context

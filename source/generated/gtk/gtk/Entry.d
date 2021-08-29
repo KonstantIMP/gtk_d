@@ -89,12 +89,12 @@ private import std.algorithm;
  * The `GtkEntry` implementation of the `GtkBuildable` interface supports a
  * custom <attributes> element, which supports any number of <attribute>
  * elements. The <attribute> element has attributes named “name“, “value“,
- * “start“ and “end“ and allows you to specify #PangoAttribute values for
+ * “start“ and “end“ and allows you to specify `PangoAttribute` values for
  * this label.
  * 
  * An example of a UI definition fragment specifying Pango attributes:
  * ```xml
- * <object class="GtkEnry">
+ * <object class="GtkEntry">
  * <attributes>
  * <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
  * <attribute name="background" value="red" start="5" end="10"/>
@@ -221,8 +221,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * See [method@Gtk.Entry.set_attributes].
 	 *
-	 * Returns: the attribute list,
-	 *     or %NULL if none was set.
+	 * Returns: the attribute list
 	 */
 	public PgAttributeList getAttributes()
 	{
@@ -373,8 +372,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * Params:
 	 *     iconPos = Icon position
 	 *
-	 * Returns: A `GIcon`, or %NULL if no
-	 *     icon is set or if the icon is not a `GIcon`
+	 * Returns: A `GIcon`
 	 */
 	public IconIF getIconGicon(GtkEntryIconPosition iconPos)
 	{
@@ -397,8 +395,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * Params:
 	 *     iconPos = Icon position
 	 *
-	 * Returns: An icon name, or %NULL if no icon is set
-	 *     or if the icon wasn’t set from an icon name
+	 * Returns: An icon name
 	 */
 	public string getIconName(GtkEntryIconPosition iconPos)
 	{
@@ -413,7 +410,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * Params:
 	 *     iconPos = Icon position
 	 *
-	 * Returns: A `GdkPaintable`, or %NULL
+	 * Returns: A `GdkPaintable`
 	 *     if no icon is set for this position or the icon set is not
 	 *     a `GdkPaintable`.
 	 */
@@ -466,8 +463,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * Params:
 	 *     iconPos = the icon position
 	 *
-	 * Returns: the tooltip text, or %NULL. Free the
-	 *     returned string with g_free() when done.
+	 * Returns: the tooltip text
 	 */
 	public string getIconTooltipMarkup(GtkEntryIconPosition iconPos)
 	{
@@ -484,8 +480,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * Params:
 	 *     iconPos = the icon position
 	 *
-	 * Returns: the tooltip text, or %NULL. Free the returned
-	 *     string with g_free() when done.
+	 * Returns: the tooltip text
 	 */
 	public string getIconTooltipText(GtkEntryIconPosition iconPos)
 	{
@@ -593,8 +588,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * See [method@Gtk.Entry.set_tabs].
 	 *
-	 * Returns: the tabstops,
-	 *     or %NULL if none was set.
+	 * Returns: the tabstops
 	 */
 	public PgTabArray getTabs()
 	{
@@ -745,7 +739,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * Completion is disabled if @completion is set to %NULL.
 	 *
 	 * Params:
-	 *     completion = The `GtkEntryCompletion` or %NULL
+	 *     completion = The `GtkEntryCompletion`
 	 */
 	public void setCompletion(EntryCompletion completion)
 	{
@@ -795,7 +789,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * Params:
 	 *     iconPos = icon position
-	 *     provider = a #GdkContentProvider
+	 *     provider = a `GdkContentProvider`
 	 *     actions = a bitmask of the allowed drag actions
 	 */
 	public void setIconDragSource(GtkEntryIconPosition iconPos, ContentProvider provider, GdkDragAction actions)
@@ -815,7 +809,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * Params:
 	 *     iconPos = The position at which to set the icon
-	 *     icon = The icon to set, or %NULL
+	 *     icon = The icon to set
 	 */
 	public void setIconFromGicon(GtkEntryIconPosition iconPos, IconIF icon)
 	{
@@ -834,7 +828,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * Params:
 	 *     iconPos = The position at which to set the icon
-	 *     iconName = An icon name, or %NULL
+	 *     iconName = An icon name
 	 */
 	public void setIconFromIconName(GtkEntryIconPosition iconPos, string iconName)
 	{
@@ -848,7 +842,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * Params:
 	 *     iconPos = Icon position
-	 *     paintable = A `GdkPaintable`, or %NULL
+	 *     paintable = A `GdkPaintable`
 	 */
 	public void setIconFromPaintable(GtkEntryIconPosition iconPos, PaintableIF paintable)
 	{
@@ -881,8 +875,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * Params:
 	 *     iconPos = the icon position
-	 *     tooltip = the contents of the tooltip for the
-	 *         icon, or %NULL
+	 *     tooltip = the contents of the tooltip for the icon
 	 */
 	public void setIconTooltipMarkup(GtkEntryIconPosition iconPos, string tooltip)
 	{
@@ -910,8 +903,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 *
 	 * Params:
 	 *     iconPos = the icon position
-	 *     tooltip = the contents of the tooltip for the
-	 *         icon, or %NULL
+	 *     tooltip = the contents of the tooltip for the icon
 	 */
 	public void setIconTooltipText(GtkEntryIconPosition iconPos, string tooltip)
 	{
@@ -999,8 +991,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * contents of the `GtkEntry`.
 	 *
 	 * Params:
-	 *     text = a string to be displayed when @entry is
-	 *         empty and unfocused, or %NULL
+	 *     text = a string to be displayed when @entry is empty and unfocused
 	 */
 	public void setPlaceholderText(string text)
 	{
@@ -1066,8 +1057,7 @@ public class Entry : Widget, CellEditableIF, EditableIF
 	 * in addition to setting visibility to %FALSE.
 	 *
 	 * Params:
-	 *     visible = %TRUE if the contents of the entry are displayed
-	 *         as plaintext
+	 *     visible = %TRUE if the contents of the entry are displayed as plaintext
 	 */
 	public void setVisibility(bool visible)
 	{

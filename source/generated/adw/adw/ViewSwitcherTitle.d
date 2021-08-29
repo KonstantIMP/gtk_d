@@ -1,5 +1,6 @@
 module adw.ViewSwitcherTitle;
 
+private import adw.ViewStack;
 private import adw.c.functions;
 public  import adw.c.types;
 private import glib.ConstructionException;
@@ -12,7 +13,6 @@ private import gtk.BuildableIF;
 private import gtk.BuildableT;
 private import gtk.ConstraintTargetIF;
 private import gtk.ConstraintTargetT;
-private import gtk.Stack;
 private import gtk.Widget;
 
 
@@ -20,7 +20,7 @@ private import gtk.Widget;
  * A view switcher title.
  * 
  * A widget letting you switch between multiple views contained by a
- * [class@Gtk.Stack] via an [class@Adw.ViewSwitcher].
+ * [class@Adw.ViewStack] via an [class@Adw.ViewSwitcher].
  * 
  * It is designed to be used as the title widget of a [class@Adw.HeaderBar], and
  * will display the window's title when the window is too narrow to fit the view
@@ -48,7 +48,7 @@ private import gtk.Widget;
  * <child>
  * <object class="GtkBox">
  * <child>
- * <object class="GtkStack" id="stack"/>
+ * <object class="AdwViewStack" id="stack"/>
  * </child>
  * <child>
  * <object class="AdwViewSwitcherBar">
@@ -144,7 +144,7 @@ public class ViewSwitcherTitle : Widget
 	 *
 	 * Since: 1.0
 	 */
-	public Stack getStack()
+	public ViewStack getStack()
 	{
 		auto __p = adw_view_switcher_title_get_stack(adwViewSwitcherTitle);
 
@@ -153,7 +153,7 @@ public class ViewSwitcherTitle : Widget
 			return null;
 		}
 
-		return ObjectG.getDObject!(Stack)(cast(GtkStack*) __p);
+		return ObjectG.getDObject!(ViewStack)(cast(AdwViewStack*) __p);
 	}
 
 	/**
@@ -225,9 +225,9 @@ public class ViewSwitcherTitle : Widget
 	 *
 	 * Since: 1.0
 	 */
-	public void setStack(Stack stack)
+	public void setStack(ViewStack stack)
 	{
-		adw_view_switcher_title_set_stack(adwViewSwitcherTitle, (stack is null) ? null : stack.getStackStruct());
+		adw_view_switcher_title_set_stack(adwViewSwitcherTitle, (stack is null) ? null : stack.getViewStackStruct());
 	}
 
 	/**

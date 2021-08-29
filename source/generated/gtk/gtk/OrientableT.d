@@ -25,7 +25,7 @@ public template OrientableT(TStruct)
 	/**
 	 * Retrieves the orientation of the @orientable.
 	 *
-	 * Returns: the orientation of the @orientable.
+	 * Returns: the orientation of the @orientable
 	 */
 	public GtkOrientation getOrientation()
 	{
@@ -36,7 +36,7 @@ public template OrientableT(TStruct)
 	 * Sets the orientation of the @orientable.
 	 *
 	 * Params:
-	 *     orientation = the orientable’s new orientation.
+	 *     orientation = the orientable’s new orientation
 	 */
 	public void setOrientation(GtkOrientation orientation)
 	{

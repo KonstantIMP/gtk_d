@@ -202,8 +202,7 @@ public class Drop : ObjectG
 	 * Params:
 	 *     mimeTypes = pointer to an array of mime types
 	 *     ioPriority = the I/O priority for the read operation
-	 *     cancellable = optional `GCancellable` object,
-	 *         %NULL to ignore
+	 *     cancellable = optional `GCancellable` object
 	 *     callback = a `GAsyncReadyCallback` to call when
 	 *         the request is satisfied
 	 *     userData = the data to pass to @callback
@@ -227,7 +226,7 @@ public class Drop : ObjectG
 	 *     result = a `GAsyncResult`
 	 *     outMimeType = return location for the used mime type
 	 *
-	 * Returns: the `GInputStream`, or %NULL
+	 * Returns: the `GInputStream`
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -261,7 +260,7 @@ public class Drop : ObjectG
 	 * then call [method@Gdk.Drop.read_value_finish] to get the resulting
 	 * `GValue`.
 	 *
-	 * For local drag'n'drop operations that are available in the given
+	 * For local drag-and-drop operations that are available in the given
 	 * `GType`, the value will be copied directly. Otherwise, GDK will
 	 * try to use [func@Gdk.content_deserialize_async] to convert the data.
 	 *
@@ -315,7 +314,7 @@ public class Drop : ObjectG
 	 * the ones provided by [method@Gdk.Drop.get_actions]. Those actions may
 	 * change in the future, even depending on the actions you provide here.
 	 *
-	 * The @preferred action is a hint to the drag'n'drop mechanism about which
+	 * The @preferred action is a hint to the drag-and-drop mechanism about which
 	 * action to use when multiple actions are possible.
 	 *
 	 * This function should be called by drag destinations in response to

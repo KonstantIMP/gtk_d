@@ -56,7 +56,7 @@ public interface ColorChooserIF{
 	 *     orientation = %GTK_ORIENTATION_HORIZONTAL if the palette should
 	 *         be displayed in rows, %GTK_ORIENTATION_VERTICAL for columns
 	 *     colorsPerLine = the number of colors to show in each row/column
-	 *     colors = the colors of the palette, or %NULL
+	 *     colors = the colors of the palette
 	 */
 	public void addPalette(GtkOrientation orientation, int colorsPerLine, RGBA[] colors);
 

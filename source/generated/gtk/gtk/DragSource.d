@@ -183,7 +183,7 @@ public class DragSource : GestureSingle
 	 * Returns the underlying `GdkDrag` object for an ongoing drag.
 	 *
 	 * Returns: the `GdkDrag` of the current
-	 *     drag operation, or %NULL
+	 *     drag operation
 	 */
 	public Drag getDrag()
 	{
@@ -229,7 +229,7 @@ public class DragSource : GestureSingle
 	 * %NULL in a [signal@Gtk.DragSource::drag-end] signal handler.
 	 *
 	 * Params:
-	 *     content = a `GdkContentProvider`, or %NULL
+	 *     content = a `GdkContentProvider`
 	 */
 	public void setContent(ContentProvider content)
 	{
@@ -249,7 +249,7 @@ public class DragSource : GestureSingle
 	 * [signal@Gtk.DragSource::drag-begin] signal handler.
 	 *
 	 * Params:
-	 *     paintable = the #GdkPaintable to use as icon, or %NULL
+	 *     paintable = the `GdkPaintable` to use as icon
 	 *     hotX = the hotspot X coordinate on the icon
 	 *     hotY = the hotspot Y coordinate on the icon
 	 */
@@ -319,7 +319,7 @@ public class DragSource : GestureSingle
 	 *     x = the X coordinate of the drag starting point
 	 *     y = the Y coordinate fo the drag starting point
 	 *
-	 * Returns: a `GdkContentProvider`, or %NULL
+	 * Returns: a `GdkContentProvider`
 	 */
 	gulong addOnPrepare(ContentProvider delegate(double, double, DragSource) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

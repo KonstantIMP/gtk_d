@@ -243,6 +243,24 @@ public class MapSource : ObjectG
 	}
 
 	/**
+	 * Gets the apparent size of the map tiles at the given fractional zoom level.
+	 *
+	 * As the map is zoomed in, a tile gets bigger and bigger until, at the next
+	 * integer zoom level, it "splits" into four tiles at the next zoom level.
+	 * Thus, the size increase follows an exponential curve, base 2.
+	 *
+	 * Params:
+	 *     zoomLevel = a zoom level
+	 *
+	 * Returns: the tile's size (width and height) in pixels for this map source
+	 *     at this zoom level
+	 */
+	public double getTileSizeAtZoom(double zoomLevel)
+	{
+		return shumate_map_source_get_tile_size_at_zoom(shumateMapSource, zoomLevel);
+	}
+
+	/**
 	 * Gets the x position on the map using this map source's projection.
 	 * (0, 0) is located at the top left.
 	 *
@@ -270,5 +288,93 @@ public class MapSource : ObjectG
 	public double getY(double zoomLevel, double latitude)
 	{
 		return shumate_map_source_get_y(shumateMapSource, zoomLevel, latitude);
+	}
+
+	/**
+	 * Sets the map source's id.
+	 *
+	 * Params:
+	 *     id = an id
+	 */
+	public void setId(string id)
+	{
+		shumate_map_source_set_id(shumateMapSource, Str.toStringz(id));
+	}
+
+	/**
+	 * Sets the map source's license.
+	 *
+	 * Params:
+	 *     license = the licence
+	 */
+	public void setLicense(string license)
+	{
+		shumate_map_source_set_license(shumateMapSource, Str.toStringz(license));
+	}
+
+	/**
+	 * Sets the map source's license URI.
+	 *
+	 * Params:
+	 *     licenseUri = the licence URI
+	 */
+	public void setLicenseUri(string licenseUri)
+	{
+		shumate_map_source_set_license_uri(shumateMapSource, Str.toStringz(licenseUri));
+	}
+
+	/**
+	 * Sets the map source's maximum zoom level.
+	 *
+	 * Params:
+	 *     zoomLevel = the maximum zoom level
+	 */
+	public void setMaxZoomLevel(uint zoomLevel)
+	{
+		shumate_map_source_set_max_zoom_level(shumateMapSource, zoomLevel);
+	}
+
+	/**
+	 * Sets the map source's minimal zoom level.
+	 *
+	 * Params:
+	 *     zoomLevel = the minimal zoom level
+	 */
+	public void setMinZoomLevel(uint zoomLevel)
+	{
+		shumate_map_source_set_min_zoom_level(shumateMapSource, zoomLevel);
+	}
+
+	/**
+	 * Sets the map source's name.
+	 *
+	 * Params:
+	 *     name = a name
+	 */
+	public void setName(string name)
+	{
+		shumate_map_source_set_name(shumateMapSource, Str.toStringz(name));
+	}
+
+	/**
+	 * Sets the map source's projection.
+	 *
+	 * Params:
+	 *     projection = a #ShumateMapProjection
+	 */
+	public void setProjection(ShumateMapProjection projection)
+	{
+		shumate_map_source_set_projection(shumateMapSource, projection);
+	}
+
+	/**
+	 * Sets the map source's tile size.
+	 *
+	 * Params:
+	 *     tileSize = the tile size
+	 */
+	public void setTileSize(uint tileSize)
+	{
+		shumate_map_source_set_tile_size(shumateMapSource, tileSize);
 	}
 }

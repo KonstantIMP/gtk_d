@@ -614,7 +614,7 @@ public class FlowBox : Widget, OrientableIF
 	 * - <kbd>PgUp</kbd>, <kbd>PgDn</kbd> move vertically by pages
 	 *
 	 * Params:
-	 *     step = the granularity fo the move, as a #GtkMovementStep
+	 *     step = the granularity fo the move, as a `GtkMovementStep`
 	 *     count = the number of @step units to move
 	 *     extend = whether to extend the selection
 	 *     modify = whether to modify the selection

@@ -247,6 +247,16 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
+	 * Gets the fold threshold policy for @self.
+	 *
+	 * Since: 1.0
+	 */
+	public AdwFoldThresholdPolicy getFoldThresholdPolicy()
+	{
+		return adw_leaflet_get_fold_threshold_policy(adwLeaflet);
+	}
+
+	/**
 	 * Gets whether @self is folded.
 	 *
 	 * Returns: whether @self is folded.
@@ -539,6 +549,19 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	public void setChildTransitionDuration(uint duration)
 	{
 		adw_leaflet_set_child_transition_duration(adwLeaflet, duration);
+	}
+
+	/**
+	 * Sets the fold threshold policy for @self.
+	 *
+	 * Params:
+	 *     policy = the policy to use
+	 *
+	 * Since: 1.0
+	 */
+	public void setFoldThresholdPolicy(AdwFoldThresholdPolicy policy)
+	{
+		adw_leaflet_set_fold_threshold_policy(adwLeaflet, policy);
 	}
 
 	/**

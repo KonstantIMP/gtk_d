@@ -3018,7 +3018,7 @@ alias SOUP_MICRO_VERSION = MICRO_VERSION;
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum MINOR_VERSION = 72;
+enum MINOR_VERSION = 74;
 alias SOUP_MINOR_VERSION = MINOR_VERSION;
 
 /**

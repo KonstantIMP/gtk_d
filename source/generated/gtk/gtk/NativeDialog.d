@@ -184,7 +184,7 @@ public class NativeDialog : ObjectG
 	 * Passing %NULL for @parent unsets the current transient window.
 	 *
 	 * Params:
-	 *     parent = parent window, or %NULL
+	 *     parent = parent window
 	 */
 	public void setTransientFor(Window parent)
 	{

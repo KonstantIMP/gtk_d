@@ -41,7 +41,7 @@ private import linker.loader;
  * 
  * `GdkContentFormats` is an immutable struct. After creation, you cannot change
  * the types it represents. Instead, new `GdkContentFormats` have to be created.
- * The [struct@Gdk.ContentFormatsBuilder]` structure is meant to help in this
+ * The [struct@Gdk.ContentFormatsBuilder] structure is meant to help in this
  * endeavor.
  */
 public class ContentFormats
@@ -91,7 +91,7 @@ public class ContentFormats
 	 *
 	 * The mime types must be valid and different from each other or the
 	 * behavior of the return value is undefined. If you cannot guarantee
-	 * this, use `GdkContentFormatsBuilder` instead.
+	 * this, use [struct@Gdk.ContentFormatsBuilder] instead.
 	 *
 	 * Params:
 	 *     mimeTypes = Pointer to an
@@ -141,7 +141,7 @@ public class ContentFormats
 	 * Params:
 	 *     type = the `GType` to search for
 	 *
-	 * Returns: %TRUE if the #GType was found
+	 * Returns: %TRUE if the `GType` was found
 	 */
 	public bool containGtype(GType type)
 	{
@@ -162,13 +162,12 @@ public class ContentFormats
 	}
 
 	/**
-	 * Gets the `GTypes` included in @formats.
+	 * Gets the `GType`s included in @formats.
 	 *
-	 * Note that @formats may not contain any #GTypes, in particular when
+	 * Note that @formats may not contain any `GType`s, in particular when
 	 * they are empty. In that case %NULL will be returned.
 	 *
-	 * Returns: %G_TYPE_INVALID-terminated array of types included in @formats or
-	 *     %NULL if none.
+	 * Returns: %G_TYPE_INVALID-terminated array of types included in @formats
 	 */
 	public GType[] getGtypes()
 	{
@@ -185,9 +184,8 @@ public class ContentFormats
 	 * Note that @formats may not contain any mime types, in particular
 	 * when they are empty. In that case %NULL will be returned.
 	 *
-	 * Returns: %NULL-terminated array of
-	 *     interned strings of mime types included in @formats or %NULL
-	 *     if none.
+	 * Returns: %NULL-terminated array of interned strings of mime types included
+	 *     in @formats
 	 */
 	public string[] getMimeTypes()
 	{
@@ -234,7 +232,7 @@ public class ContentFormats
 	 * Params:
 	 *     second = the `GdkContentFormats` to intersect with
 	 *
-	 * Returns: The first common mime type or %NULL if none.
+	 * Returns: The first common mime type or %NULL if none
 	 */
 	public string matchMimeType(ContentFormats second)
 	{
@@ -244,10 +242,8 @@ public class ContentFormats
 	/**
 	 * Prints the given @formats into a string for human consumption.
 	 *
-	 * This is meant for debugging and logging.
-	 *
-	 * The form of the representation may change at any time and is
-	 * not guaranteed to stay identical.
+	 * The result of this function can later be parsed with
+	 * [func@Gdk.ContentFormats.parse].
 	 *
 	 * Params:
 	 *     string_ = a `GString` to print into
@@ -277,6 +273,8 @@ public class ContentFormats
 
 	/**
 	 * Prints the given @formats into a human-readable string.
+	 *
+	 * The resulting string can be parsed with [func@Gdk.ContentFormats.parse].
 	 *
 	 * This is a small wrapper around [method@Gdk.ContentFormats.print]
 	 * to help when debugging.
@@ -393,5 +391,34 @@ public class ContentFormats
 	public void unref()
 	{
 		gdk_content_formats_unref(gdkContentFormats);
+	}
+
+	/**
+	 * Parses the given @string into `GdkContentFormats` and
+	 * returns the formats.
+	 *
+	 * Strings printed via [method@Gdk.ContentFormats.to_string]
+	 * can be read in again successfully using this function.
+	 *
+	 * If @string does not describe valid content formats, %NULL
+	 * is returned.
+	 *
+	 * Params:
+	 *     string_ = the string to parse
+	 *
+	 * Returns: the content formats if @string is valid
+	 *
+	 * Since: 4.4
+	 */
+	public static ContentFormats parse(string string_)
+	{
+		auto __p = gdk_content_formats_parse(Str.toStringz(string_));
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(ContentFormats)(cast(GdkContentFormats*) __p, true);
 	}
 }

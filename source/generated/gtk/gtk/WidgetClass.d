@@ -54,7 +54,7 @@ public class WidgetClass
 	 * otherwise it is not guaranteed that the shortcut will be installed.
 	 *
 	 * Params:
-	 *     shortcut = the #GtkShortcut to add
+	 *     shortcut = the `GtkShortcut` to add
 	 */
 	public void addShortcut(Shortcut shortcut)
 	{
@@ -81,8 +81,8 @@ public class WidgetClass
 	}
 
 	/**
-	 * Automatically assign an object declared in the class template XML to be
-	 * set to a location on a freshly built instance’s private data, or
+	 * Automatically assign an object declared in the class template XML to
+	 * be set to a location on a freshly built instance’s private data, or
 	 * alternatively accessible via [method@Gtk.Widget.get_template_child].
 	 *
 	 * The struct can point either into the public instance, then you should
@@ -114,8 +114,9 @@ public class WidgetClass
 	 *     name = The “id” of the child defined in the template XML
 	 *     internalChild = Whether the child should be accessible as an “internal-child”
 	 *         when this class is used in GtkBuilder XML
-	 *     structOffset = The structure offset into the composite widget’s instance public or private structure
-	 *         where the automated child pointer should be set, or 0 to not assign the pointer.
+	 *     structOffset = The structure offset into the composite widget’s instance
+	 *         public or private structure where the automated child pointer should be set,
+	 *         or 0 to not assign the pointer.
 	 */
 	public void bindTemplateChildFull(string name, bool internalChild, ptrdiff_t structOffset)
 	{
@@ -138,8 +139,10 @@ public class WidgetClass
 	}
 
 	/**
-	 * Retrieves the signal id for the activation signal set using
-	 * gtk_widget_class_set_activate_signal().
+	 * Retrieves the signal id for the activation signal.
+	 *
+	 * the activation signal is set using
+	 * [method@Gtk.WidgetClass.set_activate_signal].
 	 *
 	 * Returns: a signal id, or 0 if the widget class does not
 	 *     specify an activation signal
@@ -152,7 +155,7 @@ public class WidgetClass
 	/**
 	 * Gets the name used by this class for matching in CSS code.
 	 *
-	 * See gtk_widget_class_set_css_name() for details.
+	 * See [method@Gtk.WidgetClass.set_css_name] for details.
 	 *
 	 * Returns: the CSS name of the given class
 	 */
@@ -163,9 +166,9 @@ public class WidgetClass
 
 	/**
 	 * Retrieves the type of the [class@Gtk.LayoutManager]
-	 * used by the `GtkWidget` class.
+	 * used by widgets of class @widget_class.
 	 *
-	 * See also: gtk_widget_class_set_layout_manager_type()
+	 * See also: [method@Gtk.WidgetClass.set_layout_manager_type].
 	 *
 	 * Returns: type of a `GtkLayoutManager` subclass, or %G_TYPE_INVALID
 	 */
@@ -183,7 +186,7 @@ public class WidgetClass
 	 *
 	 * Params:
 	 *     actionName = a prefixed action name, such as "clipboard.paste"
-	 *     parameterType = the parameter type, or %NULL
+	 *     parameterType = the parameter type
 	 *     activate = callback to use when the action is activated
 	 */
 	public void installAction(string actionName, string parameterType, GtkWidgetActionActivateFunc activate)
@@ -219,9 +222,11 @@ public class WidgetClass
 	}
 
 	/**
-	 * Queries the actions that have been installed for
-	 * a widget class using [method@Gtk.WidgetClass.install_action]
-	 * during class initialization.
+	 * Returns details about the @index_-th action that has been
+	 * installed for @widget_class during class initialization.
+	 *
+	 * See [method@Gtk.WidgetClass.install_action] for details on
+	 * how to install actions.
 	 *
 	 * Note that this function will also return actions defined
 	 * by parent classes. You can identify those by looking
@@ -234,8 +239,8 @@ public class WidgetClass
 	 *     parameterType = return location for the parameter type
 	 *     propertyName = return location for the property name
 	 *
-	 * Returns: %TRUE if the action was found,
-	 *     %FALSE if @index_ is out of range
+	 * Returns: %TRUE if the action was found, %FALSE if @index_
+	 *     is out of range
 	 */
 	public bool queryAction(uint index, out GType owner, out string actionName, out VariantType parameterType, out string propertyName)
 	{
@@ -267,11 +272,12 @@ public class WidgetClass
 	}
 
 	/**
-	 * Sets the GtkWidgetClass.activate_signal field with the
-	 * given @signal_id; the signal will be emitted when calling
-	 * gtk_widget_activate().
+	 * Sets the `GtkWidgetClass.activate_signal` field with the
+	 * given @signal_id.
 	 *
-	 * The @signal_id must have been registered with g_signal_new()
+	 * The signal will be emitted when calling [method@Gtk.Widget.activate].
+	 *
+	 * The @signal_id must have been registered with `g_signal_new()`
 	 * or g_signal_newv() before calling this function.
 	 *
 	 * Params:
@@ -283,9 +289,10 @@ public class WidgetClass
 	}
 
 	/**
-	 * Sets the GtkWidgetClass.activate_signal field with the signal id for
-	 * the given @signal_name; the signal will be emitted when calling
-	 * gtk_widget_activate().
+	 * Sets the `GtkWidgetClass.activate_signal` field with the signal id for
+	 * the given @signal_name.
+	 *
+	 * The signal will be emitted when calling [method@Gtk.Widget.activate].
 	 *
 	 * The @signal_name of @widget_type must have been registered with
 	 * g_signal_new() or g_signal_newv() before calling this function.
@@ -314,8 +321,8 @@ public class WidgetClass
 	}
 
 	/**
-	 * Sets the type to be used for creating layout managers for widgets of
-	 * @widget_class.
+	 * Sets the type to be used for creating layout managers for
+	 * widgets of @widget_class.
 	 *
 	 * The given @type must be a subtype of [class@Gtk.LayoutManager].
 	 *
@@ -342,7 +349,7 @@ public class WidgetClass
 	 * [method@Gtk.Widget.init_template] in the widget’s instance initializer.
 	 *
 	 * Params:
-	 *     templateBytes = A #GBytes holding the #GtkBuilder XML
+	 *     templateBytes = A `GBytes` holding the `GtkBuilder` XML
 	 */
 	public void setTemplate(Bytes templateBytes)
 	{
@@ -371,7 +378,7 @@ public class WidgetClass
 	 * this class’s template data.
 	 *
 	 * Note that this must be called from a composite widget classes class
-	 * initializer after calling gtk_widget_class_set_template().
+	 * initializer after calling [method@GtkWidgetClass.set_template].
 	 *
 	 * Params:
 	 *     scope_ = The `GtkBuilderScope` to use when loading

@@ -91,7 +91,7 @@ public class DropControllerMotion : EventController
 	 * over the widget of @self.
 	 *
 	 * Returns: The `GdkDrop` currently
-	 *     happening within @self or %NULL if none
+	 *     happening within @self
 	 */
 	public Drop getDrop()
 	{

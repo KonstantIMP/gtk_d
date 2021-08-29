@@ -56,8 +56,8 @@ public class TextNode : RenderNode
 	 * color glyphs.
 	 *
 	 * Params:
-	 *     font = the #PangoFont containing the glyphs
-	 *     glyphs = the #PangoGlyphString to render
+	 *     font = the `PangoFont` containing the glyphs
+	 *     glyphs = the `PangoGlyphString` to render
 	 *     color = the foreground color to render with
 	 *     offset = offset of the baseline
 	 *

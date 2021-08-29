@@ -507,7 +507,7 @@ public class PgFontDescription
 	 *
 	 * The [enum@Pango.Style] enumeration describes whether the font is
 	 * slanted and the manner in which it is slanted; it can be either
-	 * #PANGO_STYLE_NORMAL, #PANGO_STYLE_ITALIC, or #PANGO_STYLE_OBLIQUE.
+	 * %PANGO_STYLE_NORMAL, %PANGO_STYLE_ITALIC, or %PANGO_STYLE_OBLIQUE.
 	 *
 	 * Most fonts will either have a italic style or an oblique style,
 	 * but not both, and font matching in Pango will match italic
@@ -620,7 +620,7 @@ public class PgFontDescription
 	/**
 	 * Creates a string representation of a font description.
 	 *
-	 * See [type_func@Pango.FontDescription.from_string] for a description
+	 * See [func@Pango.FontDescription.from_string] for a description
 	 * of the format of the string representation. The family list in
 	 * the string description will only have a terminating comma if
 	 * the last word of the list is a valid style option.

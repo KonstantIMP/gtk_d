@@ -17,8 +17,8 @@ public  import gtk.c.types;
  * 
  * `GtkFileFilter` can be used to restrict the files being shown in a
  * `GtkFileChooser`. Files can be filtered based on their name (with
- * [method@Gtk.FileFilter.add_pattern]) or on their mime type (with
- * [method@Gtk.FileFilter.add_mime_type]).
+ * [method@Gtk.FileFilter.add_pattern] or [method@Gtk.FileFilter.add_suffix])
+ * or on their mime type (with [method@Gtk.FileFilter.add_mime_type]).
  * 
  * Filtering by mime types handles aliasing and subclassing of mime
  * types; e.g. a filter for text/plain also matches a file with mime
@@ -34,11 +34,13 @@ public  import gtk.c.types;
  * # GtkFileFilter as GtkBuildable
  * 
  * The `GtkFileFilter` implementation of the `GtkBuildable` interface
- * supports adding rules using the <mime-types> and <patterns>
- * elements and listing the rules within. Specifying a <mime-type>
- * or <pattern> has the same effect as as calling
+ * supports adding rules using the `<mime-types>` and `<patterns>` and
+ * `<suffixes>` elements and listing the rules within. Specifying a
+ * `<mime-type>` or `<pattern>` or `<suffix>` has the same effect as
+ * as calling
  * [method@Gtk.FileFilter.add_mime_type] or
- * [method@Gtk.FileFilter.add_pattern].
+ * [method@Gtk.FileFilter.add_pattern] or
+ * [method@Gtk.FileFilter.add_suffix].
  * 
  * An example of a UI definition fragment specifying `GtkFileFilter`
  * rules:
@@ -51,8 +53,10 @@ public  import gtk.c.types;
  * </mime-types>
  * <patterns>
  * <pattern>*.txt</pattern>
- * <pattern>*.png</pattern>
  * </patterns>
+ * <suffixes>
+ * <suffix>png</suffix>
+ * </suffixes>
  * </object>
  * ```
  */
@@ -100,7 +104,8 @@ public class FileFilter : Filter, BuildableIF
 	 * Such a filter doesn’t accept any files, so is not
 	 * particularly useful until you add rules with
 	 * [method@Gtk.FileFilter.add_mime_type],
-	 * [method@Gtk.FileFilter.add_pattern], or
+	 * [method@Gtk.FileFilter.add_pattern],
+	 * [method@Gtk.FileFilter.add_suffix] or
 	 * [method@Gtk.FileFilter.add_pixbuf_formats].
 	 *
 	 * To create a filter that accepts any file, use:
@@ -164,6 +169,10 @@ public class FileFilter : Filter, BuildableIF
 	/**
 	 * Adds a rule allowing a shell style glob to a filter.
 	 *
+	 * Note that it depends on the platform whether pattern
+	 * matching ignores case or not. On Windows, it does, on
+	 * other platforms, it doesn't.
+	 *
 	 * Params:
 	 *     pattern = a shell style glob
 	 */
@@ -182,6 +191,25 @@ public class FileFilter : Filter, BuildableIF
 	public void addPixbufFormats()
 	{
 		gtk_file_filter_add_pixbuf_formats(gtkFileFilter);
+	}
+
+	/**
+	 * Adds a suffix match rule to a filter.
+	 *
+	 * This is similar to adding a match for the pattern
+	 * "*.@suffix".
+	 *
+	 * In contrast to pattern matches, suffix matches
+	 * are *always* case-insensitive.
+	 *
+	 * Params:
+	 *     suffix = filename suffix to match
+	 *
+	 * Since: 4.4
+	 */
+	public void addSuffix(string suffix)
+	{
+		gtk_file_filter_add_suffix(gtkFileFilter, Str.toStringz(suffix));
 	}
 
 	/**
@@ -204,9 +232,7 @@ public class FileFilter : Filter, BuildableIF
 	 *
 	 * See [method@Gtk.FileFilter.set_name].
 	 *
-	 * Returns: The human-readable name of the filter,
-	 *     or %NULL. This value is owned by GTK and must not
-	 *     be modified or freed.
+	 * Returns: The human-readable name of the filter
 	 */
 	public string getName()
 	{

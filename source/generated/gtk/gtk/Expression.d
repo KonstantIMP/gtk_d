@@ -296,18 +296,19 @@ public class Expression
 	}
 
 	/**
-	 * Installs a watch for the given `expression` that calls the `notify` function
-	 * whenever the evaluation of `self` may have changed.
+	 * Watch the given `expression` for changes.
+	 *
+	 * The @notify function will be called whenever the evaluation of `self`
+	 * may have changed.
 	 *
 	 * GTK cannot guarantee that the evaluation did indeed change when the @notify
 	 * gets invoked, but it guarantees the opposite: When it did in fact change,
-	 * the `notify` will be invoked.
+	 * the @notify will be invoked.
 	 *
 	 * Params:
 	 *     this_ = the `this` argument to
 	 *         watch
-	 *     notify = callback to invoke when the
-	 *         expression changes
+	 *     notify = callback to invoke when the expression changes
 	 *     userData = user data to pass to the `notify` callback
 	 *     userDestroy = destroy notify for `user_data`
 	 *

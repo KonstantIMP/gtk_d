@@ -70,7 +70,7 @@ private import std.algorithm;
  * [method@Gtk.LevelBar.set_max_value]. The value will be always drawn in
  * proportion to the admissible interval, i.e. a value of 15 with a specified
  * interval between 10 and 20 is equivalent to a value of 0.5 with an interval
- * between 0 and 1. When #GTK_LEVEL_BAR_MODE_DISCRETE is used, the bar level
+ * between 0 and 1. When %GTK_LEVEL_BAR_MODE_DISCRETE is used, the bar level
  * is rendered as a finite number of separated blocks instead of a single one.
  * The number of blocks that will be rendered is equal to the number of units
  * specified by the admissible interval.
@@ -109,7 +109,7 @@ private import std.algorithm;
  * 
  * # Accessibility
  * 
- * `GtkLevelBar` uses the #GTK_ACCESSIBLE_ROLE_METER role.
+ * `GtkLevelBar` uses the %GTK_ACCESSIBLE_ROLE_METER role.
  */
 public class LevelBar : Widget, OrientableIF
 {
@@ -269,7 +269,7 @@ public class LevelBar : Widget, OrientableIF
 	 * Returns the `value` of the `GtkLevelBar`.
 	 *
 	 * Returns: a value in the interval between
-	 *     `GtkLevelBar`:min-value and `GtkLevelBar`:max-value
+	 *     [property@Gtk.LevelBar:min-value[ and [property@Gtk.LevelBar:max-value]
 	 */
 	public double getValue()
 	{

@@ -132,7 +132,7 @@ public  import gtk.c.types;
  * been constructed by GTK as part of a composite widget, to set
  * properties on them or to add further children (e.g. the content area
  * of a `GtkDialog`). This can be achieved by setting the “internal-child”
- * property of the `<child>` element to a true value. Note that #GtkBuilder
+ * property of the `<child>` element to a true value. Note that `GtkBuilder`
  * still requires an `<object>` element for the internal child, even if it
  * has already been constructed.
  * 
@@ -167,13 +167,14 @@ public  import gtk.c.types;
  * ```xml
  * <interface>
  * <object class="GtkDialog" id="dialog1">
- * <child internal-child="vbox">
+ * <child internal-child="content_area">
  * <object class="GtkBox" id="vbox1">
  * <child internal-child="action_area">
  * <object class="GtkBox" id="hbuttonbox1">
  * <child>
  * <object class="GtkButton" id="ok_button">
- * <property name="label">gtk-ok</property>
+ * <property name="label" translatable="yes">_Ok</property>
+ * <property name="use-underline">True</property>
  * <signal name="clicked" handler="ok_button_clicked"/>
  * </object>
  * </child>
@@ -634,7 +635,6 @@ public ObjectG getCurrentObject()
  *     name = name of object to get
  *
  * Returns: the object named @name
- *     or %NULL if it could not be found in the object tree.
  */
 public ObjectG getObject(string name)
 {
@@ -669,8 +669,6 @@ public BuilderScopeIF getScope()
  * Gets the translation domain of @builder.
  *
  * Returns: the translation domain
- *     or %NULL. This string is owned by the builder object and
- *     must not be modified or freed.
  */
 public string getTranslationDomain()
 {
@@ -707,8 +705,7 @@ public GType getTypeFromName(string typeName)
  * [ctor@Gtk.Builder.new_from_resource], the current object will be %NULL.
  *
  * Params:
- *     currentObject = the new current object or
- *         %NULL for none
+ *     currentObject = the new current object
  */
 public void setCurrentObject(ObjectG currentObject)
 {
@@ -718,11 +715,10 @@ public void setCurrentObject(ObjectG currentObject)
 /**
  * Sets the scope the builder should operate in.
  *
- * If @scope is %NULL a new [class@Gtk.BuilderCScope] will be created.
+ * If @scope is %NULL, a new [class@Gtk.BuilderCScope] will be created.
  *
  * Params:
- *     scope_ = the scope to use or
- *         %NULL for the default
+ *     scope_ = the scope to use
  */
 public void setScope(BuilderScopeIF scope_)
 {
@@ -733,7 +729,7 @@ public void setScope(BuilderScopeIF scope_)
  * Sets the translation domain of @builder.
  *
  * Params:
- *     domain = the translation domain or %NULL
+ *     domain = the translation domain
  */
 public void setTranslationDomain(string domain)
 {
@@ -794,7 +790,7 @@ public bool valueFromString(ParamSpec pspec, string string_, out Value value)
  * Params:
  *     type = the `GType` of the value
  *     string_ = the string representation of the value
- *     value = the #GValue to store the result in
+ *     value = the `GValue` to store the result in
  *
  * Returns: %TRUE on success
  *

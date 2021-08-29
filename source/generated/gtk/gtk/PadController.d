@@ -147,7 +147,7 @@ public class PadController : EventController
 	 *     mode = the mode that will trigger this action, or -1 for all modes.
 	 *     label = Human readable description of this action, this string should
 	 *         be deemed user-visible.
-	 *     actionName = action name that will be activated in the #GActionGroup
+	 *     actionName = action name that will be activated in the `GActionGroup`
 	 */
 	public void setAction(GtkPadActionType type, int index, int mode, string label, string actionName)
 	{

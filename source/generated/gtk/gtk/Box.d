@@ -195,7 +195,7 @@ public class Box : Widget, OrientableIF
 	 *
 	 * Params:
 	 *     child = the `GtkWidget` to move, must be a child of @box
-	 *     sibling = the sibling to move @child after, or %NULL
+	 *     sibling = the sibling to move @child after
 	 */
 	public void reorderChildAfter(Widget child, Widget sibling)
 	{

@@ -80,8 +80,8 @@ public class MapListModel : ObjectG, ListModelIF
 	 * Creates a new `GtkMapListModel` for the given arguments.
 	 *
 	 * Params:
-	 *     model = The model to map or %NULL for none
-	 *     mapFunc = map function or %NULL to not map items
+	 *     model = The model to map
+	 *     mapFunc = map function
 	 *     userData = user data passed to @map_func
 	 *     userDestroy = destroy notifier for @user_data
 	 *
@@ -142,7 +142,7 @@ public class MapListModel : ObjectG, ListModelIF
 	 * function returns items of the appropriate type.
 	 *
 	 * Params:
-	 *     mapFunc = map function or %NULL to not map items
+	 *     mapFunc = map function
 	 *     userData = user data passed to @map_func
 	 *     userDestroy = destroy notifier for @user_data
 	 */

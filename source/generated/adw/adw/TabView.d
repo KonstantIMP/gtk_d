@@ -20,7 +20,7 @@ private import std.algorithm;
 
 
 /**
- * A dynamic tabbed container
+ * A dynamic tabbed container.
  * 
  * `AdwTabView` is a container which shows one child at a time. While it
  * provides keyboard shortcuts for switching between pages, it does not provide

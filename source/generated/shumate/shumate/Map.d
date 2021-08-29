@@ -1,7 +1,6 @@
-module shumate.View;
+module shumate.Map;
 
 private import glib.ConstructionException;
-private import glib.ListG;
 private import gobject.ObjectG;
 private import gobject.Signals;
 private import gtk.AccessibleIF;
@@ -20,57 +19,54 @@ private import std.algorithm;
 
 
 /**
- * The #ShumateView structure contains only private data
+ * The #ShumateMap structure contains only private data
  * and should be accessed using the provided API
  */
-public class View : Widget
+public class Map : Widget
 {
 	/** the main Gtk struct */
-	protected ShumateView* shumateView;
+	protected ShumateMap* shumateMap;
 
 	/** Get the main Gtk struct */
-	public ShumateView* getViewStruct(bool transferOwnership = false)
+	public ShumateMap* getMapStruct(bool transferOwnership = false)
 	{
 		if (transferOwnership)
 			ownedRef = false;
-		return shumateView;
+		return shumateMap;
 	}
 
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct()
 	{
-		return cast(void*)shumateView;
+		return cast(void*)shumateMap;
 	}
 
 	/**
 	 * Sets our main struct and passes it to the parent class.
 	 */
-	public this (ShumateView* shumateView, bool ownedRef = false)
+	public this (ShumateMap* shumateMap, bool ownedRef = false)
 	{
-		this.shumateView = shumateView;
-		super(cast(GtkWidget*)shumateView, ownedRef);
+		this.shumateMap = shumateMap;
+		super(cast(GtkWidget*)shumateMap, ownedRef);
 	}
 
 	/**
-	 * Creates an instance of #ShumateView.
+	 * Creates an instance of #ShumateMap.
 	 *
-	 * Returns: a new #ShumateView ready to be used as a #GtkWidget.
+	 * Returns: a new #ShumateMap ready to be used as a #GtkWidget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this(bool simple = false)
 	{
-		ShumateView* __p;
-
-		if (simple) __p = shumate_view_new_simple();
-		else __p = shumate_view_new();
+		auto __p = (simple ? shumate_map_new_simple() : shumate_map_new());
 
 		if(__p is null)
 		{
 			throw new ConstructionException("null returned by new");
 		}
 
-		this(cast(ShumateView*) __p);
+		this(cast(ShumateMap*) __p);
 	}
 
 	/**
@@ -79,7 +75,7 @@ public class View : Widget
 	/** */
 	public static GType getType()
 	{
-		return shumate_view_get_type();
+		return shumate_map_get_type();
 	}
 
 	/**
@@ -90,19 +86,7 @@ public class View : Widget
 	 */
 	public void addLayer(Layer layer)
 	{
-		shumate_view_add_layer(shumateView, (layer is null) ? null : layer.getLayerStruct());
-	}
-
-	/**
-	 * Adds a new overlay map source to render tiles on top of the ordinary map
-	 * source. Multiple overlay sources can be added.
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 */
-	public void addOverlaySource(MapSource mapSource)
-	{
-		shumate_view_add_overlay_source(shumateView, (mapSource is null) ? null : mapSource.getMapSourceStruct());
+		shumate_map_add_layer(shumateMap, (layer is null) ? null : layer.getLayerStruct());
 	}
 
 	/**
@@ -114,7 +98,7 @@ public class View : Widget
 	 */
 	public void centerOn(double latitude, double longitude)
 	{
-		shumate_view_center_on(shumateView, latitude, longitude);
+		shumate_map_center_on(shumateMap, latitude, longitude);
 	}
 
 	/**
@@ -124,35 +108,18 @@ public class View : Widget
 	 */
 	public bool getAnimateZoom()
 	{
-		return shumate_view_get_animate_zoom(shumateView) != 0;
+		return shumate_map_get_animate_zoom(shumateMap) != 0;
 	}
 
 	/**
 	 * Get the 'go-to-duration' property.
 	 *
-	 * Returns: the animation duration when calling shumate_view_go_to(),
+	 * Returns: the animation duration when calling shumate_map_go_to(),
 	 *     in milliseconds.
 	 */
 	public uint getGoToDuration()
 	{
-		return shumate_view_get_go_to_duration(shumateView);
-	}
-
-	/**
-	 * Gets a list of overlay sources.
-	 *
-	 * Returns: the list
-	 */
-	public ListG getOverlaySources()
-	{
-		auto __p = shumate_view_get_overlay_sources(shumateView);
-
-		if(__p is null)
-		{
-			return null;
-		}
-
-		return new ListG(cast(GList*) __p);
+		return shumate_map_get_go_to_duration(shumateMap);
 	}
 
 	/**
@@ -162,7 +129,7 @@ public class View : Widget
 	 */
 	public ShumateState getState()
 	{
-		return shumate_view_get_state(shumateView);
+		return shumate_map_get_state(shumateMap);
 	}
 
 	/**
@@ -172,7 +139,7 @@ public class View : Widget
 	 */
 	public Viewport getViewport()
 	{
-		auto __p = shumate_view_get_viewport(shumateView);
+		auto __p = shumate_map_get_viewport(shumateMap);
 
 		if(__p is null)
 		{
@@ -189,7 +156,7 @@ public class View : Widget
 	 */
 	public bool getZoomOnDoubleClick()
 	{
-		return shumate_view_get_zoom_on_double_click(shumateView) != 0;
+		return shumate_map_get_zoom_on_double_click(shumateMap) != 0;
 	}
 
 	/**
@@ -202,33 +169,33 @@ public class View : Widget
 	 */
 	public void goTo(double latitude, double longitude)
 	{
-		shumate_view_go_to(shumateView, latitude, longitude);
+		shumate_map_go_to(shumateMap, latitude, longitude);
 	}
 
 	/**
-	 * Adds @layer to @view above @next_sibling or, if @next_sibling is %NULL, at
+	 * Adds @layer to @self above @next_sibling or, if @next_sibling is %NULL, at
 	 * the bottom of the layer list.
 	 *
 	 * Params:
 	 *     layer = a #ShumateLayer
-	 *     nextSibling = a #ShumateLayer that is a child of @view, or %NULL
+	 *     nextSibling = a #ShumateLayer that is a child of @self, or %NULL
 	 */
 	public void insertLayerAbove(Layer layer, Layer nextSibling)
 	{
-		shumate_view_insert_layer_above(shumateView, (layer is null) ? null : layer.getLayerStruct(), (nextSibling is null) ? null : nextSibling.getLayerStruct());
+		shumate_map_insert_layer_above(shumateMap, (layer is null) ? null : layer.getLayerStruct(), (nextSibling is null) ? null : nextSibling.getLayerStruct());
 	}
 
 	/**
-	 * Adds @layer to @view behind @next_sibling or, if @next_sibling is %NULL, at
+	 * Adds @layer to @self behind @next_sibling or, if @next_sibling is %NULL, at
 	 * the top of the layer list.
 	 *
 	 * Params:
 	 *     layer = a #ShumateLayer
-	 *     nextSibling = a #ShumateLayer that is a child of @view, or %NULL
+	 *     nextSibling = a #ShumateLayer that is a child of @self, or %NULL
 	 */
 	public void insertLayerBehind(Layer layer, Layer nextSibling)
 	{
-		shumate_view_insert_layer_behind(shumateView, (layer is null) ? null : layer.getLayerStruct(), (nextSibling is null) ? null : nextSibling.getLayerStruct());
+		shumate_map_insert_layer_behind(shumateMap, (layer is null) ? null : layer.getLayerStruct(), (nextSibling is null) ? null : nextSibling.getLayerStruct());
 	}
 
 	/**
@@ -239,18 +206,7 @@ public class View : Widget
 	 */
 	public void removeLayer(Layer layer)
 	{
-		shumate_view_remove_layer(shumateView, (layer is null) ? null : layer.getLayerStruct());
-	}
-
-	/**
-	 * Removes an overlay source from #ShumateView.
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 */
-	public void removeOverlaySource(MapSource mapSource)
-	{
-		shumate_view_remove_overlay_source(shumateView, (mapSource is null) ? null : mapSource.getMapSourceStruct());
+		shumate_map_remove_layer(shumateMap, (layer is null) ? null : layer.getLayerStruct());
 	}
 
 	/**
@@ -261,18 +217,18 @@ public class View : Widget
 	 */
 	public void setAnimateZoom(bool value)
 	{
-		shumate_view_set_animate_zoom(shumateView, value);
+		shumate_map_set_animate_zoom(shumateMap, value);
 	}
 
 	/**
-	 * Set the duration of the transition of shumate_view_go_to().
+	 * Set the duration of the transition of shumate_map_go_to().
 	 *
 	 * Params:
 	 *     duration = the animation duration, in milliseconds
 	 */
 	public void setGoToDuration(uint duration)
 	{
-		shumate_view_set_go_to_duration(shumateView, duration);
+		shumate_map_set_go_to_duration(shumateMap, duration);
 	}
 
 	/**
@@ -287,7 +243,7 @@ public class View : Widget
 	 */
 	public void setMapSource(MapSource mapSource)
 	{
-		shumate_view_set_map_source(shumateView, (mapSource is null) ? null : mapSource.getMapSourceStruct());
+		shumate_map_set_map_source(shumateMap, (mapSource is null) ? null : mapSource.getMapSourceStruct());
 	}
 
 	/**
@@ -298,7 +254,7 @@ public class View : Widget
 	 */
 	public void setZoomOnDoubleClick(bool value)
 	{
-		shumate_view_set_zoom_on_double_click(shumateView, value);
+		shumate_map_set_zoom_on_double_click(shumateMap, value);
 	}
 
 	/**
@@ -307,16 +263,16 @@ public class View : Widget
 	 */
 	public void stopGoTo()
 	{
-		shumate_view_stop_go_to(shumateView);
+		shumate_map_stop_go_to(shumateMap);
 	}
 
 	/**
-	 * The #ShumateView::animation-completed signal is emitted when any animation in the view
+	 * The #ShumateMap::animation-completed signal is emitted when any animation in the view
 	 * ends.  This is a detailed signal.  For example, if you want to be signaled
 	 * only for go-to animation, you should connect to
 	 * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
 	 */
-	gulong addOnAnimationCompleted(void delegate(View) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	gulong addOnAnimationCompleted(void delegate(Map) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
 		return Signals.connect(this, "animation-completed", dlg, connectFlags ^ ConnectFlags.SWAPPED);
 	}

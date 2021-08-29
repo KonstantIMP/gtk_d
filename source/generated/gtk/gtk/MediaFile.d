@@ -161,7 +161,6 @@ public class MediaFile : MediaStream
 	 * %NULL is returned.
 	 *
 	 * Returns: The currently playing file
-	 *     or %NULL if not playing from a file.
 	 */
 	public FileIF getFile()
 	{
@@ -181,8 +180,7 @@ public class MediaFile : MediaStream
 	 * When @self is not playing or not playing from a stream,
 	 * %NULL is returned.
 	 *
-	 * Returns: The currently playing
-	 *     stream or %NULL if not playing from a stream.
+	 * Returns: The currently playing stream
 	 */
 	public InputStream getInputStream()
 	{

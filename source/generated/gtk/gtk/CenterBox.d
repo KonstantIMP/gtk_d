@@ -184,7 +184,7 @@ public class CenterBox : Widget, OrientableIF
 	 * To remove the existing center widget, pas %NULL.
 	 *
 	 * Params:
-	 *     child = the new center widget, or %NULL
+	 *     child = the new center widget
 	 */
 	public void setCenterWidget(Widget child)
 	{
@@ -197,7 +197,7 @@ public class CenterBox : Widget, OrientableIF
 	 * To remove the existing end widget, pass %NULL.
 	 *
 	 * Params:
-	 *     child = the new end widget, or %NULL
+	 *     child = the new end widget
 	 */
 	public void setEndWidget(Widget child)
 	{
@@ -210,7 +210,7 @@ public class CenterBox : Widget, OrientableIF
 	 * To remove the existing start widget, pass %NULL.
 	 *
 	 * Params:
-	 *     child = the new start widget, or %NULL
+	 *     child = the new start widget
 	 */
 	public void setStartWidget(Widget child)
 	{

@@ -20,7 +20,7 @@ public  import gtk.c.types;
  * [method@Gtk.Widget.add_controller]. It is rarely necessary to
  * explicitly remove a controller with [method@Gtk.Widget.remove_controller].
  * 
- * See the chapter of [input handling](input-handling.html) for
+ * See the chapter on [input handling](input-handling.html) for
  * an overview of the basic concepts, such as the capture and bubble
  * phases of even propagation.
  */
@@ -60,8 +60,9 @@ public class EventController : ObjectG
 	}
 
 	/**
-	 * Returns the event that is currently being handled by the
-	 * controller, and %NULL at other times.
+	 * Returns the event that is currently being handled by the controller.
+	 *
+	 * At other times, %NULL is returned.
 	 *
 	 * Returns: the event that is currently
 	 *     handled by @controller
@@ -80,7 +81,9 @@ public class EventController : ObjectG
 
 	/**
 	 * Returns the device of the event that is currently being
-	 * handled by the controller, and %NULL otherwise.
+	 * handled by the controller.
+	 *
+	 * At other times, %NULL is returned.
 	 *
 	 * Returns: device of the event is
 	 *     currently handled by @controller
@@ -99,7 +102,9 @@ public class EventController : ObjectG
 
 	/**
 	 * Returns the modifier state of the event that is currently being
-	 * handled by the controller, and 0 otherwise.
+	 * handled by the controller.
+	 *
+	 * At other times, 0 is returned.
 	 *
 	 * Returns: modifier state of the event is currently handled by @controller
 	 */
@@ -110,7 +115,9 @@ public class EventController : ObjectG
 
 	/**
 	 * Returns the timestamp of the event that is currently being
-	 * handled by the controller, and 0 otherwise.
+	 * handled by the controller.
+	 *
+	 * At other times, 0 is returned.
 	 *
 	 * Returns: timestamp of the event is currently handled by @controller
 	 */
@@ -148,7 +155,7 @@ public class EventController : ObjectG
 	}
 
 	/**
-	 * Returns the #GtkWidget this controller relates to.
+	 * Returns the `GtkWidget` this controller relates to.
 	 *
 	 * Returns: a `GtkWidget`
 	 */

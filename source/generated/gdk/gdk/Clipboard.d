@@ -79,8 +79,8 @@ public class Clipboard : ObjectG
 	 * If the @clipboard is empty or its contents are not owned by the
 	 * current process, %NULL will be returned.
 	 *
-	 * Returns: The content of a clipboard or %NULL
-	 *     if the clipboard does not maintain any content.
+	 * Returns: The content of a clipboard
+	 *     if the clipboard does not maintain any content
 	 */
 	public ContentProvider getContent()
 	{
@@ -157,7 +157,7 @@ public class Clipboard : ObjectG
 	 * Params:
 	 *     mimeTypes = a %NULL-terminated array of mime types to choose from
 	 *     ioPriority = the I/O priority of the request
-	 *     cancellable = optional `GCancellable` object, %NULL to ignore.
+	 *     cancellable = optional `GCancellable` object
 	 *     callback = callback to call when the request is satisfied
 	 *     userData = the data to pass to callback function
 	 */
@@ -173,10 +173,10 @@ public class Clipboard : ObjectG
 	 *
 	 * Params:
 	 *     result = a `GAsyncResult`
-	 *     outMimeType = pointer to store
-	 *         the chosen mime type in or %NULL
+	 *     outMimeType = location to store
+	 *         the chosen mime type
 	 *
-	 * Returns: a `GInputStream` or %NULL on error.
+	 * Returns: a `GInputStream`
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -213,7 +213,7 @@ public class Clipboard : ObjectG
 	 * need more control over the operation.
 	 *
 	 * Params:
-	 *     cancellable = optional `GCancellable` object, %NULL to ignore
+	 *     cancellable = optional `GCancellable` object
 	 *     callback = callback to call when the request is satisfied
 	 *     userData = the data to pass to callback function
 	 */
@@ -230,7 +230,7 @@ public class Clipboard : ObjectG
 	 * Params:
 	 *     result = a `GAsyncResult`
 	 *
-	 * Returns: a new string or %NULL on error
+	 * Returns: a new string
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -256,7 +256,7 @@ public class Clipboard : ObjectG
 	 * call [method@Gdk.Clipboard.read_texture_finish] to get the result.
 	 *
 	 * This is a simple wrapper around [method@Gdk.Clipboard.read_value_async].
-	 * Use that function or [methos@Gdk.Clipboard.read_async] directly if you
+	 * Use that function or [method@Gdk.Clipboard.read_async] directly if you
 	 * need more control over the operation.
 	 *
 	 * Params:
@@ -277,7 +277,7 @@ public class Clipboard : ObjectG
 	 * Params:
 	 *     result = a `GAsyncResult`
 	 *
-	 * Returns: a new `GdkTexture` or %NULL on error
+	 * Returns: a new `GdkTexture`
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -314,7 +314,7 @@ public class Clipboard : ObjectG
 	 * Params:
 	 *     type = a `GType` to read
 	 *     ioPriority = the I/O priority of the request
-	 *     cancellable = optional #GCancellable object, %NULL to ignore.
+	 *     cancellable = optional `GCancellable` object
 	 *     callback = callback to call when the request is satisfied
 	 *     userData = the data to pass to callback function
 	 */
@@ -369,8 +369,8 @@ public class Clipboard : ObjectG
 	 * transfer the contents and then request that format from @provider.
 	 *
 	 * Params:
-	 *     provider = the new contents of @clipboard or
-	 *         %NULL to clear the clipboard
+	 *     provider = the new contents of @clipboard
+	 *         or %NULL to clear the clipboard
 	 *
 	 * Returns: %TRUE if setting the clipboard succeeded
 	 */
@@ -440,8 +440,8 @@ public class Clipboard : ObjectG
 	 * shut down, so you likely don't need to call it.
 	 *
 	 * Params:
-	 *     ioPriority = the I/O priority of the request.
-	 *     cancellable = optional `GCancellable` object, %NULL to ignore.
+	 *     ioPriority = the I/O priority of the request
+	 *     cancellable = optional `GCancellable` object
 	 *     callback = callback to call when the request is satisfied
 	 *     userData = the data to pass to callback function
 	 */

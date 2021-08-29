@@ -69,7 +69,7 @@ private import std.algorithm;
  * 
  * # Accessibility
  * 
- * `GtkLabel` uses the #GTK_ACCESSIBLE_ROLE_LABEL role.
+ * `GtkLabel` uses the %GTK_ACCESSIBLE_ROLE_LABEL role.
  * 
  * # Mnemonics
  * 
@@ -276,8 +276,7 @@ public class Label : Widget
 	 * attributes for the label, use
 	 * `pango_layout_get_attribute (gtk_label_get_layout (self))`.
 	 *
-	 * Returns: the attribute list, or %NULL
-	 *     if none was set.
+	 * Returns: the attribute list
 	 */
 	public PgAttributeList getAttributes()
 	{
@@ -301,8 +300,7 @@ public class Label : Widget
 	 * This function is intended for use in a [signal@Gtk.Label::activate-link]
 	 * handler or for use in a [signal@Gtk.Widget::query-tooltip] handler.
 	 *
-	 * Returns: the currently active URI or %NULL if there is none.
-	 *     The string is owned by GTK and must not be freed or modified.
+	 * Returns: the currently active URI
 	 */
 	public string getCurrentUri()
 	{
@@ -396,11 +394,11 @@ public class Label : Widget
 	 * inside the [class@Pango.Layout], e.g. to take some action if some part
 	 * of the label is clicked. Remember when using the [class@Pango.Layout]
 	 * functions you need to convert to and from pixels using PANGO_PIXELS()
-	 * or [constant@Pango.SCALE].
+	 * or [const@Pango.SCALE].
 	 *
 	 * Params:
-	 *     x = location to store X offset of layout, or %NULL
-	 *     y = location to store Y offset of layout, or %NULL
+	 *     x = location to store X offset of layout
+	 *     y = location to store Y offset of layout
 	 */
 	public void getLayoutOffsets(out int x, out int y)
 	{
@@ -628,7 +626,7 @@ public class Label : Widget
 	 * be applied to the label after the markup string is parsed.
 	 *
 	 * Params:
-	 *     attrs = a [struct@Pango.AttrList], or %NULL
+	 *     attrs = a [struct@Pango.AttrList]
 	 */
 	public void setAttributes(PgAttributeList attrs)
 	{
@@ -755,7 +753,7 @@ public class Label : Widget
 	 * indicating that they represent a keyboard accelerator called a mnemonic.
 	 *
 	 * The mnemonic key can be used to activate another widget, chosen
-	 * automatically, or explicitly using method@Gtk.Label.set_mnemonic_widget].
+	 * automatically, or explicitly using [method@Gtk.Label.set_mnemonic_widget].
 	 *
 	 * Params:
 	 *     str = a markup string
@@ -796,7 +794,7 @@ public class Label : Widget
 	 * and toggle focus between the colliding widgets otherwise.
 	 *
 	 * Params:
-	 *     widget = the target #GtkWidget, or %NULL to unset
+	 *     widget = the target `GtkWidget`, or %NULL to unset
 	 */
 	public void setMnemonicWidget(Widget widget)
 	{
@@ -1026,7 +1024,7 @@ public class Label : Widget
 	 * - Home/End keys move to the ends of the buffer
 	 *
 	 * Params:
-	 *     step = the granularity of the move, as a #GtkMovementStep
+	 *     step = the granularity of the move, as a `GtkMovementStep`
 	 *     count = the number of @step units to move
 	 *     extendSelection = %TRUE if the move should extend the selection
 	 */

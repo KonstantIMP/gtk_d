@@ -86,8 +86,7 @@ public class IconPaintable : ObjectG, PaintableIF
 	 *
 	 * Returns %NULL if the icon was not loaded from a file.
 	 *
-	 * Returns: the #GFile for the icon, or %NULL.
-	 *     Free with g_object_unref().
+	 * Returns: the `GFile` for the icon
 	 */
 	public FileIF getFile()
 	{

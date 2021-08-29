@@ -79,7 +79,7 @@ public class PopoverMenuBar : Widget
 	 * Creates a `GtkPopoverMenuBar` from a `GMenuModel`.
 	 *
 	 * Params:
-	 *     model = a `GMenuModel`, or %NULL
+	 *     model = a `GMenuModel`
 	 *
 	 * Returns: a new `GtkPopoverMenuBar`
 	 *
@@ -136,7 +136,7 @@ public class PopoverMenuBar : Widget
 	 * gtk_popover_menu_bar_add_child().
 	 *
 	 * Params:
-	 *     child = the #GtkWidget to remove
+	 *     child = the `GtkWidget` to remove
 	 *
 	 * Returns: %TRUE if the widget was removed
 	 */
@@ -150,7 +150,7 @@ public class PopoverMenuBar : Widget
 	 * its contents.
 	 *
 	 * Params:
-	 *     model = a `GMenuModel`, or %NULL
+	 *     model = a `GMenuModel`
 	 */
 	public void setMenuModel(MenuModel model)
 	{

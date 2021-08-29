@@ -155,7 +155,7 @@ public class Event
 	/**
 	 * Returns the device of an event.
 	 *
-	 * Returns: a #GdkDevice.
+	 * Returns: a `GdkDevice`
 	 */
 	public Device getDevice()
 	{
@@ -181,7 +181,7 @@ public class Event
 	 * the application lifetime, if settings must be stored
 	 * persistently across runs, see [method@Gdk.DeviceTool.get_serial].
 	 *
-	 * Returns: The current device tool, or %NULL
+	 * Returns: The current device tool
 	 */
 	public DeviceTool getDeviceTool()
 	{
@@ -198,7 +198,7 @@ public class Event
 	/**
 	 * Retrieves the display associated to the @event.
 	 *
-	 * Returns: a #GdkDisplay
+	 * Returns: a `GdkDisplay`
 	 */
 	public Display getDisplay()
 	{
@@ -294,7 +294,7 @@ public class Event
 	/**
 	 * Returns the seat that originated the event.
 	 *
-	 * Returns: a #GdkSeat.
+	 * Returns: a `GdkSeat`.
 	 */
 	public Seat getSeat()
 	{
@@ -311,7 +311,7 @@ public class Event
 	/**
 	 * Extracts the surface associated with an event.
 	 *
-	 * Returns: The #GdkSurface associated with the event
+	 * Returns: The `GdkSurface` associated with the event
 	 */
 	public Surface getSurface()
 	{

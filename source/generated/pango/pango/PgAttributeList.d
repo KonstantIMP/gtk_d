@@ -66,10 +66,12 @@ public class PgAttributeList
 	}
 
 	/**
-	 * Create a new empty attribute list with a reference count of one.
+	 * Create a new empty attribute list with a reference
+	 * count of one.
 	 *
-	 * Returns: the newly allocated `PangoAttrList`,
-	 *     which should be freed with [method@Pango.AttrList.unref].
+	 * Returns: the newly allocated
+	 *     `PangoAttrList`, which should be freed with
+	 *     [method@Pango.AttrList.unref]
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -88,18 +90,19 @@ public class PgAttributeList
 	/**
 	 * Insert the given attribute into the `PangoAttrList`.
 	 *
-	 * It will replace any attributes of the same type on that segment
-	 * and be merged with any adjoining attributes that are identical.
+	 * It will replace any attributes of the same type
+	 * on that segment and be merged with any adjoining
+	 * attributes that are identical.
 	 *
-	 * This function is slower than [method@Pango.AttrList.insert] for
-	 * creating an attribute list in order (potentially much slower for
-	 * large lists). However, [method@Pango.AttrList.insert] is not
-	 * suitable for continually changing a set of attributes since it
+	 * This function is slower than [method@Pango.AttrList.insert]
+	 * for creating an attribute list in order (potentially
+	 * much slower for large lists). However,
+	 * [method@Pango.AttrList.insert] is not suitable for
+	 * continually changing a set of attributes since it
 	 * never removes or combines existing attributes.
 	 *
 	 * Params:
-	 *     attr = the attribute to insert. Ownership of this
-	 *         value is assumed by the list.
+	 *     attr = the attribute to insert
 	 */
 	public void change(PgAttribute attr)
 	{
@@ -109,9 +112,10 @@ public class PgAttributeList
 	/**
 	 * Copy @list and return an identical new list.
 	 *
-	 * Returns: the newly allocated `PangoAttrList`,
-	 *     with a reference count of one, which should be freed with
-	 *     [method@Pango.AttrList.unref]. Returns %NULL if @list was %NULL.
+	 * Returns: the newly allocated
+	 *     `PangoAttrList`, with a reference count of one,
+	 *     which should be freed with [method@Pango.AttrList.unref].
+	 *     Returns %NULL if @list was %NULL.
 	 */
 	public PgAttributeList copy()
 	{
@@ -126,14 +130,18 @@ public class PgAttributeList
 	}
 
 	/**
-	 * Checks whether @list and @other_list contain the same attributes and
-	 * whether those attributes apply to the same ranges. Beware that this
-	 * will return wrong values if any list contains duplicates.
+	 * Checks whether @list and @other_list contain the same
+	 * attributes and whether those attributes apply to the
+	 * same ranges.
+	 *
+	 * Beware that this will return wrong values if any list
+	 * contains duplicates.
 	 *
 	 * Params:
 	 *     otherList = the other `PangoAttrList`
 	 *
-	 * Returns: %TRUE if the lists are equal, %FALSE if they aren't.
+	 * Returns: %TRUE if the lists are equal, %FALSE if
+	 *     they aren't
 	 *
 	 * Since: 1.46
 	 */
@@ -143,16 +151,18 @@ public class PgAttributeList
 	}
 
 	/**
-	 * Given a `PangoAttrList` and callback function, removes any elements
-	 * of @list for which @func returns %TRUE and inserts them into a new list.
+	 * Given a `PangoAttrList` and callback function, removes
+	 * any elements of @list for which @func returns %TRUE and
+	 * inserts them into a new list.
 	 *
 	 * Params:
-	 *     func = callback function; returns %TRUE
-	 *         if an attribute should be filtered out.
+	 *     func = callback function;
+	 *         returns %TRUE if an attribute should be filtered out
 	 *     data = Data to be passed to @func
 	 *
-	 * Returns: the new `PangoAttrList` or
-	 *     %NULL if no attributes of the given types were found.
+	 * Returns: the new
+	 *     `PangoAttrList` or %NULL if no attributes of the
+	 *     given types were found
 	 *
 	 * Since: 1.2
 	 */
@@ -171,9 +181,9 @@ public class PgAttributeList
 	/**
 	 * Gets a list of all attributes in @list.
 	 *
-	 * Returns: a list of all attributes in @list. To free this value, call
-	 *     [mehod@Pango.Attribute.destroy] on each value and g_slist_free()
-	 *     on the list.
+	 * Returns: a list of all attributes in @list. To free this value,
+	 *     call [method@Pango.Attribute.destroy] on each value and
+	 *     g_slist_free() on the list.
 	 *
 	 * Since: 1.44
 	 */
@@ -191,10 +201,12 @@ public class PgAttributeList
 
 	/**
 	 * Create a iterator initialized to the beginning of the list.
+	 *
 	 * @list must not be modified until this iterator is freed.
 	 *
-	 * Returns: the newly allocated `PangoAttrIterator`,
-	 *     which should be freed with [method@Pango.AttrIterator.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttrIterator`, which should be freed with
+	 *     [method@Pango.AttrIterator.destroy]
 	 */
 	public PgAttributeIterator getIterator()
 	{
@@ -215,8 +227,7 @@ public class PgAttributeList
 	 * matching @start_index.
 	 *
 	 * Params:
-	 *     attr = the attribute to insert. Ownership of this
-	 *         value is assumed by the list.
+	 *     attr = the attribute to insert
 	 */
 	public void insert(PgAttribute attr)
 	{
@@ -230,8 +241,7 @@ public class PgAttributeList
 	 * matching @start_index.
 	 *
 	 * Params:
-	 *     attr = the attribute to insert. Ownership of this
-	 *         value is assumed by the list.
+	 *     attr = the attribute to insert
 	 */
 	public void insertBefore(PgAttribute attr)
 	{
@@ -240,7 +250,8 @@ public class PgAttributeList
 
 	alias doref = ref_;
 	/**
-	 * Increase the reference count of the given attribute list by one.
+	 * Increase the reference count of the given attribute
+	 * list by one.
 	 *
 	 * Returns: The attribute list passed in
 	 *
@@ -259,8 +270,9 @@ public class PgAttributeList
 	}
 
 	/**
-	 * This function opens up a hole in @list, fills it in with attributes
-	 * from the left, and then merges @other on top of the hole.
+	 * This function opens up a hole in @list, fills it
+	 * in with attributes from the left, and then merges
+	 * @other on top of the hole.
 	 *
 	 * This operation is equivalent to stretching every attribute
 	 * that applies at position @pos in @list by an amount @len,
@@ -284,9 +296,11 @@ public class PgAttributeList
 	}
 
 	/**
-	 * Decrease the reference count of the given attribute list by one.
-	 * If the result is zero, free the attribute list and the attributes
-	 * it contains.
+	 * Decrease the reference count of the given attribute
+	 * list by one.
+	 *
+	 * If the result is zero, free the attribute list
+	 * and the attributes it contains.
 	 */
 	public void unref()
 	{

@@ -124,13 +124,12 @@ public class Calendar : Widget
 	}
 
 	/**
-	 * Returns a #GDateTime representing the shown
+	 * Returns a `GDateTime` representing the shown
 	 * year, month and the selected day.
 	 *
 	 * The returned date is in the local time zone.
 	 *
-	 * Returns: the `GDate` representing
-	 *     the shown date.
+	 * Returns: the `GDate` representing the shown date
 	 */
 	public DateTime getDate()
 	{
@@ -213,7 +212,7 @@ public class Calendar : Widget
 	 * Switches to @date's year and month and select its day.
 	 *
 	 * Params:
-	 *     date = a #GDateTime representing the day to select
+	 *     date = a `GDateTime` representing the day to select
 	 */
 	public void selectDay(DateTime date)
 	{

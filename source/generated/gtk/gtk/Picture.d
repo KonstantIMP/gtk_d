@@ -175,7 +175,7 @@ public class Picture : Widget
 	 * its size and contents in response to it.
 	 *
 	 * Params:
-	 *     paintable = a `GdkPaintable`, or %NULL
+	 *     paintable = a `GdkPaintable`
 	 *
 	 * Returns: a new `GtkPicture`
 	 *
@@ -202,7 +202,7 @@ public class Picture : Widget
 	 * The pixbuf must not be modified after passing it to this function.
 	 *
 	 * Params:
-	 *     pixbuf = a `GdkPixbuf`, or %NULL
+	 *     pixbuf = a `GdkPixbuf`
 	 *
 	 * Returns: a new `GtkPicture`
 	 *
@@ -275,8 +275,7 @@ public class Picture : Widget
 	/**
 	 * Gets the `GdkPaintable` being displayed by the `GtkPicture`.
 	 *
-	 * Returns: the displayed paintable, or %NULL if
-	 *     the picture is empty
+	 * Returns: the displayed paintable
 	 */
 	public PaintableIF getPaintable()
 	{
@@ -333,7 +332,7 @@ public class Picture : Widget
 	 * See [ctor@Gtk.Picture.new_for_file] for details.
 	 *
 	 * Params:
-	 *     file = a `GFile` or %NULL
+	 *     file = a `GFile`
 	 */
 	public void setFile(FileIF file)
 	{
@@ -379,7 +378,7 @@ public class Picture : Widget
 	 * See [ctor@Gtk.Picture.new_for_paintable] for details.
 	 *
 	 * Params:
-	 *     paintable = a `GdkPaintable` or %NULL
+	 *     paintable = a `GdkPaintable`
 	 */
 	public void setPaintable(PaintableIF paintable)
 	{
@@ -394,7 +393,7 @@ public class Picture : Widget
 	 * This is a utility function that calls [method@Gtk.Picture.set_paintable].
 	 *
 	 * Params:
-	 *     pixbuf = a `GdkPixbuf` or %NULL
+	 *     pixbuf = a `GdkPixbuf`
 	 */
 	public void setPixbuf(Pixbuf pixbuf)
 	{

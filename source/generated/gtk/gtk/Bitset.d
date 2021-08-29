@@ -115,7 +115,7 @@ public class Bitset
 	 *     value = value to add
 	 *
 	 * Returns: %TRUE if @value was not part of @self and @self
-	 *     was changed.
+	 *     was changed
 	 */
 	public bool add(uint value)
 	{
@@ -351,7 +351,7 @@ public class Bitset
 	 *     value = value to add
 	 *
 	 * Returns: %TRUE if @value was part of @self and @self
-	 *     was changed.
+	 *     was changed
 	 */
 	public bool remove(uint value)
 	{

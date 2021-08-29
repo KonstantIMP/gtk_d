@@ -35,7 +35,7 @@ private import std.algorithm;
  * 
  * Note that if the tree model is backed by an actual tree store (as
  * opposed to a flat list where the mapping to icons is obvious),
- * #GtkIconView will only display the first level of the tree and
+ * `GtkIconView` will only display the first level of the tree and
  * ignore the tree’s branches.
  * 
  * # CSS nodes
@@ -90,9 +90,9 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Creates a new #GtkIconView widget
+	 * Creates a new `GtkIconView` widget
 	 *
-	 * Returns: A newly created #GtkIconView widget
+	 * Returns: A newly created `GtkIconView` widget
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -109,13 +109,13 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Creates a new #GtkIconView widget using the
+	 * Creates a new `GtkIconView` widget using the
 	 * specified @area to layout cells inside the icons.
 	 *
 	 * Params:
-	 *     area = the #GtkCellArea to use to layout cells
+	 *     area = the `GtkCellArea` to use to layout cells
 	 *
-	 * Returns: A newly created #GtkIconView widget
+	 * Returns: A newly created `GtkIconView` widget
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -132,12 +132,12 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Creates a new #GtkIconView widget with the model @model.
+	 * Creates a new `GtkIconView` widget with the model @model.
 	 *
 	 * Params:
 	 *     model = The model.
 	 *
-	 * Returns: A newly created #GtkIconView widget.
+	 * Returns: A newly created `GtkIconView` widget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -154,11 +154,11 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Creates a #cairo_surface_t representation of the item at @path.
+	 * Creates a `cairo_surface_t` representation of the item at @path.
 	 * This image is used for a drag icon.
 	 *
 	 * Params:
-	 *     path = a #GtkTreePath in @icon_view
+	 *     path = a `GtkTreePath` in @icon_view
 	 *
 	 * Returns: a newly-allocated surface of the drag icon.
 	 */
@@ -176,7 +176,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Turns @icon_view into a drop destination for automatic DND. Calling this
-	 * method sets #GtkIconView:reorderable to %FALSE.
+	 * method sets `GtkIconView`:reorderable to %FALSE.
 	 *
 	 * Params:
 	 *     formats = the formats that the drag will support
@@ -190,7 +190,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Turns @icon_view into a drag source for automatic DND. Calling this
-	 * method sets #GtkIconView:reorderable to %FALSE.
+	 * method sets `GtkIconView`:reorderable to %FALSE.
 	 *
 	 * Params:
 	 *     startButtonMask = Mask of allowed buttons to start drag
@@ -220,8 +220,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * This function is only valid if @icon_view is realized.
 	 *
 	 * Params:
-	 *     path = a #GtkTreePath
-	 *     cell = a #GtkCellRenderer or %NULL
+	 *     path = a `GtkTreePath`
+	 *     cell = a `GtkCellRenderer`
 	 *     rect = rectangle to fill with cell rect
 	 *
 	 * Returns: %FALSE if there is no such item, %TRUE otherwise
@@ -256,13 +256,13 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * If the cursor isn’t currently set, then *@path will be %NULL.
 	 * If no cell currently has focus, then *@cell will be %NULL.
 	 *
-	 * The returned #GtkTreePath must be freed with gtk_tree_path_free().
+	 * The returned `GtkTreePath` must be freed with gtk_tree_path_free().
 	 *
 	 * Params:
 	 *     path = Return location for the current
-	 *         cursor path, or %NULL
+	 *         cursor path
 	 *     cell = Return location the current
-	 *         focus cell, or %NULL
+	 *         focus cell
 	 *
 	 * Returns: %TRUE if the cursor is set.
 	 */
@@ -285,9 +285,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Params:
 	 *     dragX = the position to determine the destination item for
 	 *     dragY = the position to determine the destination item for
-	 *     path = Return location for the path of the item,
-	 *         or %NULL.
-	 *     pos = Return location for the drop position, or %NULL
+	 *     path = Return location for the path of the item
+	 *     pos = Return location for the drop position
 	 *
 	 * Returns: whether there is an item at the given position.
 	 */
@@ -307,8 +306,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 *
 	 * Params:
 	 *     path = Return location for the path of
-	 *         the highlighted item, or %NULL.
-	 *     pos = Return location for the drop position, or %NULL
+	 *         the highlighted item
+	 *     pos = Return location for the drop position
 	 */
 	public void getDragDestItem(out TreePath path, out GtkIconViewDropPosition pos)
 	{
@@ -325,9 +324,9 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Params:
 	 *     x = The x position to be identified
 	 *     y = The y position to be identified
-	 *     path = Return location for the path, or %NULL
+	 *     path = Return location for the path
 	 *     cell = Return location for the renderer
-	 *         responsible for the cell at (@x, @y), or %NULL
+	 *         responsible for the cell at (@x, @y)
 	 *
 	 * Returns: %TRUE if an item exists at the specified position
 	 */
@@ -349,7 +348,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * displayed. Column numbers start at 0.
 	 *
 	 * Params:
-	 *     path = the #GtkTreePath of the item
+	 *     path = the `GtkTreePath` of the item
 	 *
 	 * Returns: The column in which the item is displayed
 	 */
@@ -384,7 +383,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * displayed. Row numbers start at 0.
 	 *
 	 * Params:
-	 *     path = the #GtkTreePath of the item
+	 *     path = the `GtkTreePath` of the item
 	 *
 	 * Returns: The row in which the item is displayed
 	 */
@@ -424,11 +423,10 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Returns the model the #GtkIconView is based on.  Returns %NULL if the
+	 * Returns the model the `GtkIconView` is based on.  Returns %NULL if the
 	 * model is unset.
 	 *
-	 * Returns: A #GtkTreeModel, or %NULL if none is
-	 *     currently being used.
+	 * Returns: The currently used `GtkTreeModel`
 	 */
 	public TreeModelIF getModel()
 	{
@@ -449,7 +447,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 *     x = The x position to be identified
 	 *     y = The y position to be identified
 	 *
-	 * Returns: The #GtkTreePath corresponding
+	 * Returns: The `GtkTreePath` corresponding
 	 *     to the icon or %NULL if no icon exists at that position.
 	 */
 	public TreePath getPathAtPos(int x, int y)
@@ -498,7 +496,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	/**
 	 * Creates a list of paths of all selected items. Additionally, if you are
 	 * planning on modifying the model after calling this function, you may
-	 * want to convert the returned list into a list of #GtkTreeRowReferences.
+	 * want to convert the returned list into a list of `GtkTreeRowReferences`.
 	 * To do this, you can use gtk_tree_row_reference_new().
 	 *
 	 * To free the return value, use:
@@ -506,7 +504,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * g_list_free_full (list, (GDestroyNotify) gtk_tree_path_free);
 	 * ]|
 	 *
-	 * Returns: A #GList containing a #GtkTreePath for each selected row.
+	 * Returns: A `GList` containing a `GtkTreePath` for each selected row.
 	 */
 	public ListG getSelectedItems()
 	{
@@ -563,8 +561,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * This function is supposed to be used in a #GtkWidget::query-tooltip
-	 * signal handler for #GtkIconView.  The @x, @y and @keyboard_tip values
+	 * This function is supposed to be used in a `GtkWidget::query-tooltip`
+	 * signal handler for `GtkIconView`. The @x, @y and @keyboard_tip values
 	 * which are received in the signal handler, should be passed to this
 	 * function without modification.
 	 *
@@ -578,10 +576,9 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 *     x = the x coordinate (relative to widget coordinates)
 	 *     y = the y coordinate (relative to widget coordinates)
 	 *     keyboardTip = whether this is a keyboard tooltip or not
-	 *     model = a pointer to receive a
-	 *         #GtkTreeModel or %NULL
-	 *     path = a pointer to receive a #GtkTreePath or %NULL
-	 *     iter = a pointer to receive a #GtkTreeIter or %NULL
+	 *     model = a pointer to receive a `GtkTreeModel`
+	 *     path = a pointer to receive a `GtkTreePath`
+	 *     iter = a pointer to receive a `GtkTreeIter`
 	 *
 	 * Returns: whether or not the given tooltip context points to an item
 	 */
@@ -607,9 +604,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Both paths should be freed with gtk_tree_path_free() after use.
 	 *
 	 * Params:
-	 *     startPath = Return location for start of region,
-	 *         or %NULL
-	 *     endPath = Return location for end of region, or %NULL
+	 *     startPath = Return location for start of region
+	 *     endPath = Return location for end of region
 	 *
 	 * Returns: %TRUE, if valid paths were placed in @start_path and @end_path
 	 */
@@ -630,7 +626,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Activates the item determined by @path.
 	 *
 	 * Params:
-	 *     path = The #GtkTreePath to be activated
+	 *     path = The `GtkTreePath` to be activated
 	 */
 	public void itemActivated(TreePath path)
 	{
@@ -642,7 +638,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * selected. If @path does not point to a valid location, %FALSE is returned.
 	 *
 	 * Params:
-	 *     path = A #GtkTreePath to check selection on.
+	 *     path = A `GtkTreePath` to check selection on.
 	 *
 	 * Returns: %TRUE if @path is selected.
 	 */
@@ -680,7 +676,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Selects all the icons. @icon_view must has its selection mode set
-	 * to #GTK_SELECTION_MULTIPLE.
+	 * to %GTK_SELECTION_MULTIPLE.
 	 */
 	public void selectAll()
 	{
@@ -691,7 +687,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Selects the row at @path.
 	 *
 	 * Params:
-	 *     path = The #GtkTreePath to be selected.
+	 *     path = The `GtkTreePath` to be selected.
 	 */
 	public void selectPath(TreePath path)
 	{
@@ -712,7 +708,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Causes the #GtkIconView::item-activated signal to be emitted on
+	 * Causes the `GtkIconView`::item-activated signal to be emitted on
 	 * a single click instead of a double click.
 	 *
 	 * Params:
@@ -761,8 +757,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Please note that editing can only happen when the widget is realized.
 	 *
 	 * Params:
-	 *     path = A #GtkTreePath
-	 *     cell = One of the cell renderers of @icon_view, or %NULL
+	 *     path = A `GtkTreePath`
+	 *     cell = One of the cell renderers of @icon_view
 	 *     startEditing = %TRUE if the specified cell should start being edited.
 	 */
 	public void setCursor(TreePath path, CellRenderer cell, bool startEditing)
@@ -774,7 +770,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Sets the item that is highlighted for feedback.
 	 *
 	 * Params:
-	 *     path = The path of the item to highlight, or %NULL.
+	 *     path = The path of the item to highlight
 	 *     pos = Specifies where to drop, relative to the item
 	 */
 	public void setDragDestItem(TreePath path, GtkIconViewDropPosition pos)
@@ -795,7 +791,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Sets the #GtkIconView:item-padding property which specifies the padding
+	 * Sets the `GtkIconView`:item-padding property which specifies the padding
 	 * around each of the icon view’s items.
 	 *
 	 * Params:
@@ -834,7 +830,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Sets the column with markup information for @icon_view to be
-	 * @column. The markup column must be of type #G_TYPE_STRING.
+	 * @column. The markup column must be of type `G_TYPE_STRING`.
 	 * If the markup column is set to something, it overrides
 	 * the text column set by gtk_icon_view_set_text_column().
 	 *
@@ -847,7 +843,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Sets the model for a #GtkIconView.
+	 * Sets the model for a `GtkIconView`.
 	 * If the @icon_view already has a model set, it will remove
 	 * it before setting the new model.  If @model is %NULL, then
 	 * it will unset the old model.
@@ -862,7 +858,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Sets the column with pixbufs for @icon_view to be @column. The pixbuf
-	 * column must be of type #GDK_TYPE_PIXBUF
+	 * column must be of type `GDK_TYPE_PIXBUF`
 	 *
 	 * Params:
 	 *     column = A column in the currently used model, or -1 to disable
@@ -874,8 +870,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * This function is a convenience function to allow you to reorder models that
-	 * support the #GtkTreeDragSourceIface and the #GtkTreeDragDestIface.  Both
-	 * #GtkTreeStore and #GtkListStore support these.  If @reorderable is %TRUE, then
+	 * support the `GtkTreeDragSourceIface` and the `GtkTreeDragDestIface`. Both
+	 * `GtkTreeStore` and `GtkListStore` support these. If @reorderable is %TRUE, then
 	 * the user can reorder the model by dragging and dropping rows.  The
 	 * developer can listen to these changes by connecting to the model's
 	 * row_inserted and row_deleted signals. The reordering is implemented by setting up
@@ -932,7 +928,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Sets the column with text for @icon_view to be @column. The text
-	 * column must be of type #G_TYPE_STRING.
+	 * column must be of type `G_TYPE_STRING`.
 	 *
 	 * Params:
 	 *     column = A column in the currently used model, or -1 to display no text
@@ -949,9 +945,9 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * See also gtk_icon_view_set_tooltip_column() for a simpler alternative.
 	 *
 	 * Params:
-	 *     tooltip = a #GtkTooltip
-	 *     path = a #GtkTreePath
-	 *     cell = a #GtkCellRenderer or %NULL
+	 *     tooltip = a `GtkTooltip`
+	 *     path = a `GtkTreePath`
+	 *     cell = a `GtkCellRenderer`
 	 */
 	public void setTooltipCell(Tooltip tooltip, TreePath path, CellRenderer cell)
 	{
@@ -960,12 +956,12 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * If you only plan to have simple (text-only) tooltips on full items, you
-	 * can use this function to have #GtkIconView handle these automatically
+	 * can use this function to have `GtkIconView` handle these automatically
 	 * for you. @column should be set to the column in @icon_view’s model
 	 * containing the tooltip texts, or -1 to disable this feature.
 	 *
-	 * When enabled, #GtkWidget:has-tooltip will be set to %TRUE and
-	 * @icon_view will connect a #GtkWidget::query-tooltip signal handler.
+	 * When enabled, `GtkWidget:has-tooltip` will be set to %TRUE and
+	 * @icon_view will connect a `GtkWidget::query-tooltip` signal handler.
 	 *
 	 * Note that the signal handler sets the text with gtk_tooltip_set_markup(),
 	 * so &, <, etc have to be escaped in the text.
@@ -984,8 +980,8 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * See also gtk_tooltip_set_tip_area().
 	 *
 	 * Params:
-	 *     tooltip = a #GtkTooltip
-	 *     path = a #GtkTreePath
+	 *     tooltip = a `GtkTooltip`
+	 *     path = a `GtkTreePath`
 	 */
 	public void setTooltipItem(Tooltip tooltip, TreePath path)
 	{
@@ -1004,7 +1000,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Unselects the row at @path.
 	 *
 	 * Params:
-	 *     path = The #GtkTreePath to be unselected.
+	 *     path = The `GtkTreePath` to be unselected.
 	 */
 	public void unselectPath(TreePath path)
 	{
@@ -1013,7 +1009,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Undoes the effect of gtk_icon_view_enable_model_drag_dest(). Calling this
-	 * method sets #GtkIconView:reorderable to %FALSE.
+	 * method sets `GtkIconView`:reorderable to %FALSE.
 	 */
 	public void unsetModelDragDest()
 	{
@@ -1022,7 +1018,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * Undoes the effect of gtk_icon_view_enable_model_drag_source(). Calling this
-	 * method sets #GtkIconView:reorderable to %FALSE.
+	 * method sets `GtkIconView`:reorderable to %FALSE.
 	 */
 	public void unsetModelDragSource()
 	{
@@ -1030,7 +1026,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * A [keybinding signal][GtkSignalAction]
+	 * A [keybinding signal][class@Gtk.SignalAction]
 	 * which gets emitted when the user activates the currently
 	 * focused item.
 	 *
@@ -1055,7 +1051,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * Space, Return or Enter is pressed.
 	 *
 	 * Params:
-	 *     path = the #GtkTreePath for the activated item
+	 *     path = the `GtkTreePath` for the activated item
 	 */
 	gulong addOnItemActivated(void delegate(TreePath, IconView) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -1064,7 +1060,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 
 	/**
 	 * The ::move-cursor signal is a
-	 * [keybinding signal][GtkSignalAction]
+	 * [keybinding signal][class@Gtk.SignalAction]
 	 * which gets emitted when the user initiates a cursor movement.
 	 *
 	 * Applications should not connect to it, but may emit it with
@@ -1079,7 +1075,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * the Shift modifier.
 	 *
 	 * Params:
-	 *     step = the granularity of the move, as a #GtkMovementStep
+	 *     step = the granularity of the move, as a `GtkMovementStep`
 	 *     count = the number of @step units to move
 	 *     extend = whether to extend the selection
 	 *     modify = whether to modify the selection
@@ -1090,7 +1086,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * A [keybinding signal][GtkSignalAction]
+	 * A [keybinding signal][class.Gtk.SignalAction]
 	 * which gets emitted when the user selects all items.
 	 *
 	 * Applications should not connect to it, but may emit it with
@@ -1105,7 +1101,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * A [keybinding signal][GtkSignalAction]
+	 * A [keybinding signal][class@Gtk.SignalAction]
 	 * which gets emitted when the user selects the item that is currently
 	 * focused.
 	 *
@@ -1130,7 +1126,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * A [keybinding signal][GtkSignalAction]
+	 * A [keybinding signal][class@Gtk.SignalAction]
 	 * which gets emitted when the user toggles whether the currently
 	 * focused item is selected or not. The exact effect of this
 	 * depend on the selection mode.
@@ -1147,7 +1143,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * A [keybinding signal][GtkSignalAction]
+	 * A [keybinding signal][class@Gtk.SignalAction]
 	 * which gets emitted when the user unselects all items.
 	 *
 	 * Applications should not connect to it, but may emit it with

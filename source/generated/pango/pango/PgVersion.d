@@ -46,9 +46,9 @@ public struct PgVersion
 	 * For compile-time version checking use PANGO_VERSION_CHECK().
 	 *
 	 * Params:
-	 *     requiredMajor = the required major version.
-	 *     requiredMinor = the required minor version.
-	 *     requiredMicro = the required major version.
+	 *     requiredMajor = the required major version
+	 *     requiredMinor = the required minor version
+	 *     requiredMicro = the required major version
 	 *
 	 * Returns: %NULL if the Pango library is compatible
 	 *     with the given version, or a string describing the version

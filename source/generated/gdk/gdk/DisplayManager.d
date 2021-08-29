@@ -31,7 +31,7 @@ private import std.algorithm;
  * 
  * When writing backend-specific code that is supposed to work with
  * multiple GDK backends, you have to consider both compile time and
- * runtime. At compile time, use the #GDK_WINDOWING_X11, #GDK_WINDOWING_WIN32
+ * runtime. At compile time, use the `GDK_WINDOWING_X11`, `GDK_WINDOWING_WIN32`
  * macros, etc. to find out which backends are present in the GDK library
  * you are building your application against. At runtime, use type-check
  * macros like GDK_IS_X11_DISPLAY() to find out which backend is in use:
@@ -117,8 +117,7 @@ public class DisplayManager : ObjectG
 	/**
 	 * Gets the default `GdkDisplay`.
 	 *
-	 * Returns: a `GdkDisplay`, or %NULL if
-	 *     there is no default display.
+	 * Returns: a `GdkDisplay`
 	 */
 	public Display getDefaultDisplay()
 	{
@@ -136,8 +135,7 @@ public class DisplayManager : ObjectG
 	 * List all currently open displays.
 	 *
 	 * Returns: a newly
-	 *     allocated `GSList` of `GdkDisplay` objects. Free with g_slist_free()
-	 *     when you are done with it.
+	 *     allocated `GSList` of `GdkDisplay` objects
 	 */
 	public ListSG listDisplays()
 	{

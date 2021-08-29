@@ -1,5 +1,6 @@
 module adw.ViewSwitcher;
 
+private import adw.ViewStack;
 private import adw.c.functions;
 public  import adw.c.types;
 private import glib.ConstructionException;
@@ -10,7 +11,6 @@ private import gtk.BuildableIF;
 private import gtk.BuildableT;
 private import gtk.ConstraintTargetIF;
 private import gtk.ConstraintTargetT;
-private import gtk.Stack;
 private import gtk.Widget;
 
 
@@ -18,7 +18,7 @@ private import gtk.Widget;
  * An adaptive view switcher.
  * 
  * An adaptive view switcher designed to switch between multiple views
- * contained in a [class@Gtk.Stack] in a similar fashion to
+ * contained in a [class@Adw.ViewStack] in a similar fashion to
  * [class@Gtk.StackSwitcher].
  * 
  * Depending on the available width, the view switcher can adapt from a wide
@@ -124,7 +124,7 @@ public class ViewSwitcher : Widget
 	 *
 	 * Since: 1.0
 	 */
-	public Stack getStack()
+	public ViewStack getStack()
 	{
 		auto __p = adw_view_switcher_get_stack(adwViewSwitcher);
 
@@ -133,7 +133,7 @@ public class ViewSwitcher : Widget
 			return null;
 		}
 
-		return ObjectG.getDObject!(Stack)(cast(GtkStack*) __p);
+		return ObjectG.getDObject!(ViewStack)(cast(AdwViewStack*) __p);
 	}
 
 	/**
@@ -170,8 +170,8 @@ public class ViewSwitcher : Widget
 	 *
 	 * Since: 1.0
 	 */
-	public void setStack(Stack stack)
+	public void setStack(ViewStack stack)
 	{
-		adw_view_switcher_set_stack(adwViewSwitcher, (stack is null) ? null : stack.getStackStruct());
+		adw_view_switcher_set_stack(adwViewSwitcher, (stack is null) ? null : stack.getViewStackStruct());
 	}
 }

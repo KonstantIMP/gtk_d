@@ -30,7 +30,7 @@ private import std.algorithm;
  * `GdkFrameClock` class for documentation of the phases.
  * %GDK_FRAME_CLOCK_PHASE_UPDATE and the [signal@GdkFrameClock::update] signal
  * are most interesting for application writers, and are used to update the
- * animations, using the frame time given by [metohd@Gdk.FrameClock.get_frame_time].
+ * animations, using the frame time given by [method@Gdk.FrameClock.get_frame_time].
  * 
  * The frame time is reported in microseconds and generally in the same
  * timescale as g_get_monotonic_time(), however, it is not the same
@@ -210,15 +210,15 @@ public class FrameClock : ObjectG
 	 * for the current frame or a recent frame.
 	 *
 	 * The `GdkFrameTimings` object may not yet be complete: see
-	 * [method@Gdk.FrameTimings.get_complete].
+	 * [method@Gdk.FrameTimings.get_complete] and
+	 * [method@Gdk.FrameClock.get_history_start].
 	 *
 	 * Params:
 	 *     frameCounter = the frame counter value identifying the frame to
 	 *         be received
 	 *
 	 * Returns: the `GdkFrameTimings` object
-	 *     for the specified frame, or %NULL if it is not available. See
-	 *     [method@Gdk.FrameClock.get_history_start].
+	 *     for the specified frame, or %NULL if it is not available
 	 */
 	public FrameTimings getTimings(long frameCounter)
 	{

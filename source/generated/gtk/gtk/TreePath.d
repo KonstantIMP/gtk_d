@@ -87,7 +87,7 @@ public static GType getType()
  * Params:
  *     indices = array of indices
  *
- * Returns: A newly created #GtkTreePath-struct
+ * Returns: A newly created `GtkTreePath`
  *
  * Throws: ConstructionException GTK+ fails to create the object.
  */
@@ -104,7 +104,7 @@ public this(int[] indices)
 }
 
 /**
- * Creates a new #GtkTreePath-struct initialized to @path.
+ * Creates a new `GtkTreePath` initialized to @path.
  *
  * @path is expected to be a colon separated list of numbers.
  * For example, the string “10:4:0” would create a path of depth
@@ -115,7 +115,7 @@ public this(int[] indices)
  * Params:
  *     path = The string representation of a path
  *
- * Returns: A newly-created #GtkTreePath-struct, or %NULL
+ * Returns: A newly-created `GtkTreePath`
  *
  * Throws: ConstructionException GTK+ fails to create the object.
  */
@@ -152,7 +152,7 @@ public void appendIndex(int index)
  * If the two nodes are equal, then 0 is returned.
  *
  * Params:
- *     b = a #GtkTreePath-struct to compare with
+ *     b = a `GtkTreePath` to compare with
  *
  * Returns: the relative positions of @a and @b
  */
@@ -162,9 +162,9 @@ public int compare(TreePath b)
 }
 
 /**
- * Creates a new #GtkTreePath-struct as a copy of @path.
+ * Creates a new `GtkTreePath` as a copy of @path.
  *
- * Returns: a new #GtkTreePath-struct
+ * Returns: a new `GtkTreePath`
  */
 public TreePath copy()
 {
@@ -213,7 +213,7 @@ public int getDepth()
  *
  * The length of the array can be obtained with gtk_tree_path_get_depth().
  *
- * Returns: The current indices, or %NULL
+ * Returns: The current indices
  */
 public int* getIndices()
 {
@@ -228,7 +228,7 @@ public int* getIndices()
  * The array should not be freed.
  *
  * Returns: The current
- *     indices, or %NULL
+ *     indices
  */
 public int[] getIndicesWithDepth()
 {
@@ -243,7 +243,7 @@ public int[] getIndicesWithDepth()
  * Returns %TRUE if @descendant is a descendant of @path.
  *
  * Params:
- *     descendant = another #GtkTreePath-struct
+ *     descendant = another `GtkTreePath`
  *
  * Returns: %TRUE if @descendant is contained inside @path
  */
@@ -256,7 +256,7 @@ public bool isAncestor(TreePath descendant)
  * Returns %TRUE if @path is a descendant of @ancestor.
  *
  * Params:
- *     ancestor = another #GtkTreePath-struct
+ *     ancestor = another `GtkTreePath`
  *
  * Returns: %TRUE if @ancestor contains @path somewhere below it
  */
@@ -306,8 +306,7 @@ public bool prev()
  * return value for this string. If the path has
  * depth 0, %NULL is returned.
  *
- * Returns: A newly-allocated string.
- *     Must be freed with g_free().
+ * Returns: A newly-allocated string
  */
 public override string toString()
 {

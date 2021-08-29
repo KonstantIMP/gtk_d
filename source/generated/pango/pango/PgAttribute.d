@@ -60,8 +60,9 @@ public class PgAttribute
 	/**
 	 * Make a copy of an attribute.
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy].
 	 */
 	public PgAttribute copy()
 	{
@@ -84,14 +85,16 @@ public class PgAttribute
 	}
 
 	/**
-	 * Compare two attributes for equality. This compares only the
-	 * actual value of the two attributes and not the ranges that the
-	 * attributes apply to.
+	 * Compare two attributes for equality.
+	 *
+	 * This compares only the actual value of the two
+	 * attributes and not the ranges that the attributes
+	 * apply to.
 	 *
 	 * Params:
 	 *     attr2 = another `PangoAttribute`
 	 *
-	 * Returns: %TRUE if the two attributes have the same value.
+	 * Returns: %TRUE if the two attributes have the same value
 	 */
 	public bool equal(PgAttribute attr2)
 	{
@@ -122,8 +125,9 @@ public class PgAttribute
 	 *     green = the green value
 	 *     blue = the blue value
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute backgroundNew(ushort red, ushort green, ushort blue)
 	{
@@ -143,8 +147,9 @@ public class PgAttribute
 	 * Params:
 	 *     alpha = the alpha value, between 1 and 65536
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.38
 	 */
@@ -163,17 +168,18 @@ public class PgAttribute
 	/**
 	 * Create a new font fallback attribute.
 	 *
-	 * If fallback is disabled, characters will only be used from the
-	 * closest matching font on the system. No fallback will be done to
-	 * other fonts on the system that might contain the characters in the
-	 * text.
+	 * If fallback is disabled, characters will only be
+	 * used from the closest matching font on the system.
+	 * No fallback will be done to other fonts on the system
+	 * that might contain the characters in the text.
 	 *
 	 * Params:
 	 *     enableFallback = %TRUE if we should fall back on other fonts
-	 *         for characters the active font is missing.
+	 *         for characters the active font is missing
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.4
 	 */
@@ -193,10 +199,11 @@ public class PgAttribute
 	 * Create a new font family attribute.
 	 *
 	 * Params:
-	 *     family = the family or comma separated list of families
+	 *     family = the family or comma-separated list of families
 	 *
-	 * Returns: the newly allocated `PangoAttribute`
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute familyNew(string family)
 	{
@@ -218,8 +225,9 @@ public class PgAttribute
 	 *     green = the green value
 	 *     blue = the blue value
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute foregroundNew(ushort red, ushort green, ushort blue)
 	{
@@ -239,8 +247,9 @@ public class PgAttribute
 	 * Params:
 	 *     alpha = the alpha value, between 1 and 65536
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.38
 	 */
@@ -260,10 +269,11 @@ public class PgAttribute
 	 * Create a new gravity hint attribute.
 	 *
 	 * Params:
-	 *     hint = the gravity hint value.
+	 *     hint = the gravity hint value
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.16
 	 */
@@ -283,10 +293,11 @@ public class PgAttribute
 	 * Create a new gravity attribute.
 	 *
 	 * Params:
-	 *     gravity = the gravity value; should not be %PANGO_GRAVITY_AUTO.
+	 *     gravity = the gravity value; should not be %PANGO_GRAVITY_AUTO
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.16
 	 */
@@ -306,11 +317,12 @@ public class PgAttribute
 	 * Create a new letter-spacing attribute.
 	 *
 	 * Params:
-	 *     letterSpacing = amount of extra space to add between graphemes
-	 *         of the text, in Pango units.
+	 *     letterSpacing = amount of extra space to add between
+	 *         graphemes of the text, in Pango units
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.6
 	 */
@@ -333,8 +345,9 @@ public class PgAttribute
 	 *     rise = the amount that the text should be displaced vertically,
 	 *         in Pango units. Positive values displace the text upwards.
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute riseNew(int rise)
 	{
@@ -351,14 +364,15 @@ public class PgAttribute
 	/**
 	 * Create a new font size scale attribute.
 	 *
-	 * The base font for the affected text will have its size multiplied
-	 * by @scale_factor.
+	 * The base font for the affected text will have
+	 * its size multiplied by @scale_factor.
 	 *
 	 * Params:
 	 *     scaleFactor = factor to scale the font
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute scaleNew(double scaleFactor)
 	{
@@ -378,8 +392,9 @@ public class PgAttribute
 	 * Params:
 	 *     stretch = the stretch
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute stretchNew(PangoStretch stretch)
 	{
@@ -396,16 +411,17 @@ public class PgAttribute
 	/**
 	 * Create a new strikethrough color attribute.
 	 *
-	 * This attribute modifies the color of strikethrough lines. If not set,
-	 * strikethrough lines will use the foreground color.
+	 * This attribute modifies the color of strikethrough lines.
+	 * If not set, strikethrough lines will use the foreground color.
 	 *
 	 * Params:
 	 *     red = the red value (ranging from 0 to 65535)
 	 *     green = the green value
 	 *     blue = the blue value
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.8
 	 */
@@ -425,10 +441,11 @@ public class PgAttribute
 	 * Create a new strike-through attribute.
 	 *
 	 * Params:
-	 *     strikethrough = %TRUE if the text should be struck-through.
+	 *     strikethrough = %TRUE if the text should be struck-through
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute strikethroughNew(bool strikethrough)
 	{
@@ -448,8 +465,9 @@ public class PgAttribute
 	 * Params:
 	 *     style = the slant style
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute styleNew(PangoStyle style)
 	{
@@ -466,17 +484,20 @@ public class PgAttribute
 	/**
 	 * Fetches the attribute type name.
 	 *
-	 * The attribute type name is the string passed in when registering the type
-	 * using [type_func@attr_type_register].
+	 * The attribute type name is the string passed in
+	 * when registering the type using
+	 * [func@Pango.AttrType.register].
 	 *
-	 * The returned value is an interned string (see g_intern_string() for what
-	 * that means) that should not be modified or freed.
+	 * The returned value is an interned string (see
+	 * g_intern_string() for what that means) that should
+	 * not be modified or freed.
 	 *
 	 * Params:
 	 *     type = an attribute type ID to fetch the name for
 	 *
-	 * Returns: the type ID name (which may be %NULL), or
-	 *     %NULL if @type is a built-in Pango attribute type or invalid.
+	 * Returns: the type ID name (which
+	 *     may be %NULL), or %NULL if @type is a built-in Pango
+	 *     attribute type or invalid.
 	 *
 	 * Since: 1.22
 	 */
@@ -488,7 +509,8 @@ public class PgAttribute
 	/**
 	 * Allocate a new attribute type ID.
 	 *
-	 * The attribute type name can be accessed later by using [type_func@Pango.AttrType.get_name].
+	 * The attribute type name can be accessed later
+	 * by using [func@Pango.AttrType.get_name].
 	 *
 	 * Params:
 	 *     name = an identifier for the type
@@ -503,16 +525,17 @@ public class PgAttribute
 	/**
 	 * Create a new underline color attribute.
 	 *
-	 * This attribute modifies the color of underlines. If not set, underlines
-	 * will use the foreground color.
+	 * This attribute modifies the color of underlines.
+	 * If not set, underlines will use the foreground color.
 	 *
 	 * Params:
 	 *     red = the red value (ranging from 0 to 65535)
 	 *     green = the green value
 	 *     blue = the blue value
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 *
 	 * Since: 1.8
 	 */
@@ -532,10 +555,11 @@ public class PgAttribute
 	 * Create a new underline-style attribute.
 	 *
 	 * Params:
-	 *     underline = the underline style.
+	 *     underline = the underline style
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute underlineNew(PangoUnderline underline)
 	{
@@ -576,8 +600,9 @@ public class PgAttribute
 	 * Params:
 	 *     weight = the weight
 	 *
-	 * Returns: the newly allocated `PangoAttribute`,
-	 *     which should be freed with [method@Pango.Attribute.destroy].
+	 * Returns: the newly allocated
+	 *     `PangoAttribute`, which should be freed with
+	 *     [method@Pango.Attribute.destroy]
 	 */
 	public static PgAttribute weightNew(PangoWeight weight)
 	{
@@ -601,9 +626,9 @@ public class PgAttribute
 	 *
 	 * Params:
 	 *     context = A valid parse context that was returned from [func@markup_parser_new]
-	 *     attrList = address of return location for a `PangoAttrList`, or %NULL
-	 *     text = address of return location for text with tags stripped, or %NULL
-	 *     accelChar = address of return location for accelerator char, or %NULL
+	 *     attrList = address of return location for a `PangoAttrList`
+	 *     text = address of return location for text with tags stripped
+	 *     accelChar = address of return location for accelerator char
 	 *
 	 * Returns: %FALSE if @error is set, otherwise %TRUE
 	 *
@@ -697,9 +722,9 @@ public class PgAttribute
 	 *     markupText = markup to parse (see the Pango Markup docs)
 	 *     length = length of @markup_text, or -1 if nul-terminated
 	 *     accelMarker = character that precedes an accelerator, or 0 for none
-	 *     attrList = address of return location for a `PangoAttrList`, or %NULL
-	 *     text = address of return location for text with tags stripped, or %NULL
-	 *     accelChar = address of return location for accelerator char, or %NULL
+	 *     attrList = address of return location for a `PangoAttrList`
+	 *     text = address of return location for text with tags stripped
+	 *     accelChar = address of return location for accelerator char
 	 *
 	 * Returns: %FALSE if @error is set, otherwise %TRUE
 	 *

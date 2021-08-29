@@ -199,7 +199,7 @@ public class ToggleButton : Button
 	 *
 	 * Setting up groups in a cycle leads to undefined behavior.
 	 *
-	 * Note that the same effect can be achieved via the [interface@Gtk.Actionable]
+	 * Note that the same effect can be achieved via the [iface@Gtk.Actionable]
 	 * API, by using the same action with parameter type and state type 's'
 	 * for all buttons in the group, and giving each button its own target
 	 * value.

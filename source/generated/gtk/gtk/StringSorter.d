@@ -82,7 +82,7 @@ public class StringSorter : Sorter
 	/**
 	 * Gets the expression that is evaluated to obtain strings from items.
 	 *
-	 * Returns: a `GtkExpression`, or %NULL
+	 * Returns: a `GtkExpression`
 	 */
 	public Expression getExpression()
 	{
@@ -112,7 +112,7 @@ public class StringSorter : Sorter
 	 * The expression must have the type %G_TYPE_STRING.
 	 *
 	 * Params:
-	 *     expression = a `GtkExpression`, or %NULL
+	 *     expression = a `GtkExpression`
 	 */
 	public void setExpression(Expression expression)
 	{

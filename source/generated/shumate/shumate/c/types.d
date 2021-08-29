@@ -104,6 +104,13 @@ public enum ShumateUnit
 }
 alias ShumateUnit Unit;
 
+struct ShumateCompass;
+
+struct ShumateCompassClass
+{
+	GtkWidgetClass parentClass;
+}
+
 struct ShumateCoordinate
 {
 	GObject parentInstance;
@@ -167,6 +174,16 @@ struct ShumateLocationInterface
 	extern(C) void function(ShumateLocation* location, double latitude, double longitude) setLocation;
 }
 
+struct ShumateMap
+{
+	GtkWidget parentInstance;
+}
+
+struct ShumateMapClass
+{
+	GtkWidgetClass parentClass;
+}
+
 struct ShumateMapLayer;
 
 struct ShumateMapLayerClass
@@ -182,62 +199,6 @@ struct ShumateMapSource
 struct ShumateMapSourceClass
 {
 	GObjectClass parentClass;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the map source's id.
-	 */
-	extern(C) const(char)* function(ShumateMapSource* mapSource) getId;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the map source's name.
-	 */
-	extern(C) const(char)* function(ShumateMapSource* mapSource) getName;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the map source's license.
-	 */
-	extern(C) const(char)* function(ShumateMapSource* mapSource) getLicense;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the map source's license URI.
-	 */
-	extern(C) const(char)* function(ShumateMapSource* mapSource) getLicenseUri;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the miminum zoom level this map source supports
-	 */
-	extern(C) uint function(ShumateMapSource* mapSource) getMinZoomLevel;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the maximum zoom level this map source supports
-	 */
-	extern(C) uint function(ShumateMapSource* mapSource) getMaxZoomLevel;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the tile's size (width and height) in pixels for this map source
-	 */
-	extern(C) uint function(ShumateMapSource* mapSource) getTileSize;
-	/**
-	 *
-	 * Params:
-	 *     mapSource = a #ShumateMapSource
-	 * Returns: the map source's projection.
-	 */
-	extern(C) ShumateMapProjection function(ShumateMapSource* mapSource) getProjection;
 	/** */
 	extern(C) void function(ShumateMapSource* self, ShumateTile* tile, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) fillTileAsync;
 }
@@ -281,12 +242,12 @@ struct ShumateMemoryCacheClass
 
 struct ShumateNetworkTileSource
 {
-	ShumateTileSource parentInstance;
+	ShumateMapSource parentInstance;
 }
 
 struct ShumateNetworkTileSourceClass
 {
-	ShumateTileSourceClass parentClass;
+	ShumateMapSourceClass parentClass;
 }
 
 struct ShumatePathLayer
@@ -319,26 +280,6 @@ struct ShumateTile
 }
 
 struct ShumateTileClass
-{
-	GtkWidgetClass parentClass;
-}
-
-struct ShumateTileSource
-{
-	ShumateMapSource parentInstance;
-}
-
-struct ShumateTileSourceClass
-{
-	ShumateMapSourceClass parentClass;
-}
-
-struct ShumateView
-{
-	GtkWidget parentInstance;
-}
-
-struct ShumateViewClass
 {
 	GtkWidgetClass parentClass;
 }

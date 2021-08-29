@@ -77,11 +77,10 @@ public class RenderNode
 	 *
 	 * Params:
 	 *     bytes = the bytes containing the data
-	 *     errorFunc = Callback on parsing errors or %NULL
+	 *     errorFunc = Callback on parsing errors
 	 *     userData = user_data for @error_func
 	 *
-	 * Returns: a new `GskRenderNode` or %NULL on
-	 *     error.
+	 * Returns: a new `GskRenderNode`
 	 */
 	public static RenderNode deserialize(Bytes bytes, GskParseErrorFunc errorFunc, void* userData)
 	{
@@ -169,7 +168,7 @@ public class RenderNode
 	 * The intended use of this functions is testing, benchmarking and debugging.
 	 * The format is not meant as a permanent storage format.
 	 *
-	 * Returns: a #GBytes representing the node.
+	 * Returns: a `GBytes` representing the node.
 	 */
 	public Bytes serialize()
 	{

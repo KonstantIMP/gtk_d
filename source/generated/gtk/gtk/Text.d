@@ -2,10 +2,12 @@ module gtk.Text;
 
 private import gio.MenuModel;
 private import glib.ConstructionException;
+private import glib.MemorySlice;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
 private import gobject.Signals;
+private import graphene.Rect;
 private import gtk.EditableIF;
 private import gtk.EditableT;
 private import gtk.EntryBuffer;
@@ -21,7 +23,7 @@ private import std.algorithm;
  * The `GtkText` widget is a single-line text entry widget.
  * 
  * `GtkText` is the common implementation of single-line text editing
- * that is shared between `GtkEntry`, `GtkPasswordEntry, `GtkSpinButton`
+ * that is shared between `GtkEntry`, `GtkPasswordEntry`, `GtkSpinButton`
  * and other widgets. In all of these, `GtkText` is used as the delegate
  * for the [iface@Gtk.Editable] implementation.
  * 
@@ -161,7 +163,40 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Retrieves the value set by gtk_text_set_activates_default().
+	 * Determine the positions of the strong and weak cursors if the
+	 * insertion point in the layout is at @position.
+	 *
+	 * The position of each cursor is stored as a zero-width rectangle.
+	 * The strong cursor location is the location where characters of
+	 * the directionality equal to the base direction are inserted.
+	 * The weak cursor location is the location where characters of
+	 * the directionality opposite to the base direction are inserted.
+	 *
+	 * The rectangle positions are in widget coordinates.
+	 *
+	 * Params:
+	 *     position = the character position
+	 *     strong = location to store the strong cursor position
+	 *     weak = location to store the weak cursor position
+	 *
+	 * Since: 4.4
+	 */
+	public void computeCursorExtents(size_t position, out Rect strong, out Rect weak)
+	{
+		graphene_rect_t* outstrong = sliceNew!graphene_rect_t();
+		graphene_rect_t* outweak = sliceNew!graphene_rect_t();
+
+		gtk_text_compute_cursor_extents(gtkText, position, outstrong, outweak);
+
+		strong = ObjectG.getDObject!(Rect)(outstrong, true);
+		weak = ObjectG.getDObject!(Rect)(outweak, true);
+	}
+
+	/**
+	 * Returns whether pressing Enter will activate
+	 * the default widget for the window containing @self.
+	 *
+	 * See [method@Gtk.Text.set_activates_default].
 	 *
 	 * Returns: %TRUE if the `GtkText` will activate the default widget
 	 */
@@ -171,11 +206,11 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Gets the attribute list that was set on the `GtkText`
-	 * using gtk_text_set_attributes().
+	 * Gets the attribute list that was set on the `GtkText`.
 	 *
-	 * Returns: the attribute list,
-	 *     or %NULL if none was set.
+	 * See [method@Gtk.Text.set_attributes].
+	 *
+	 * Returns: the attribute list
 	 */
 	public PgAttributeList getAttributes()
 	{
@@ -191,7 +226,7 @@ public class Text : Widget, EditableIF
 
 	/**
 	 * Get the `GtkEntryBuffer` object which holds the text for
-	 * this self.
+	 * this widget.
 	 *
 	 * Returns: A `GtkEntryBuffer` object.
 	 */
@@ -219,7 +254,9 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Gets the menu model set with gtk_text_set_extra_menu().
+	 * Gets the menu model for extra items in the context menu.
+	 *
+	 * See [method@Gtk.Text.set_extra_menu].
 	 *
 	 * Returns: the menu model
 	 */
@@ -252,8 +289,7 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Retrieves the character displayed in place of the real characters
-	 * for entries with visibility set to false.
+	 * Retrieves the character displayed when visibility is set to false.
 	 *
 	 * Note that GTK does not compute this value unless it needs it,
 	 * so the value returned by this function is not very useful unless
@@ -284,9 +320,11 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Gets the value set by gtk_text_set_overwrite_mode().
+	 * Gets whether text is overwritten when typing in the `GtkText`.
 	 *
-	 * Returns: whether the text is overwritten when typing.
+	 * See [method@Gtk.Text.set_overwrite_mode].
+	 *
+	 * Returns: whether the text is overwritten when typing
 	 */
 	public bool getOverwriteMode()
 	{
@@ -297,11 +335,9 @@ public class Text : Widget, EditableIF
 	 * Retrieves the text that will be displayed when
 	 * @self is empty and unfocused
 	 *
-	 * Returns: a pointer
-	 *     to the placeholder text as a string. This string
-	 *     points to internally allocated storage in the widget
-	 *     and must not be freed, modified or stored. If no placeholder
-	 *     text has been set, %NULL will be returned.
+	 * If no placeholder text has been set, %NULL will be returned.
+	 *
+	 * Returns: the placeholder text
 	 */
 	public string getPlaceholderText()
 	{
@@ -320,11 +356,11 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Gets the tabstops that were set on the `GtkText`
-	 * using gtk_text_set_tabs().
+	 * Gets the tabstops that were set on the `GtkText`.
 	 *
-	 * Returns: the tabstops,
-	 *     or %NULL if none was set.
+	 * See [method@Gtk.Text.set_tabs].
+	 *
+	 * Returns: the tabstops
 	 */
 	public PgTabArray getTabs()
 	{
@@ -390,8 +426,8 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * If @activates is %TRUE, pressing Enter in the @self will
-	 * activate the default widget for the window containing @self.
+	 * If @activates is %TRUE, pressing Enter will activate
+	 * the default widget for the window containing @self.
 	 *
 	 * This usually means that the dialog containing the `GtkText`
 	 * will be closed, since the default widget is usually one of
@@ -409,7 +445,7 @@ public class Text : Widget, EditableIF
 	 * Sets attributes that are applied to the text.
 	 *
 	 * Params:
-	 *     attrs = a `PangoAttrList` or %NULL to unset
+	 *     attrs = a `PangoAttrList`
 	 */
 	public void setAttributes(PgAttributeList attrs)
 	{
@@ -482,8 +518,7 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Sets the character to use in place of the actual text when
-	 * in “password mode”.
+	 * Sets the character to use when in “password mode”.
 	 *
 	 * By default, GTK picks the best invisible char available in the
 	 * current font. If you set the invisible char to 0, then the user
@@ -537,7 +572,7 @@ public class Text : Widget, EditableIF
 	 *
 	 * Params:
 	 *     text = a string to be displayed when @self
-	 *         is empty and unfocused, or %NULL
+	 *         is empty and unfocused
 	 */
 	public void setPlaceholderText(string text)
 	{
@@ -680,7 +715,7 @@ public class Text : Widget, EditableIF
 	 * for deleting a word.
 	 *
 	 * Params:
-	 *     type = the granularity of the deletion, as a #GtkDeleteType
+	 *     type = the granularity of the deletion, as a `GtkDeleteType`
 	 *     count = the number of @type units to delete
 	 */
 	gulong addOnDeleteFromCursor(void delegate(GtkDeleteType, int, Text) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
@@ -705,7 +740,7 @@ public class Text : Widget, EditableIF
 	}
 
 	/**
-	 * Emitted to present the Emoji chooser for the @self.
+	 * Emitted to present the Emoji chooser for the widget.
 	 *
 	 * This is a [keybinding signal](class.SignalAction.html).
 	 *
@@ -741,7 +776,7 @@ public class Text : Widget, EditableIF
 	 * - <kbd>Home</kbd>, <kbd>End</kbd> move to the ends of the buffer
 	 *
 	 * Params:
-	 *     step = the granularity of the move, as a #GtkMovementStep
+	 *     step = the granularity of the move, as a `GtkMovementStep`
 	 *     count = the number of @step units to move
 	 *     extend = %TRUE if the move should extend the selection
 	 */

@@ -417,7 +417,7 @@ public class SearchContext : ObjectG
 	 *
 	 * For a regular expression replacement, you can check if @replace is valid by
 	 * calling g_regex_check_replacement(). The @replace text can contain
-	 * backreferences; read the g_regex_replace() documentation for more details.
+	 * backreferences.
 	 *
 	 * Params:
 	 *     matchStart = the start of the match to replace.
@@ -451,7 +451,7 @@ public class SearchContext : ObjectG
 	 *
 	 * For a regular expression replacement, you can check if @replace is valid by
 	 * calling g_regex_check_replacement(). The @replace text can contain
-	 * backreferences; read the g_regex_replace() documentation for more details.
+	 * backreferences.
 	 *
 	 * Params:
 	 *     replace = the replacement text.

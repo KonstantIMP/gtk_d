@@ -461,7 +461,7 @@ public class PrintOperation : ObjectG, PrintOperationPreviewIF
 	 * to the [signal@Gtk.PrintOperation::request-page-setup] signal.
 	 *
 	 * Params:
-	 *     defaultPageSetup = a `GtkPageSetup`, or %NULL
+	 *     defaultPageSetup = a `GtkPageSetup`
 	 */
 	public void setDefaultPageSetup(PageSetup defaultPageSetup)
 	{
@@ -684,7 +684,7 @@ public class PrintOperation : ObjectG, PrintOperationPreviewIF
 	 * information you need from the widgets.
 	 *
 	 * Returns: A custom widget that gets embedded in
-	 *     the print dialog, or %NULL
+	 *     the print dialog
 	 */
 	gulong addOnCreateCustomWidget(ObjectG delegate(PrintOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -851,7 +851,7 @@ public class PrintOperation : ObjectG, PrintOperationPreviewIF
 	 * Params:
 	 *     preview = the `GtkPrintOperationPreview` for the current operation
 	 *     context = the `GtkPrintContext` that will be used
-	 *     parent = the `GtkWindow` to use as window parent, or %NULL
+	 *     parent = the `GtkWindow` to use as window parent
 	 *
 	 * Returns: %TRUE if the listener wants to take over control of the preview
 	 */

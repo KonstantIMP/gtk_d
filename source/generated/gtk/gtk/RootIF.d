@@ -51,8 +51,7 @@ public interface RootIF{
 	 * `gtk_widget_has_focus (widget)` will be %FALSE for the
 	 * widget.
 	 *
-	 * Returns: the currently focused
-	 *     widget, or %NULL if there is none.
+	 * Returns: the currently focused widget
 	 */
 	public Widget getFocus();
 

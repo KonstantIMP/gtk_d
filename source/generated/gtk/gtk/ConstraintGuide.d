@@ -85,10 +85,8 @@ public class ConstraintGuide : ObjectG, ConstraintTargetIF
 	 * Gets the maximum size of @guide.
 	 *
 	 * Params:
-	 *     width = return location for the maximum width,
-	 *         or %NULL
-	 *     height = return location for the maximum height,
-	 *         or %NULL
+	 *     width = return location for the maximum width
+	 *     height = return location for the maximum height
 	 */
 	public void getMaxSize(int* width, int* height)
 	{
@@ -99,10 +97,8 @@ public class ConstraintGuide : ObjectG, ConstraintTargetIF
 	 * Gets the minimum size of @guide.
 	 *
 	 * Params:
-	 *     width = return location for the minimum width,
-	 *         or %NULL
-	 *     height = return location for the minimum height,
-	 *         or %NULL
+	 *     width = return location for the minimum width
+	 *     height = return location for the minimum height
 	 */
 	public void getMinSize(int* width, int* height)
 	{
@@ -123,10 +119,8 @@ public class ConstraintGuide : ObjectG, ConstraintTargetIF
 	 * Gets the natural size of @guide.
 	 *
 	 * Params:
-	 *     width = return location for the natural width,
-	 *         or %NULL
-	 *     height = return location for the natural height,
-	 *         or %NULL
+	 *     width = return location for the natural width
+	 *     height = return location for the natural height
 	 */
 	public void getNatSize(int* width, int* height)
 	{

@@ -49,6 +49,7 @@ public class ClosureExpression : Expression
 
 	/**
 	 * Creates a `GtkExpression` that calls `closure` when it is evaluated.
+	 *
 	 * `closure` is called with the `this` object and the results of evaluating
 	 * the `params` expressions.
 	 *

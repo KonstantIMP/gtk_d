@@ -11,8 +11,8 @@ public  import gdk.c.types;
  * draw context.
  * 
  * `GdkCairoContext`s are created for a surface using
- * [method@Gdk.Surface.create_cairo_context], and the context can then be used
- * to draw on that surface.
+ * [method@Gdk.Surface.create_cairo_context], and the context
+ * can then be used to draw on that surface.
  */
 public class CairoContext : DrawContext
 {
@@ -59,9 +59,8 @@ public class CairoContext : DrawContext
 	 * The returned context is guaranteed to be valid until
 	 * [method@Gdk.DrawContext.end_frame] is called.
 	 *
-	 * Returns: a Cairo context to be used
-	 *     to draw the contents of the `GdkSurface`. %NULL is returned
-	 *     when @context is not drawing.
+	 * Returns: a Cairo context
+	 *     to draw on `GdkSurface
 	 */
 	public Context cairoCreate()
 	{

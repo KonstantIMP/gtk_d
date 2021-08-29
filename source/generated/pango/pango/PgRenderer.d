@@ -63,10 +63,11 @@ public class PgRenderer : ObjectG
 	 *
 	 * [method@Pango.Renderer.deactivate] should be called when done drawing.
 	 * Calls such as [method@Pango.Renderer.draw_layout] automatically
-	 * activate the layout before drawing on it. Calls to
-	 * `pango_renderer_activate()` and `pango_renderer_deactivate()`
-	 * can be nested and the renderer will only be initialized and
-	 * deinitialized once.
+	 * activate the layout before drawing on it.
+	 *
+	 * Calls to [method@Pango.Renderer.activate] and
+	 * [method@Pango.Renderer.deactivate] can be nested and the
+	 * renderer will only be initialized and deinitialized once.
 	 *
 	 * Since: 1.8
 	 */
@@ -115,7 +116,7 @@ public class PgRenderer : ObjectG
 	 * Draws a single glyph with coordinates in device space.
 	 *
 	 * Params:
-	 *     font = a #PangoFont
+	 *     font = a `PangoFont`
 	 *     glyph = the glyph index of a single glyph
 	 *     x = X coordinate of left edge of baseline of glyph
 	 *     y = Y coordinate of left edge of baseline of glyph
@@ -148,12 +149,12 @@ public class PgRenderer : ObjectG
 	 * [method@Pango.Renderer.draw_glyphs].
 	 *
 	 * Params:
-	 *     text = the UTF-8 text that @glyph_item refers to, or %NULL
+	 *     text = the UTF-8 text that @glyph_item refers to
 	 *     glyphItem = a `PangoGlyphItem`
 	 *     x = X position of left edge of baseline, in user space coordinates
-	 *         in Pango units.
+	 *         in Pango units
 	 *     y = Y position of left edge of baseline, in user space coordinates
-	 *         in Pango units.
+	 *         in Pango units
 	 *
 	 * Since: 1.22
 	 */
@@ -445,7 +446,7 @@ public class PgRenderer : ObjectG
 	 * Sets the transformation matrix that will be applied when rendering.
 	 *
 	 * Params:
-	 *     matrix = a `PangoMatrix`, or %NULL to unset any existing matrix.
+	 *     matrix = a `PangoMatrix`, or %NULL to unset any existing matrix
 	 *         (No matrix set is the same as setting the identity matrix.)
 	 *
 	 * Since: 1.8

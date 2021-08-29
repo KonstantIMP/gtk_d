@@ -93,6 +93,7 @@ shared static this()
 	Linker.link(gdk_content_formats_union_serialize_gtypes, "gdk_content_formats_union_serialize_gtypes", LIBRARY_GDK);
 	Linker.link(gdk_content_formats_union_serialize_mime_types, "gdk_content_formats_union_serialize_mime_types", LIBRARY_GDK);
 	Linker.link(gdk_content_formats_unref, "gdk_content_formats_unref", LIBRARY_GDK);
+	Linker.link(gdk_content_formats_parse, "gdk_content_formats_parse", LIBRARY_GDK);
 
 	// gdk.ContentFormatsBuilder
 
@@ -224,6 +225,7 @@ shared static this()
 	Linker.link(gdk_display_map_keycode, "gdk_display_map_keycode", LIBRARY_GDK);
 	Linker.link(gdk_display_map_keyval, "gdk_display_map_keyval", LIBRARY_GDK);
 	Linker.link(gdk_display_notify_startup_complete, "gdk_display_notify_startup_complete", LIBRARY_GDK);
+	Linker.link(gdk_display_prepare_gl, "gdk_display_prepare_gl", LIBRARY_GDK);
 	Linker.link(gdk_display_put_event, "gdk_display_put_event", LIBRARY_GDK);
 	Linker.link(gdk_display_supports_input_shapes, "gdk_display_supports_input_shapes", LIBRARY_GDK);
 	Linker.link(gdk_display_sync, "gdk_display_sync", LIBRARY_GDK);
@@ -357,6 +359,7 @@ shared static this()
 	Linker.link(gdk_gl_context_get_use_es, "gdk_gl_context_get_use_es", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_get_version, "gdk_gl_context_get_version", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_is_legacy, "gdk_gl_context_is_legacy", LIBRARY_GDK);
+	Linker.link(gdk_gl_context_is_shared, "gdk_gl_context_is_shared", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_make_current, "gdk_gl_context_make_current", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_realize, "gdk_gl_context_realize", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_set_debug_enabled, "gdk_gl_context_set_debug_enabled", LIBRARY_GDK);
@@ -572,6 +575,7 @@ shared static this()
 	Linker.link(gdk_toplevel_set_transient_for, "gdk_toplevel_set_transient_for", LIBRARY_GDK);
 	Linker.link(gdk_toplevel_show_window_menu, "gdk_toplevel_show_window_menu", LIBRARY_GDK);
 	Linker.link(gdk_toplevel_supports_edge_constraints, "gdk_toplevel_supports_edge_constraints", LIBRARY_GDK);
+	Linker.link(gdk_toplevel_titlebar_gesture, "gdk_toplevel_titlebar_gesture", LIBRARY_GDK);
 
 	// gdk.ToplevelLayout
 
@@ -697,6 +701,7 @@ __gshared extern(C)
 	GdkContentFormats* function(GdkContentFormats* formats) c_gdk_content_formats_union_serialize_gtypes;
 	GdkContentFormats* function(GdkContentFormats* formats) c_gdk_content_formats_union_serialize_mime_types;
 	void function(GdkContentFormats* formats) c_gdk_content_formats_unref;
+	GdkContentFormats* function(const(char)* string_) c_gdk_content_formats_parse;
 
 	// gdk.ContentFormatsBuilder
 
@@ -828,6 +833,7 @@ __gshared extern(C)
 	int function(GdkDisplay* display, uint keycode, GdkKeymapKey** keys, uint** keyvals, int* nEntries) c_gdk_display_map_keycode;
 	int function(GdkDisplay* display, uint keyval, GdkKeymapKey** keys, int* nKeys) c_gdk_display_map_keyval;
 	void function(GdkDisplay* display, const(char)* startupId) c_gdk_display_notify_startup_complete;
+	int function(GdkDisplay* self, GError** err) c_gdk_display_prepare_gl;
 	void function(GdkDisplay* display, GdkEvent* event) c_gdk_display_put_event;
 	int function(GdkDisplay* display) c_gdk_display_supports_input_shapes;
 	void function(GdkDisplay* display) c_gdk_display_sync;
@@ -961,6 +967,7 @@ __gshared extern(C)
 	int function(GdkGLContext* context) c_gdk_gl_context_get_use_es;
 	void function(GdkGLContext* context, int* major, int* minor) c_gdk_gl_context_get_version;
 	int function(GdkGLContext* context) c_gdk_gl_context_is_legacy;
+	int function(GdkGLContext* self, GdkGLContext* other) c_gdk_gl_context_is_shared;
 	void function(GdkGLContext* context) c_gdk_gl_context_make_current;
 	int function(GdkGLContext* context, GError** err) c_gdk_gl_context_realize;
 	void function(GdkGLContext* context, int enabled) c_gdk_gl_context_set_debug_enabled;
@@ -1153,7 +1160,7 @@ __gshared extern(C)
 	void function(GdkTexture* texture, char* data, size_t stride) c_gdk_texture_download;
 	int function(GdkTexture* texture) c_gdk_texture_get_height;
 	int function(GdkTexture* texture) c_gdk_texture_get_width;
-	int function(GdkTexture* texture, const(char)* filename) c_gdk_texture_save_to_png;
+	int function(GdkTexture* texture, char* filename) c_gdk_texture_save_to_png;
 
 	// gdk.Toplevel
 
@@ -1176,6 +1183,7 @@ __gshared extern(C)
 	void function(GdkToplevel* toplevel, GdkSurface* parent) c_gdk_toplevel_set_transient_for;
 	int function(GdkToplevel* toplevel, GdkEvent* event) c_gdk_toplevel_show_window_menu;
 	int function(GdkToplevel* toplevel) c_gdk_toplevel_supports_edge_constraints;
+	int function(GdkToplevel* toplevel, GdkTitlebarGesture gesture) c_gdk_toplevel_titlebar_gesture;
 
 	// gdk.ToplevelLayout
 
@@ -1299,6 +1307,7 @@ alias c_gdk_content_formats_union_deserialize_mime_types gdk_content_formats_uni
 alias c_gdk_content_formats_union_serialize_gtypes gdk_content_formats_union_serialize_gtypes;
 alias c_gdk_content_formats_union_serialize_mime_types gdk_content_formats_union_serialize_mime_types;
 alias c_gdk_content_formats_unref gdk_content_formats_unref;
+alias c_gdk_content_formats_parse gdk_content_formats_parse;
 
 // gdk.ContentFormatsBuilder
 
@@ -1430,6 +1439,7 @@ alias c_gdk_display_list_seats gdk_display_list_seats;
 alias c_gdk_display_map_keycode gdk_display_map_keycode;
 alias c_gdk_display_map_keyval gdk_display_map_keyval;
 alias c_gdk_display_notify_startup_complete gdk_display_notify_startup_complete;
+alias c_gdk_display_prepare_gl gdk_display_prepare_gl;
 alias c_gdk_display_put_event gdk_display_put_event;
 alias c_gdk_display_supports_input_shapes gdk_display_supports_input_shapes;
 alias c_gdk_display_sync gdk_display_sync;
@@ -1563,6 +1573,7 @@ alias c_gdk_gl_context_get_surface gdk_gl_context_get_surface;
 alias c_gdk_gl_context_get_use_es gdk_gl_context_get_use_es;
 alias c_gdk_gl_context_get_version gdk_gl_context_get_version;
 alias c_gdk_gl_context_is_legacy gdk_gl_context_is_legacy;
+alias c_gdk_gl_context_is_shared gdk_gl_context_is_shared;
 alias c_gdk_gl_context_make_current gdk_gl_context_make_current;
 alias c_gdk_gl_context_realize gdk_gl_context_realize;
 alias c_gdk_gl_context_set_debug_enabled gdk_gl_context_set_debug_enabled;
@@ -1778,6 +1789,7 @@ alias c_gdk_toplevel_set_title gdk_toplevel_set_title;
 alias c_gdk_toplevel_set_transient_for gdk_toplevel_set_transient_for;
 alias c_gdk_toplevel_show_window_menu gdk_toplevel_show_window_menu;
 alias c_gdk_toplevel_supports_edge_constraints gdk_toplevel_supports_edge_constraints;
+alias c_gdk_toplevel_titlebar_gesture gdk_toplevel_titlebar_gesture;
 
 // gdk.ToplevelLayout
 

@@ -159,9 +159,7 @@ public final class PgItem
 	/**
 	 * Copy an existing `PangoItem` structure.
 	 *
-	 * Returns: the newly allocated `PangoItem`, which
-	 *     should be freed with [method@Pango.Item.free], or %NULL if
-	 *     @item was %NULL.
+	 * Returns: the newly allocated `PangoItem`
 	 */
 	public PgItem copy()
 	{

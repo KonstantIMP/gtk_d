@@ -13,12 +13,12 @@ private import std.algorithm;
 /**
  * Renders text in a cell
  * 
- * A #GtkCellRendererText renders a given text in its cell, using the font, color and
+ * A `GtkCellRendererText` renders a given text in its cell, using the font, color and
  * style information provided by its properties. The text will be ellipsized if it is
- * too long and the #GtkCellRendererText:ellipsize property allows it.
+ * too long and the `GtkCellRendererText:ellipsize` property allows it.
  * 
- * If the #GtkCellRenderer:mode is %GTK_CELL_RENDERER_MODE_EDITABLE,
- * the #GtkCellRendererText allows to edit its text using an entry.
+ * If the `GtkCellRenderer:mode` is %GTK_CELL_RENDERER_MODE_EDITABLE,
+ * the `GtkCellRendererText` allows to edit its text using an entry.
  */
 public class CellRendererText : CellRenderer
 {
@@ -56,13 +56,13 @@ public class CellRendererText : CellRenderer
 	}
 
 	/**
-	 * Creates a new #GtkCellRendererText. Adjust how text is drawn using
+	 * Creates a new `GtkCellRendererText`. Adjust how text is drawn using
 	 * object properties. Object properties can be
-	 * set globally (with g_object_set()). Also, with #GtkTreeViewColumn,
-	 * you can bind a property to a value in a #GtkTreeModel. For example,
+	 * set globally (with g_object_set()). Also, with `GtkTreeViewColumn`,
+	 * you can bind a property to a value in a `GtkTreeModel`. For example,
 	 * you can bind the “text” property on the cell renderer to a string
 	 * value in the model, thus rendering a different string in each row
-	 * of the #GtkTreeView
+	 * of the `GtkTreeView`.
 	 *
 	 * Returns: the new cell renderer
 	 *

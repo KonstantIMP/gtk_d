@@ -107,6 +107,16 @@ public class Viewport : ObjectG, LocationIF
 	}
 
 	/**
+	 * Gets the current rotation
+	 *
+	 * Returns: the current rotation
+	 */
+	public double getRotation()
+	{
+		return shumate_viewport_get_rotation(shumateViewport);
+	}
+
+	/**
 	 * Get the current zoom level
 	 *
 	 * Returns: the current zoom level
@@ -117,33 +127,19 @@ public class Viewport : ObjectG, LocationIF
 	}
 
 	/**
-	 * Get an y coordinate of a widget from the latitude.
-	 * The widget is assumed to be using the viewport.
+	 * Gets the position on @widget that correspond to the given latitude and
+	 * longitude.
 	 *
 	 * Params:
 	 *     widget = a #GtkWidget that uses @self as viewport
 	 *     latitude = the latitude
-	 *
-	 * Returns: the y coordinate
-	 */
-	public double latitudeToWidgetY(Widget widget, double latitude)
-	{
-		return shumate_viewport_latitude_to_widget_y(shumateViewport, (widget is null) ? null : widget.getWidgetStruct(), latitude);
-	}
-
-	/**
-	 * Get an x coordinate of a widget from the longitude.
-	 * The widget is assumed to be using the viewport.
-	 *
-	 * Params:
-	 *     widget = a #GtkWidget that uses @self as viewport
 	 *     longitude = the longitude
-	 *
-	 * Returns: the x coordinate
+	 *     x = return value for the x coordinate
+	 *     y = return value for the y coordinate
 	 */
-	public double longitudeToWidgetX(Widget widget, double longitude)
+	public void locationToWidgetCoords(Widget widget, double latitude, double longitude, out double x, out double y)
 	{
-		return shumate_viewport_longitude_to_widget_x(shumateViewport, (widget is null) ? null : widget.getWidgetStruct(), longitude);
+		shumate_viewport_location_to_widget_coords(shumateViewport, (widget is null) ? null : widget.getWidgetStruct(), latitude, longitude, &x, &y);
 	}
 
 	/**
@@ -180,6 +176,17 @@ public class Viewport : ObjectG, LocationIF
 	}
 
 	/**
+	 * Sets the rotation
+	 *
+	 * Params:
+	 *     rotation = the rotation
+	 */
+	public void setRotation(double rotation)
+	{
+		shumate_viewport_set_rotation(shumateViewport, rotation);
+	}
+
+	/**
 	 * Set the zoom level
 	 *
 	 * Params:
@@ -191,33 +198,18 @@ public class Viewport : ObjectG, LocationIF
 	}
 
 	/**
-	 * Get the longitude from an x coordinate of a widget.
-	 * The widget is assumed to be using the viewport.
+	 * Gets the latitude and longitude corresponding to a position on @widget.
 	 *
 	 * Params:
 	 *     widget = a #GtkWidget that uses @self as viewport
 	 *     x = the x coordinate
-	 *
-	 * Returns: the longitude
-	 */
-	public double widgetXToLongitude(Widget widget, double x)
-	{
-		return shumate_viewport_widget_x_to_longitude(shumateViewport, (widget is null) ? null : widget.getWidgetStruct(), x);
-	}
-
-	/**
-	 * Get the latitude from an y coordinate of a widget.
-	 * The widget is assumed to be using the viewport.
-	 *
-	 * Params:
-	 *     widget = a #GtkWidget that uses @self as viewport
 	 *     y = the y coordinate
-	 *
-	 * Returns: the latitude
+	 *     latitude = return location for the latitude
+	 *     longitude = return location for the longitude
 	 */
-	public double widgetYToLatitude(Widget widget, double y)
+	public void widgetCoordsToLocation(Widget widget, double x, double y, out double latitude, out double longitude)
 	{
-		return shumate_viewport_widget_y_to_latitude(shumateViewport, (widget is null) ? null : widget.getWidgetStruct(), y);
+		shumate_viewport_widget_coords_to_location(shumateViewport, (widget is null) ? null : widget.getWidgetStruct(), x, y, &latitude, &longitude);
 	}
 
 	/**

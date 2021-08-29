@@ -52,7 +52,6 @@ public class BoolFilter : Filter
 	 *
 	 * Params:
 	 *     expression = The expression to evaluate
-	 *         or %NULL for none
 	 *
 	 * Returns: a new `GtkBoolFilter`
 	 *

@@ -77,12 +77,12 @@ public class Tooltip : ObjectG
 	 * Replaces the widget packed into the tooltip with
 	 * @custom_widget. @custom_widget does not get destroyed when the tooltip goes
 	 * away.
-	 * By default a box with a #GtkImage and #GtkLabel is embedded in
+	 * By default a box with a `GtkImage` and `GtkLabel` is embedded in
 	 * the tooltip, which can be configured using gtk_tooltip_set_markup()
 	 * and gtk_tooltip_set_icon().
 	 *
 	 * Params:
-	 *     customWidget = a #GtkWidget, or %NULL to unset the old custom widget.
+	 *     customWidget = a `GtkWidget`, or %NULL to unset the old custom widget.
 	 */
 	public void setCustom(Widget customWidget)
 	{
@@ -94,7 +94,7 @@ public class Tooltip : ObjectG
 	 * @paintable.  If @paintable is %NULL, the image will be hidden.
 	 *
 	 * Params:
-	 *     paintable = a #GdkPaintable, or %NULL
+	 *     paintable = a `GdkPaintable`
 	 */
 	public void setIcon(PaintableIF paintable)
 	{
@@ -107,7 +107,7 @@ public class Tooltip : ObjectG
 	 * by @size. If @gicon is %NULL, the image will be hidden.
 	 *
 	 * Params:
-	 *     gicon = a #GIcon representing the icon, or %NULL
+	 *     gicon = a `GIcon` representing the icon
 	 */
 	public void setIconFromGicon(IconIF gicon)
 	{
@@ -120,7 +120,7 @@ public class Tooltip : ObjectG
 	 * by @size.  If @icon_name is %NULL, the image will be hidden.
 	 *
 	 * Params:
-	 *     iconName = an icon name, or %NULL
+	 *     iconName = an icon name
 	 */
 	public void setIconFromIconName(string iconName)
 	{
@@ -148,7 +148,7 @@ public class Tooltip : ObjectG
 	 * See also [method@Gtk.Tooltip.set_markup].
 	 *
 	 * Params:
-	 *     text = a text string or %NULL
+	 *     text = a text string
 	 */
 	public void setText(string text)
 	{
@@ -158,15 +158,15 @@ public class Tooltip : ObjectG
 	/**
 	 * Sets the area of the widget, where the contents of this tooltip apply,
 	 * to be @rect (in widget coordinates).  This is especially useful for
-	 * properly setting tooltips on #GtkTreeView rows and cells, #GtkIconViews,
+	 * properly setting tooltips on `GtkTreeView` rows and cells, `GtkIconViews`,
 	 * etc.
 	 *
-	 * For setting tooltips on #GtkTreeView, please refer to the convenience
+	 * For setting tooltips on `GtkTreeView`, please refer to the convenience
 	 * functions for this: gtk_tree_view_set_tooltip_row() and
 	 * gtk_tree_view_set_tooltip_cell().
 	 *
 	 * Params:
-	 *     rect = a #GdkRectangle
+	 *     rect = a `GdkRectangle`
 	 */
 	public void setTipArea(GdkRectangle* rect)
 	{

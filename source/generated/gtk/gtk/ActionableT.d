@@ -36,7 +36,7 @@ public template ActionableT(TStruct)
 	/**
 	 * Gets the action name for @actionable.
 	 *
-	 * Returns: the action name, or %NULL if none is set
+	 * Returns: the action name
 	 */
 	public string getActionName()
 	{
@@ -76,7 +76,7 @@ public template ActionableT(TStruct)
 	 * associated with the window.
 	 *
 	 * Params:
-	 *     actionName = an action name, or %NULL
+	 *     actionName = an action name
 	 */
 	public void setActionName(string actionName)
 	{
@@ -104,7 +104,7 @@ public template ActionableT(TStruct)
 	 * rendered inactive).
 	 *
 	 * Params:
-	 *     targetValue = a #GVariant to set as the target value, or %NULL
+	 *     targetValue = a `GVariant` to set as the target value
 	 */
 	public void setActionTargetValue(Variant targetValue)
 	{

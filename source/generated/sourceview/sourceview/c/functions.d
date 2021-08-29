@@ -366,6 +366,7 @@ shared static this()
 	Linker.link(gtk_source_print_compositor_get_tab_width, "gtk_source_print_compositor_get_tab_width", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_print_compositor_get_top_margin, "gtk_source_print_compositor_get_top_margin", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_print_compositor_get_wrap_mode, "gtk_source_print_compositor_get_wrap_mode", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_print_compositor_ignore_tag, "gtk_source_print_compositor_ignore_tag", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_print_compositor_paginate, "gtk_source_print_compositor_paginate", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_print_compositor_set_body_font_name, "gtk_source_print_compositor_set_body_font_name", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_print_compositor_set_bottom_margin, "gtk_source_print_compositor_set_bottom_margin", LIBRARY_SOURCEVIEW);
@@ -968,6 +969,7 @@ __gshared extern(C)
 	uint function(GtkSourcePrintCompositor* compositor) c_gtk_source_print_compositor_get_tab_width;
 	double function(GtkSourcePrintCompositor* compositor, GtkUnit unit) c_gtk_source_print_compositor_get_top_margin;
 	GtkWrapMode function(GtkSourcePrintCompositor* compositor) c_gtk_source_print_compositor_get_wrap_mode;
+	void function(GtkSourcePrintCompositor* compositor, GtkTextTag* tag) c_gtk_source_print_compositor_ignore_tag;
 	int function(GtkSourcePrintCompositor* compositor, GtkPrintContext* context) c_gtk_source_print_compositor_paginate;
 	void function(GtkSourcePrintCompositor* compositor, const(char)* fontName) c_gtk_source_print_compositor_set_body_font_name;
 	void function(GtkSourcePrintCompositor* compositor, double margin, GtkUnit unit) c_gtk_source_print_compositor_set_bottom_margin;
@@ -1568,6 +1570,7 @@ alias c_gtk_source_print_compositor_get_right_margin gtk_source_print_compositor
 alias c_gtk_source_print_compositor_get_tab_width gtk_source_print_compositor_get_tab_width;
 alias c_gtk_source_print_compositor_get_top_margin gtk_source_print_compositor_get_top_margin;
 alias c_gtk_source_print_compositor_get_wrap_mode gtk_source_print_compositor_get_wrap_mode;
+alias c_gtk_source_print_compositor_ignore_tag gtk_source_print_compositor_ignore_tag;
 alias c_gtk_source_print_compositor_paginate gtk_source_print_compositor_paginate;
 alias c_gtk_source_print_compositor_set_body_font_name gtk_source_print_compositor_set_body_font_name;
 alias c_gtk_source_print_compositor_set_bottom_margin gtk_source_print_compositor_set_bottom_margin;

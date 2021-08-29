@@ -151,9 +151,9 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Creates a new #GtkTreeView widget.
+	 * Creates a new `GtkTreeView` widget.
 	 *
-	 * Returns: A newly created #GtkTreeView widget.
+	 * Returns: A newly created `GtkTreeView` widget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -170,12 +170,12 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Creates a new #GtkTreeView widget with the model initialized to @model.
+	 * Creates a new `GtkTreeView` widget with the model initialized to @model.
 	 *
 	 * Params:
 	 *     model = the model.
 	 *
-	 * Returns: A newly created #GtkTreeView widget.
+	 * Returns: A newly created `GtkTreeView` widget.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -197,7 +197,7 @@ public class TreeView : Widget, ScrollableIF
 	 * GTK_TREE_VIEW_COLUMN_FIXED.
 	 *
 	 * Params:
-	 *     column = The #GtkTreeViewColumn to add.
+	 *     column = The `GtkTreeViewColumn` to add.
 	 *
 	 * Returns: The number of columns in @tree_view after appending.
 	 */
@@ -325,11 +325,11 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Creates a #cairo_surface_t representation of the row at @path.
+	 * Creates a `cairo_surface_t` representation of the row at @path.
 	 * This image is used for a drag icon.
 	 *
 	 * Params:
-	 *     path = a #GtkTreePath in @tree_view
+	 *     path = a `GtkTreePath` in @tree_view
 	 *
 	 * Returns: a newly-allocated surface of the drag icon.
 	 */
@@ -347,7 +347,7 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * Turns @tree_view into a drop destination for automatic DND. Calling
-	 * this method sets #GtkTreeView:reorderable to %FALSE.
+	 * this method sets `GtkTreeView`:reorderable to %FALSE.
 	 *
 	 * Params:
 	 *     formats = the target formats that the drag will support
@@ -361,7 +361,7 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * Turns @tree_view into a drag source for automatic DND. Calling this
-	 * method sets #GtkTreeView:reorderable to %FALSE.
+	 * method sets `GtkTreeView`:reorderable to %FALSE.
 	 *
 	 * Params:
 	 *     startButtonMask = Mask of allowed buttons to start drag
@@ -430,8 +430,8 @@ public class TreeView : Widget, ScrollableIF
 	 * itself, excluding surrounding borders and the tree expander area.
 	 *
 	 * Params:
-	 *     path = a #GtkTreePath for the row, or %NULL to get only horizontal coordinates
-	 *     column = a #GtkTreeViewColumn for the column, or %NULL to get only vertical coordinates
+	 *     path = a `GtkTreePath` for the row, or %NULL to get only horizontal coordinates
+	 *     column = a `GtkTreeViewColumn` for the column, or %NULL to get only vertical coordinates
 	 *     rect = rectangle to fill with cell background rect
 	 */
 	public void getBackgroundArea(TreePath path, TreeViewColumn column, out GdkRectangle rect)
@@ -451,8 +451,8 @@ public class TreeView : Widget, ScrollableIF
 	 * realized.
 	 *
 	 * Params:
-	 *     path = a #GtkTreePath for the row, or %NULL to get only horizontal coordinates
-	 *     column = a #GtkTreeViewColumn for the column, or %NULL to get only vertical coordinates
+	 *     path = a `GtkTreePath` for the row, or %NULL to get only horizontal coordinates
+	 *     column = a `GtkTreeViewColumn` for the column, or %NULL to get only vertical coordinates
 	 *     rect = rectangle to fill with cell rect
 	 */
 	public void getCellArea(TreePath path, TreeViewColumn column, out GdkRectangle rect)
@@ -461,12 +461,12 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Gets the #GtkTreeViewColumn at the given position in the #tree_view.
+	 * Gets the `GtkTreeViewColumn` at the given position in the #tree_view.
 	 *
 	 * Params:
 	 *     n = The position of the column, counting from 0.
 	 *
-	 * Returns: The #GtkTreeViewColumn, or %NULL if the
+	 * Returns: The `GtkTreeViewColumn`, or %NULL if the
 	 *     position is outside the range of columns.
 	 */
 	public TreeViewColumn getColumn(int n)
@@ -482,10 +482,10 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Returns a #GList of all the #GtkTreeViewColumn s currently in @tree_view.
+	 * Returns a `GList` of all the `GtkTreeViewColumn`s currently in @tree_view.
 	 * The returned list must be freed with g_list_free ().
 	 *
-	 * Returns: A list of #GtkTreeViewColumn s
+	 * Returns: A list of `GtkTreeViewColumn`s
 	 */
 	public ListG getColumns()
 	{
@@ -504,14 +504,14 @@ public class TreeView : Widget, ScrollableIF
 	 * the cursor isn’t currently set, then *@path will be %NULL.  If no column
 	 * currently has focus, then *@focus_column will be %NULL.
 	 *
-	 * The returned #GtkTreePath must be freed with gtk_tree_path_free() when
+	 * The returned `GtkTreePath` must be freed with gtk_tree_path_free() when
 	 * you are done with it.
 	 *
 	 * Params:
 	 *     path = A pointer to be
-	 *         filled with the current cursor path, or %NULL
+	 *         filled with the current cursor path
 	 *     focusColumn = A
-	 *         pointer to be filled with the current focus column, or %NULL
+	 *         pointer to be filled with the current focus column
 	 */
 	public void getCursor(out TreePath path, out TreeViewColumn focusColumn)
 	{
@@ -534,7 +534,7 @@ public class TreeView : Widget, ScrollableIF
 	 *     dragX = the position to determine the destination row for
 	 *     dragY = the position to determine the destination row for
 	 *     path = Return location for the path of
-	 *         the highlighted row, or %NULL.
+	 *         the highlighted row
 	 *     pos = Return location for the drop position, or
 	 *         %NULL
 	 *
@@ -556,8 +556,8 @@ public class TreeView : Widget, ScrollableIF
 	 * Gets information about the row that is highlighted for feedback.
 	 *
 	 * Params:
-	 *     path = Return location for the path of the highlighted row, or %NULL.
-	 *     pos = Return location for the drop position, or %NULL
+	 *     path = Return location for the path of the highlighted row
+	 *     pos = Return location for the drop position
 	 */
 	public void getDragDestRow(out TreePath path, out GtkTreeViewDropPosition pos)
 	{
@@ -622,7 +622,7 @@ public class TreeView : Widget, ScrollableIF
 	/**
 	 * Returns which grid lines are enabled in @tree_view.
 	 *
-	 * Returns: a #GtkTreeViewGridLines value indicating which grid lines
+	 * Returns: a `GtkTreeView`GridLines value indicating which grid lines
 	 *     are enabled.
 	 */
 	public GtkTreeViewGridLines getGridLines()
@@ -683,11 +683,10 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Returns the model the #GtkTreeView is based on.  Returns %NULL if the
+	 * Returns the model the `GtkTreeView` is based on.  Returns %NULL if the
 	 * model is unset.
 	 *
-	 * Returns: A #GtkTreeModel, or %NULL if
-	 *     none is currently being used.
+	 * Returns: A `GtkTreeModel`
 	 */
 	public TreeModelIF getModel()
 	{
@@ -717,7 +716,7 @@ public class TreeView : Widget, ScrollableIF
 	 * coordinates must be converted using
 	 * gtk_tree_view_convert_widget_to_bin_window_coords(). It is primarily for
 	 * things like popup menus. If @path is non-%NULL, then it will be filled
-	 * with the #GtkTreePath at that point.  This path should be freed with
+	 * with the `GtkTreePath` at that point.  This path should be freed with
 	 * gtk_tree_path_free().  If @column is non-%NULL, then it will be filled
 	 * with the column at that point.  @cell_x and @cell_y return the coordinates
 	 * relative to the cell background (i.e. the @background_area passed to
@@ -732,14 +731,14 @@ public class TreeView : Widget, ScrollableIF
 	 * Params:
 	 *     x = The x position to be identified (relative to bin_window).
 	 *     y = The y position to be identified (relative to bin_window).
-	 *     path = A pointer to a #GtkTreePath
-	 *         pointer to be filled in, or %NULL
+	 *     path = A pointer to a `GtkTreePath`
+	 *         pointer to be filled in
 	 *     column = A pointer to
-	 *         a #GtkTreeViewColumn pointer to be filled in, or %NULL
+	 *         a `GtkTreeViewColumn` pointer to be filled in
 	 *     cellX = A pointer where the X coordinate
-	 *         relative to the cell can be placed, or %NULL
+	 *         relative to the cell can be placed
 	 *     cellY = A pointer where the Y coordinate
-	 *         relative to the cell can be placed, or %NULL
+	 *         relative to the cell can be placed
 	 *
 	 * Returns: %TRUE if a row exists at that coordinate.
 	 */
@@ -779,7 +778,7 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * Returns whether rubber banding is turned on for @tree_view.  If the
-	 * selection mode is #GTK_SELECTION_MULTIPLE, rubber banding will allow the
+	 * selection mode is %GTK_SELECTION_MULTIPLE, rubber banding will allow the
 	 * user to select multiple rows by dragging the mouse.
 	 *
 	 * Returns: %TRUE if rubber banding in @tree_view is enabled.
@@ -800,7 +799,7 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Returns the #GtkEntry which is currently in use as interactive search
+	 * Returns the `GtkEntry` which is currently in use as interactive search
 	 * entry for @tree_view.  In case the built-in entry is being used, %NULL
 	 * will be returned.
 	 *
@@ -829,9 +828,9 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Gets the #GtkTreeSelection associated with @tree_view.
+	 * Gets the `GtkTreeSelection` associated with @tree_view.
 	 *
-	 * Returns: A #GtkTreeSelection object.
+	 * Returns: A `GtkTreeSelection` object.
 	 */
 	public TreeSelection getSelection()
 	{
@@ -869,16 +868,16 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * This function is supposed to be used in a #GtkWidget::query-tooltip
-	 * signal handler for #GtkTreeView.  The @x, @y and @keyboard_tip values
+	 * This function is supposed to be used in a ::query-tooltip
+	 * signal handler for `GtkTreeView`. The @x, @y and @keyboard_tip values
 	 * which are received in the signal handler, should be passed to this
 	 * function without modification.
 	 *
 	 * The return value indicates whether there is a tree view row at the given
-	 * coordinates (%TRUE) or not (%FALSE) for mouse tooltips.  For keyboard
-	 * tooltips the row returned will be the cursor row.  When %TRUE, then any of
+	 * coordinates (%TRUE) or not (%FALSE) for mouse tooltips. For keyboard
+	 * tooltips the row returned will be the cursor row. When %TRUE, then any of
 	 * @model, @path and @iter which have been provided will be set to point to
-	 * that row and the corresponding model.  @x and @y will always be converted
+	 * that row and the corresponding model. @x and @y will always be converted
 	 * to be relative to @tree_view’s bin_window if @keyboard_tooltip is %FALSE.
 	 *
 	 * Params:
@@ -886,11 +885,11 @@ public class TreeView : Widget, ScrollableIF
 	 *     y = the y coordinate (relative to widget coordinates)
 	 *     keyboardTip = whether this is a keyboard tooltip or not
 	 *     model = a pointer to
-	 *         receive a #GtkTreeModel or %NULL
-	 *     path = a pointer to receive a #GtkTreePath or %NULL
-	 *     iter = a pointer to receive a #GtkTreeIter or %NULL
+	 *         receive a `GtkTreeModel`
+	 *     path = a pointer to receive a `GtkTreePath`
+	 *     iter = a pointer to receive a `GtkTreeIter`
 	 *
-	 * Returns: whether or not the given tooltip context points to a row.
+	 * Returns: whether or not the given tooltip context points to a row
 	 */
 	public bool getTooltipContext(int x, int y, bool keyboardTip, out TreeModelIF model, out TreePath path, out TreeIter iter)
 	{
@@ -914,9 +913,8 @@ public class TreeView : Widget, ScrollableIF
 	 * The paths should be freed with gtk_tree_path_free() after use.
 	 *
 	 * Params:
-	 *     startPath = Return location for start of region,
-	 *         or %NULL.
-	 *     endPath = Return location for end of region, or %NULL.
+	 *     startPath = Return location for start of region
+	 *     endPath = Return location for end of region
 	 *
 	 * Returns: %TRUE, if valid paths were placed in @start_path and @end_path.
 	 */
@@ -955,7 +953,7 @@ public class TreeView : Widget, ScrollableIF
 	 * set to be GTK_TREE_VIEW_COLUMN_FIXED.
 	 *
 	 * Params:
-	 *     column = The #GtkTreeViewColumn to be inserted.
+	 *     column = The `GtkTreeViewColumn` to be inserted.
 	 *     position = The position to insert @column in.
 	 *
 	 * Returns: The number of columns in @tree_view after insertion.
@@ -966,8 +964,8 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Convenience function that inserts a new column into the #GtkTreeView
-	 * with the given cell renderer and a #GtkTreeCellDataFunc to set cell renderer
+	 * Convenience function that inserts a new column into the `GtkTreeView`
+	 * with the given cell renderer and a `GtkTreeCellDataFunc` to set cell renderer
 	 * attributes (normally using data from the model). See also
 	 * gtk_tree_view_column_set_cell_data_func(), gtk_tree_view_column_pack_start().
 	 * If @tree_view has “fixed_height” mode enabled, then the new column will have its
@@ -1010,14 +1008,14 @@ public class TreeView : Widget, ScrollableIF
 	 * Params:
 	 *     x = The x position to be identified (relative to bin_window)
 	 *     y = The y position to be identified (relative to bin_window)
-	 *     path = A pointer to a #GtkTreePath pointer to
-	 *         be filled in, or %NULL
+	 *     path = A pointer to a `GtkTreePath` pointer to
+	 *         be filled in
 	 *     column = A pointer to a
-	 *         #GtkTreeViewColumn pointer to be filled in, or %NULL
+	 *         `GtkTreeViewColumn` pointer to be filled in
 	 *     cellX = A pointer where the X coordinate relative to the
-	 *         cell can be placed, or %NULL
+	 *         cell can be placed
 	 *     cellY = A pointer where the Y coordinate relative to the
-	 *         cell can be placed, or %NULL
+	 *         cell can be placed
 	 *
 	 * Returns: %TRUE if the area at the given coordinates is blank,
 	 *     %FALSE otherwise.
@@ -1064,8 +1062,8 @@ public class TreeView : Widget, ScrollableIF
 	 * @column is placed in the first position.
 	 *
 	 * Params:
-	 *     column = The #GtkTreeViewColumn to be moved.
-	 *     baseColumn = The #GtkTreeViewColumn to be moved relative to, or %NULL.
+	 *     column = The `GtkTreeViewColumn` to be moved.
+	 *     baseColumn = The `GtkTreeViewColumn` to be moved relative to
 	 */
 	public void moveColumnAfter(TreeViewColumn column, TreeViewColumn baseColumn)
 	{
@@ -1076,7 +1074,7 @@ public class TreeView : Widget, ScrollableIF
 	 * Removes @column from @tree_view.
 	 *
 	 * Params:
-	 *     column = The #GtkTreeViewColumn to remove.
+	 *     column = The `GtkTreeViewColumn` to remove.
 	 *
 	 * Returns: The number of columns in @tree_view after removing.
 	 */
@@ -1089,8 +1087,8 @@ public class TreeView : Widget, ScrollableIF
 	 * Activates the cell determined by @path and @column.
 	 *
 	 * Params:
-	 *     path = The #GtkTreePath to be activated.
-	 *     column = The #GtkTreeViewColumn to be activated.
+	 *     path = The `GtkTreePath` to be activated.
+	 *     column = The `GtkTreeViewColumn` to be activated.
 	 */
 	public void rowActivated(TreePath path, TreeViewColumn column)
 	{
@@ -1101,7 +1099,7 @@ public class TreeView : Widget, ScrollableIF
 	 * Returns %TRUE if the node pointed to by @path is expanded in @tree_view.
 	 *
 	 * Params:
-	 *     path = A #GtkTreePath to test expansion state.
+	 *     path = A `GtkTreePath` to test expansion state.
 	 *
 	 * Returns: %TRUE if #path is expanded.
 	 */
@@ -1129,8 +1127,8 @@ public class TreeView : Widget, ScrollableIF
 	 * path will be modified to reflect this change.
 	 *
 	 * Params:
-	 *     path = The path of the row to move to, or %NULL.
-	 *     column = The #GtkTreeViewColumn to move horizontally to, or %NULL.
+	 *     path = The path of the row to move to
+	 *     column = The `GtkTreeViewColumn` to move horizontally to
 	 *     useAlign = whether to use alignment arguments, or %FALSE.
 	 *     rowAlign = The vertical alignment of the row specified by @path.
 	 *     colAlign = The horizontal alignment of the column specified by @column.
@@ -1159,7 +1157,7 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Cause the #GtkTreeView::row-activated signal to be emitted
+	 * Cause the `GtkTreeView`::row-activated signal to be emitted
 	 * on a single click instead of a double click.
 	 *
 	 * Params:
@@ -1174,17 +1172,17 @@ public class TreeView : Widget, ScrollableIF
 	 * Sets a user function for determining where a column may be dropped when
 	 * dragged.  This function is called on every column pair in turn at the
 	 * beginning of a column drag to determine where a drop can take place.  The
-	 * arguments passed to @func are: the @tree_view, the #GtkTreeViewColumn being
-	 * dragged, the two #GtkTreeViewColumn s determining the drop spot, and
-	 * @user_data.  If either of the #GtkTreeViewColumn arguments for the drop spot
+	 * arguments passed to @func are: the @tree_view, the `GtkTreeViewColumn` being
+	 * dragged, the two `GtkTreeViewColumn`s determining the drop spot, and
+	 * @user_data.  If either of the `GtkTreeViewColumn` arguments for the drop spot
 	 * are %NULL, then they indicate an edge.  If @func is set to be %NULL, then
 	 * @tree_view reverts to the default behavior of allowing all columns to be
 	 * dropped everywhere.
 	 *
 	 * Params:
-	 *     func = A function to determine which columns are reorderable, or %NULL.
-	 *     userData = User data to be passed to @func, or %NULL
-	 *     destroy = Destroy notifier for @user_data, or %NULL
+	 *     func = A function to determine which columns are reorderable
+	 *     userData = User data to be passed to @func
+	 *     destroy = Destroy notifier for @user_data
 	 */
 	public void setColumnDragFunction(GtkTreeViewColumnDropFunc func, void* userData, GDestroyNotify destroy)
 	{
@@ -1205,8 +1203,8 @@ public class TreeView : Widget, ScrollableIF
 	 * and the function will return without failing.
 	 *
 	 * Params:
-	 *     path = A #GtkTreePath
-	 *     focusColumn = A #GtkTreeViewColumn, or %NULL
+	 *     path = A `GtkTreePath`
+	 *     focusColumn = A `GtkTreeViewColumn`
 	 *     startEditing = %TRUE if the specified cell should start being edited.
 	 */
 	public void setCursor(TreePath path, TreeViewColumn focusColumn, bool startEditing)
@@ -1231,9 +1229,9 @@ public class TreeView : Widget, ScrollableIF
 	 * and the function will return without failing.
 	 *
 	 * Params:
-	 *     path = A #GtkTreePath
-	 *     focusColumn = A #GtkTreeViewColumn, or %NULL
-	 *     focusCell = A #GtkCellRenderer, or %NULL
+	 *     path = A `GtkTreePath`
+	 *     focusColumn = A `GtkTreeViewColumn`
+	 *     focusCell = A `GtkCellRenderer`
 	 *     startEditing = %TRUE if the specified cell should start being edited.
 	 */
 	public void setCursorOnCell(TreePath path, TreeViewColumn focusColumn, CellRenderer focusCell, bool startEditing)
@@ -1246,7 +1244,7 @@ public class TreeView : Widget, ScrollableIF
 	 * If @path is %NULL, an existing highlight is removed.
 	 *
 	 * Params:
-	 *     path = The path of the row to highlight, or %NULL
+	 *     path = The path of the row to highlight
 	 *     pos = Specifies whether to drop before, after or into the row
 	 */
 	public void setDragDestRow(TreePath path, GtkTreeViewDropPosition pos)
@@ -1299,7 +1297,7 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * Enables or disables the fixed height mode of @tree_view.
-	 * Fixed height mode speeds up #GtkTreeView by assuming that all
+	 * Fixed height mode speeds up `GtkTreeView` by assuming that all
 	 * rows have the same height.
 	 * Only enable this option if all rows are the same height and all
 	 * columns are of type %GTK_TREE_VIEW_COLUMN_FIXED.
@@ -1316,7 +1314,7 @@ public class TreeView : Widget, ScrollableIF
 	 * Sets which grid lines to draw in @tree_view.
 	 *
 	 * Params:
-	 *     gridLines = a #GtkTreeViewGridLines value indicating which grid lines to
+	 *     gridLines = a `GtkTreeView`GridLines value indicating which grid lines to
 	 *         enable.
 	 */
 	public void setGridLines(GtkTreeViewGridLines gridLines)
@@ -1389,7 +1387,7 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * Sets the model for a #GtkTreeView.  If the @tree_view already has a model
+	 * Sets the model for a `GtkTreeView`.  If the @tree_view already has a model
 	 * set, it will remove it before setting the new model.  If @model is %NULL,
 	 * then it will unset the old model.
 	 *
@@ -1403,12 +1401,12 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * This function is a convenience function to allow you to reorder
-	 * models that support the #GtkTreeDragSourceIface and the
-	 * #GtkTreeDragDestIface.  Both #GtkTreeStore and #GtkListStore support
+	 * models that support the `GtkTreeDragSourceIface` and the
+	 * `GtkTreeDragDestIface`.  Both `GtkTreeStore` and `GtkListStore` support
 	 * these.  If @reorderable is %TRUE, then the user can reorder the
 	 * model by dragging and dropping rows. The developer can listen to
-	 * these changes by connecting to the model’s #GtkTreeModel::row-inserted
-	 * and #GtkTreeModel::row-deleted signals. The reordering is implemented
+	 * these changes by connecting to the model’s `GtkTreeModel::row-inserted`
+	 * and `GtkTreeModel::row-deleted` signals. The reordering is implemented
 	 * by setting up the tree view as a drag source and destination.
 	 * Therefore, drag and drop can not be used in a reorderable view for any
 	 * other purpose.
@@ -1431,9 +1429,9 @@ public class TreeView : Widget, ScrollableIF
 	 * function is %NULL, no separators are drawn. This is the default value.
 	 *
 	 * Params:
-	 *     func = a #GtkTreeViewRowSeparatorFunc
-	 *     data = user data to pass to @func, or %NULL
-	 *     destroy = destroy notifier for @data, or %NULL
+	 *     func = a `GtkTreeView`RowSeparatorFunc
+	 *     data = user data to pass to @func
+	 *     destroy = destroy notifier for @data
 	 */
 	public void setRowSeparatorFunc(GtkTreeViewRowSeparatorFunc func, void* data, GDestroyNotify destroy)
 	{
@@ -1442,7 +1440,7 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * Enables or disables rubber banding in @tree_view.  If the selection mode
-	 * is #GTK_SELECTION_MULTIPLE, rubber banding will allow the user to select
+	 * is %GTK_SELECTION_MULTIPLE, rubber banding will allow the user to select
 	 * multiple rows by dragging the mouse.
 	 *
 	 * Params:
@@ -1480,7 +1478,7 @@ public class TreeView : Widget, ScrollableIF
 	 * entry again.
 	 *
 	 * Params:
-	 *     entry = the entry the interactive search code of @tree_view should use or %NULL
+	 *     entry = the entry the interactive search code of @tree_view should use
 	 */
 	public void setSearchEntry(EditableIF entry)
 	{
@@ -1490,12 +1488,12 @@ public class TreeView : Widget, ScrollableIF
 	/**
 	 * Sets the compare function for the interactive search capabilities; note
 	 * that somewhat like strcmp() returning 0 for equality
-	 * #GtkTreeViewSearchEqualFunc returns %FALSE on matches.
+	 * `GtkTreeView`SearchEqualFunc returns %FALSE on matches.
 	 *
 	 * Params:
 	 *     searchEqualFunc = the compare function to use during the search
-	 *     searchUserData = user data to pass to @search_equal_func, or %NULL
-	 *     searchDestroy = Destroy notifier for @search_user_data, or %NULL
+	 *     searchUserData = user data to pass to @search_equal_func
+	 *     searchDestroy = Destroy notifier for @search_user_data
 	 */
 	public void setSearchEqualFunc(GtkTreeViewSearchEqualFunc searchEqualFunc, void* searchUserData, GDestroyNotify searchDestroy)
 	{
@@ -1533,10 +1531,10 @@ public class TreeView : Widget, ScrollableIF
 	 * See also gtk_tree_view_set_tooltip_column() for a simpler alternative.
 	 *
 	 * Params:
-	 *     tooltip = a #GtkTooltip
-	 *     path = a #GtkTreePath or %NULL
-	 *     column = a #GtkTreeViewColumn or %NULL
-	 *     cell = a #GtkCellRenderer or %NULL
+	 *     tooltip = a `GtkTooltip`
+	 *     path = a `GtkTreePath`
+	 *     column = a `GtkTreeViewColumn`
+	 *     cell = a `GtkCellRenderer`
 	 */
 	public void setTooltipCell(Tooltip tooltip, TreePath path, TreeViewColumn column, CellRenderer cell)
 	{
@@ -1545,12 +1543,12 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * If you only plan to have simple (text-only) tooltips on full rows, you
-	 * can use this function to have #GtkTreeView handle these automatically
+	 * can use this function to have `GtkTreeView` handle these automatically
 	 * for you. @column should be set to the column in @tree_view’s model
 	 * containing the tooltip texts, or -1 to disable this feature.
 	 *
-	 * When enabled, #GtkWidget:has-tooltip will be set to %TRUE and
-	 * @tree_view will connect a #GtkWidget::query-tooltip signal handler.
+	 * When enabled, `GtkWidget:has-tooltip` will be set to %TRUE and
+	 * @tree_view will connect a `GtkWidget::query-tooltip` signal handler.
 	 *
 	 * Note that the signal handler sets the text with gtk_tooltip_set_markup(),
 	 * so &, <, etc have to be escaped in the text.
@@ -1569,8 +1567,8 @@ public class TreeView : Widget, ScrollableIF
 	 * See also gtk_tooltip_set_tip_area().
 	 *
 	 * Params:
-	 *     tooltip = a #GtkTooltip
-	 *     path = a #GtkTreePath
+	 *     tooltip = a `GtkTooltip`
+	 *     path = a `GtkTreePath`
 	 */
 	public void setTooltipRow(Tooltip tooltip, TreePath path)
 	{
@@ -1580,7 +1578,7 @@ public class TreeView : Widget, ScrollableIF
 	/**
 	 * Undoes the effect of
 	 * gtk_tree_view_enable_model_drag_dest(). Calling this method sets
-	 * #GtkTreeView:reorderable to %FALSE.
+	 * `GtkTreeView`:reorderable to %FALSE.
 	 */
 	public void unsetRowsDragDest()
 	{
@@ -1590,7 +1588,7 @@ public class TreeView : Widget, ScrollableIF
 	/**
 	 * Undoes the effect of
 	 * gtk_tree_view_enable_model_drag_source(). Calling this method sets
-	 * #GtkTreeView:reorderable to %FALSE.
+	 * `GtkTreeView`:reorderable to %FALSE.
 	 */
 	public void unsetRowsDragSource()
 	{
@@ -1620,18 +1618,18 @@ public class TreeView : Widget, ScrollableIF
 	}
 
 	/**
-	 * The #GtkTreeView::move-cursor signal is a [keybinding
-	 * signal][GtkSignalAction] which gets emitted when the user
+	 * The `GtkTreeView`::move-cursor signal is a [keybinding
+	 * signal][class@Gtk.SignalAction] which gets emitted when the user
 	 * presses one of the cursor keys.
 	 *
 	 * Applications should not connect to it, but may emit it with
 	 * g_signal_emit_by_name() if they need to control the cursor
 	 * programmatically. In contrast to gtk_tree_view_set_cursor() and
 	 * gtk_tree_view_set_cursor_on_cell() when moving horizontally
-	 * #GtkTreeView::move-cursor does not reset the current selection.
+	 * `GtkTreeView`::move-cursor does not reset the current selection.
 	 *
 	 * Params:
-	 *     step = the granularity of the move, as a #GtkMovementStep.
+	 *     step = the granularity of the move, as a `GtkMovementStep`.
 	 *         %GTK_MOVEMENT_LOGICAL_POSITIONS, %GTK_MOVEMENT_VISUAL_POSITIONS,
 	 *         %GTK_MOVEMENT_DISPLAY_LINES, %GTK_MOVEMENT_PAGES and
 	 *         %GTK_MOVEMENT_BUFFER_ENDS are supported.
@@ -1651,20 +1649,22 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * The "row-activated" signal is emitted when the method
-	 * gtk_tree_view_row_activated() is called, when the user double
-	 * clicks a treeview row with the "activate-on-single-click"
-	 * property set to %FALSE, or when the user single clicks a row when
-	 * the "activate-on-single-click" property set to %TRUE. It is also
-	 * emitted when a non-editable row is selected and one of the keys:
-	 * Space, Shift+Space, Return or Enter is pressed.
+	 * gtk_tree_view_row_activated() is called.
+	 *
+	 * This signal is emitted when the user double-clicks a treeview row with the
+	 * [property@Gtk.TreeView:activate-on-single-click] property set to %FALSE,
+	 * or when the user single-clicks a row when that property set to %TRUE.
+	 *
+	 * This signal is also emitted when a non-editable row is selected and one
+	 * of the keys: <kbd>Space</kbd>, <kbd>Shift</kbd>+<kbd>Space</kbd>, <kbd>Return</kbd> or <kbd>Enter</kbd> is pressed.
 	 *
 	 * For selection handling refer to the
 	 * [tree widget conceptual overview][TreeWidget]
-	 * as well as #GtkTreeSelection.
+	 * as well as `GtkTreeSelection`.
 	 *
 	 * Params:
-	 *     path = the #GtkTreePath for the activated row
-	 *     column = the #GtkTreeViewColumn in which the activation occurred
+	 *     path = the `GtkTreePath` for the activated row
+	 *     column = the `GtkTreeViewColumn` in which the activation occurred
 	 */
 	gulong addOnRowActivated(void delegate(TreePath, TreeViewColumn, TreeView) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

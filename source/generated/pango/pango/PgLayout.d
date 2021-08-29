@@ -84,8 +84,7 @@ public class PgLayout : ObjectG
 	 * Params:
 	 *     context = a `PangoContext`
 	 *
-	 * Returns: the newly allocated `PangoLayout`, with a reference
-	 *     count of one, which should be freed with g_object_unref().
+	 * Returns: the newly allocated `PangoLayout`
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -119,9 +118,7 @@ public class PgLayout : ObjectG
 	 * The attribute list, tab array, and text from the original layout
 	 * are all copied by value.
 	 *
-	 * Returns: the newly allocated `PangoLayout`,
-	 *     with a reference count of one, which should be freed
-	 *     with g_object_unref().
+	 * Returns: the newly allocated `PangoLayout`
 	 */
 	public PgLayout copy()
 	{
@@ -139,7 +136,7 @@ public class PgLayout : ObjectG
 	 * Gets the alignment for the layout: how partial lines are
 	 * positioned within the horizontal space available.
 	 *
-	 * Returns: the alignment.
+	 * Returns: the alignment
 	 */
 	public PangoAlignment getAlignment()
 	{
@@ -149,8 +146,7 @@ public class PgLayout : ObjectG
 	/**
 	 * Gets the attribute list for the layout, if any.
 	 *
-	 * Returns: a `PangoAttrList` or %NULL
-	 *     if none was set.
+	 * Returns: a `PangoAttrList`
 	 */
 	public PgAttributeList getAttributes()
 	{
@@ -171,7 +167,7 @@ public class PgLayout : ObjectG
 	 * See [method@Pango.Layout.set_auto_dir].
 	 *
 	 * Returns: %TRUE if the bidirectional base direction
-	 *     is computed from the layout's contents, %FALSE otherwise.
+	 *     is computed from the layout's contents, %FALSE otherwise
 	 *
 	 * Since: 1.4
 	 */
@@ -183,7 +179,7 @@ public class PgLayout : ObjectG
 	/**
 	 * Gets the Y position of baseline of the first line in @layout.
 	 *
-	 * Returns: baseline of first line, from top of @layout.
+	 * Returns: baseline of first line, from top of @layout
 	 *
 	 * Since: 1.22
 	 */
@@ -209,9 +205,7 @@ public class PgLayout : ObjectG
 	/**
 	 * Retrieves the `PangoContext` used for this layout.
 	 *
-	 * Returns: the `PangoContext` for the layout.
-	 *     This does not have an additional refcount added, so if you want to
-	 *     keep a copy of this around, you must reference it yourself.
+	 * Returns: the `PangoContext` for the layout
 	 */
 	public PgContext getContext()
 	{
@@ -237,10 +231,8 @@ public class PgLayout : ObjectG
 	 *
 	 * Params:
 	 *     index = the byte index of the cursor
-	 *     strongPos = location to store the strong
-	 *         cursor position (may be %NULL)
-	 *     weakPos = location to store the weak cursor
-	 *         position (may be %NULL)
+	 *     strongPos = location to store the strong cursor position
+	 *     weakPos = location to store the weak cursor position
 	 */
 	public void getCursorPos(int index, out PangoRectangle strongPos, out PangoRectangle weakPos)
 	{
@@ -270,7 +262,7 @@ public class PgLayout : ObjectG
 	 * Use [method@Pango.Layout.is_ellipsized] to query whether any
 	 * paragraphs were actually ellipsized.
 	 *
-	 * Returns: the current ellipsization mode for @layout.
+	 * Returns: the current ellipsization mode for @layout
 	 *
 	 * Since: 1.6
 	 */
@@ -293,9 +285,9 @@ public class PgLayout : ObjectG
 	 *
 	 * Params:
 	 *     inkRect = rectangle used to store the extents of the
-	 *         layout as drawn or %NULL to indicate that the result is not needed.
+	 *         layout as drawn
 	 *     logicalRect = rectangle used to store the logical
-	 *         extents of the layout or %NULL to indicate that the result is not needed.
+	 *         extents of the layout
 	 */
 	public void getExtents(out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
@@ -305,10 +297,9 @@ public class PgLayout : ObjectG
 	/**
 	 * Gets the font description for the layout, if any.
 	 *
-	 * Returns: a pointer to the layout's font
-	 *     description, or %NULL if the font description from the layout's
-	 *     context is inherited. This value is owned by the layout and must
-	 *     not be modified or freed.
+	 * Returns: a pointer to the
+	 *     layout's font description, or %NULL if the font description
+	 *     from the layout's context is inherited.
 	 *
 	 * Since: 1.8
 	 */
@@ -344,7 +335,7 @@ public class PgLayout : ObjectG
 	 *
 	 * A negative value indicates a hanging indentation.
 	 *
-	 * Returns: the indent in Pango units.
+	 * Returns: the indent in Pango units
 	 */
 	public int getIndent()
 	{
@@ -354,8 +345,7 @@ public class PgLayout : ObjectG
 	/**
 	 * Returns an iterator to iterate over the visual extents of the layout.
 	 *
-	 * Returns: the new `PangoLayoutIter` that should be freed using
-	 *     [method@Pango.LayoutIter.free].
+	 * Returns: the new `PangoLayoutIter`
 	 */
 	public PgLayoutIter getIter()
 	{
@@ -373,7 +363,7 @@ public class PgLayout : ObjectG
 	 * Gets whether each complete line should be stretched to fill the entire
 	 * width of the layout.
 	 *
-	 * Returns: the justify.
+	 * Returns: the justify value
 	 */
 	public bool getJustify()
 	{
@@ -410,7 +400,7 @@ public class PgLayout : ObjectG
 	/**
 	 * Retrieves the count of lines for the @layout.
 	 *
-	 * Returns: the line count.
+	 * Returns: the line count
 	 */
 	public int getLineCount()
 	{
@@ -514,7 +504,7 @@ public class PgLayout : ObjectG
 	 * the @layout.
 	 *
 	 * Params:
-	 *     attrs = location to store a pointer to an array of logical attributes
+	 *     attrs = location to store a pointer to an array of logical attributes.
 	 *         This value must be freed with g_free().
 	 */
 	public void getLogAttrs(out PangoLogAttr[] attrs)
@@ -559,13 +549,13 @@ public class PgLayout : ObjectG
 	 * This function just calls [method@Pango.Layout.get_extents] followed by
 	 * two [func@extents_to_pixels] calls, rounding @ink_rect and @logical_rect
 	 * such that the rounded rectangles fully contain the unrounded one (that is,
-	 * passes them as first argument to `pango_extents_to_pixels()`).
+	 * passes them as first argument to [func@Pango.extents_to_pixels]).
 	 *
 	 * Params:
 	 *     inkRect = rectangle used to store the extents of the
-	 *         layout as drawn or %NULL to indicate that the result is not needed.
+	 *         layout as drawn
 	 *     logicalRect = rectangle used to store the logical
-	 *         extents of the layout or %NULL to indicate that the result is not needed.
+	 *         extents of the layout
 	 */
 	public void getPixelExtents(out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
@@ -577,12 +567,12 @@ public class PgLayout : ObjectG
 	 * units.
 	 *
 	 * [method@Pango.Layout.get_size] returns the width and height
-	 * scaled by %PANGO_SCALE. This is simply a convenience function around
-	 * [method@Pango.Layout.get_pixel_extents].
+	 * scaled by %PANGO_SCALE. This is simply a convenience function
+	 * around [method@Pango.Layout.get_pixel_extents].
 	 *
 	 * Params:
-	 *     width = location to store the logical width, or %NULL
-	 *     height = location to store the logical height, or %NULL
+	 *     width = location to store the logical width
+	 *     height = location to store the logical height
 	 */
 	public void getPixelSize(out int width, out int height)
 	{
@@ -617,8 +607,8 @@ public class PgLayout : ObjectG
 	 *
 	 * See [method@Pango.Layout.set_single_paragraph_mode].
 	 *
-	 * Returns: %TRUE if the layout does not break paragraphs at
-	 *     paragraph separator characters, %FALSE otherwise.
+	 * Returns: %TRUE if the layout does not break paragraphs
+	 *     at paragraph separator characters, %FALSE otherwise
 	 */
 	public bool getSingleParagraphMode()
 	{
@@ -632,8 +622,8 @@ public class PgLayout : ObjectG
 	 * This is simply a convenience function around [method@Pango.Layout.get_extents].
 	 *
 	 * Params:
-	 *     width = location to store the logical width, or %NULL
-	 *     height = location to store the logical height, or %NULL
+	 *     width = location to store the logical width
+	 *     height = location to store the logical height
 	 */
 	public void getSize(out int width, out int height)
 	{
@@ -643,7 +633,7 @@ public class PgLayout : ObjectG
 	/**
 	 * Gets the amount of spacing between the lines of the layout.
 	 *
-	 * Returns: the spacing in Pango units.
+	 * Returns: the spacing in Pango units
 	 */
 	public int getSpacing()
 	{
@@ -658,8 +648,7 @@ public class PgLayout : ObjectG
 	 *
 	 * The return value should be freed with [method@Pango.TabArray.free].
 	 *
-	 * Returns: a copy of the tabs for this layout,
-	 *     or %NULL.
+	 * Returns: a copy of the tabs for this layout
 	 */
 	public PgTabArray getTabs()
 	{
@@ -674,10 +663,11 @@ public class PgLayout : ObjectG
 	}
 
 	/**
-	 * Gets the text in the layout. The returned text should not
-	 * be freed or modified.
+	 * Gets the text in the layout.
 	 *
-	 * Returns: the text in the @layout.
+	 * The returned text should not be freed or modified.
+	 *
+	 * Returns: the text in the @layout
 	 */
 	public string getText()
 	{
@@ -692,7 +682,7 @@ public class PgLayout : ObjectG
 	 * used in combination with %PANGO_ATTR_FALLBACK, to check if a
 	 * certain font supports all the characters in the string.
 	 *
-	 * Returns: The number of unknown glyphs in @layout.
+	 * Returns: The number of unknown glyphs in @layout
 	 *
 	 * Since: 1.16
 	 */
@@ -730,14 +720,14 @@ public class PgLayout : ObjectG
 	 * The X position is measured from the left edge of the line.
 	 *
 	 * Params:
-	 *     index = the byte index of a grapheme within the layout.
+	 *     index = the byte index of a grapheme within the layout
 	 *     trailing = an integer indicating the edge of the grapheme to retrieve the
 	 *         position of. If > 0, the trailing edge of the grapheme, if 0,
-	 *         the leading of the grapheme.
+	 *         the leading of the grapheme
 	 *     line = location to store resulting line index. (which will
-	 *         between 0 and pango_layout_get_line_count(layout) - 1), or %NULL
+	 *         between 0 and pango_layout_get_line_count(layout) - 1)
 	 *     xPos = location to store resulting position within line
-	 *         (%PANGO_SCALE units per device unit), or %NULL
+	 *         (%PANGO_SCALE units per device unit)
 	 */
 	public void indexToLineX(int index, bool trailing, out int line, out int xPos)
 	{
@@ -770,8 +760,8 @@ public class PgLayout : ObjectG
 	 * and there are paragraphs exceeding that width that have to be
 	 * ellipsized.
 	 *
-	 * Returns: %TRUE if any paragraphs had to be ellipsized, %FALSE
-	 *     otherwise.
+	 * Returns: %TRUE if any paragraphs had to be ellipsized,
+	 *     %FALSE otherwise
 	 *
 	 * Since: 1.16
 	 */
@@ -789,7 +779,7 @@ public class PgLayout : ObjectG
 	 * to be wrapped.
 	 *
 	 * Returns: %TRUE if any paragraphs had to be wrapped, %FALSE
-	 *     otherwise.
+	 *     otherwise
 	 *
 	 * Since: 1.16
 	 */
@@ -813,9 +803,9 @@ public class PgLayout : ObjectG
 	 * of a run.
 	 *
 	 * Motion here is in cursor positions, not in characters, so a single
-	 * call to [method@Pango.Layout.move_cursor_visually] may move the cursor over
-	 * multiple characters when multiple characters combine to form a single
-	 * grapheme.
+	 * call to [method@Pango.Layout.move_cursor_visually] may move the cursor
+	 * over multiple characters when multiple characters combine to form a
+	 * single grapheme.
 	 *
 	 * Params:
 	 *     strong = whether the moving cursor is the strong cursor or the
@@ -826,7 +816,7 @@ public class PgLayout : ObjectG
 	 *         grapheme indicated by @old_index, if > 0, the cursor
 	 *         was at the trailing edge.
 	 *     direction = direction to move cursor. A negative
-	 *         value indicates motion to the left.
+	 *         value indicates motion to the left
 	 *     newIndex = location to store the new cursor byte index.
 	 *         A value of -1 indicates that the cursor has been moved off the
 	 *         beginning of the layout. A value of %G_MAXINT indicates that
@@ -847,6 +837,8 @@ public class PgLayout : ObjectG
 	 * Sets the alignment for the layout: how partial lines are
 	 * positioned within the horizontal space available.
 	 *
+	 * The default alignment is %PANGO_ALIGN_LEFT.
+	 *
 	 * Params:
 	 *     alignment = the alignment
 	 */
@@ -857,10 +849,11 @@ public class PgLayout : ObjectG
 
 	/**
 	 * Sets the text attributes for a layout object.
+	 *
 	 * References @attrs, so the caller can unref its reference.
 	 *
 	 * Params:
-	 *     attrs = a #PangoAttrList, can be %NULL
+	 *     attrs = a `PangoAttrList`
 	 */
 	public void setAttributes(PgAttributeList attrs)
 	{
@@ -887,7 +880,7 @@ public class PgLayout : ObjectG
 	 *
 	 * Params:
 	 *     autoDir = if %TRUE, compute the bidirectional base direction
-	 *         from the layout's contents.
+	 *         from the layout's contents
 	 *
 	 * Since: 1.4
 	 */
@@ -908,6 +901,9 @@ public class PgLayout : ObjectG
 	 * force it to be layed out in multiple paragraphs, then whether
 	 * each paragraph is ellipsized separately or the entire layout
 	 * is ellipsized as a whole depends on the set height of the layout.
+	 *
+	 * The default value is %PANGO_ELLIPSIZE_NONE.
+	 *
 	 * See [method@Pango.Layout.set_height] for details.
 	 *
 	 * Params:
@@ -923,11 +919,11 @@ public class PgLayout : ObjectG
 	/**
 	 * Sets the default font description for the layout.
 	 *
-	 * If no font description is set on the layout, the font description from
-	 * the layout's context is used.
+	 * If no font description is set on the layout, the
+	 * font description from the layout's context is used.
 	 *
 	 * Params:
-	 *     desc = the new `PangoFontDescription`, or %NULL
+	 *     desc = the new `PangoFontDescription`
 	 *         to unset the current font description
 	 */
 	public void setFontDescription(PgFontDescription desc)
@@ -950,7 +946,7 @@ public class PgLayout : ObjectG
 	 * If @height is negative, it will be the (negative of) maximum number of lines
 	 * per paragraph. That is, the total number of lines shown may well be more than
 	 * this value if the layout contains multiple paragraphs of text.
-	 * The default value of -1 means that first line of each paragraph is ellipsized.
+	 * The default value of -1 means that the first line of each paragraph is ellipsized.
 	 * This behavior may be changed in the future to act per layout instead of per
 	 * paragraph. File a bug against pango at
 	 * [https://gitlab.gnome.org/gnome/pango](https://gitlab.gnome.org/gnome/pango)
@@ -983,8 +979,10 @@ public class PgLayout : ObjectG
 	 * The indent setting is ignored if layout alignment is set to
 	 * %PANGO_ALIGN_CENTER.
 	 *
+	 * The default value is 0.
+	 *
 	 * Params:
-	 *     indent = the amount by which to indent.
+	 *     indent = the amount by which to indent
 	 */
 	public void setIndent(int indent)
 	{
@@ -1002,8 +1000,10 @@ public class PgLayout : ObjectG
 	 * Note that this setting is not implemented and so is ignored in
 	 * Pango older than 1.18.
 	 *
+	 * The default value is %FALSE.
+	 *
 	 * Params:
-	 *     justify = whether the lines in the layout should be justified.
+	 *     justify = whether the lines in the layout should be justified
 	 */
 	public void setJustify(bool justify)
 	{
@@ -1023,7 +1023,7 @@ public class PgLayout : ObjectG
 	 * (as determined by the font(s)). In this case, the spacing
 	 * set with [method@Pango.Layout.set_spacing] is ignored.
 	 *
-	 * If @factor is zero, spacing is applied as before.
+	 * If @factor is zero (the default), spacing is applied as before.
 	 *
 	 * Params:
 	 *     factor = the new line spacing factor
@@ -1039,15 +1039,16 @@ public class PgLayout : ObjectG
 	 * Sets the layout text and attribute list from marked-up text.
 	 *
 	 * See [Pango Markup](pango_markup.html)).
+	 *
 	 * Replaces the current text and attribute list.
 	 *
-	 * This is the Same as [method@Pango.Layout.set_markup_with_accel],
+	 * This is the same as [method@Pango.Layout.set_markup_with_accel],
 	 * but the markup text isn't scanned for accelerators.
 	 *
 	 * Params:
 	 *     markup = marked-up text
 	 *     length = length of marked-up text in bytes, or -1 if @markup is
-	 *         null-terminated
+	 *         `NUL`-terminated
 	 */
 	public void setMarkup(string markup, int length)
 	{
@@ -1058,6 +1059,7 @@ public class PgLayout : ObjectG
 	 * Sets the layout text and attribute list from marked-up text.
 	 *
 	 * See [Pango Markup](pango_markup.html)).
+	 *
 	 * Replaces the current text and attribute list.
 	 *
 	 * If @accel_marker is nonzero, the given character will mark the
@@ -1071,10 +1073,10 @@ public class PgLayout : ObjectG
 	 * Params:
 	 *     markup = marked-up text (see [Pango Markup](pango_markup.html))
 	 *     length = length of marked-up text in bytes, or -1 if @markup is
-	 *         null-terminated
+	 *         `NUL`-terminated
 	 *     accelMarker = marker for accelerators in the text
 	 *     accelChar = return location
-	 *         for first located accelerator, or %NULL
+	 *         for first located accelerator
 	 */
 	public void setMarkupWithAccel(string markup, int length, dchar accelMarker, out dchar accelChar)
 	{
@@ -1089,6 +1091,8 @@ public class PgLayout : ObjectG
 	 * and display a glyph for paragraph separator characters. Used when
 	 * you want to allow editing of newlines on a single text line.
 	 *
+	 * The default value is %FALSE.
+	 *
 	 * Params:
 	 *     setting = new setting
 	 */
@@ -1098,18 +1102,19 @@ public class PgLayout : ObjectG
 	}
 
 	/**
-	 * Sets the amount of spacing in Pango unit between
+	 * Sets the amount of spacing in Pango units between
 	 * the lines of the layout.
 	 *
 	 * When placing lines with spacing, Pango arranges things so that
 	 *
 	 * line2.top = line1.bottom + spacing
 	 *
-	 * Note: Since 1.44, Pango defaults to using the line height
-	 * (as determined by the font) for placing lines. The @spacing
-	 * set with this function is only taken into account when the
-	 * line height factor is set to zero with
-	 * [method@Pango.Layout.set_line_spacing].
+	 * The default value is 0.
+	 *
+	 * Note: Since 1.44, Pango is using the line height (as determined
+	 * by the font) for placing lines when the line height factor is set
+	 * to a non-zero value with [method@Pango.Layout.set_line_spacing].
+	 * In that case, the @spacing set with this function is ignored.
 	 *
 	 * Params:
 	 *     spacing = the amount of spacing
@@ -1127,7 +1132,7 @@ public class PgLayout : ObjectG
 	 * you must free your copy of @tabs yourself.
 	 *
 	 * Params:
-	 *     tabs = a `PangoTabArray`, or %NULL
+	 *     tabs = a `PangoTabArray`
 	 */
 	public void setTabs(PgTabArray tabs)
 	{
@@ -1176,6 +1181,8 @@ public class PgLayout : ObjectG
 	 * with [method@Pango.Layout.set_width]. To turn off wrapping,
 	 * set the width to -1.
 	 *
+	 * The default value is %PANGO_WRAP_WORD.
+	 *
 	 * Params:
 	 *     wrap = the wrap mode
 	 */
@@ -1188,16 +1195,15 @@ public class PgLayout : ObjectG
 	 * Converts from X and Y position within a layout to the byte index to the
 	 * character at that logical position.
 	 *
-	 * If the Y position is not inside the
-	 * layout, the closest position is chosen (the position will be clamped
-	 * inside the layout). If the X position is not within the layout, then
-	 * the start or the end of the line is chosen as described for
-	 * [method@Pango.LayoutLine.x_to_index]. If either the X or Y positions
-	 * were not inside the layout, then the function returns %FALSE; on an
-	 * exact hit, it returns %TRUE.
+	 * If the Y position is not inside the layout, the closest position is
+	 * chosen (the position will be clamped inside the layout). If the X position
+	 * is not within the layout, then the start or the end of the line is
+	 * chosen as described for [method@Pango.LayoutLine.x_to_index]. If either
+	 * the X or Y positions were not inside the layout, then the function returns
+	 * %FALSE; on an exact hit, it returns %TRUE.
 	 *
 	 * Params:
-	 *     x = the X offset (in Pango units) from the left edge of the layout.
+	 *     x = the X offset (in Pango units) from the left edge of the layout
 	 *     y = the Y offset (in Pango units) from the top edge of the layout
 	 *     index = location to store calculated byte index
 	 *     trailing = location to store a integer indicating where
@@ -1205,7 +1211,7 @@ public class PgLayout : ObjectG
 	 *         number of characters in the grapheme. 0 represents the leading edge
 	 *         of the grapheme.
 	 *
-	 * Returns: %TRUE if the coordinates were inside text, %FALSE otherwise.
+	 * Returns: %TRUE if the coordinates were inside text, %FALSE otherwise
 	 */
 	public bool xyToIndex(int x, int y, out int index, out int trailing)
 	{

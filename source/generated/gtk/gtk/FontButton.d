@@ -200,6 +200,19 @@ public class FontButton : Widget, FontChooserIF
 	}
 
 	/**
+	 * Emitted to when the font button is activated.
+	 *
+	 * The `::activate` signal on `GtkFontButton` is an action signal and
+	 * emitting it causes the button to present its dialog.
+	 *
+	 * Since: 4.4
+	 */
+	gulong addOnActivate(void delegate(FontButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "activate", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
 	 * Emitted when the user selects a font.
 	 *
 	 * When handling this signal, use [method@Gtk.FontChooser.get_font]

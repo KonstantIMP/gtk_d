@@ -24,7 +24,7 @@ private import std.algorithm;
  * this item.
  * 
  * The [property@Gtk.ColumnView:show-row-separators] and
- * [propertyGtk.ColumnView:show-column-separators] properties offer a simple way
+ * [property@Gtk.ColumnView:show-column-separators] properties offer a simple way
  * to display separators between the rows or columns.
  * 
  * `GtkColumnView` allows the user to select items according to the selection
@@ -127,7 +127,7 @@ public class ColumnView : Widget, ScrollableIF
 	 * to add columns next.
 	 *
 	 * Params:
-	 *     model = the list model to use, or %NULL
+	 *     model = the list model to use
 	 *
 	 * Returns: a new `GtkColumnView`
 	 *
@@ -325,7 +325,7 @@ public class ColumnView : Widget, ScrollableIF
 	 * This must be a [iface@Gtk.SelectionModel].
 	 *
 	 * Params:
-	 *     model = the model to use or %NULL for none
+	 *     model = the model to use
 	 */
 	public void setModel(SelectionModelIF model)
 	{
@@ -394,7 +394,7 @@ public class ColumnView : Widget, ScrollableIF
 	 * If @column is %NULL, the view will be unsorted.
 	 *
 	 * Params:
-	 *     column = the `GtkColumnViewColumn` to sort by, or %NULL
+	 *     column = the `GtkColumnViewColumn` to sort by
 	 *     direction = the direction to sort in
 	 */
 	public void sortByColumn(ColumnViewColumn column, GtkSortType direction)

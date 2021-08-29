@@ -14,7 +14,7 @@ private import std.algorithm;
 /**
  * Renders a keyboard accelerator in a cell
  * 
- * #GtkCellRendererAccel displays a keyboard accelerator (i.e. a key
+ * `GtkCellRendererAccel` displays a keyboard accelerator (i.e. a key
  * combination like `Control + a`). If the cell renderer is editable,
  * the accelerator can be changed by simply typing the new combination.
  */
@@ -54,7 +54,7 @@ public class CellRendererAccel : CellRendererText
 	}
 
 	/**
-	 * Creates a new #GtkCellRendererAccel.
+	 * Creates a new `GtkCellRendererAccel`.
 	 *
 	 * Returns: the new cell renderer
 	 *

@@ -271,10 +271,12 @@ public interface ToplevelIF{
 	 * Returns whether the desktop environment supports
 	 * tiled window states.
 	 *
-	 * Returns: %TRUE if the desktop environment supports
-	 *     tiled window states
+	 * Returns: %TRUE if the desktop environment supports tiled window states
 	 */
 	public bool supportsEdgeConstraints();
+
+	/** */
+	public bool titlebarGesture(GdkTitlebarGesture gesture);
 
 	/**
 	 * Emitted when the size for the surface needs to be computed, when

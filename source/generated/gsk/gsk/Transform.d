@@ -88,7 +88,7 @@ public class Transform
 	 * Params:
 	 *     second = the second transform
 	 *
-	 * Returns: %TRUE if the two transforms perform the same operation.
+	 * Returns: %TRUE if the two transforms perform the same operation
 	 */
 	public bool equal(Transform second)
 	{
@@ -114,8 +114,7 @@ public class Transform
 	 * between those cases, you should check @self is not %NULL
 	 * before calling this function.
 	 *
-	 * Returns: The inverted transform or %NULL if the transform
-	 *     cannot be inverted.
+	 * Returns: The inverted transform
 	 */
 	public Transform invert()
 	{
@@ -333,8 +332,11 @@ public class Transform
 	 * Converts a `GskTransform` to 2D affine transformation factors.
 	 *
 	 * @self must be a 2D transformation. If you are not
-	 * sure, use gsk_transform_get_category() >=
-	 * %GSK_TRANSFORM_CATEGORY_2D_AFFINE to check.
+	 * sure, use
+	 *
+	 * gsk_transform_get_category() >= %GSK_TRANSFORM_CATEGORY_2D_AFFINE
+	 *
+	 * to check.
 	 *
 	 * Params:
 	 *     outScaleX = return location for the scale
@@ -389,8 +391,11 @@ public class Transform
 	 * Converts a `GskTransform` to a translation operation.
 	 *
 	 * @self must be a 2D transformation. If you are not
-	 * sure, use gsk_transform_get_category() >=
-	 * %GSK_TRANSFORM_CATEGORY_2D_TRANSLATE to check.
+	 * sure, use
+	 *
+	 * gsk_transform_get_category() >= %GSK_TRANSFORM_CATEGORY_2D_TRANSLATE
+	 *
+	 * to check.
 	 *
 	 * Params:
 	 *     outDx = return location for the translation

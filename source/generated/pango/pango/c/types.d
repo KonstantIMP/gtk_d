@@ -60,7 +60,7 @@ public enum PangoAlignment
  * The `PangoAttrType` distinguishes between different types of attributes.
  *
  * Along with the predefined values, it is possible to allocate additional
- * values for custom attributes using [type_func@attr_type_register]. The predefined
+ * values for custom attributes using [func@AttrType.register]. The predefined
  * values are given below. The type of structure used to store the attribute is
  * listed in parentheses after the description.
  */
@@ -195,7 +195,7 @@ public enum PangoAttrType
 /**
  * `PangoBidiType` represents the bidirectional character
  * type of a Unicode character as specified by the
- * <ulink url="http://www.unicode.org/reports/tr9/">Unicode bidirectional algorithm</ulink>.
+ * [Unicode bidirectional algorithm](http://www.unicode.org/reports/tr9/).
  *
  * Deprecated: Use fribidi for this information
  *
@@ -279,11 +279,27 @@ public enum PangoBidiType
 	 * Other Neutrals
 	 */
 	ON = 18,
+	/**
+	 * Left-to-Right isolate. Since 1.48.6
+	 */
+	LRI = 19,
+	/**
+	 * Right-to-Left isolate. Since 1.48.6
+	 */
+	RLI = 20,
+	/**
+	 * First strong isolate. Since 1.48.6
+	 */
+	FSI = 21,
+	/**
+	 * Pop directional isolate. Since 1.48.6
+	 */
+	PDI = 22,
 }
 
 /**
- * `PangoCoverageLevel` is used to indicate how well a font can represent
- * a particular Unicode character for a particular script.
+ * `PangoCoverageLevel` is used to indicate how well a font can
+ * represent a particular Unicode character for a particular script.
  *
  * Since 1.44, only %PANGO_COVERAGE_NONE and %PANGO_COVERAGE_EXACT
  * will be returned.
@@ -291,24 +307,27 @@ public enum PangoBidiType
 public enum PangoCoverageLevel
 {
 	/**
-	 * The character is not representable with the font.
+	 * The character is not representable with
+	 * the font.
 	 */
 	NONE = 0,
 	/**
-	 * The character is represented in a way that may be
-	 * comprehensible but is not the correct graphical form.
-	 * For instance, a Hangul character represented as a
-	 * a sequence of Jamos, or a Latin transliteration of a Cyrillic word.
+	 * The character is represented in a
+	 * way that may be comprehensible but is not the correct
+	 * graphical form. For instance, a Hangul character represented
+	 * as a a sequence of Jamos, or a Latin transliteration of a
+	 * Cyrillic word.
 	 */
 	FALLBACK = 1,
 	/**
-	 * The character is represented as basically the correct
-	 * graphical form, but with a stylistic variant inappropriate for
-	 * the current script.
+	 * The character is represented as
+	 * basically the correct graphical form, but with a stylistic
+	 * variant inappropriate for the current script.
 	 */
 	APPROXIMATE = 2,
 	/**
-	 * The character is represented as the correct graphical form.
+	 * The character is represented as the
+	 * correct graphical form.
 	 */
 	EXACT = 3,
 }
@@ -501,7 +520,7 @@ public enum PangoGravityHint
 	/**
 	 * for scripts not in their natural direction (eg.
 	 * Latin in East gravity), choose per-script gravity such that every script
-	 * respects the line progression.  This means, Latin and Arabic will take
+	 * respects the line progression. This means, Latin and Arabic will take
 	 * opposite gravities and both flow top-to-bottom for example.
 	 */
 	LINE = 2,
@@ -527,7 +546,7 @@ public enum PangoOverline
 }
 
 /**
- * #PangoRenderPart defines different items to render for such
+ * `PangoRenderPart` defines different items to render for such
  * purposes as setting colors.
  *
  * Since: 1.8
@@ -1048,7 +1067,7 @@ public enum PangoScript
 /**
  * Flags influencing the shaping process.
  *
- * `PangoShapeFlags` can be passed to pango_shape_with_flags().
+ * `PangoShapeFlags` can be passed to [func@Pango.shape_with_flags].
  */
 public enum PangoShapeFlags
 {
@@ -1299,6 +1318,11 @@ public enum PangoWeight
 /**
  * `PangoWrapMode` describes how to wrap the lines of a `PangoLayout`
  * to the desired width.
+ *
+ * For @PANGO_WRAP_WORD, Pango uses break opportunities that are determined
+ * by the Unicode line breaking algorithm. For @PANGO_WRAP_CHAR, Pango allows
+ * breaking at grapheme boundaries that are determined by the Unicode text
+ * segmentation algorithm.
  */
 public enum PangoWrapMode
 {
@@ -1510,7 +1534,7 @@ struct PangoAttrShape
 	 */
 	PangoRectangle logicalRect;
 	/**
-	 * user data set (see [type_func@Pango.AttrShape.new_with_data])
+	 * user data set (see [func@Pango.AttrShape.new_with_data])
 	 */
 	void* data;
 	/**
@@ -1640,9 +1664,9 @@ struct PangoFontClass
 	/**
 	 *
 	 * Params:
-	 *     font = a `PangoFont`, or %NULL
-	 * Returns: the `PangoFontMap` for the
-	 *     font, or %NULL if @font is %NULL.
+	 *     font = a `PangoFont`
+	 * Returns: the `PangoFontMap`
+	 *     for the font
 	 */
 	extern(C) PangoFontMap* function(PangoFont* font) getFontMap;
 	/** */
@@ -1755,13 +1779,13 @@ struct PangoFontMap
 }
 
 /**
- * The #PangoFontMapClass structure holds the virtual functions for
- * a particular #PangoFontMap implementation.
+ * The `PangoFontMapClass` structure holds the virtual functions for
+ * a particular `PangoFontMap` implementation.
  */
 struct PangoFontMapClass
 {
 	/**
-	 * parent #GObjectClass.
+	 * parent `GObjectClass`
 	 */
 	GObjectClass parentClass;
 	/**
@@ -1833,13 +1857,13 @@ struct PangoFontset
 }
 
 /**
- * The #PangoFontsetClass structure holds the virtual functions for
- * a particular #PangoFontset implementation.
+ * The `PangoFontsetClass` structure holds the virtual functions for
+ * a particular `PangoFontset` implementation.
  */
 struct PangoFontsetClass
 {
 	/**
-	 * parent #GObjectClass.
+	 * parent `GObjectClass`
 	 */
 	GObjectClass parentClass;
 	/**
@@ -1847,16 +1871,14 @@ struct PangoFontsetClass
 	 * Params:
 	 *     fontset = a `PangoFontset`
 	 *     wc = a Unicode character
-	 * Returns: a `PangoFont`. The caller must call
-	 *     g_object_unref() when finished with the font.
+	 * Returns: a `PangoFont`
 	 */
 	extern(C) PangoFont* function(PangoFontset* fontset, uint wc) getFont;
 	/**
 	 *
 	 * Params:
-	 *     fontset = a #PangoFontset
-	 * Returns: a #PangoFontMetrics object. The caller must call pango_font_metrics_unref()
-	 *     when finished using the object.
+	 *     fontset = a `PangoFontset`
+	 * Returns: a `PangoFontMetrics` object
 	 */
 	extern(C) PangoFontMetrics* function(PangoFontset* fontset) getMetrics;
 	/** */
@@ -1964,7 +1986,7 @@ struct PangoGlyphString
  * A `PangoGlyphVisAttr` structure communicates information between
  * the shaping and rendering phases.
  *
- * Currently, it contains only cluster start information. yMore attributes
+ * Currently, it contains only cluster start information. More attributes
  * may be added in the future.
  */
 struct PangoGlyphVisAttr
@@ -2127,7 +2149,7 @@ struct PangoRenderer
 }
 
 /**
- * Class structure for #PangoRenderer.
+ * Class structure for `PangoRenderer`.
  *
  * The following vfuncs take user space coordinates in Pango units
  * and have default implementations:
@@ -2335,7 +2357,7 @@ alias PANGO_VERSION_MAJOR = VERSION_MAJOR;
 /**
  * The micro component of the version of Pango available at compile-time.
  */
-enum VERSION_MICRO = 5;
+enum VERSION_MICRO = 9;
 alias PANGO_VERSION_MICRO = VERSION_MICRO;
 
 /**
@@ -2347,5 +2369,5 @@ alias PANGO_VERSION_MINOR = VERSION_MINOR;
 /**
  * A string literal containing the version of Pango available at compile-time.
  */
-enum VERSION_STRING = "1.48.5";
+enum VERSION_STRING = "1.48.9";
 alias PANGO_VERSION_STRING = VERSION_STRING;

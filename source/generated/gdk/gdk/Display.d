@@ -10,6 +10,8 @@ private import gdk.Surface;
 private import gdk.c.functions;
 public  import gdk.c.types;
 private import gio.ListModelIF;
+private import glib.ErrorG;
+private import glib.GException;
 private import glib.ListG;
 private import glib.Str;
 private import glib.c.functions;
@@ -74,7 +76,8 @@ public class Display : ObjectG
 	 * Gets the default `GdkDisplay`.
 	 *
 	 * This is a convenience function for:
-	 * `gdk_display_manager_get_default_display (gdk_display_manager_get ())`.
+	 *
+	 * gdk_display_manager_get_default_display (gdk_display_manager_get ())
 	 *
 	 * Returns: a `GdkDisplay`, or %NULL if
 	 *     there is no default display
@@ -94,11 +97,12 @@ public class Display : ObjectG
 	/**
 	 * Opens a display.
 	 *
+	 * If opening the display fails, `NULL` is returned.
+	 *
 	 * Params:
 	 *     displayName = the name of the display to open
 	 *
-	 * Returns: a `GdkDisplay`, or %NULL if the
-	 *     display could not be opened
+	 * Returns: a `GdkDisplay`
 	 */
 	public static Display open(string displayName)
 	{
@@ -164,8 +168,7 @@ public class Display : ObjectG
 	 * Returns a `GdkAppLaunchContext` suitable for launching
 	 * applications on the given display.
 	 *
-	 * Returns: a new `GdkAppLaunchContext` for @display.
-	 *     Free with g_object_unref() when done
+	 * Returns: a new `GdkAppLaunchContext` for @display
 	 */
 	public AppLaunchContext getAppLaunchContext()
 	{
@@ -250,7 +253,7 @@ public class Display : ObjectG
 	 * You can listen to the GListModel::items-changed signal on
 	 * this list to monitor changes to the monitor of this display.
 	 *
-	 * Returns: a #GListModel of `GdkMonitor`
+	 * Returns: a `GListModel` of `GdkMonitor`
 	 */
 	public ListModelIF getMonitors()
 	{
@@ -315,7 +318,7 @@ public class Display : ObjectG
 	 * Gets the startup notification ID for a Wayland display, or %NULL
 	 * if no ID has been defined.
 	 *
-	 * Returns: the startup notification ID for @display, or %NULL
+	 * Returns: the startup notification ID for @display
 	 */
 	public string getStartupNotificationId()
 	{
@@ -406,9 +409,9 @@ public class Display : ObjectG
 	 * Params:
 	 *     keycode = a keycode
 	 *     keys = return
-	 *         location for array of `GdkKeymapKey`, or %NULL
+	 *         location for array of `GdkKeymapKey`
 	 *     keyvals = return
-	 *         location for array of keyvals, or %NULL
+	 *         location for array of keyvals
 	 *
 	 * Returns: %TRUE if there were any entries
 	 */
@@ -478,6 +481,42 @@ public class Display : ObjectG
 	public void notifyStartupComplete(string startupId)
 	{
 		gdk_display_notify_startup_complete(gdkDisplay, Str.toStringz(startupId));
+	}
+
+	/**
+	 * Checks that OpenGL is available for @self and ensures that it is
+	 * properly initialized.
+	 * When this fails, an @error will be set describing the error and this
+	 * function returns %FALSE.
+	 *
+	 * Note that even if this function succeeds, creating a `GdkGLContext`
+	 * may still fail.
+	 *
+	 * This function is idempotent. Calling it multiple times will just
+	 * return the same value or error.
+	 *
+	 * You never need to call this function, GDK will call it automatically
+	 * as needed. But you can use it as a check when setting up code that
+	 * might make use of OpenGL.
+	 *
+	 * Returns: %TRUE if the display supports OpenGL
+	 *
+	 * Since: 4.4
+	 *
+	 * Throws: GException on failure.
+	 */
+	public bool prepareGl()
+	{
+		GError* err = null;
+
+		auto __p = gdk_display_prepare_gl(gdkDisplay, &err) != 0;
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		return __p;
 	}
 
 	/**
@@ -552,12 +591,11 @@ public class Display : ObjectG
 	 *     keycode = a keycode
 	 *     state = a modifier state
 	 *     group = active keyboard group
-	 *     keyval = return location for keyval, or %NULL
-	 *     effectiveGroup = return location for effective
-	 *         group, or %NULL
-	 *     level = return location for level, or %NULL
-	 *     consumed = return location for modifiers
-	 *         that were used to determine the group or level, or %NULL
+	 *     keyval = return location for keyval
+	 *     effectiveGroup = return location for effective group
+	 *     level = return location for level
+	 *     consumed = return location for modifiers that were used
+	 *         to determine the group or level
 	 *
 	 * Returns: %TRUE if there was a keyval bound to keycode/state/group.
 	 */

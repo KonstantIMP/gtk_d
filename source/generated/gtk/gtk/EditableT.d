@@ -55,7 +55,7 @@ public  import std.algorithm;
  * ## Implementing GtkEditable
  * 
  * The most likely scenario for implementing `GtkEditable` on your own widget
- * is that you will embed a #GtkText inside a complex widget, and want to
+ * is that you will embed a `GtkText` inside a complex widget, and want to
  * delegate the editable functionality to that text widget. `GtkEditable`
  * provides some utility functions to make this easy.
  * 
@@ -303,8 +303,8 @@ public template EditableT(TStruct)
 	 * Note that positions are specified in characters, not bytes.
 	 *
 	 * Params:
-	 *     startPos = location to store the starting position, or %NULL
-	 *     endPos = location to store the end position, or %NULL
+	 *     startPos = location to store the starting position
+	 *     endPos = location to store the end position
 	 *
 	 * Returns: %TRUE if there is a non-empty selection, %FALSE otherwise
 	 */

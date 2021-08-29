@@ -438,8 +438,7 @@ public class GLShader : ObjectG
 	 * Gets the resource path for the GLSL sourcecode being used
 	 * to render this shader.
 	 *
-	 * Returns: The resource path for the shader,
-	 *     or %NULL if none.
+	 * Returns: The resource path for the shader
 	 */
 	public string getResource()
 	{

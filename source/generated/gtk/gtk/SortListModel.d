@@ -10,8 +10,8 @@ public  import gtk.c.types;
 
 
 /**
- * `GtkSortListModel` is a list model that sorts the elements of
- * the underlying model according to a `GtkSorter`.
+ * A `GListModel` that sorts the elements of an underlying model
+ * according to a `GtkSorter`.
  * 
  * The model can be set up to do incremental sorting, so that
  * sorting long lists doesn't block the UI. See
@@ -65,8 +65,8 @@ public class SortListModel : ObjectG, ListModelIF
 	 * Creates a new sort list model that uses the @sorter to sort @model.
 	 *
 	 * Params:
-	 *     model = the model to sort, or %NULL
-	 *     sorter = the `GtkSorter` to sort @model with, or %NULL
+	 *     model = the model to sort
+	 *     sorter = the `GtkSorter` to sort @model with,
 	 *
 	 * Returns: a new `GtkSortListModel`
 	 *

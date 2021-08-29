@@ -130,7 +130,7 @@ public class BookmarkList : ObjectG, ListModelIF
 	 * Sets the @attributes to be enumerated and starts the enumeration.
 	 *
 	 * If @attributes is %NULL, no attributes will be queried, but a list
-	 * of #GFileInfos will still be created.
+	 * of `GFileInfo`s will still be created.
 	 *
 	 * Params:
 	 *     attributes = the attributes to enumerate

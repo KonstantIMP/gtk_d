@@ -184,7 +184,7 @@ public class Gesture : EventController
 	 *
 	 * This returns %NULL if the gesture is not being interacted.
 	 *
-	 * Returns: a `GdkDevice`, or %NULL
+	 * Returns: a `GdkDevice`
 	 */
 	public Device getDevice()
 	{
@@ -273,7 +273,7 @@ public class Gesture : EventController
 	 * Returns the @sequence state, as seen by @gesture.
 	 *
 	 * Params:
-	 *     sequence = a #GdkEventSequence
+	 *     sequence = a `GdkEventSequence`
 	 *
 	 * Returns: The sequence state in @gesture
 	 */
@@ -335,7 +335,7 @@ public class Gesture : EventController
 	 * corresponding to @sequence.
 	 *
 	 * Params:
-	 *     sequence = a `GdkEventSequence` or %NULL
+	 *     sequence = a `GdkEventSequence`
 	 *
 	 * Returns: %TRUE if @gesture is handling @sequence, %FALSE otherwise
 	 */

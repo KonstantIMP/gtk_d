@@ -124,8 +124,7 @@ public class Fixed : Widget
 	 * Params:
 	 *     widget = a `GtkWidget`, child of @fixed
 	 *
-	 * Returns: a `GskTransform` or %NULL
-	 *     in case no transform has been set on @widget
+	 * Returns: a `GskTransform`
 	 */
 	public Transform getChildTransform(Widget widget)
 	{
@@ -186,7 +185,7 @@ public class Fixed : Widget
 	 *
 	 * Params:
 	 *     widget = a `GtkWidget`, child of @fixed
-	 *     transform = the transformation assigned to @widget or %NULL
+	 *     transform = the transformation assigned to @widget
 	 *         to reset @widget's transform
 	 */
 	public void setChildTransform(Widget widget, Transform transform)

@@ -225,8 +225,7 @@ public class IconTheme : ObjectG
 	 *
 	 * See [method@Gtk.IconTheme.set_resource_path].
 	 *
-	 * Returns: A list of resource paths or %NULL.
-	 *     The returned value should be freed with g_strfreev().
+	 * Returns: A list of resource paths
 	 */
 	public string[] getResourcePath()
 	{
@@ -241,8 +240,7 @@ public class IconTheme : ObjectG
 	 *
 	 * See [method@Gtk.IconTheme.set_search_path].
 	 *
-	 * Returns: a list of icon theme path directories or %NULL.
-	 *     The returned value should be freed with g_strfreev().
+	 * Returns: a list of icon theme path directories
 	 */
 	public string[] getSearchPath()
 	{
@@ -273,6 +271,8 @@ public class IconTheme : ObjectG
 	 *     gicon = a `GIcon`
 	 *
 	 * Returns: %TRUE if @self includes an icon for @gicon
+	 *
+	 * Since: 4.2
 	 */
 	public bool hasGicon(IconIF gicon)
 	{
@@ -379,9 +379,9 @@ public class IconTheme : ObjectG
 	 *     path = NULL-terminated array of resource paths
 	 *         that are searched for icons
 	 */
-	public void setResourcePath(string path)
+	public void setResourcePath(string[] path)
 	{
-		gtk_icon_theme_set_resource_path(gtkIconTheme, Str.toStringz(path));
+		gtk_icon_theme_set_resource_path(gtkIconTheme, Str.toStringzArray(path));
 	}
 
 	/**
@@ -415,7 +415,7 @@ public class IconTheme : ObjectG
 	 * overriding system configuration.
 	 *
 	 * This function cannot be called on the icon theme objects returned
-	 * from [type_func@Gtk.IconTheme.get_for_display].
+	 * from [func@Gtk.IconTheme.get_for_display].
 	 *
 	 * Params:
 	 *     themeName = name of icon theme to use instead of

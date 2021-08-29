@@ -30,7 +30,7 @@ public  import gtk.c.types;
  * using [method@Gtk.ComboBoxText.get_active_text].
  * 
  * You should not call [method@Gtk.ComboBox.set_model] or attempt to pack more
- * cells into this combo box via its [interface@Gtk.CellLayout] interface.
+ * cells into this combo box via its [iface@Gtk.CellLayout] interface.
  * 
  * # GtkComboBoxText as GtkBuildable
  * 
@@ -135,7 +135,7 @@ public static GType getType()
  * with a position of -1.
  *
  * Params:
- *     id = a string ID for this value, or %NULL
+ *     id = a string ID for this value
  *     text = A string
  */
 public void append(string id, string text)
@@ -187,7 +187,7 @@ public string getActiveText()
  *
  * Params:
  *     position = An index to insert @text
- *     id = a string ID for this value, or %NULL
+ *     id = a string ID for this value
  *     text = A string to display
  */
 public void insert(int position, string id, string text)
@@ -221,7 +221,7 @@ public void insertText(int position, string text)
  * with a position of 0.
  *
  * Params:
- *     id = a string ID for this value, or %NULL
+ *     id = a string ID for this value
  *     text = a string
  */
 public void prepend(string id, string text)

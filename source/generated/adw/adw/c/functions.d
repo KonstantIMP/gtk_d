@@ -200,6 +200,7 @@ shared static this()
 	Linker.link(adw_flap_get_flap_position, "adw_flap_get_flap_position", LIBRARY_ADW);
 	Linker.link(adw_flap_get_fold_duration, "adw_flap_get_fold_duration", LIBRARY_ADW);
 	Linker.link(adw_flap_get_fold_policy, "adw_flap_get_fold_policy", LIBRARY_ADW);
+	Linker.link(adw_flap_get_fold_threshold_policy, "adw_flap_get_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_flap_get_folded, "adw_flap_get_folded", LIBRARY_ADW);
 	Linker.link(adw_flap_get_locked, "adw_flap_get_locked", LIBRARY_ADW);
 	Linker.link(adw_flap_get_modal, "adw_flap_get_modal", LIBRARY_ADW);
@@ -215,6 +216,7 @@ shared static this()
 	Linker.link(adw_flap_set_flap_position, "adw_flap_set_flap_position", LIBRARY_ADW);
 	Linker.link(adw_flap_set_fold_duration, "adw_flap_set_fold_duration", LIBRARY_ADW);
 	Linker.link(adw_flap_set_fold_policy, "adw_flap_set_fold_policy", LIBRARY_ADW);
+	Linker.link(adw_flap_set_fold_threshold_policy, "adw_flap_set_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_flap_set_locked, "adw_flap_set_locked", LIBRARY_ADW);
 	Linker.link(adw_flap_set_modal, "adw_flap_set_modal", LIBRARY_ADW);
 	Linker.link(adw_flap_set_reveal_duration, "adw_flap_set_reveal_duration", LIBRARY_ADW);
@@ -254,6 +256,7 @@ shared static this()
 	Linker.link(adw_leaflet_get_child_by_name, "adw_leaflet_get_child_by_name", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_child_transition_duration, "adw_leaflet_get_child_transition_duration", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_child_transition_running, "adw_leaflet_get_child_transition_running", LIBRARY_ADW);
+	Linker.link(adw_leaflet_get_fold_threshold_policy, "adw_leaflet_get_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_folded, "adw_leaflet_get_folded", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_homogeneous, "adw_leaflet_get_homogeneous", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_interpolate_size, "adw_leaflet_get_interpolate_size", LIBRARY_ADW);
@@ -272,6 +275,7 @@ shared static this()
 	Linker.link(adw_leaflet_set_can_swipe_forward, "adw_leaflet_set_can_swipe_forward", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_can_unfold, "adw_leaflet_set_can_unfold", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_child_transition_duration, "adw_leaflet_set_child_transition_duration", LIBRARY_ADW);
+	Linker.link(adw_leaflet_set_fold_threshold_policy, "adw_leaflet_set_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_homogeneous, "adw_leaflet_set_homogeneous", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_interpolate_size, "adw_leaflet_set_interpolate_size", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_mode_transition_duration, "adw_leaflet_set_mode_transition_duration", LIBRARY_ADW);
@@ -305,10 +309,12 @@ shared static this()
 	Linker.link(adw_preferences_page_new, "adw_preferences_page_new", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_add, "adw_preferences_page_add", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_get_icon_name, "adw_preferences_page_get_icon_name", LIBRARY_ADW);
+	Linker.link(adw_preferences_page_get_name, "adw_preferences_page_get_name", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_get_title, "adw_preferences_page_get_title", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_get_use_underline, "adw_preferences_page_get_use_underline", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_remove, "adw_preferences_page_remove", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_set_icon_name, "adw_preferences_page_set_icon_name", LIBRARY_ADW);
+	Linker.link(adw_preferences_page_set_name, "adw_preferences_page_set_name", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_set_title, "adw_preferences_page_set_title", LIBRARY_ADW);
 	Linker.link(adw_preferences_page_set_use_underline, "adw_preferences_page_set_use_underline", LIBRARY_ADW);
 
@@ -329,10 +335,14 @@ shared static this()
 	Linker.link(adw_preferences_window_close_subpage, "adw_preferences_window_close_subpage", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_get_can_swipe_back, "adw_preferences_window_get_can_swipe_back", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_get_search_enabled, "adw_preferences_window_get_search_enabled", LIBRARY_ADW);
+	Linker.link(adw_preferences_window_get_visible_page, "adw_preferences_window_get_visible_page", LIBRARY_ADW);
+	Linker.link(adw_preferences_window_get_visible_page_name, "adw_preferences_window_get_visible_page_name", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_present_subpage, "adw_preferences_window_present_subpage", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_remove, "adw_preferences_window_remove", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_set_can_swipe_back, "adw_preferences_window_set_can_swipe_back", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_set_search_enabled, "adw_preferences_window_set_search_enabled", LIBRARY_ADW);
+	Linker.link(adw_preferences_window_set_visible_page, "adw_preferences_window_set_visible_page", LIBRARY_ADW);
+	Linker.link(adw_preferences_window_set_visible_page_name, "adw_preferences_window_set_visible_page_name", LIBRARY_ADW);
 
 	// adw.Squeezer
 
@@ -495,6 +505,48 @@ shared static this()
 	Linker.link(adw_value_object_dup_string, "adw_value_object_dup_string", LIBRARY_ADW);
 	Linker.link(adw_value_object_get_string, "adw_value_object_get_string", LIBRARY_ADW);
 	Linker.link(adw_value_object_get_value, "adw_value_object_get_value", LIBRARY_ADW);
+
+	// adw.ViewStack
+
+	Linker.link(adw_view_stack_get_type, "adw_view_stack_get_type", LIBRARY_ADW);
+	Linker.link(adw_view_stack_new, "adw_view_stack_new", LIBRARY_ADW);
+	Linker.link(adw_view_stack_add, "adw_view_stack_add", LIBRARY_ADW);
+	Linker.link(adw_view_stack_add_named, "adw_view_stack_add_named", LIBRARY_ADW);
+	Linker.link(adw_view_stack_add_titled, "adw_view_stack_add_titled", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_child_by_name, "adw_view_stack_get_child_by_name", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_hhomogeneous, "adw_view_stack_get_hhomogeneous", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_interpolate_size, "adw_view_stack_get_interpolate_size", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_page, "adw_view_stack_get_page", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_pages, "adw_view_stack_get_pages", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_transition_running, "adw_view_stack_get_transition_running", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_vhomogeneous, "adw_view_stack_get_vhomogeneous", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_visible_child, "adw_view_stack_get_visible_child", LIBRARY_ADW);
+	Linker.link(adw_view_stack_get_visible_child_name, "adw_view_stack_get_visible_child_name", LIBRARY_ADW);
+	Linker.link(adw_view_stack_remove, "adw_view_stack_remove", LIBRARY_ADW);
+	Linker.link(adw_view_stack_set_hhomogeneous, "adw_view_stack_set_hhomogeneous", LIBRARY_ADW);
+	Linker.link(adw_view_stack_set_interpolate_size, "adw_view_stack_set_interpolate_size", LIBRARY_ADW);
+	Linker.link(adw_view_stack_set_vhomogeneous, "adw_view_stack_set_vhomogeneous", LIBRARY_ADW);
+	Linker.link(adw_view_stack_set_visible_child, "adw_view_stack_set_visible_child", LIBRARY_ADW);
+	Linker.link(adw_view_stack_set_visible_child_name, "adw_view_stack_set_visible_child_name", LIBRARY_ADW);
+
+	// adw.ViewStackPage
+
+	Linker.link(adw_view_stack_page_get_type, "adw_view_stack_page_get_type", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_badge_number, "adw_view_stack_page_get_badge_number", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_child, "adw_view_stack_page_get_child", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_icon_name, "adw_view_stack_page_get_icon_name", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_name, "adw_view_stack_page_get_name", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_needs_attention, "adw_view_stack_page_get_needs_attention", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_title, "adw_view_stack_page_get_title", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_use_underline, "adw_view_stack_page_get_use_underline", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_get_visible, "adw_view_stack_page_get_visible", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_set_badge_number, "adw_view_stack_page_set_badge_number", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_set_icon_name, "adw_view_stack_page_set_icon_name", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_set_name, "adw_view_stack_page_set_name", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_set_needs_attention, "adw_view_stack_page_set_needs_attention", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_set_title, "adw_view_stack_page_set_title", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_set_use_underline, "adw_view_stack_page_set_use_underline", LIBRARY_ADW);
+	Linker.link(adw_view_stack_page_set_visible, "adw_view_stack_page_set_visible", LIBRARY_ADW);
 
 	// adw.ViewSwitcher
 
@@ -741,6 +793,7 @@ __gshared extern(C)
 	GtkPackType function(AdwFlap* self) c_adw_flap_get_flap_position;
 	uint function(AdwFlap* self) c_adw_flap_get_fold_duration;
 	AdwFlapFoldPolicy function(AdwFlap* self) c_adw_flap_get_fold_policy;
+	AdwFoldThresholdPolicy function(AdwFlap* self) c_adw_flap_get_fold_threshold_policy;
 	int function(AdwFlap* self) c_adw_flap_get_folded;
 	int function(AdwFlap* self) c_adw_flap_get_locked;
 	int function(AdwFlap* self) c_adw_flap_get_modal;
@@ -756,6 +809,7 @@ __gshared extern(C)
 	void function(AdwFlap* self, GtkPackType position) c_adw_flap_set_flap_position;
 	void function(AdwFlap* self, uint duration) c_adw_flap_set_fold_duration;
 	void function(AdwFlap* self, AdwFlapFoldPolicy policy) c_adw_flap_set_fold_policy;
+	void function(AdwFlap* self, AdwFoldThresholdPolicy policy) c_adw_flap_set_fold_threshold_policy;
 	void function(AdwFlap* self, int locked) c_adw_flap_set_locked;
 	void function(AdwFlap* self, int modal) c_adw_flap_set_modal;
 	void function(AdwFlap* self, uint duration) c_adw_flap_set_reveal_duration;
@@ -795,6 +849,7 @@ __gshared extern(C)
 	GtkWidget* function(AdwLeaflet* self, const(char)* name) c_adw_leaflet_get_child_by_name;
 	uint function(AdwLeaflet* self) c_adw_leaflet_get_child_transition_duration;
 	int function(AdwLeaflet* self) c_adw_leaflet_get_child_transition_running;
+	AdwFoldThresholdPolicy function(AdwLeaflet* self) c_adw_leaflet_get_fold_threshold_policy;
 	int function(AdwLeaflet* self) c_adw_leaflet_get_folded;
 	int function(AdwLeaflet* self, int folded, GtkOrientation orientation) c_adw_leaflet_get_homogeneous;
 	int function(AdwLeaflet* self) c_adw_leaflet_get_interpolate_size;
@@ -813,6 +868,7 @@ __gshared extern(C)
 	void function(AdwLeaflet* self, int canSwipeForward) c_adw_leaflet_set_can_swipe_forward;
 	void function(AdwLeaflet* self, int canUnfold) c_adw_leaflet_set_can_unfold;
 	void function(AdwLeaflet* self, uint duration) c_adw_leaflet_set_child_transition_duration;
+	void function(AdwLeaflet* self, AdwFoldThresholdPolicy policy) c_adw_leaflet_set_fold_threshold_policy;
 	void function(AdwLeaflet* self, int folded, GtkOrientation orientation, int homogeneous) c_adw_leaflet_set_homogeneous;
 	void function(AdwLeaflet* self, int interpolateSize) c_adw_leaflet_set_interpolate_size;
 	void function(AdwLeaflet* self, uint duration) c_adw_leaflet_set_mode_transition_duration;
@@ -846,10 +902,12 @@ __gshared extern(C)
 	GtkWidget* function() c_adw_preferences_page_new;
 	void function(AdwPreferencesPage* self, AdwPreferencesGroup* group) c_adw_preferences_page_add;
 	const(char)* function(AdwPreferencesPage* self) c_adw_preferences_page_get_icon_name;
+	const(char)* function(AdwPreferencesPage* self) c_adw_preferences_page_get_name;
 	const(char)* function(AdwPreferencesPage* self) c_adw_preferences_page_get_title;
 	int function(AdwPreferencesPage* self) c_adw_preferences_page_get_use_underline;
 	void function(AdwPreferencesPage* self, AdwPreferencesGroup* group) c_adw_preferences_page_remove;
 	void function(AdwPreferencesPage* self, const(char)* iconName) c_adw_preferences_page_set_icon_name;
+	void function(AdwPreferencesPage* self, const(char)* name) c_adw_preferences_page_set_name;
 	void function(AdwPreferencesPage* self, const(char)* title) c_adw_preferences_page_set_title;
 	void function(AdwPreferencesPage* self, int useUnderline) c_adw_preferences_page_set_use_underline;
 
@@ -870,10 +928,14 @@ __gshared extern(C)
 	void function(AdwPreferencesWindow* self) c_adw_preferences_window_close_subpage;
 	int function(AdwPreferencesWindow* self) c_adw_preferences_window_get_can_swipe_back;
 	int function(AdwPreferencesWindow* self) c_adw_preferences_window_get_search_enabled;
+	AdwPreferencesPage* function(AdwPreferencesWindow* self) c_adw_preferences_window_get_visible_page;
+	const(char)* function(AdwPreferencesWindow* self) c_adw_preferences_window_get_visible_page_name;
 	void function(AdwPreferencesWindow* self, GtkWidget* subpage) c_adw_preferences_window_present_subpage;
 	void function(AdwPreferencesWindow* self, AdwPreferencesPage* page) c_adw_preferences_window_remove;
 	void function(AdwPreferencesWindow* self, int canSwipeBack) c_adw_preferences_window_set_can_swipe_back;
 	void function(AdwPreferencesWindow* self, int searchEnabled) c_adw_preferences_window_set_search_enabled;
+	void function(AdwPreferencesWindow* self, AdwPreferencesPage* page) c_adw_preferences_window_set_visible_page;
+	void function(AdwPreferencesWindow* self, const(char)* name) c_adw_preferences_window_set_visible_page_name;
 
 	// adw.Squeezer
 
@@ -1037,16 +1099,58 @@ __gshared extern(C)
 	const(char)* function(AdwValueObject* value) c_adw_value_object_get_string;
 	GValue* function(AdwValueObject* value) c_adw_value_object_get_value;
 
+	// adw.ViewStack
+
+	GType function() c_adw_view_stack_get_type;
+	GtkWidget* function() c_adw_view_stack_new;
+	AdwViewStackPage* function(AdwViewStack* self, GtkWidget* child) c_adw_view_stack_add;
+	AdwViewStackPage* function(AdwViewStack* self, GtkWidget* child, const(char)* name) c_adw_view_stack_add_named;
+	AdwViewStackPage* function(AdwViewStack* self, GtkWidget* child, const(char)* name, const(char)* title) c_adw_view_stack_add_titled;
+	GtkWidget* function(AdwViewStack* self, const(char)* name) c_adw_view_stack_get_child_by_name;
+	int function(AdwViewStack* self) c_adw_view_stack_get_hhomogeneous;
+	int function(AdwViewStack* self) c_adw_view_stack_get_interpolate_size;
+	AdwViewStackPage* function(AdwViewStack* self, GtkWidget* child) c_adw_view_stack_get_page;
+	GtkSelectionModel* function(AdwViewStack* self) c_adw_view_stack_get_pages;
+	int function(AdwViewStack* self) c_adw_view_stack_get_transition_running;
+	int function(AdwViewStack* self) c_adw_view_stack_get_vhomogeneous;
+	GtkWidget* function(AdwViewStack* self) c_adw_view_stack_get_visible_child;
+	const(char)* function(AdwViewStack* self) c_adw_view_stack_get_visible_child_name;
+	void function(AdwViewStack* self, GtkWidget* child) c_adw_view_stack_remove;
+	void function(AdwViewStack* self, int hhomogeneous) c_adw_view_stack_set_hhomogeneous;
+	void function(AdwViewStack* self, int interpolateSize) c_adw_view_stack_set_interpolate_size;
+	void function(AdwViewStack* self, int vhomogeneous) c_adw_view_stack_set_vhomogeneous;
+	void function(AdwViewStack* self, GtkWidget* child) c_adw_view_stack_set_visible_child;
+	void function(AdwViewStack* self, const(char)* name) c_adw_view_stack_set_visible_child_name;
+
+	// adw.ViewStackPage
+
+	GType function() c_adw_view_stack_page_get_type;
+	uint function(AdwViewStackPage* self) c_adw_view_stack_page_get_badge_number;
+	GtkWidget* function(AdwViewStackPage* self) c_adw_view_stack_page_get_child;
+	const(char)* function(AdwViewStackPage* self) c_adw_view_stack_page_get_icon_name;
+	const(char)* function(AdwViewStackPage* self) c_adw_view_stack_page_get_name;
+	int function(AdwViewStackPage* self) c_adw_view_stack_page_get_needs_attention;
+	const(char)* function(AdwViewStackPage* self) c_adw_view_stack_page_get_title;
+	int function(AdwViewStackPage* self) c_adw_view_stack_page_get_use_underline;
+	int function(AdwViewStackPage* self) c_adw_view_stack_page_get_visible;
+	void function(AdwViewStackPage* self, uint badgeNumber) c_adw_view_stack_page_set_badge_number;
+	void function(AdwViewStackPage* self, const(char)* iconName) c_adw_view_stack_page_set_icon_name;
+	void function(AdwViewStackPage* self, const(char)* name) c_adw_view_stack_page_set_name;
+	void function(AdwViewStackPage* self, int needsAttention) c_adw_view_stack_page_set_needs_attention;
+	void function(AdwViewStackPage* self, const(char)* title) c_adw_view_stack_page_set_title;
+	void function(AdwViewStackPage* self, int useUnderline) c_adw_view_stack_page_set_use_underline;
+	void function(AdwViewStackPage* self, int visible) c_adw_view_stack_page_set_visible;
+
 	// adw.ViewSwitcher
 
 	GType function() c_adw_view_switcher_get_type;
 	GtkWidget* function() c_adw_view_switcher_new;
 	PangoEllipsizeMode function(AdwViewSwitcher* self) c_adw_view_switcher_get_narrow_ellipsize;
 	AdwViewSwitcherPolicy function(AdwViewSwitcher* self) c_adw_view_switcher_get_policy;
-	GtkStack* function(AdwViewSwitcher* self) c_adw_view_switcher_get_stack;
+	AdwViewStack* function(AdwViewSwitcher* self) c_adw_view_switcher_get_stack;
 	void function(AdwViewSwitcher* self, PangoEllipsizeMode mode) c_adw_view_switcher_set_narrow_ellipsize;
 	void function(AdwViewSwitcher* self, AdwViewSwitcherPolicy policy) c_adw_view_switcher_set_policy;
-	void function(AdwViewSwitcher* self, GtkStack* stack) c_adw_view_switcher_set_stack;
+	void function(AdwViewSwitcher* self, AdwViewStack* stack) c_adw_view_switcher_set_stack;
 
 	// adw.ViewSwitcherBar
 
@@ -1054,23 +1158,23 @@ __gshared extern(C)
 	GtkWidget* function() c_adw_view_switcher_bar_new;
 	AdwViewSwitcherPolicy function(AdwViewSwitcherBar* self) c_adw_view_switcher_bar_get_policy;
 	int function(AdwViewSwitcherBar* self) c_adw_view_switcher_bar_get_reveal;
-	GtkStack* function(AdwViewSwitcherBar* self) c_adw_view_switcher_bar_get_stack;
+	AdwViewStack* function(AdwViewSwitcherBar* self) c_adw_view_switcher_bar_get_stack;
 	void function(AdwViewSwitcherBar* self, AdwViewSwitcherPolicy policy) c_adw_view_switcher_bar_set_policy;
 	void function(AdwViewSwitcherBar* self, int reveal) c_adw_view_switcher_bar_set_reveal;
-	void function(AdwViewSwitcherBar* self, GtkStack* stack) c_adw_view_switcher_bar_set_stack;
+	void function(AdwViewSwitcherBar* self, AdwViewStack* stack) c_adw_view_switcher_bar_set_stack;
 
 	// adw.ViewSwitcherTitle
 
 	GType function() c_adw_view_switcher_title_get_type;
 	GtkWidget* function() c_adw_view_switcher_title_new;
 	AdwViewSwitcherPolicy function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_policy;
-	GtkStack* function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_stack;
+	AdwViewStack* function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_stack;
 	const(char)* function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_subtitle;
 	const(char)* function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_title;
 	int function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_title_visible;
 	int function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_view_switcher_enabled;
 	void function(AdwViewSwitcherTitle* self, AdwViewSwitcherPolicy policy) c_adw_view_switcher_title_set_policy;
-	void function(AdwViewSwitcherTitle* self, GtkStack* stack) c_adw_view_switcher_title_set_stack;
+	void function(AdwViewSwitcherTitle* self, AdwViewStack* stack) c_adw_view_switcher_title_set_stack;
 	void function(AdwViewSwitcherTitle* self, const(char)* subtitle) c_adw_view_switcher_title_set_subtitle;
 	void function(AdwViewSwitcherTitle* self, const(char)* title) c_adw_view_switcher_title_set_title;
 	void function(AdwViewSwitcherTitle* self, int enabled) c_adw_view_switcher_title_set_view_switcher_enabled;
@@ -1280,6 +1384,7 @@ alias c_adw_flap_get_flap adw_flap_get_flap;
 alias c_adw_flap_get_flap_position adw_flap_get_flap_position;
 alias c_adw_flap_get_fold_duration adw_flap_get_fold_duration;
 alias c_adw_flap_get_fold_policy adw_flap_get_fold_policy;
+alias c_adw_flap_get_fold_threshold_policy adw_flap_get_fold_threshold_policy;
 alias c_adw_flap_get_folded adw_flap_get_folded;
 alias c_adw_flap_get_locked adw_flap_get_locked;
 alias c_adw_flap_get_modal adw_flap_get_modal;
@@ -1295,6 +1400,7 @@ alias c_adw_flap_set_flap adw_flap_set_flap;
 alias c_adw_flap_set_flap_position adw_flap_set_flap_position;
 alias c_adw_flap_set_fold_duration adw_flap_set_fold_duration;
 alias c_adw_flap_set_fold_policy adw_flap_set_fold_policy;
+alias c_adw_flap_set_fold_threshold_policy adw_flap_set_fold_threshold_policy;
 alias c_adw_flap_set_locked adw_flap_set_locked;
 alias c_adw_flap_set_modal adw_flap_set_modal;
 alias c_adw_flap_set_reveal_duration adw_flap_set_reveal_duration;
@@ -1334,6 +1440,7 @@ alias c_adw_leaflet_get_can_unfold adw_leaflet_get_can_unfold;
 alias c_adw_leaflet_get_child_by_name adw_leaflet_get_child_by_name;
 alias c_adw_leaflet_get_child_transition_duration adw_leaflet_get_child_transition_duration;
 alias c_adw_leaflet_get_child_transition_running adw_leaflet_get_child_transition_running;
+alias c_adw_leaflet_get_fold_threshold_policy adw_leaflet_get_fold_threshold_policy;
 alias c_adw_leaflet_get_folded adw_leaflet_get_folded;
 alias c_adw_leaflet_get_homogeneous adw_leaflet_get_homogeneous;
 alias c_adw_leaflet_get_interpolate_size adw_leaflet_get_interpolate_size;
@@ -1352,6 +1459,7 @@ alias c_adw_leaflet_set_can_swipe_back adw_leaflet_set_can_swipe_back;
 alias c_adw_leaflet_set_can_swipe_forward adw_leaflet_set_can_swipe_forward;
 alias c_adw_leaflet_set_can_unfold adw_leaflet_set_can_unfold;
 alias c_adw_leaflet_set_child_transition_duration adw_leaflet_set_child_transition_duration;
+alias c_adw_leaflet_set_fold_threshold_policy adw_leaflet_set_fold_threshold_policy;
 alias c_adw_leaflet_set_homogeneous adw_leaflet_set_homogeneous;
 alias c_adw_leaflet_set_interpolate_size adw_leaflet_set_interpolate_size;
 alias c_adw_leaflet_set_mode_transition_duration adw_leaflet_set_mode_transition_duration;
@@ -1385,10 +1493,12 @@ alias c_adw_preferences_page_get_type adw_preferences_page_get_type;
 alias c_adw_preferences_page_new adw_preferences_page_new;
 alias c_adw_preferences_page_add adw_preferences_page_add;
 alias c_adw_preferences_page_get_icon_name adw_preferences_page_get_icon_name;
+alias c_adw_preferences_page_get_name adw_preferences_page_get_name;
 alias c_adw_preferences_page_get_title adw_preferences_page_get_title;
 alias c_adw_preferences_page_get_use_underline adw_preferences_page_get_use_underline;
 alias c_adw_preferences_page_remove adw_preferences_page_remove;
 alias c_adw_preferences_page_set_icon_name adw_preferences_page_set_icon_name;
+alias c_adw_preferences_page_set_name adw_preferences_page_set_name;
 alias c_adw_preferences_page_set_title adw_preferences_page_set_title;
 alias c_adw_preferences_page_set_use_underline adw_preferences_page_set_use_underline;
 
@@ -1409,10 +1519,14 @@ alias c_adw_preferences_window_add adw_preferences_window_add;
 alias c_adw_preferences_window_close_subpage adw_preferences_window_close_subpage;
 alias c_adw_preferences_window_get_can_swipe_back adw_preferences_window_get_can_swipe_back;
 alias c_adw_preferences_window_get_search_enabled adw_preferences_window_get_search_enabled;
+alias c_adw_preferences_window_get_visible_page adw_preferences_window_get_visible_page;
+alias c_adw_preferences_window_get_visible_page_name adw_preferences_window_get_visible_page_name;
 alias c_adw_preferences_window_present_subpage adw_preferences_window_present_subpage;
 alias c_adw_preferences_window_remove adw_preferences_window_remove;
 alias c_adw_preferences_window_set_can_swipe_back adw_preferences_window_set_can_swipe_back;
 alias c_adw_preferences_window_set_search_enabled adw_preferences_window_set_search_enabled;
+alias c_adw_preferences_window_set_visible_page adw_preferences_window_set_visible_page;
+alias c_adw_preferences_window_set_visible_page_name adw_preferences_window_set_visible_page_name;
 
 // adw.Squeezer
 
@@ -1575,6 +1689,48 @@ alias c_adw_value_object_copy_value adw_value_object_copy_value;
 alias c_adw_value_object_dup_string adw_value_object_dup_string;
 alias c_adw_value_object_get_string adw_value_object_get_string;
 alias c_adw_value_object_get_value adw_value_object_get_value;
+
+// adw.ViewStack
+
+alias c_adw_view_stack_get_type adw_view_stack_get_type;
+alias c_adw_view_stack_new adw_view_stack_new;
+alias c_adw_view_stack_add adw_view_stack_add;
+alias c_adw_view_stack_add_named adw_view_stack_add_named;
+alias c_adw_view_stack_add_titled adw_view_stack_add_titled;
+alias c_adw_view_stack_get_child_by_name adw_view_stack_get_child_by_name;
+alias c_adw_view_stack_get_hhomogeneous adw_view_stack_get_hhomogeneous;
+alias c_adw_view_stack_get_interpolate_size adw_view_stack_get_interpolate_size;
+alias c_adw_view_stack_get_page adw_view_stack_get_page;
+alias c_adw_view_stack_get_pages adw_view_stack_get_pages;
+alias c_adw_view_stack_get_transition_running adw_view_stack_get_transition_running;
+alias c_adw_view_stack_get_vhomogeneous adw_view_stack_get_vhomogeneous;
+alias c_adw_view_stack_get_visible_child adw_view_stack_get_visible_child;
+alias c_adw_view_stack_get_visible_child_name adw_view_stack_get_visible_child_name;
+alias c_adw_view_stack_remove adw_view_stack_remove;
+alias c_adw_view_stack_set_hhomogeneous adw_view_stack_set_hhomogeneous;
+alias c_adw_view_stack_set_interpolate_size adw_view_stack_set_interpolate_size;
+alias c_adw_view_stack_set_vhomogeneous adw_view_stack_set_vhomogeneous;
+alias c_adw_view_stack_set_visible_child adw_view_stack_set_visible_child;
+alias c_adw_view_stack_set_visible_child_name adw_view_stack_set_visible_child_name;
+
+// adw.ViewStackPage
+
+alias c_adw_view_stack_page_get_type adw_view_stack_page_get_type;
+alias c_adw_view_stack_page_get_badge_number adw_view_stack_page_get_badge_number;
+alias c_adw_view_stack_page_get_child adw_view_stack_page_get_child;
+alias c_adw_view_stack_page_get_icon_name adw_view_stack_page_get_icon_name;
+alias c_adw_view_stack_page_get_name adw_view_stack_page_get_name;
+alias c_adw_view_stack_page_get_needs_attention adw_view_stack_page_get_needs_attention;
+alias c_adw_view_stack_page_get_title adw_view_stack_page_get_title;
+alias c_adw_view_stack_page_get_use_underline adw_view_stack_page_get_use_underline;
+alias c_adw_view_stack_page_get_visible adw_view_stack_page_get_visible;
+alias c_adw_view_stack_page_set_badge_number adw_view_stack_page_set_badge_number;
+alias c_adw_view_stack_page_set_icon_name adw_view_stack_page_set_icon_name;
+alias c_adw_view_stack_page_set_name adw_view_stack_page_set_name;
+alias c_adw_view_stack_page_set_needs_attention adw_view_stack_page_set_needs_attention;
+alias c_adw_view_stack_page_set_title adw_view_stack_page_set_title;
+alias c_adw_view_stack_page_set_use_underline adw_view_stack_page_set_use_underline;
+alias c_adw_view_stack_page_set_visible adw_view_stack_page_set_visible;
 
 // adw.ViewSwitcher
 

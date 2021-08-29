@@ -57,7 +57,7 @@ public  import gtk.c.types;
  * 
  * # Accessibility
  * 
- * `GtkProgressBar` uses the #GTK_ACCESSIBLE_ROLE_PROGRESS_BAR role.
+ * `GtkProgressBar` uses the %GTK_ACCESSIBLE_ROLE_PROGRESS_BAR role.
  */
 public class ProgressBar : Widget, OrientableIF
 {
@@ -178,8 +178,7 @@ public class ProgressBar : Widget, OrientableIF
 	 * The return value is a reference to the text, not a copy of it,
 	 * so will become invalid if you change the text in the progress bar.
 	 *
-	 * Returns: text, or %NULL; this string is owned by the widget
-	 *     and should not be modified or freed.
+	 * Returns: the text
 	 */
 	public string getText()
 	{
@@ -289,7 +288,7 @@ public class ProgressBar : Widget, OrientableIF
 	 * [property@Gtk.ProgressBar:show-text] is %TRUE.
 	 *
 	 * Params:
-	 *     text = a UTF-8 string, or %NULL
+	 *     text = a UTF-8 string
 	 */
 	public void setText(string text)
 	{

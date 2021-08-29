@@ -121,7 +121,7 @@ public class DirectoryList : ObjectG, ListModelIF
 	 * successfully queried files will remain in the list.
 	 *
 	 * Returns: The loading error or %NULL if
-	 *     loading finished successfully.
+	 *     loading finished successfully
 	 */
 	public ErrorG getError()
 	{
@@ -208,7 +208,7 @@ public class DirectoryList : ObjectG, ListModelIF
 	 * If @file is %NULL, the result will be an empty list.
 	 *
 	 * Params:
-	 *     file = the #GFile to be enumerated
+	 *     file = the `GFile` to be enumerated
 	 */
 	public void setFile(FileIF file)
 	{
@@ -236,8 +236,11 @@ public class DirectoryList : ObjectG, ListModelIF
 
 	/**
 	 * Sets whether the directory list will monitor the directory
-	 * for changes. If monitoring is enabled, the ::items-changed
-	 * signal will be emitted when the directory contents change.
+	 * for changes.
+	 *
+	 * If monitoring is enabled, the ::items-changed signal will
+	 * be emitted when the directory contents change.
+	 *
 	 *
 	 * When monitoring is turned on after the initial creation
 	 * of the directory list, the directory is reloaded to avoid

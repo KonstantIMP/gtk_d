@@ -14,7 +14,7 @@ public import pango.c.types;
  * The implementation of each blend mode is deferred to the
  * rendering pipeline.
  *
- * See https://www.w3.org/TR/compositing-1/#blending for more information
+ * See <https://www.w3.org/TR/compositing-1/#blending> for more information
  * on blending and blend modes.
  */
 public enum GskBlendMode
@@ -90,7 +90,7 @@ public enum GskBlendMode
 alias GskBlendMode BlendMode;
 
 /**
- * The corner indices used by #GskRoundedRect.
+ * The corner indices used by `GskRoundedRect`.
  */
 public enum GskCorner
 {
@@ -171,7 +171,7 @@ public enum GskRenderNodeType
 	 */
 	CONTAINER_NODE = 1,
 	/**
-	 * A node drawing a #cairo_surface_t
+	 * A node drawing a `cairo_surface_t`
 	 */
 	CAIRO_NODE = 2,
 	/**
@@ -203,7 +203,7 @@ public enum GskRenderNodeType
 	 */
 	BORDER_NODE = 9,
 	/**
-	 * A node drawing a #GdkTexture
+	 * A node drawing a `GdkTexture`
 	 */
 	TEXTURE_NODE = 10,
 	/**
@@ -300,13 +300,12 @@ alias GskScalingFilter ScalingFilter;
 public enum GskSerializationError
 {
 	/**
-	 * The format can not be
-	 * identified
+	 * The format can not be identified
 	 */
 	UNSUPPORTED_FORMAT = 0,
 	/**
-	 * The version of the data
-	 * is not understood
+	 * The version of the data is not
+	 * understood
 	 */
 	UNSUPPORTED_VERSION = 1,
 	/**
@@ -528,10 +527,6 @@ struct GskTextureNode;
 struct GskTransform;
 
 struct GskTransformNode;
-
-struct GskVulkanRenderer;
-
-struct GskVulkanRendererClass;
 
 /**
  * Type of callback that is called when an error occurs

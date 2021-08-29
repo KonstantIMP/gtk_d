@@ -151,7 +151,7 @@ public static GType getType()
  * for the corresponding function in the parent [class@Gtk.Dialog].
  *
  * Returns: A `GtkBox` corresponding to the
- *     “message area” in the @message_dialog.
+ *     “message area” in the @message_dialog
  */
 public Widget getMessageArea()
 {

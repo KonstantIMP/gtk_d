@@ -115,7 +115,7 @@ public class FlattenListModel : ObjectG, ListModelIF
 	 * Sets a new model to be flattened.
 	 *
 	 * Params:
-	 *     model = the new model or %NULL
+	 *     model = the new model
 	 */
 	public void setModel(ListModelIF model)
 	{

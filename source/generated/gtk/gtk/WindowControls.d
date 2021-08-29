@@ -166,8 +166,7 @@ public class WindowControls : Widget
 	 * will display the part before the colon, otherwise after that.
 	 *
 	 * Params:
-	 *     layout = a decoration layout, or %NULL to
-	 *         unset the layout
+	 *     layout = a decoration layout, or %NULL to unset the layout
 	 */
 	public void setDecorationLayout(string layout)
 	{

@@ -18,23 +18,23 @@ public  import gtk.c.types;
 /**
  * A GtkTreeModel which makes an underlying tree model sortable
  * 
- * The #GtkTreeModelSort is a model which implements the #GtkTreeSortable
+ * The `GtkTreeModelSort` is a model which implements the `GtkTreeSortable`
  * interface.  It does not hold any data itself, but rather is created with
  * a child model and proxies its data.  It has identical column types to
  * this child model, and the changes in the child are propagated.  The
  * primary purpose of this model is to provide a way to sort a different
  * model without modifying it. Note that the sort function used by
- * #GtkTreeModelSort is not guaranteed to be stable.
+ * `GtkTreeModelSort` is not guaranteed to be stable.
  * 
  * The use of this is best demonstrated through an example.  In the
- * following sample code we create two #GtkTreeView widgets each with a
+ * following sample code we create two `GtkTreeView` widgets each with a
  * view of the same data.  As the model is wrapped here by a
- * #GtkTreeModelSort, the two #GtkTreeViews can each sort their
+ * `GtkTreeModelSort`, the two `GtkTreeView`s can each sort their
  * view of the data without affecting the other.  By contrast, if we
  * simply put the same model in each widget, then sorting the first would
  * sort the second.
  * 
- * ## Using a #GtkTreeModelSort
+ * ## Using a `GtkTreeModelSort`
  * 
  * |[<!-- language="C" -->
  * {
@@ -64,8 +64,8 @@ public  import gtk.c.types;
  * ]|
  * 
  * To demonstrate how to access the underlying child model from the sort
- * model, the next example will be a callback for the #GtkTreeSelection
- * #GtkTreeSelection::changed signal.  In this callback, we get a string
+ * model, the next example will be a callback for the `GtkTreeSelection`
+ * `GtkTreeSelection::changed` signal.  In this callback, we get a string
  * from COLUMN_1 of the model.  We then modify the string, find the same
  * selected row on the child model, and change the row there.
  * 
@@ -158,12 +158,12 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	}
 
 	/**
-	 * Creates a new #GtkTreeModelSort, with @child_model as the child model.
+	 * Creates a new `GtkTreeModelSort`, with @child_model as the child model.
 	 *
 	 * Params:
-	 *     childModel = A #GtkTreeModel
+	 *     childModel = A `GtkTreeModel`
 	 *
-	 * Returns: A new #GtkTreeModelSort.
+	 * Returns: A new `GtkTreeModelSort`.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -198,8 +198,8 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	 * is returned.  Note: a boolean is only returned since 2.14.
 	 *
 	 * Params:
-	 *     sortIter = An uninitialized #GtkTreeIter.
-	 *     childIter = A valid #GtkTreeIter pointing to a row on the child model
+	 *     sortIter = An uninitialized `GtkTreeIter`
+	 *     childIter = A valid `GtkTreeIter` pointing to a row on the child model
 	 *
 	 * Returns: %TRUE, if @sort_iter was set, i.e. if @sort_iter is a
 	 *     valid iterator pointer to a visible row in the child model.
@@ -222,9 +222,9 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	 * path on the child model, then %NULL is returned.
 	 *
 	 * Params:
-	 *     childPath = A #GtkTreePath to convert
+	 *     childPath = A `GtkTreePath` to convert
 	 *
-	 * Returns: A newly allocated #GtkTreePath, or %NULL
+	 * Returns: A newly allocated `GtkTreePath`
 	 */
 	public TreePath convertChildPathToPath(TreePath childPath)
 	{
@@ -242,8 +242,8 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	 * Sets @child_iter to point to the row pointed to by @sorted_iter.
 	 *
 	 * Params:
-	 *     childIter = An uninitialized #GtkTreeIter
-	 *     sortedIter = A valid #GtkTreeIter pointing to a row on @tree_model_sort.
+	 *     childIter = An uninitialized `GtkTreeIter`
+	 *     sortedIter = A valid `GtkTreeIter` pointing to a row on @tree_model_sort.
 	 */
 	public void convertIterToChildIter(out TreeIter childIter, TreeIter sortedIter)
 	{
@@ -262,9 +262,9 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	 * %NULL is returned.
 	 *
 	 * Params:
-	 *     sortedPath = A #GtkTreePath to convert
+	 *     sortedPath = A `GtkTreePath` to convert
 	 *
-	 * Returns: A newly allocated #GtkTreePath, or %NULL
+	 * Returns: A newly allocated `GtkTreePath`
 	 */
 	public TreePath convertPathToChildPath(TreePath sortedPath)
 	{
@@ -279,7 +279,7 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	}
 
 	/**
-	 * Returns the model the #GtkTreeModelSort is sorting.
+	 * Returns the model the `GtkTreeModelSort` is sorting.
 	 *
 	 * Returns: the "child model" being sorted
 	 */
@@ -299,10 +299,10 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	 * > This function is slow. Only use it for debugging and/or testing
 	 * > purposes.
 	 *
-	 * Checks if the given iter is a valid iter for this #GtkTreeModelSort.
+	 * Checks if the given iter is a valid iter for this `GtkTreeModelSort`.
 	 *
 	 * Params:
-	 *     iter = A #GtkTreeIter.
+	 *     iter = A `GtkTreeIter`
 	 *
 	 * Returns: %TRUE if the iter is valid, %FALSE if the iter is invalid.
 	 */
@@ -314,7 +314,7 @@ public class TreeModelSort : ObjectG, TreeDragSourceIF, TreeModelIF, TreeSortabl
 	/**
 	 * This resets the default sort function to be in the “unsorted” state.  That
 	 * is, it is in the same order as the child model. It will re-sort the model
-	 * to be in the same order as the child model only if the #GtkTreeModelSort
+	 * to be in the same order as the child model only if the `GtkTreeModelSort`
 	 * is in “unsorted” state.
 	 */
 	public void resetDefaultSortFunc()

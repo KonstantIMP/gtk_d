@@ -87,18 +87,20 @@ private import std.algorithm;
  * 
  * ```
  * listview[.separators][.rich-list][.navigation-sidebar][.data-table]
- * ├── row
+ * ├── row[.activatable]
  * │
- * ├── row
+ * ├── row[.activatable]
  * │
  * ┊
  * ╰── [rubberband]
  * ```
  * 
- * `GtkListView` uses a single CSS node named listview. It may carry the
- * .separators style class, when `GtkListView`:show-separators property
- * is set. Each child widget uses a single CSS node named row. For
- * rubberband selection, a node with name rubberband is used.
+ * `GtkListView` uses a single CSS node named `listview`. It may carry the
+ * `.separators` style class, when [property@Gtk.ListView:show-separators]
+ * property is set. Each child widget uses a single CSS node named `row`.
+ * If the [property@Gtk.ListItem:activatable] property is set, the
+ * corresponding row will have the `.activatable` style class. For
+ * rubberband selection, a node with name `rubberband` is used.
  * 
  * The main listview node may also carry style classes to select
  * the style of [list presentation](ListContainers.html#list-styles):
@@ -156,8 +158,8 @@ public class ListView : ListBase
 	 * ```
 	 *
 	 * Params:
-	 *     model = the model to use, or %NULL
-	 *     factory = The factory to populate items with, or %NULL
+	 *     model = the model to use
+	 *     factory = The factory to populate items with
 	 *
 	 * Returns: a new `GtkListView` using the given @model and @factory
 	 *
@@ -256,7 +258,7 @@ public class ListView : ListBase
 	 * Sets the `GtkListItemFactory` to use for populating list items.
 	 *
 	 * Params:
-	 *     factory = the factory to use or %NULL for none
+	 *     factory = the factory to use
 	 */
 	public void setFactory(ListItemFactory factory)
 	{
@@ -269,7 +271,7 @@ public class ListView : ListBase
 	 * This must be a [iface@Gtk.SelectionModel] to use.
 	 *
 	 * Params:
-	 *     model = the model to use or %NULL for none
+	 *     model = the model to use
 	 */
 	public void setModel(SelectionModelIF model)
 	{

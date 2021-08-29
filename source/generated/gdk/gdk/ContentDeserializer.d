@@ -67,7 +67,7 @@ public class ContentDeserializer : ObjectG, AsyncResultIF
 	/**
 	 * Gets the cancellable for the current operation.
 	 *
-	 * This is the `GCancellable` that was passed to [func@content_deserialize_async].
+	 * This is the `GCancellable` that was passed to [func@Gdk.content_deserialize_async].
 	 *
 	 * Returns: the cancellable for the current operation
 	 */
@@ -84,9 +84,9 @@ public class ContentDeserializer : ObjectG, AsyncResultIF
 	}
 
 	/**
-	 * Gets the GType to create an instance of.
+	 * Gets the `GType` to create an instance of.
 	 *
-	 * Returns: the GType for the current operation
+	 * Returns: the `GType` for the current operation
 	 */
 	public GType getGtype()
 	{
@@ -96,7 +96,7 @@ public class ContentDeserializer : ObjectG, AsyncResultIF
 	/**
 	 * Gets the input stream for the current operation.
 	 *
-	 * This is the stream that was passed to [func@content_deserialize_async].
+	 * This is the stream that was passed to [func@Gdk.content_deserialize_async].
 	 *
 	 * Returns: the input stream for the current operation
 	 */
@@ -125,7 +125,7 @@ public class ContentDeserializer : ObjectG, AsyncResultIF
 	/**
 	 * Gets the I/O priority for the current operation.
 	 *
-	 * This is the priority that was passed to [funccontent_deserialize_async].
+	 * This is the priority that was passed to [func@Gdk.content_deserialize_async].
 	 *
 	 * Returns: the I/O priority for the current operation
 	 */
@@ -183,7 +183,7 @@ public class ContentDeserializer : ObjectG, AsyncResultIF
 	 */
 	public void returnError(ErrorG error)
 	{
-		gdk_content_deserializer_return_error(gdkContentDeserializer, (error is null) ? null : error.getErrorGStruct());
+		gdk_content_deserializer_return_error(gdkContentDeserializer, (error is null) ? null : error.getErrorGStruct(true));
 	}
 
 	/**

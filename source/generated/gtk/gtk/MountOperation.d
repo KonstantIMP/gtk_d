@@ -63,7 +63,7 @@ public class MountOperation : DGioMountOperation
 	 * Creates a new `GtkMountOperation`.
 	 *
 	 * Params:
-	 *     parent = transient parent of the window, or %NULL
+	 *     parent = transient parent of the window
 	 *
 	 * Returns: a new `GtkMountOperation`
 	 *
@@ -143,7 +143,7 @@ public class MountOperation : DGioMountOperation
 	 * `GtkMountOperation`.
 	 *
 	 * Params:
-	 *     parent = transient parent of the window, or %NULL
+	 *     parent = transient parent of the window
 	 */
 	public void setParent(Window parent)
 	{

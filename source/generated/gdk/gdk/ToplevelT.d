@@ -319,12 +319,17 @@ public template ToplevelT(TStruct)
 	 * Returns whether the desktop environment supports
 	 * tiled window states.
 	 *
-	 * Returns: %TRUE if the desktop environment supports
-	 *     tiled window states
+	 * Returns: %TRUE if the desktop environment supports tiled window states
 	 */
 	public bool supportsEdgeConstraints()
 	{
 		return gdk_toplevel_supports_edge_constraints(getToplevelStruct()) != 0;
+	}
+
+	/** */
+	public bool titlebarGesture(GdkTitlebarGesture gesture)
+	{
+		return gdk_toplevel_titlebar_gesture(getToplevelStruct(), gesture) != 0;
 	}
 
 	/**

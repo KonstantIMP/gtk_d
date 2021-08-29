@@ -299,9 +299,9 @@ public class ScrolledWindow : Widget
 	 *
 	 * Params:
 	 *     hscrollbarPolicy = location to store the policy
-	 *         for the horizontal scrollbar, or %NULL
+	 *         for the horizontal scrollbar
 	 *     vscrollbarPolicy = location to store the policy
-	 *         for the vertical scrollbar, or %NULL
+	 *         for the vertical scrollbar
 	 */
 	public void getPolicy(out GtkPolicyType hscrollbarPolicy, out GtkPolicyType vscrollbarPolicy)
 	{

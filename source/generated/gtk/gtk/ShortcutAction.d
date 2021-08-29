@@ -93,7 +93,6 @@ public class ShortcutAction : ObjectG
 	 *     string_ = the string to parse
 	 *
 	 * Returns: a new `GtkShortcutAction`
-	 *     or %NULL on error
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */

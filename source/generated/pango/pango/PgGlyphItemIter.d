@@ -195,9 +195,7 @@ public final class PgGlyphItemIter
 	/**
 	 * Make a shallow copy of an existing `PangoGlyphItemIter` structure.
 	 *
-	 * Returns: the newly allocated `PangoGlyphItemIter`,
-	 *     which should be freed with pango_glyph_item_iter_free(), or %NULL
-	 *     if @orig was %NULL.
+	 * Returns: the newly allocated `PangoGlyphItemIter`
 	 *
 	 * Since: 1.22
 	 */

@@ -56,7 +56,7 @@ public class LayoutChild : ObjectG
 	/**
 	 * Retrieves the `GtkWidget` associated to the given @layout_child.
 	 *
-	 * Returns: a #GtkWidget
+	 * Returns: a `GtkWidget`
 	 */
 	public Widget getChildWidget()
 	{

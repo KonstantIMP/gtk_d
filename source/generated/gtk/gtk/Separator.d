@@ -25,7 +25,7 @@ public  import gtk.c.types;
  * 
  * # Accessibility
  * 
- * `GtkSeparator` uses the #GTK_ACCESSIBLE_ROLE_SEPARATOR role.
+ * `GtkSeparator` uses the %GTK_ACCESSIBLE_ROLE_SEPARATOR role.
  */
 public class Separator : Widget, OrientableIF
 {

@@ -44,8 +44,7 @@ public class CellAreaClass
 	 * Params:
 	 *     propertyName = the name of the child property to find
 	 *
-	 * Returns: the #GParamSpec of the child property
-	 *     or %NULL if @aclass has no child property with that name.
+	 * Returns: the `GParamSpec` of the child property
 	 */
 	public ParamSpec findCellProperty(string propertyName)
 	{
@@ -64,7 +63,7 @@ public class CellAreaClass
 	 *
 	 * Params:
 	 *     propertyId = the id for the property
-	 *     pspec = the #GParamSpec for the property
+	 *     pspec = the `GParamSpec` for the property
 	 */
 	public void installCellProperty(uint propertyId, ParamSpec pspec)
 	{
@@ -75,7 +74,7 @@ public class CellAreaClass
 	 * Returns all cell properties of a cell area class.
 	 *
 	 * Returns: a newly
-	 *     allocated %NULL-terminated array of #GParamSpec*.  The array
+	 *     allocated %NULL-terminated array of `GParamSpec`*.  The array
 	 *     must be freed with g_free().
 	 */
 	public ParamSpec[] listCellProperties()

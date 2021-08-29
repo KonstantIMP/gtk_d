@@ -115,8 +115,7 @@ public class MonitorGdk : ObjectG
 	 * The PNP ID registry is located at
 	 * [https://uefi.org/pnp_id_list](https://uefi.org/pnp_id_list).
 	 *
-	 * Returns: the name of the manufacturer,
-	 *     or %NULL
+	 * Returns: the name of the manufacturer
 	 */
 	public string getManufacturer()
 	{
@@ -126,7 +125,7 @@ public class MonitorGdk : ObjectG
 	/**
 	 * Gets the string identifying the monitor model, if available.
 	 *
-	 * Returns: the monitor model, or %NULL
+	 * Returns: the monitor model
 	 */
 	public string getModel()
 	{

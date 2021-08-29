@@ -227,7 +227,7 @@ public class ListBox : Widget
 	 * Params:
 	 *     index = the index of the row
 	 *
-	 * Returns: the child `GtkWidget` or %NULL
+	 * Returns: the child `GtkWidget`
 	 */
 	public ListBoxRow getRowAtIndex(int index)
 	{
@@ -247,8 +247,7 @@ public class ListBox : Widget
 	 * Params:
 	 *     y = position
 	 *
-	 * Returns: the row or %NULL
-	 *     in case no row exists for the given y coordinate.
+	 * Returns: the row
 	 */
 	public ListBoxRow getRowAtY(int y)
 	{
@@ -269,7 +268,7 @@ public class ListBox : Widget
 	 * case you should use [method@Gtk.ListBox.selected_foreach] to
 	 * find all selected rows.
 	 *
-	 * Returns: the selected row or %NULL
+	 * Returns: the selected row
 	 */
 	public ListBoxRow getSelectedRow()
 	{
@@ -415,7 +414,7 @@ public class ListBox : Widget
 	 * Make @row the currently selected row.
 	 *
 	 * Params:
-	 *     row = The row to select or %NULL
+	 *     row = The row to select
 	 */
 	public void selectRow(ListBoxRow row)
 	{
@@ -461,7 +460,7 @@ public class ListBox : Widget
 	 * to manually do that.
 	 *
 	 * Params:
-	 *     adjustment = the adjustment, or %NULL
+	 *     adjustment = the adjustment
 	 */
 	public void setAdjustment(Adjustment adjustment)
 	{
@@ -535,7 +534,7 @@ public class ListBox : Widget
 	 * it doesn't display any visible children.
 	 *
 	 * Params:
-	 *     placeholder = a #GtkWidget or %NULL
+	 *     placeholder = a `GtkWidget`
 	 */
 	public void setPlaceholder(Widget placeholder)
 	{

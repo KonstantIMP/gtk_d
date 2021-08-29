@@ -12,7 +12,7 @@ private import linker.loader;
 
 /**
  * A GtkTreeRowReference tracks model changes so that it always refers to the
- * same row (a #GtkTreePath refers to a position, not a fixed row). Create a
+ * same row (a `GtkTreePath` refers to a position, not a fixed row). Create a
  * new GtkTreeRowReference with gtk_tree_row_reference_new().
  */
 public class TreeRowReference
@@ -66,10 +66,10 @@ public class TreeRowReference
 	 * @path isn’t a valid path in @model, then %NULL is returned.
 	 *
 	 * Params:
-	 *     model = a #GtkTreeModel
-	 *     path = a valid #GtkTreePath-struct to monitor
+	 *     model = a `GtkTreeModel`
+	 *     path = a valid `GtkTreePath` to monitor
 	 *
-	 * Returns: a newly allocated #GtkTreeRowReference, or %NULL
+	 * Returns: a newly allocated `GtkTreeRowReference`
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -102,7 +102,7 @@ public class TreeRowReference
 	 * These functions must be called exactly once per proxy when the
 	 * corresponding signal on the model is emitted. This single call
 	 * updates all row references for that proxy. Since built-in GTK
-	 * objects like #GtkTreeView already use this mechanism internally,
+	 * objects like `GtkTreeView` already use this mechanism internally,
 	 * using them as the proxy object will produce unpredictable results.
 	 * Further more, passing the same object as @model and @proxy
 	 * doesn’t work for reasons of internal implementation.
@@ -112,11 +112,11 @@ public class TreeRowReference
 	 * itself, and is not generally needed by most applications.
 	 *
 	 * Params:
-	 *     proxy = a proxy #GObject
-	 *     model = a #GtkTreeModel
-	 *     path = a valid #GtkTreePath-struct to monitor
+	 *     proxy = a proxy `GObject`
+	 *     model = a `GtkTreeModel`
+	 *     path = a valid `GtkTreePath` to monitor
 	 *
-	 * Returns: a newly allocated #GtkTreeRowReference, or %NULL
+	 * Returns: a newly allocated `GtkTreeRowReference`
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -133,7 +133,7 @@ public class TreeRowReference
 	}
 
 	/**
-	 * Copies a #GtkTreeRowReference.
+	 * Copies a `GtkTreeRowReference`.
 	 *
 	 * Returns: a copy of @reference
 	 */
@@ -179,7 +179,7 @@ public class TreeRowReference
 	 * Returns a path that the row reference currently points to,
 	 * or %NULL if the path pointed to is no longer valid.
 	 *
-	 * Returns: a current path, or %NULL
+	 * Returns: a current path
 	 */
 	public TreePath getPath()
 	{
@@ -207,10 +207,10 @@ public class TreeRowReference
 	/**
 	 * Lets a set of row reference created by
 	 * gtk_tree_row_reference_new_proxy() know that the
-	 * model emitted the #GtkTreeModel::row-deleted signal.
+	 * model emitted the ::row-deleted signal.
 	 *
 	 * Params:
-	 *     proxy = a #GObject
+	 *     proxy = a `GObject`
 	 *     path = the path position that was deleted
 	 */
 	public static void deleted(ObjectG proxy, TreePath path)
@@ -221,10 +221,10 @@ public class TreeRowReference
 	/**
 	 * Lets a set of row reference created by
 	 * gtk_tree_row_reference_new_proxy() know that the
-	 * model emitted the #GtkTreeModel::row-inserted signal.
+	 * model emitted the ::row-inserted signal.
 	 *
 	 * Params:
-	 *     proxy = a #GObject
+	 *     proxy = a `GObject`
 	 *     path = the row position that was inserted
 	 */
 	public static void inserted(ObjectG proxy, TreePath path)
@@ -235,10 +235,10 @@ public class TreeRowReference
 	/**
 	 * Lets a set of row reference created by
 	 * gtk_tree_row_reference_new_proxy() know that the
-	 * model emitted the #GtkTreeModel::rows-reordered signal.
+	 * model emitted the ::rows-reordered signal.
 	 *
 	 * Params:
-	 *     proxy = a #GObject
+	 *     proxy = a `GObject`
 	 *     path = the parent path of the reordered signal
 	 *     iter = the iter pointing to the parent of the reordered
 	 *     newOrder = the new order of rows

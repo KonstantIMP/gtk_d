@@ -162,6 +162,19 @@ public class ColorButton : Widget, ColorChooserIF
 	}
 
 	/**
+	 * Emitted to when the color button is activated.
+	 *
+	 * The `::activate` signal on `GtkMenuButton` is an action signal and
+	 * emitting it causes the button to pop up its dialog.
+	 *
+	 * Since: 4.4
+	 */
+	gulong addOnActivate(void delegate(ColorButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "activate", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
 	 * Emitted when the user selects a color.
 	 *
 	 * When handling this signal, use [method@Gtk.ColorChooser.get_rgba]

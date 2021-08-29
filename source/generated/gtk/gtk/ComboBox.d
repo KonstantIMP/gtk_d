@@ -32,7 +32,7 @@ private import std.algorithm;
  * is specified in the form of a tree model, and the display of the choices
  * can be adapted to the data in the model by using cell renderers, as you
  * would in a tree view. This is possible since `GtkComboBox` implements the
- * [interface@Gtk.CellLayout] interface. The tree model holding the valid
+ * [iface@Gtk.CellLayout] interface. The tree model holding the valid
  * choices is not restricted to a flat list, it can be a real tree, and the
  * popup will reflect the tree structure.
  * 
@@ -183,7 +183,7 @@ public static GType getType()
  * [struct@Gtk.TreePath] of the active item.
  *
  * Returns: An integer which is the index of the currently active item,
- *     or -1 if there’s no active item.
+ *     or -1 if there’s no active item
  */
 public int getActive()
 {
@@ -205,7 +205,7 @@ public int getActive()
  * not set, or if no row is active, or if the active row has a %NULL
  * ID value, then %NULL is returned.
  *
- * Returns: the ID of the active row, or %NULL
+ * Returns: the ID of the active row
  */
 public string getActiveId()
 {
@@ -399,7 +399,7 @@ public void setActive(int index)
  * and returns %FALSE.
  *
  * Params:
- *     activeId = the ID of the row to select, or %NULL
+ *     activeId = the ID of the row to select
  *
  * Returns: %TRUE if a row with a matching ID was found. If a %NULL
  *     @active_id was given to unset the active row, the function
@@ -416,7 +416,7 @@ public bool setActiveId(string activeId)
  * If @iter is %NULL, the active item is unset.
  *
  * Params:
- *     iter = The `GtkTreeIter`, or %NULL
+ *     iter = The `GtkTreeIter`
  */
 public void setActiveIter(TreeIter iter)
 {
@@ -449,6 +449,9 @@ public void setChild(Widget child)
 /**
  * Sets the model column which @combo_box should use to get strings
  * from to be @text_column.
+ *
+ * For this column no separate
+ * [class@Gtk.CellRenderer] is needed.
  *
  * The column @text_column in the model of @combo_box must be of
  * type %G_TYPE_STRING.
@@ -521,8 +524,8 @@ public void setPopupFixedWidth(bool fixed)
  *
  * Params:
  *     func = a `GtkTreeViewRowSeparatorFunc`
- *     data = user data to pass to @func, or %NULL
- *     destroy = destroy notifier for @data, or %NULL
+ *     data = user data to pass to @func
+ *     destroy = destroy notifier for @data
  */
 public void setRowSeparatorFunc(GtkTreeViewRowSeparatorFunc func, void* data, GDestroyNotify destroy)
 {

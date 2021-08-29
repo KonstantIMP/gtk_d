@@ -112,10 +112,10 @@ public final class Border
 	}
 
 	/**
-	 * Allocates a new #GtkBorder-struct and initializes its elements to zero.
+	 * Allocates a new `GtkBorder` struct and initializes its elements to zero.
 	 *
-	 * Returns: a newly allocated #GtkBorder-struct.
-	 *     Free with gtk_border_free()
+	 * Returns: a newly allocated `GtkBorder` struct.
+	 *     Free with [method@Gtk.Border.free]
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -132,7 +132,7 @@ public final class Border
 	}
 
 	/**
-	 * Copies a #GtkBorder-struct.
+	 * Copies a `GtkBorder`.
 	 *
 	 * Returns: a copy of @border_.
 	 */
@@ -149,7 +149,7 @@ public final class Border
 	}
 
 	/**
-	 * Frees a #GtkBorder-struct.
+	 * Frees a `GtkBorder`.
 	 */
 	public void free()
 	{

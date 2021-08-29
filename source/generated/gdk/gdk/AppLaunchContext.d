@@ -113,7 +113,7 @@ public class AppLaunchContext : DGioAppLaunchContext
 	 * See also [method@Gdk.AppLaunchContext.set_icon_name].
 	 *
 	 * Params:
-	 *     icon = a #GIcon, or %NULL
+	 *     icon = a `GIcon`
 	 */
 	public void setIcon(IconIF icon)
 	{
@@ -124,7 +124,7 @@ public class AppLaunchContext : DGioAppLaunchContext
 	 * Sets the icon for applications that are launched with this context.
 	 *
 	 * The @icon_name will be interpreted in the same way as the Icon field
-	 * in desktop files. See also [method@Gdk.AppLaunchContext.set_icon()].
+	 * in desktop files. See also [method@Gdk.AppLaunchContext.set_icon].
 	 *
 	 * If both @icon and @icon_name are set, the @icon_name takes priority.
 	 * If neither @icon or @icon_name is set, the icon is taken from either
@@ -132,7 +132,7 @@ public class AppLaunchContext : DGioAppLaunchContext
 	 * for the launched application itself.
 	 *
 	 * Params:
-	 *     iconName = an icon name, or %NULL
+	 *     iconName = an icon name
 	 */
 	public void setIconName(string iconName)
 	{

@@ -335,11 +335,6 @@ shared static this()
 	Linker.link(gsk_transform_node_new, "gsk_transform_node_new", LIBRARY_GSK);
 	Linker.link(gsk_transform_node_get_child, "gsk_transform_node_get_child", LIBRARY_GSK);
 	Linker.link(gsk_transform_node_get_transform, "gsk_transform_node_get_transform", LIBRARY_GSK);
-
-	// gsk.VulkanRenderer
-
-	Linker.link(gsk_vulkan_renderer_get_type, "gsk_vulkan_renderer_get_type", LIBRARY_GSK);
-	Linker.link(gsk_vulkan_renderer_new, "gsk_vulkan_renderer_new", LIBRARY_GSK);
 }
 
 __gshared extern(C)
@@ -542,7 +537,7 @@ __gshared extern(C)
 	GskRenderNode* function(GskRenderNode* node) c_gsk_render_node_ref;
 	GBytes* function(GskRenderNode* node) c_gsk_render_node_serialize;
 	void function(GskRenderNode* node) c_gsk_render_node_unref;
-	int function(GskRenderNode* node, const(char)* filename, GError** err) c_gsk_render_node_write_to_file;
+	int function(GskRenderNode* node, char* filename, GError** err) c_gsk_render_node_write_to_file;
 
 	// gsk.Renderer
 
@@ -667,11 +662,6 @@ __gshared extern(C)
 	GskRenderNode* function(GskRenderNode* child, GskTransform* transform) c_gsk_transform_node_new;
 	GskRenderNode* function(GskRenderNode* node) c_gsk_transform_node_get_child;
 	GskTransform* function(GskRenderNode* node) c_gsk_transform_node_get_transform;
-
-	// gsk.VulkanRenderer
-
-	GType function() c_gsk_vulkan_renderer_get_type;
-	GskRenderer* function() c_gsk_vulkan_renderer_new;
 }
 
 
@@ -997,8 +987,3 @@ alias c_gsk_transform_node_get_type gsk_transform_node_get_type;
 alias c_gsk_transform_node_new gsk_transform_node_new;
 alias c_gsk_transform_node_get_child gsk_transform_node_get_child;
 alias c_gsk_transform_node_get_transform gsk_transform_node_get_transform;
-
-// gsk.VulkanRenderer
-
-alias c_gsk_vulkan_renderer_get_type gsk_vulkan_renderer_get_type;
-alias c_gsk_vulkan_renderer_new gsk_vulkan_renderer_new;

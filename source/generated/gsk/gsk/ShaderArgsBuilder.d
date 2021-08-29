@@ -13,7 +13,7 @@ private import linker.loader;
 
 
 /**
- * An object to build the uniforms data for a #GskGLShader.
+ * An object to build the uniforms data for a `GskGLShader`.
  */
 public class ShaderArgsBuilder
 {
@@ -83,7 +83,7 @@ public class ShaderArgsBuilder
 	}
 
 	/**
-	 * Creates a new #GBytes args from the current state of the
+	 * Creates a new `GBytes` args from the current state of the
 	 * given @builder, and frees the @builder instance.
 	 *
 	 * Any uniforms of the shader that have not been explicitly set

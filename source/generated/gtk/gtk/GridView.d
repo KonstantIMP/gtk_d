@@ -31,17 +31,18 @@ private import std.algorithm;
  * 
  * ```
  * gridview
- * ├── child
+ * ├── child[.activatable]
  * │
- * ├── child
+ * ├── child[.activatable]
  * │
  * ┊
  * ╰── [rubberband]
  * ```
  * 
- * `GtkGridView` uses a single CSS node with name gridview. Each child
- * uses a single CSS node with name child. For rubberband selection,
- * a subnode with name rubberband is used.
+ * `GtkGridView` uses a single CSS node with name `gridview`. Each child uses
+ * a single CSS node with name `child`. If the [property@Gtk.ListItem:activatable]
+ * property is set, the corresponding row will have the `.activatable` style
+ * class. For rubberband selection, a subnode with name `rubberband` is used.
  * 
  * # Accessibility
  * 
@@ -95,8 +96,8 @@ public class GridView : ListBase
 	 * ```
 	 *
 	 * Params:
-	 *     model = the model to use, or %NULL
-	 *     factory = The factory to populate items with, or %NULL
+	 *     model = the model to use
+	 *     factory = The factory to populate items with
 	 *
 	 * Returns: a new `GtkGridView` using the given @model and @factory
 	 *
@@ -204,7 +205,7 @@ public class GridView : ListBase
 	 * Sets the `GtkListItemFactory` to use for populating list items.
 	 *
 	 * Params:
-	 *     factory = the factory to use or %NULL for none
+	 *     factory = the factory to use
 	 */
 	public void setFactory(ListItemFactory factory)
 	{
@@ -249,7 +250,7 @@ public class GridView : ListBase
 	 * This must be a [iface@Gtk.SelectionModel].
 	 *
 	 * Params:
-	 *     model = the model to use or %NULL for none
+	 *     model = the model to use
 	 */
 	public void setModel(SelectionModelIF model)
 	{

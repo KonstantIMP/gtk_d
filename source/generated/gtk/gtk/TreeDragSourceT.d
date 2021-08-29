@@ -22,7 +22,7 @@ public template TreeDragSourceT(TStruct)
 
 
 	/**
-	 * Asks the #GtkTreeDragSource to delete the row at @path, because
+	 * Asks the `GtkTreeDragSource` to delete the row at @path, because
 	 * it was moved somewhere else via drag-and-drop. Returns %FALSE
 	 * if the deletion fails because @path no longer exists, or for
 	 * some model-specific reason. Should robustly handle a @path no
@@ -39,15 +39,15 @@ public template TreeDragSourceT(TStruct)
 	}
 
 	/**
-	 * Asks the #GtkTreeDragSource to return a #GdkContentProvider representing
+	 * Asks the `GtkTreeDragSource` to return a `GdkContentProvider` representing
 	 * the row at @path. Should robustly handle a @path no
 	 * longer found in the model!
 	 *
 	 * Params:
 	 *     path = row that was dragged
 	 *
-	 * Returns: a #GdkContentProvider for the
-	 *     given @path or %NULL if none exists
+	 * Returns: a `GdkContentProvider` for the
+	 *     given @path
 	 */
 	public ContentProvider dragDataGet(TreePath path)
 	{
@@ -62,7 +62,7 @@ public template TreeDragSourceT(TStruct)
 	}
 
 	/**
-	 * Asks the #GtkTreeDragSource whether a particular row can be used as
+	 * Asks the `GtkTreeDragSource` whether a particular row can be used as
 	 * the source of a DND operation. If the source doesn’t implement
 	 * this interface, the row is assumed draggable.
 	 *

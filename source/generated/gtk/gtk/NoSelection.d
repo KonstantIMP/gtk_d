@@ -62,7 +62,7 @@ public class NoSelection : ObjectG, ListModelIF, SelectionModelIF
 	 * Creates a new selection to handle @model.
 	 *
 	 * Params:
-	 *     model = the `GListModel` to manage, or %NULL
+	 *     model = the `GListModel` to manage
 	 *
 	 * Returns: a new `GtkNoSelection`
 	 *

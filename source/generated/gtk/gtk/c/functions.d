@@ -1025,6 +1025,7 @@ shared static this()
 	Linker.link(gtk_drop_target_get_type, "gtk_drop_target_get_type", LIBRARY_GTK);
 	Linker.link(gtk_drop_target_new, "gtk_drop_target_new", LIBRARY_GTK);
 	Linker.link(gtk_drop_target_get_actions, "gtk_drop_target_get_actions", LIBRARY_GTK);
+	Linker.link(gtk_drop_target_get_current_drop, "gtk_drop_target_get_current_drop", LIBRARY_GTK);
 	Linker.link(gtk_drop_target_get_drop, "gtk_drop_target_get_drop", LIBRARY_GTK);
 	Linker.link(gtk_drop_target_get_formats, "gtk_drop_target_get_formats", LIBRARY_GTK);
 	Linker.link(gtk_drop_target_get_gtypes, "gtk_drop_target_get_gtypes", LIBRARY_GTK);
@@ -1346,6 +1347,7 @@ shared static this()
 	Linker.link(gtk_file_filter_add_mime_type, "gtk_file_filter_add_mime_type", LIBRARY_GTK);
 	Linker.link(gtk_file_filter_add_pattern, "gtk_file_filter_add_pattern", LIBRARY_GTK);
 	Linker.link(gtk_file_filter_add_pixbuf_formats, "gtk_file_filter_add_pixbuf_formats", LIBRARY_GTK);
+	Linker.link(gtk_file_filter_add_suffix, "gtk_file_filter_add_suffix", LIBRARY_GTK);
 	Linker.link(gtk_file_filter_get_attributes, "gtk_file_filter_get_attributes", LIBRARY_GTK);
 	Linker.link(gtk_file_filter_get_name, "gtk_file_filter_get_name", LIBRARY_GTK);
 	Linker.link(gtk_file_filter_set_name, "gtk_file_filter_set_name", LIBRARY_GTK);
@@ -2161,6 +2163,9 @@ shared static this()
 	Linker.link(gtk_media_stream_set_muted, "gtk_media_stream_set_muted", LIBRARY_GTK);
 	Linker.link(gtk_media_stream_set_playing, "gtk_media_stream_set_playing", LIBRARY_GTK);
 	Linker.link(gtk_media_stream_set_volume, "gtk_media_stream_set_volume", LIBRARY_GTK);
+	Linker.link(gtk_media_stream_stream_ended, "gtk_media_stream_stream_ended", LIBRARY_GTK);
+	Linker.link(gtk_media_stream_stream_prepared, "gtk_media_stream_stream_prepared", LIBRARY_GTK);
+	Linker.link(gtk_media_stream_stream_unprepared, "gtk_media_stream_stream_unprepared", LIBRARY_GTK);
 	Linker.link(gtk_media_stream_unprepared, "gtk_media_stream_unprepared", LIBRARY_GTK);
 	Linker.link(gtk_media_stream_unrealize, "gtk_media_stream_unrealize", LIBRARY_GTK);
 	Linker.link(gtk_media_stream_update, "gtk_media_stream_update", LIBRARY_GTK);
@@ -2169,15 +2174,18 @@ shared static this()
 
 	Linker.link(gtk_menu_button_get_type, "gtk_menu_button_get_type", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_new, "gtk_menu_button_new", LIBRARY_GTK);
+	Linker.link(gtk_menu_button_get_always_show_arrow, "gtk_menu_button_get_always_show_arrow", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_direction, "gtk_menu_button_get_direction", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_has_frame, "gtk_menu_button_get_has_frame", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_icon_name, "gtk_menu_button_get_icon_name", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_label, "gtk_menu_button_get_label", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_menu_model, "gtk_menu_button_get_menu_model", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_popover, "gtk_menu_button_get_popover", LIBRARY_GTK);
+	Linker.link(gtk_menu_button_get_primary, "gtk_menu_button_get_primary", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_use_underline, "gtk_menu_button_get_use_underline", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_popdown, "gtk_menu_button_popdown", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_popup, "gtk_menu_button_popup", LIBRARY_GTK);
+	Linker.link(gtk_menu_button_set_always_show_arrow, "gtk_menu_button_set_always_show_arrow", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_create_popup_func, "gtk_menu_button_set_create_popup_func", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_direction, "gtk_menu_button_set_direction", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_has_frame, "gtk_menu_button_set_has_frame", LIBRARY_GTK);
@@ -2185,6 +2193,7 @@ shared static this()
 	Linker.link(gtk_menu_button_set_label, "gtk_menu_button_set_label", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_menu_model, "gtk_menu_button_set_menu_model", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_popover, "gtk_menu_button_set_popover", LIBRARY_GTK);
+	Linker.link(gtk_menu_button_set_primary, "gtk_menu_button_set_primary", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_use_underline, "gtk_menu_button_set_use_underline", LIBRARY_GTK);
 
 	// gtk.MessageDialog
@@ -2495,6 +2504,11 @@ shared static this()
 	Linker.link(gtk_password_entry_get_show_peek_icon, "gtk_password_entry_get_show_peek_icon", LIBRARY_GTK);
 	Linker.link(gtk_password_entry_set_extra_menu, "gtk_password_entry_set_extra_menu", LIBRARY_GTK);
 	Linker.link(gtk_password_entry_set_show_peek_icon, "gtk_password_entry_set_show_peek_icon", LIBRARY_GTK);
+
+	// gtk.PasswordEntryBuffer
+
+	Linker.link(gtk_password_entry_buffer_get_type, "gtk_password_entry_buffer_get_type", LIBRARY_GTK);
+	Linker.link(gtk_password_entry_buffer_new, "gtk_password_entry_buffer_new", LIBRARY_GTK);
 
 	// gtk.Picture
 
@@ -3427,6 +3441,7 @@ shared static this()
 	Linker.link(gtk_text_get_type, "gtk_text_get_type", LIBRARY_GTK);
 	Linker.link(gtk_text_new, "gtk_text_new", LIBRARY_GTK);
 	Linker.link(gtk_text_new_with_buffer, "gtk_text_new_with_buffer", LIBRARY_GTK);
+	Linker.link(gtk_text_compute_cursor_extents, "gtk_text_compute_cursor_extents", LIBRARY_GTK);
 	Linker.link(gtk_text_get_activates_default, "gtk_text_get_activates_default", LIBRARY_GTK);
 	Linker.link(gtk_text_get_attributes, "gtk_text_get_attributes", LIBRARY_GTK);
 	Linker.link(gtk_text_get_buffer, "gtk_text_get_buffer", LIBRARY_GTK);
@@ -3696,12 +3711,14 @@ shared static this()
 	Linker.link(gtk_text_view_get_left_margin, "gtk_text_view_get_left_margin", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_line_at_y, "gtk_text_view_get_line_at_y", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_line_yrange, "gtk_text_view_get_line_yrange", LIBRARY_GTK);
+	Linker.link(gtk_text_view_get_ltr_context, "gtk_text_view_get_ltr_context", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_monospace, "gtk_text_view_get_monospace", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_overwrite, "gtk_text_view_get_overwrite", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_pixels_above_lines, "gtk_text_view_get_pixels_above_lines", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_pixels_below_lines, "gtk_text_view_get_pixels_below_lines", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_pixels_inside_wrap, "gtk_text_view_get_pixels_inside_wrap", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_right_margin, "gtk_text_view_get_right_margin", LIBRARY_GTK);
+	Linker.link(gtk_text_view_get_rtl_context, "gtk_text_view_get_rtl_context", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_tabs, "gtk_text_view_get_tabs", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_top_margin, "gtk_text_view_get_top_margin", LIBRARY_GTK);
 	Linker.link(gtk_text_view_get_visible_rect, "gtk_text_view_get_visible_rect", LIBRARY_GTK);
@@ -4751,9 +4768,9 @@ __gshared extern(C)
 	// gtk.BookmarkList
 
 	GType function() c_gtk_bookmark_list_get_type;
-	GtkBookmarkList* function(const(char)* filename, const(char)* attributes) c_gtk_bookmark_list_new;
+	GtkBookmarkList* function(char* filename, const(char)* attributes) c_gtk_bookmark_list_new;
 	const(char)* function(GtkBookmarkList* self) c_gtk_bookmark_list_get_attributes;
-	const(char)* function(GtkBookmarkList* self) c_gtk_bookmark_list_get_filename;
+	char* function(GtkBookmarkList* self) c_gtk_bookmark_list_get_filename;
 	int function(GtkBookmarkList* self) c_gtk_bookmark_list_get_io_priority;
 	int function(GtkBookmarkList* self) c_gtk_bookmark_list_is_loading;
 	void function(GtkBookmarkList* self, const(char)* attributes) c_gtk_bookmark_list_set_attributes;
@@ -4819,13 +4836,13 @@ __gshared extern(C)
 
 	GType function() c_gtk_builder_get_type;
 	GtkBuilder* function() c_gtk_builder_new;
-	GtkBuilder* function(const(char)* filename) c_gtk_builder_new_from_file;
+	GtkBuilder* function(char* filename) c_gtk_builder_new_from_file;
 	GtkBuilder* function(const(char)* resourcePath) c_gtk_builder_new_from_resource;
 	GtkBuilder* function(const(char)* string_, ptrdiff_t length) c_gtk_builder_new_from_string;
-	int function(GtkBuilder* builder, const(char)* filename, GError** err) c_gtk_builder_add_from_file;
+	int function(GtkBuilder* builder, char* filename, GError** err) c_gtk_builder_add_from_file;
 	int function(GtkBuilder* builder, const(char)* resourcePath, GError** err) c_gtk_builder_add_from_resource;
 	int function(GtkBuilder* builder, const(char)* buffer, ptrdiff_t length, GError** err) c_gtk_builder_add_from_string;
-	int function(GtkBuilder* builder, const(char)* filename, char** objectIds, GError** err) c_gtk_builder_add_objects_from_file;
+	int function(GtkBuilder* builder, char* filename, char** objectIds, GError** err) c_gtk_builder_add_objects_from_file;
 	int function(GtkBuilder* builder, const(char)* resourcePath, char** objectIds, GError** err) c_gtk_builder_add_objects_from_resource;
 	int function(GtkBuilder* builder, const(char)* buffer, ptrdiff_t length, char** objectIds, GError** err) c_gtk_builder_add_objects_from_string;
 	GClosure* function(GtkBuilder* builder, const(char)* functionName, GtkBuilderClosureFlags flags, GObject* object, GError** err) c_gtk_builder_create_closure;
@@ -5468,6 +5485,7 @@ __gshared extern(C)
 	GType function() c_gtk_drop_target_get_type;
 	GtkDropTarget* function(GType type, GdkDragAction actions) c_gtk_drop_target_new;
 	GdkDragAction function(GtkDropTarget* self) c_gtk_drop_target_get_actions;
+	GdkDrop* function(GtkDropTarget* self) c_gtk_drop_target_get_current_drop;
 	GdkDrop* function(GtkDropTarget* self) c_gtk_drop_target_get_drop;
 	GdkContentFormats* function(GtkDropTarget* self) c_gtk_drop_target_get_formats;
 	GType* function(GtkDropTarget* self, size_t* nTypes) c_gtk_drop_target_get_gtypes;
@@ -5789,6 +5807,7 @@ __gshared extern(C)
 	void function(GtkFileFilter* filter, const(char)* mimeType) c_gtk_file_filter_add_mime_type;
 	void function(GtkFileFilter* filter, const(char)* pattern) c_gtk_file_filter_add_pattern;
 	void function(GtkFileFilter* filter) c_gtk_file_filter_add_pixbuf_formats;
+	void function(GtkFileFilter* filter, const(char)* suffix) c_gtk_file_filter_add_suffix;
 	char** function(GtkFileFilter* filter) c_gtk_file_filter_get_attributes;
 	const(char)* function(GtkFileFilter* filter) c_gtk_file_filter_get_name;
 	void function(GtkFileFilter* filter, const(char)* name) c_gtk_file_filter_set_name;
@@ -6200,7 +6219,7 @@ __gshared extern(C)
 	int function(GtkIconTheme* self, const(char)* iconName) c_gtk_icon_theme_has_icon;
 	GtkIconPaintable* function(GtkIconTheme* self, GIcon* icon, int size, int scale, GtkTextDirection direction, GtkIconLookupFlags flags) c_gtk_icon_theme_lookup_by_gicon;
 	GtkIconPaintable* function(GtkIconTheme* self, const(char)* iconName, char** fallbacks, int size, int scale, GtkTextDirection direction, GtkIconLookupFlags flags) c_gtk_icon_theme_lookup_icon;
-	void function(GtkIconTheme* self, const(char)* path) c_gtk_icon_theme_set_resource_path;
+	void function(GtkIconTheme* self, char** path) c_gtk_icon_theme_set_resource_path;
 	void function(GtkIconTheme* self, char** path) c_gtk_icon_theme_set_search_path;
 	void function(GtkIconTheme* self, const(char)* themeName) c_gtk_icon_theme_set_theme_name;
 
@@ -6562,14 +6581,14 @@ __gshared extern(C)
 	GType function() c_gtk_media_file_get_type;
 	GtkMediaStream* function() c_gtk_media_file_new;
 	GtkMediaStream* function(GFile* file) c_gtk_media_file_new_for_file;
-	GtkMediaStream* function(const(char)* filename) c_gtk_media_file_new_for_filename;
+	GtkMediaStream* function(char* filename) c_gtk_media_file_new_for_filename;
 	GtkMediaStream* function(GInputStream* stream) c_gtk_media_file_new_for_input_stream;
 	GtkMediaStream* function(const(char)* resourcePath) c_gtk_media_file_new_for_resource;
 	void function(GtkMediaFile* self) c_gtk_media_file_clear;
 	GFile* function(GtkMediaFile* self) c_gtk_media_file_get_file;
 	GInputStream* function(GtkMediaFile* self) c_gtk_media_file_get_input_stream;
 	void function(GtkMediaFile* self, GFile* file) c_gtk_media_file_set_file;
-	void function(GtkMediaFile* self, const(char)* filename) c_gtk_media_file_set_filename;
+	void function(GtkMediaFile* self, char* filename) c_gtk_media_file_set_filename;
 	void function(GtkMediaFile* self, GInputStream* stream) c_gtk_media_file_set_input_stream;
 	void function(GtkMediaFile* self, const(char)* resourcePath) c_gtk_media_file_set_resource;
 
@@ -6604,6 +6623,9 @@ __gshared extern(C)
 	void function(GtkMediaStream* self, int muted) c_gtk_media_stream_set_muted;
 	void function(GtkMediaStream* self, int playing) c_gtk_media_stream_set_playing;
 	void function(GtkMediaStream* self, double volume) c_gtk_media_stream_set_volume;
+	void function(GtkMediaStream* self) c_gtk_media_stream_stream_ended;
+	void function(GtkMediaStream* self, int hasAudio, int hasVideo, int seekable, long duration) c_gtk_media_stream_stream_prepared;
+	void function(GtkMediaStream* self) c_gtk_media_stream_stream_unprepared;
 	void function(GtkMediaStream* self) c_gtk_media_stream_unprepared;
 	void function(GtkMediaStream* self, GdkSurface* surface) c_gtk_media_stream_unrealize;
 	void function(GtkMediaStream* self, long timestamp) c_gtk_media_stream_update;
@@ -6612,15 +6634,18 @@ __gshared extern(C)
 
 	GType function() c_gtk_menu_button_get_type;
 	GtkWidget* function() c_gtk_menu_button_new;
+	int function(GtkMenuButton* menuButton) c_gtk_menu_button_get_always_show_arrow;
 	GtkArrowType function(GtkMenuButton* menuButton) c_gtk_menu_button_get_direction;
 	int function(GtkMenuButton* menuButton) c_gtk_menu_button_get_has_frame;
 	const(char)* function(GtkMenuButton* menuButton) c_gtk_menu_button_get_icon_name;
 	const(char)* function(GtkMenuButton* menuButton) c_gtk_menu_button_get_label;
 	GMenuModel* function(GtkMenuButton* menuButton) c_gtk_menu_button_get_menu_model;
 	GtkPopover* function(GtkMenuButton* menuButton) c_gtk_menu_button_get_popover;
+	int function(GtkMenuButton* menuButton) c_gtk_menu_button_get_primary;
 	int function(GtkMenuButton* menuButton) c_gtk_menu_button_get_use_underline;
 	void function(GtkMenuButton* menuButton) c_gtk_menu_button_popdown;
 	void function(GtkMenuButton* menuButton) c_gtk_menu_button_popup;
+	void function(GtkMenuButton* menuButton, int alwaysShowArrow) c_gtk_menu_button_set_always_show_arrow;
 	void function(GtkMenuButton* menuButton, GtkMenuButtonCreatePopupFunc func, void* userData, GDestroyNotify destroyNotify) c_gtk_menu_button_set_create_popup_func;
 	void function(GtkMenuButton* menuButton, GtkArrowType direction) c_gtk_menu_button_set_direction;
 	void function(GtkMenuButton* menuButton, int hasFrame) c_gtk_menu_button_set_has_frame;
@@ -6628,6 +6653,7 @@ __gshared extern(C)
 	void function(GtkMenuButton* menuButton, const(char)* label) c_gtk_menu_button_set_label;
 	void function(GtkMenuButton* menuButton, GMenuModel* menuModel) c_gtk_menu_button_set_menu_model;
 	void function(GtkMenuButton* menuButton, GtkWidget* popover) c_gtk_menu_button_set_popover;
+	void function(GtkMenuButton* menuButton, int primary) c_gtk_menu_button_set_primary;
 	void function(GtkMenuButton* menuButton, int useUnderline) c_gtk_menu_button_set_use_underline;
 
 	// gtk.MessageDialog
@@ -6939,6 +6965,11 @@ __gshared extern(C)
 	void function(GtkPasswordEntry* entry, GMenuModel* model) c_gtk_password_entry_set_extra_menu;
 	void function(GtkPasswordEntry* entry, int showPeekIcon) c_gtk_password_entry_set_show_peek_icon;
 
+	// gtk.PasswordEntryBuffer
+
+	GType function() c_gtk_password_entry_buffer_get_type;
+	GtkEntryBuffer* function() c_gtk_password_entry_buffer_new;
+
 	// gtk.Picture
 
 	GType function() c_gtk_picture_get_type;
@@ -6956,7 +6987,7 @@ __gshared extern(C)
 	void function(GtkPicture* self, const(char)* alternativeText) c_gtk_picture_set_alternative_text;
 	void function(GtkPicture* self, int canShrink) c_gtk_picture_set_can_shrink;
 	void function(GtkPicture* self, GFile* file) c_gtk_picture_set_file;
-	void function(GtkPicture* self, const(char)* filename) c_gtk_picture_set_filename;
+	void function(GtkPicture* self, char* filename) c_gtk_picture_set_filename;
 	void function(GtkPicture* self, int keepAspectRatio) c_gtk_picture_set_keep_aspect_ratio;
 	void function(GtkPicture* self, GdkPaintable* paintable) c_gtk_picture_set_paintable;
 	void function(GtkPicture* self, GdkPixbuf* pixbuf) c_gtk_picture_set_pixbuf;
@@ -7870,6 +7901,7 @@ __gshared extern(C)
 	GType function() c_gtk_text_get_type;
 	GtkWidget* function() c_gtk_text_new;
 	GtkWidget* function(GtkEntryBuffer* buffer) c_gtk_text_new_with_buffer;
+	void function(GtkText* self, size_t position, graphene_rect_t* strong, graphene_rect_t* weak) c_gtk_text_compute_cursor_extents;
 	int function(GtkText* self) c_gtk_text_get_activates_default;
 	PangoAttrList* function(GtkText* self) c_gtk_text_get_attributes;
 	GtkEntryBuffer* function(GtkText* self) c_gtk_text_get_buffer;
@@ -8139,12 +8171,14 @@ __gshared extern(C)
 	int function(GtkTextView* textView) c_gtk_text_view_get_left_margin;
 	void function(GtkTextView* textView, GtkTextIter* targetIter, int y, int* lineTop) c_gtk_text_view_get_line_at_y;
 	void function(GtkTextView* textView, GtkTextIter* iter, int* y, int* height) c_gtk_text_view_get_line_yrange;
+	PangoContext* function(GtkTextView* textView) c_gtk_text_view_get_ltr_context;
 	int function(GtkTextView* textView) c_gtk_text_view_get_monospace;
 	int function(GtkTextView* textView) c_gtk_text_view_get_overwrite;
 	int function(GtkTextView* textView) c_gtk_text_view_get_pixels_above_lines;
 	int function(GtkTextView* textView) c_gtk_text_view_get_pixels_below_lines;
 	int function(GtkTextView* textView) c_gtk_text_view_get_pixels_inside_wrap;
 	int function(GtkTextView* textView) c_gtk_text_view_get_right_margin;
+	PangoContext* function(GtkTextView* textView) c_gtk_text_view_get_rtl_context;
 	PangoTabArray* function(GtkTextView* textView) c_gtk_text_view_get_tabs;
 	int function(GtkTextView* textView) c_gtk_text_view_get_top_margin;
 	void function(GtkTextView* textView, GdkRectangle* visibleRect) c_gtk_text_view_get_visible_rect;
@@ -8590,7 +8624,7 @@ __gshared extern(C)
 	GtkMediaStream* function(GtkVideo* self) c_gtk_video_get_media_stream;
 	void function(GtkVideo* self, int autoplay) c_gtk_video_set_autoplay;
 	void function(GtkVideo* self, GFile* file) c_gtk_video_set_file;
-	void function(GtkVideo* self, const(char)* filename) c_gtk_video_set_filename;
+	void function(GtkVideo* self, char* filename) c_gtk_video_set_filename;
 	void function(GtkVideo* self, int loop) c_gtk_video_set_loop;
 	void function(GtkVideo* self, GtkMediaStream* stream) c_gtk_video_set_media_stream;
 	void function(GtkVideo* self, const(char)* resourcePath) c_gtk_video_set_resource;
@@ -9909,6 +9943,7 @@ alias c_gtk_drop_down_set_selected gtk_drop_down_set_selected;
 alias c_gtk_drop_target_get_type gtk_drop_target_get_type;
 alias c_gtk_drop_target_new gtk_drop_target_new;
 alias c_gtk_drop_target_get_actions gtk_drop_target_get_actions;
+alias c_gtk_drop_target_get_current_drop gtk_drop_target_get_current_drop;
 alias c_gtk_drop_target_get_drop gtk_drop_target_get_drop;
 alias c_gtk_drop_target_get_formats gtk_drop_target_get_formats;
 alias c_gtk_drop_target_get_gtypes gtk_drop_target_get_gtypes;
@@ -10230,6 +10265,7 @@ alias c_gtk_file_filter_new_from_gvariant gtk_file_filter_new_from_gvariant;
 alias c_gtk_file_filter_add_mime_type gtk_file_filter_add_mime_type;
 alias c_gtk_file_filter_add_pattern gtk_file_filter_add_pattern;
 alias c_gtk_file_filter_add_pixbuf_formats gtk_file_filter_add_pixbuf_formats;
+alias c_gtk_file_filter_add_suffix gtk_file_filter_add_suffix;
 alias c_gtk_file_filter_get_attributes gtk_file_filter_get_attributes;
 alias c_gtk_file_filter_get_name gtk_file_filter_get_name;
 alias c_gtk_file_filter_set_name gtk_file_filter_set_name;
@@ -11045,6 +11081,9 @@ alias c_gtk_media_stream_set_loop gtk_media_stream_set_loop;
 alias c_gtk_media_stream_set_muted gtk_media_stream_set_muted;
 alias c_gtk_media_stream_set_playing gtk_media_stream_set_playing;
 alias c_gtk_media_stream_set_volume gtk_media_stream_set_volume;
+alias c_gtk_media_stream_stream_ended gtk_media_stream_stream_ended;
+alias c_gtk_media_stream_stream_prepared gtk_media_stream_stream_prepared;
+alias c_gtk_media_stream_stream_unprepared gtk_media_stream_stream_unprepared;
 alias c_gtk_media_stream_unprepared gtk_media_stream_unprepared;
 alias c_gtk_media_stream_unrealize gtk_media_stream_unrealize;
 alias c_gtk_media_stream_update gtk_media_stream_update;
@@ -11053,15 +11092,18 @@ alias c_gtk_media_stream_update gtk_media_stream_update;
 
 alias c_gtk_menu_button_get_type gtk_menu_button_get_type;
 alias c_gtk_menu_button_new gtk_menu_button_new;
+alias c_gtk_menu_button_get_always_show_arrow gtk_menu_button_get_always_show_arrow;
 alias c_gtk_menu_button_get_direction gtk_menu_button_get_direction;
 alias c_gtk_menu_button_get_has_frame gtk_menu_button_get_has_frame;
 alias c_gtk_menu_button_get_icon_name gtk_menu_button_get_icon_name;
 alias c_gtk_menu_button_get_label gtk_menu_button_get_label;
 alias c_gtk_menu_button_get_menu_model gtk_menu_button_get_menu_model;
 alias c_gtk_menu_button_get_popover gtk_menu_button_get_popover;
+alias c_gtk_menu_button_get_primary gtk_menu_button_get_primary;
 alias c_gtk_menu_button_get_use_underline gtk_menu_button_get_use_underline;
 alias c_gtk_menu_button_popdown gtk_menu_button_popdown;
 alias c_gtk_menu_button_popup gtk_menu_button_popup;
+alias c_gtk_menu_button_set_always_show_arrow gtk_menu_button_set_always_show_arrow;
 alias c_gtk_menu_button_set_create_popup_func gtk_menu_button_set_create_popup_func;
 alias c_gtk_menu_button_set_direction gtk_menu_button_set_direction;
 alias c_gtk_menu_button_set_has_frame gtk_menu_button_set_has_frame;
@@ -11069,6 +11111,7 @@ alias c_gtk_menu_button_set_icon_name gtk_menu_button_set_icon_name;
 alias c_gtk_menu_button_set_label gtk_menu_button_set_label;
 alias c_gtk_menu_button_set_menu_model gtk_menu_button_set_menu_model;
 alias c_gtk_menu_button_set_popover gtk_menu_button_set_popover;
+alias c_gtk_menu_button_set_primary gtk_menu_button_set_primary;
 alias c_gtk_menu_button_set_use_underline gtk_menu_button_set_use_underline;
 
 // gtk.MessageDialog
@@ -11379,6 +11422,11 @@ alias c_gtk_password_entry_get_extra_menu gtk_password_entry_get_extra_menu;
 alias c_gtk_password_entry_get_show_peek_icon gtk_password_entry_get_show_peek_icon;
 alias c_gtk_password_entry_set_extra_menu gtk_password_entry_set_extra_menu;
 alias c_gtk_password_entry_set_show_peek_icon gtk_password_entry_set_show_peek_icon;
+
+// gtk.PasswordEntryBuffer
+
+alias c_gtk_password_entry_buffer_get_type gtk_password_entry_buffer_get_type;
+alias c_gtk_password_entry_buffer_new gtk_password_entry_buffer_new;
 
 // gtk.Picture
 
@@ -12311,6 +12359,7 @@ alias c_gtk_switch_set_state gtk_switch_set_state;
 alias c_gtk_text_get_type gtk_text_get_type;
 alias c_gtk_text_new gtk_text_new;
 alias c_gtk_text_new_with_buffer gtk_text_new_with_buffer;
+alias c_gtk_text_compute_cursor_extents gtk_text_compute_cursor_extents;
 alias c_gtk_text_get_activates_default gtk_text_get_activates_default;
 alias c_gtk_text_get_attributes gtk_text_get_attributes;
 alias c_gtk_text_get_buffer gtk_text_get_buffer;
@@ -12580,12 +12629,14 @@ alias c_gtk_text_view_get_justification gtk_text_view_get_justification;
 alias c_gtk_text_view_get_left_margin gtk_text_view_get_left_margin;
 alias c_gtk_text_view_get_line_at_y gtk_text_view_get_line_at_y;
 alias c_gtk_text_view_get_line_yrange gtk_text_view_get_line_yrange;
+alias c_gtk_text_view_get_ltr_context gtk_text_view_get_ltr_context;
 alias c_gtk_text_view_get_monospace gtk_text_view_get_monospace;
 alias c_gtk_text_view_get_overwrite gtk_text_view_get_overwrite;
 alias c_gtk_text_view_get_pixels_above_lines gtk_text_view_get_pixels_above_lines;
 alias c_gtk_text_view_get_pixels_below_lines gtk_text_view_get_pixels_below_lines;
 alias c_gtk_text_view_get_pixels_inside_wrap gtk_text_view_get_pixels_inside_wrap;
 alias c_gtk_text_view_get_right_margin gtk_text_view_get_right_margin;
+alias c_gtk_text_view_get_rtl_context gtk_text_view_get_rtl_context;
 alias c_gtk_text_view_get_tabs gtk_text_view_get_tabs;
 alias c_gtk_text_view_get_top_margin gtk_text_view_get_top_margin;
 alias c_gtk_text_view_get_visible_rect gtk_text_view_get_visible_rect;
