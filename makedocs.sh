@@ -71,7 +71,7 @@ mv docs/docs.json docs/docs_utf8.json
 iconv -f utf8 -t ascii -c docs/docs_utf8.json > docs/docs.json
 
 # Filter out everything except public members
-dub run scod -- filter docs/docs.json --only-documented --min-protection Public
+dub run ddox -- filter docs/docs.json --only-documented --min-protection Public
 
 # Use dub to run docs and generate offline docs documentation
-dub run scod -- generate-html --navigation-type=moduleTree docs/docs.json docs
+dub run ddox -- generate-html --navigation-type=moduleTree docs/docs.json docs
