@@ -29,6 +29,7 @@ shared static this()
 	Linker.link(rsvg_handle_get_geometry_for_element, "rsvg_handle_get_geometry_for_element", LIBRARY_RSVG);
 	Linker.link(rsvg_handle_get_geometry_for_layer, "rsvg_handle_get_geometry_for_layer", LIBRARY_RSVG);
 	Linker.link(rsvg_handle_get_intrinsic_dimensions, "rsvg_handle_get_intrinsic_dimensions", LIBRARY_RSVG);
+	Linker.link(rsvg_handle_get_intrinsic_size_in_pixels, "rsvg_handle_get_intrinsic_size_in_pixels", LIBRARY_RSVG);
 	Linker.link(rsvg_handle_get_pixbuf, "rsvg_handle_get_pixbuf", LIBRARY_RSVG);
 	Linker.link(rsvg_handle_get_pixbuf_sub, "rsvg_handle_get_pixbuf_sub", LIBRARY_RSVG);
 	Linker.link(rsvg_handle_get_position_sub, "rsvg_handle_get_position_sub", LIBRARY_RSVG);
@@ -70,6 +71,7 @@ __gshared extern(C)
 	int function(RsvgHandle* handle, const(char)* id, RsvgRectangle* outInkRect, RsvgRectangle* outLogicalRect, GError** err) c_rsvg_handle_get_geometry_for_element;
 	int function(RsvgHandle* handle, const(char)* id, RsvgRectangle* viewport, RsvgRectangle* outInkRect, RsvgRectangle* outLogicalRect, GError** err) c_rsvg_handle_get_geometry_for_layer;
 	void function(RsvgHandle* handle, int* outHasWidth, RsvgLength* outWidth, int* outHasHeight, RsvgLength* outHeight, int* outHasViewbox, RsvgRectangle* outViewbox) c_rsvg_handle_get_intrinsic_dimensions;
+	int function(RsvgHandle* handle, double* outWidth, double* outHeight) c_rsvg_handle_get_intrinsic_size_in_pixels;
 	GdkPixbuf* function(RsvgHandle* handle) c_rsvg_handle_get_pixbuf;
 	GdkPixbuf* function(RsvgHandle* handle, const(char)* id) c_rsvg_handle_get_pixbuf_sub;
 	int function(RsvgHandle* handle, RsvgPositionData* positionData, const(char)* id) c_rsvg_handle_get_position_sub;
@@ -109,6 +111,7 @@ alias c_rsvg_handle_get_dimensions_sub rsvg_handle_get_dimensions_sub;
 alias c_rsvg_handle_get_geometry_for_element rsvg_handle_get_geometry_for_element;
 alias c_rsvg_handle_get_geometry_for_layer rsvg_handle_get_geometry_for_layer;
 alias c_rsvg_handle_get_intrinsic_dimensions rsvg_handle_get_intrinsic_dimensions;
+alias c_rsvg_handle_get_intrinsic_size_in_pixels rsvg_handle_get_intrinsic_size_in_pixels;
 alias c_rsvg_handle_get_pixbuf rsvg_handle_get_pixbuf;
 alias c_rsvg_handle_get_pixbuf_sub rsvg_handle_get_pixbuf_sub;
 alias c_rsvg_handle_get_position_sub rsvg_handle_get_position_sub;

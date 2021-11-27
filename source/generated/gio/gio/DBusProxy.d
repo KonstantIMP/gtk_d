@@ -47,6 +47,13 @@ private import std.algorithm;
  * the message bus launching an owner (unless
  * %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START is set).
  * 
+ * If the proxy is for a stateless D-Bus service, where the name owner may
+ * be started and stopped between calls, the #GDBusProxy:g-name-owner tracking
+ * of #GDBusProxy will cause the proxy to drop signal and property changes from
+ * the service after it has restarted for the first time. When interacting
+ * with a stateless D-Bus service, do not use #GDBusProxy — use direct D-Bus
+ * method calls and signal connections.
+ * 
  * The generic #GDBusProxy::g-properties-changed and
  * #GDBusProxy::g-signal signals are not very convenient to work with.
  * Therefore, the recommended way of working with proxies is to subclass
@@ -61,7 +68,7 @@ private import std.algorithm;
  * of the thread where the instance was constructed.
  * 
  * An example using a proxy for a well-known name can be found in
- * [gdbus-example-watch-proxy.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-watch-proxy.c)
+ * [gdbus-example-watch-proxy.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gdbus-example-watch-proxy.c)
  *
  * Since: 2.26
  */
@@ -717,6 +724,10 @@ public string getInterfaceName()
 
 /**
  * Gets the name that @proxy was constructed for.
+ *
+ * When connected to a message bus, this will usually be non-%NULL.
+ * However, it may be %NULL for a proxy that communicates using a peer-to-peer
+ * pattern.
  *
  * Returns: A string owned by @proxy. Do not free.
  *

@@ -9,8 +9,7 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumateCoordinate structure contains only private data
- * and should be accessed using the provided API
+ * A simple object implementing [iface@Location].
  */
 public class Coordinate : ObjectG, LocationIF
 {

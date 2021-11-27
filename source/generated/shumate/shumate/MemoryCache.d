@@ -10,8 +10,9 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumateMemoryCache structure contains only private data
- * and should be accessed using the provided API
+ * A cache that stores and retrieves tiles from the memory. The cache contents
+ * is not preserved between application restarts so this cache serves mostly as
+ * a quick access temporary cache to the most recently used tiles.
  */
 public class MemoryCache : ObjectG
 {

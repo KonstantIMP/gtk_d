@@ -14,7 +14,20 @@ private import shumate.c.functions;
 public  import shumate.c.types;
 
 
-/** */
+/**
+ * A widget displaying a compass.
+ * 
+ * # CSS nodes
+ * 
+ * ```
+ * map-compass
+ * ├── revealer
+ * ├──── image
+ * ```
+ * 
+ * `ShumateCompass` uses a single CSS node with name map-compass. It also uses an
+ * image named "map-compass".
+ */
 public class Compass : Widget
 {
 	/** the main Gtk struct */

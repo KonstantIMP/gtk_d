@@ -28,7 +28,7 @@ private import std.algorithm;
  * session or system bus, you should instead use g_bus_own_name().
  * 
  * An example of peer-to-peer communication with GDBus can be found
- * in [gdbus-example-peer.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-peer.c).
+ * in [gdbus-example-peer.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gdbus-example-peer.c).
  * 
  * Note that a minimal #GDBusServer will accept connections from any
  * peer. In many use-cases it will be necessary to add a #GDBusAuthObserver
@@ -138,6 +138,8 @@ public class DBusServer : ObjectG, InitableIF
 	 * [D-Bus address](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses)
 	 * string that can be used by clients to connect to @server.
 	 *
+	 * This is valid and non-empty if initializing the #GDBusServer succeeded.
+	 *
 	 * Returns: A D-Bus address string. Do not free, the string is owned
 	 *     by @server.
 	 *
@@ -161,7 +163,7 @@ public class DBusServer : ObjectG, InitableIF
 	}
 
 	/**
-	 * Gets the GUID for @server.
+	 * Gets the GUID for @server, as provided to g_dbus_server_new_sync().
 	 *
 	 * Returns: A D-Bus GUID. Do not free this string, it is owned by @server.
 	 *

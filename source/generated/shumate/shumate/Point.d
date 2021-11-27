@@ -8,8 +8,8 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumatePoint structure contains only private data
- * and should be accessed using the provided API
+ * A simple variant of [class@Marker] showing the location of the point as a
+ * circle on the map.
  */
 public class Point : Marker
 {

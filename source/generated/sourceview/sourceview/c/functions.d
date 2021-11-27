@@ -83,7 +83,6 @@ shared static this()
 	Linker.link(gtk_source_completion_context_get_completion, "gtk_source_completion_context_get_completion", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_completion_context_get_empty, "gtk_source_completion_context_get_empty", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_completion_context_get_language, "gtk_source_completion_context_get_language", LIBRARY_SOURCEVIEW);
-	Linker.link(gtk_source_completion_context_get_start_iter, "gtk_source_completion_context_get_start_iter", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_completion_context_get_view, "gtk_source_completion_context_get_view", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_completion_context_get_word, "gtk_source_completion_context_get_word", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_completion_context_set_proposals_for_provider, "gtk_source_completion_context_set_proposals_for_provider", LIBRARY_SOURCEVIEW);
@@ -561,6 +560,14 @@ shared static this()
 	Linker.link(gtk_source_style_scheme_manager_prepend_search_path, "gtk_source_style_scheme_manager_prepend_search_path", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_style_scheme_manager_set_search_path, "gtk_source_style_scheme_manager_set_search_path", LIBRARY_SOURCEVIEW);
 
+	// sourceview.StyleSchemePreview
+
+	Linker.link(gtk_source_style_scheme_preview_get_type, "gtk_source_style_scheme_preview_get_type", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_style_scheme_preview_new, "gtk_source_style_scheme_preview_new", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_style_scheme_preview_get_scheme, "gtk_source_style_scheme_preview_get_scheme", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_style_scheme_preview_get_selected, "gtk_source_style_scheme_preview_get_selected", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_style_scheme_preview_set_selected, "gtk_source_style_scheme_preview_set_selected", LIBRARY_SOURCEVIEW);
+
 	// sourceview.Tag
 
 	Linker.link(gtk_source_tag_get_type, "gtk_source_tag_get_type", LIBRARY_SOURCEVIEW);
@@ -611,6 +618,14 @@ shared static this()
 	Linker.link(gtk_source_view_set_smart_home_end, "gtk_source_view_set_smart_home_end", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_view_set_tab_width, "gtk_source_view_set_tab_width", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_view_unindent_lines, "gtk_source_view_unindent_lines", LIBRARY_SOURCEVIEW);
+
+	// sourceview.VimIMContext
+
+	Linker.link(gtk_source_vim_im_context_get_type, "gtk_source_vim_im_context_get_type", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_vim_im_context_new, "gtk_source_vim_im_context_new", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_vim_im_context_execute_command, "gtk_source_vim_im_context_execute_command", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_vim_im_context_get_command_bar_text, "gtk_source_vim_im_context_get_command_bar_text", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_vim_im_context_get_command_text, "gtk_source_vim_im_context_get_command_text", LIBRARY_SOURCEVIEW);
 }
 
 __gshared extern(C)
@@ -686,7 +701,6 @@ __gshared extern(C)
 	GtkSourceCompletion* function(GtkSourceCompletionContext* self) c_gtk_source_completion_context_get_completion;
 	int function(GtkSourceCompletionContext* self) c_gtk_source_completion_context_get_empty;
 	GtkSourceLanguage* function(GtkSourceCompletionContext* self) c_gtk_source_completion_context_get_language;
-	void function(GtkSourceCompletionContext* self, GtkTextIter* iter) c_gtk_source_completion_context_get_start_iter;
 	GtkSourceView* function(GtkSourceCompletionContext* self) c_gtk_source_completion_context_get_view;
 	char* function(GtkSourceCompletionContext* self) c_gtk_source_completion_context_get_word;
 	void function(GtkSourceCompletionContext* self, GtkSourceCompletionProvider* provider, GListModel* results) c_gtk_source_completion_context_set_proposals_for_provider;
@@ -1164,6 +1178,14 @@ __gshared extern(C)
 	void function(GtkSourceStyleSchemeManager* manager, const(char)* path) c_gtk_source_style_scheme_manager_prepend_search_path;
 	void function(GtkSourceStyleSchemeManager* manager, char** path) c_gtk_source_style_scheme_manager_set_search_path;
 
+	// sourceview.StyleSchemePreview
+
+	GType function() c_gtk_source_style_scheme_preview_get_type;
+	GtkWidget* function(GtkSourceStyleScheme* scheme) c_gtk_source_style_scheme_preview_new;
+	GtkSourceStyleScheme* function(GtkSourceStyleSchemePreview* self) c_gtk_source_style_scheme_preview_get_scheme;
+	int function(GtkSourceStyleSchemePreview* self) c_gtk_source_style_scheme_preview_get_selected;
+	void function(GtkSourceStyleSchemePreview* self, int selected) c_gtk_source_style_scheme_preview_set_selected;
+
 	// sourceview.Tag
 
 	GType function() c_gtk_source_tag_get_type;
@@ -1214,6 +1236,14 @@ __gshared extern(C)
 	void function(GtkSourceView* view, GtkSourceSmartHomeEndType smartHomeEnd) c_gtk_source_view_set_smart_home_end;
 	void function(GtkSourceView* view, uint width) c_gtk_source_view_set_tab_width;
 	void function(GtkSourceView* view, GtkTextIter* start, GtkTextIter* end) c_gtk_source_view_unindent_lines;
+
+	// sourceview.VimIMContext
+
+	GType function() c_gtk_source_vim_im_context_get_type;
+	GtkIMContext* function() c_gtk_source_vim_im_context_new;
+	void function(GtkSourceVimIMContext* self, const(char)* command) c_gtk_source_vim_im_context_execute_command;
+	const(char)* function(GtkSourceVimIMContext* self) c_gtk_source_vim_im_context_get_command_bar_text;
+	const(char)* function(GtkSourceVimIMContext* self) c_gtk_source_vim_im_context_get_command_text;
 }
 
 
@@ -1287,7 +1317,6 @@ alias c_gtk_source_completion_context_get_busy gtk_source_completion_context_get
 alias c_gtk_source_completion_context_get_completion gtk_source_completion_context_get_completion;
 alias c_gtk_source_completion_context_get_empty gtk_source_completion_context_get_empty;
 alias c_gtk_source_completion_context_get_language gtk_source_completion_context_get_language;
-alias c_gtk_source_completion_context_get_start_iter gtk_source_completion_context_get_start_iter;
 alias c_gtk_source_completion_context_get_view gtk_source_completion_context_get_view;
 alias c_gtk_source_completion_context_get_word gtk_source_completion_context_get_word;
 alias c_gtk_source_completion_context_set_proposals_for_provider gtk_source_completion_context_set_proposals_for_provider;
@@ -1765,6 +1794,14 @@ alias c_gtk_source_style_scheme_manager_get_search_path gtk_source_style_scheme_
 alias c_gtk_source_style_scheme_manager_prepend_search_path gtk_source_style_scheme_manager_prepend_search_path;
 alias c_gtk_source_style_scheme_manager_set_search_path gtk_source_style_scheme_manager_set_search_path;
 
+// sourceview.StyleSchemePreview
+
+alias c_gtk_source_style_scheme_preview_get_type gtk_source_style_scheme_preview_get_type;
+alias c_gtk_source_style_scheme_preview_new gtk_source_style_scheme_preview_new;
+alias c_gtk_source_style_scheme_preview_get_scheme gtk_source_style_scheme_preview_get_scheme;
+alias c_gtk_source_style_scheme_preview_get_selected gtk_source_style_scheme_preview_get_selected;
+alias c_gtk_source_style_scheme_preview_set_selected gtk_source_style_scheme_preview_set_selected;
+
 // sourceview.Tag
 
 alias c_gtk_source_tag_get_type gtk_source_tag_get_type;
@@ -1815,3 +1852,11 @@ alias c_gtk_source_view_set_smart_backspace gtk_source_view_set_smart_backspace;
 alias c_gtk_source_view_set_smart_home_end gtk_source_view_set_smart_home_end;
 alias c_gtk_source_view_set_tab_width gtk_source_view_set_tab_width;
 alias c_gtk_source_view_unindent_lines gtk_source_view_unindent_lines;
+
+// sourceview.VimIMContext
+
+alias c_gtk_source_vim_im_context_get_type gtk_source_vim_im_context_get_type;
+alias c_gtk_source_vim_im_context_new gtk_source_vim_im_context_new;
+alias c_gtk_source_vim_im_context_execute_command gtk_source_vim_im_context_execute_command;
+alias c_gtk_source_vim_im_context_get_command_bar_text gtk_source_vim_im_context_get_command_bar_text;
+alias c_gtk_source_vim_im_context_get_command_text gtk_source_vim_im_context_get_command_text;

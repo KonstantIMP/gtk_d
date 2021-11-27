@@ -1331,10 +1331,10 @@ struct GdkPaintable;
  * The list of functions that can be implemented for the `GdkPaintable`
  * interface.
  *
- * Note that apart from the [vfunc@Gdk.PaintableInterface.snapshot] function,
+ * Note that apart from the [vfunc@Gdk.Paintable.snapshot] function,
  * no virtual function of this interface is mandatory to implement, though it
- * is a good idea to implement [vfunc@Gdk.PaintableInterface.get_current_image]
- * for non-static paintables and [vfunc@Gdk.PaintableInterface.get_flags] if the
+ * is a good idea to implement [vfunc@Gdk.Paintable.get_current_image]
+ * for non-static paintables and [vfunc@Gdk.Paintable.get_flags] if the
  * image is not dynamic as the default implementation returns no flags and
  * that will make the implementation likely quite slow.
  */

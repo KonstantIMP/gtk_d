@@ -19,8 +19,10 @@ private import std.traits;
 
 
 /**
- * All the fields in the GObject structure are private
- * to the #GObject implementation and should never be accessed directly.
+ * The base object type.
+ * 
+ * All the fields in the `GObject` structure are private to the implementation
+ * and should never be accessed directly.
  */
 public class ObjectG
 {
@@ -581,10 +583,12 @@ public void addWeakPointer(ref void* weakPointerLocation)
 
 /**
  * Creates a binding between @source_property on @source and @target_property
- * on @target. Whenever the @source_property is changed the @target_property is
+ * on @target.
+ *
+ * Whenever the @source_property is changed the @target_property is
  * updated using the same value. For instance:
  *
- * |[
+ * |[<!-- language="C" -->
  * g_object_bind_property (action, "active", widget, "sensitive", 0);
  * ]|
  *
@@ -1064,7 +1068,8 @@ public ObjectG refSink()
  *     notify = a function to call when this reference is the
  *         last reference to the object, or is no longer
  *         the last reference.
- *     data = data to pass to @notify
+ *     data = data to pass to @notify, or %NULL to
+ *         match any toggle refs with the @notify argument.
  *
  * Since: 2.8
  */
@@ -1348,6 +1353,59 @@ public void* stealData(string key)
 public void* stealQdata(GQuark quark)
 {
 	return g_object_steal_qdata(gObject, quark);
+}
+
+/**
+ * If @object is floating, sink it.  Otherwise, do nothing.
+ *
+ * In other words, this function will convert a floating reference (if
+ * present) into a full reference.
+ *
+ * Typically you want to use g_object_ref_sink() in order to
+ * automatically do the correct thing with respect to floating or
+ * non-floating references, but there is one specific scenario where
+ * this function is helpful.
+ *
+ * The situation where this function is helpful is when creating an API
+ * that allows the user to provide a callback function that returns a
+ * GObject. We certainly want to allow the user the flexibility to
+ * return a non-floating reference from this callback (for the case
+ * where the object that is being returned already exists).
+ *
+ * At the same time, the API style of some popular GObject-based
+ * libraries (such as Gtk) make it likely that for newly-created GObject
+ * instances, the user can be saved some typing if they are allowed to
+ * return a floating reference.
+ *
+ * Using this function on the return value of the user's callback allows
+ * the user to do whichever is more convenient for them. The caller will
+ * alway receives exactly one full reference to the value: either the
+ * one that was returned in the first place, or a floating reference
+ * that has been converted to a full reference.
+ *
+ * This function has an odd interaction when combined with
+ * g_object_ref_sink() running at the same time in another thread on
+ * the same #GObject instance. If g_object_ref_sink() runs first then
+ * the result will be that the floating reference is converted to a hard
+ * reference. If g_object_take_ref() runs first then the result will be
+ * that the floating reference is converted to a hard reference and an
+ * additional reference on top of that one is added. It is best to avoid
+ * this situation.
+ *
+ * Returns: @object
+ *
+ * Since: 2.70
+ */
+public ObjectG takeRef()
+{
+	auto __p = g_object_take_ref(gObject);
+
+	if(__p is null)
+	{
+		return null;
+	}
+
+	return ObjectG.getDObject!(ObjectG)(cast(GObject*) __p, true);
 }
 
 /**

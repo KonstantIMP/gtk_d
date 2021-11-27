@@ -11,10 +11,10 @@ public struct Child
 
 	/**
 	 * Sets a function to be called when the child indicated by @pid
-	 * exits, at a default priority, #G_PRIORITY_DEFAULT.
+	 * exits, at a default priority, %G_PRIORITY_DEFAULT.
 	 *
 	 * If you obtain @pid from g_spawn_async() or g_spawn_async_with_pipes()
-	 * you will need to pass #G_SPAWN_DO_NOT_REAP_CHILD as flag to
+	 * you will need to pass %G_SPAWN_DO_NOT_REAP_CHILD as flag to
 	 * the spawn function for the child watching to work.
 	 *
 	 * Note that on platforms where #GPid must be explicitly closed
@@ -33,8 +33,8 @@ public struct Child
 	 *
 	 * Params:
 	 *     pid = process id to watch. On POSIX the positive pid of a child
-	 *         process. On Windows a handle for a process (which doesn't have to be
-	 *         a child).
+	 *         process. On Windows a handle for a process (which doesn't have
+	 *         to be a child).
 	 *     function_ = function to call
 	 *     data = data to pass to @function
 	 *
@@ -52,10 +52,10 @@ public struct Child
 	 * exits, at the priority @priority.
 	 *
 	 * If you obtain @pid from g_spawn_async() or g_spawn_async_with_pipes()
-	 * you will need to pass #G_SPAWN_DO_NOT_REAP_CHILD as flag to
+	 * you will need to pass %G_SPAWN_DO_NOT_REAP_CHILD as flag to
 	 * the spawn function for the child watching to work.
 	 *
-	 * In many programs, you will want to call g_spawn_check_exit_status()
+	 * In many programs, you will want to call g_spawn_check_wait_status()
 	 * in the callback to determine whether or not the child exited
 	 * successfully.
 	 *
@@ -75,7 +75,7 @@ public struct Child
 	 *
 	 * Params:
 	 *     priority = the priority of the idle source. Typically this will be in the
-	 *         range between #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE.
+	 *         range between %G_PRIORITY_DEFAULT_IDLE and %G_PRIORITY_HIGH_IDLE.
 	 *     pid = process to watch. On POSIX the positive pid of a child process. On
 	 *         Windows a handle for a process (which doesn't have to be a child).
 	 *     function_ = function to call

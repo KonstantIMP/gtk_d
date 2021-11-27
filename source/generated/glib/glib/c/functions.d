@@ -146,6 +146,7 @@ shared static this()
 	Linker.link(g_bytes_compare, "g_bytes_compare", LIBRARY_GLIB);
 	Linker.link(g_bytes_equal, "g_bytes_equal", LIBRARY_GLIB);
 	Linker.link(g_bytes_get_data, "g_bytes_get_data", LIBRARY_GLIB);
+	Linker.link(g_bytes_get_region, "g_bytes_get_region", LIBRARY_GLIB);
 	Linker.link(g_bytes_get_size, "g_bytes_get_size", LIBRARY_GLIB);
 	Linker.link(g_bytes_hash, "g_bytes_hash", LIBRARY_GLIB);
 	Linker.link(g_bytes_new_from_bytes, "g_bytes_new_from_bytes", LIBRARY_GLIB);
@@ -705,9 +706,12 @@ shared static this()
 
 	// glib.Pattern
 
+	Linker.link(g_pattern_spec_new, "g_pattern_spec_new", LIBRARY_GLIB);
+	Linker.link(g_pattern_spec_copy, "g_pattern_spec_copy", LIBRARY_GLIB);
 	Linker.link(g_pattern_spec_equal, "g_pattern_spec_equal", LIBRARY_GLIB);
 	Linker.link(g_pattern_spec_free, "g_pattern_spec_free", LIBRARY_GLIB);
-	Linker.link(g_pattern_spec_new, "g_pattern_spec_new", LIBRARY_GLIB);
+	Linker.link(g_pattern_spec_match, "g_pattern_spec_match", LIBRARY_GLIB);
+	Linker.link(g_pattern_spec_match_string, "g_pattern_spec_match_string", LIBRARY_GLIB);
 	Linker.link(g_pattern_match, "g_pattern_match", LIBRARY_GLIB);
 	Linker.link(g_pattern_match_simple, "g_pattern_match_simple", LIBRARY_GLIB);
 	Linker.link(g_pattern_match_string, "g_pattern_match_string", LIBRARY_GLIB);
@@ -993,6 +997,7 @@ shared static this()
 	Linker.link(g_source_set_name, "g_source_set_name", LIBRARY_GLIB);
 	Linker.link(g_source_set_priority, "g_source_set_priority", LIBRARY_GLIB);
 	Linker.link(g_source_set_ready_time, "g_source_set_ready_time", LIBRARY_GLIB);
+	Linker.link(g_source_set_static_name, "g_source_set_static_name", LIBRARY_GLIB);
 	Linker.link(g_source_unref, "g_source_unref", LIBRARY_GLIB);
 	Linker.link(g_source_remove, "g_source_remove", LIBRARY_GLIB);
 	Linker.link(g_source_remove_by_funcs_user_data, "g_source_remove_by_funcs_user_data", LIBRARY_GLIB);
@@ -1001,6 +1006,9 @@ shared static this()
 
 	// glib.StringG
 
+	Linker.link(g_string_new, "g_string_new", LIBRARY_GLIB);
+	Linker.link(g_string_new_len, "g_string_new_len", LIBRARY_GLIB);
+	Linker.link(g_string_sized_new, "g_string_sized_new", LIBRARY_GLIB);
 	Linker.link(g_string_append, "g_string_append", LIBRARY_GLIB);
 	Linker.link(g_string_append_c, "g_string_append_c", LIBRARY_GLIB);
 	Linker.link(g_string_append_len, "g_string_append_len", LIBRARY_GLIB);
@@ -1033,9 +1041,8 @@ shared static this()
 	Linker.link(g_string_truncate, "g_string_truncate", LIBRARY_GLIB);
 	Linker.link(g_string_up, "g_string_up", LIBRARY_GLIB);
 	Linker.link(g_string_vprintf, "g_string_vprintf", LIBRARY_GLIB);
-	Linker.link(g_string_new, "g_string_new", LIBRARY_GLIB);
-	Linker.link(g_string_new_len, "g_string_new_len", LIBRARY_GLIB);
-	Linker.link(g_string_sized_new, "g_string_sized_new", LIBRARY_GLIB);
+	Linker.link(g_ref_string_new, "g_ref_string_new", LIBRARY_GLIB);
+	Linker.link(g_ref_string_new_len, "g_ref_string_new_len", LIBRARY_GLIB);
 
 	// glib.StringChunk
 
@@ -1049,10 +1056,16 @@ shared static this()
 	// glib.StrvBuilder
 
 	Linker.link(g_strv_builder_add, "g_strv_builder_add", LIBRARY_GLIB);
+	Linker.link(g_strv_builder_add_many, "g_strv_builder_add_many", LIBRARY_GLIB);
+	Linker.link(g_strv_builder_addv, "g_strv_builder_addv", LIBRARY_GLIB);
 	Linker.link(g_strv_builder_end, "g_strv_builder_end", LIBRARY_GLIB);
 	Linker.link(g_strv_builder_ref, "g_strv_builder_ref", LIBRARY_GLIB);
 	Linker.link(g_strv_builder_unref, "g_strv_builder_unref", LIBRARY_GLIB);
 	Linker.link(g_strv_builder_new, "g_strv_builder_new", LIBRARY_GLIB);
+
+	// glib.TestCase
+
+	Linker.link(g_test_case_free, "g_test_case_free", LIBRARY_GLIB);
 
 	// glib.TestLogBuffer
 
@@ -1069,6 +1082,7 @@ shared static this()
 
 	Linker.link(g_test_suite_add, "g_test_suite_add", LIBRARY_GLIB);
 	Linker.link(g_test_suite_add_suite, "g_test_suite_add_suite", LIBRARY_GLIB);
+	Linker.link(g_test_suite_free, "g_test_suite_free", LIBRARY_GLIB);
 
 	// glib.Thread
 
@@ -1103,6 +1117,7 @@ shared static this()
 	Linker.link(g_thread_pool_get_max_unused_threads, "g_thread_pool_get_max_unused_threads", LIBRARY_GLIB);
 	Linker.link(g_thread_pool_get_num_unused_threads, "g_thread_pool_get_num_unused_threads", LIBRARY_GLIB);
 	Linker.link(g_thread_pool_new, "g_thread_pool_new", LIBRARY_GLIB);
+	Linker.link(g_thread_pool_new_full, "g_thread_pool_new_full", LIBRARY_GLIB);
 	Linker.link(g_thread_pool_set_max_idle_time, "g_thread_pool_set_max_idle_time", LIBRARY_GLIB);
 	Linker.link(g_thread_pool_set_max_unused_threads, "g_thread_pool_set_max_unused_threads", LIBRARY_GLIB);
 	Linker.link(g_thread_pool_stop_unused_threads, "g_thread_pool_stop_unused_threads", LIBRARY_GLIB);
@@ -1171,6 +1186,7 @@ shared static this()
 	Linker.link(g_tree_node_last, "g_tree_node_last", LIBRARY_GLIB);
 	Linker.link(g_tree_ref, "g_tree_ref", LIBRARY_GLIB);
 	Linker.link(g_tree_remove, "g_tree_remove", LIBRARY_GLIB);
+	Linker.link(g_tree_remove_all, "g_tree_remove_all", LIBRARY_GLIB);
 	Linker.link(g_tree_replace, "g_tree_replace", LIBRARY_GLIB);
 	Linker.link(g_tree_replace_node, "g_tree_replace_node", LIBRARY_GLIB);
 	Linker.link(g_tree_search, "g_tree_search", LIBRARY_GLIB);
@@ -1406,7 +1422,9 @@ shared static this()
 	Linker.link(g_module_symbol, "g_module_symbol", LIBRARY_GLIB);
 	Linker.link(g_module_build_path, "g_module_build_path", LIBRARY_GLIB);
 	Linker.link(g_module_error, "g_module_error", LIBRARY_GLIB);
+	Linker.link(g_module_error_quark, "g_module_error_quark", LIBRARY_GLIB);
 	Linker.link(g_module_open, "g_module_open", LIBRARY_GLIB);
+	Linker.link(g_module_open_full, "g_module_open_full", LIBRARY_GLIB);
 	Linker.link(g_module_supported, "g_module_supported", LIBRARY_GLIB);
 
 	// glib.Base64
@@ -1981,6 +1999,7 @@ __gshared extern(C)
 	int function(void* bytes1, void* bytes2) c_g_bytes_compare;
 	int function(void* bytes1, void* bytes2) c_g_bytes_equal;
 	void* function(GBytes* bytes, size_t* size) c_g_bytes_get_data;
+	void* function(GBytes* bytes, size_t elementSize, size_t offset, size_t nElements) c_g_bytes_get_region;
 	size_t function(GBytes* bytes) c_g_bytes_get_size;
 	uint function(void* bytes) c_g_bytes_hash;
 	GBytes* function(GBytes* bytes, size_t offset, size_t length) c_g_bytes_new_from_bytes;
@@ -2540,9 +2559,12 @@ __gshared extern(C)
 
 	// glib.Pattern
 
+	GPatternSpec* function(const(char)* pattern) c_g_pattern_spec_new;
+	GPatternSpec* function(GPatternSpec* pspec) c_g_pattern_spec_copy;
 	int function(GPatternSpec* pspec1, GPatternSpec* pspec2) c_g_pattern_spec_equal;
 	void function(GPatternSpec* pspec) c_g_pattern_spec_free;
-	GPatternSpec* function(const(char)* pattern) c_g_pattern_spec_new;
+	int function(GPatternSpec* pspec, size_t stringLength, const(char)* string_, const(char)* stringReversed) c_g_pattern_spec_match;
+	int function(GPatternSpec* pspec, const(char)* string_) c_g_pattern_spec_match_string;
 	int function(GPatternSpec* pspec, uint stringLength, const(char)* string_, const(char)* stringReversed) c_g_pattern_match;
 	int function(const(char)* pattern, const(char)* string_) c_g_pattern_match_simple;
 	int function(GPatternSpec* pspec, const(char)* string_) c_g_pattern_match_string;
@@ -2828,6 +2850,7 @@ __gshared extern(C)
 	void function(GSource* source, const(char)* name) c_g_source_set_name;
 	void function(GSource* source, int priority) c_g_source_set_priority;
 	void function(GSource* source, long readyTime) c_g_source_set_ready_time;
+	void function(GSource* source, const(char)* name) c_g_source_set_static_name;
 	void function(GSource* source) c_g_source_unref;
 	int function(uint tag) c_g_source_remove;
 	int function(GSourceFuncs* funcs, void* userData) c_g_source_remove_by_funcs_user_data;
@@ -2836,6 +2859,9 @@ __gshared extern(C)
 
 	// glib.StringG
 
+	GString* function(const(char)* init) c_g_string_new;
+	GString* function(const(char)* init, ptrdiff_t len) c_g_string_new_len;
+	GString* function(size_t dflSize) c_g_string_sized_new;
 	GString* function(GString* string_, const(char)* val) c_g_string_append;
 	GString* function(GString* string_, char c) c_g_string_append_c;
 	GString* function(GString* string_, const(char)* val, ptrdiff_t len) c_g_string_append_len;
@@ -2868,9 +2894,8 @@ __gshared extern(C)
 	GString* function(GString* string_, size_t len) c_g_string_truncate;
 	GString* function(GString* string_) c_g_string_up;
 	void function(GString* string_, const(char)* format, void* args) c_g_string_vprintf;
-	GString* function(const(char)* init) c_g_string_new;
-	GString* function(const(char)* init, ptrdiff_t len) c_g_string_new_len;
-	GString* function(size_t dflSize) c_g_string_sized_new;
+	char* function(const(char)* str) c_g_ref_string_new;
+	char* function(const(char)* str, ptrdiff_t len) c_g_ref_string_new_len;
 
 	// glib.StringChunk
 
@@ -2884,10 +2909,16 @@ __gshared extern(C)
 	// glib.StrvBuilder
 
 	void function(GStrvBuilder* builder, const(char)* value) c_g_strv_builder_add;
+	void function(GStrvBuilder* builder, ... ) c_g_strv_builder_add_many;
+	void function(GStrvBuilder* builder, char** value) c_g_strv_builder_addv;
 	GStrv function(GStrvBuilder* builder) c_g_strv_builder_end;
 	GStrvBuilder* function(GStrvBuilder* builder) c_g_strv_builder_ref;
 	void function(GStrvBuilder* builder) c_g_strv_builder_unref;
 	GStrvBuilder* function() c_g_strv_builder_new;
+
+	// glib.TestCase
+
+	void function(GTestCase* testCase) c_g_test_case_free;
 
 	// glib.TestLogBuffer
 
@@ -2904,6 +2935,7 @@ __gshared extern(C)
 
 	void function(GTestSuite* suite, GTestCase* testCase) c_g_test_suite_add;
 	void function(GTestSuite* suite, GTestSuite* nestedsuite) c_g_test_suite_add_suite;
+	void function(GTestSuite* suite) c_g_test_suite_free;
 
 	// glib.Thread
 
@@ -2938,6 +2970,7 @@ __gshared extern(C)
 	int function() c_g_thread_pool_get_max_unused_threads;
 	uint function() c_g_thread_pool_get_num_unused_threads;
 	GThreadPool* function(GFunc func, void* userData, int maxThreads, int exclusive, GError** err) c_g_thread_pool_new;
+	GThreadPool* function(GFunc func, void* userData, GDestroyNotify itemFreeFunc, int maxThreads, int exclusive, GError** err) c_g_thread_pool_new_full;
 	void function(uint interval) c_g_thread_pool_set_max_idle_time;
 	void function(int maxThreads) c_g_thread_pool_set_max_unused_threads;
 	void function() c_g_thread_pool_stop_unused_threads;
@@ -3006,6 +3039,7 @@ __gshared extern(C)
 	GTreeNode* function(GTree* tree) c_g_tree_node_last;
 	GTree* function(GTree* tree) c_g_tree_ref;
 	int function(GTree* tree, void* key) c_g_tree_remove;
+	void function(GTree* tree) c_g_tree_remove_all;
 	void function(GTree* tree, void* key, void* value) c_g_tree_replace;
 	GTreeNode* function(GTree* tree, void* key, void* value) c_g_tree_replace_node;
 	void* function(GTree* tree, GCompareFunc searchFunc, void* userData) c_g_tree_search;
@@ -3241,7 +3275,9 @@ __gshared extern(C)
 	int function(GModule* module_, const(char)* symbolName, void** symbol) c_g_module_symbol;
 	char* function(const(char)* directory, const(char)* moduleName) c_g_module_build_path;
 	const(char)* function() c_g_module_error;
+	GQuark function() c_g_module_error_quark;
 	GModule* function(const(char)* fileName, GModuleFlags flags) c_g_module_open;
+	GModule* function(const(char)* fileName, GModuleFlags flags, GError** err) c_g_module_open_full;
 	int function() c_g_module_supported;
 
 	// glib.Base64
@@ -3275,13 +3311,13 @@ __gshared extern(C)
 
 	int function(char* workingDirectory, char** argv, char** envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, GPid* childPid, GError** err) c_g_spawn_async;
 	int function(char* workingDirectory, char** argv, char** envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, GPid* childPid, int* standardInput, int* standardOutput, int* standardError, GError** err) c_g_spawn_async_with_pipes;
-	int function(int exitStatus, GError** err) c_g_spawn_check_exit_status;
+	int function(int waitStatus, GError** err) c_g_spawn_check_exit_status;
 	void function(GPid pid) c_g_spawn_close_pid;
 	int function(char* commandLine, GError** err) c_g_spawn_command_line_async;
-	int function(char* commandLine, char** standardOutput, char** standardError, int* exitStatus, GError** err) c_g_spawn_command_line_sync;
+	int function(char* commandLine, char** standardOutput, char** standardError, int* waitStatus, GError** err) c_g_spawn_command_line_sync;
 	GQuark function() c_g_spawn_error_quark;
 	GQuark function() c_g_spawn_exit_error_quark;
-	int function(char* workingDirectory, char** argv, char** envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, char** standardOutput, char** standardError, int* exitStatus, GError** err) c_g_spawn_sync;
+	int function(char* workingDirectory, char** argv, char** envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, char** standardOutput, char** standardError, int* waitStatus, GError** err) c_g_spawn_sync;
 	int function(char* workingDirectory, char** argv, char** envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, GPid* childPid, int stdinFd, int stdoutFd, int stderrFd, GError** err) c_g_spawn_async_with_fds;
 
 	// glib.Str
@@ -3808,6 +3844,7 @@ alias c_g_bytes_new_with_free_func g_bytes_new_with_free_func;
 alias c_g_bytes_compare g_bytes_compare;
 alias c_g_bytes_equal g_bytes_equal;
 alias c_g_bytes_get_data g_bytes_get_data;
+alias c_g_bytes_get_region g_bytes_get_region;
 alias c_g_bytes_get_size g_bytes_get_size;
 alias c_g_bytes_hash g_bytes_hash;
 alias c_g_bytes_new_from_bytes g_bytes_new_from_bytes;
@@ -4367,9 +4404,12 @@ alias c_g_option_group_unref g_option_group_unref;
 
 // glib.Pattern
 
+alias c_g_pattern_spec_new g_pattern_spec_new;
+alias c_g_pattern_spec_copy g_pattern_spec_copy;
 alias c_g_pattern_spec_equal g_pattern_spec_equal;
 alias c_g_pattern_spec_free g_pattern_spec_free;
-alias c_g_pattern_spec_new g_pattern_spec_new;
+alias c_g_pattern_spec_match g_pattern_spec_match;
+alias c_g_pattern_spec_match_string g_pattern_spec_match_string;
 alias c_g_pattern_match g_pattern_match;
 alias c_g_pattern_match_simple g_pattern_match_simple;
 alias c_g_pattern_match_string g_pattern_match_string;
@@ -4655,6 +4695,7 @@ alias c_g_source_set_funcs g_source_set_funcs;
 alias c_g_source_set_name g_source_set_name;
 alias c_g_source_set_priority g_source_set_priority;
 alias c_g_source_set_ready_time g_source_set_ready_time;
+alias c_g_source_set_static_name g_source_set_static_name;
 alias c_g_source_unref g_source_unref;
 alias c_g_source_remove g_source_remove;
 alias c_g_source_remove_by_funcs_user_data g_source_remove_by_funcs_user_data;
@@ -4663,6 +4704,9 @@ alias c_g_source_set_name_by_id g_source_set_name_by_id;
 
 // glib.StringG
 
+alias c_g_string_new g_string_new;
+alias c_g_string_new_len g_string_new_len;
+alias c_g_string_sized_new g_string_sized_new;
 alias c_g_string_append g_string_append;
 alias c_g_string_append_c g_string_append_c;
 alias c_g_string_append_len g_string_append_len;
@@ -4695,9 +4739,8 @@ alias c_g_string_set_size g_string_set_size;
 alias c_g_string_truncate g_string_truncate;
 alias c_g_string_up g_string_up;
 alias c_g_string_vprintf g_string_vprintf;
-alias c_g_string_new g_string_new;
-alias c_g_string_new_len g_string_new_len;
-alias c_g_string_sized_new g_string_sized_new;
+alias c_g_ref_string_new g_ref_string_new;
+alias c_g_ref_string_new_len g_ref_string_new_len;
 
 // glib.StringChunk
 
@@ -4711,10 +4754,16 @@ alias c_g_string_chunk_new g_string_chunk_new;
 // glib.StrvBuilder
 
 alias c_g_strv_builder_add g_strv_builder_add;
+alias c_g_strv_builder_add_many g_strv_builder_add_many;
+alias c_g_strv_builder_addv g_strv_builder_addv;
 alias c_g_strv_builder_end g_strv_builder_end;
 alias c_g_strv_builder_ref g_strv_builder_ref;
 alias c_g_strv_builder_unref g_strv_builder_unref;
 alias c_g_strv_builder_new g_strv_builder_new;
+
+// glib.TestCase
+
+alias c_g_test_case_free g_test_case_free;
 
 // glib.TestLogBuffer
 
@@ -4731,6 +4780,7 @@ alias c_g_test_log_msg_free g_test_log_msg_free;
 
 alias c_g_test_suite_add g_test_suite_add;
 alias c_g_test_suite_add_suite g_test_suite_add_suite;
+alias c_g_test_suite_free g_test_suite_free;
 
 // glib.Thread
 
@@ -4765,6 +4815,7 @@ alias c_g_thread_pool_get_max_idle_time g_thread_pool_get_max_idle_time;
 alias c_g_thread_pool_get_max_unused_threads g_thread_pool_get_max_unused_threads;
 alias c_g_thread_pool_get_num_unused_threads g_thread_pool_get_num_unused_threads;
 alias c_g_thread_pool_new g_thread_pool_new;
+alias c_g_thread_pool_new_full g_thread_pool_new_full;
 alias c_g_thread_pool_set_max_idle_time g_thread_pool_set_max_idle_time;
 alias c_g_thread_pool_set_max_unused_threads g_thread_pool_set_max_unused_threads;
 alias c_g_thread_pool_stop_unused_threads g_thread_pool_stop_unused_threads;
@@ -4833,6 +4884,7 @@ alias c_g_tree_node_first g_tree_node_first;
 alias c_g_tree_node_last g_tree_node_last;
 alias c_g_tree_ref g_tree_ref;
 alias c_g_tree_remove g_tree_remove;
+alias c_g_tree_remove_all g_tree_remove_all;
 alias c_g_tree_replace g_tree_replace;
 alias c_g_tree_replace_node g_tree_replace_node;
 alias c_g_tree_search g_tree_search;
@@ -5068,7 +5120,9 @@ alias c_g_module_name g_module_name;
 alias c_g_module_symbol g_module_symbol;
 alias c_g_module_build_path g_module_build_path;
 alias c_g_module_error g_module_error;
+alias c_g_module_error_quark g_module_error_quark;
 alias c_g_module_open g_module_open;
+alias c_g_module_open_full g_module_open_full;
 alias c_g_module_supported g_module_supported;
 
 // glib.Base64

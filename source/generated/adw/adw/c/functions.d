@@ -25,27 +25,31 @@ shared static this()
 	Linker.link(adw_action_row_get_subtitle, "adw_action_row_get_subtitle", LIBRARY_ADW);
 	Linker.link(adw_action_row_get_subtitle_lines, "adw_action_row_get_subtitle_lines", LIBRARY_ADW);
 	Linker.link(adw_action_row_get_title_lines, "adw_action_row_get_title_lines", LIBRARY_ADW);
-	Linker.link(adw_action_row_get_use_underline, "adw_action_row_get_use_underline", LIBRARY_ADW);
 	Linker.link(adw_action_row_remove, "adw_action_row_remove", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_activatable_widget, "adw_action_row_set_activatable_widget", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_icon_name, "adw_action_row_set_icon_name", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_subtitle, "adw_action_row_set_subtitle", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_subtitle_lines, "adw_action_row_set_subtitle_lines", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_title_lines, "adw_action_row_set_title_lines", LIBRARY_ADW);
-	Linker.link(adw_action_row_set_use_underline, "adw_action_row_set_use_underline", LIBRARY_ADW);
+
+	// adw.Application
+
+	Linker.link(adw_application_get_type, "adw_application_get_type", LIBRARY_ADW);
+	Linker.link(adw_application_new, "adw_application_new", LIBRARY_ADW);
+	Linker.link(adw_application_get_style_manager, "adw_application_get_style_manager", LIBRARY_ADW);
 
 	// adw.ApplicationWindow
 
 	Linker.link(adw_application_window_get_type, "adw_application_window_get_type", LIBRARY_ADW);
 	Linker.link(adw_application_window_new, "adw_application_window_new", LIBRARY_ADW);
-	Linker.link(adw_application_window_get_child, "adw_application_window_get_child", LIBRARY_ADW);
-	Linker.link(adw_application_window_set_child, "adw_application_window_set_child", LIBRARY_ADW);
+	Linker.link(adw_application_window_get_content, "adw_application_window_get_content", LIBRARY_ADW);
+	Linker.link(adw_application_window_set_content, "adw_application_window_set_content", LIBRARY_ADW);
 
 	// adw.Avatar
 
 	Linker.link(adw_avatar_get_type, "adw_avatar_get_type", LIBRARY_ADW);
 	Linker.link(adw_avatar_new, "adw_avatar_new", LIBRARY_ADW);
-	Linker.link(adw_avatar_draw_to_pixbuf, "adw_avatar_draw_to_pixbuf", LIBRARY_ADW);
+	Linker.link(adw_avatar_draw_to_texture, "adw_avatar_draw_to_texture", LIBRARY_ADW);
 	Linker.link(adw_avatar_get_custom_image, "adw_avatar_get_custom_image", LIBRARY_ADW);
 	Linker.link(adw_avatar_get_icon_name, "adw_avatar_get_icon_name", LIBRARY_ADW);
 	Linker.link(adw_avatar_get_show_initials, "adw_avatar_get_show_initials", LIBRARY_ADW);
@@ -63,6 +67,17 @@ shared static this()
 	Linker.link(adw_bin_new, "adw_bin_new", LIBRARY_ADW);
 	Linker.link(adw_bin_get_child, "adw_bin_get_child", LIBRARY_ADW);
 	Linker.link(adw_bin_set_child, "adw_bin_set_child", LIBRARY_ADW);
+
+	// adw.ButtonContent
+
+	Linker.link(adw_button_content_get_type, "adw_button_content_get_type", LIBRARY_ADW);
+	Linker.link(adw_button_content_new, "adw_button_content_new", LIBRARY_ADW);
+	Linker.link(adw_button_content_get_icon_name, "adw_button_content_get_icon_name", LIBRARY_ADW);
+	Linker.link(adw_button_content_get_label, "adw_button_content_get_label", LIBRARY_ADW);
+	Linker.link(adw_button_content_get_use_underline, "adw_button_content_get_use_underline", LIBRARY_ADW);
+	Linker.link(adw_button_content_set_icon_name, "adw_button_content_set_icon_name", LIBRARY_ADW);
+	Linker.link(adw_button_content_set_label, "adw_button_content_set_label", LIBRARY_ADW);
+	Linker.link(adw_button_content_set_use_underline, "adw_button_content_set_use_underline", LIBRARY_ADW);
 
 	// adw.Carousel
 
@@ -156,6 +171,13 @@ shared static this()
 	Linker.link(adw_combo_row_set_selected, "adw_combo_row_set_selected", LIBRARY_ADW);
 	Linker.link(adw_combo_row_set_use_subtitle, "adw_combo_row_set_use_subtitle", LIBRARY_ADW);
 
+	// adw.EnumListItem
+
+	Linker.link(adw_enum_list_item_get_type, "adw_enum_list_item_get_type", LIBRARY_ADW);
+	Linker.link(adw_enum_list_item_get_name, "adw_enum_list_item_get_name", LIBRARY_ADW);
+	Linker.link(adw_enum_list_item_get_nick, "adw_enum_list_item_get_nick", LIBRARY_ADW);
+	Linker.link(adw_enum_list_item_get_value, "adw_enum_list_item_get_value", LIBRARY_ADW);
+
 	// adw.EnumListModel
 
 	Linker.link(adw_enum_list_model_get_type, "adw_enum_list_model_get_type", LIBRARY_ADW);
@@ -163,33 +185,24 @@ shared static this()
 	Linker.link(adw_enum_list_model_find_position, "adw_enum_list_model_find_position", LIBRARY_ADW);
 	Linker.link(adw_enum_list_model_get_enum_type, "adw_enum_list_model_get_enum_type", LIBRARY_ADW);
 
-	// adw.EnumValueObject
-
-	Linker.link(adw_enum_value_object_get_type, "adw_enum_value_object_get_type", LIBRARY_ADW);
-	Linker.link(adw_enum_value_object_get_name, "adw_enum_value_object_get_name", LIBRARY_ADW);
-	Linker.link(adw_enum_value_object_get_nick, "adw_enum_value_object_get_nick", LIBRARY_ADW);
-	Linker.link(adw_enum_value_object_get_value, "adw_enum_value_object_get_value", LIBRARY_ADW);
-
 	// adw.ExpanderRow
 
 	Linker.link(adw_expander_row_get_type, "adw_expander_row_get_type", LIBRARY_ADW);
 	Linker.link(adw_expander_row_new, "adw_expander_row_new", LIBRARY_ADW);
-	Linker.link(adw_expander_row_add, "adw_expander_row_add", LIBRARY_ADW);
 	Linker.link(adw_expander_row_add_action, "adw_expander_row_add_action", LIBRARY_ADW);
 	Linker.link(adw_expander_row_add_prefix, "adw_expander_row_add_prefix", LIBRARY_ADW);
+	Linker.link(adw_expander_row_add_row, "adw_expander_row_add_row", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_enable_expansion, "adw_expander_row_get_enable_expansion", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_expanded, "adw_expander_row_get_expanded", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_icon_name, "adw_expander_row_get_icon_name", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_show_enable_switch, "adw_expander_row_get_show_enable_switch", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_subtitle, "adw_expander_row_get_subtitle", LIBRARY_ADW);
-	Linker.link(adw_expander_row_get_use_underline, "adw_expander_row_get_use_underline", LIBRARY_ADW);
 	Linker.link(adw_expander_row_remove, "adw_expander_row_remove", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_enable_expansion, "adw_expander_row_set_enable_expansion", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_expanded, "adw_expander_row_set_expanded", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_icon_name, "adw_expander_row_set_icon_name", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_show_enable_switch, "adw_expander_row_set_show_enable_switch", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_subtitle, "adw_expander_row_set_subtitle", LIBRARY_ADW);
-	Linker.link(adw_expander_row_set_use_underline, "adw_expander_row_set_use_underline", LIBRARY_ADW);
 
 	// adw.Flap
 
@@ -259,7 +272,6 @@ shared static this()
 	Linker.link(adw_leaflet_get_fold_threshold_policy, "adw_leaflet_get_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_folded, "adw_leaflet_get_folded", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_homogeneous, "adw_leaflet_get_homogeneous", LIBRARY_ADW);
-	Linker.link(adw_leaflet_get_interpolate_size, "adw_leaflet_get_interpolate_size", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_mode_transition_duration, "adw_leaflet_get_mode_transition_duration", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_page, "adw_leaflet_get_page", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_pages, "adw_leaflet_get_pages", LIBRARY_ADW);
@@ -277,7 +289,6 @@ shared static this()
 	Linker.link(adw_leaflet_set_child_transition_duration, "adw_leaflet_set_child_transition_duration", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_fold_threshold_policy, "adw_leaflet_set_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_homogeneous, "adw_leaflet_set_homogeneous", LIBRARY_ADW);
-	Linker.link(adw_leaflet_set_interpolate_size, "adw_leaflet_set_interpolate_size", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_mode_transition_duration, "adw_leaflet_set_mode_transition_duration", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_transition_type, "adw_leaflet_set_transition_type", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_visible_child, "adw_leaflet_set_visible_child", LIBRARY_ADW);
@@ -344,15 +355,38 @@ shared static this()
 	Linker.link(adw_preferences_window_set_visible_page, "adw_preferences_window_set_visible_page", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_set_visible_page_name, "adw_preferences_window_set_visible_page_name", LIBRARY_ADW);
 
+	// adw.SplitButton
+
+	Linker.link(adw_split_button_get_type, "adw_split_button_get_type", LIBRARY_ADW);
+	Linker.link(adw_split_button_new, "adw_split_button_new", LIBRARY_ADW);
+	Linker.link(adw_split_button_get_child, "adw_split_button_get_child", LIBRARY_ADW);
+	Linker.link(adw_split_button_get_direction, "adw_split_button_get_direction", LIBRARY_ADW);
+	Linker.link(adw_split_button_get_icon_name, "adw_split_button_get_icon_name", LIBRARY_ADW);
+	Linker.link(adw_split_button_get_label, "adw_split_button_get_label", LIBRARY_ADW);
+	Linker.link(adw_split_button_get_menu_model, "adw_split_button_get_menu_model", LIBRARY_ADW);
+	Linker.link(adw_split_button_get_popover, "adw_split_button_get_popover", LIBRARY_ADW);
+	Linker.link(adw_split_button_get_use_underline, "adw_split_button_get_use_underline", LIBRARY_ADW);
+	Linker.link(adw_split_button_popdown, "adw_split_button_popdown", LIBRARY_ADW);
+	Linker.link(adw_split_button_popup, "adw_split_button_popup", LIBRARY_ADW);
+	Linker.link(adw_split_button_set_child, "adw_split_button_set_child", LIBRARY_ADW);
+	Linker.link(adw_split_button_set_direction, "adw_split_button_set_direction", LIBRARY_ADW);
+	Linker.link(adw_split_button_set_icon_name, "adw_split_button_set_icon_name", LIBRARY_ADW);
+	Linker.link(adw_split_button_set_label, "adw_split_button_set_label", LIBRARY_ADW);
+	Linker.link(adw_split_button_set_menu_model, "adw_split_button_set_menu_model", LIBRARY_ADW);
+	Linker.link(adw_split_button_set_popover, "adw_split_button_set_popover", LIBRARY_ADW);
+	Linker.link(adw_split_button_set_use_underline, "adw_split_button_set_use_underline", LIBRARY_ADW);
+
 	// adw.Squeezer
 
 	Linker.link(adw_squeezer_get_type, "adw_squeezer_get_type", LIBRARY_ADW);
 	Linker.link(adw_squeezer_new, "adw_squeezer_new", LIBRARY_ADW);
 	Linker.link(adw_squeezer_add, "adw_squeezer_add", LIBRARY_ADW);
+	Linker.link(adw_squeezer_get_allow_none, "adw_squeezer_get_allow_none", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_homogeneous, "adw_squeezer_get_homogeneous", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_interpolate_size, "adw_squeezer_get_interpolate_size", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_page, "adw_squeezer_get_page", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_pages, "adw_squeezer_get_pages", LIBRARY_ADW);
+	Linker.link(adw_squeezer_get_switch_threshold_policy, "adw_squeezer_get_switch_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_transition_duration, "adw_squeezer_get_transition_duration", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_transition_running, "adw_squeezer_get_transition_running", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_transition_type, "adw_squeezer_get_transition_type", LIBRARY_ADW);
@@ -360,8 +394,10 @@ shared static this()
 	Linker.link(adw_squeezer_get_xalign, "adw_squeezer_get_xalign", LIBRARY_ADW);
 	Linker.link(adw_squeezer_get_yalign, "adw_squeezer_get_yalign", LIBRARY_ADW);
 	Linker.link(adw_squeezer_remove, "adw_squeezer_remove", LIBRARY_ADW);
+	Linker.link(adw_squeezer_set_allow_none, "adw_squeezer_set_allow_none", LIBRARY_ADW);
 	Linker.link(adw_squeezer_set_homogeneous, "adw_squeezer_set_homogeneous", LIBRARY_ADW);
 	Linker.link(adw_squeezer_set_interpolate_size, "adw_squeezer_set_interpolate_size", LIBRARY_ADW);
+	Linker.link(adw_squeezer_set_switch_threshold_policy, "adw_squeezer_set_switch_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_squeezer_set_transition_duration, "adw_squeezer_set_transition_duration", LIBRARY_ADW);
 	Linker.link(adw_squeezer_set_transition_type, "adw_squeezer_set_transition_type", LIBRARY_ADW);
 	Linker.link(adw_squeezer_set_xalign, "adw_squeezer_set_xalign", LIBRARY_ADW);
@@ -381,11 +417,25 @@ shared static this()
 	Linker.link(adw_status_page_get_child, "adw_status_page_get_child", LIBRARY_ADW);
 	Linker.link(adw_status_page_get_description, "adw_status_page_get_description", LIBRARY_ADW);
 	Linker.link(adw_status_page_get_icon_name, "adw_status_page_get_icon_name", LIBRARY_ADW);
+	Linker.link(adw_status_page_get_paintable, "adw_status_page_get_paintable", LIBRARY_ADW);
 	Linker.link(adw_status_page_get_title, "adw_status_page_get_title", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_child, "adw_status_page_set_child", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_description, "adw_status_page_set_description", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_icon_name, "adw_status_page_set_icon_name", LIBRARY_ADW);
+	Linker.link(adw_status_page_set_paintable, "adw_status_page_set_paintable", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_title, "adw_status_page_set_title", LIBRARY_ADW);
+
+	// adw.StyleManager
+
+	Linker.link(adw_style_manager_get_type, "adw_style_manager_get_type", LIBRARY_ADW);
+	Linker.link(adw_style_manager_get_default, "adw_style_manager_get_default", LIBRARY_ADW);
+	Linker.link(adw_style_manager_get_for_display, "adw_style_manager_get_for_display", LIBRARY_ADW);
+	Linker.link(adw_style_manager_get_color_scheme, "adw_style_manager_get_color_scheme", LIBRARY_ADW);
+	Linker.link(adw_style_manager_get_dark, "adw_style_manager_get_dark", LIBRARY_ADW);
+	Linker.link(adw_style_manager_get_display, "adw_style_manager_get_display", LIBRARY_ADW);
+	Linker.link(adw_style_manager_get_high_contrast, "adw_style_manager_get_high_contrast", LIBRARY_ADW);
+	Linker.link(adw_style_manager_get_system_supports_color_schemes, "adw_style_manager_get_system_supports_color_schemes", LIBRARY_ADW);
+	Linker.link(adw_style_manager_set_color_scheme, "adw_style_manager_set_color_scheme", LIBRARY_ADW);
 
 	// adw.SwipeTracker
 
@@ -494,18 +544,6 @@ shared static this()
 	Linker.link(adw_tab_view_set_shortcut_widget, "adw_tab_view_set_shortcut_widget", LIBRARY_ADW);
 	Linker.link(adw_tab_view_transfer_page, "adw_tab_view_transfer_page", LIBRARY_ADW);
 
-	// adw.ValueObject
-
-	Linker.link(adw_value_object_get_type, "adw_value_object_get_type", LIBRARY_ADW);
-	Linker.link(adw_value_object_new, "adw_value_object_new", LIBRARY_ADW);
-	Linker.link(adw_value_object_new_collect, "adw_value_object_new_collect", LIBRARY_ADW);
-	Linker.link(adw_value_object_new_string, "adw_value_object_new_string", LIBRARY_ADW);
-	Linker.link(adw_value_object_new_take_string, "adw_value_object_new_take_string", LIBRARY_ADW);
-	Linker.link(adw_value_object_copy_value, "adw_value_object_copy_value", LIBRARY_ADW);
-	Linker.link(adw_value_object_dup_string, "adw_value_object_dup_string", LIBRARY_ADW);
-	Linker.link(adw_value_object_get_string, "adw_value_object_get_string", LIBRARY_ADW);
-	Linker.link(adw_value_object_get_value, "adw_value_object_get_value", LIBRARY_ADW);
-
 	// adw.ViewStack
 
 	Linker.link(adw_view_stack_get_type, "adw_view_stack_get_type", LIBRARY_ADW);
@@ -552,10 +590,8 @@ shared static this()
 
 	Linker.link(adw_view_switcher_get_type, "adw_view_switcher_get_type", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_new, "adw_view_switcher_new", LIBRARY_ADW);
-	Linker.link(adw_view_switcher_get_narrow_ellipsize, "adw_view_switcher_get_narrow_ellipsize", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_get_policy, "adw_view_switcher_get_policy", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_get_stack, "adw_view_switcher_get_stack", LIBRARY_ADW);
-	Linker.link(adw_view_switcher_set_narrow_ellipsize, "adw_view_switcher_set_narrow_ellipsize", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_set_policy, "adw_view_switcher_set_policy", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_set_stack, "adw_view_switcher_set_stack", LIBRARY_ADW);
 
@@ -563,10 +599,8 @@ shared static this()
 
 	Linker.link(adw_view_switcher_bar_get_type, "adw_view_switcher_bar_get_type", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_bar_new, "adw_view_switcher_bar_new", LIBRARY_ADW);
-	Linker.link(adw_view_switcher_bar_get_policy, "adw_view_switcher_bar_get_policy", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_bar_get_reveal, "adw_view_switcher_bar_get_reveal", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_bar_get_stack, "adw_view_switcher_bar_get_stack", LIBRARY_ADW);
-	Linker.link(adw_view_switcher_bar_set_policy, "adw_view_switcher_bar_set_policy", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_bar_set_reveal, "adw_view_switcher_bar_set_reveal", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_bar_set_stack, "adw_view_switcher_bar_set_stack", LIBRARY_ADW);
 
@@ -574,13 +608,11 @@ shared static this()
 
 	Linker.link(adw_view_switcher_title_get_type, "adw_view_switcher_title_get_type", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_new, "adw_view_switcher_title_new", LIBRARY_ADW);
-	Linker.link(adw_view_switcher_title_get_policy, "adw_view_switcher_title_get_policy", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_get_stack, "adw_view_switcher_title_get_stack", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_get_subtitle, "adw_view_switcher_title_get_subtitle", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_get_title, "adw_view_switcher_title_get_title", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_get_title_visible, "adw_view_switcher_title_get_title_visible", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_get_view_switcher_enabled, "adw_view_switcher_title_get_view_switcher_enabled", LIBRARY_ADW);
-	Linker.link(adw_view_switcher_title_set_policy, "adw_view_switcher_title_set_policy", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_set_stack, "adw_view_switcher_title_set_stack", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_set_subtitle, "adw_view_switcher_title_set_subtitle", LIBRARY_ADW);
 	Linker.link(adw_view_switcher_title_set_title, "adw_view_switcher_title_set_title", LIBRARY_ADW);
@@ -590,8 +622,8 @@ shared static this()
 
 	Linker.link(adw_window_get_type, "adw_window_get_type", LIBRARY_ADW);
 	Linker.link(adw_window_new, "adw_window_new", LIBRARY_ADW);
-	Linker.link(adw_window_get_child, "adw_window_get_child", LIBRARY_ADW);
-	Linker.link(adw_window_set_child, "adw_window_set_child", LIBRARY_ADW);
+	Linker.link(adw_window_get_content, "adw_window_get_content", LIBRARY_ADW);
+	Linker.link(adw_window_set_content, "adw_window_set_content", LIBRARY_ADW);
 
 	// adw.WindowTitle
 
@@ -618,27 +650,31 @@ __gshared extern(C)
 	const(char)* function(AdwActionRow* self) c_adw_action_row_get_subtitle;
 	int function(AdwActionRow* self) c_adw_action_row_get_subtitle_lines;
 	int function(AdwActionRow* self) c_adw_action_row_get_title_lines;
-	int function(AdwActionRow* self) c_adw_action_row_get_use_underline;
 	void function(AdwActionRow* self, GtkWidget* widget) c_adw_action_row_remove;
 	void function(AdwActionRow* self, GtkWidget* widget) c_adw_action_row_set_activatable_widget;
 	void function(AdwActionRow* self, const(char)* iconName) c_adw_action_row_set_icon_name;
 	void function(AdwActionRow* self, const(char)* subtitle) c_adw_action_row_set_subtitle;
 	void function(AdwActionRow* self, int subtitleLines) c_adw_action_row_set_subtitle_lines;
 	void function(AdwActionRow* self, int titleLines) c_adw_action_row_set_title_lines;
-	void function(AdwActionRow* self, int useUnderline) c_adw_action_row_set_use_underline;
+
+	// adw.Application
+
+	GType function() c_adw_application_get_type;
+	AdwApplication* function(const(char)* applicationId, GApplicationFlags flags) c_adw_application_new;
+	AdwStyleManager* function(AdwApplication* self) c_adw_application_get_style_manager;
 
 	// adw.ApplicationWindow
 
 	GType function() c_adw_application_window_get_type;
 	GtkWidget* function(GtkApplication* app) c_adw_application_window_new;
-	GtkWidget* function(AdwApplicationWindow* self) c_adw_application_window_get_child;
-	void function(AdwApplicationWindow* self, GtkWidget* child) c_adw_application_window_set_child;
+	GtkWidget* function(AdwApplicationWindow* self) c_adw_application_window_get_content;
+	void function(AdwApplicationWindow* self, GtkWidget* content) c_adw_application_window_set_content;
 
 	// adw.Avatar
 
 	GType function() c_adw_avatar_get_type;
 	GtkWidget* function(int size, const(char)* text, int showInitials) c_adw_avatar_new;
-	GdkPixbuf* function(AdwAvatar* self, int size, int scaleFactor) c_adw_avatar_draw_to_pixbuf;
+	GdkTexture* function(AdwAvatar* self, int scaleFactor) c_adw_avatar_draw_to_texture;
 	GdkPaintable* function(AdwAvatar* self) c_adw_avatar_get_custom_image;
 	const(char)* function(AdwAvatar* self) c_adw_avatar_get_icon_name;
 	int function(AdwAvatar* self) c_adw_avatar_get_show_initials;
@@ -656,6 +692,17 @@ __gshared extern(C)
 	GtkWidget* function() c_adw_bin_new;
 	GtkWidget* function(AdwBin* self) c_adw_bin_get_child;
 	void function(AdwBin* self, GtkWidget* child) c_adw_bin_set_child;
+
+	// adw.ButtonContent
+
+	GType function() c_adw_button_content_get_type;
+	GtkWidget* function() c_adw_button_content_new;
+	const(char)* function(AdwButtonContent* self) c_adw_button_content_get_icon_name;
+	const(char)* function(AdwButtonContent* self) c_adw_button_content_get_label;
+	int function(AdwButtonContent* self) c_adw_button_content_get_use_underline;
+	void function(AdwButtonContent* self, const(char)* iconName) c_adw_button_content_set_icon_name;
+	void function(AdwButtonContent* self, const(char)* label) c_adw_button_content_set_label;
+	void function(AdwButtonContent* self, int useUnderline) c_adw_button_content_set_use_underline;
 
 	// adw.Carousel
 
@@ -749,6 +796,13 @@ __gshared extern(C)
 	void function(AdwComboRow* self, uint position) c_adw_combo_row_set_selected;
 	void function(AdwComboRow* self, int useSubtitle) c_adw_combo_row_set_use_subtitle;
 
+	// adw.EnumListItem
+
+	GType function() c_adw_enum_list_item_get_type;
+	const(char)* function(AdwEnumListItem* self) c_adw_enum_list_item_get_name;
+	const(char)* function(AdwEnumListItem* self) c_adw_enum_list_item_get_nick;
+	int function(AdwEnumListItem* self) c_adw_enum_list_item_get_value;
+
 	// adw.EnumListModel
 
 	GType function() c_adw_enum_list_model_get_type;
@@ -756,33 +810,24 @@ __gshared extern(C)
 	uint function(AdwEnumListModel* self, int value) c_adw_enum_list_model_find_position;
 	GType function(AdwEnumListModel* self) c_adw_enum_list_model_get_enum_type;
 
-	// adw.EnumValueObject
-
-	GType function() c_adw_enum_value_object_get_type;
-	const(char)* function(AdwEnumValueObject* self) c_adw_enum_value_object_get_name;
-	const(char)* function(AdwEnumValueObject* self) c_adw_enum_value_object_get_nick;
-	int function(AdwEnumValueObject* self) c_adw_enum_value_object_get_value;
-
 	// adw.ExpanderRow
 
 	GType function() c_adw_expander_row_get_type;
 	GtkWidget* function() c_adw_expander_row_new;
-	void function(AdwExpanderRow* self, GtkWidget* child) c_adw_expander_row_add;
 	void function(AdwExpanderRow* self, GtkWidget* widget) c_adw_expander_row_add_action;
 	void function(AdwExpanderRow* self, GtkWidget* widget) c_adw_expander_row_add_prefix;
+	void function(AdwExpanderRow* self, GtkWidget* child) c_adw_expander_row_add_row;
 	int function(AdwExpanderRow* self) c_adw_expander_row_get_enable_expansion;
 	int function(AdwExpanderRow* self) c_adw_expander_row_get_expanded;
 	const(char)* function(AdwExpanderRow* self) c_adw_expander_row_get_icon_name;
 	int function(AdwExpanderRow* self) c_adw_expander_row_get_show_enable_switch;
 	const(char)* function(AdwExpanderRow* self) c_adw_expander_row_get_subtitle;
-	int function(AdwExpanderRow* self) c_adw_expander_row_get_use_underline;
 	void function(AdwExpanderRow* self, GtkWidget* child) c_adw_expander_row_remove;
 	void function(AdwExpanderRow* self, int enableExpansion) c_adw_expander_row_set_enable_expansion;
 	void function(AdwExpanderRow* self, int expanded) c_adw_expander_row_set_expanded;
 	void function(AdwExpanderRow* self, const(char)* iconName) c_adw_expander_row_set_icon_name;
 	void function(AdwExpanderRow* self, int showEnableSwitch) c_adw_expander_row_set_show_enable_switch;
 	void function(AdwExpanderRow* self, const(char)* subtitle) c_adw_expander_row_set_subtitle;
-	void function(AdwExpanderRow* self, int useUnderline) c_adw_expander_row_set_use_underline;
 
 	// adw.Flap
 
@@ -851,8 +896,7 @@ __gshared extern(C)
 	int function(AdwLeaflet* self) c_adw_leaflet_get_child_transition_running;
 	AdwFoldThresholdPolicy function(AdwLeaflet* self) c_adw_leaflet_get_fold_threshold_policy;
 	int function(AdwLeaflet* self) c_adw_leaflet_get_folded;
-	int function(AdwLeaflet* self, int folded, GtkOrientation orientation) c_adw_leaflet_get_homogeneous;
-	int function(AdwLeaflet* self) c_adw_leaflet_get_interpolate_size;
+	int function(AdwLeaflet* self) c_adw_leaflet_get_homogeneous;
 	uint function(AdwLeaflet* self) c_adw_leaflet_get_mode_transition_duration;
 	AdwLeafletPage* function(AdwLeaflet* self, GtkWidget* child) c_adw_leaflet_get_page;
 	GtkSelectionModel* function(AdwLeaflet* self) c_adw_leaflet_get_pages;
@@ -869,8 +913,7 @@ __gshared extern(C)
 	void function(AdwLeaflet* self, int canUnfold) c_adw_leaflet_set_can_unfold;
 	void function(AdwLeaflet* self, uint duration) c_adw_leaflet_set_child_transition_duration;
 	void function(AdwLeaflet* self, AdwFoldThresholdPolicy policy) c_adw_leaflet_set_fold_threshold_policy;
-	void function(AdwLeaflet* self, int folded, GtkOrientation orientation, int homogeneous) c_adw_leaflet_set_homogeneous;
-	void function(AdwLeaflet* self, int interpolateSize) c_adw_leaflet_set_interpolate_size;
+	void function(AdwLeaflet* self, int homogeneous) c_adw_leaflet_set_homogeneous;
 	void function(AdwLeaflet* self, uint duration) c_adw_leaflet_set_mode_transition_duration;
 	void function(AdwLeaflet* self, AdwLeafletTransitionType transition) c_adw_leaflet_set_transition_type;
 	void function(AdwLeaflet* self, GtkWidget* visibleChild) c_adw_leaflet_set_visible_child;
@@ -937,15 +980,38 @@ __gshared extern(C)
 	void function(AdwPreferencesWindow* self, AdwPreferencesPage* page) c_adw_preferences_window_set_visible_page;
 	void function(AdwPreferencesWindow* self, const(char)* name) c_adw_preferences_window_set_visible_page_name;
 
+	// adw.SplitButton
+
+	GType function() c_adw_split_button_get_type;
+	GtkWidget* function() c_adw_split_button_new;
+	GtkWidget* function(AdwSplitButton* self) c_adw_split_button_get_child;
+	GtkArrowType function(AdwSplitButton* self) c_adw_split_button_get_direction;
+	const(char)* function(AdwSplitButton* self) c_adw_split_button_get_icon_name;
+	const(char)* function(AdwSplitButton* self) c_adw_split_button_get_label;
+	GMenuModel* function(AdwSplitButton* self) c_adw_split_button_get_menu_model;
+	GtkPopover* function(AdwSplitButton* self) c_adw_split_button_get_popover;
+	int function(AdwSplitButton* self) c_adw_split_button_get_use_underline;
+	void function(AdwSplitButton* self) c_adw_split_button_popdown;
+	void function(AdwSplitButton* self) c_adw_split_button_popup;
+	void function(AdwSplitButton* self, GtkWidget* child) c_adw_split_button_set_child;
+	void function(AdwSplitButton* self, GtkArrowType direction) c_adw_split_button_set_direction;
+	void function(AdwSplitButton* self, const(char)* iconName) c_adw_split_button_set_icon_name;
+	void function(AdwSplitButton* self, const(char)* label) c_adw_split_button_set_label;
+	void function(AdwSplitButton* self, GMenuModel* menuModel) c_adw_split_button_set_menu_model;
+	void function(AdwSplitButton* self, GtkPopover* popover) c_adw_split_button_set_popover;
+	void function(AdwSplitButton* self, int useUnderline) c_adw_split_button_set_use_underline;
+
 	// adw.Squeezer
 
 	GType function() c_adw_squeezer_get_type;
 	GtkWidget* function() c_adw_squeezer_new;
 	AdwSqueezerPage* function(AdwSqueezer* self, GtkWidget* child) c_adw_squeezer_add;
+	int function(AdwSqueezer* self) c_adw_squeezer_get_allow_none;
 	int function(AdwSqueezer* self) c_adw_squeezer_get_homogeneous;
 	int function(AdwSqueezer* self) c_adw_squeezer_get_interpolate_size;
 	AdwSqueezerPage* function(AdwSqueezer* self, GtkWidget* child) c_adw_squeezer_get_page;
 	GtkSelectionModel* function(AdwSqueezer* self) c_adw_squeezer_get_pages;
+	AdwFoldThresholdPolicy function(AdwSqueezer* self) c_adw_squeezer_get_switch_threshold_policy;
 	uint function(AdwSqueezer* self) c_adw_squeezer_get_transition_duration;
 	int function(AdwSqueezer* self) c_adw_squeezer_get_transition_running;
 	AdwSqueezerTransitionType function(AdwSqueezer* self) c_adw_squeezer_get_transition_type;
@@ -953,8 +1019,10 @@ __gshared extern(C)
 	float function(AdwSqueezer* self) c_adw_squeezer_get_xalign;
 	float function(AdwSqueezer* self) c_adw_squeezer_get_yalign;
 	void function(AdwSqueezer* self, GtkWidget* child) c_adw_squeezer_remove;
+	void function(AdwSqueezer* self, int allowNone) c_adw_squeezer_set_allow_none;
 	void function(AdwSqueezer* self, int homogeneous) c_adw_squeezer_set_homogeneous;
 	void function(AdwSqueezer* self, int interpolateSize) c_adw_squeezer_set_interpolate_size;
+	void function(AdwSqueezer* self, AdwFoldThresholdPolicy policy) c_adw_squeezer_set_switch_threshold_policy;
 	void function(AdwSqueezer* self, uint duration) c_adw_squeezer_set_transition_duration;
 	void function(AdwSqueezer* self, AdwSqueezerTransitionType transition) c_adw_squeezer_set_transition_type;
 	void function(AdwSqueezer* self, float xalign) c_adw_squeezer_set_xalign;
@@ -974,11 +1042,25 @@ __gshared extern(C)
 	GtkWidget* function(AdwStatusPage* self) c_adw_status_page_get_child;
 	const(char)* function(AdwStatusPage* self) c_adw_status_page_get_description;
 	const(char)* function(AdwStatusPage* self) c_adw_status_page_get_icon_name;
+	GdkPaintable* function(AdwStatusPage* self) c_adw_status_page_get_paintable;
 	const(char)* function(AdwStatusPage* self) c_adw_status_page_get_title;
 	void function(AdwStatusPage* self, GtkWidget* child) c_adw_status_page_set_child;
 	void function(AdwStatusPage* self, const(char)* description) c_adw_status_page_set_description;
 	void function(AdwStatusPage* self, const(char)* iconName) c_adw_status_page_set_icon_name;
+	void function(AdwStatusPage* self, GdkPaintable* paintable) c_adw_status_page_set_paintable;
 	void function(AdwStatusPage* self, const(char)* title) c_adw_status_page_set_title;
+
+	// adw.StyleManager
+
+	GType function() c_adw_style_manager_get_type;
+	AdwStyleManager* function() c_adw_style_manager_get_default;
+	AdwStyleManager* function(GdkDisplay* display) c_adw_style_manager_get_for_display;
+	AdwColorScheme function(AdwStyleManager* self) c_adw_style_manager_get_color_scheme;
+	int function(AdwStyleManager* self) c_adw_style_manager_get_dark;
+	GdkDisplay* function(AdwStyleManager* self) c_adw_style_manager_get_display;
+	int function(AdwStyleManager* self) c_adw_style_manager_get_high_contrast;
+	int function(AdwStyleManager* self) c_adw_style_manager_get_system_supports_color_schemes;
+	void function(AdwStyleManager* self, AdwColorScheme colorScheme) c_adw_style_manager_set_color_scheme;
 
 	// adw.SwipeTracker
 
@@ -1087,18 +1169,6 @@ __gshared extern(C)
 	void function(AdwTabView* self, GtkWidget* widget) c_adw_tab_view_set_shortcut_widget;
 	void function(AdwTabView* self, AdwTabPage* page, AdwTabView* otherView, int position) c_adw_tab_view_transfer_page;
 
-	// adw.ValueObject
-
-	GType function() c_adw_value_object_get_type;
-	AdwValueObject* function(GValue* value) c_adw_value_object_new;
-	AdwValueObject* function(GType type, ... ) c_adw_value_object_new_collect;
-	AdwValueObject* function(const(char)* string_) c_adw_value_object_new_string;
-	AdwValueObject* function(char* string_) c_adw_value_object_new_take_string;
-	void function(AdwValueObject* value, GValue* dest) c_adw_value_object_copy_value;
-	char* function(AdwValueObject* value) c_adw_value_object_dup_string;
-	const(char)* function(AdwValueObject* value) c_adw_value_object_get_string;
-	GValue* function(AdwValueObject* value) c_adw_value_object_get_value;
-
 	// adw.ViewStack
 
 	GType function() c_adw_view_stack_get_type;
@@ -1145,10 +1215,8 @@ __gshared extern(C)
 
 	GType function() c_adw_view_switcher_get_type;
 	GtkWidget* function() c_adw_view_switcher_new;
-	PangoEllipsizeMode function(AdwViewSwitcher* self) c_adw_view_switcher_get_narrow_ellipsize;
 	AdwViewSwitcherPolicy function(AdwViewSwitcher* self) c_adw_view_switcher_get_policy;
 	AdwViewStack* function(AdwViewSwitcher* self) c_adw_view_switcher_get_stack;
-	void function(AdwViewSwitcher* self, PangoEllipsizeMode mode) c_adw_view_switcher_set_narrow_ellipsize;
 	void function(AdwViewSwitcher* self, AdwViewSwitcherPolicy policy) c_adw_view_switcher_set_policy;
 	void function(AdwViewSwitcher* self, AdwViewStack* stack) c_adw_view_switcher_set_stack;
 
@@ -1156,10 +1224,8 @@ __gshared extern(C)
 
 	GType function() c_adw_view_switcher_bar_get_type;
 	GtkWidget* function() c_adw_view_switcher_bar_new;
-	AdwViewSwitcherPolicy function(AdwViewSwitcherBar* self) c_adw_view_switcher_bar_get_policy;
 	int function(AdwViewSwitcherBar* self) c_adw_view_switcher_bar_get_reveal;
 	AdwViewStack* function(AdwViewSwitcherBar* self) c_adw_view_switcher_bar_get_stack;
-	void function(AdwViewSwitcherBar* self, AdwViewSwitcherPolicy policy) c_adw_view_switcher_bar_set_policy;
 	void function(AdwViewSwitcherBar* self, int reveal) c_adw_view_switcher_bar_set_reveal;
 	void function(AdwViewSwitcherBar* self, AdwViewStack* stack) c_adw_view_switcher_bar_set_stack;
 
@@ -1167,13 +1233,11 @@ __gshared extern(C)
 
 	GType function() c_adw_view_switcher_title_get_type;
 	GtkWidget* function() c_adw_view_switcher_title_new;
-	AdwViewSwitcherPolicy function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_policy;
 	AdwViewStack* function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_stack;
 	const(char)* function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_subtitle;
 	const(char)* function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_title;
 	int function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_title_visible;
 	int function(AdwViewSwitcherTitle* self) c_adw_view_switcher_title_get_view_switcher_enabled;
-	void function(AdwViewSwitcherTitle* self, AdwViewSwitcherPolicy policy) c_adw_view_switcher_title_set_policy;
 	void function(AdwViewSwitcherTitle* self, AdwViewStack* stack) c_adw_view_switcher_title_set_stack;
 	void function(AdwViewSwitcherTitle* self, const(char)* subtitle) c_adw_view_switcher_title_set_subtitle;
 	void function(AdwViewSwitcherTitle* self, const(char)* title) c_adw_view_switcher_title_set_title;
@@ -1183,8 +1247,8 @@ __gshared extern(C)
 
 	GType function() c_adw_window_get_type;
 	GtkWidget* function() c_adw_window_new;
-	GtkWidget* function(AdwWindow* self) c_adw_window_get_child;
-	void function(AdwWindow* self, GtkWidget* child) c_adw_window_set_child;
+	GtkWidget* function(AdwWindow* self) c_adw_window_get_content;
+	void function(AdwWindow* self, GtkWidget* content) c_adw_window_set_content;
 
 	// adw.WindowTitle
 
@@ -1209,27 +1273,31 @@ alias c_adw_action_row_get_icon_name adw_action_row_get_icon_name;
 alias c_adw_action_row_get_subtitle adw_action_row_get_subtitle;
 alias c_adw_action_row_get_subtitle_lines adw_action_row_get_subtitle_lines;
 alias c_adw_action_row_get_title_lines adw_action_row_get_title_lines;
-alias c_adw_action_row_get_use_underline adw_action_row_get_use_underline;
 alias c_adw_action_row_remove adw_action_row_remove;
 alias c_adw_action_row_set_activatable_widget adw_action_row_set_activatable_widget;
 alias c_adw_action_row_set_icon_name adw_action_row_set_icon_name;
 alias c_adw_action_row_set_subtitle adw_action_row_set_subtitle;
 alias c_adw_action_row_set_subtitle_lines adw_action_row_set_subtitle_lines;
 alias c_adw_action_row_set_title_lines adw_action_row_set_title_lines;
-alias c_adw_action_row_set_use_underline adw_action_row_set_use_underline;
+
+// adw.Application
+
+alias c_adw_application_get_type adw_application_get_type;
+alias c_adw_application_new adw_application_new;
+alias c_adw_application_get_style_manager adw_application_get_style_manager;
 
 // adw.ApplicationWindow
 
 alias c_adw_application_window_get_type adw_application_window_get_type;
 alias c_adw_application_window_new adw_application_window_new;
-alias c_adw_application_window_get_child adw_application_window_get_child;
-alias c_adw_application_window_set_child adw_application_window_set_child;
+alias c_adw_application_window_get_content adw_application_window_get_content;
+alias c_adw_application_window_set_content adw_application_window_set_content;
 
 // adw.Avatar
 
 alias c_adw_avatar_get_type adw_avatar_get_type;
 alias c_adw_avatar_new adw_avatar_new;
-alias c_adw_avatar_draw_to_pixbuf adw_avatar_draw_to_pixbuf;
+alias c_adw_avatar_draw_to_texture adw_avatar_draw_to_texture;
 alias c_adw_avatar_get_custom_image adw_avatar_get_custom_image;
 alias c_adw_avatar_get_icon_name adw_avatar_get_icon_name;
 alias c_adw_avatar_get_show_initials adw_avatar_get_show_initials;
@@ -1247,6 +1315,17 @@ alias c_adw_bin_get_type adw_bin_get_type;
 alias c_adw_bin_new adw_bin_new;
 alias c_adw_bin_get_child adw_bin_get_child;
 alias c_adw_bin_set_child adw_bin_set_child;
+
+// adw.ButtonContent
+
+alias c_adw_button_content_get_type adw_button_content_get_type;
+alias c_adw_button_content_new adw_button_content_new;
+alias c_adw_button_content_get_icon_name adw_button_content_get_icon_name;
+alias c_adw_button_content_get_label adw_button_content_get_label;
+alias c_adw_button_content_get_use_underline adw_button_content_get_use_underline;
+alias c_adw_button_content_set_icon_name adw_button_content_set_icon_name;
+alias c_adw_button_content_set_label adw_button_content_set_label;
+alias c_adw_button_content_set_use_underline adw_button_content_set_use_underline;
 
 // adw.Carousel
 
@@ -1340,6 +1419,13 @@ alias c_adw_combo_row_set_model adw_combo_row_set_model;
 alias c_adw_combo_row_set_selected adw_combo_row_set_selected;
 alias c_adw_combo_row_set_use_subtitle adw_combo_row_set_use_subtitle;
 
+// adw.EnumListItem
+
+alias c_adw_enum_list_item_get_type adw_enum_list_item_get_type;
+alias c_adw_enum_list_item_get_name adw_enum_list_item_get_name;
+alias c_adw_enum_list_item_get_nick adw_enum_list_item_get_nick;
+alias c_adw_enum_list_item_get_value adw_enum_list_item_get_value;
+
 // adw.EnumListModel
 
 alias c_adw_enum_list_model_get_type adw_enum_list_model_get_type;
@@ -1347,33 +1433,24 @@ alias c_adw_enum_list_model_new adw_enum_list_model_new;
 alias c_adw_enum_list_model_find_position adw_enum_list_model_find_position;
 alias c_adw_enum_list_model_get_enum_type adw_enum_list_model_get_enum_type;
 
-// adw.EnumValueObject
-
-alias c_adw_enum_value_object_get_type adw_enum_value_object_get_type;
-alias c_adw_enum_value_object_get_name adw_enum_value_object_get_name;
-alias c_adw_enum_value_object_get_nick adw_enum_value_object_get_nick;
-alias c_adw_enum_value_object_get_value adw_enum_value_object_get_value;
-
 // adw.ExpanderRow
 
 alias c_adw_expander_row_get_type adw_expander_row_get_type;
 alias c_adw_expander_row_new adw_expander_row_new;
-alias c_adw_expander_row_add adw_expander_row_add;
 alias c_adw_expander_row_add_action adw_expander_row_add_action;
 alias c_adw_expander_row_add_prefix adw_expander_row_add_prefix;
+alias c_adw_expander_row_add_row adw_expander_row_add_row;
 alias c_adw_expander_row_get_enable_expansion adw_expander_row_get_enable_expansion;
 alias c_adw_expander_row_get_expanded adw_expander_row_get_expanded;
 alias c_adw_expander_row_get_icon_name adw_expander_row_get_icon_name;
 alias c_adw_expander_row_get_show_enable_switch adw_expander_row_get_show_enable_switch;
 alias c_adw_expander_row_get_subtitle adw_expander_row_get_subtitle;
-alias c_adw_expander_row_get_use_underline adw_expander_row_get_use_underline;
 alias c_adw_expander_row_remove adw_expander_row_remove;
 alias c_adw_expander_row_set_enable_expansion adw_expander_row_set_enable_expansion;
 alias c_adw_expander_row_set_expanded adw_expander_row_set_expanded;
 alias c_adw_expander_row_set_icon_name adw_expander_row_set_icon_name;
 alias c_adw_expander_row_set_show_enable_switch adw_expander_row_set_show_enable_switch;
 alias c_adw_expander_row_set_subtitle adw_expander_row_set_subtitle;
-alias c_adw_expander_row_set_use_underline adw_expander_row_set_use_underline;
 
 // adw.Flap
 
@@ -1443,7 +1520,6 @@ alias c_adw_leaflet_get_child_transition_running adw_leaflet_get_child_transitio
 alias c_adw_leaflet_get_fold_threshold_policy adw_leaflet_get_fold_threshold_policy;
 alias c_adw_leaflet_get_folded adw_leaflet_get_folded;
 alias c_adw_leaflet_get_homogeneous adw_leaflet_get_homogeneous;
-alias c_adw_leaflet_get_interpolate_size adw_leaflet_get_interpolate_size;
 alias c_adw_leaflet_get_mode_transition_duration adw_leaflet_get_mode_transition_duration;
 alias c_adw_leaflet_get_page adw_leaflet_get_page;
 alias c_adw_leaflet_get_pages adw_leaflet_get_pages;
@@ -1461,7 +1537,6 @@ alias c_adw_leaflet_set_can_unfold adw_leaflet_set_can_unfold;
 alias c_adw_leaflet_set_child_transition_duration adw_leaflet_set_child_transition_duration;
 alias c_adw_leaflet_set_fold_threshold_policy adw_leaflet_set_fold_threshold_policy;
 alias c_adw_leaflet_set_homogeneous adw_leaflet_set_homogeneous;
-alias c_adw_leaflet_set_interpolate_size adw_leaflet_set_interpolate_size;
 alias c_adw_leaflet_set_mode_transition_duration adw_leaflet_set_mode_transition_duration;
 alias c_adw_leaflet_set_transition_type adw_leaflet_set_transition_type;
 alias c_adw_leaflet_set_visible_child adw_leaflet_set_visible_child;
@@ -1528,15 +1603,38 @@ alias c_adw_preferences_window_set_search_enabled adw_preferences_window_set_sea
 alias c_adw_preferences_window_set_visible_page adw_preferences_window_set_visible_page;
 alias c_adw_preferences_window_set_visible_page_name adw_preferences_window_set_visible_page_name;
 
+// adw.SplitButton
+
+alias c_adw_split_button_get_type adw_split_button_get_type;
+alias c_adw_split_button_new adw_split_button_new;
+alias c_adw_split_button_get_child adw_split_button_get_child;
+alias c_adw_split_button_get_direction adw_split_button_get_direction;
+alias c_adw_split_button_get_icon_name adw_split_button_get_icon_name;
+alias c_adw_split_button_get_label adw_split_button_get_label;
+alias c_adw_split_button_get_menu_model adw_split_button_get_menu_model;
+alias c_adw_split_button_get_popover adw_split_button_get_popover;
+alias c_adw_split_button_get_use_underline adw_split_button_get_use_underline;
+alias c_adw_split_button_popdown adw_split_button_popdown;
+alias c_adw_split_button_popup adw_split_button_popup;
+alias c_adw_split_button_set_child adw_split_button_set_child;
+alias c_adw_split_button_set_direction adw_split_button_set_direction;
+alias c_adw_split_button_set_icon_name adw_split_button_set_icon_name;
+alias c_adw_split_button_set_label adw_split_button_set_label;
+alias c_adw_split_button_set_menu_model adw_split_button_set_menu_model;
+alias c_adw_split_button_set_popover adw_split_button_set_popover;
+alias c_adw_split_button_set_use_underline adw_split_button_set_use_underline;
+
 // adw.Squeezer
 
 alias c_adw_squeezer_get_type adw_squeezer_get_type;
 alias c_adw_squeezer_new adw_squeezer_new;
 alias c_adw_squeezer_add adw_squeezer_add;
+alias c_adw_squeezer_get_allow_none adw_squeezer_get_allow_none;
 alias c_adw_squeezer_get_homogeneous adw_squeezer_get_homogeneous;
 alias c_adw_squeezer_get_interpolate_size adw_squeezer_get_interpolate_size;
 alias c_adw_squeezer_get_page adw_squeezer_get_page;
 alias c_adw_squeezer_get_pages adw_squeezer_get_pages;
+alias c_adw_squeezer_get_switch_threshold_policy adw_squeezer_get_switch_threshold_policy;
 alias c_adw_squeezer_get_transition_duration adw_squeezer_get_transition_duration;
 alias c_adw_squeezer_get_transition_running adw_squeezer_get_transition_running;
 alias c_adw_squeezer_get_transition_type adw_squeezer_get_transition_type;
@@ -1544,8 +1642,10 @@ alias c_adw_squeezer_get_visible_child adw_squeezer_get_visible_child;
 alias c_adw_squeezer_get_xalign adw_squeezer_get_xalign;
 alias c_adw_squeezer_get_yalign adw_squeezer_get_yalign;
 alias c_adw_squeezer_remove adw_squeezer_remove;
+alias c_adw_squeezer_set_allow_none adw_squeezer_set_allow_none;
 alias c_adw_squeezer_set_homogeneous adw_squeezer_set_homogeneous;
 alias c_adw_squeezer_set_interpolate_size adw_squeezer_set_interpolate_size;
+alias c_adw_squeezer_set_switch_threshold_policy adw_squeezer_set_switch_threshold_policy;
 alias c_adw_squeezer_set_transition_duration adw_squeezer_set_transition_duration;
 alias c_adw_squeezer_set_transition_type adw_squeezer_set_transition_type;
 alias c_adw_squeezer_set_xalign adw_squeezer_set_xalign;
@@ -1565,11 +1665,25 @@ alias c_adw_status_page_new adw_status_page_new;
 alias c_adw_status_page_get_child adw_status_page_get_child;
 alias c_adw_status_page_get_description adw_status_page_get_description;
 alias c_adw_status_page_get_icon_name adw_status_page_get_icon_name;
+alias c_adw_status_page_get_paintable adw_status_page_get_paintable;
 alias c_adw_status_page_get_title adw_status_page_get_title;
 alias c_adw_status_page_set_child adw_status_page_set_child;
 alias c_adw_status_page_set_description adw_status_page_set_description;
 alias c_adw_status_page_set_icon_name adw_status_page_set_icon_name;
+alias c_adw_status_page_set_paintable adw_status_page_set_paintable;
 alias c_adw_status_page_set_title adw_status_page_set_title;
+
+// adw.StyleManager
+
+alias c_adw_style_manager_get_type adw_style_manager_get_type;
+alias c_adw_style_manager_get_default adw_style_manager_get_default;
+alias c_adw_style_manager_get_for_display adw_style_manager_get_for_display;
+alias c_adw_style_manager_get_color_scheme adw_style_manager_get_color_scheme;
+alias c_adw_style_manager_get_dark adw_style_manager_get_dark;
+alias c_adw_style_manager_get_display adw_style_manager_get_display;
+alias c_adw_style_manager_get_high_contrast adw_style_manager_get_high_contrast;
+alias c_adw_style_manager_get_system_supports_color_schemes adw_style_manager_get_system_supports_color_schemes;
+alias c_adw_style_manager_set_color_scheme adw_style_manager_set_color_scheme;
 
 // adw.SwipeTracker
 
@@ -1678,18 +1792,6 @@ alias c_adw_tab_view_set_selected_page adw_tab_view_set_selected_page;
 alias c_adw_tab_view_set_shortcut_widget adw_tab_view_set_shortcut_widget;
 alias c_adw_tab_view_transfer_page adw_tab_view_transfer_page;
 
-// adw.ValueObject
-
-alias c_adw_value_object_get_type adw_value_object_get_type;
-alias c_adw_value_object_new adw_value_object_new;
-alias c_adw_value_object_new_collect adw_value_object_new_collect;
-alias c_adw_value_object_new_string adw_value_object_new_string;
-alias c_adw_value_object_new_take_string adw_value_object_new_take_string;
-alias c_adw_value_object_copy_value adw_value_object_copy_value;
-alias c_adw_value_object_dup_string adw_value_object_dup_string;
-alias c_adw_value_object_get_string adw_value_object_get_string;
-alias c_adw_value_object_get_value adw_value_object_get_value;
-
 // adw.ViewStack
 
 alias c_adw_view_stack_get_type adw_view_stack_get_type;
@@ -1736,10 +1838,8 @@ alias c_adw_view_stack_page_set_visible adw_view_stack_page_set_visible;
 
 alias c_adw_view_switcher_get_type adw_view_switcher_get_type;
 alias c_adw_view_switcher_new adw_view_switcher_new;
-alias c_adw_view_switcher_get_narrow_ellipsize adw_view_switcher_get_narrow_ellipsize;
 alias c_adw_view_switcher_get_policy adw_view_switcher_get_policy;
 alias c_adw_view_switcher_get_stack adw_view_switcher_get_stack;
-alias c_adw_view_switcher_set_narrow_ellipsize adw_view_switcher_set_narrow_ellipsize;
 alias c_adw_view_switcher_set_policy adw_view_switcher_set_policy;
 alias c_adw_view_switcher_set_stack adw_view_switcher_set_stack;
 
@@ -1747,10 +1847,8 @@ alias c_adw_view_switcher_set_stack adw_view_switcher_set_stack;
 
 alias c_adw_view_switcher_bar_get_type adw_view_switcher_bar_get_type;
 alias c_adw_view_switcher_bar_new adw_view_switcher_bar_new;
-alias c_adw_view_switcher_bar_get_policy adw_view_switcher_bar_get_policy;
 alias c_adw_view_switcher_bar_get_reveal adw_view_switcher_bar_get_reveal;
 alias c_adw_view_switcher_bar_get_stack adw_view_switcher_bar_get_stack;
-alias c_adw_view_switcher_bar_set_policy adw_view_switcher_bar_set_policy;
 alias c_adw_view_switcher_bar_set_reveal adw_view_switcher_bar_set_reveal;
 alias c_adw_view_switcher_bar_set_stack adw_view_switcher_bar_set_stack;
 
@@ -1758,13 +1856,11 @@ alias c_adw_view_switcher_bar_set_stack adw_view_switcher_bar_set_stack;
 
 alias c_adw_view_switcher_title_get_type adw_view_switcher_title_get_type;
 alias c_adw_view_switcher_title_new adw_view_switcher_title_new;
-alias c_adw_view_switcher_title_get_policy adw_view_switcher_title_get_policy;
 alias c_adw_view_switcher_title_get_stack adw_view_switcher_title_get_stack;
 alias c_adw_view_switcher_title_get_subtitle adw_view_switcher_title_get_subtitle;
 alias c_adw_view_switcher_title_get_title adw_view_switcher_title_get_title;
 alias c_adw_view_switcher_title_get_title_visible adw_view_switcher_title_get_title_visible;
 alias c_adw_view_switcher_title_get_view_switcher_enabled adw_view_switcher_title_get_view_switcher_enabled;
-alias c_adw_view_switcher_title_set_policy adw_view_switcher_title_set_policy;
 alias c_adw_view_switcher_title_set_stack adw_view_switcher_title_set_stack;
 alias c_adw_view_switcher_title_set_subtitle adw_view_switcher_title_set_subtitle;
 alias c_adw_view_switcher_title_set_title adw_view_switcher_title_set_title;
@@ -1774,8 +1870,8 @@ alias c_adw_view_switcher_title_set_view_switcher_enabled adw_view_switcher_titl
 
 alias c_adw_window_get_type adw_window_get_type;
 alias c_adw_window_new adw_window_new;
-alias c_adw_window_get_child adw_window_get_child;
-alias c_adw_window_set_child adw_window_set_child;
+alias c_adw_window_get_content adw_window_get_content;
+alias c_adw_window_set_content adw_window_set_content;
 
 // adw.WindowTitle
 

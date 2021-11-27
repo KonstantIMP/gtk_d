@@ -272,7 +272,7 @@ public class ViewStack : Widget
 	}
 
 	/**
-	 * Returns a `GListModel` that contains the pages of the stack.
+	 * Returns a [iface@Gio.ListModel] that contains the pages of the stack.
 	 *
 	 * This can be used to keep an up-to-date view. The model also implements
 	 * [iface@Gtk.SelectionModel] and can be used to track and change the visible

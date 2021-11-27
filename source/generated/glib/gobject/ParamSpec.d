@@ -331,10 +331,12 @@ public class ParamSpec
 	}
 
 	/**
-	 * Registers @name as the name of a new static type derived from
-	 * #G_TYPE_PARAM. The type system uses the information contained in
-	 * the #GParamSpecTypeInfo structure pointed to by @info to manage the
-	 * #GParamSpec type and its instances.
+	 * Registers @name as the name of a new static type derived
+	 * from #G_TYPE_PARAM.
+	 *
+	 * The type system uses the information contained in the #GParamSpecTypeInfo
+	 * structure pointed to by @info to manage the #GParamSpec type and its
+	 * instances.
 	 *
 	 * Params:
 	 *     name = 0-terminated string used as the name of the new #GParamSpec type.

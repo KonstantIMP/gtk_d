@@ -27,8 +27,8 @@ private import gtk.Window : DGtkWindow = Window;
  * titlebar area. It means [class@Gtk.HeaderBar] can be used as follows:
  * 
  * ```xml
- * <object class="AdwWindow"/>
- * <child>
+ * <object class="AdwWindow">
+ * <property name="content">
  * <object class="GtkBox">
  * <property name="orientation">vertical</property>
  * <child>
@@ -38,7 +38,7 @@ private import gtk.Window : DGtkWindow = Window;
  * ...
  * </child>
  * </object>
- * </child>
+ * </property>
  * </object>
  * ```
  * 
@@ -75,22 +75,6 @@ public class Window : DGtkWindow
 		super(cast(GtkWindow*)adwWindow, ownedRef);
 	}
 
-	/**
-	 * Sets the child widget of @self.
-	 *
-	 * This method should always be used instead of [method@Gtk.Window.set_child].
-	 *
-	 * Params:
-	 *     child = the child widget
-	 *
-	 * Since: 1.0
-	 */
-	public override void setChild(Widget child) {
-		adw_window_set_child(adwWindow, (child is null) ? null : child.getWidgetStruct());
-	}
-
-	/**
-	 */
 
 	/** */
 	public static GType getType()
@@ -120,17 +104,17 @@ public class Window : DGtkWindow
 	}
 
 	/**
-	 * Gets the child widget of @self.
+	 * Gets the content widget of @self.
 	 *
 	 * This method should always be used instead of [method@Gtk.Window.get_child].
 	 *
-	 * Returns: the child widget of @self
+	 * Returns: the content widget of @self
 	 *
 	 * Since: 1.0
 	 */
-	public override Widget getChild()
+	public Widget getContent()
 	{
-		auto __p = adw_window_get_child(adwWindow);
+		auto __p = adw_window_get_content(adwWindow);
 
 		if(__p is null)
 		{
@@ -138,5 +122,20 @@ public class Window : DGtkWindow
 		}
 
 		return ObjectG.getDObject!(Widget)(cast(GtkWidget*) __p);
+	}
+
+	/**
+	 * Sets the content widget of @self.
+	 *
+	 * This method should always be used instead of [method@Gtk.Window.set_child].
+	 *
+	 * Params:
+	 *     content = the content widget
+	 *
+	 * Since: 1.0
+	 */
+	public void setContent(Widget content)
+	{
+		adw_window_set_content(adwWindow, (content is null) ? null : content.getWidgetStruct());
 	}
 }

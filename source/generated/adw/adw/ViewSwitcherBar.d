@@ -122,18 +122,6 @@ public class ViewSwitcherBar : Widget
 	}
 
 	/**
-	 * Gets the policy of @self.
-	 *
-	 * Returns: the policy of @self
-	 *
-	 * Since: 1.0
-	 */
-	public AdwViewSwitcherPolicy getPolicy()
-	{
-		return adw_view_switcher_bar_get_policy(adwViewSwitcherBar);
-	}
-
-	/**
 	 * Gets whether @self should be revealed or hidden.
 	 *
 	 * Returns: whether @self is revealed
@@ -162,19 +150,6 @@ public class ViewSwitcherBar : Widget
 		}
 
 		return ObjectG.getDObject!(ViewStack)(cast(AdwViewStack*) __p);
-	}
-
-	/**
-	 * Sets the policy of @self.
-	 *
-	 * Params:
-	 *     policy = the new policy
-	 *
-	 * Since: 1.0
-	 */
-	public void setPolicy(AdwViewSwitcherPolicy policy)
-	{
-		adw_view_switcher_bar_set_policy(adwViewSwitcherBar, policy);
 	}
 
 	/**

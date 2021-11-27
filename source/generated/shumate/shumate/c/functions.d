@@ -26,6 +26,12 @@ shared static this()
 	Linker.link(shumate_coordinate_new, "shumate_coordinate_new", LIBRARY_SHUMATE);
 	Linker.link(shumate_coordinate_new_full, "shumate_coordinate_new_full", LIBRARY_SHUMATE);
 
+	// shumate.DataSource
+
+	Linker.link(shumate_data_source_get_type, "shumate_data_source_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_data_source_get_tile_data_async, "shumate_data_source_get_tile_data_async", LIBRARY_SHUMATE);
+	Linker.link(shumate_data_source_get_tile_data_finish, "shumate_data_source_get_tile_data_finish", LIBRARY_SHUMATE);
+
 	// shumate.FileCache
 
 	Linker.link(shumate_file_cache_get_type, "shumate_file_cache_get_type", LIBRARY_SHUMATE);
@@ -45,18 +51,19 @@ shared static this()
 	// shumate.Layer
 
 	Linker.link(shumate_layer_get_type, "shumate_layer_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_layer_get_license, "shumate_layer_get_license", LIBRARY_SHUMATE);
+	Linker.link(shumate_layer_get_license_uri, "shumate_layer_get_license_uri", LIBRARY_SHUMATE);
 	Linker.link(shumate_layer_get_viewport, "shumate_layer_get_viewport", LIBRARY_SHUMATE);
 
 	// shumate.License
 
 	Linker.link(shumate_license_get_type, "shumate_license_get_type", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_new, "shumate_license_new", LIBRARY_SHUMATE);
-	Linker.link(shumate_license_append_map_source, "shumate_license_append_map_source", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_get_extra_text, "shumate_license_get_extra_text", LIBRARY_SHUMATE);
+	Linker.link(shumate_license_get_map, "shumate_license_get_map", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_get_xalign, "shumate_license_get_xalign", LIBRARY_SHUMATE);
-	Linker.link(shumate_license_prepend_map_source, "shumate_license_prepend_map_source", LIBRARY_SHUMATE);
-	Linker.link(shumate_license_remove_map_source, "shumate_license_remove_map_source", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_set_extra_text, "shumate_license_set_extra_text", LIBRARY_SHUMATE);
+	Linker.link(shumate_license_set_map, "shumate_license_set_map", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_set_xalign, "shumate_license_set_xalign", LIBRARY_SHUMATE);
 
 	// shumate.Location
@@ -75,6 +82,7 @@ shared static this()
 	Linker.link(shumate_map_center_on, "shumate_map_center_on", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_animate_zoom, "shumate_map_get_animate_zoom", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_go_to_duration, "shumate_map_get_go_to_duration", LIBRARY_SHUMATE);
+	Linker.link(shumate_map_get_layers, "shumate_map_get_layers", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_state, "shumate_map_get_state", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_viewport, "shumate_map_get_viewport", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_zoom_on_double_click, "shumate_map_get_zoom_on_double_click", LIBRARY_SHUMATE);
@@ -182,20 +190,6 @@ shared static this()
 	Linker.link(shumate_memory_cache_store_texture, "shumate_memory_cache_store_texture", LIBRARY_SHUMATE);
 	Linker.link(shumate_memory_cache_try_fill_tile, "shumate_memory_cache_try_fill_tile", LIBRARY_SHUMATE);
 
-	// shumate.NetworkTileSource
-
-	Linker.link(shumate_network_tile_source_get_type, "shumate_network_tile_source_get_type", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_new_full, "shumate_network_tile_source_new_full", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_get_max_conns, "shumate_network_tile_source_get_max_conns", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_get_offline, "shumate_network_tile_source_get_offline", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_get_proxy_uri, "shumate_network_tile_source_get_proxy_uri", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_get_uri_format, "shumate_network_tile_source_get_uri_format", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_set_max_conns, "shumate_network_tile_source_set_max_conns", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_set_offline, "shumate_network_tile_source_set_offline", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_set_proxy_uri, "shumate_network_tile_source_set_proxy_uri", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_set_uri_format, "shumate_network_tile_source_set_uri_format", LIBRARY_SHUMATE);
-	Linker.link(shumate_network_tile_source_set_user_agent, "shumate_network_tile_source_set_user_agent", LIBRARY_SHUMATE);
-
 	// shumate.PathLayer
 
 	Linker.link(shumate_path_layer_get_type, "shumate_path_layer_get_type", LIBRARY_SHUMATE);
@@ -228,6 +222,14 @@ shared static this()
 
 	Linker.link(shumate_point_get_type, "shumate_point_get_type", LIBRARY_SHUMATE);
 	Linker.link(shumate_point_new, "shumate_point_new", LIBRARY_SHUMATE);
+
+	// shumate.RasterRenderer
+
+	Linker.link(shumate_raster_renderer_get_type, "shumate_raster_renderer_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_raster_renderer_new, "shumate_raster_renderer_new", LIBRARY_SHUMATE);
+	Linker.link(shumate_raster_renderer_new_from_url, "shumate_raster_renderer_new_from_url", LIBRARY_SHUMATE);
+	Linker.link(shumate_raster_renderer_new_full, "shumate_raster_renderer_new_full", LIBRARY_SHUMATE);
+	Linker.link(shumate_raster_renderer_new_full_from_url, "shumate_raster_renderer_new_full_from_url", LIBRARY_SHUMATE);
 
 	// shumate.Scale
 
@@ -263,6 +265,20 @@ shared static this()
 	Linker.link(shumate_tile_set_x, "shumate_tile_set_x", LIBRARY_SHUMATE);
 	Linker.link(shumate_tile_set_y, "shumate_tile_set_y", LIBRARY_SHUMATE);
 	Linker.link(shumate_tile_set_zoom_level, "shumate_tile_set_zoom_level", LIBRARY_SHUMATE);
+
+	// shumate.TileDownloader
+
+	Linker.link(shumate_tile_downloader_get_type, "shumate_tile_downloader_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_tile_downloader_new, "shumate_tile_downloader_new", LIBRARY_SHUMATE);
+
+	// shumate.VectorRenderer
+
+	Linker.link(shumate_vector_renderer_get_type, "shumate_vector_renderer_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_vector_renderer_new, "shumate_vector_renderer_new", LIBRARY_SHUMATE);
+	Linker.link(shumate_vector_renderer_new_from_url, "shumate_vector_renderer_new_from_url", LIBRARY_SHUMATE);
+	Linker.link(shumate_vector_renderer_new_full, "shumate_vector_renderer_new_full", LIBRARY_SHUMATE);
+	Linker.link(shumate_vector_renderer_new_full_from_url, "shumate_vector_renderer_new_full_from_url", LIBRARY_SHUMATE);
+	Linker.link(shumate_vector_renderer_is_supported, "shumate_vector_renderer_is_supported", LIBRARY_SHUMATE);
 
 	// shumate.Viewport
 
@@ -300,6 +316,12 @@ __gshared extern(C)
 	ShumateCoordinate* function() c_shumate_coordinate_new;
 	ShumateCoordinate* function(double latitude, double longitude) c_shumate_coordinate_new_full;
 
+	// shumate.DataSource
+
+	GType function() c_shumate_data_source_get_type;
+	void function(ShumateDataSource* self, int x, int y, int zoomLevel, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) c_shumate_data_source_get_tile_data_async;
+	GBytes* function(ShumateDataSource* self, GAsyncResult* result, GError** err) c_shumate_data_source_get_tile_data_finish;
+
 	// shumate.FileCache
 
 	GType function() c_shumate_file_cache_get_type;
@@ -307,30 +329,31 @@ __gshared extern(C)
 	const(char)* function(ShumateFileCache* fileCache) c_shumate_file_cache_get_cache_dir;
 	const(char)* function(ShumateFileCache* fileCache) c_shumate_file_cache_get_cache_key;
 	uint function(ShumateFileCache* fileCache) c_shumate_file_cache_get_size_limit;
-	void function(ShumateFileCache* self, ShumateTile* tile, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) c_shumate_file_cache_get_tile_async;
+	void function(ShumateFileCache* self, int x, int y, int zoomLevel, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) c_shumate_file_cache_get_tile_async;
 	GBytes* function(ShumateFileCache* self, char** etag, GDateTime** modtime, GAsyncResult* result, GError** err) c_shumate_file_cache_get_tile_finish;
-	void function(ShumateFileCache* self, ShumateTile* tile) c_shumate_file_cache_mark_up_to_date;
+	void function(ShumateFileCache* self, int x, int y, int zoomLevel) c_shumate_file_cache_mark_up_to_date;
 	void function(ShumateFileCache* self, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) c_shumate_file_cache_purge_cache_async;
 	int function(ShumateFileCache* self, GAsyncResult* result, GError** err) c_shumate_file_cache_purge_cache_finish;
 	void function(ShumateFileCache* fileCache, uint sizeLimit) c_shumate_file_cache_set_size_limit;
-	void function(ShumateFileCache* self, ShumateTile* tile, GBytes* bytes, const(char)* etag, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) c_shumate_file_cache_store_tile_async;
+	void function(ShumateFileCache* self, int x, int y, int zoomLevel, GBytes* bytes, const(char)* etag, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) c_shumate_file_cache_store_tile_async;
 	int function(ShumateFileCache* self, GAsyncResult* result, GError** err) c_shumate_file_cache_store_tile_finish;
 
 	// shumate.Layer
 
 	GType function() c_shumate_layer_get_type;
+	const(char)* function(ShumateLayer* self) c_shumate_layer_get_license;
+	const(char)* function(ShumateLayer* self) c_shumate_layer_get_license_uri;
 	ShumateViewport* function(ShumateLayer* self) c_shumate_layer_get_viewport;
 
 	// shumate.License
 
 	GType function() c_shumate_license_get_type;
 	ShumateLicense* function() c_shumate_license_new;
-	void function(ShumateLicense* license, ShumateMapSource* mapSource) c_shumate_license_append_map_source;
 	const(char)* function(ShumateLicense* license) c_shumate_license_get_extra_text;
+	ShumateMap* function(ShumateLicense* self) c_shumate_license_get_map;
 	float function(ShumateLicense* license) c_shumate_license_get_xalign;
-	void function(ShumateLicense* license, ShumateMapSource* mapSource) c_shumate_license_prepend_map_source;
-	void function(ShumateLicense* license, ShumateMapSource* mapSource) c_shumate_license_remove_map_source;
 	void function(ShumateLicense* license, const(char)* text) c_shumate_license_set_extra_text;
+	void function(ShumateLicense* self, ShumateMap* map) c_shumate_license_set_map;
 	void function(ShumateLicense* license, float xalign) c_shumate_license_set_xalign;
 
 	// shumate.Location
@@ -349,6 +372,7 @@ __gshared extern(C)
 	void function(ShumateMap* self, double latitude, double longitude) c_shumate_map_center_on;
 	int function(ShumateMap* self) c_shumate_map_get_animate_zoom;
 	uint function(ShumateMap* self) c_shumate_map_get_go_to_duration;
+	GList* function(ShumateMap* self) c_shumate_map_get_layers;
 	ShumateState function(ShumateMap* self) c_shumate_map_get_state;
 	ShumateViewport* function(ShumateMap* self) c_shumate_map_get_viewport;
 	int function(ShumateMap* self) c_shumate_map_get_zoom_on_double_click;
@@ -456,20 +480,6 @@ __gshared extern(C)
 	void function(ShumateMemoryCache* self, ShumateTile* tile, GdkTexture* texture, const(char)* sourceId) c_shumate_memory_cache_store_texture;
 	int function(ShumateMemoryCache* self, ShumateTile* tile, const(char)* sourceId) c_shumate_memory_cache_try_fill_tile;
 
-	// shumate.NetworkTileSource
-
-	GType function() c_shumate_network_tile_source_get_type;
-	ShumateNetworkTileSource* function(const(char)* id, const(char)* name, const(char)* license, const(char)* licenseUri, uint minZoom, uint maxZoom, uint tileSize, ShumateMapProjection projection, const(char)* uriFormat) c_shumate_network_tile_source_new_full;
-	int function(ShumateNetworkTileSource* tileSource) c_shumate_network_tile_source_get_max_conns;
-	int function(ShumateNetworkTileSource* tileSource) c_shumate_network_tile_source_get_offline;
-	const(char)* function(ShumateNetworkTileSource* tileSource) c_shumate_network_tile_source_get_proxy_uri;
-	const(char)* function(ShumateNetworkTileSource* tileSource) c_shumate_network_tile_source_get_uri_format;
-	void function(ShumateNetworkTileSource* tileSource, int maxConns) c_shumate_network_tile_source_set_max_conns;
-	void function(ShumateNetworkTileSource* tileSource, int offline) c_shumate_network_tile_source_set_offline;
-	void function(ShumateNetworkTileSource* tileSource, const(char)* proxyUri) c_shumate_network_tile_source_set_proxy_uri;
-	void function(ShumateNetworkTileSource* tileSource, const(char)* uriFormat) c_shumate_network_tile_source_set_uri_format;
-	void function(ShumateNetworkTileSource* tileSource, const(char)* userAgent) c_shumate_network_tile_source_set_user_agent;
-
 	// shumate.PathLayer
 
 	GType function() c_shumate_path_layer_get_type;
@@ -502,6 +512,14 @@ __gshared extern(C)
 
 	GType function() c_shumate_point_get_type;
 	ShumateMarker* function() c_shumate_point_new;
+
+	// shumate.RasterRenderer
+
+	GType function() c_shumate_raster_renderer_get_type;
+	ShumateRasterRenderer* function(ShumateDataSource* dataSource) c_shumate_raster_renderer_new;
+	ShumateRasterRenderer* function(const(char)* urlTemplate) c_shumate_raster_renderer_new_from_url;
+	ShumateRasterRenderer* function(const(char)* id, const(char)* name, const(char)* license, const(char)* licenseUri, uint minZoom, uint maxZoom, uint tileSize, ShumateMapProjection projection, ShumateDataSource* dataSource) c_shumate_raster_renderer_new_full;
+	ShumateRasterRenderer* function(const(char)* id, const(char)* name, const(char)* license, const(char)* licenseUri, uint minZoom, uint maxZoom, uint tileSize, ShumateMapProjection projection, const(char)* urlTemplate) c_shumate_raster_renderer_new_full_from_url;
 
 	// shumate.Scale
 
@@ -538,6 +556,20 @@ __gshared extern(C)
 	void function(ShumateTile* self, uint y) c_shumate_tile_set_y;
 	void function(ShumateTile* self, uint zoomLevel) c_shumate_tile_set_zoom_level;
 
+	// shumate.TileDownloader
+
+	GType function() c_shumate_tile_downloader_get_type;
+	ShumateTileDownloader* function(const(char)* urlTemplate) c_shumate_tile_downloader_new;
+
+	// shumate.VectorRenderer
+
+	GType function() c_shumate_vector_renderer_get_type;
+	ShumateVectorRenderer* function(ShumateDataSource* dataSource, const(char)* styleJson, GError** err) c_shumate_vector_renderer_new;
+	ShumateVectorRenderer* function(const(char)* urlTemplate, const(char)* styleJson, GError** err) c_shumate_vector_renderer_new_from_url;
+	ShumateVectorRenderer* function(const(char)* id, const(char)* name, const(char)* license, const(char)* licenseUri, uint minZoom, uint maxZoom, uint tileSize, ShumateMapProjection projection, ShumateDataSource* dataSource, const(char)* styleJson, GError** err) c_shumate_vector_renderer_new_full;
+	ShumateVectorRenderer* function(const(char)* id, const(char)* name, const(char)* license, const(char)* licenseUri, uint minZoom, uint maxZoom, uint tileSize, ShumateMapProjection projection, const(char)* urlTemplate, const(char)* styleJson, GError** err) c_shumate_vector_renderer_new_full_from_url;
+	int function() c_shumate_vector_renderer_is_supported;
+
 	// shumate.Viewport
 
 	GType function() c_shumate_viewport_get_type;
@@ -572,6 +604,12 @@ alias c_shumate_coordinate_get_type shumate_coordinate_get_type;
 alias c_shumate_coordinate_new shumate_coordinate_new;
 alias c_shumate_coordinate_new_full shumate_coordinate_new_full;
 
+// shumate.DataSource
+
+alias c_shumate_data_source_get_type shumate_data_source_get_type;
+alias c_shumate_data_source_get_tile_data_async shumate_data_source_get_tile_data_async;
+alias c_shumate_data_source_get_tile_data_finish shumate_data_source_get_tile_data_finish;
+
 // shumate.FileCache
 
 alias c_shumate_file_cache_get_type shumate_file_cache_get_type;
@@ -591,18 +629,19 @@ alias c_shumate_file_cache_store_tile_finish shumate_file_cache_store_tile_finis
 // shumate.Layer
 
 alias c_shumate_layer_get_type shumate_layer_get_type;
+alias c_shumate_layer_get_license shumate_layer_get_license;
+alias c_shumate_layer_get_license_uri shumate_layer_get_license_uri;
 alias c_shumate_layer_get_viewport shumate_layer_get_viewport;
 
 // shumate.License
 
 alias c_shumate_license_get_type shumate_license_get_type;
 alias c_shumate_license_new shumate_license_new;
-alias c_shumate_license_append_map_source shumate_license_append_map_source;
 alias c_shumate_license_get_extra_text shumate_license_get_extra_text;
+alias c_shumate_license_get_map shumate_license_get_map;
 alias c_shumate_license_get_xalign shumate_license_get_xalign;
-alias c_shumate_license_prepend_map_source shumate_license_prepend_map_source;
-alias c_shumate_license_remove_map_source shumate_license_remove_map_source;
 alias c_shumate_license_set_extra_text shumate_license_set_extra_text;
+alias c_shumate_license_set_map shumate_license_set_map;
 alias c_shumate_license_set_xalign shumate_license_set_xalign;
 
 // shumate.Location
@@ -621,6 +660,7 @@ alias c_shumate_map_add_layer shumate_map_add_layer;
 alias c_shumate_map_center_on shumate_map_center_on;
 alias c_shumate_map_get_animate_zoom shumate_map_get_animate_zoom;
 alias c_shumate_map_get_go_to_duration shumate_map_get_go_to_duration;
+alias c_shumate_map_get_layers shumate_map_get_layers;
 alias c_shumate_map_get_state shumate_map_get_state;
 alias c_shumate_map_get_viewport shumate_map_get_viewport;
 alias c_shumate_map_get_zoom_on_double_click shumate_map_get_zoom_on_double_click;
@@ -728,20 +768,6 @@ alias c_shumate_memory_cache_set_size_limit shumate_memory_cache_set_size_limit;
 alias c_shumate_memory_cache_store_texture shumate_memory_cache_store_texture;
 alias c_shumate_memory_cache_try_fill_tile shumate_memory_cache_try_fill_tile;
 
-// shumate.NetworkTileSource
-
-alias c_shumate_network_tile_source_get_type shumate_network_tile_source_get_type;
-alias c_shumate_network_tile_source_new_full shumate_network_tile_source_new_full;
-alias c_shumate_network_tile_source_get_max_conns shumate_network_tile_source_get_max_conns;
-alias c_shumate_network_tile_source_get_offline shumate_network_tile_source_get_offline;
-alias c_shumate_network_tile_source_get_proxy_uri shumate_network_tile_source_get_proxy_uri;
-alias c_shumate_network_tile_source_get_uri_format shumate_network_tile_source_get_uri_format;
-alias c_shumate_network_tile_source_set_max_conns shumate_network_tile_source_set_max_conns;
-alias c_shumate_network_tile_source_set_offline shumate_network_tile_source_set_offline;
-alias c_shumate_network_tile_source_set_proxy_uri shumate_network_tile_source_set_proxy_uri;
-alias c_shumate_network_tile_source_set_uri_format shumate_network_tile_source_set_uri_format;
-alias c_shumate_network_tile_source_set_user_agent shumate_network_tile_source_set_user_agent;
-
 // shumate.PathLayer
 
 alias c_shumate_path_layer_get_type shumate_path_layer_get_type;
@@ -774,6 +800,14 @@ alias c_shumate_path_layer_set_stroke_width shumate_path_layer_set_stroke_width;
 
 alias c_shumate_point_get_type shumate_point_get_type;
 alias c_shumate_point_new shumate_point_new;
+
+// shumate.RasterRenderer
+
+alias c_shumate_raster_renderer_get_type shumate_raster_renderer_get_type;
+alias c_shumate_raster_renderer_new shumate_raster_renderer_new;
+alias c_shumate_raster_renderer_new_from_url shumate_raster_renderer_new_from_url;
+alias c_shumate_raster_renderer_new_full shumate_raster_renderer_new_full;
+alias c_shumate_raster_renderer_new_full_from_url shumate_raster_renderer_new_full_from_url;
 
 // shumate.Scale
 
@@ -809,6 +843,20 @@ alias c_shumate_tile_set_texture shumate_tile_set_texture;
 alias c_shumate_tile_set_x shumate_tile_set_x;
 alias c_shumate_tile_set_y shumate_tile_set_y;
 alias c_shumate_tile_set_zoom_level shumate_tile_set_zoom_level;
+
+// shumate.TileDownloader
+
+alias c_shumate_tile_downloader_get_type shumate_tile_downloader_get_type;
+alias c_shumate_tile_downloader_new shumate_tile_downloader_new;
+
+// shumate.VectorRenderer
+
+alias c_shumate_vector_renderer_get_type shumate_vector_renderer_get_type;
+alias c_shumate_vector_renderer_new shumate_vector_renderer_new;
+alias c_shumate_vector_renderer_new_from_url shumate_vector_renderer_new_from_url;
+alias c_shumate_vector_renderer_new_full shumate_vector_renderer_new_full;
+alias c_shumate_vector_renderer_new_full_from_url shumate_vector_renderer_new_full_from_url;
+alias c_shumate_vector_renderer_is_supported shumate_vector_renderer_is_supported;
 
 // shumate.Viewport
 

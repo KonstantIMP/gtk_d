@@ -6,11 +6,12 @@ public  import gobject.c.types;
 
 
 /**
- * A structure containing a weak reference to a #GObject.  It can either
- * be empty (i.e. point to %NULL), or point to an object for as long as
- * at least one "strong" reference to that object exists. Before the
- * object's #GObjectClass.dispose method is called, every #GWeakRef
- * associated with becomes empty (i.e. points to %NULL).
+ * A structure containing a weak reference to a #GObject.
+ * 
+ * A `GWeakRef` can either be empty (i.e. point to %NULL), or point to an
+ * object for as long as at least one "strong" reference to that object
+ * exists. Before the object's #GObjectClass.dispose method is called,
+ * every #GWeakRef associated with becomes empty (i.e. points to %NULL).
  * 
  * Like #GValue, #GWeakRef can be statically allocated, stack- or
  * heap-allocated, or embedded in larger structures.

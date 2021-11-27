@@ -123,6 +123,9 @@ public class Buffer : TextBuffer
 	/**
 	 * Changes the case of the text between the specified iterators.
 	 *
+	 * Since 5.4, this function will update the position of @start and
+	 * @end to surround the modified text.
+	 *
 	 * Params:
 	 *     caseType = how to change the case.
 	 *     start = a #GtkTextIter.

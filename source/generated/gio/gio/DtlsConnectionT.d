@@ -223,6 +223,28 @@ public template DtlsConnectionT(TStruct)
 	}
 
 	/**
+	 * Returns the name of the current DTLS ciphersuite, or %NULL if the
+	 * connection has not handshaked or has been closed. Beware that the TLS
+	 * backend may use any of multiple different naming conventions, because
+	 * OpenSSL and GnuTLS have their own ciphersuite naming conventions that
+	 * are different from each other and different from the standard, IANA-
+	 * registered ciphersuite names. The ciphersuite name is intended to be
+	 * displayed to the user for informative purposes only, and parsing it
+	 * is not recommended.
+	 *
+	 * Returns: The name of the current DTLS ciphersuite, or %NULL
+	 *
+	 * Since: 2.70
+	 */
+	public string getCiphersuiteName()
+	{
+		auto retStr = g_dtls_connection_get_ciphersuite_name(getDtlsConnectionStruct());
+
+		scope(exit) Str.freeString(retStr);
+		return Str.toString(retStr);
+	}
+
+	/**
 	 * Gets the certificate database that @conn uses to verify
 	 * peer certificates. See g_dtls_connection_set_database().
 	 *
@@ -314,6 +336,21 @@ public template DtlsConnectionT(TStruct)
 	public GTlsCertificateFlags getPeerCertificateErrors()
 	{
 		return g_dtls_connection_get_peer_certificate_errors(getDtlsConnectionStruct());
+	}
+
+	/**
+	 * Returns the current DTLS protocol version, which may be
+	 * %G_TLS_PROTOCOL_VERSION_UNKNOWN if the connection has not handshaked, or
+	 * has been closed, or if the TLS backend has implemented a protocol version
+	 * that is not a recognized #GTlsProtocolVersion.
+	 *
+	 * Returns: The current DTLS protocol version
+	 *
+	 * Since: 2.70
+	 */
+	public GTlsProtocolVersion getProtocolVersion()
+	{
+		return g_dtls_connection_get_protocol_version(getDtlsConnectionStruct());
 	}
 
 	/**

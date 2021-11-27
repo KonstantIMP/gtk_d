@@ -146,6 +146,28 @@ public class TlsConnection : IOStream
 	}
 
 	/**
+	 * Returns the name of the current TLS ciphersuite, or %NULL if the
+	 * connection has not handshaked or has been closed. Beware that the TLS
+	 * backend may use any of multiple different naming conventions, because
+	 * OpenSSL and GnuTLS have their own ciphersuite naming conventions that
+	 * are different from each other and different from the standard, IANA-
+	 * registered ciphersuite names. The ciphersuite name is intended to be
+	 * displayed to the user for informative purposes only, and parsing it
+	 * is not recommended.
+	 *
+	 * Returns: The name of the current TLS ciphersuite, or %NULL
+	 *
+	 * Since: 2.70
+	 */
+	public string getCiphersuiteName()
+	{
+		auto retStr = g_tls_connection_get_ciphersuite_name(gTlsConnection);
+
+		scope(exit) Str.freeString(retStr);
+		return Str.toString(retStr);
+	}
+
+	/**
 	 * Gets the certificate database that @conn uses to verify
 	 * peer certificates. See g_tls_connection_set_database().
 	 *
@@ -237,6 +259,21 @@ public class TlsConnection : IOStream
 	public GTlsCertificateFlags getPeerCertificateErrors()
 	{
 		return g_tls_connection_get_peer_certificate_errors(gTlsConnection);
+	}
+
+	/**
+	 * Returns the current TLS protocol version, which may be
+	 * %G_TLS_PROTOCOL_VERSION_UNKNOWN if the connection has not handshaked, or
+	 * has been closed, or if the TLS backend has implemented a protocol version
+	 * that is not a recognized #GTlsProtocolVersion.
+	 *
+	 * Returns: The current TLS protocol version
+	 *
+	 * Since: 2.70
+	 */
+	public GTlsProtocolVersion getProtocolVersion()
+	{
+		return g_tls_connection_get_protocol_version(gTlsConnection);
 	}
 
 	/**

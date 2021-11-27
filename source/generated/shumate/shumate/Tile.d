@@ -18,8 +18,7 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumateTile structure contains only private data
- * and should be accessed using the provided API
+ * An object that represents map tiles. Tiles are loaded by a [class@MapSource].
  */
 public class Tile : Widget
 {

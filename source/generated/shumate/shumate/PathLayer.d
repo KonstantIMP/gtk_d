@@ -12,8 +12,13 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumatePathLayer structure contains only private data
- * and should be accessed using the provided API
+ * A layer displaying line path between inserted [iface@Location] objects
+ * 
+ * This layer shows a connection between inserted objects implementing the
+ * [iface@Location] interface. This means that both #ShumateMarker
+ * objects and [class@Coordinate] objects can be inserted into the layer.
+ * Of course, custom objects implementing the #ShumateLocation interface
+ * can be used as well.
  */
 public class PathLayer : Layer
 {

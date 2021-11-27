@@ -6,9 +6,11 @@ public import glib.c.types;
 /**
  * This is the signature of marshaller functions, required to marshall
  * arrays of parameter values to signal emissions into C language callback
- * invocations. It is merely an alias to #GClosureMarshal since the #GClosure
- * mechanism takes over responsibility of actual function invocation for the
- * signal system.
+ * invocations.
+ *
+ * It is merely an alias to #GClosureMarshal since the #GClosure mechanism
+ * takes over responsibility of actual function invocation for the signal
+ * system.
  */
 public alias GClosureMarshal GSignalCMarshaller;
 
@@ -106,7 +108,9 @@ alias GConnectFlags ConnectFlags;
 
 /**
  * Through the #GParamFlags flag values, certain aspects of parameters
- * can be configured. See also #G_PARAM_STATIC_STRINGS.
+ * can be configured.
+ *
+ * See also: %G_PARAM_STATIC_STRINGS
  */
 public enum GParamFlags : uint
 {
@@ -178,9 +182,7 @@ public enum GParamFlags : uint
 alias GParamFlags ParamFlags;
 
 /**
- * The signal flags are used to specify a signal's behaviour, the overall
- * signal description outlines how especially the RUN flags control the
- * stages of a signal emission.
+ * The signal flags are used to specify a signal's behaviour.
  */
 public enum GSignalFlags
 {
@@ -324,6 +326,11 @@ public enum GTypeFlags
 	 * g_value_init()
 	 */
 	VALUE_ABSTRACT = 32,
+	/**
+	 * Indicates a final type. A final type is a non-derivable
+	 * leaf node in a deep derivable type hierarchy tree. Since: 2.70
+	 */
+	FINAL = 64,
 }
 alias GTypeFlags TypeFlags;
 
@@ -545,9 +552,8 @@ struct GObjectClass
 }
 
 /**
- * The GObjectConstructParam struct is an auxiliary
- * structure used to hand #GParamSpec/#GValue pairs to the @constructor of
- * a #GObjectClass.
+ * The GObjectConstructParam struct is an auxiliary structure used to hand
+ * #GParamSpec/#GValue pairs to the @constructor of a #GObjectClass.
  */
 struct GObjectConstructParam
 {
@@ -876,6 +882,7 @@ struct GParamSpecString
  * This structure is used to provide the type system with the information
  * required to initialize and destruct (finalize) a parameter's class and
  * instances thereof.
+ *
  * The initialized structure is passed to the g_param_type_register_static()
  * The type system will perform a deep copy of this structure, so its memory
  * does not need to be persistent across invocation of
@@ -1075,8 +1082,9 @@ struct GSignalInvocationHint
 }
 
 /**
- * A structure holding in-depth information for a specific signal. It is
- * filled in by the g_signal_query() function.
+ * A structure holding in-depth information for a specific signal.
+ *
+ * See also: g_signal_query()
  */
 struct GSignalQuery
 {
@@ -1284,7 +1292,8 @@ struct GTypePluginClass
 
 /**
  * A structure holding information for a specific type.
- * It is filled in by the g_type_query() function.
+ *
+ * See also: g_type_query()
  */
 struct GTypeQuery
 {
@@ -1394,8 +1403,11 @@ struct _Value__data__union
 /**
  * A callback function used by the type system to finalize those portions
  * of a derived types class structure that were setup from the corresponding
- * GBaseInitFunc() function. Class finalization basically works the inverse
- * way in which class initialization is performed.
+ * GBaseInitFunc() function.
+ *
+ * Class finalization basically works the inverse way in which class
+ * initialization is performed.
+ *
  * See GClassInitFunc() for a discussion of the class initialization process.
  *
  * Params:
@@ -1405,9 +1417,12 @@ public alias extern(C) void function(void* gClass) GBaseFinalizeFunc;
 
 /**
  * A callback function used by the type system to do base initialization
- * of the class structures of derived types. It is called as part of the
- * initialization process of all derived classes and should reallocate
- * or reset all dynamic class members copied over from the parent class.
+ * of the class structures of derived types.
+ *
+ * This function is called as part of the initialization process of all derived
+ * classes and should reallocate or reset all dynamic class members copied over
+ * from the parent class.
+ *
  * For example, class members (such as strings) that are not sufficiently
  * handled by a plain memory copy of the parent class into the derived class
  * have to be altered. See GClassInitFunc() for a discussion of the class
@@ -1419,8 +1434,9 @@ public alias extern(C) void function(void* gClass) GBaseFinalizeFunc;
 public alias extern(C) void function(void* gClass) GBaseInitFunc;
 
 /**
- * A function to be called to transform @from_value to @to_value. If
- * this is the @transform_to function of a binding, then @from_value
+ * A function to be called to transform @from_value to @to_value.
+ *
+ * If this is the @transform_to function of a binding, then @from_value
  * is the @source_property on the @source object, and @to_value is the
  * @target_property on the @target object. If this is the
  * @transform_from function of a %G_BINDING_BIDIRECTIONAL binding,
@@ -1461,17 +1477,22 @@ public alias extern(C) void function(void* boxed) GBoxedFreeFunc;
 
 /**
  * The type used for callback functions in structure definitions and function
- * signatures. This doesn't mean that all callback functions must take no
- * parameters and return void. The required signature of a callback function
- * is determined by the context in which is used (e.g. the signal to which it
- * is connected). Use G_CALLBACK() to cast the callback function to a #GCallback.
+ * signatures.
+ *
+ * This doesn't mean that all callback functions must take no  parameters and
+ * return void. The required signature of a callback function is determined by
+ * the context in which is used (e.g. the signal to which it is connected).
+ *
+ * Use G_CALLBACK() to cast the callback function to a #GCallback.
  */
 public alias extern(C) void function() GCallback;
 
 /**
  * A callback function used by the type system to finalize a class.
+ *
  * This function is rarely needed, as dynamically allocated class resources
  * should be handled by GBaseInitFunc() and GBaseFinalizeFunc().
+ *
  * Also, specification of a GClassFinalizeFunc() in the #GTypeInfo
  * structure of a static type is invalid, because classes of static types
  * will never be finalized (they are artificially kept alive when their
@@ -1485,8 +1506,9 @@ public alias extern(C) void function(void* gClass, void* classData) GClassFinali
 
 /**
  * A callback function used by the type system to initialize the class
- * of a specific type. This function should initialize all static class
- * members.
+ * of a specific type.
+ *
+ * This function should initialize all static class members.
  *
  * The initialization process of a class involves:
  *
@@ -1555,6 +1577,7 @@ public alias extern(C) void function(void* gClass, void* classData) GClassFinali
  * class->static_float = 3.14159265358979323846;
  * }
  * ]|
+ *
  * Initialization of TypeBClass will first cause initialization of
  * TypeAClass (derived classes reference their parent classes, see
  * g_type_class_ref() on this).
@@ -1618,8 +1641,10 @@ public alias extern(C) void function(void* data, GClosure* closure) GClosureNoti
 
 /**
  * A callback function used by the type system to initialize a new
- * instance of a type. This function initializes all instance members and
- * allocates any resources required by it.
+ * instance of a type.
+ *
+ * This function initializes all instance members and allocates any resources
+ * required by it.
  *
  * Initialization of a derived instance involves calling all its parent
  * types instance initializers, so the class member of the instance
@@ -1638,6 +1663,7 @@ public alias extern(C) void function(GTypeInstance* instance_, void* gClass) GIn
 
 /**
  * A callback function used by the type system to finalize an interface.
+ *
  * This function should destroy any internal data and release any resources
  * allocated by the corresponding GInterfaceInitFunc() function.
  *
@@ -1649,8 +1675,10 @@ public alias extern(C) void function(void* gIface, void* ifaceData) GInterfaceFi
 
 /**
  * A callback function used by the type system to initialize a new
- * interface.  This function should initialize all internal data and
- * allocate any resources required by the interface.
+ * interface.
+ *
+ * This function should initialize all internal data and* allocate any
+ * resources required by the interface.
  *
  * The members of @iface_data are guaranteed to have been filled with
  * zeros before this function is called.
@@ -1696,10 +1724,12 @@ public alias extern(C) void function(GObject* object, uint propertyId, GValue* v
 /**
  * The signal accumulator is a special callback function that can be used
  * to collect return values of the various callbacks that are called
- * during a signal emission. The signal accumulator is specified at signal
- * creation time, if it is left %NULL, no accumulation of callback return
- * values is performed. The return value of signal emissions is then the
- * value returned by the last callback.
+ * during a signal emission.
+ *
+ * The signal accumulator is specified at signal creation time, if it is
+ * left %NULL, no accumulation of callback return values is performed.
+ * The return value of signal emissions is then the value returned by the
+ * last callback.
  *
  * Params:
  *     ihint = Signal invocation hint, see #GSignalInvocationHint.
@@ -1709,15 +1739,19 @@ public alias extern(C) void function(GObject* object, uint propertyId, GValue* v
  *     data = Callback data that was specified when creating the signal.
  *
  * Returns: The accumulator function returns whether the signal emission
- *     should be aborted. Returning %FALSE means to abort the
- *     current emission and %TRUE is returned for continuation.
+ *     should be aborted. Returning %TRUE will continue with
+ *     the signal emission. Returning %FALSE will abort the current emission.
+ *     Since 2.62, returning %FALSE will skip to the CLEANUP stage. In this case,
+ *     emission will occur as normal in the CLEANUP stage and the handler's
+ *     return value will be accumulated.
  */
 public alias extern(C) int function(GSignalInvocationHint* ihint, GValue* returnAccu, GValue* handlerReturn, void* data) GSignalAccumulator;
 
 /**
- * A simple function pointer to get invoked when the signal is emitted. This
- * allows you to tie a hook to the signal type, so that it will trap all
- * emissions of that signal, from any object.
+ * A simple function pointer to get invoked when the signal is emitted.
+ *
+ * Emission hooks allow you to tie a hook to the signal type, so that it will
+ * trap all emissions of that signal, from any object.
  *
  * You may not attach these to signals created with the #G_SIGNAL_NO_HOOKS flag.
  *
@@ -1736,7 +1770,9 @@ public alias extern(C) int function(GSignalInvocationHint* ihint, uint nParamVal
 
 /**
  * A callback function used for notification when the state
- * of a toggle reference changes. See g_object_add_toggle_ref().
+ * of a toggle reference changes.
+ *
+ * See also: g_object_add_toggle_ref()
  *
  * Params:
  *     data = Callback data passed to g_object_add_toggle_ref()
@@ -1750,10 +1786,11 @@ public alias extern(C) void function(void* data, GObject* object, int isLastRef)
 
 /**
  * A callback function which is called when the reference count of a class
- * drops to zero. It may use g_type_class_ref() to prevent the class from
- * being freed. You should not call g_type_class_unref() from a
- * #GTypeClassCacheFunc function to prevent infinite recursion, use
- * g_type_class_unref_uncached() instead.
+ * drops to zero.
+ *
+ * It may use g_type_class_ref() to prevent the class from being freed. You
+ * should not call g_type_class_unref() from a #GTypeClassCacheFunc function
+ * to prevent infinite recursion, use g_type_class_unref_uncached() instead.
  *
  * The functions have to check the class id passed in to figure
  * whether they actually want to cache the class of this type, since all
@@ -1771,6 +1808,7 @@ public alias extern(C) int function(void* cacheData, GTypeClass* gClass) GTypeCl
 
 /**
  * A callback called after an interface vtable is initialized.
+ *
  * See g_type_add_interface_check().
  *
  * Params:
@@ -1858,9 +1896,11 @@ public alias extern(C) void function(GValue* srcValue, GValue* destValue) GValue
 
 /**
  * A #GWeakNotify function can be added to an object as a callback that gets
- * triggered when the object is finalized. Since the object is already being
- * disposed when the #GWeakNotify is called, there's not much you could do
- * with the object, apart from e.g. using its address as hash-index or the like.
+ * triggered when the object is finalized.
+ *
+ * Since the object is already being disposed when the #GWeakNotify is called,
+ * there's not much you could do with the object, apart from e.g. using its
+ * address as hash-index or the like.
  *
  * Params:
  *     data = data that was provided when the weak reference was established

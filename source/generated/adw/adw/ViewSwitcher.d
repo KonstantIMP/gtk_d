@@ -94,18 +94,6 @@ public class ViewSwitcher : Widget
 	}
 
 	/**
-	 * Gets the ellipsizing position for the titles.
-	 *
-	 * Returns: the ellipsize mode.
-	 *
-	 * Since: 1.0
-	 */
-	public PangoEllipsizeMode getNarrowEllipsize()
-	{
-		return adw_view_switcher_get_narrow_ellipsize(adwViewSwitcher);
-	}
-
-	/**
 	 * Gets the policy of @self.
 	 *
 	 * Returns: the policy of @self
@@ -134,19 +122,6 @@ public class ViewSwitcher : Widget
 		}
 
 		return ObjectG.getDObject!(ViewStack)(cast(AdwViewStack*) __p);
-	}
-
-	/**
-	 * Sets the ellipsizing position for the titles.
-	 *
-	 * Params:
-	 *     mode = the new value
-	 *
-	 * Since: 1.0
-	 */
-	public void setNarrowEllipsize(PangoEllipsizeMode mode)
-	{
-		adw_view_switcher_set_narrow_ellipsize(adwViewSwitcher, mode);
 	}
 
 	/**

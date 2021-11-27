@@ -275,9 +275,15 @@ public class Handle : ObjectG
 	}
 
 	/**
-	 * Closes @handle, to indicate that loading the image is complete.  This will
-	 * return %TRUE if the loader closed successfully and the SVG data was parsed
-	 * correctly.  Note that @handle isn't freed until @g_object_unref is called.
+	 * This is used after calling rsvg_handle_write() to indicate that there is no more data
+	 * to consume, and to start the actual parsing of the SVG document.  The only reason to
+	 * call this function is if you use use rsvg_handle_write() to feed data into the @handle;
+	 * if you use the other methods like rsvg_handle_new_from_file() or
+	 * rsvg_handle_read_stream_sync(), then you do not need to call this function.
+	 *
+	 * This will return %TRUE if the loader closed successfully and the
+	 * SVG data was parsed correctly.  Note that @handle isn't freed until
+	 * @g_object_unref is called.
 	 *
 	 * Deprecated: Use rsvg_handle_read_stream_sync() or the constructor
 	 * functions rsvg_handle_new_from_gfile_sync() or
@@ -321,6 +327,10 @@ public class Handle : ObjectG
 	 * This function depends on the #RsvgHandle's DPI to compute dimensions in
 	 * pixels, so you should call rsvg_handle_set_dpi() beforehand.
 	 *
+	 * Deprecated: Use rsvg_handle_get_intrinsic_size_in_pixels() instead.  This
+	 * function is deprecated because it is not able to return exact fractional dimensions,
+	 * only integer pixels.
+	 *
 	 * Params:
 	 *     dimensionData = A place to store the SVG's size
 	 *
@@ -346,7 +356,7 @@ public class Handle : ObjectG
 	 *
 	 * Params:
 	 *     dimensionData = A place to store the SVG's size
-	 *     id = An element's id within the SVG, starting with "##" (a single
+	 *     id = An element's id within the SVG, starting with "#" (a single
 	 *         hash character), for example, "##layer1".  This notation corresponds to a
 	 *         URL's fragment ID.  Alternatively, pass %NULL to use the whole SVG.
 	 *
@@ -388,7 +398,7 @@ public class Handle : ObjectG
 	 * the child elements.
 	 *
 	 * API ordering: This function must be called on a fully-loaded @handle.  See
-	 * the section <ulink url="#API-ordering">API ordering</ulink> for details.
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
 	 *
 	 * Panics: this function will panic if the @handle is not fully-loaded.
 	 *
@@ -443,7 +453,7 @@ public class Handle : ObjectG
 	 * the child elements.
 	 *
 	 * API ordering: This function must be called on a fully-loaded @handle.  See
-	 * the section <ulink url="#API-ordering">API ordering</ulink> for details.
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
 	 *
 	 * Panics: this function will panic if the @handle is not fully-loaded.
 	 *
@@ -503,7 +513,7 @@ public class Handle : ObjectG
 	 * ]|
 	 *
 	 * API ordering: This function must be called on a fully-loaded @handle.  See
-	 * the section <ulink url="#API-ordering">API ordering</ulink> for details.
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
 	 *
 	 * Panics: this function will panic if the @handle is not fully-loaded.
 	 *
@@ -531,16 +541,84 @@ public class Handle : ObjectG
 	}
 
 	/**
+	 * Converts an SVG document's intrinsic dimensions to pixels, and returns the result.
+	 *
+	 * This function is able to extract the size in pixels from an SVG document if the
+	 * document has both <literal>width</literal> and <literal>height</literal> attributes
+	 * with physical units (px, in, cm, mm, pt, pc) or font-based units (em, ex).  For
+	 * physical units, the dimensions are normalized to pixels using the dots-per-inch (DPI)
+	 * value set previously with rsvg_handle_set_dpi().  For font-based units, this function
+	 * uses the computed value of the `font-size` property for the toplevel
+	 * <literal>&lt;svg&gt;</literal> element.  In those cases, this function returns %TRUE.
+	 *
+	 * This function is not able to extract the size in pixels directly from the intrinsic
+	 * dimensions of the SVG document if the <literal>width</literal> or
+	 * <literal>height</literal> are in percentage units (or if they do not exist, in which
+	 * case the SVG spec mandates that they default to 100%), as these require a
+	 * <firstterm>viewport</firstterm> to be resolved to a final size.  In this case, the
+	 * function returns %FALSE.
+	 *
+	 * For example, the following document fragment has intrinsic dimensions that will resolve
+	 * to 20x30 pixels.
+	 *
+	 * |[
+	 * <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30"/>
+	 * ]|
+	 *
+	 * Similarly, if the DPI is set to 96, this document will resolve to 192x288 pixels (i.e. 96*2 x 96*3).
+	 *
+	 * |[
+	 * <svg xmlns="http://www.w3.org/2000/svg" width="2in" height="3in"/>
+	 * ]|
+	 *
+	 * The dimensions of the following documents cannot be resolved to pixels directly, and
+	 * this function would return %FALSE for them:
+	 *
+	 * |[
+	 * <!-- Needs a viewport against which to compute the percentages. -->
+	 * <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"/>
+	 *
+	 * <!-- Does not have intrinsic width/height, just a 1:2 aspect ratio which
+	 * needs to be fitted within a viewport. -->
+	 * <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"/>
+	 * ]|
+	 *
+	 * Instead of querying an SVG document's size, applications are encouraged to render SVG
+	 * documents to a size chosen by the application, by passing a suitably-sized viewport to
+	 * rsvg_handle_render_document().
+	 *
+	 * Params:
+	 *     outWidth = Will be set to the computed width; you should round this up to get integer pixels.
+	 *     outHeight = Will be set to the computed height; you should round this up to get integer pixels.
+	 *
+	 * Returns: %TRUE if the dimensions could be converted directly to pixels; in this case
+	 *     @out_width and @out_height will be set accordingly.  Note that the dimensions are
+	 *     floating-point numbers, so your application can know the exact size of an SVG document.
+	 *     To get integer dimensions, you should use `ceil()` to round up to the nearest integer
+	 *     (just using `round()`, may may chop off pixels with fractional coverage).  If the
+	 *     dimensions cannot be converted to pixels, returns %FALSE and puts 0.0 in both
+	 *     @out_width and @out_height.
+	 *
+	 * Since: 2.52
+	 */
+	public bool getIntrinsicSizeInPixels(out double outWidth, out double outHeight)
+	{
+		return rsvg_handle_get_intrinsic_size_in_pixels(rsvgHandle, &outWidth, &outHeight) != 0;
+	}
+
+	/**
 	 * Returns the pixbuf loaded by @handle.  The pixbuf returned will be reffed, so
-	 * the caller of this function must assume that ref.  If insufficient data has
-	 * been read to create the pixbuf, or an error occurred in loading, then %NULL
-	 * will be returned.  Note that the pixbuf may not be complete until
-	 * @rsvg_handle_close has been called.
+	 * the caller of this function must assume that ref.
 	 *
-	 * This function depends on the #RsvgHandle's DPI to compute dimensions in
-	 * pixels, so you should call rsvg_handle_set_dpi() beforehand.
+	 * API ordering: This function must be called on a fully-loaded @handle.  See
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
 	 *
-	 * Returns: the pixbuf loaded by @handle, or %NULL.
+	 * This function depends on the #RsvgHandle's dots-per-inch value (DPI) to compute the
+	 * "natural size" of the document in pixels, so you should call rsvg_handle_set_dpi()
+	 * beforehand.
+	 *
+	 * Returns: a pixbuf, or %NULL if an error occurs
+	 *     during rendering.
 	 */
 	public Pixbuf getPixbuf()
 	{
@@ -560,21 +638,22 @@ public class Handle : ObjectG
 	 * sub-sub-elements recursively).  If @id is #NULL, this function renders the
 	 * whole SVG.
 	 *
-	 * This function depends on the #RsvgHandle's DPI to compute dimensions in
-	 * pixels, so you should call rsvg_handle_set_dpi() beforehand.
+	 * This function depends on the #RsvgHandle's dots-per-inch value (DPI) to compute the
+	 * "natural size" of the document in pixels, so you should call rsvg_handle_set_dpi()
+	 * beforehand.
 	 *
 	 * If you need to render an image which is only big enough to fit a particular
-	 * sub-element of the SVG, consider using rsvg_handle_render_cairo_sub(), upon a
-	 * surface that is just the size returned by rsvg_handle_get_dimensions_sub().
-	 * You will need to offset the rendering by the amount returned in
-	 * rsvg_handle_get_position_sub().
+	 * sub-element of the SVG, consider using rsvg_handle_render_element().
 	 *
 	 * Element IDs should look like an URL fragment identifier; for example, pass
 	 * "##foo" (hash <literal>foo</literal>) to get the geometry of the element that
 	 * has an <literal>id="foo"</literal> attribute.
 	 *
+	 * API ordering: This function must be called on a fully-loaded @handle.  See
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
+	 *
 	 * Params:
-	 *     id = An element's id within the SVG, starting with "##" (a single
+	 *     id = An element's id within the SVG, starting with "#" (a single
 	 *         hash character), for example, "##layer1".  This notation corresponds to a
 	 *         URL's fragment ID.  Alternatively, pass %NULL to use the whole SVG.
 	 *
@@ -606,11 +685,13 @@ public class Handle : ObjectG
 	 * "##foo" (hash <literal>foo</literal>) to get the geometry of the element that
 	 * has an <literal>id="foo"</literal> attribute.
 	 *
-	 * Deprecated: Use rsvg_handle_get_geometry_for_layer() instead.
+	 * Deprecated: Use rsvg_handle_get_geometry_for_layer() instead.  This function is
+	 * deprecated since it is not able to return exact floating-point positions, only integer
+	 * pixels.
 	 *
 	 * Params:
 	 *     positionData = A place to store the SVG fragment's position.
-	 *     id = An element's id within the SVG, starting with "##" (a single
+	 *     id = An element's id within the SVG, starting with "#" (a single
 	 *         hash character), for example, "##layer1".  This notation corresponds to a
 	 *         URL's fragment ID.  Alternatively, pass %NULL to use the whole SVG.
 	 *
@@ -629,7 +710,7 @@ public class Handle : ObjectG
 	 * has an <literal>id="foo"</literal> attribute.
 	 *
 	 * Params:
-	 *     id = An element's id within the SVG, starting with "##" (a single hash
+	 *     id = An element's id within the SVG, starting with "#" (a single hash
 	 *         character), for example, "##layer1".  This notation corresponds to a URL's
 	 *         fragment ID.
 	 *
@@ -694,10 +775,44 @@ public class Handle : ObjectG
 	}
 
 	/**
-	 * Draws a loaded SVG handle to a Cairo context.  Drawing will occur with
-	 * respect to the @cr's current transformation:  for example, if the @cr has a
-	 * rotated current transformation matrix, the whole SVG will be rotated in the
-	 * rendered version.
+	 * Draws a loaded SVG handle to a Cairo context.  Please try to use
+	 * rsvg_handle_render_document() instead, which allows you to pick the size
+	 * at which the document will be rendered.
+	 *
+	 * Historically this function has picked a size by itself, based on the following rules:
+	 *
+	 * <itemizedlist>
+	 * <listitem>
+	 * If the SVG document has both <literal>width</literal> and <literal>height</literal>
+	 * attributes with physical units (px, in, cm, mm, pt, pc) or font-based units (em,
+	 * ex), the function computes the size directly based on the dots-per-inch (DPI) you
+	 * have configured with rsvg_handle_set_dpi().  This is the same approach as
+	 * rsvg_handle_get_intrinsic_size_in_pixels().
+	 * </listitem>
+	 * <listitem>
+	 * Otherwise, if there is a <literal>viewBox</literal> attribute and both
+	 * <literal>width</literal> and <literal>height</literal> are set to
+	 * <literal>100%</literal> (or if they don't exist at all and thus default to 100%),
+	 * the function uses the width and height of the viewBox as a pixel size.  This
+	 * produces a rendered document with the correct aspect ratio.
+	 * </listitem>
+	 * <listitem>
+	 * Otherwise, this function computes the extents of every graphical object in the SVG
+	 * document to find the total extents.  This is moderately expensive, but no more expensive
+	 * than rendering the whole document, for example.
+	 * </listitem>
+	 * <listitem>
+	 * This function cannot deal with percentage-based units for <literal>width</literal>
+	 * and <literal>height</literal> because there is no viewport against which they could
+	 * be resolved; that is why it will compute the extents of objects in that case.  This
+	 * is why we recommend that you use rsvg_handle_render_document() instead, which takes
+	 * in a viewport and follows the sizing policy from the web platform.
+	 * </listitem>
+	 * </itemizedlist>
+	 *
+	 * Drawing will occur with respect to the @cr's current transformation: for example, if
+	 * the @cr has a rotated current transformation matrix, the whole SVG will be rotated in
+	 * the rendered version.
 	 *
 	 * This function depends on the #RsvgHandle's DPI to compute dimensions in
 	 * pixels, so you should call rsvg_handle_set_dpi() beforehand.
@@ -706,6 +821,9 @@ public class Handle : ObjectG
 	 * cairo_status() must return #CAIRO_STATUS_SUCCESS for it.  Cairo can set a
 	 * context to be in an error state in various situations, for example, if it was
 	 * passed an invalid matrix or if it was created for an invalid surface.
+	 *
+	 * Deprecated: Please use rsvg_handle_render_document() instead; that function lets
+	 * you pass a viewport and obtain a good error message.
 	 *
 	 * Params:
 	 *     cr = A Cairo context
@@ -720,10 +838,48 @@ public class Handle : ObjectG
 	}
 
 	/**
-	 * Draws a subset of a loaded SVG handle to a Cairo context.  Drawing will occur with
-	 * respect to the @cr's current transformation:  for example, if the @cr has a
-	 * rotated current transformation matrix, the whole SVG will be rotated in the
-	 * rendered version.
+	 * Renders a single SVG element in the same place as for a whole SVG document (a "subset"
+	 * of the document).  Please try to use rsvg_handle_render_layer() instead, which allows
+	 * you to pick the size at which the document with the layer will be rendered.
+	 *
+	 * This is equivalent to rsvg_handle_render_cairo(), but it renders only a single
+	 * element and its children, as if they composed an individual layer in the SVG.
+	 *
+	 * Historically this function has picked a size for the whole document by itself, based
+	 * on the following rules:
+	 *
+	 * <itemizedlist>
+	 * <listitem>
+	 * If the SVG document has both <literal>width</literal> and <literal>height</literal>
+	 * attributes with physical units (px, in, cm, mm, pt, pc) or font-based units (em,
+	 * ex), the function computes the size directly based on the dots-per-inch (DPI) you
+	 * have configured with rsvg_handle_set_dpi().  This is the same approach as
+	 * rsvg_handle_get_intrinsic_size_in_pixels().
+	 * </listitem>
+	 * <listitem>
+	 * Otherwise, if there is a <literal>viewBox</literal> attribute and both
+	 * <literal>width</literal> and <literal>height</literal> are set to
+	 * <literal>100%</literal> (or if they don't exist at all and thus default to 100%),
+	 * the function uses the width and height of the viewBox as a pixel size.  This
+	 * produces a rendered document with the correct aspect ratio.
+	 * </listitem>
+	 * <listitem>
+	 * Otherwise, this function computes the extents of every graphical object in the SVG
+	 * document to find the total extents.  This is moderately expensive, but no more expensive
+	 * than rendering the whole document, for example.
+	 * </listitem>
+	 * <listitem>
+	 * This function cannot deal with percentage-based units for <literal>width</literal>
+	 * and <literal>height</literal> because there is no viewport against which they could
+	 * be resolved; that is why it will compute the extents of objects in that case.  This
+	 * is why we recommend that you use rsvg_handle_render_layer() instead, which takes
+	 * in a viewport and follows the sizing policy from the web platform.
+	 * </listitem>
+	 * </itemizedlist>
+	 *
+	 * Drawing will occur with respect to the @cr's current transformation: for example, if
+	 * the @cr has a rotated current transformation matrix, the whole SVG will be rotated in
+	 * the rendered version.
 	 *
 	 * This function depends on the #RsvgHandle's DPI to compute dimensions in
 	 * pixels, so you should call rsvg_handle_set_dpi() beforehand.
@@ -736,6 +892,9 @@ public class Handle : ObjectG
 	 * Element IDs should look like an URL fragment identifier; for example, pass
 	 * "##foo" (hash <literal>foo</literal>) to get the geometry of the element that
 	 * has an <literal>id="foo"</literal> attribute.
+	 *
+	 * Deprecated: Please use rsvg_handle_render_layer() instead; that function lets
+	 * you pass a viewport and obtain a good error message.
 	 *
 	 * Params:
 	 *     cr = A Cairo context
@@ -755,14 +914,14 @@ public class Handle : ObjectG
 	/**
 	 * Renders the whole SVG document fitted to a viewport.
 	 *
-	 * The @viewport gives the position and size at which the whole SVG
-	 * document will be rendered.
+	 * The @viewport gives the position and size at which the whole SVG document will be
+	 * rendered.  The document is scaled proportionally to fit into this viewport.
 	 *
 	 * The @cr must be in a #CAIRO_STATUS_SUCCESS state, or this function will not
 	 * render anything, and instead will return an error.
 	 *
 	 * API ordering: This function must be called on a fully-loaded @handle.  See
-	 * the section <ulink url="#API-ordering">API ordering</ulink> for details.
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
 	 *
 	 * Panics: this function will panic if the @handle is not fully-loaded.
 	 *
@@ -808,7 +967,7 @@ public class Handle : ObjectG
 	 * be rendered.  FIXME: mention proportional scaling.
 	 *
 	 * API ordering: This function must be called on a fully-loaded @handle.  See
-	 * the section <ulink url="#API-ordering">API ordering</ulink> for details.
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
 	 *
 	 * Panics: this function will panic if the @handle is not fully-loaded.
 	 *
@@ -840,6 +999,10 @@ public class Handle : ObjectG
 	/**
 	 * Renders a single SVG element in the same place as for a whole SVG document.
 	 *
+	 * The @viewport gives the position and size at which the whole SVG document would be
+	 * rendered.  The document is scaled proportionally to fit into this viewport; hence the
+	 * individual layer may be smaller than this.
+	 *
 	 * This is equivalent to rsvg_handle_render_document(), but it renders only a
 	 * single element and its children, as if they composed an individual layer in
 	 * the SVG.  The element is rendered with the same transformation matrix as it
@@ -856,7 +1019,7 @@ public class Handle : ObjectG
 	 * root element.
 	 *
 	 * API ordering: This function must be called on a fully-loaded @handle.  See
-	 * the section <ulink url="#API-ordering">API ordering</ulink> for details.
+	 * the section <ulink url="RsvgHandle.html#API-ordering">API ordering</ulink> for details.
 	 *
 	 * Panics: this function will panic if the @handle is not fully-loaded.
 	 *
@@ -989,7 +1152,9 @@ public class Handle : ObjectG
 	}
 
 	/**
-	 * Loads the next @count bytes of the image.
+	 * Loads the next @count bytes of the image.  You can call this function multiple
+	 * times until the whole document is consumed; then you must call rsvg_handle_close()
+	 * to actually parse the document.
 	 *
 	 * Before calling this function for the first time, you may need to call
 	 * rsvg_handle_set_base_uri() or rsvg_handle_set_base_gfile() to set the "base

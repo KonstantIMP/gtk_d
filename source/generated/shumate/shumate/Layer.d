@@ -1,5 +1,7 @@
 module shumate.Layer;
 
+private import glib.Str;
+private import glib.c.functions;
 private import gobject.ObjectG;
 private import gtk.AccessibleIF;
 private import gtk.AccessibleT;
@@ -14,8 +16,12 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumateLayer structure contains only private data
- * and should be accessed using the provided API
+ * Every layer (overlay that moves together with the map) has to inherit this
+ * class and implement its virtual methods.
+ * 
+ * You can use the same layer to display many types of maps.  In Shumate they
+ * are called map sources.  You can change the [property@MapLayer:map-source]
+ * property at any time to replace the current displayed map.
  */
 public class Layer : Widget
 {
@@ -50,6 +56,26 @@ public class Layer : Widget
 	public static GType getType()
 	{
 		return shumate_layer_get_type();
+	}
+
+	/**
+	 * Gets the license text to show on the map for this layer.
+	 *
+	 * Returns: the license text
+	 */
+	public string getLicense()
+	{
+		return Str.toString(shumate_layer_get_license(shumateLayer));
+	}
+
+	/**
+	 * Gets a link to view more information about the layer's license, if available.
+	 *
+	 * Returns: a URI
+	 */
+	public string getLicenseUri()
+	{
+		return Str.toString(shumate_layer_get_license_uri(shumateLayer));
 	}
 
 	/**

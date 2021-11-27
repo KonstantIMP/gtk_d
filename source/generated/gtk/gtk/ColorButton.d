@@ -182,7 +182,7 @@ public class ColorButton : Widget, ColorChooserIF
 	 *
 	 * Note that this signal is only emitted when the user changes the color.
 	 * If you need to react to programmatic color changes as well, use
-	 * the notify::color signal.
+	 * the notify::rgba signal.
 	 */
 	gulong addOnColorSet(void delegate(ColorButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

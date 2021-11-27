@@ -10,14 +10,24 @@ private import glib.GException;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
-private import shumate.Tile;
 private import shumate.c.functions;
 public  import shumate.c.types;
 
 
 /**
- * The #ShumateFileCache structure contains only private data
- * and should be accessed using the provided API
+ * A cache that stores and retrieves tiles from the file system. It is mainly
+ * used by [class@NetworkTileSource], but can also be used by custom map
+ * sources.
+ * 
+ * The cache will be filled up to a certain size limit. When this limit is
+ * reached, the cache can be purged, and the tiles that are accessed least are
+ * deleted.
+ * 
+ * ## ETags
+ * 
+ * The cache can optionally store an ETag string with each tile. This is
+ * useful to avoid redownloading old tiles that haven't changed (for example,
+ * using the HTTP If-None-Match header).
  */
 public class FileCache : ObjectG
 {
@@ -114,14 +124,16 @@ public class FileCache : ObjectG
 	 * Gets tile data from the cache, if it is available.
 	 *
 	 * Params:
-	 *     tile = a #ShumateTile
+	 *     x = the X coordinate of the tile
+	 *     y = the Y coordinate of the tile
+	 *     zoomLevel = the zoom level of the tile
 	 *     cancellable = a #GCancellable
 	 *     callback = a #GAsyncReadyCallback to execute upon completion
 	 *     userData = closure data for @callback
 	 */
-	public void getTileAsync(Tile tile, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
+	public void getTileAsync(int x, int y, int zoomLevel, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
 	{
-		shumate_file_cache_get_tile_async(shumateFileCache, (tile is null) ? null : tile.getTileStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
+		shumate_file_cache_get_tile_async(shumateFileCache, x, y, zoomLevel, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
 	}
 
 	/**
@@ -174,11 +186,13 @@ public class FileCache : ObjectG
 	 * 304 Not Modified response.
 	 *
 	 * Params:
-	 *     tile = a #ShumateTile
+	 *     x = the X coordinate of the tile
+	 *     y = the Y coordinate of the tile
+	 *     zoomLevel = the zoom level of the tile
 	 */
-	public void markUpToDate(Tile tile)
+	public void markUpToDate(int x, int y, int zoomLevel)
 	{
-		shumate_file_cache_mark_up_to_date(shumateFileCache, (tile is null) ? null : tile.getTileStruct());
+		shumate_file_cache_mark_up_to_date(shumateFileCache, x, y, zoomLevel);
 	}
 
 	/**
@@ -235,16 +249,18 @@ public class FileCache : ObjectG
 	 * Stores a tile in the cache.
 	 *
 	 * Params:
-	 *     tile = a #ShumateTile
+	 *     x = the X coordinate of the tile
+	 *     y = the Y coordinate of the tile
+	 *     zoomLevel = the zoom level of the tile
 	 *     bytes = a #GBytes
 	 *     etag = an ETag string, or %NULL
 	 *     cancellable = a #GCancellable
 	 *     callback = a #GAsyncReadyCallback to execute upon completion
 	 *     userData = closure data for @callback
 	 */
-	public void storeTileAsync(Tile tile, Bytes bytes, string etag, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
+	public void storeTileAsync(int x, int y, int zoomLevel, Bytes bytes, string etag, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
 	{
-		shumate_file_cache_store_tile_async(shumateFileCache, (tile is null) ? null : tile.getTileStruct(), (bytes is null) ? null : bytes.getBytesStruct(), Str.toStringz(etag), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
+		shumate_file_cache_store_tile_async(shumateFileCache, x, y, zoomLevel, (bytes is null) ? null : bytes.getBytesStruct(), Str.toStringz(etag), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
 	}
 
 	/**

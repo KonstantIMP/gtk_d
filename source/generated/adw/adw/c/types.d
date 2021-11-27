@@ -1,11 +1,9 @@
 module adw.c.types;
 
 public import gdk.c.types;
-public import gdkpixbuf.c.types;
 public import gio.c.types;
 public import gobject.c.types;
 public import gtk.c.types;
-public import pango.c.types;
 
 
 /**
@@ -25,6 +23,40 @@ public enum AdwCenteringPolicy
 	STRICT = 1,
 }
 alias AdwCenteringPolicy CenteringPolicy;
+
+/**
+ * Application color schemes for [property@Adw.StyleManager:color-scheme].
+ *
+ * Since: 1.0
+ */
+public enum AdwColorScheme
+{
+	/**
+	 * Inherit the parent color-scheme. When set on the
+	 * `AdwStyleManager` returned by [func@Adw.StyleManager.get_default], it's
+	 * equivalent to `ADW_COLOR_SCHEME_PREFER_LIGHT`.
+	 */
+	DEFAULT = 0,
+	/**
+	 * Always use light appearance.
+	 */
+	FORCE_LIGHT = 1,
+	/**
+	 * Use light appearance unless the system
+	 * prefers dark colors.
+	 */
+	PREFER_LIGHT = 2,
+	/**
+	 * Use dark appearance unless the system prefers
+	 * prefers light colors.
+	 */
+	PREFER_DARK = 3,
+	/**
+	 * Always use dark appearance.
+	 */
+	FORCE_DARK = 4,
+}
+alias AdwColorScheme ColorScheme;
 
 /**
  * Describes the possible folding behavior of a [class@Adw.Flap] widget.
@@ -166,17 +198,13 @@ alias AdwSqueezerTransitionType SqueezerTransitionType;
 public enum AdwViewSwitcherPolicy
 {
 	/**
-	 * Automatically adapt to the best fitting mode
-	 */
-	AUTO = 0,
-	/**
 	 * Force the narrow mode
 	 */
-	NARROW = 1,
+	NARROW = 0,
 	/**
 	 * Force the wide mode
 	 */
-	WIDE = 2,
+	WIDE = 1,
 }
 alias AdwViewSwitcherPolicy ViewSwitcherPolicy;
 
@@ -193,6 +221,20 @@ struct AdwActionRowClass
 	AdwPreferencesRowClass parentClass;
 	/** */
 	extern(C) void function(AdwActionRow* self) activate;
+	void*[4] padding;
+}
+
+struct AdwApplication
+{
+	GtkApplication parentInstance;
+}
+
+struct AdwApplicationClass
+{
+	/**
+	 * The parent class
+	 */
+	GtkApplicationClass parentClass;
 	void*[4] padding;
 }
 
@@ -220,6 +262,13 @@ struct AdwBin
 }
 
 struct AdwBinClass
+{
+	GtkWidgetClass parentClass;
+}
+
+struct AdwButtonContent;
+
+struct AdwButtonContentClass
 {
 	GtkWidgetClass parentClass;
 }
@@ -280,16 +329,16 @@ struct AdwComboRowClass
 	void*[4] padding;
 }
 
-struct AdwEnumListModel;
+struct AdwEnumListItem;
 
-struct AdwEnumListModelClass
+struct AdwEnumListItemClass
 {
 	GObjectClass parentClass;
 }
 
-struct AdwEnumValueObject;
+struct AdwEnumListModel;
 
-struct AdwEnumValueObjectClass
+struct AdwEnumListModelClass
 {
 	GObjectClass parentClass;
 }
@@ -392,6 +441,13 @@ struct AdwPreferencesWindowClass
 	void*[4] padding;
 }
 
+struct AdwSplitButton;
+
+struct AdwSplitButtonClass
+{
+	GtkWidgetClass parentClass;
+}
+
 struct AdwSqueezer;
 
 struct AdwSqueezerClass
@@ -411,6 +467,13 @@ struct AdwStatusPage;
 struct AdwStatusPageClass
 {
 	GtkWidgetClass parentClass;
+}
+
+struct AdwStyleManager;
+
+struct AdwStyleManagerClass
+{
+	GObjectClass parentClass;
 }
 
 struct AdwSwipeTracker;
@@ -487,13 +550,6 @@ struct AdwTabViewClass
 	GtkWidgetClass parentClass;
 }
 
-struct AdwValueObject;
-
-struct AdwValueObjectClass
-{
-	GObjectClass parentClass;
-}
-
 struct AdwViewStack;
 
 struct AdwViewStackClass
@@ -546,3 +602,28 @@ struct AdwWindowTitleClass
 {
 	GtkWidgetClass parentClass;
 }
+
+/**
+ * Adw major version component (e.g. 1 if %ADW_VERSION is 1.2.3)
+ */
+enum MAJOR_VERSION = 1;
+alias ADW_MAJOR_VERSION = MAJOR_VERSION;
+
+/**
+ * Adw micro version component (e.g. 3 if %ADW_VERSION is 1.2.3)
+ */
+enum MICRO_VERSION = 0;
+alias ADW_MICRO_VERSION = MICRO_VERSION;
+
+/**
+ * Adw minor version component (e.g. 2 if %ADW_VERSION is 1.2.3)
+ */
+enum MINOR_VERSION = 0;
+alias ADW_MINOR_VERSION = MINOR_VERSION;
+
+/**
+ * Adwaita version, encoded as a string, useful for printing and
+ * concatenation.
+ */
+enum VERSION_S = "1.0.0.alpha.4";
+alias ADW_VERSION_S = VERSION_S;

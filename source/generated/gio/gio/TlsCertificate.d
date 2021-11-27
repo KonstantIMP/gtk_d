@@ -4,10 +4,13 @@ private import gio.SocketConnectableIF;
 private import gio.c.functions;
 public  import gio.c.types;
 private import glib.ConstructionException;
+private import glib.DateTime;
 private import glib.ErrorG;
 private import glib.GException;
 private import glib.ListG;
+private import glib.PtrArray;
 private import glib.Str;
+private import glib.c.functions;
 private import gobject.ObjectG;
 
 
@@ -285,6 +288,46 @@ public static ListG listNewFromFile(string file)
 }
 
 /**
+ * Gets the value of #GTlsCertificate:dns-names.
+ *
+ * Returns: A #GPtrArray of
+ *     #GBytes elements, or %NULL if it's not available.
+ *
+ * Since: 2.70
+ */
+public PtrArray getDnsNames()
+{
+	auto __p = g_tls_certificate_get_dns_names(gTlsCertificate);
+
+	if(__p is null)
+	{
+		return null;
+	}
+
+	return new PtrArray(cast(GPtrArray*) __p);
+}
+
+/**
+ * Gets the value of #GTlsCertificate:ip-addresses.
+ *
+ * Returns: A #GPtrArray
+ *     of #GInetAddress elements, or %NULL if it's not available.
+ *
+ * Since: 2.70
+ */
+public PtrArray getIpAddresses()
+{
+	auto __p = g_tls_certificate_get_ip_addresses(gTlsCertificate);
+
+	if(__p is null)
+	{
+		return null;
+	}
+
+	return new PtrArray(cast(GPtrArray*) __p);
+}
+
+/**
  * Gets the #GTlsCertificate representing @cert's issuer, if known
  *
  * Returns: The certificate of @cert's issuer,
@@ -303,6 +346,74 @@ public TlsCertificate getIssuer()
 	}
 
 	return ObjectG.getDObject!(TlsCertificate)(cast(GTlsCertificate*) __p);
+}
+
+/**
+ * Returns the issuer name from the certificate.
+ *
+ * Returns: The issuer name, or %NULL if it's not available.
+ *
+ * Since: 2.70
+ */
+public string getIssuerName()
+{
+	auto retStr = g_tls_certificate_get_issuer_name(gTlsCertificate);
+
+	scope(exit) Str.freeString(retStr);
+	return Str.toString(retStr);
+}
+
+/**
+ * Returns the time at which the certificate became or will become invalid.
+ *
+ * Returns: The not-valid-after date, or %NULL if it's not available.
+ *
+ * Since: 2.70
+ */
+public DateTime getNotValidAfter()
+{
+	auto __p = g_tls_certificate_get_not_valid_after(gTlsCertificate);
+
+	if(__p is null)
+	{
+		return null;
+	}
+
+	return new DateTime(cast(GDateTime*) __p, true);
+}
+
+/**
+ * Returns the time at which the certificate became or will become valid.
+ *
+ * Returns: The not-valid-before date, or %NULL if it's not available.
+ *
+ * Since: 2.70
+ */
+public DateTime getNotValidBefore()
+{
+	auto __p = g_tls_certificate_get_not_valid_before(gTlsCertificate);
+
+	if(__p is null)
+	{
+		return null;
+	}
+
+	return new DateTime(cast(GDateTime*) __p, true);
+}
+
+/**
+ * Returns the subject name from the certificate.
+ *
+ * Returns: The subject name, or %NULL if it's not available.
+ *
+ * Since: 2.70
+ */
+public string getSubjectName()
+{
+	auto retStr = g_tls_certificate_get_subject_name(gTlsCertificate);
+
+	scope(exit) Str.freeString(retStr);
+	return Str.toString(retStr);
 }
 
 /**
@@ -344,6 +455,13 @@ public bool isSame(TlsCertificate certTwo)
  *
  * (All other #GTlsCertificateFlags values will always be set or unset
  * as appropriate.)
+ *
+ * Because TLS session context is not used, #GTlsCertificate may not
+ * perform as many checks on the certificates as #GTlsConnection would.
+ * For example, certificate constraints cannot be honored, and some
+ * revocation checks cannot be performed. The best way to verify TLS
+ * certificates used by a TLS connection is to let #GTlsConnection
+ * handle the verification.
  *
  * Params:
  *     identity = the expected peer identity

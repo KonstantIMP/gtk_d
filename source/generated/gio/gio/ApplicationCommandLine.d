@@ -72,7 +72,7 @@ private import gobject.ObjectG;
  * }
  * ]|
  * The complete example can be found here:
- * [gapplication-example-cmdline.c](https://git.gnome.org/browse/glib/tree/gio/tests/gapplication-example-cmdline.c)
+ * [gapplication-example-cmdline.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline.c)
  * 
  * In more complicated cases, the handling of the comandline can be
  * split between the launcher and the primary instance.
@@ -123,7 +123,7 @@ private import gobject.ObjectG;
  * instance.
  * 
  * The complete example can be found here:
- * [gapplication-example-cmdline2.c](https://git.gnome.org/browse/glib/tree/gio/tests/gapplication-example-cmdline2.c)
+ * [gapplication-example-cmdline2.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline2.c)
  * 
  * If handling the commandline requires a lot of work, it may
  * be better to defer it.
@@ -165,7 +165,7 @@ private import gobject.ObjectG;
  * hold the application until you are done with the commandline.
  * 
  * The complete example can be found here:
- * [gapplication-example-cmdline3.c](https://git.gnome.org/browse/glib/tree/gio/tests/gapplication-example-cmdline3.c)
+ * [gapplication-example-cmdline3.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline3.c)
  */
 public class ApplicationCommandLine : ObjectG
 {

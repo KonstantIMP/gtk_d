@@ -189,6 +189,10 @@ public class Source
 	 *
 	 * This function is safe to call from any thread, regardless of which thread
 	 * the #GMainContext is running in.
+	 *
+	 * If the source is currently attached to a #GMainContext, destroying it
+	 * will effectively unset the callback similar to calling g_source_set_callback().
+	 * This can mean, that the data's #GDestroyNotify gets called right away.
 	 */
 	public void destroy()
 	{
@@ -547,6 +551,9 @@ public class Source
 	 * been attached to a context. The changes will take effect for the next time
 	 * the source is dispatched after this call returns.
 	 *
+	 * Note that g_source_destroy() for a currently attached source has the effect
+	 * of also unsetting the callback.
+	 *
 	 * Params:
 	 *     func = a callback function
 	 *     data = the data to pass to callback function
@@ -653,6 +660,8 @@ public class Source
 	 * the value, and changing the value will free it while the other thread
 	 * may be attempting to use it.
 	 *
+	 * Also see g_source_set_static_name().
+	 *
 	 * Params:
 	 *     name = debug name for the source
 	 *
@@ -714,6 +723,21 @@ public class Source
 	public void setReadyTime(long readyTime)
 	{
 		g_source_set_ready_time(gSource, readyTime);
+	}
+
+	/**
+	 * A variant of g_source_set_name() that does not
+	 * duplicate the @name, and can only be used with
+	 * string literals.
+	 *
+	 * Params:
+	 *     name = debug name for the source
+	 *
+	 * Since: 2.70
+	 */
+	public void setStaticName(string name)
+	{
+		g_source_set_static_name(gSource, Str.toStringz(name));
 	}
 
 	/**

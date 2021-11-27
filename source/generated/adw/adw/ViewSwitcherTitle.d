@@ -126,18 +126,6 @@ public class ViewSwitcherTitle : Widget
 	}
 
 	/**
-	 * Gets the policy of @self.
-	 *
-	 * Returns: the policy of @self
-	 *
-	 * Since: 1.0
-	 */
-	public AdwViewSwitcherPolicy getPolicy()
-	{
-		return adw_view_switcher_title_get_policy(adwViewSwitcherTitle);
-	}
-
-	/**
 	 * Gets the stack controlled by @self.
 	 *
 	 * Returns: the stack
@@ -202,19 +190,6 @@ public class ViewSwitcherTitle : Widget
 	public bool getViewSwitcherEnabled()
 	{
 		return adw_view_switcher_title_get_view_switcher_enabled(adwViewSwitcherTitle) != 0;
-	}
-
-	/**
-	 * Sets the policy of @self.
-	 *
-	 * Params:
-	 *     policy = the new policy
-	 *
-	 * Since: 1.0
-	 */
-	public void setPolicy(AdwViewSwitcherPolicy policy)
-	{
-		adw_view_switcher_title_set_policy(adwViewSwitcherTitle, policy);
 	}
 
 	/**

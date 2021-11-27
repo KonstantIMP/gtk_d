@@ -10,7 +10,8 @@ private import gobject.ObjectG;
 
 
 /**
- * Zlib decompression
+ * #GZlibCompressor is an implementation of #GConverter that
+ * compresses data using zlib.
  */
 public class ZlibCompressor : ObjectG, ConverterIF
 {

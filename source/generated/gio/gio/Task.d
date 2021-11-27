@@ -1079,9 +1079,9 @@ public class Task : ObjectG, AsyncResultIF
 	 *
 	 * Although GLib currently rate-limits the tasks queued via
 	 * g_task_run_in_thread(), you should not assume that it will always
-	 * do this. If you have a very large number of tasks to run, but don't
-	 * want them to all run at once, you should only queue a limited
-	 * number of them at a time.
+	 * do this. If you have a very large number of tasks to run (several tens of
+	 * tasks), but don't want them to all run at once, you should only queue a
+	 * limited number of them (around ten) at a time.
 	 *
 	 * Params:
 	 *     taskFunc = a #GTaskThreadFunc

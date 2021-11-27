@@ -17,6 +17,7 @@ private import std.algorithm;
  * There is also an implementation for use inside Flatpak sandboxes.
  * 
  * Possible actions to take when the signal is received are:
+ * 
  * - Free caches
  * - Save files that haven't been looked at in a while to disk, ready to be reopened when needed
  * - Run a garbage collection cycle

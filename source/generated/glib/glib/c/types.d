@@ -82,14 +82,19 @@ alias void* GIConv;
 
 /**
  * Integer representing a day of the month; between 1 and 31.
- * #G_DATE_BAD_DAY represents an invalid day of the month.
+ *
+ * The %G_DATE_BAD_DAY value represents an invalid day of the month.
  */
 public alias ubyte GDateDay;
 
 /**
- * Integer representing a year; #G_DATE_BAD_YEAR is the invalid
- * value. The year must be 1 or higher; negative (BC) years are not
- * allowed. The year is represented with four digits.
+ * Integer type representing a year.
+ *
+ * The %G_DATE_BAD_YEAR value is the invalid value. The year
+ * must be 1 or higher; negative ([BCE](https://en.wikipedia.org/wiki/Common_Era))
+ * years are not allowed.
+ *
+ * The year is represented with four digits.
  */
 public alias ushort GDateYear;
 
@@ -155,7 +160,9 @@ public alias char** GStrv;
 /**
  * Simply a replacement for `time_t`. It has been deprecated
  * since it is not equivalent to `time_t` on 64-bit platforms
- * with a 64-bit `time_t`. Unrelated to #GTimer.
+ * with a 64-bit `time_t`.
+ *
+ * Unrelated to #GTimer.
  *
  * Note that #GTime is defined to always be a 32-bit integer,
  * unlike `time_t` which may be 64-bit on some systems. Therefore,
@@ -164,6 +171,7 @@ public alias char** GStrv;
  * function.
  *
  * Instead, do the following:
+ *
  * |[<!-- language="C" -->
  * time_t ttime;
  * GTime gtime;
@@ -348,8 +356,8 @@ public enum GDateDMY
 alias GDateDMY DateDMY;
 
 /**
- * Enumeration representing a month; values are #G_DATE_JANUARY,
- * #G_DATE_FEBRUARY, etc. #G_DATE_BAD_MONTH is the invalid value.
+ * Enumeration representing a month; values are %G_DATE_JANUARY,
+ * %G_DATE_FEBRUARY, etc. %G_DATE_BAD_MONTH is the invalid value.
  */
 public enum GDateMonth
 {
@@ -2667,9 +2675,13 @@ public enum GUnicodeBreakType
 	 */
 	HANGUL_LVT_SYLLABLE = 35,
 	/**
-	 * Closing Parenthesis (CP). Since 2.28
+	 * Closing Parenthesis (CP). Since 2.28. Deprecated: 2.70: Use %G_UNICODE_BREAK_CLOSE_PARENTHESIS instead.
 	 */
 	CLOSE_PARANTHESIS = 36,
+	/**
+	 * Closing Parenthesis (CP). Since 2.70
+	 */
+	CLOSE_PARENTHESIS = 36,
 	/**
 	 * Conditional Japanese Starter (CJ). Since: 2.32
 	 */
@@ -3886,6 +3898,24 @@ public enum GVariantParseError
 alias GVariantParseError VariantParseError;
 
 /**
+ * Errors returned by g_module_open_full().
+ *
+ * Since: 2.70
+ */
+public enum GModuleError
+{
+	/**
+	 * there was an error loading or opening a module file
+	 */
+	FAILED = 0,
+	/**
+	 * a module returned an error from its `g_module_check_init()` function
+	 */
+	CHECK_FAILED = 1,
+}
+alias GModuleError ModuleError;
+
+/**
  * Flags passed to g_module_open().
  * Note that these flags are not supported on all platforms.
  */
@@ -3959,9 +3989,9 @@ struct GCond
 }
 
 /**
- * The #GData struct is an opaque data structure to represent a
- * [Keyed Data List][glib-Keyed-Data-Lists]. It should only be
- * accessed via the following functions.
+ * An opaque data structure that represents a keyed data list.
+ *
+ * See also: [Keyed data lists][glib-Keyed-Data-Lists].
  */
 struct GData;
 
@@ -4771,9 +4801,6 @@ struct GStringChunk;
 
 struct GStrvBuilder;
 
-/**
- * An opaque structure representing a test case.
- */
 struct GTestCase;
 
 struct GTestConfig
@@ -4970,16 +4997,20 @@ struct GModule;
 
 /**
  * Prototype of a #GChildWatchSource callback, called when a child
- * process has exited.  To interpret @status, see the documentation
- * for g_spawn_check_exit_status().
+ * process has exited.
+ *
+ * To interpret @wait_status, see the documentation
+ * for g_spawn_check_wait_status(). In particular,
+ * on Unix platforms, note that it is usually not equal
+ * to the integer passed to `exit()` or returned from `main()`.
  *
  * Params:
  *     pid = the process id of the child process
- *     status = Status information about the child process, encoded
+ *     waitStatus = Status information about the child process, encoded
  *         in a platform-specific manner
  *     userData = user data passed to g_child_watch_add()
  */
-public alias extern(C) void function(GPid pid, int status, void* userData) GChildWatchFunc;
+public alias extern(C) void function(GPid pid, int waitStatus, void* userData) GChildWatchFunc;
 
 /**
  * Specifies the type of function passed to g_clear_handle_id().
@@ -6031,14 +6062,14 @@ enum KEY_FILE_DESKTOP_GROUP = "Desktop Entry";
 alias G_KEY_FILE_DESKTOP_GROUP = KEY_FILE_DESKTOP_GROUP;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string list
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string list
  * giving the available application actions.
  */
 enum KEY_FILE_DESKTOP_KEY_ACTIONS = "Actions";
 alias G_KEY_FILE_DESKTOP_KEY_ACTIONS = KEY_FILE_DESKTOP_KEY_ACTIONS;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list
  * of strings giving the categories in which the desktop entry
  * should be shown in a menu.
  */
@@ -6046,21 +6077,21 @@ enum KEY_FILE_DESKTOP_KEY_CATEGORIES = "Categories";
 alias G_KEY_FILE_DESKTOP_KEY_CATEGORIES = KEY_FILE_DESKTOP_KEY_CATEGORIES;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
  * string giving the tooltip for the desktop entry.
  */
 enum KEY_FILE_DESKTOP_KEY_COMMENT = "Comment";
 alias G_KEY_FILE_DESKTOP_KEY_COMMENT = KEY_FILE_DESKTOP_KEY_COMMENT;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean set to true
- * if the application is D-Bus activatable.
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+ * set to true if the application is D-Bus activatable.
  */
 enum KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE = "DBusActivatable";
 alias G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE = KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
  * giving the command line to execute. It is only valid for desktop
  * entries with the `Application` type.
  */
@@ -6068,21 +6099,21 @@ enum KEY_FILE_DESKTOP_KEY_EXEC = "Exec";
 alias G_KEY_FILE_DESKTOP_KEY_EXEC = KEY_FILE_DESKTOP_KEY_EXEC;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
  * string giving the generic name of the desktop entry.
  */
 enum KEY_FILE_DESKTOP_KEY_GENERIC_NAME = "GenericName";
 alias G_KEY_FILE_DESKTOP_KEY_GENERIC_NAME = KEY_FILE_DESKTOP_KEY_GENERIC_NAME;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
  * stating whether the desktop entry has been deleted by the user.
  */
 enum KEY_FILE_DESKTOP_KEY_HIDDEN = "Hidden";
 alias G_KEY_FILE_DESKTOP_KEY_HIDDEN = KEY_FILE_DESKTOP_KEY_HIDDEN;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
  * string giving the name of the icon to be displayed for the desktop
  * entry.
  */
@@ -6090,21 +6121,21 @@ enum KEY_FILE_DESKTOP_KEY_ICON = "Icon";
 alias G_KEY_FILE_DESKTOP_KEY_ICON = KEY_FILE_DESKTOP_KEY_ICON;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list
  * of strings giving the MIME types supported by this desktop entry.
  */
 enum KEY_FILE_DESKTOP_KEY_MIME_TYPE = "MimeType";
 alias G_KEY_FILE_DESKTOP_KEY_MIME_TYPE = KEY_FILE_DESKTOP_KEY_MIME_TYPE;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
  * string giving the specific name of the desktop entry.
  */
 enum KEY_FILE_DESKTOP_KEY_NAME = "Name";
 alias G_KEY_FILE_DESKTOP_KEY_NAME = KEY_FILE_DESKTOP_KEY_NAME;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
  * strings identifying the environments that should not display the
  * desktop entry.
  */
@@ -6112,14 +6143,14 @@ enum KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN = "NotShowIn";
 alias G_KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN = KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
  * stating whether the desktop entry should be shown in menus.
  */
 enum KEY_FILE_DESKTOP_KEY_NO_DISPLAY = "NoDisplay";
 alias G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY = KEY_FILE_DESKTOP_KEY_NO_DISPLAY;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
  * strings identifying the environments that should display the
  * desktop entry.
  */
@@ -6127,7 +6158,7 @@ enum KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN = "OnlyShowIn";
 alias G_KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN = KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
  * containing the working directory to run the program in. It is only
  * valid for desktop entries with the `Application` type.
  */
@@ -6135,7 +6166,7 @@ enum KEY_FILE_DESKTOP_KEY_PATH = "Path";
 alias G_KEY_FILE_DESKTOP_KEY_PATH = KEY_FILE_DESKTOP_KEY_PATH;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
  * stating whether the application supports the
  * [Startup Notification Protocol Specification](http://www.freedesktop.org/Standards/startup-notification-spec).
  */
@@ -6143,7 +6174,7 @@ enum KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY = "StartupNotify";
 alias G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY = KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is string
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is string
  * identifying the WM class or name hint of a window that the application
  * will create, which can be used to emulate Startup Notification with
  * older applications.
@@ -6152,16 +6183,16 @@ enum KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS = "StartupWMClass";
 alias G_KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS = KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
  * stating whether the program should be run in a terminal window.
- * It is only valid for desktop entries with the
- * `Application` type.
+ *
+ * It is only valid for desktop entries with the `Application` type.
  */
 enum KEY_FILE_DESKTOP_KEY_TERMINAL = "Terminal";
 alias G_KEY_FILE_DESKTOP_KEY_TERMINAL = KEY_FILE_DESKTOP_KEY_TERMINAL;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
  * giving the file name of a binary on disk used to determine if the
  * program is actually installed. It is only valid for desktop entries
  * with the `Application` type.
@@ -6170,17 +6201,18 @@ enum KEY_FILE_DESKTOP_KEY_TRY_EXEC = "TryExec";
 alias G_KEY_FILE_DESKTOP_KEY_TRY_EXEC = KEY_FILE_DESKTOP_KEY_TRY_EXEC;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
- * giving the type of the desktop entry. Usually
- * #G_KEY_FILE_DESKTOP_TYPE_APPLICATION,
- * #G_KEY_FILE_DESKTOP_TYPE_LINK, or
- * #G_KEY_FILE_DESKTOP_TYPE_DIRECTORY.
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+ * giving the type of the desktop entry.
+ *
+ * Usually %G_KEY_FILE_DESKTOP_TYPE_APPLICATION,
+ * %G_KEY_FILE_DESKTOP_TYPE_LINK, or
+ * %G_KEY_FILE_DESKTOP_TYPE_DIRECTORY.
  */
 enum KEY_FILE_DESKTOP_KEY_TYPE = "Type";
 alias G_KEY_FILE_DESKTOP_KEY_TYPE = KEY_FILE_DESKTOP_KEY_TYPE;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
  * giving the URL to access. It is only valid for desktop entries
  * with the `Link` type.
  */
@@ -6188,7 +6220,7 @@ enum KEY_FILE_DESKTOP_KEY_URL = "URL";
 alias G_KEY_FILE_DESKTOP_KEY_URL = KEY_FILE_DESKTOP_KEY_URL;
 
 /**
- * A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+ * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
  * giving the version of the Desktop Entry Specification used for
  * the desktop entry file.
  */
@@ -6196,21 +6228,21 @@ enum KEY_FILE_DESKTOP_KEY_VERSION = "Version";
 alias G_KEY_FILE_DESKTOP_KEY_VERSION = KEY_FILE_DESKTOP_KEY_VERSION;
 
 /**
- * The value of the #G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+ * The value of the %G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
  * entries representing applications.
  */
 enum KEY_FILE_DESKTOP_TYPE_APPLICATION = "Application";
 alias G_KEY_FILE_DESKTOP_TYPE_APPLICATION = KEY_FILE_DESKTOP_TYPE_APPLICATION;
 
 /**
- * The value of the #G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+ * The value of the %G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
  * entries representing directories.
  */
 enum KEY_FILE_DESKTOP_TYPE_DIRECTORY = "Directory";
 alias G_KEY_FILE_DESKTOP_TYPE_DIRECTORY = KEY_FILE_DESKTOP_TYPE_DIRECTORY;
 
 /**
- * The value of the #G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+ * The value of the %G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
  * entries representing links to documents.
  */
 enum KEY_FILE_DESKTOP_TYPE_LINK = "Link";
@@ -6366,7 +6398,7 @@ alias G_MININT8 = MININT8;
  * application compile time, rather than from the library
  * linked against at application run time.
  */
-enum MINOR_VERSION = 68;
+enum MINOR_VERSION = 70;
 alias GLIB_MINOR_VERSION = MINOR_VERSION;
 
 enum MODULE_SUFFIX = "so";
@@ -6596,3 +6628,6 @@ alias G_VA_COPY_AS_ARRAY = VA_COPY_AS_ARRAY;
 
 enum WIN32_MSG_HANDLE = 19981206;
 alias G_WIN32_MSG_HANDLE = WIN32_MSG_HANDLE;
+
+enum macro__has_attribute___noreturn__ = 0;
+alias g_macro__has_attribute___noreturn__ = macro__has_attribute___noreturn__;

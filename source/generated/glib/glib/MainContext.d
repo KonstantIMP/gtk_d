@@ -238,7 +238,7 @@ public class MainContext
 	 *
 	 * In any other case, an idle source is created to call @function and
 	 * that source is attached to @context (presumably to be run in another
-	 * thread).  The idle source is attached with #G_PRIORITY_DEFAULT
+	 * thread).  The idle source is attached with %G_PRIORITY_DEFAULT
 	 * priority.  If you want a different priority, use
 	 * g_main_context_invoke_full().
 	 *

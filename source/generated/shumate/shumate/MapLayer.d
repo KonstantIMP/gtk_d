@@ -9,10 +9,7 @@ private import shumate.c.functions;
 public  import shumate.c.types;
 
 
-/**
- * The #ShumateMapLayer structure contains only private data
- * and should be accessed using the provided API
- */
+/** */
 public class MapLayer : Layer
 {
 	/** the main Gtk struct */

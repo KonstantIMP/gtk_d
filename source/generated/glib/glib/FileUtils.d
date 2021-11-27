@@ -94,8 +94,9 @@ public struct FileUtils
 
 	/**
 	 * Gets a #GFileError constant based on the passed-in @err_no.
+	 *
 	 * For example, if you pass in `EEXIST` this function returns
-	 * #G_FILE_ERROR_EXIST. Unlike `errno` values, you can portably
+	 * %G_FILE_ERROR_EXIST. Unlike `errno` values, you can portably
 	 * assume that all #GFileError values will exist.
 	 *
 	 * Normally a #GFileError value goes into a #GError returned
@@ -105,7 +106,7 @@ public struct FileUtils
 	 * Params:
 	 *     errNo = an "errno" value
 	 *
-	 * Returns: #GFileError corresponding to the given @errno
+	 * Returns: #GFileError corresponding to the given @err_no
 	 */
 	public static GFileError fileErrorFromErrno(int errNo)
 	{

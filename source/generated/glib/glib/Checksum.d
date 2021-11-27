@@ -10,6 +10,7 @@ private import linker.loader;
 
 /**
  * An opaque structure representing a checksumming operation.
+ * 
  * To create a new GChecksum, use g_checksum_new(). To free
  * a GChecksum, use g_checksum_free().
  *

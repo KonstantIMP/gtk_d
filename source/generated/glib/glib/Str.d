@@ -695,14 +695,17 @@ public static string[] tokenizeAndFold(string string_, string translitLocale, ou
 
 /**
  * For each character in @string, if the character is not in @valid_chars,
- * replaces the character with @substitutor. Modifies @string in place,
- * and return @string itself, not a copy. The return value is to allow
- * nesting such as
+ * replaces the character with @substitutor.
+ *
+ * Modifies @string in place, and return @string itself, not a copy. The
+ * return value is to allow nesting such as:
+ *
  * |[<!-- language="C" -->
  * g_ascii_strup (g_strcanon (str, "abc", '?'))
  * ]|
  *
- * In order to modify a copy, you may use `g_strdup()`:
+ * In order to modify a copy, you may use g_strdup():
+ *
  * |[<!-- language="C" -->
  * reformatted = g_strcanon (g_strdup (const_str), "abc", '?');
  * ...
@@ -714,7 +717,7 @@ public static string[] tokenizeAndFold(string string_, string translitLocale, ou
  *     validChars = bytes permitted in @string
  *     substitutor = replacement character for disallowed bytes
  *
- * Returns: @string
+ * Returns: the modified @string
  */
 public static string strcanon(string string_, string validChars, char substitutor)
 {
@@ -831,15 +834,19 @@ public static string strcompress(string source)
 
 /**
  * Converts any delimiter characters in @string to @new_delimiter.
+ *
  * Any characters in @string which are found in @delimiters are
  * changed to the @new_delimiter character. Modifies @string in place,
- * and returns @string itself, not a copy. The return value is to
- * allow nesting such as
+ * and returns @string itself, not a copy.
+ *
+ * The return value is to allow nesting such as:
+ *
  * |[<!-- language="C" -->
  * g_ascii_strup (g_strdelimit (str, "abc", '?'))
  * ]|
  *
- * In order to modify a copy, you may use `g_strdup()`:
+ * In order to modify a copy, you may use g_strdup():
+ *
  * |[<!-- language="C" -->
  * reformatted = g_strdelimit (g_strdup (const_str), "abc", '?');
  * ...
@@ -852,7 +859,7 @@ public static string strcompress(string source)
  *         or %NULL to use the standard delimiters defined in #G_STR_DELIMITERS
  *     newDelimiter = the new delimiter character
  *
- * Returns: @string
+ * Returns: the modified @string
  */
 public static string strdelimit(string string_, string delimiters, char newDelimiter)
 {

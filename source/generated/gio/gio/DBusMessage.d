@@ -463,6 +463,8 @@ public class DBusMessage : ObjectG
 	/**
 	 * Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE header field.
 	 *
+	 * This will always be non-%NULL, but may be an empty string.
+	 *
 	 * Returns: The value.
 	 *
 	 * Since: 2.26

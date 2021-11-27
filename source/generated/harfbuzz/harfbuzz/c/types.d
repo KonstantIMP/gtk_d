@@ -116,6 +116,9 @@ public alias uint hb_mask_t;
  * An integral type representing an OpenType 'name' table name identifier.
  * There are predefined name IDs, as well as name IDs return from other
  * API.  These can be used to fetch name strings from a font face.
+ *
+ * For more information on these fields, see the
+ * [OpenType spec](https://docs.microsoft.com/en-us/typography/opentype/spec/name#name-ids).
  */
 public alias uint hb_ot_name_id_t;
 
@@ -2839,11 +2842,76 @@ public enum hb_script_t
 	 */
 	YEZIDI = 1499822697,
 	/**
+	 * `Cpmn`, Since: 3.0.0
+	 */
+	CYPRO_MINOAN = 1131441518,
+	/**
+	 * `Ougr`, Since: 3.0.0
+	 */
+	OLD_UYGHUR = 1333094258,
+	/**
+	 * `Tnsa`, Since: 3.0.0
+	 */
+	TANGSA = 1416524641,
+	/**
+	 * `Toto`, Since: 3.0.0
+	 */
+	TOTO = 1416590447,
+	/**
+	 * `Vith`, Since: 3.0.0
+	 */
+	VITHKUQI = 1449751656,
+	/**
 	 * No script set
 	 */
 	INVALID = 0,
 }
 alias hb_script_t script_t;
+
+/**
+ * Defined by [OpenType Design-Variation Axis Tag Registry](https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg).
+ *
+ * Since: 3.0.0
+ */
+public enum hb_style_tag_t
+{
+	/**
+	 * Used to vary between non-italic and italic.
+	 * A value of 0 can be interpreted as "Roman" (non-italic); a value of 1 can
+	 * be interpreted as (fully) italic.
+	 */
+	ITALIC = 1769234796,
+	/**
+	 * Used to vary design to suit different text sizes.
+	 * Non-zero. Values can be interpreted as text size, in points.
+	 */
+	OPTICAL_SIZE = 1869640570,
+	/**
+	 * Used to vary between upright and slanted text. Values
+	 * must be greater than -90 and less than +90. Values can be interpreted as
+	 * the angle, in counter-clockwise degrees, of oblique slant from whatever the
+	 * designer considers to be upright for that font design.
+	 */
+	SLANT_ANGLE = 1936486004,
+	/**
+	 * same as @HB_STYLE_TAG_SLANT_ANGLE expression as ratio.
+	 */
+	SLANT_RATIO = 1399615092,
+	/**
+	 * Used to vary width of text from narrower to wider.
+	 * Non-zero. Values can be interpreted as a percentage of whatever the font
+	 * designer considers “normal width” for that font design.
+	 */
+	WIDTH = 2003072104,
+	/**
+	 * Used to vary stroke thicknesses or other design details
+	 * to give variation from lighter to blacker. Values can be interpreted in direct
+	 * comparison to values for usWeightClass in the OS/2 table,
+	 * or the CSS font-weight property.
+	 */
+	WEIGHT = 2003265652,
+}
+alias hb_style_tag_t style_tag_t;
 
 /**
  * Data type for the Canonical_Combining_Class (ccc) property
@@ -4148,14 +4216,14 @@ alias HB_UNICODE_MAX = UNICODE_MAX;
 enum UNICODE_MAX_DECOMPOSITION_LEN = 19;
 alias HB_UNICODE_MAX_DECOMPOSITION_LEN = UNICODE_MAX_DECOMPOSITION_LEN;
 
-enum VERSION_MAJOR = 2;
+enum VERSION_MAJOR = 3;
 alias HB_VERSION_MAJOR = VERSION_MAJOR;
 
-enum VERSION_MICRO = 0;
+enum VERSION_MICRO = 1;
 alias HB_VERSION_MICRO = VERSION_MICRO;
 
-enum VERSION_MINOR = 9;
+enum VERSION_MINOR = 1;
 alias HB_VERSION_MINOR = VERSION_MINOR;
 
-enum VERSION_STRING = "2.9.0";
+enum VERSION_STRING = "3.1.1";
 alias HB_VERSION_STRING = VERSION_STRING;

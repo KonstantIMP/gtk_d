@@ -1,6 +1,7 @@
 module shumate.Map;
 
 private import glib.ConstructionException;
+private import glib.ListG;
 private import gobject.ObjectG;
 private import gobject.Signals;
 private import gtk.AccessibleIF;
@@ -19,8 +20,18 @@ private import std.algorithm;
 
 
 /**
- * The #ShumateMap structure contains only private data
- * and should be accessed using the provided API
+ * A [class@Gtk.Widget] to display maps. It supports two modes of scrolling:
+ * 
+ * - Push: the normal behavior where the maps don't move after the user stopped
+ * scrolling;
+ * - Kinetic: the behavior where the maps decelerate after the user stopped
+ * scrolling.
+ * 
+ * The maps are downloaded from Internet from open maps sources (like
+ * [OpenStreetMap](http://www.openstreetmap.org")). Maps are divided
+ * in tiles for each zoom level. When a tile is requested, `ShumateMap` will
+ * first check if it is in cache (in the user's cache dir under shumate). If
+ * an error occurs during download, an error tile will be displayed.
  */
 public class Map : Widget
 {
@@ -114,12 +125,29 @@ public class Map : Widget
 	/**
 	 * Get the 'go-to-duration' property.
 	 *
-	 * Returns: the animation duration when calling shumate_map_go_to(),
+	 * Returns: the animation duration when calling [method@Map.go_to],
 	 *     in milliseconds.
 	 */
 	public uint getGoToDuration()
 	{
 		return shumate_map_get_go_to_duration(shumateMap);
+	}
+
+	/**
+	 * Gets a list of the layers in the map.
+	 *
+	 * Returns: a list of layers in the map
+	 */
+	public ListG getLayers()
+	{
+		auto __p = shumate_map_get_layers(shumateMap);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new ListG(cast(GList*) __p);
 	}
 
 	/**
@@ -221,7 +249,7 @@ public class Map : Widget
 	}
 
 	/**
-	 * Set the duration of the transition of shumate_map_go_to().
+	 * Set the duration of the transition of [method@Map.go_to].
 	 *
 	 * Params:
 	 *     duration = the animation duration, in milliseconds
@@ -275,5 +303,13 @@ public class Map : Widget
 	gulong addOnAnimationCompleted(void delegate(Map) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
 		return Signals.connect(this, "animation-completed", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
+	 * Emitted when the list of layers changes.
+	 */
+	gulong addOnLayersChanged(void delegate(Map) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "layers-changed", dlg, connectFlags ^ ConnectFlags.SWAPPED);
 	}
 }

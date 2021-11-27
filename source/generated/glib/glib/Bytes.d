@@ -198,6 +198,42 @@ public class Bytes
 	}
 
 	/**
+	 * Gets a pointer to a region in @bytes.
+	 *
+	 * The region starts at @offset many bytes from the start of the data
+	 * and contains @n_elements many elements of @element_size size.
+	 *
+	 * @n_elements may be zero, but @element_size must always be non-zero.
+	 * Ideally, @element_size is a static constant (eg: sizeof a struct).
+	 *
+	 * This function does careful bounds checking (including checking for
+	 * arithmetic overflows) and returns a non-%NULL pointer if the
+	 * specified region lies entirely within the @bytes. If the region is
+	 * in some way out of range, or if an overflow has occurred, then %NULL
+	 * is returned.
+	 *
+	 * Note: it is possible to have a valid zero-size region. In this case,
+	 * the returned pointer will be equal to the base pointer of the data of
+	 * @bytes, plus @offset.  This will be non-%NULL except for the case
+	 * where @bytes itself was a zero-sized region.  Since it is unlikely
+	 * that you will be using this function to check for a zero-sized region
+	 * in a zero-sized @bytes, %NULL effectively always means "error".
+	 *
+	 * Params:
+	 *     elementSize = a non-zero element size
+	 *     offset = an offset to the start of the region within the @bytes
+	 *     nElements = the number of elements in the region
+	 *
+	 * Returns: the requested region, or %NULL in case of an error
+	 *
+	 * Since: 2.70
+	 */
+	public void* getRegion(size_t elementSize, size_t offset, size_t nElements)
+	{
+		return g_bytes_get_region(gBytes, elementSize, offset, nElements);
+	}
+
+	/**
 	 * Get the size of the byte data in the #GBytes.
 	 *
 	 * This function will always return the same value for a given #GBytes.

@@ -84,7 +84,8 @@ public interface SeekableIF{
 	/**
 	 * Tells the current position within the stream.
 	 *
-	 * Returns: the offset from the beginning of the buffer.
+	 * Returns: the (positive or zero) offset from the beginning of the
+	 *     buffer, zero if the target is not seekable.
 	 */
 	public long tell();
 

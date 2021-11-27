@@ -511,7 +511,7 @@ public struct Util
 	 * This folder is used for application data
 	 * that is not user specific. For example, an application can store
 	 * a spell-check dictionary, a database of clip art, or a log file in the
-	 * CSIDL_COMMON_APPDATA folder. This information will not roam and is available
+	 * FOLDERID_ProgramData folder. This information will not roam and is available
 	 * to anyone using the computer.
 	 *
 	 * The return value is cached and modifying it at runtime is not supported, as
@@ -541,8 +541,8 @@ public struct Util
 	 * the first elements in the list are the Application Data
 	 * and Documents folders for All Users. (These can be determined only
 	 * on Windows 2000 or later and are not present in the list on other
-	 * Windows versions.) See documentation for CSIDL_COMMON_APPDATA and
-	 * CSIDL_COMMON_DOCUMENTS.
+	 * Windows versions.) See documentation for FOLDERID_ProgramData and
+	 * FOLDERID_PublicDocuments.
 	 *
 	 * Then follows the "share" subfolder in the installation folder for
 	 * the package containing the DLL that calls this function, if it can
@@ -609,7 +609,7 @@ public struct Util
 	 * If `XDG_CACHE_HOME` is undefined, the directory that serves as a common
 	 * repository for temporary Internet files is used instead. A typical path is
 	 * `C:\Documents and Settings\username\Local Settings\Temporary Internet Files`.
-	 * See the [documentation for `CSIDL_INTERNET_CACHE`](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494%28v=vs.85%29.aspx#csidl_internet_cache).
+	 * See the [documentation for `FOLDERID_InternetCache`](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid).
 	 *
 	 * The return value is cached and modifying it at runtime is not supported, as
 	 * it’s not thread-safe to modify environment variables at runtime.
@@ -636,7 +636,7 @@ public struct Util
 	 * On Windows it follows XDG Base Directory Specification if `XDG_CONFIG_HOME` is defined.
 	 * If `XDG_CONFIG_HOME` is undefined, the folder to use for local (as opposed
 	 * to roaming) application data is used instead. See the
-	 * [documentation for `CSIDL_LOCAL_APPDATA`](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494%28v=vs.85%29.aspx#csidl_local_appdata).
+	 * [documentation for `FOLDERID_LocalAppData`](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid).
 	 * Note that in this case on Windows it will be  the same
 	 * as what g_get_user_data_dir() returns.
 	 *
@@ -665,7 +665,7 @@ public struct Util
 	 * On Windows it follows XDG Base Directory Specification if `XDG_DATA_HOME`
 	 * is defined. If `XDG_DATA_HOME` is undefined, the folder to use for local (as
 	 * opposed to roaming) application data is used instead. See the
-	 * [documentation for `CSIDL_LOCAL_APPDATA`](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494%28v=vs.85%29.aspx#csidl_local_appdata).
+	 * [documentation for `FOLDERID_LocalAppData`](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid).
 	 * Note that in this case on Windows it will be the same
 	 * as what g_get_user_config_dir() returns.
 	 *

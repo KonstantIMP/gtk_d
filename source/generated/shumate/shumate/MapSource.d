@@ -13,8 +13,12 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumateMapSource structure contains only private data
- * and should be accessed using the provided API
+ * The base class for all map sources. Map sources fill [class@Tile] objects
+ * with images from various sources: a web API, for example, or a test pattern
+ * generated on demand.
+ * 
+ * The most common map source is [class@NetworkTileSource], which fetches tiles
+ * from an API.
  */
 public class MapSource : ObjectG
 {

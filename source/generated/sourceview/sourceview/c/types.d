@@ -790,6 +790,13 @@ struct GtkSourceStyleSchemeManagerClass
 	GObjectClass parentClass;
 }
 
+struct GtkSourceStyleSchemePreview;
+
+struct GtkSourceStyleSchemePreviewClass
+{
+	GtkWidgetClass parentClass;
+}
+
 struct GtkSourceTag
 {
 	GtkTextTag parentInstance;
@@ -820,6 +827,13 @@ struct GtkSourceViewClass
 	/** */
 	extern(C) void function(GtkSourceView* view, GtkSourceSnippet* snippet, GtkTextIter* location) pushSnippet;
 	void*[20] Reserved;
+}
+
+struct GtkSourceVimIMContext;
+
+struct GtkSourceVimIMContextClass
+{
+	GtkIMContextClass parentClass;
 }
 
 /**

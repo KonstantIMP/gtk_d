@@ -112,7 +112,7 @@ extern(C) static void destroyIdleNotify(Idle idle) {
 /**
  * Adds a function to be called whenever there are no higher priority
  * events pending to the default main loop. The function is given the
- * default idle priority, #G_PRIORITY_DEFAULT_IDLE.  If the function
+ * default idle priority, %G_PRIORITY_DEFAULT_IDLE.  If the function
  * returns %FALSE it is automatically removed from the list of event
  * sources and will not be called again.
  *
@@ -138,7 +138,9 @@ public static uint add(GSourceFunc function_, void* data)
 
 /**
  * Adds a function to be called whenever there are no higher priority
- * events pending.  If the function returns %FALSE it is automatically
+ * events pending.
+ *
+ * If the function returns %G_SOURCE_REMOVE or %FALSE it is automatically
  * removed from the list of event sources and will not be called again.
  *
  * See [memory management of sources][mainloop-memory-management] for details
@@ -152,7 +154,7 @@ public static uint add(GSourceFunc function_, void* data)
  *
  * Params:
  *     priority = the priority of the idle source. Typically this will be in the
- *         range between #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE.
+ *         range between %G_PRIORITY_DEFAULT_IDLE and %G_PRIORITY_HIGH_IDLE.
  *     function_ = function to call
  *     data = data to pass to @function
  *     notify = function to call when the idle is removed, or %NULL

@@ -10,9 +10,10 @@ public  import gobject.c.types;
 /**
  * #GBinding is the representation of a binding between a property on a
  * #GObject instance (or source) and another property on another #GObject
- * instance (or target). Whenever the source property changes, the same
- * value is applied to the target property; for instance, the following
- * binding:
+ * instance (or target).
+ * 
+ * Whenever the source property changes, the same value is applied to the
+ * target property; for instance, the following binding:
  * 
  * |[<!-- language="C" -->
  * g_object_bind_property (object1, "property-a",

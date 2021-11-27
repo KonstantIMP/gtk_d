@@ -1,7 +1,9 @@
 module glib.TestSuite;
 
+private import glib.TestCase;
 private import glib.c.functions;
 public  import glib.c.types;
+private import linker.loader;
 
 
 /**
@@ -36,6 +38,12 @@ public class TestSuite
 		this.ownedRef = ownedRef;
 	}
 
+	~this ()
+	{
+		if ( Linker.isLoaded(LIBRARY_GLIB[0]) && ownedRef )
+			g_test_suite_free(gTestSuite);
+	}
+
 
 	/**
 	 * Adds @test_case to @suite.
@@ -45,9 +53,9 @@ public class TestSuite
 	 *
 	 * Since: 2.16
 	 */
-	public void add(GTestCase* testCase)
+	public void add(TestCase testCase)
 	{
-		g_test_suite_add(gTestSuite, testCase);
+		g_test_suite_add(gTestSuite, (testCase is null) ? null : testCase.getTestCaseStruct());
 	}
 
 	/**
@@ -61,5 +69,16 @@ public class TestSuite
 	public void addSuite(TestSuite nestedsuite)
 	{
 		g_test_suite_add_suite(gTestSuite, (nestedsuite is null) ? null : nestedsuite.getTestSuiteStruct());
+	}
+
+	/**
+	 * Free the @suite and all nested #GTestSuites.
+	 *
+	 * Since: 2.70
+	 */
+	public void free()
+	{
+		g_test_suite_free(gTestSuite);
+		ownedRef = false;
 	}
 }

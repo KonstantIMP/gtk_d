@@ -11,8 +11,7 @@ private import linker.loader;
 
 
 /**
- * The `GBookmarkFile` structure contains only
- * private data and should not be directly accessed.
+ * An opaque data structure representing a set of bookmarks.
  */
 public class BookmarkFile
 {

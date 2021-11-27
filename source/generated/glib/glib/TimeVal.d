@@ -9,7 +9,8 @@ private import linker.loader;
 
 /**
  * Represents a precise time, with seconds and microseconds.
- * Similar to the struct timeval returned by the gettimeofday()
+ * 
+ * Similar to the struct timeval returned by the `gettimeofday()`
  * UNIX system call.
  * 
  * GLib is attempting to unify around the use of 64-bit integers to

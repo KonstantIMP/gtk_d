@@ -3010,7 +3010,7 @@ alias SOUP_MESSAGE_URI = MESSAGE_URI;
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum MICRO_VERSION = 0;
+enum MICRO_VERSION = 2;
 alias SOUP_MICRO_VERSION = MICRO_VERSION;
 
 /**

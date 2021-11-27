@@ -15,8 +15,17 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumateScale structure contains only private data
- * and should be accessed using the provided API
+ * A widget displaying a scale.
+ * 
+ * # CSS nodes
+ * 
+ * ```
+ * map-scale
+ * ├── label[.metric][.imperial]
+ * ```
+ * 
+ * `ShumateScale` uses a single CSS node with name map-scale, it has up to two
+ * childs different labels.
  */
 public class Scale : Widget
 {

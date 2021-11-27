@@ -404,7 +404,7 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Returns a `GListModel` that contains the pages of @self.
+	 * Returns a [iface@Gio.ListModel] that contains the pages of @self.
 	 *
 	 * This can be used to keep an up-to-date view. The model also implements
 	 * [iface@Gtk.SelectionModel] and can be used to track and change the selected

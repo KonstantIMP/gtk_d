@@ -204,6 +204,12 @@ public class Button : Widget, ActionableIF
 	/**
 	 * Sets the child widget of @button.
 	 *
+	 * Note that by using this API, you take full responsibility for setting
+	 * up the proper accessibility label and description information for @button.
+	 * Most likely, you'll either set the accessibility label or description
+	 * for @button explicitly, or you'll set a labelled-by or described-by
+	 * relations from @child to @button.
+	 *
 	 * Params:
 	 *     child = the child widget
 	 */

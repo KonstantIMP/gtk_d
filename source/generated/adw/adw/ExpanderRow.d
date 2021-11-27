@@ -34,10 +34,6 @@ private import gtk.Widget;
  * It contains the subnodes `row.header` for its main embedded row,
  * `list.nested` for the list it can expand, and `image.expander-row-arrow` for
  * its arrow.
- * 
- * When expanded, `AdwExpanderRow` will add the
- * `.checked-expander-row-previous-sibling` style class to its previous sibling,
- * and remove it when retracted.
  *
  * Since: 1.0
  */
@@ -98,21 +94,6 @@ public class ExpanderRow : PreferencesRow
 	}
 
 	/**
-	 * Adds a widget to @self.
-	 *
-	 * The widget will appear in the expanding list below @self.
-	 *
-	 * Params:
-	 *     child = a widget
-	 *
-	 * Since: 1.0
-	 */
-	public void add(Widget child)
-	{
-		adw_expander_row_add(adwExpanderRow, (child is null) ? null : child.getWidgetStruct());
-	}
-
-	/**
 	 * Adds an action widget to @self.
 	 *
 	 * Params:
@@ -136,6 +117,21 @@ public class ExpanderRow : PreferencesRow
 	public void addPrefix(Widget widget)
 	{
 		adw_expander_row_add_prefix(adwExpanderRow, (widget is null) ? null : widget.getWidgetStruct());
+	}
+
+	/**
+	 * Adds a widget to @self.
+	 *
+	 * The widget will appear in the expanding list below @self.
+	 *
+	 * Params:
+	 *     child = a widget
+	 *
+	 * Since: 1.0
+	 */
+	public void addRow(Widget child)
+	{
+		adw_expander_row_add_row(adwExpanderRow, (child is null) ? null : child.getWidgetStruct());
 	}
 
 	/**
@@ -196,18 +192,6 @@ public class ExpanderRow : PreferencesRow
 	public string getSubtitle()
 	{
 		return Str.toString(adw_expander_row_get_subtitle(adwExpanderRow));
-	}
-
-	/**
-	 * Gets whether underlines in title or subtitle are interpreted as mnemonics.
-	 *
-	 * Returns: `TRUE` if underlines are interpreted as mnemonics
-	 *
-	 * Since: 1.0
-	 */
-	public override bool getUseUnderline()
-	{
-		return adw_expander_row_get_use_underline(adwExpanderRow) != 0;
 	}
 
 	/** */
@@ -279,18 +263,5 @@ public class ExpanderRow : PreferencesRow
 	public void setSubtitle(string subtitle)
 	{
 		adw_expander_row_set_subtitle(adwExpanderRow, Str.toStringz(subtitle));
-	}
-
-	/**
-	 * Sets whether underlines in title or subtitle are interpreted as mnemonics.
-	 *
-	 * Params:
-	 *     useUnderline = whether underlines are interpreted as mnemonics
-	 *
-	 * Since: 1.0
-	 */
-	public override void setUseUnderline(bool useUnderline)
-	{
-		adw_expander_row_set_use_underline(adwExpanderRow, useUnderline);
 	}
 }

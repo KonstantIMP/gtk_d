@@ -16,8 +16,16 @@ public  import shumate.c.types;
 
 
 /**
- * The #ShumateMarker structure contains only private data
- * and should be accessed using the provided API
+ * Markers represent points of interest on a map. Markers need to be
+ * placed on a layer (a [class@MarkerLayer]). Layers have to be added to a
+ * [class@Map] for the markers to show on the map.
+ * 
+ * A marker is nothing more than a regular [class@Gtk.Widget]. You can draw on
+ * it what ever you want. Set the marker's position on the map using
+ * [method@Location.set_location].
+ * 
+ * This is a base class of all markers. libshumate has a more evoluted
+ * type of markers with text and image support.
  */
 public class Marker : Widget, LocationIF
 {

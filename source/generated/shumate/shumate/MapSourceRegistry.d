@@ -10,7 +10,12 @@ private import shumate.c.functions;
 public  import shumate.c.types;
 
 
-/** */
+/**
+ * This object allows you to hold [class@MapSource] instances, you can access a
+ * default set of sources with [method@MapSourceRegistry.populate_defaults].
+ * 
+ * It conveniently implements [iface@Gio.ListModel] to easily integrate with it.
+ */
 public class MapSourceRegistry : ObjectG, ListModelIF
 {
 	/** the main Gtk struct */

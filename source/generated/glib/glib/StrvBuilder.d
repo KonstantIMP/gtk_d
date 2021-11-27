@@ -72,6 +72,19 @@ public class StrvBuilder
 	}
 
 	/**
+	 * Appends all the strings in the given vector to the builder.
+	 *
+	 * Since 2.70
+	 *
+	 * Params:
+	 *     value = the vector of strings to add
+	 */
+	public void addv(string[] value)
+	{
+		g_strv_builder_addv(gStrvBuilder, Str.toStringzArray(value));
+	}
+
+	/**
 	 * Ends the builder process and returns the constructed NULL-terminated string
 	 * array. The returned value should be freed with g_strfreev() when no longer
 	 * needed.

@@ -185,12 +185,6 @@ public class CompletionContext : ObjectG, ListModelIF
 		return ObjectG.getDObject!(Language)(cast(GtkSourceLanguage*) __p);
 	}
 
-	/** */
-	public void getStartIter(TextIter iter)
-	{
-		gtk_source_completion_context_get_start_iter(gtkSourceCompletionContext, (iter is null) ? null : iter.getTextIterStruct());
-	}
-
 	/**
 	 * Gets the text view for the context.
 	 *

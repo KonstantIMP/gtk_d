@@ -154,13 +154,13 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * Creates a `cairo_surface_t` representation of the item at @path.
+	 * Creates a `GdkPaintable` representation of the item at @path.
 	 * This image is used for a drag icon.
 	 *
 	 * Params:
 	 *     path = a `GtkTreePath` in @icon_view
 	 *
-	 * Returns: a newly-allocated surface of the drag icon.
+	 * Returns: a newly-allocated `GdkPaintable` of the drag icon.
 	 */
 	public PaintableIF createDragIcon(TreePath path)
 	{

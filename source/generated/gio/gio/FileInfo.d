@@ -36,6 +36,11 @@ private import gobject.ObjectG;
  * g_file_query_writable_namespaces() to discover the settable attributes
  * of a particular file at runtime.
  * 
+ * The direct accessors, such as g_file_info_get_name(), are slightly more
+ * optimized than the generic attribute accessors, such as
+ * g_file_info_get_attribute_byte_string().This optimization will matter
+ * only if calling the API in a tight loop.
+ * 
  * #GFileAttributeMatcher allows for searching through a #GFileInfo for
  * attributes.
  */
@@ -128,6 +133,30 @@ public class FileInfo : ObjectG
 		}
 
 		return ObjectG.getDObject!(FileInfo)(cast(GFileInfo*) __p, true);
+	}
+
+	/**
+	 * Gets the access time of the current @info and returns it as a
+	 * #GDateTime.
+	 *
+	 * This requires the %G_FILE_ATTRIBUTE_TIME_ACCESS attribute. If
+	 * %G_FILE_ATTRIBUTE_TIME_ACCESS_USEC is provided, the resulting #GDateTime
+	 * will have microsecond precision.
+	 *
+	 * Returns: access time, or %NULL if unknown
+	 *
+	 * Since: 2.70
+	 */
+	public DateTime getAccessDateTime()
+	{
+		auto __p = g_file_info_get_access_date_time(gFileInfo);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new DateTime(cast(GDateTime*) __p, true);
 	}
 
 	/**
@@ -348,6 +377,30 @@ public class FileInfo : ObjectG
 	public string getContentType()
 	{
 		return Str.toString(g_file_info_get_content_type(gFileInfo));
+	}
+
+	/**
+	 * Gets the creation time of the current @info and returns it as a
+	 * #GDateTime.
+	 *
+	 * This requires the %G_FILE_ATTRIBUTE_TIME_CREATED attribute. If
+	 * %G_FILE_ATTRIBUTE_TIME_CREATED_USEC is provided, the resulting #GDateTime
+	 * will have microsecond precision.
+	 *
+	 * Returns: creation time, or %NULL if unknown
+	 *
+	 * Since: 2.70
+	 */
+	public DateTime getCreationDateTime()
+	{
+		auto __p = g_file_info_get_creation_date_time(gFileInfo);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new DateTime(cast(GDateTime*) __p, true);
 	}
 
 	/**
@@ -627,6 +680,21 @@ public class FileInfo : ObjectG
 	}
 
 	/**
+	 * Sets the %G_FILE_ATTRIBUTE_TIME_ACCESS and
+	 * %G_FILE_ATTRIBUTE_TIME_ACCESS_USEC attributes in the file info to the
+	 * given date/time value.
+	 *
+	 * Params:
+	 *     atime = a #GDateTime.
+	 *
+	 * Since: 2.70
+	 */
+	public void setAccessDateTime(DateTime atime)
+	{
+		g_file_info_set_access_date_time(gFileInfo, (atime is null) ? null : atime.getDateTimeStruct());
+	}
+
+	/**
 	 * Sets the @attribute to contain the given value, if possible. To unset the
 	 * attribute, use %G_FILE_ATTRIBUTE_TYPE_INVALID for @type.
 	 *
@@ -802,6 +870,21 @@ public class FileInfo : ObjectG
 	public void setContentType(string contentType)
 	{
 		g_file_info_set_content_type(gFileInfo, Str.toStringz(contentType));
+	}
+
+	/**
+	 * Sets the %G_FILE_ATTRIBUTE_TIME_CREATED and
+	 * %G_FILE_ATTRIBUTE_TIME_CREATED_USEC attributes in the file info to the
+	 * given date/time value.
+	 *
+	 * Params:
+	 *     creationTime = a #GDateTime.
+	 *
+	 * Since: 2.70
+	 */
+	public void setCreationDateTime(DateTime creationTime)
+	{
+		g_file_info_set_creation_date_time(gFileInfo, (creationTime is null) ? null : creationTime.getDateTimeStruct());
 	}
 
 	/**

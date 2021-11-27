@@ -146,6 +146,7 @@ shared static this()
 	Linker.link(g_object_setv, "g_object_setv", LIBRARY_GOBJECT);
 	Linker.link(g_object_steal_data, "g_object_steal_data", LIBRARY_GOBJECT);
 	Linker.link(g_object_steal_qdata, "g_object_steal_qdata", LIBRARY_GOBJECT);
+	Linker.link(g_object_take_ref, "g_object_take_ref", LIBRARY_GOBJECT);
 	Linker.link(g_object_thaw_notify, "g_object_thaw_notify", LIBRARY_GOBJECT);
 	Linker.link(g_object_unref, "g_object_unref", LIBRARY_GOBJECT);
 	Linker.link(g_object_watch_closure, "g_object_watch_closure", LIBRARY_GOBJECT);
@@ -622,6 +623,7 @@ __gshared extern(C)
 	void function(GObject* object, uint nProperties, char** names, GValue* values) c_g_object_setv;
 	void* function(GObject* object, const(char)* key) c_g_object_steal_data;
 	void* function(GObject* object, GQuark quark) c_g_object_steal_qdata;
+	void* function(void* object) c_g_object_take_ref;
 	void function(GObject* object) c_g_object_thaw_notify;
 	void function(void* object) c_g_object_unref;
 	void function(GObject* object, GClosure* closure) c_g_object_watch_closure;
@@ -1096,6 +1098,7 @@ alias c_g_object_set_valist g_object_set_valist;
 alias c_g_object_setv g_object_setv;
 alias c_g_object_steal_data g_object_steal_data;
 alias c_g_object_steal_qdata g_object_steal_qdata;
+alias c_g_object_take_ref g_object_take_ref;
 alias c_g_object_thaw_notify g_object_thaw_notify;
 alias c_g_object_unref g_object_unref;
 alias c_g_object_watch_closure g_object_watch_closure;

@@ -74,6 +74,8 @@ public class UnixMountEntry
 	 * If more mounts have the same mount path, the last matching mount
 	 * is returned.
 	 *
+	 * This will return %NULL if there is no mount point at @mount_path.
+	 *
 	 * Params:
 	 *     mountPath = path for a possible unix mount.
 	 *     timeRead = guint64 to contain a timestamp.
@@ -338,6 +340,9 @@ public class UnixMountEntry
 	 *
 	 * If more mounts have the same mount path, the last matching mount
 	 * is returned.
+	 *
+	 * This will return %NULL if looking up the mount entry fails, if
+	 * @file_path doesn’t exist or there is an I/O error.
 	 *
 	 * Params:
 	 *     filePath = file path on some unix mount.

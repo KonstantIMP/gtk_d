@@ -1,6 +1,7 @@
 module glib.StringG;
 
 private import glib.Bytes;
+private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
 public  import glib.c.types;
@@ -38,6 +39,83 @@ public class StringG
 		this.ownedRef = ownedRef;
 	}
 
+
+	/**
+	 * Creates a new #GString, initialized with the given string.
+	 *
+	 * Params:
+	 *     init = the initial text to copy into the string, or %NULL to
+	 *         start with an empty string
+	 *
+	 * Returns: the new #GString
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(string init)
+	{
+		auto __p = g_string_new(Str.toStringz(init));
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new");
+		}
+
+		this(cast(GString*) __p);
+	}
+
+	/**
+	 * Creates a new #GString with @len bytes of the @init buffer.
+	 * Because a length is provided, @init need not be nul-terminated,
+	 * and can contain embedded nul bytes.
+	 *
+	 * Since this function does not stop at nul bytes, it is the caller's
+	 * responsibility to ensure that @init has at least @len addressable
+	 * bytes.
+	 *
+	 * Params:
+	 *     init = initial contents of the string
+	 *     len = length of @init to use
+	 *
+	 * Returns: a new #GString
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(string init, ptrdiff_t len)
+	{
+		auto __p = g_string_new_len(Str.toStringz(init), len);
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_len");
+		}
+
+		this(cast(GString*) __p);
+	}
+
+	/**
+	 * Creates a new #GString, with enough space for @dfl_size
+	 * bytes. This is useful if you are going to add a lot of
+	 * text to the string and don't want it to be reallocated
+	 * too often.
+	 *
+	 * Params:
+	 *     dflSize = the default size of the space allocated to hold the string
+	 *
+	 * Returns: the new #GString
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(size_t dflSize)
+	{
+		auto __p = g_string_sized_new(dflSize);
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by sized_new");
+		}
+
+		this(cast(GString*) __p);
+	}
 
 	/**
 	 * Adds a string onto the end of a #GString, expanding
@@ -591,8 +669,13 @@ public class StringG
 	/**
 	 * Replaces the string @find with the string @replace in a #GString up to
 	 * @limit times. If the number of instances of @find in the #GString is
-	 * less than @limit, all instances are replaced. If the number of
-	 * instances is `0`, all instances of @find are replaced.
+	 * less than @limit, all instances are replaced. If @limit is `0`,
+	 * all instances of @find are replaced.
+	 *
+	 * If @find is the empty string, since versions 2.69.1 and 2.68.4 the
+	 * replacement will be inserted no more than once per possible position
+	 * (beginning of string, end of string and between characters). This did
+	 * not work correctly in earlier versions.
 	 *
 	 * Params:
 	 *     find = the string to find in @string
@@ -691,74 +774,44 @@ public class StringG
 	}
 
 	/**
-	 * Creates a new #GString, initialized with the given string.
+	 * Creates a new reference counted string and copies the contents of @str
+	 * into it.
 	 *
 	 * Params:
-	 *     init = the initial text to copy into the string, or %NULL to
-	 *         start with an empty string
+	 *     str = a NUL-terminated string
 	 *
-	 * Returns: the new #GString
+	 * Returns: the newly created reference counted string
+	 *
+	 * Since: 2.58
 	 */
-	public static StringG stringNew(string init)
+	public static string refStringNew(string str)
 	{
-		auto __p = g_string_new(Str.toStringz(init));
+		auto retStr = g_ref_string_new(Str.toStringz(str));
 
-		if(__p is null)
-		{
-			return null;
-		}
-
-		return new StringG(cast(GString*) __p, true);
+		scope(exit) Str.freeString(retStr);
+		return Str.toString(retStr);
 	}
 
 	/**
-	 * Creates a new #GString with @len bytes of the @init buffer.
-	 * Because a length is provided, @init need not be nul-terminated,
-	 * and can contain embedded nul bytes.
+	 * Creates a new reference counted string and copies the contents of @str
+	 * into it, up to @len bytes.
 	 *
 	 * Since this function does not stop at nul bytes, it is the caller's
-	 * responsibility to ensure that @init has at least @len addressable
-	 * bytes.
+	 * responsibility to ensure that @str has at least @len addressable bytes.
 	 *
 	 * Params:
-	 *     init = initial contents of the string
-	 *     len = length of @init to use
+	 *     str = a string
+	 *     len = length of @str to use, or -1 if @str is nul-terminated
 	 *
-	 * Returns: a new #GString
+	 * Returns: the newly created reference counted string
+	 *
+	 * Since: 2.58
 	 */
-	public static StringG stringNewLen(string init, ptrdiff_t len)
+	public static string refStringNewLen(string str, ptrdiff_t len)
 	{
-		auto __p = g_string_new_len(Str.toStringz(init), len);
+		auto retStr = g_ref_string_new_len(Str.toStringz(str), len);
 
-		if(__p is null)
-		{
-			return null;
-		}
-
-		return new StringG(cast(GString*) __p, true);
-	}
-
-	/**
-	 * Creates a new #GString, with enough space for @dfl_size
-	 * bytes. This is useful if you are going to add a lot of
-	 * text to the string and don't want it to be reallocated
-	 * too often.
-	 *
-	 * Params:
-	 *     dflSize = the default size of the space allocated to
-	 *         hold the string
-	 *
-	 * Returns: the new #GString
-	 */
-	public static StringG stringSizedNew(size_t dflSize)
-	{
-		auto __p = g_string_sized_new(dflSize);
-
-		if(__p is null)
-		{
-			return null;
-		}
-
-		return new StringG(cast(GString*) __p, true);
+		scope(exit) Str.freeString(retStr);
+		return Str.toString(retStr);
 	}
 }

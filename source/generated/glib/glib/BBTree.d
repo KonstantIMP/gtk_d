@@ -433,6 +433,17 @@ public class BBTree
 	}
 
 	/**
+	 * Removes all nodes from a #GTree and destroys their keys and values,
+	 * then resets the #GTree’s root to %NULL.
+	 *
+	 * Since: 2.70
+	 */
+	public void removeAll()
+	{
+		g_tree_remove_all(gTree);
+	}
+
+	/**
 	 * Inserts a new key and value into a #GTree as g_tree_replace_node() does,
 	 * only this function does not return the inserted or set node.
 	 *

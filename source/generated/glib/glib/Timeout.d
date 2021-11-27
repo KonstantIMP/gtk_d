@@ -163,10 +163,12 @@ extern(C) static void destroyTimeoutNotify(Timeout timeout) {
 
 /**
  * Sets a function to be called at regular intervals, with the default
- * priority, #G_PRIORITY_DEFAULT.  The function is called repeatedly
- * until it returns %FALSE, at which point the timeout is automatically
- * destroyed and the function will not be called again.  The first call
- * to the function will be at the end of the first @interval.
+ * priority, %G_PRIORITY_DEFAULT.
+ *
+ * The given @function is called repeatedly until it returns %G_SOURCE_REMOVE
+ * or %FALSE, at which point the timeout is automatically destroyed and the
+ * function will not be called again. The first call to the function will be
+ * at the end of the first @interval.
  *
  * Note that timeout functions may be delayed, due to the processing of other
  * event sources. Thus they should not be relied on for precise timing.
@@ -234,7 +236,7 @@ public static uint add(uint interval, GSourceFunc function_, void* data)
  *
  * Params:
  *     priority = the priority of the timeout source. Typically this will be in
- *         the range between #G_PRIORITY_DEFAULT and #G_PRIORITY_HIGH.
+ *         the range between %G_PRIORITY_DEFAULT and %G_PRIORITY_HIGH.
  *     interval = the time between calls to the function, in milliseconds
  *         (1/1000ths of a second)
  *     function_ = function to call
@@ -250,8 +252,10 @@ public static uint addFull(int priority, uint interval, GSourceFunc function_, v
 
 /**
  * Sets a function to be called at regular intervals with the default
- * priority, #G_PRIORITY_DEFAULT. The function is called repeatedly until
- * it returns %FALSE, at which point the timeout is automatically destroyed
+ * priority, %G_PRIORITY_DEFAULT.
+ *
+ * The function is called repeatedly until it returns %G_SOURCE_REMOVE
+ * or %FALSE, at which point the timeout is automatically destroyed
  * and the function will not be called again.
  *
  * This internally creates a main loop source using
@@ -287,17 +291,18 @@ public static uint addSeconds(uint interval, GSourceFunc function_, void* data)
 
 /**
  * Sets a function to be called at regular intervals, with @priority.
- * The function is called repeatedly until it returns %FALSE, at which
- * point the timeout is automatically destroyed and the function will
- * not be called again.
+ *
+ * The function is called repeatedly until it returns %G_SOURCE_REMOVE
+ * or %FALSE, at which point the timeout is automatically destroyed and
+ * the function will not be called again.
  *
  * Unlike g_timeout_add(), this function operates at whole second granularity.
  * The initial starting point of the timer is determined by the implementation
  * and the implementation is expected to group multiple timers together so that
- * they fire all at the same time.
- * To allow this grouping, the @interval to the first timer is rounded
- * and can deviate up to one second from the specified interval.
- * Subsequent timer iterations will generally run at the specified interval.
+ * they fire all at the same time. To allow this grouping, the @interval to the
+ * first timer is rounded and can deviate up to one second from the specified
+ * interval. Subsequent timer iterations will generally run at the specified
+ * interval.
  *
  * Note that timeout functions may be delayed, due to the processing of other
  * event sources. Thus they should not be relied on for precise timing.
@@ -327,7 +332,7 @@ public static uint addSeconds(uint interval, GSourceFunc function_, void* data)
  *
  * Params:
  *     priority = the priority of the timeout source. Typically this will be in
- *         the range between #G_PRIORITY_DEFAULT and #G_PRIORITY_HIGH.
+ *         the range between %G_PRIORITY_DEFAULT and %G_PRIORITY_HIGH.
  *     interval = the time between calls to the function, in seconds
  *     function_ = function to call
  *     data = data to pass to @function

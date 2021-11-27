@@ -11,14 +11,13 @@ private import gtk.BuildableT;
 private import gtk.ConstraintTargetIF;
 private import gtk.ConstraintTargetT;
 private import gtk.Widget;
-private import shumate.MapSource;
+private import shumate.Map;
 private import shumate.c.functions;
 public  import shumate.c.types;
 
 
 /**
- * The #ShumateLicense structure contains only private data
- * and should be accessed using the provided API
+ * A widget that displays license text.
  */
 public class License : Widget
 {
@@ -74,12 +73,6 @@ public class License : Widget
 		this(cast(ShumateLicense*) __p);
 	}
 
-	/** */
-	public void appendMapSource(MapSource mapSource)
-	{
-		shumate_license_append_map_source(shumateLicense, (mapSource is null) ? null : mapSource.getMapSourceStruct());
-	}
-
 	/**
 	 * Gets the additional license text.
 	 *
@@ -88,6 +81,23 @@ public class License : Widget
 	public string getExtraText()
 	{
 		return Str.toString(shumate_license_get_extra_text(shumateLicense));
+	}
+
+	/**
+	 * Gets the map that the license is showing information for.
+	 *
+	 * Returns: the map
+	 */
+	public Map getMap()
+	{
+		auto __p = shumate_license_get_map(shumateLicense);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(Map)(cast(ShumateMap*) __p);
 	}
 
 	/**
@@ -100,18 +110,6 @@ public class License : Widget
 		return shumate_license_get_xalign(shumateLicense);
 	}
 
-	/** */
-	public void prependMapSource(MapSource mapSource)
-	{
-		shumate_license_prepend_map_source(shumateLicense, (mapSource is null) ? null : mapSource.getMapSourceStruct());
-	}
-
-	/** */
-	public void removeMapSource(MapSource mapSource)
-	{
-		shumate_license_remove_map_source(shumateLicense, (mapSource is null) ? null : mapSource.getMapSourceStruct());
-	}
-
 	/**
 	 * Show the additional license text on the map view.  The text will preceed the
 	 * map's licence when displayed. Use "\n" to separate the lines.
@@ -122,6 +120,18 @@ public class License : Widget
 	public void setExtraText(string text)
 	{
 		shumate_license_set_extra_text(shumateLicense, Str.toStringz(text));
+	}
+
+	/**
+	 * Sets a map widget to show license information for. The license text will be
+	 * collected from the map's layers, if they provide it.
+	 *
+	 * Params:
+	 *     map = a [class@Map]
+	 */
+	public void setMap(Map map)
+	{
+		shumate_license_set_map(shumateLicense, (map is null) ? null : map.getMapStruct());
 	}
 
 	/**

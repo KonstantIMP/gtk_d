@@ -5,7 +5,10 @@ public  import shumate.c.types;
 
 
 /**
- * An interface common to objects having latitude and longitude.
+ * An interface common to objects having latitude and longitude
+ * 
+ * By implementing #ShumateLocation the object declares that it has latitude
+ * and longitude and can be used to specify location on the map.
  */
 public interface LocationIF{
 	/** Get the main Gtk struct */

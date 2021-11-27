@@ -10,7 +10,9 @@ private import shumate.c.functions;
 public  import shumate.c.types;
 
 
-/** */
+/**
+ * The object holding the coordinate and zoom-level state of the current view.
+ */
 public class Viewport : ObjectG, LocationIF
 {
 	/** the main Gtk struct */

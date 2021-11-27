@@ -13,7 +13,7 @@ private import linker.loader;
  * Represents a day between January 1, Year 1 and a few thousand years in
  * the future. None of its members should be accessed directly.
  * 
- * If the #GDate-struct is obtained from g_date_new(), it will be safe
+ * If the `GDate` is obtained from g_date_new(), it will be safe
  * to mutate but invalid and thus not safe for calendrical computations.
  * 
  * If it's declared on the stack, it will contain garbage so must be

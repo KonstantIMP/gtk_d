@@ -13,8 +13,8 @@ private import std.algorithm;
 
 
 /**
- * The #ShumateMarkerLayer structure contains only private data
- * and should be accessed using the provided API
+ * Displays markers on the map. It is responsible for positioning markers
+ * correctly, marker selections and group marker operations.
  */
 public class MarkerLayer : Layer
 {

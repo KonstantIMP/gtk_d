@@ -435,7 +435,7 @@ public class Subprocess : ObjectG, InitableIF
 	 *
 	 * This value has no particular meaning, but it can be used with the
 	 * macros defined by the system headers such as WIFEXITED.  It can also
-	 * be used with g_spawn_check_exit_status().
+	 * be used with g_spawn_check_wait_status().
 	 *
 	 * It is more likely that you want to use g_subprocess_get_if_exited()
 	 * followed by g_subprocess_get_exit_status().
@@ -629,7 +629,7 @@ public class Subprocess : ObjectG, InitableIF
 	}
 
 	/**
-	 * Combines g_subprocess_wait() with g_spawn_check_exit_status().
+	 * Combines g_subprocess_wait() with g_spawn_check_wait_status().
 	 *
 	 * Params:
 	 *     cancellable = a #GCancellable
@@ -656,7 +656,7 @@ public class Subprocess : ObjectG, InitableIF
 	}
 
 	/**
-	 * Combines g_subprocess_wait_async() with g_spawn_check_exit_status().
+	 * Combines g_subprocess_wait_async() with g_spawn_check_wait_status().
 	 *
 	 * This is the asynchronous version of g_subprocess_wait_check().
 	 *

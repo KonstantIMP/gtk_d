@@ -32,34 +32,6 @@ public enum ShumateMapProjection
 alias ShumateMapProjection MapProjection;
 
 /**
- * Error codes in the #SHUMATE_NETWORK_SOURCE_ERROR domain.
- */
-public enum ShumateNetworkSourceError
-{
-	/**
-	 * An unspecified error occurred during the operation.
-	 */
-	FAILED = 0,
-	/**
-	 * An unsuccessful HTTP response was received from the server.
-	 */
-	BAD_RESPONSE = 1,
-	/**
-	 * The server could not be reached.
-	 */
-	COULD_NOT_CONNECT = 2,
-	/**
-	 * The provided URL isn't valid
-	 */
-	MALFORMED_URL = 3,
-	/**
-	 * The tile source has been marked as offline.
-	 */
-	OFFLINE = 4,
-}
-alias ShumateNetworkSourceError NetworkSourceError;
-
-/**
  * Tile loading state.
  */
 public enum ShumateState
@@ -83,6 +55,62 @@ public enum ShumateState
 	DONE = 3,
 }
 alias ShumateState State;
+
+/**
+ * Error codes in the [error@StyleError] domain.
+ */
+public enum ShumateStyleError
+{
+	/**
+	 * An unspecified error occurred during the operation.
+	 */
+	FAILED = 0,
+	/**
+	 * A JSON node in the style has the wrong type (e.g. an object where there should be an array).
+	 */
+	MALFORMED_STYLE = 1,
+	/**
+	 * An unsupported layer type was encountered.
+	 */
+	UNSUPPORTED_LAYER = 2,
+	/**
+	 * An invalid or unrecognized expression was encountered.
+	 */
+	INVALID_EXPRESSION = 3,
+	/**
+	 * Libshumate was compiled without vector tile support.
+	 */
+	SUPPORT_OMITTED = 4,
+}
+alias ShumateStyleError StyleError;
+
+/**
+ * Error codes in the #SHUMATE_TILE_DOWNLOADER_ERROR domain.
+ */
+public enum ShumateTileDownloaderError
+{
+	/**
+	 * An unspecified error occurred during the operation.
+	 */
+	FAILED = 0,
+	/**
+	 * An unsuccessful HTTP response was received from the server.
+	 */
+	BAD_RESPONSE = 1,
+	/**
+	 * The server could not be reached.
+	 */
+	COULD_NOT_CONNECT = 2,
+	/**
+	 * The provided URL isn't valid
+	 */
+	MALFORMED_URL = 3,
+	/**
+	 * The tile source has been marked as offline.
+	 */
+	OFFLINE = 4,
+}
+alias ShumateTileDownloaderError TileDownloaderError;
 
 /**
  * Units used by the scale.
@@ -121,6 +149,28 @@ struct ShumateCoordinateClass
 	GObjectClass parentClass;
 }
 
+struct ShumateDataSource
+{
+	GObject parentInstance;
+}
+
+struct ShumateDataSourceClass
+{
+	GObjectClass parentClass;
+	/** */
+	extern(C) void function(ShumateDataSource* self, int x, int y, int zoomLevel, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) getTileDataAsync;
+	/**
+	 *
+	 * Params:
+	 *     self = a [class@DataSource]
+	 *     result = a #GAsyncResult provided to callback
+	 * Returns: The requested data, or %NULL if an error occurred
+	 *
+	 * Throws: GException on failure.
+	 */
+	extern(C) GBytes* function(ShumateDataSource* self, GAsyncResult* result, GError** err) getTileDataFinish;
+}
+
 struct ShumateFileCache
 {
 	GObject parentInstance;
@@ -139,6 +189,20 @@ struct ShumateLayer
 struct ShumateLayerClass
 {
 	GtkWidgetClass parentClass;
+	/**
+	 *
+	 * Params:
+	 *     self = a [class@Layer]
+	 * Returns: the license text
+	 */
+	extern(C) const(char)* function(ShumateLayer* self) getLicense;
+	/**
+	 *
+	 * Params:
+	 *     self = a [class@Layer]
+	 * Returns: a URI
+	 */
+	extern(C) const(char)* function(ShumateLayer* self) getLicenseUri;
 }
 
 struct ShumateLicense;
@@ -240,16 +304,6 @@ struct ShumateMemoryCacheClass
 	GObjectClass parentClass;
 }
 
-struct ShumateNetworkTileSource
-{
-	ShumateMapSource parentInstance;
-}
-
-struct ShumateNetworkTileSourceClass
-{
-	ShumateMapSourceClass parentClass;
-}
-
 struct ShumatePathLayer
 {
 	ShumateLayer parentInstance;
@@ -267,6 +321,13 @@ struct ShumatePointClass
 	ShumateMarkerClass parentClass;
 }
 
+struct ShumateRasterRenderer;
+
+struct ShumateRasterRendererClass
+{
+	ShumateMapSourceClass parentClass;
+}
+
 struct ShumateScale;
 
 struct ShumateScaleClass
@@ -282,6 +343,20 @@ struct ShumateTile
 struct ShumateTileClass
 {
 	GtkWidgetClass parentClass;
+}
+
+struct ShumateTileDownloader;
+
+struct ShumateTileDownloaderClass
+{
+	ShumateDataSourceClass parentClass;
+}
+
+struct ShumateVectorRenderer;
+
+struct ShumateVectorRendererClass
+{
+	ShumateMapSourceClass parentClass;
 }
 
 struct ShumateViewport;
@@ -351,10 +426,16 @@ alias SHUMATE_MAP_SOURCE_OWM_TEMPERATURE = MAP_SOURCE_OWM_TEMPERATURE;
 enum MAP_SOURCE_OWM_WIND = "owm-wind";
 alias SHUMATE_MAP_SOURCE_OWM_WIND = MAP_SOURCE_OWM_WIND;
 
-enum MAX_LATITUDE = 85.051129;
+/**
+ * The maximal possible latitude value.
+ */
+enum MAX_LATITUDE = 85.0511287798;
 alias SHUMATE_MAX_LATITUDE = MAX_LATITUDE;
 
-enum MAX_LONGITUDE = 180.000000;
+/**
+ * The maximal possible longitude value.
+ */
+enum MAX_LONGITUDE = 180.0;
 alias SHUMATE_MAX_LONGITUDE = MAX_LONGITUDE;
 
 /**
@@ -369,27 +450,14 @@ alias SHUMATE_MICRO_VERSION = MICRO_VERSION;
 enum MINOR_VERSION = 0;
 alias SHUMATE_MINOR_VERSION = MINOR_VERSION;
 
-enum MIN_LATITUDE = 85.051129;
+/**
+ * The minimal possible latitude value.
+ */
+enum MIN_LATITUDE = -85.0511287798;
 alias SHUMATE_MIN_LATITUDE = MIN_LATITUDE;
 
-enum MIN_LONGITUDE = 180.000000;
+/**
+ * The minimal possible longitude value.
+ */
+enum MIN_LONGITUDE = -180.0;
 alias SHUMATE_MIN_LONGITUDE = MIN_LONGITUDE;
-
-/**
- * The full version of libshumate, like 1.2.3
- */
-enum VERSION = 0.000000;
-alias SHUMATE_VERSION = VERSION;
-
-/**
- * Numerically encoded version of libshumate, like 0x010203
- */
-enum VERSION_HEX = 0;
-alias SHUMATE_VERSION_HEX = VERSION_HEX;
-
-/**
- * The full version of libshumate, in string form (suited for
- * string concatenation)
- */
-enum VERSION_S = "0.0.0";
-alias SHUMATE_VERSION_S = VERSION_S;

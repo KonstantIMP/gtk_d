@@ -308,13 +308,15 @@ return status;
  */
 
 /**
+ * Executes a child program asynchronously.
+ *
  * See g_spawn_async_with_pipes() for a full description; this function
  * simply calls the g_spawn_async_with_pipes() without any pipes.
  *
  * You should call g_spawn_close_pid() on the returned child process
  * reference when you don't need it any more.
  *
- * If you are writing a GTK+ application, and the program you are spawning is a
+ * If you are writing a GTK application, and the program you are spawning is a
  * graphical application too, then to ensure that the spawned program opens its
  * windows on the right screen, you may want to use #GdkAppLaunchContext,
  * #GAppLaunchContext, or set the %DISPLAY environment variable.
@@ -352,45 +354,19 @@ public static bool async(string workingDirectory, string[] argv, string[] envp, 
 }
 
 /**
- * Set @error if @exit_status indicates the child exited abnormally
- * (e.g. with a nonzero exit code, or via a fatal signal).
+ * An old name for g_spawn_check_wait_status(), deprecated because its
+ * name is misleading.
  *
- * The g_spawn_sync() and g_child_watch_add() family of APIs return an
- * exit status for subprocesses encoded in a platform-specific way.
- * On Unix, this is guaranteed to be in the same format waitpid() returns,
- * and on Windows it is guaranteed to be the result of GetExitCodeProcess().
+ * Despite the name of the function, @wait_status must be the wait status
+ * as returned by g_spawn_sync(), g_subprocess_get_status(), `waitpid()`,
+ * etc. On Unix platforms, it is incorrect for it to be the exit status
+ * as passed to `exit()` or returned by g_subprocess_get_exit_status() or
+ * `WEXITSTATUS()`.
  *
- * Prior to the introduction of this function in GLib 2.34, interpreting
- * @exit_status required use of platform-specific APIs, which is problematic
- * for software using GLib as a cross-platform layer.
- *
- * Additionally, many programs simply want to determine whether or not
- * the child exited successfully, and either propagate a #GError or
- * print a message to standard error. In that common case, this function
- * can be used. Note that the error message in @error will contain
- * human-readable information about the exit status.
- *
- * The @domain and @code of @error have special semantics in the case
- * where the process has an "exit code", as opposed to being killed by
- * a signal. On Unix, this happens if WIFEXITED() would be true of
- * @exit_status. On Windows, it is always the case.
- *
- * The special semantics are that the actual exit code will be the
- * code set in @error, and the domain will be %G_SPAWN_EXIT_ERROR.
- * This allows you to differentiate between different exit codes.
- *
- * If the process was terminated by some means other than an exit
- * status, the domain will be %G_SPAWN_ERROR, and the code will be
- * %G_SPAWN_ERROR_FAILED.
- *
- * This function just offers convenience; you can of course also check
- * the available platform via a macro such as %G_OS_UNIX, and use
- * WIFEXITED() and WEXITSTATUS() on @exit_status directly. Do not attempt
- * to scan or parse the error message string; it may be translated and/or
- * change in future versions of GLib.
+ * Deprecated: Use g_spawn_check_wait_status() instead, and check whether your code is conflating wait and exit statuses.
  *
  * Params:
- *     exitStatus = An exit code as returned from g_spawn_sync()
+ *     waitStatus = A status as returned from g_spawn_sync()
  *
  * Returns: %TRUE if child exited successfully, %FALSE otherwise (and
  *     @error will be set)
@@ -399,11 +375,11 @@ public static bool async(string workingDirectory, string[] argv, string[] envp, 
  *
  * Throws: GException on failure.
  */
-public static bool checkExitStatus(int exitStatus)
+public static bool checkExitStatus(int waitStatus)
 {
 	GError* err = null;
 
-	auto __p = g_spawn_check_exit_status(exitStatus, &err) != 0;
+	auto __p = g_spawn_check_exit_status(waitStatus, &err) != 0;
 
 	if (err !is null)
 	{
@@ -429,8 +405,9 @@ public static void closePid(GPid pid)
 
 /**
  * A simple version of g_spawn_async() that parses a command line with
- * g_shell_parse_argv() and passes it to g_spawn_async(). Runs a
- * command line in the background. Unlike g_spawn_async(), the
+ * g_shell_parse_argv() and passes it to g_spawn_async().
+ *
+ * Runs a command line in the background. Unlike g_spawn_async(), the
  * %G_SPAWN_SEARCH_PATH flag is enabled, other flags are not. Note
  * that %G_SPAWN_SEARCH_PATH can have security implications, so
  * consider using g_spawn_async() directly if appropriate. Possible
@@ -461,17 +438,24 @@ public static bool commandLineAsync(string commandLine)
 
 /**
  * A simple version of g_spawn_sync() with little-used parameters
- * removed, taking a command line instead of an argument vector.  See
- * g_spawn_sync() for full details. @command_line will be parsed by
- * g_shell_parse_argv(). Unlike g_spawn_sync(), the %G_SPAWN_SEARCH_PATH flag
- * is enabled. Note that %G_SPAWN_SEARCH_PATH can have security
- * implications, so consider using g_spawn_sync() directly if
- * appropriate. Possible errors are those from g_spawn_sync() and those
+ * removed, taking a command line instead of an argument vector.
+ *
+ * See g_spawn_sync() for full details.
+ *
+ * The @command_line argument will be parsed by g_shell_parse_argv().
+ *
+ * Unlike g_spawn_sync(), the %G_SPAWN_SEARCH_PATH flag is enabled.
+ * Note that %G_SPAWN_SEARCH_PATH can have security implications, so
+ * consider using g_spawn_sync() directly if appropriate.
+ *
+ * Possible errors are those from g_spawn_sync() and those
  * from g_shell_parse_argv().
  *
- * If @exit_status is non-%NULL, the platform-specific exit status of
+ * If @wait_status is non-%NULL, the platform-specific status of
  * the child is stored there; see the documentation of
- * g_spawn_check_exit_status() for how to use and interpret this.
+ * g_spawn_check_wait_status() for how to use and interpret this.
+ * On Unix platforms, note that it is usually not equal
+ * to the integer passed to `exit()` or returned from `main()`.
  *
  * On Windows, please note the implications of g_shell_parse_argv()
  * parsing @command_line. Parsing is done according to Unix shell rules, not
@@ -487,19 +471,19 @@ public static bool commandLineAsync(string commandLine)
  *     commandLine = a command line
  *     standardOutput = return location for child output
  *     standardError = return location for child errors
- *     exitStatus = return location for child exit status, as returned by waitpid()
+ *     waitStatus = return location for child wait status, as returned by waitpid()
  *
  * Returns: %TRUE on success, %FALSE if an error was set
  *
  * Throws: GException on failure.
  */
-public static bool commandLineSync(string commandLine, out string standardOutput, out string standardError, out int exitStatus)
+public static bool commandLineSync(string commandLine, out string standardOutput, out string standardError, out int waitStatus)
 {
 	char* outstandardOutput = null;
 	char* outstandardError = null;
 	GError* err = null;
 
-	auto __p = g_spawn_command_line_sync(Str.toStringz(commandLine), &outstandardOutput, &outstandardError, &exitStatus, &err) != 0;
+	auto __p = g_spawn_command_line_sync(Str.toStringz(commandLine), &outstandardOutput, &outstandardError, &waitStatus, &err) != 0;
 
 	if (err !is null)
 	{
@@ -526,20 +510,24 @@ public static GQuark exitErrorQuark()
 
 /**
  * Executes a child synchronously (waits for the child to exit before returning).
+ *
  * All output from the child is stored in @standard_output and @standard_error,
  * if those parameters are non-%NULL. Note that you must set the
  * %G_SPAWN_STDOUT_TO_DEV_NULL and %G_SPAWN_STDERR_TO_DEV_NULL flags when
  * passing %NULL for @standard_output and @standard_error.
  *
- * If @exit_status is non-%NULL, the platform-specific exit status of
+ * If @wait_status is non-%NULL, the platform-specific status of
  * the child is stored there; see the documentation of
- * g_spawn_check_exit_status() for how to use and interpret this.
+ * g_spawn_check_wait_status() for how to use and interpret this.
+ * On Unix platforms, note that it is usually not equal
+ * to the integer passed to `exit()` or returned from `main()`.
+ *
  * Note that it is invalid to pass %G_SPAWN_DO_NOT_REAP_CHILD in
  * @flags, and on POSIX platforms, the same restrictions as for
  * g_child_watch_source_new() apply.
  *
  * If an error occurs, no data is returned in @standard_output,
- * @standard_error, or @exit_status.
+ * @standard_error, or @wait_status.
  *
  * This function calls g_spawn_async_with_pipes() internally; see that
  * function for full details on the other parameters and details on
@@ -555,19 +543,19 @@ public static GQuark exitErrorQuark()
  *     userData = user data for @child_setup
  *     standardOutput = return location for child output, or %NULL
  *     standardError = return location for child error messages, or %NULL
- *     exitStatus = return location for child exit status, as returned by waitpid(), or %NULL
+ *     waitStatus = return location for child wait status, as returned by waitpid(), or %NULL
  *
  * Returns: %TRUE on success, %FALSE if an error was set
  *
  * Throws: GException on failure.
  */
-public static bool sync(string workingDirectory, string[] argv, string[] envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, out string standardOutput, out string standardError, out int exitStatus)
+public static bool sync(string workingDirectory, string[] argv, string[] envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, out string standardOutput, out string standardError, out int waitStatus)
 {
 	char* outstandardOutput = null;
 	char* outstandardError = null;
 	GError* err = null;
 
-	auto __p = g_spawn_sync(Str.toStringz(workingDirectory), Str.toStringzArray(argv), Str.toStringzArray(envp), flags, childSetup, userData, &outstandardOutput, &outstandardError, &exitStatus, &err) != 0;
+	auto __p = g_spawn_sync(Str.toStringz(workingDirectory), Str.toStringzArray(argv), Str.toStringzArray(envp), flags, childSetup, userData, &outstandardOutput, &outstandardError, &waitStatus, &err) != 0;
 
 	if (err !is null)
 	{
@@ -581,6 +569,8 @@ public static bool sync(string workingDirectory, string[] argv, string[] envp, G
 }
 
 /**
+ * Executes a child program asynchronously.
+ *
  * Identical to g_spawn_async_with_pipes_and_fds() but with `n_fds` set to zero,
  * so no FD assignments are used.
  *
