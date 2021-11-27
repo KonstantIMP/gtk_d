@@ -7,7 +7,7 @@
 	"license": "LGPL-3.0",
 	"name": "avatar",
 	"dependencies": {
-		"gtk_d:gtk" : "*",
-		"gtk_d:adw" : "*"
+		"gtk_d:gtk" : {"version": "*", "path": "../../../"},
+		"gtk_d:adw" : {"version": "*", "path": "../../../"}
 	}
 }

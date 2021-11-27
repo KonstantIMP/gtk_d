@@ -7,6 +7,6 @@
 	"license": "LGPL-3.0",
 	"name": "hello_world",
 	"dependencies": {
-		"gtk_d:gtk" : "*"
+		"gtk_d:gtk" : {"version": "*", "path": "../../../"}
 	}
 }

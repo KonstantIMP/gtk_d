@@ -7,7 +7,7 @@
 	"license": "LGPL-3.0",
 	"name": "map",
 	"dependencies": {
-		"gtk_d:gtk" : "*",
-		"gtk_d:shumate" : "*"
+		"gtk_d:gtk" : {"version": "*", "path": "../../../"},
+		"gtk_d:shumate" : {"version": "*", "path": "../../../"}
 	}
 }

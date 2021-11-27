@@ -1,6 +1,6 @@
 {
 	"fileVersion": 1,
 	"versions": {
-		"gtk_d": "~master"
+		"gtk_d": {"path":"../../.."}
 	}
 }
