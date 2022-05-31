@@ -286,7 +286,7 @@ alias LIBRSVG_MAJOR_VERSION = MAJOR_VERSION;
  * your program), or for programs not written in C, use
  * `rsvg_micro_version` instead.
  */
-enum MICRO_VERSION = 1;
+enum MICRO_VERSION = 3;
 alias LIBRSVG_MICRO_VERSION = MICRO_VERSION;
 
 /**
@@ -325,5 +325,5 @@ alias LIBRSVG_MINOR_VERSION = MINOR_VERSION;
  * your program), or for programs not written in C, use
  * `rsvg_version` instead.
  */
-enum VERSION = "2.54.1";
+enum VERSION = "2.54.3";
 alias LIBRSVG_VERSION = VERSION;
