@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdk.c.types;
 
 public import cairo.c.types;
@@ -465,9 +489,14 @@ public enum GdkEventType
 	 */
 	PAD_GROUP_MODE = 27,
 	/**
+	 * A touchpad hold gesture event, the current state
+	 * is determined by its phase field. Since: 4.6
+	 */
+	TOUCHPAD_HOLD = 28,
+	/**
 	 * marks the end of the GdkEventType enumeration.
 	 */
-	EVENT_LAST = 28,
+	EVENT_LAST = 29,
 }
 alias GdkEventType EventType;
 
@@ -528,6 +557,24 @@ public enum GdkFullscreenMode
 	ALL_MONITORS = 1,
 }
 alias GdkFullscreenMode FullscreenMode;
+
+/**
+ * The list of the different APIs that GdkGLContext can potentially support.
+ *
+ * Since: 4.6
+ */
+public enum GdkGLAPI
+{
+	/**
+	 * The OpenGL API
+	 */
+	GL = 1,
+	/**
+	 * The OpenGL ES API
+	 */
+	GLES = 2,
+}
+alias GdkGLAPI GLAPI;
 
 /**
  * Error enumeration for `GdkGLContext`.
@@ -670,7 +717,7 @@ public enum GdkKeyMatch
 alias GdkKeyMatch KeyMatch;
 
 /**
- * `GdkMemoryFormat` describes a format that bytes can have in memory.
+ * `GdkMemoryFormat` describes formats that image data can have in memory.
  *
  * It describes formats by listing the contents of the memory passed to it.
  * So GDK_MEMORY_A8R8G8B8 will be 1 byte (8 bits) of alpha, followed by a
@@ -724,10 +771,53 @@ public enum GdkMemoryFormat
 	 */
 	B8G8R8 = 8,
 	/**
+	 * 3 guint16 values; for red, green, blue. Since: 4.6
+	 */
+	R16G16B16 = 9,
+	/**
+	 * 4 guint16 values; for red, green,
+	 * blue, alpha. The color values are premultiplied with the alpha value.
+	 * Since: 4.6
+	 */
+	R16G16B16A16_PREMULTIPLIED = 10,
+	/**
+	 * 4 guint16 values; for red, green, blue, alpha.
+	 * Since: 4.6
+	 */
+	R16G16B16A16 = 11,
+	/**
+	 * 3 half-float values; for red, green, blue.
+	 * The data is opaque. Since: 4.6
+	 */
+	R16G16B16_FLOAT = 12,
+	/**
+	 * 4 half-float values; for
+	 * red, green, blue and alpha. The color values are premultiplied with
+	 * the alpha value. Since: 4.6
+	 */
+	R16G16B16A16_FLOAT_PREMULTIPLIED = 13,
+	/**
+	 * 4 half-float values; for red, green,
+	 * blue and alpha. Since: 4.6
+	 */
+	R16G16B16A16_FLOAT = 14,
+	R32G32B32_FLOAT = 15,
+	/**
+	 * 4 float values; for
+	 * red, green, blue and alpha. The color values are premultiplied with
+	 * the alpha value. Since: 4.6
+	 */
+	R32G32B32A32_FLOAT_PREMULTIPLIED = 16,
+	/**
+	 * 4 float values; for red, green, blue and
+	 * alpha. Since: 4.6
+	 */
+	R32G32B32A32_FLOAT = 17,
+	/**
 	 * The number of formats. This value will change as
 	 * more formats get added, so do not rely on its concrete integer.
 	 */
-	N_FORMATS = 9,
+	N_FORMATS = 18,
 }
 alias GdkMemoryFormat MemoryFormat;
 
@@ -1004,6 +1094,33 @@ public enum GdkSurfaceEdge
 }
 alias GdkSurfaceEdge SurfaceEdge;
 
+/**
+ * Possible errors that can be returned by `GdkTexture` constructors.
+ *
+ * Since: 4.6
+ */
+public enum GdkTextureError
+{
+	/**
+	 * Not enough memory to handle this image
+	 */
+	TOO_LARGE = 0,
+	/**
+	 * The image data appears corrupted
+	 */
+	CORRUPT_IMAGE = 1,
+	/**
+	 * The image contains features
+	 * that cannot be loaded
+	 */
+	UNSUPPORTED_CONTENT = 2,
+	/**
+	 * The image format is not supported
+	 */
+	UNSUPPORTED_FORMAT = 3,
+}
+alias GdkTextureError TextureError;
+
 public enum GdkTitlebarGesture
 {
 	DOUBLE_CLICK = 1,
@@ -1264,6 +1381,8 @@ struct GdkEvent;
  * of related touch events.
  */
 struct GdkEventSequence;
+
+struct GdkFileList;
 
 struct GdkFocusEvent;
 

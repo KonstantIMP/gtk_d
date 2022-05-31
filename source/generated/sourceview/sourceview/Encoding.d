@@ -1,15 +1,45 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.Encoding;
 
 private import glib.ListSG;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Character encoding.
+ * 
+ * The #GtkSourceEncoding boxed type represents a character encoding. It is used
+ * for example by #GtkSourceFile. Note that the text in GTK widgets is always
+ * encoded in UTF-8.
+ */
 public class Encoding
 {
 	/** the main Gtk struct */
@@ -56,8 +86,6 @@ public class Encoding
 	 * Used by language bindings.
 	 *
 	 * Returns: a copy of @enc.
-	 *
-	 * Since: 3.14
 	 */
 	public Encoding copy()
 	{
@@ -73,8 +101,6 @@ public class Encoding
 
 	/**
 	 * Used by language bindings.
-	 *
-	 * Since: 3.14
 	 */
 	public void free()
 	{
@@ -87,8 +113,6 @@ public class Encoding
 	 * "ISO-8859-1".
 	 *
 	 * Returns: the character set of the #GtkSourceEncoding.
-	 *
-	 * Since: 3.14
 	 */
 	public string getCharset()
 	{
@@ -99,8 +123,6 @@ public class Encoding
 	 * Gets the name of the #GtkSourceEncoding such as "Unicode" or "Western".
 	 *
 	 * Returns: the name of the #GtkSourceEncoding.
-	 *
-	 * Since: 3.14
 	 */
 	public string getName()
 	{
@@ -109,8 +131,6 @@ public class Encoding
 
 	/**
 	 * Returns: a string representation. Free with g_free() when no longer needed.
-	 *
-	 * Since: 3.14
 	 */
 	public override string toString()
 	{
@@ -125,8 +145,6 @@ public class Encoding
 	 *
 	 * Returns: a list of
 	 *     all #GtkSourceEncoding's. Free with g_slist_free().
-	 *
-	 * Since: 3.14
 	 */
 	public static ListSG getAll()
 	{
@@ -141,11 +159,11 @@ public class Encoding
 	}
 
 	/**
-	 * Gets the #GtkSourceEncoding for the current locale. See also g_get_charset().
+	 * Gets the #GtkSourceEncoding for the current locale.
+	 *
+	 * See also [func@GLib.get_charset].
 	 *
 	 * Returns: the current locale encoding.
-	 *
-	 * Since: 3.14
 	 */
 	public static Encoding getCurrent()
 	{
@@ -160,8 +178,9 @@ public class Encoding
 	}
 
 	/**
-	 * Gets the list of default candidate encodings to try when loading a file. See
-	 * gtk_source_file_loader_set_candidate_encodings().
+	 * Gets the list of default candidate encodings to try when loading a file.
+	 *
+	 * See [method@FileLoader.set_candidate_encodings].
 	 *
 	 * This function returns a different list depending on the current locale (i.e.
 	 * language, country and default encoding). The UTF-8 encoding and the current
@@ -169,8 +188,6 @@ public class Encoding
 	 *
 	 * Returns: the list of
 	 *     default candidate encodings. Free with g_slist_free().
-	 *
-	 * Since: 3.18
 	 */
 	public static ListSG getDefaultCandidates()
 	{
@@ -193,8 +210,6 @@ public class Encoding
 	 *
 	 * Returns: the corresponding #GtkSourceEncoding, or %NULL
 	 *     if not found.
-	 *
-	 * Since: 3.14
 	 */
 	public static Encoding getFromCharset(string charset)
 	{
@@ -210,8 +225,6 @@ public class Encoding
 
 	/**
 	 * Returns: the UTF-8 encoding.
-	 *
-	 * Since: 3.14
 	 */
 	public static Encoding getUtf8()
 	{

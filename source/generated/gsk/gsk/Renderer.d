@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gsk.Renderer;
 
 private import cairo.Region;
@@ -122,8 +146,16 @@ public class Renderer : ObjectG
 	 * Creates the resources needed by the @renderer to render the scene
 	 * graph.
 	 *
+	 * Since GTK 4.6, the surface may be `NULL`, which allows using
+	 * renderers without having to create a surface.
+	 *
+	 * Note that it is mandatory to call [method@Gsk.Renderer.unrealize] before
+	 * destroying the renderer.
+	 *
 	 * Params:
 	 *     surface = the `GdkSurface` renderer will be used on
+	 *
+	 * Returns: Whether the renderer was successfully realized
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -142,8 +174,10 @@ public class Renderer : ObjectG
 	}
 
 	/**
-	 * Renders the scene graph, described by a tree of `GskRenderNode` instances,
-	 * ensuring that the given @region gets redrawn.
+	 * Renders the scene graph, described by a tree of `GskRenderNode` instances
+	 * to the renderer's surface,  ensuring that the given @region gets redrawn.
+	 *
+	 * If the renderer has no associated surface, this function does nothing.
 	 *
 	 * Renderers must ensure that changes of the contents given by the @root
 	 * node as well as the area given by @region are redrawn. They are however

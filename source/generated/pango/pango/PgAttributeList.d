@@ -1,9 +1,35 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgAttributeList;
 
 private import glib.ConstructionException;
 private import glib.ListSG;
+private import glib.Str;
+private import glib.c.functions;
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import pango.PgAttribute;
 private import pango.PgAttributeIterator;
 private import pango.c.functions;
@@ -278,10 +304,16 @@ public class PgAttributeList
 	 * that applies at position @pos in @list by an amount @len,
 	 * and then calling [method@Pango.AttrList.change] with a copy
 	 * of each attribute in @other in sequence (offset in position
-	 * by @pos).
+	 * by @pos, and limited in length to @len).
 	 *
 	 * This operation proves useful for, for instance, inserting
 	 * a pre-edit string in the middle of an edit buffer.
+	 *
+	 * For backwards compatibility, the function behaves differently
+	 * when @len is 0. In this case, the attributes from @other are
+	 * not imited to @len, and are just overlayed on top of @list.
+	 *
+	 * This mode is useful for merging two lists of attributes together.
 	 *
 	 * Params:
 	 *     other = another `PangoAttrList`
@@ -293,6 +325,28 @@ public class PgAttributeList
 	public void splice(PgAttributeList other, int pos, int len)
 	{
 		pango_attr_list_splice(pangoAttrList, (other is null) ? null : other.getPgAttributeListStruct(), pos, len);
+	}
+
+	/**
+	 * Serializes a `PangoAttrList` to a string.
+	 *
+	 * No guarantees are made about the format of the string,
+	 * it may change between Pango versions.
+	 *
+	 * The intended use of this function is testing and
+	 * debugging. The format is not meant as a permanent
+	 * storage format.
+	 *
+	 * Returns: a newly allocated string
+	 *
+	 * Since: 1.50
+	 */
+	public override string toString()
+	{
+		auto retStr = pango_attr_list_to_string(pangoAttrList);
+
+		scope(exit) Str.freeString(retStr);
+		return Str.toString(retStr);
 	}
 
 	/**
@@ -333,5 +387,30 @@ public class PgAttributeList
 	public void update(int pos, int remove, int add)
 	{
 		pango_attr_list_update(pangoAttrList, pos, remove, add);
+	}
+
+	/**
+	 * Deserializes a `PangoAttrList` from a string.
+	 *
+	 * This is the counterpart to [method@Pango.AttrList.to_string].
+	 * See that functions for details about the format.
+	 *
+	 * Params:
+	 *     text = a string
+	 *
+	 * Returns: a new `PangoAttrList`
+	 *
+	 * Since: 1.50
+	 */
+	public static PgAttributeList fromString(string text)
+	{
+		auto __p = pango_attr_list_from_string(Str.toStringz(text));
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgAttributeList)(cast(PangoAttrList*) __p, true);
 	}
 }

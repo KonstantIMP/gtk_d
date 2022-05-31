@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.ViewSwitcherBar;
 
 private import adw.ViewStack;
@@ -17,20 +41,26 @@ private import gtk.Widget;
 /**
  * A view switcher action bar.
  * 
+ * <picture>
+ * <source srcset="view-switcher-bar-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="view-switcher-bar.png" alt="view-switcher-bar">
+ * </picture>
+ * 
  * An action bar letting you switch between multiple views contained in a
- * [class@Adw.ViewStack], via an [class@Adw.ViewSwitcher]. It is designed to be put
- * at the bottom of a window and to be revealed only on really narrow windows,
- * e.g. on mobile phones. It can't be revealed if there are less than two pages.
+ * [class@ViewStack], via an [class@ViewSwitcher]. It is designed to be put at
+ * the bottom of a window and to be revealed only on really narrow windows, e.g.
+ * on mobile phones. It can't be revealed if there are less than two pages.
  * 
- * You can conveniently bind the [property@Adw.ViewSwitcherBar:reveal] property
- * to [property@Adw.ViewSwitcherTitle:title-visible] to automatically reveal the
+ * `AdwViewSwitcherBar` is intended to be used together with
+ * [class@ViewSwitcherTitle].
+ * 
+ * A common use case is to bind the [property@ViewSwitcherBar:reveal] property
+ * to [property@ViewSwitcherTitle:title-visible] to automatically reveal the
  * view switcher bar when the title label is displayed in place of the view
- * switcher.
- * 
- * An example of the UI definition for a common use case:
+ * switcher, as follows:
  * 
  * ```xml
- * <object class="GtkWindow"/>
+ * <object class="GtkWindow">
  * <child type="titlebar">
  * <object class="AdwHeaderBar">
  * <property name="centering-policy">strict</property>
@@ -43,6 +73,7 @@ private import gtk.Widget;
  * </child>
  * <child>
  * <object class="GtkBox">
+ * <property name="orientation">vertical</property>
  * <child>
  * <object class="AdwViewStack" id="stack"/>
  * </child>

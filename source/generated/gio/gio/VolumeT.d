@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gio.VolumeT;
 
 public  import gio.AsyncResultIF;
@@ -51,13 +75,13 @@ public  import std.algorithm;
  * different kinds of identifiers, such as Hal UDIs, filesystem labels,
  * traditional Unix devices (e.g. `/dev/sda2`), UUIDs. GIO uses predefined
  * strings as names for the different kinds of identifiers:
- * #G_VOLUME_IDENTIFIER_KIND_UUID, #G_VOLUME_IDENTIFIER_KIND_LABEL, etc.
+ * %G_VOLUME_IDENTIFIER_KIND_UUID, %G_VOLUME_IDENTIFIER_KIND_LABEL, etc.
  * Use g_volume_get_identifier() to obtain an identifier for a volume.
  * 
  * 
- * Note that #G_VOLUME_IDENTIFIER_KIND_HAL_UDI will only be available
+ * Note that %G_VOLUME_IDENTIFIER_KIND_HAL_UDI will only be available
  * when the gvfs hal volume monitor is in use. Other volume monitors
- * will generally be able to provide the #G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE
+ * will generally be able to provide the %G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE
  * identifier, which can be used to obtain a hal device by means of
  * libhal_manager_find_device_string_match().
  */

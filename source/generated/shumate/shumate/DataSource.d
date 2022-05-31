@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module shumate.DataSource;
 
 private import gio.AsyncResultIF;
@@ -12,7 +36,9 @@ public  import shumate.c.types;
 private import std.algorithm;
 
 
-/** */
+/**
+ * The base class used to retrieve tiles as [struct@GLib.Bytes].
+ */
 public class DataSource : ObjectG
 {
 	/** the main Gtk struct */
@@ -53,8 +79,8 @@ public class DataSource : ObjectG
 	 *
 	 * Some data sources may return data multiple times. For example,
 	 * [class@TileDownloader] may return data from a cache, then return updated
-	 * data from the network. [signal@received-data] is emitted each time
-	 * data is received, then @callback is called after the last update.
+	 * data from the network. [signal@ShumateDataSource::received-data] is emitted
+	 * each time data is received, then @callback is called after the last update.
 	 *
 	 * Params:
 	 *     x = the X coordinate to fetch
@@ -76,7 +102,8 @@ public class DataSource : ObjectG
 	 * Params:
 	 *     result = a #GAsyncResult provided to callback
 	 *
-	 * Returns: The requested data, or %NULL if an error occurred
+	 * Returns: The requested data, or %NULL if an
+	 *     error occurred
 	 *
 	 * Throws: GException on failure.
 	 */

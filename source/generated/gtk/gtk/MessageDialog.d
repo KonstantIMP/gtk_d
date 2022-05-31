@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.MessageDialog;
 
 private import glib.ConstructionException;
@@ -115,7 +139,8 @@ public class MessageDialog : Dialog
 	 * Returns:
 	 *  a new GtkMessageDialog
 	 */
-	public this (Window parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, string message) {
+	public this (Window parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, string message)
+	{
 		auto __p = cast(GtkMessageDialog*)gtk_message_dialog_new(
 			parent is null ? null : parent.getWindowStruct(),
 			flags,
@@ -126,53 +151,54 @@ public class MessageDialog : Dialog
 			null
 		);
 
-		if(__p is null) {
+		if(__p is null)
+		{
 			throw new ConstructionException("null returned by gtk_message_dialog_new()");
+		}
+
+		this(__p);
 	}
 
-	this(__p);
-}
+	/**
+	 */
 
-/**
- */
-
-/** */
-public static GType getType()
-{
-	return gtk_message_dialog_get_type();
-}
-
-/**
- * Returns the message area of the dialog.
- *
- * This is the box where the dialog’s primary and secondary labels
- * are packed. You can add your own extra content to that box and it
- * will appear below those labels. See [method@Gtk.Dialog.get_content_area]
- * for the corresponding function in the parent [class@Gtk.Dialog].
- *
- * Returns: A `GtkBox` corresponding to the
- *     “message area” in the @message_dialog
- */
-public Widget getMessageArea()
-{
-	auto __p = gtk_message_dialog_get_message_area(gtkMessageDialog);
-
-	if(__p is null)
+	/** */
+	public static GType getType()
 	{
-		return null;
+		return gtk_message_dialog_get_type();
 	}
 
-	return ObjectG.getDObject!(Widget)(cast(GtkWidget*) __p);
-}
+	/**
+	 * Returns the message area of the dialog.
+	 *
+	 * This is the box where the dialog’s primary and secondary labels
+	 * are packed. You can add your own extra content to that box and it
+	 * will appear below those labels. See [method@Gtk.Dialog.get_content_area]
+	 * for the corresponding function in the parent [class@Gtk.Dialog].
+	 *
+	 * Returns: A `GtkBox` corresponding to the
+	 *     “message area” in the @message_dialog
+	 */
+	public Widget getMessageArea()
+	{
+		auto __p = gtk_message_dialog_get_message_area(gtkMessageDialog);
 
-/**
- * Sets the text of the message dialog.
- *
- * Params:
- *     str = string with Pango markup
- */
-public void setMarkup(string str)
-{
-	gtk_message_dialog_set_markup(gtkMessageDialog, Str.toStringz(str));
-}
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(Widget)(cast(GtkWidget*) __p);
+	}
+
+	/**
+	 * Sets the text of the message dialog.
+	 *
+	 * Params:
+	 *     str = string with Pango markup
+	 */
+	public void setMarkup(string str)
+	{
+		gtk_message_dialog_set_markup(gtkMessageDialog, Str.toStringz(str));
+	}
 }

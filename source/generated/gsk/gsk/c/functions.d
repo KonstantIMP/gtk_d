@@ -1,8 +1,32 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gsk.c.functions;
 
 import std.stdio;
 import gsk.c.types;
-import linker.loader;
+import linker.Loader;
 
 version (Windows)
 	static immutable LIBRARY_GSK = ["libgtk-4-1.dll;gtk-4-4.1.dll;gtk-4.dll"];
@@ -316,7 +340,9 @@ shared static this()
 	Linker.link(gsk_transform_rotate_3d, "gsk_transform_rotate_3d", LIBRARY_GSK);
 	Linker.link(gsk_transform_scale, "gsk_transform_scale", LIBRARY_GSK);
 	Linker.link(gsk_transform_scale_3d, "gsk_transform_scale_3d", LIBRARY_GSK);
+	Linker.link(gsk_transform_skew, "gsk_transform_skew", LIBRARY_GSK);
 	Linker.link(gsk_transform_to_2d, "gsk_transform_to_2d", LIBRARY_GSK);
+	Linker.link(gsk_transform_to_2d_components, "gsk_transform_to_2d_components", LIBRARY_GSK);
 	Linker.link(gsk_transform_to_affine, "gsk_transform_to_affine", LIBRARY_GSK);
 	Linker.link(gsk_transform_to_matrix, "gsk_transform_to_matrix", LIBRARY_GSK);
 	Linker.link(gsk_transform_to_string, "gsk_transform_to_string", LIBRARY_GSK);
@@ -643,7 +669,9 @@ __gshared extern(C)
 	GskTransform* function(GskTransform* next, float angle, graphene_vec3_t* axis) c_gsk_transform_rotate_3d;
 	GskTransform* function(GskTransform* next, float factorX, float factorY) c_gsk_transform_scale;
 	GskTransform* function(GskTransform* next, float factorX, float factorY, float factorZ) c_gsk_transform_scale_3d;
+	GskTransform* function(GskTransform* next, float skewX, float skewY) c_gsk_transform_skew;
 	void function(GskTransform* self, float* outXx, float* outYx, float* outXy, float* outYy, float* outDx, float* outDy) c_gsk_transform_to_2d;
+	void function(GskTransform* self, float* outSkewX, float* outSkewY, float* outScaleX, float* outScaleY, float* outAngle, float* outDx, float* outDy) c_gsk_transform_to_2d_components;
 	void function(GskTransform* self, float* outScaleX, float* outScaleY, float* outDx, float* outDy) c_gsk_transform_to_affine;
 	void function(GskTransform* self, graphene_matrix_t* outMatrix) c_gsk_transform_to_matrix;
 	char* function(GskTransform* self) c_gsk_transform_to_string;
@@ -968,7 +996,9 @@ alias c_gsk_transform_rotate gsk_transform_rotate;
 alias c_gsk_transform_rotate_3d gsk_transform_rotate_3d;
 alias c_gsk_transform_scale gsk_transform_scale;
 alias c_gsk_transform_scale_3d gsk_transform_scale_3d;
+alias c_gsk_transform_skew gsk_transform_skew;
 alias c_gsk_transform_to_2d gsk_transform_to_2d;
+alias c_gsk_transform_to_2d_components gsk_transform_to_2d_components;
 alias c_gsk_transform_to_affine gsk_transform_to_affine;
 alias c_gsk_transform_to_matrix gsk_transform_to_matrix;
 alias c_gsk_transform_to_string gsk_transform_to_string;

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.Application;
 
 private import gio.ActionGroupIF;
@@ -38,7 +62,7 @@ private import std.algorithm;
  * 
  * `GtkApplication` will automatically load menus from the `GtkBuilder`
  * resource located at "gtk/menus.ui", relative to the application's
- * resource base path (see `g_application_set_resource_base_path()`).
+ * resource base path (see [method@Gio.Application.set_resource_base_path]).
  * The menu with the ID "menubar" is taken as the application's
  * menubar. Additional menus (most interesting submenus) can be named
  * and accessed via [method@Gtk.Application.get_menu_by_id] which allows for
@@ -53,8 +77,8 @@ private import std.algorithm;
  * resources. See [method@Gtk.IconTheme.add_resource_path] for more
  * information.
  * 
- * If there is a resource located at "gtk/help-overlay.ui" which
- * defines a [class@Gtk.ShortcutsWindow] with ID "help_overlay" then
+ * If there is a resource located at `gtk/help-overlay.ui` which
+ * defines a [class@Gtk.ShortcutsWindow] with ID `help_overlay` then
  * `GtkApplication` associates an instance of this shortcuts window with
  * each [class@Gtk.ApplicationWindow] and sets up the keyboard accelerator
  * <kbd>Control</kbd>+<kbd>?</kbd> to open it. To create a menu item that
@@ -63,7 +87,7 @@ private import std.algorithm;
  * 
  * ## A simple application
  * 
- * [A simple example](https://gitlab.gnome.org/GNOME/gtk/tree/master/examples/bp/bloatpad.c)
+ * [A simple example](https://gitlab.gnome.org/GNOME/gtk/tree/main/examples/bp/bloatpad.c)
  * is available in the GTK source code repository
  * 
  * `GtkApplication` optionally registers with a session manager of the

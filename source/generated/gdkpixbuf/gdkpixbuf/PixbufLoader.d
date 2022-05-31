@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdkpixbuf.PixbufLoader;
 
 private import gdkpixbuf.Pixbuf;
@@ -112,299 +136,303 @@ public class PixbufLoader : ObjectG
 	 *
 	 * Throws: GException on failure.
 	 */
-	public this(string type, bool isMimeType=false) {
+	public this(string type, bool isMimeType=false)
+	{
 		GError* err = null;
 		GdkPixbufLoader* p;
 
-		if ( isMimeType ) {
+		if ( isMimeType )
+		{
 			p = cast(GdkPixbufLoader*)gdk_pixbuf_loader_new_with_mime_type(Str.toStringz(type), &err);
+		}
+		else
+		{
+			p = cast(GdkPixbufLoader*)gdk_pixbuf_loader_new_with_type(Str.toStringz(type), &err);
+		}
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		this(cast(GdkPixbufLoader*) p, true);
 	}
-	else {
-		p = cast(GdkPixbufLoader*)gdk_pixbuf_loader_new_with_type(Str.toStringz(type), &err);
-}
 
-if (err !is null) {
-	throw new GException( new ErrorG(err) );
-}
+	/**
+	 */
 
-this(cast(GdkPixbufLoader*) p, true);
-}
-
-/**
- */
-
-/** */
-public static GType getType()
-{
-	return gdk_pixbuf_loader_get_type();
-}
-
-/**
- * Creates a new pixbuf loader object.
- *
- * Returns: A newly-created pixbuf loader.
- *
- * Throws: ConstructionException GTK+ fails to create the object.
- */
-public this()
-{
-	auto __p = gdk_pixbuf_loader_new();
-
-	if(__p is null)
+	/** */
+	public static GType getType()
 	{
-		throw new ConstructionException("null returned by new");
+		return gdk_pixbuf_loader_get_type();
 	}
 
-	this(cast(GdkPixbufLoader*) __p, true);
-}
-
-/**
- * Informs a pixbuf loader that no further writes with
- * gdk_pixbuf_loader_write() will occur, so that it can free its
- * internal loading structures.
- *
- * This function also tries to parse any data that hasn't yet been parsed;
- * if the remaining data is partial or corrupt, an error will be returned.
- *
- * If `FALSE` is returned, `error` will be set to an error from the
- * `GDK_PIXBUF_ERROR` or `G_FILE_ERROR` domains.
- *
- * If you're just cancelling a load rather than expecting it to be finished,
- * passing `NULL` for `error` to ignore it is reasonable.
- *
- * Remember that this function does not release a reference on the loader, so
- * you will need to explicitly release any reference you hold.
- *
- * Returns: `TRUE` if all image data written so far was successfully
- *     passed out via the update_area signal
- *
- * Throws: GException on failure.
- */
-public bool close()
-{
-	GError* err = null;
-
-	auto __p = gdk_pixbuf_loader_close(gdkPixbufLoader, &err) != 0;
-
-	if (err !is null)
+	/**
+	 * Creates a new pixbuf loader object.
+	 *
+	 * Returns: A newly-created pixbuf loader.
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this()
 	{
-		throw new GException( new ErrorG(err) );
+		auto __p = gdk_pixbuf_loader_new();
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new");
+		}
+
+		this(cast(GdkPixbufLoader*) __p, true);
 	}
 
-	return __p;
-}
-
-/**
- * Queries the #GdkPixbufAnimation that a pixbuf loader is currently creating.
- *
- * In general it only makes sense to call this function after the
- * [signal@GdkPixbuf.PixbufLoader::area-prepared] signal has been emitted by
- * the loader.
- *
- * If the loader doesn't have enough bytes yet, and hasn't emitted the `area-prepared`
- * signal, this function will return `NULL`.
- *
- * Returns: The animation that the loader is
- *     currently loading
- */
-public PixbufAnimation getAnimation()
-{
-	auto __p = gdk_pixbuf_loader_get_animation(gdkPixbufLoader);
-
-	if(__p is null)
+	/**
+	 * Informs a pixbuf loader that no further writes with
+	 * gdk_pixbuf_loader_write() will occur, so that it can free its
+	 * internal loading structures.
+	 *
+	 * This function also tries to parse any data that hasn't yet been parsed;
+	 * if the remaining data is partial or corrupt, an error will be returned.
+	 *
+	 * If `FALSE` is returned, `error` will be set to an error from the
+	 * `GDK_PIXBUF_ERROR` or `G_FILE_ERROR` domains.
+	 *
+	 * If you're just cancelling a load rather than expecting it to be finished,
+	 * passing `NULL` for `error` to ignore it is reasonable.
+	 *
+	 * Remember that this function does not release a reference on the loader, so
+	 * you will need to explicitly release any reference you hold.
+	 *
+	 * Returns: `TRUE` if all image data written so far was successfully
+	 *     passed out via the update_area signal
+	 *
+	 * Throws: GException on failure.
+	 */
+	public bool close()
 	{
-		return null;
+		GError* err = null;
+
+		auto __p = gdk_pixbuf_loader_close(gdkPixbufLoader, &err) != 0;
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		return __p;
 	}
 
-	return ObjectG.getDObject!(PixbufAnimation)(cast(GdkPixbufAnimation*) __p);
-}
-
-/**
- * Obtains the available information about the format of the
- * currently loading image file.
- *
- * Returns: A #GdkPixbufFormat
- *
- * Since: 2.2
- */
-public PixbufFormat getFormat()
-{
-	auto __p = gdk_pixbuf_loader_get_format(gdkPixbufLoader);
-
-	if(__p is null)
+	/**
+	 * Queries the #GdkPixbufAnimation that a pixbuf loader is currently creating.
+	 *
+	 * In general it only makes sense to call this function after the
+	 * [signal@GdkPixbuf.PixbufLoader::area-prepared] signal has been emitted by
+	 * the loader.
+	 *
+	 * If the loader doesn't have enough bytes yet, and hasn't emitted the `area-prepared`
+	 * signal, this function will return `NULL`.
+	 *
+	 * Returns: The animation that the loader is
+	 *     currently loading
+	 */
+	public PixbufAnimation getAnimation()
 	{
-		return null;
+		auto __p = gdk_pixbuf_loader_get_animation(gdkPixbufLoader);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PixbufAnimation)(cast(GdkPixbufAnimation*) __p);
 	}
 
-	return ObjectG.getDObject!(PixbufFormat)(cast(GdkPixbufFormat*) __p);
-}
-
-/**
- * Queries the #GdkPixbuf that a pixbuf loader is currently creating.
- *
- * In general it only makes sense to call this function after the
- * [signal@GdkPixbuf.PixbufLoader::area-prepared] signal has been
- * emitted by the loader; this means that enough data has been read
- * to know the size of the image that will be allocated.
- *
- * If the loader has not received enough data via gdk_pixbuf_loader_write(),
- * then this function returns `NULL`.
- *
- * The returned pixbuf will be the same in all future calls to the loader,
- * so if you want to keep using it, you should acquire a reference to it.
- *
- * Additionally, if the loader is an animation, it will return the "static
- * image" of the animation (see gdk_pixbuf_animation_get_static_image()).
- *
- * Returns: The pixbuf that the loader is
- *     creating
- */
-public Pixbuf getPixbuf()
-{
-	auto __p = gdk_pixbuf_loader_get_pixbuf(gdkPixbufLoader);
-
-	if(__p is null)
+	/**
+	 * Obtains the available information about the format of the
+	 * currently loading image file.
+	 *
+	 * Returns: A #GdkPixbufFormat
+	 *
+	 * Since: 2.2
+	 */
+	public PixbufFormat getFormat()
 	{
-		return null;
+		auto __p = gdk_pixbuf_loader_get_format(gdkPixbufLoader);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PixbufFormat)(cast(GdkPixbufFormat*) __p);
 	}
 
-	return ObjectG.getDObject!(Pixbuf)(cast(GdkPixbuf*) __p);
-}
-
-/**
- * Causes the image to be scaled while it is loaded.
- *
- * The desired image size can be determined relative to the original
- * size of the image by calling gdk_pixbuf_loader_set_size() from a
- * signal handler for the ::size-prepared signal.
- *
- * Attempts to set the desired image size  are ignored after the
- * emission of the ::size-prepared signal.
- *
- * Params:
- *     width = The desired width of the image being loaded.
- *     height = The desired height of the image being loaded.
- *
- * Since: 2.2
- */
-public void setSize(int width, int height)
-{
-	gdk_pixbuf_loader_set_size(gdkPixbufLoader, width, height);
-}
-
-/**
- * Parses the next `count` bytes in the given image buffer.
- *
- * Params:
- *     buf = Pointer to image data.
- *
- * Returns: `TRUE` if the write was successful, or
- *     `FALSE` if the loader cannot parse the buffer
- *
- * Throws: GException on failure.
- */
-public bool write(char[] buf)
-{
-	GError* err = null;
-
-	auto __p = gdk_pixbuf_loader_write(gdkPixbufLoader, buf.ptr, cast(size_t)buf.length, &err) != 0;
-
-	if (err !is null)
+	/**
+	 * Queries the #GdkPixbuf that a pixbuf loader is currently creating.
+	 *
+	 * In general it only makes sense to call this function after the
+	 * [signal@GdkPixbuf.PixbufLoader::area-prepared] signal has been
+	 * emitted by the loader; this means that enough data has been read
+	 * to know the size of the image that will be allocated.
+	 *
+	 * If the loader has not received enough data via gdk_pixbuf_loader_write(),
+	 * then this function returns `NULL`.
+	 *
+	 * The returned pixbuf will be the same in all future calls to the loader,
+	 * so if you want to keep using it, you should acquire a reference to it.
+	 *
+	 * Additionally, if the loader is an animation, it will return the "static
+	 * image" of the animation (see gdk_pixbuf_animation_get_static_image()).
+	 *
+	 * Returns: The pixbuf that the loader is
+	 *     creating
+	 */
+	public Pixbuf getPixbuf()
 	{
-		throw new GException( new ErrorG(err) );
+		auto __p = gdk_pixbuf_loader_get_pixbuf(gdkPixbufLoader);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(Pixbuf)(cast(GdkPixbuf*) __p);
 	}
 
-	return __p;
-}
-
-/**
- * Parses the next contents of the given image buffer.
- *
- * Params:
- *     buffer = The image data as a `GBytes` buffer.
- *
- * Returns: `TRUE` if the write was successful, or `FALSE` if
- *     the loader cannot parse the buffer
- *
- * Since: 2.30
- *
- * Throws: GException on failure.
- */
-public bool writeBytes(Bytes buffer)
-{
-	GError* err = null;
-
-	auto __p = gdk_pixbuf_loader_write_bytes(gdkPixbufLoader, (buffer is null) ? null : buffer.getBytesStruct(), &err) != 0;
-
-	if (err !is null)
+	/**
+	 * Causes the image to be scaled while it is loaded.
+	 *
+	 * The desired image size can be determined relative to the original
+	 * size of the image by calling gdk_pixbuf_loader_set_size() from a
+	 * signal handler for the ::size-prepared signal.
+	 *
+	 * Attempts to set the desired image size  are ignored after the
+	 * emission of the ::size-prepared signal.
+	 *
+	 * Params:
+	 *     width = The desired width of the image being loaded.
+	 *     height = The desired height of the image being loaded.
+	 *
+	 * Since: 2.2
+	 */
+	public void setSize(int width, int height)
 	{
-		throw new GException( new ErrorG(err) );
+		gdk_pixbuf_loader_set_size(gdkPixbufLoader, width, height);
 	}
 
-	return __p;
-}
+	/**
+	 * Parses the next `count` bytes in the given image buffer.
+	 *
+	 * Params:
+	 *     buf = Pointer to image data.
+	 *
+	 * Returns: `TRUE` if the write was successful, or
+	 *     `FALSE` if the loader cannot parse the buffer
+	 *
+	 * Throws: GException on failure.
+	 */
+	public bool write(char[] buf)
+	{
+		GError* err = null;
 
-/**
- * This signal is emitted when the pixbuf loader has allocated the
- * pixbuf in the desired size.
- *
- * After this signal is emitted, applications can call
- * gdk_pixbuf_loader_get_pixbuf() to fetch the partially-loaded
- * pixbuf.
- */
-gulong addOnAreaPrepared(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-{
-	return Signals.connect(this, "area-prepared", dlg, connectFlags ^ ConnectFlags.SWAPPED);
-}
+		auto __p = gdk_pixbuf_loader_write(gdkPixbufLoader, buf.ptr, cast(size_t)buf.length, &err) != 0;
 
-/**
- * This signal is emitted when a significant area of the image being
- * loaded has been updated.
- *
- * Normally it means that a complete scanline has been read in, but
- * it could be a different area as well.
- *
- * Applications can use this signal to know when to repaint
- * areas of an image that is being loaded.
- *
- * Params:
- *     x = X offset of upper-left corner of the updated area.
- *     y = Y offset of upper-left corner of the updated area.
- *     width = Width of updated area.
- *     height = Height of updated area.
- */
-gulong addOnAreaUpdated(void delegate(int, int, int, int, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-{
-	return Signals.connect(this, "area-updated", dlg, connectFlags ^ ConnectFlags.SWAPPED);
-}
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
 
-/**
- * This signal is emitted when gdk_pixbuf_loader_close() is called.
- *
- * It can be used by different parts of an application to receive
- * notification when an image loader is closed by the code that
- * drives it.
- */
-gulong addOnClosed(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-{
-	return Signals.connect(this, "closed", dlg, connectFlags ^ ConnectFlags.SWAPPED);
-}
+		return __p;
+	}
 
-/**
- * This signal is emitted when the pixbuf loader has been fed the
- * initial amount of data that is required to figure out the size
- * of the image that it will create.
- *
- * Applications can call gdk_pixbuf_loader_set_size() in response
- * to this signal to set the desired size to which the image
- * should be scaled.
- *
- * Params:
- *     width = the original width of the image
- *     height = the original height of the image
- */
-gulong addOnSizePrepared(void delegate(int, int, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-{
-	return Signals.connect(this, "size-prepared", dlg, connectFlags ^ ConnectFlags.SWAPPED);
-}
+	/**
+	 * Parses the next contents of the given image buffer.
+	 *
+	 * Params:
+	 *     buffer = The image data as a `GBytes` buffer.
+	 *
+	 * Returns: `TRUE` if the write was successful, or `FALSE` if
+	 *     the loader cannot parse the buffer
+	 *
+	 * Since: 2.30
+	 *
+	 * Throws: GException on failure.
+	 */
+	public bool writeBytes(Bytes buffer)
+	{
+		GError* err = null;
+
+		auto __p = gdk_pixbuf_loader_write_bytes(gdkPixbufLoader, (buffer is null) ? null : buffer.getBytesStruct(), &err) != 0;
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		return __p;
+	}
+
+	/**
+	 * This signal is emitted when the pixbuf loader has allocated the
+	 * pixbuf in the desired size.
+	 *
+	 * After this signal is emitted, applications can call
+	 * gdk_pixbuf_loader_get_pixbuf() to fetch the partially-loaded
+	 * pixbuf.
+	 */
+	gulong addOnAreaPrepared(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "area-prepared", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
+	 * This signal is emitted when a significant area of the image being
+	 * loaded has been updated.
+	 *
+	 * Normally it means that a complete scanline has been read in, but
+	 * it could be a different area as well.
+	 *
+	 * Applications can use this signal to know when to repaint
+	 * areas of an image that is being loaded.
+	 *
+	 * Params:
+	 *     x = X offset of upper-left corner of the updated area.
+	 *     y = Y offset of upper-left corner of the updated area.
+	 *     width = Width of updated area.
+	 *     height = Height of updated area.
+	 */
+	gulong addOnAreaUpdated(void delegate(int, int, int, int, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "area-updated", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
+	 * This signal is emitted when gdk_pixbuf_loader_close() is called.
+	 *
+	 * It can be used by different parts of an application to receive
+	 * notification when an image loader is closed by the code that
+	 * drives it.
+	 */
+	gulong addOnClosed(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "closed", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
+	 * This signal is emitted when the pixbuf loader has been fed the
+	 * initial amount of data that is required to figure out the size
+	 * of the image that it will create.
+	 *
+	 * Applications can call gdk_pixbuf_loader_set_size() in response
+	 * to this signal to set the desired size to which the image
+	 * should be scaled.
+	 *
+	 * Params:
+	 *     width = the original width of the image
+	 *     height = the original height of the image
+	 */
+	gulong addOnSizePrepared(void delegate(int, int, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "size-prepared", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
 }

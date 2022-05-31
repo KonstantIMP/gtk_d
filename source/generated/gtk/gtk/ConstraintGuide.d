@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.ConstraintGuide;
 
 private import glib.ConstructionException;
@@ -88,9 +112,9 @@ public class ConstraintGuide : ObjectG, ConstraintTargetIF
 	 *     width = return location for the maximum width
 	 *     height = return location for the maximum height
 	 */
-	public void getMaxSize(int* width, int* height)
+	public void getMaxSize(out int width, out int height)
 	{
-		gtk_constraint_guide_get_max_size(gtkConstraintGuide, width, height);
+		gtk_constraint_guide_get_max_size(gtkConstraintGuide, &width, &height);
 	}
 
 	/**
@@ -100,9 +124,9 @@ public class ConstraintGuide : ObjectG, ConstraintTargetIF
 	 *     width = return location for the minimum width
 	 *     height = return location for the minimum height
 	 */
-	public void getMinSize(int* width, int* height)
+	public void getMinSize(out int width, out int height)
 	{
-		gtk_constraint_guide_get_min_size(gtkConstraintGuide, width, height);
+		gtk_constraint_guide_get_min_size(gtkConstraintGuide, &width, &height);
 	}
 
 	/**
@@ -122,9 +146,9 @@ public class ConstraintGuide : ObjectG, ConstraintTargetIF
 	 *     width = return location for the natural width
 	 *     height = return location for the natural height
 	 */
-	public void getNatSize(int* width, int* height)
+	public void getNatSize(out int width, out int height)
 	{
-		gtk_constraint_guide_get_nat_size(gtkConstraintGuide, width, height);
+		gtk_constraint_guide_get_nat_size(gtkConstraintGuide, &width, &height);
 	}
 
 	/**

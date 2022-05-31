@@ -1,15 +1,39 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module shumate.c.functions;
 
 import std.stdio;
 import shumate.c.types;
-import linker.loader;
+import linker.Loader;
 
 version (Windows)
-	static immutable LIBRARY_SHUMATE = ["libshumate-0.0-0.dll;shumate-0.0-0.dll;shumate-0.dll"];
+	static immutable LIBRARY_SHUMATE = ["libshumate-1.0-1.dll;shumate-1.0-1.dll;shumate-1.dll"];
 else version (OSX)
-	static immutable LIBRARY_SHUMATE = ["libshumate-0.0.0.dylib"];
+	static immutable LIBRARY_SHUMATE = ["libshumate-1.0.1.dylib"];
 else
-	static immutable LIBRARY_SHUMATE = ["libshumate-0.0.so.0"];
+	static immutable LIBRARY_SHUMATE = ["libshumate-1.0.so.1"];
 
 shared static this()
 {
@@ -51,19 +75,18 @@ shared static this()
 	// shumate.Layer
 
 	Linker.link(shumate_layer_get_type, "shumate_layer_get_type", LIBRARY_SHUMATE);
-	Linker.link(shumate_layer_get_license, "shumate_layer_get_license", LIBRARY_SHUMATE);
-	Linker.link(shumate_layer_get_license_uri, "shumate_layer_get_license_uri", LIBRARY_SHUMATE);
 	Linker.link(shumate_layer_get_viewport, "shumate_layer_get_viewport", LIBRARY_SHUMATE);
 
-	// shumate.License
+	// shumate.LicenseSh
 
 	Linker.link(shumate_license_get_type, "shumate_license_get_type", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_new, "shumate_license_new", LIBRARY_SHUMATE);
+	Linker.link(shumate_license_append_map_source, "shumate_license_append_map_source", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_get_extra_text, "shumate_license_get_extra_text", LIBRARY_SHUMATE);
-	Linker.link(shumate_license_get_map, "shumate_license_get_map", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_get_xalign, "shumate_license_get_xalign", LIBRARY_SHUMATE);
+	Linker.link(shumate_license_prepend_map_source, "shumate_license_prepend_map_source", LIBRARY_SHUMATE);
+	Linker.link(shumate_license_remove_map_source, "shumate_license_remove_map_source", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_set_extra_text, "shumate_license_set_extra_text", LIBRARY_SHUMATE);
-	Linker.link(shumate_license_set_map, "shumate_license_set_map", LIBRARY_SHUMATE);
 	Linker.link(shumate_license_set_xalign, "shumate_license_set_xalign", LIBRARY_SHUMATE);
 
 	// shumate.Location
@@ -82,7 +105,6 @@ shared static this()
 	Linker.link(shumate_map_center_on, "shumate_map_center_on", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_animate_zoom, "shumate_map_get_animate_zoom", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_go_to_duration, "shumate_map_get_go_to_duration", LIBRARY_SHUMATE);
-	Linker.link(shumate_map_get_layers, "shumate_map_get_layers", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_state, "shumate_map_get_state", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_viewport, "shumate_map_get_viewport", LIBRARY_SHUMATE);
 	Linker.link(shumate_map_get_zoom_on_double_click, "shumate_map_get_zoom_on_double_click", LIBRARY_SHUMATE);
@@ -242,6 +264,22 @@ shared static this()
 	Linker.link(shumate_scale_set_unit, "shumate_scale_set_unit", LIBRARY_SHUMATE);
 	Linker.link(shumate_scale_set_viewport, "shumate_scale_set_viewport", LIBRARY_SHUMATE);
 
+	// shumate.SimpleMap
+
+	Linker.link(shumate_simple_map_get_type, "shumate_simple_map_get_type", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_new, "shumate_simple_map_new", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_add_overlay_layer, "shumate_simple_map_add_overlay_layer", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_get_compass, "shumate_simple_map_get_compass", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_get_license, "shumate_simple_map_get_license", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_get_map_source, "shumate_simple_map_get_map_source", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_get_scale, "shumate_simple_map_get_scale", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_get_show_zoom_buttons, "shumate_simple_map_get_show_zoom_buttons", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_get_viewport, "shumate_simple_map_get_viewport", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_insert_overlay_layer, "shumate_simple_map_insert_overlay_layer", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_remove_overlay_layer, "shumate_simple_map_remove_overlay_layer", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_set_map_source, "shumate_simple_map_set_map_source", LIBRARY_SHUMATE);
+	Linker.link(shumate_simple_map_set_show_zoom_buttons, "shumate_simple_map_set_show_zoom_buttons", LIBRARY_SHUMATE);
+
 	// shumate.Tile
 
 	Linker.link(shumate_tile_get_type, "shumate_tile_get_type", LIBRARY_SHUMATE);
@@ -341,19 +379,18 @@ __gshared extern(C)
 	// shumate.Layer
 
 	GType function() c_shumate_layer_get_type;
-	const(char)* function(ShumateLayer* self) c_shumate_layer_get_license;
-	const(char)* function(ShumateLayer* self) c_shumate_layer_get_license_uri;
 	ShumateViewport* function(ShumateLayer* self) c_shumate_layer_get_viewport;
 
-	// shumate.License
+	// shumate.LicenseSh
 
 	GType function() c_shumate_license_get_type;
 	ShumateLicense* function() c_shumate_license_new;
+	void function(ShumateLicense* license, ShumateMapSource* mapSource) c_shumate_license_append_map_source;
 	const(char)* function(ShumateLicense* license) c_shumate_license_get_extra_text;
-	ShumateMap* function(ShumateLicense* self) c_shumate_license_get_map;
 	float function(ShumateLicense* license) c_shumate_license_get_xalign;
+	void function(ShumateLicense* license, ShumateMapSource* mapSource) c_shumate_license_prepend_map_source;
+	void function(ShumateLicense* license, ShumateMapSource* mapSource) c_shumate_license_remove_map_source;
 	void function(ShumateLicense* license, const(char)* text) c_shumate_license_set_extra_text;
-	void function(ShumateLicense* self, ShumateMap* map) c_shumate_license_set_map;
 	void function(ShumateLicense* license, float xalign) c_shumate_license_set_xalign;
 
 	// shumate.Location
@@ -372,7 +409,6 @@ __gshared extern(C)
 	void function(ShumateMap* self, double latitude, double longitude) c_shumate_map_center_on;
 	int function(ShumateMap* self) c_shumate_map_get_animate_zoom;
 	uint function(ShumateMap* self) c_shumate_map_get_go_to_duration;
-	GList* function(ShumateMap* self) c_shumate_map_get_layers;
 	ShumateState function(ShumateMap* self) c_shumate_map_get_state;
 	ShumateViewport* function(ShumateMap* self) c_shumate_map_get_viewport;
 	int function(ShumateMap* self) c_shumate_map_get_zoom_on_double_click;
@@ -532,6 +568,22 @@ __gshared extern(C)
 	void function(ShumateScale* scale, ShumateUnit unit) c_shumate_scale_set_unit;
 	void function(ShumateScale* scale, ShumateViewport* viewport) c_shumate_scale_set_viewport;
 
+	// shumate.SimpleMap
+
+	GType function() c_shumate_simple_map_get_type;
+	ShumateSimpleMap* function() c_shumate_simple_map_new;
+	void function(ShumateSimpleMap* self, ShumateLayer* layer) c_shumate_simple_map_add_overlay_layer;
+	ShumateCompass* function(ShumateSimpleMap* self) c_shumate_simple_map_get_compass;
+	ShumateLicense* function(ShumateSimpleMap* self) c_shumate_simple_map_get_license;
+	ShumateMapSource* function(ShumateSimpleMap* self) c_shumate_simple_map_get_map_source;
+	ShumateScale* function(ShumateSimpleMap* self) c_shumate_simple_map_get_scale;
+	int function(ShumateSimpleMap* self) c_shumate_simple_map_get_show_zoom_buttons;
+	ShumateViewport* function(ShumateSimpleMap* self) c_shumate_simple_map_get_viewport;
+	void function(ShumateSimpleMap* self, ShumateLayer* layer, uint idx) c_shumate_simple_map_insert_overlay_layer;
+	void function(ShumateSimpleMap* self, ShumateLayer* layer) c_shumate_simple_map_remove_overlay_layer;
+	void function(ShumateSimpleMap* self, ShumateMapSource* mapSource) c_shumate_simple_map_set_map_source;
+	void function(ShumateSimpleMap* self, int showZoomButtons) c_shumate_simple_map_set_show_zoom_buttons;
+
 	// shumate.Tile
 
 	GType function() c_shumate_tile_get_type;
@@ -629,19 +681,18 @@ alias c_shumate_file_cache_store_tile_finish shumate_file_cache_store_tile_finis
 // shumate.Layer
 
 alias c_shumate_layer_get_type shumate_layer_get_type;
-alias c_shumate_layer_get_license shumate_layer_get_license;
-alias c_shumate_layer_get_license_uri shumate_layer_get_license_uri;
 alias c_shumate_layer_get_viewport shumate_layer_get_viewport;
 
-// shumate.License
+// shumate.LicenseSh
 
 alias c_shumate_license_get_type shumate_license_get_type;
 alias c_shumate_license_new shumate_license_new;
+alias c_shumate_license_append_map_source shumate_license_append_map_source;
 alias c_shumate_license_get_extra_text shumate_license_get_extra_text;
-alias c_shumate_license_get_map shumate_license_get_map;
 alias c_shumate_license_get_xalign shumate_license_get_xalign;
+alias c_shumate_license_prepend_map_source shumate_license_prepend_map_source;
+alias c_shumate_license_remove_map_source shumate_license_remove_map_source;
 alias c_shumate_license_set_extra_text shumate_license_set_extra_text;
-alias c_shumate_license_set_map shumate_license_set_map;
 alias c_shumate_license_set_xalign shumate_license_set_xalign;
 
 // shumate.Location
@@ -660,7 +711,6 @@ alias c_shumate_map_add_layer shumate_map_add_layer;
 alias c_shumate_map_center_on shumate_map_center_on;
 alias c_shumate_map_get_animate_zoom shumate_map_get_animate_zoom;
 alias c_shumate_map_get_go_to_duration shumate_map_get_go_to_duration;
-alias c_shumate_map_get_layers shumate_map_get_layers;
 alias c_shumate_map_get_state shumate_map_get_state;
 alias c_shumate_map_get_viewport shumate_map_get_viewport;
 alias c_shumate_map_get_zoom_on_double_click shumate_map_get_zoom_on_double_click;
@@ -819,6 +869,22 @@ alias c_shumate_scale_get_viewport shumate_scale_get_viewport;
 alias c_shumate_scale_set_max_width shumate_scale_set_max_width;
 alias c_shumate_scale_set_unit shumate_scale_set_unit;
 alias c_shumate_scale_set_viewport shumate_scale_set_viewport;
+
+// shumate.SimpleMap
+
+alias c_shumate_simple_map_get_type shumate_simple_map_get_type;
+alias c_shumate_simple_map_new shumate_simple_map_new;
+alias c_shumate_simple_map_add_overlay_layer shumate_simple_map_add_overlay_layer;
+alias c_shumate_simple_map_get_compass shumate_simple_map_get_compass;
+alias c_shumate_simple_map_get_license shumate_simple_map_get_license;
+alias c_shumate_simple_map_get_map_source shumate_simple_map_get_map_source;
+alias c_shumate_simple_map_get_scale shumate_simple_map_get_scale;
+alias c_shumate_simple_map_get_show_zoom_buttons shumate_simple_map_get_show_zoom_buttons;
+alias c_shumate_simple_map_get_viewport shumate_simple_map_get_viewport;
+alias c_shumate_simple_map_insert_overlay_layer shumate_simple_map_insert_overlay_layer;
+alias c_shumate_simple_map_remove_overlay_layer shumate_simple_map_remove_overlay_layer;
+alias c_shumate_simple_map_set_map_source shumate_simple_map_set_map_source;
+alias c_shumate_simple_map_set_show_zoom_buttons shumate_simple_map_set_show_zoom_buttons;
 
 // shumate.Tile
 

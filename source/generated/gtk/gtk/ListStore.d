@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.ListStore;
 
 private import glib.ConstructionException;
@@ -20,28 +44,29 @@ public  import gtk.c.types;
 
 
 /**
- * A list-like data structure that can be used with the GtkTreeView
+ * A list-like data structure that can be used with the [class@Gtk.TreeView].
  * 
  * The `GtkListStore` object is a list model for use with a `GtkTreeView`
  * widget.  It implements the `GtkTreeModel` interface, and consequentialy,
  * can use all of the methods available there.  It also implements the
  * `GtkTreeSortable` interface so it can be sorted by the view.
  * Finally, it also implements the tree
- * [drag and drop][gtk4-GtkTreeView-drag-and-drop]
+ * [drag](iface.TreeDragSource.html) and [drop](iface.TreeDragDest.html)
  * interfaces.
  * 
- * The `GtkListStore` can accept most GObject types as a column type, though
+ * The `GtkListStore` can accept most `GType`s as a column type, though
  * it can’t accept all custom types.  Internally, it will keep a copy of
  * data passed in (such as a string or a boxed pointer).  Columns that
  * accept `GObject`s are handled a little differently.  The
  * `GtkListStore` will keep a reference to the object instead of copying the
  * value.  As a result, if the object is modified, it is up to the
- * application writer to call gtk_tree_model_row_changed() to emit the
- * `GtkTreeModel`::row_changed signal.  This most commonly affects lists with
- * `GdkTexture`s stored.
+ * application writer to call [method@Gtk.TreeModel.row_changed] to emit the
+ * [signal@Gtk.TreeModel::row_changed] signal. This most commonly affects lists
+ * with [class@Gdk.Texture]s stored.
  * 
  * An example for creating a simple list store:
- * |[<!-- language="C" -->
+ * 
+ * ```c
  * enum {
  * COLUMN_STRING,
  * COLUMN_INT,
@@ -89,14 +114,14 @@ public  import gtk.c.types;
  * COLUMN_BOOLEAN, TRUE,
  * -1);
  * }
- * ]|
+ * ```
  * 
  * # Performance Considerations
  * 
  * Internally, the `GtkListStore` was originally implemented with a linked list
  * with a tail pointer.  As a result, it was fast at data insertion and deletion,
  * and not fast at random data access.  The `GtkListStore` sets the
- * %GTK_TREE_MODEL_ITERS_PERSIST flag, which means that `GtkTreeIter`s can be
+ * `GTK_TREE_MODEL_ITERS_PERSIST` flag, which means that `GtkTreeIter`s can be
  * cached while the row exists.  Thus, if access to a particular row is needed
  * often and your code is expected to run on older versions of GTK, it is worth
  * keeping the iter around.
@@ -108,9 +133,9 @@ public  import gtk.c.types;
  * are atomic, in the sense that the row is being appended to the store and the
  * values filled in in a single operation with regard to `GtkTreeModel` signaling.
  * In contrast, using e.g. gtk_list_store_append() and then gtk_list_store_set()
- * will first create a row, which triggers the `GtkTreeModel`::row-inserted signal
+ * will first create a row, which triggers the `GtkTreeModel::row-inserted` signal
  * on `GtkListStore`. The row, however, is still empty, and any signal handler
- * connecting to `GtkTreeModel`::row-inserted on this particular store should be prepared
+ * connecting to `GtkTreeModel::row-inserted` on this particular store should be prepared
  * for the situation that the row might be empty. This is especially important
  * if you are wrapping the `GtkListStore` inside a `GtkTreeModel`Filter and are
  * using a `GtkTreeModel`FilterVisibleFunc. Using any of the non-atomic operations
@@ -120,15 +145,15 @@ public  import gtk.c.types;
  * 
  * # GtkListStore as GtkBuildable
  * 
- * The GtkListStore implementation of the GtkBuildable interface allows
- * to specify the model columns with a <columns> element that may contain
- * multiple <column> elements, each specifying one model column. The “type”
+ * The GtkListStore implementation of the [iface@Gtk.Buildable] interface allows
+ * to specify the model columns with a `<columns>` element that may contain
+ * multiple `<column>` elements, each specifying one model column. The “type”
  * attribute specifies the data type for the column.
  * 
  * Additionally, it is possible to specify content for the list store
- * in the UI definition, with the <data> element. It can contain multiple
- * <row> elements, each specifying to content for one row of the list model.
- * Inside a <row>, the <col> elements specify the content for individual cells.
+ * in the UI definition, with the `<data>` element. It can contain multiple
+ * `<row>` elements, each specifying to content for one row of the list model.
+ * Inside a `<row>`, the `<col>` elements specify the content for individual cells.
  * 
  * Note that it is probably more common to define your models in the code,
  * and one might consider it a layering violation to specify the content of
@@ -136,7 +161,8 @@ public  import gtk.c.types;
  * is to separate the two, as far as possible.
  * 
  * An example of a UI Definition fragment for a list store:
- * |[<!-- language="C" -->
+ * 
+ * ```xml
  * <object class="GtkListStore">
  * <columns>
  * <column type="gchararray"/>
@@ -156,7 +182,7 @@ public  import gtk.c.types;
  * </row>
  * </data>
  * </object>
- * ]|
+ * ```
  */
 public class ListStore : ObjectG, BuildableIF, TreeDragDestIF, TreeDragSourceIF, TreeModelIF, TreeSortableIF
 {
@@ -205,14 +231,16 @@ public class ListStore : ObjectG, BuildableIF, TreeDragDestIF, TreeDragSourceIF,
 	 * Creates a top level iteractor.
 	 * I don't think lists have but the top level iteractor
 	 */
-	TreeIter createIter() {
+	TreeIter createIter()
+	{
 		GtkTreeIter* iter = new GtkTreeIter;
 		gtk_list_store_append(getListStoreStruct(), iter);
 		return new TreeIter(iter);
 	}
 
 	/** */
-	void setValue(TYPE)(TreeIter iter, int column, TYPE value) {
+	void setValue(TYPE)(TreeIter iter, int column, TYPE value)
+	{
 		Value v = new Value(value);
 		gtk_list_store_set_value(gtkListStore, iter.getTreeIterStruct(), column, v.getValueStruct());
 	}

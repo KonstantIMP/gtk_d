@@ -1,10 +1,34 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgGlyphItem;
 
 private import glib.ListSG;
 private import glib.MemorySlice;
 private import glib.Str;
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import pango.PgAttributeList;
 private import pango.PgGlyphString;
 private import pango.PgItem;
@@ -82,6 +106,51 @@ public final class PgGlyphItem
 	public @property void glyphs(PgGlyphString value)
 	{
 		pangoGlyphItem.glyphs = value.getPgGlyphStringStruct();
+	}
+
+	/**
+	 * shift of the baseline, relative to the baseline
+	 * of the containing line. Positive values shift upwards
+	 */
+	public @property int yOffset()
+	{
+		return pangoGlyphItem.yOffset;
+	}
+
+	/** Ditto */
+	public @property void yOffset(int value)
+	{
+		pangoGlyphItem.yOffset = value;
+	}
+
+	/**
+	 * horizontal displacement to apply before the
+	 * glyph item. Positive values shift right
+	 */
+	public @property int startXOffset()
+	{
+		return pangoGlyphItem.startXOffset;
+	}
+
+	/** Ditto */
+	public @property void startXOffset(int value)
+	{
+		pangoGlyphItem.startXOffset = value;
+	}
+
+	/**
+	 * horizontal displacement to apply after th
+	 * glyph item. Positive values shift right
+	 */
+	public @property int endXOffset()
+	{
+		return pangoGlyphItem.endXOffset;
+	}
+
+	/** Ditto */
+	public @property void endXOffset(int value)
+	{
+		pangoGlyphItem.endXOffset = value;
 	}
 
 	/** */

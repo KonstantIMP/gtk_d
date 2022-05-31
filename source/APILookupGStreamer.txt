@@ -2,10 +2,9 @@
 # This file is part of gtkD.
 #
 # gtkD is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License
-# as published by the Free Software Foundation; either version 3
-# of the License, or (at your option) any later version, with
-# some exceptions, please read the COPYING file.
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2.1 of the License, or
+# (at your option) any later version.
 #
 # gtkD is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,9 +13,14 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with gtkD; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
+#############################################
+### Definitions for wrapping Gtk+ ###########
+#############################################
+
+# must start with wrap
 wrap: gstreamer
 file: Gst-1.0.gir
 
@@ -26,7 +30,8 @@ addEnums: start
 	* Available details for pipeline graphs produced by GST_DEBUG_BIN_TO_DOT_FILE()
 	* and GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS().
 	*/
-	public enum GstDebugGraphDetails : long {
+	public enum GstDebugGraphDetails : long
+	{
 		/**
 		* show caps-name on edges
 		*/
@@ -65,7 +70,8 @@ addEnums: stop
 struct: Bin
 code: start
 	/** */
-	public this(Element elem) {
+	public this(Element elem)
+	{
 		super( elem.getElementStruct(), true );
 		this.gstBin = cast(GstBin*)elem.getElementStruct();
 	}
@@ -75,7 +81,8 @@ code: start
 	 * This function is equivalent to calling add() for each member of the list.
 	 * The return value of each add() is ignored.
 	 */
-	public void addMany( Element[] elems... ) {
+	public void addMany( Element[] elems... )
+	{
 		foreach( e; elems ) add( e );
 	}
 
@@ -83,7 +90,8 @@ code: start
 	 * Remove a list of elements from a bin.
 	 * This function is equivalent to calling remove() with each member of the list.
 	 */
-	public void removeMany( Element[] elems... ) {
+	public void removeMany( Element[] elems... )
+	{
 		foreach( e; elems ) remove( e );
 	}
 code: end
@@ -106,14 +114,16 @@ code: start
 	 * Returns:
 	 *  The event source id.
 	 */
-	public uint addWatch( bool delegate(Message) dlg ) {
+	public uint addWatch( bool delegate(Message) dlg )
+	{
 		onWatchListener = dlg;
 		return gst_bus_add_watch(gstBus, cast(GstBusFunc)&watchCallBack, cast(void*)this);
 	}
 
 	bool delegate(Message) onWatchListener;
 
-	extern(C) static int watchCallBack(GstBus* bus, GstMessage* msg, Bus bus_d ) {
+	extern(C) static int watchCallBack(GstBus* bus, GstMessage* msg, Bus bus_d )//gpointer data)
+	{
 		Message msg_d = new Message( msg );
 
 		return bus_d.onWatchListener( msg_d );
@@ -132,14 +142,16 @@ code: start
 	  * Params:
 	  *  dlg = The handler function to install
 	  */
-	public void setSyncHandler( GstBusSyncReply delegate(Message) dlg ) {
+	public void setSyncHandler( GstBusSyncReply delegate(Message) dlg )
+	{
 		onSyncHandlerListener = dlg;
 		gst_bus_set_sync_handler(gstBus, cast(GstBusSyncHandler)&syncHandlerCallBack, cast(void*)this, null);
 	}
 	
 	GstBusSyncReply delegate(Message) onSyncHandlerListener;
 	
-	extern(C) static GstBusSyncReply syncHandlerCallBack(GstBus* bus, GstMessage* msg, Bus bus_d) {
+	extern(C) static GstBusSyncReply syncHandlerCallBack(GstBus* bus, GstMessage* msg, Bus bus_d)
+	{
 		Message msg_d = new Message( msg );
 		
 		return bus_d.onSyncHandlerListener( msg_d );
@@ -155,11 +167,13 @@ code: start
 	 * Returns:
 	 *  the new GstCaps
 	 */
-	public static Caps newAny() {
+	public static Caps newAny()
+	{
 		// GstCaps* gst_caps_new_any (void);
 		auto p = cast(GstCaps*)gst_caps_new_any();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_caps_new_any");
 		}
 
@@ -183,10 +197,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static newAny() {
+	public static newAny()
+	{
 		auto p = gst_caps_features_new_any();
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_any");
 		}
 		
@@ -221,17 +237,21 @@ code: start
 	 *     utc  = If true use utc else use the local timezone.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (bool utc) {
+	public this (bool utc)
+	{
 		GstDateTime* p;
 
-		if ( utc ) {
+		if ( utc )
+		{
 			p = gst_date_time_new_now_utc();
 		}
-		else {
+		else
+		{
 			p = gst_date_time_new_now_local_time();
 		}
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_date_time_new_now_local_time()");
 		}
 		this(p); //, true);
@@ -252,7 +272,8 @@ code: start
 	 * Returns:
 	 *  The current position in nanoseconds - GstFormat.TIME.
 	 */
-	public long queryPosition() {
+	public long queryPosition()
+	{
 		GstFormat form = GstFormat.TIME;
 		long cur_pos;
 		queryPosition( form, cur_pos );
@@ -265,7 +286,8 @@ code: start
 	 * Returns:
 	 *  The duration in nanoseconds - GstFormat.TIME.
 	 */
-	public long queryDuration() {
+	public long queryDuration()
+	{
 		GstFormat form = GstFormat.TIME;
 		long cur_dur;
 		queryDuration( form, cur_dur );
@@ -275,7 +297,8 @@ code: start
 	/**
 	 *	This set's the filename for a filesrc element.
 	 */
-	public void location( string set ) {
+	public void location( string set )
+	{
 		//g_object_set( G_OBJECT(getElementStruct()), "location", set, NULL);
 		setProperty("location", set);
 	}
@@ -283,7 +306,8 @@ code: start
 	/**
 	 * Set the caps property of an Element.
 	 */
-	void caps( Caps cp ) {
+	void caps( Caps cp )
+	{
 		g_object_set( getElementStruct(), Str.toStringz("caps"), cp.getCapsStruct(), null );
 	}
 
@@ -291,7 +315,8 @@ code: start
 	* For your convenience in gstreamerD: you can seek to the
 	* position of the pipeline measured in time_nanoseconds.
 	*/
-	public int seek( long time_nanoseconds ) {
+	public int seek( long time_nanoseconds ) //gint64
+	{
 		return seek( 1.0, GstFormat.TIME, GstSeekFlags.FLUSH,
 								GstSeekType.SET, time_nanoseconds,
 								GstSeekType.NONE, GST_CLOCK_TIME_NONE);
@@ -300,12 +325,14 @@ code: start
 	/**
 	* Get's all the pads from an element in a Pad[].
 	*/
-	public Pad[] pads() {
+	public Pad[] pads()
+	{
 		Pad[] result;
 		GValue* pad = g_value_init(new GValue(), Pad.getType());
 		GstIterator* iter = gst_element_iterate_pads(gstElement);
 
-		while ( gst_iterator_next(iter, pad) == GstIteratorResult.OK ) {
+		while ( gst_iterator_next(iter, pad) == GstIteratorResult.OK )
+		{
 			result ~= ObjectG.getDObject!(Pad)(cast(GstPad*)g_value_get_object(pad));
 			g_value_reset(pad);
 		}
@@ -327,11 +354,13 @@ code: start
 	 * Returns:
 	 *  new GstElement or NULL if unable to create element
 	 */
-	public static Element make( string factoryname ) {
+	public static Element make( string factoryname )
+	{
 		// GstElement* gst_element_factory_make (const gchar *factoryname,  const gchar *name);
 		auto p = gst_element_factory_make(Str.toStringz(factoryname), null );
 
-		if(p is null) {
+		if(p is null)
+		{
 			return null;
 		}
 
@@ -357,11 +386,13 @@ code: start
 	 * Returns:
 	 *  The new EOS event.
 	 */
-	public static Event newEOS() {
+	public static Event newEOS()
+	{
 		// GstEvent* gst_event_new_eos (void);
 		auto p = gst_event_new_eos();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_event_new_eos");
 		}
 
@@ -379,11 +410,13 @@ code: start
 	 * Returns:
 	 *  A new flush start event.
 	 */
-	public static Event newFlushStart() {
+	public static Event newFlushStart()
+	{
 		// GstEvent* gst_event_new_flush_start (void);
 		auto p = gst_event_new_flush_start();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_event_new_flush_start");
 		}
 
@@ -395,11 +428,13 @@ code: start
 	 * TOC select event is to start playback based on the TOC's entry with
 	 * the given uid.
 	 */
-	public static Event newTocSelect(string uid) {
+	public static Event newTocSelect(string uid)
+	{
 		// GstEvent* gst_event_new_toc_select (const gchar *uid);
 		auto p = gst_event_new_toc_select(cast(char*)uid.ptr);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_event_new_toc_select");
 		}
 
@@ -438,14 +473,16 @@ code: start
 	/**
 	* Get the type of the message.
 	*/
-	public GstMessageType type() {
+	public GstMessageType type()
+	{
 		return cast(GstMessageType)getMessageStruct().type;
 	}
 	
 	/**
 	 * Get the src (the element that originated the message) of the message.
 	 */
-	public ObjectGst src() {
+	public ObjectGst src()
+	{
 		return new ObjectGst( cast(GstObject*)getMessageStruct().src );
 	}
 
@@ -462,11 +499,13 @@ code: start
 	 * Returns:
 	 *  The new element message.
 	 */
-	public static Message newElement(ObjectGst src, Structure structure) {
+	public static Message newElement(ObjectGst src, Structure structure)
+	{
 		// GstMessage* gst_message_new_element (GstObject *src,  GstStructure *structure);
 		auto p = gst_message_new_element((src is null) ? null : src.getObjectGstStruct(), (structure is null) ? null : structure.getStructureStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_element");
 		}
 
@@ -483,11 +522,13 @@ code: start
 	 * Returns:
 	 *  The new new clock message.
 	 */
-	public static Message newNewClock(ObjectGst src, Clock clock) {
+	public static Message newNewClock(ObjectGst src, Clock clock)
+	{
 		// GstMessage* gst_message_new_new_clock (GstObject *src,  GstClock *clock);
 		auto p = gst_message_new_new_clock((src is null) ? null : src.getObjectGstStruct(), (clock is null) ? null : clock.getClockStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_new_clock");
 		}
 
@@ -507,11 +548,13 @@ code: start
 	 * Returns:
 	 *  The new segment done message.
 	 */
-	public static Message newSegmentDone(ObjectGst src, GstFormat format, long position) {
+	public static Message newSegmentDone(ObjectGst src, GstFormat format, long position)
+	{
 		// GstMessage* gst_message_new_segment_done (GstObject *src,  GstFormat format,  gint64 position);
 		auto p = gst_message_new_segment_done((src is null) ? null : src.getObjectGstStruct(), format, position);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_segment_done");
 		}
 
@@ -531,11 +574,13 @@ code: start
 	 * Returns:
 	 *  The new segment start message.
 	 */
-	public static Message newSegmentStart(ObjectGst src, GstFormat format, long position) {
+	public static Message newSegmentStart(ObjectGst src, GstFormat format, long position)
+	{
 		// GstMessage* gst_message_new_segment_start (GstObject *src,  GstFormat format,  gint64 position);
 		auto p = gst_message_new_segment_start((src is null) ? null : src.getObjectGstStruct(), format, position);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_segment_start");
 		}
 
@@ -553,11 +598,13 @@ code: start
 	 * Returns:
 	 *  The new warning message.
 	 */
-	public static Message newWarning(ObjectGst src, ErrorG error, string dbug) {
+	public static Message newWarning(ObjectGst src, ErrorG error, string dbug)
+	{
 		// GstMessage* gst_message_new_warning (GstObject *src,  GError *error,  gchar *debug);
 		auto p = gst_message_new_warning((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbug));
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_warning");
 		}
 
@@ -574,11 +621,13 @@ code: start
 	 * Returns:
 	 *  The new state dirty message.
 	 */
-	public static Message newStateDirty(ObjectGst src) {
+	public static Message newStateDirty(ObjectGst src)
+	{
 		// GstMessage* gst_message_new_state_dirty (GstObject *src);
 		auto p = gst_message_new_state_dirty((src is null) ? null : src.getObjectGstStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_state_dirty");
 		}
 
@@ -595,11 +644,13 @@ code: start
 	 * Returns:
 	 *  The new eos message.
 	 */
-	public static Message newEOS(ObjectGst src) {
+	public static Message newEOS(ObjectGst src)
+	{
 		// GstMessage* gst_message_new_eos (GstObject *src);
 		auto p = gst_message_new_eos((src is null) ? null : src.getObjectGstStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_eos");
 		}
 
@@ -619,11 +670,13 @@ code: start
 	 * Returns:
 	 *  The new error message.
 	 */
-	public static Message newError(ObjectGst src, ErrorG error, string dbug) {
+	public static Message newError(ObjectGst src, ErrorG error, string dbug)
+	{
 		// GstMessage* gst_message_new_error (GstObject *src,  GError *error,  gchar *debug);
 		auto p = gst_message_new_error((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbug));
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_error");
 		}
 
@@ -642,11 +695,13 @@ code: start
 	 * Returns:
 	 *  The new info message.
 	 */
-	public static Message newInfo(ObjectGst src, ErrorG error, string dbug) {
+	public static Message newInfo(ObjectGst src, ErrorG error, string dbug)
+	{
 		// GstMessage* gst_message_new_info (GstObject *src,  GError *error,  gchar *debug);
 		auto p = gst_message_new_info((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbug));
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_info");
 		}
 
@@ -661,11 +716,13 @@ code: start
 	 * Returns:
 	 * The new latency message. MT safe.
 	 */
-	public static Message newLatency(ObjectGst src) {
+	public static Message newLatency(ObjectGst src)
+	{
 		// GstMessage* gst_message_new_latency (GstObject *src);
 		auto p = gst_message_new_latency((src is null) ? null : src.getObjectGstStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_latency");
 		}
 
@@ -684,11 +741,13 @@ code: start
 	 *    src = The object originating the message. [transfer none]
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newDurationChanged(ObjectGst src) {
+	public static Message newDurationChanged(ObjectGst src)
+	{
 		// GstMessage * gst_message_new_duration_changed (GstObject *src);
 		auto p = gst_message_new_duration_changed((src is null) ? null : src.getObjectGstStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_duration_changed((src is null) ? null : src.getObjectGstStruct())");
 		}
 
@@ -701,10 +760,12 @@ code: start
 	 * src = The object originating the message. [transfer none]
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newAsyncStart(ObjectGst src) {
+	public static Message newAsyncStart(ObjectGst src)
+	{
 		// GstMessage * gst_message_new_async_start (GstObject *src);
 		auto p = gst_message_new_async_start((src is null) ? null : src.getObjectGstStruct());
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_async_start((src is null) ? null : src.getObjectGstStruct())");
 		}
 		return new Message(cast(GstMessage*)p); //, true);
@@ -721,10 +782,12 @@ code: start
 	 * runningTime = the desired running_time
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newAsyncDone(ObjectGst src, GstClockTime runningTime) {
+	public static Message newAsyncDone(ObjectGst src, GstClockTime runningTime)
+	{
 		// GstMessage * gst_message_new_async_done (GstObject *src,  GstClockTime running_time);
 		auto p = gst_message_new_async_done((src is null) ? null : src.getObjectGstStruct(), runningTime);
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_message_new_async_done((src is null) ? null : src.getObjectGstStruct(), runningTime)");
 		}
 		return new Message(cast(GstMessage*)p); //, true);
@@ -745,10 +808,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newDeviceAdded(ObjectGst src, Device device) {
+	public static Message newDeviceAdded(ObjectGst src, Device device)
+	{
 		auto p = gst_message_new_device_added((src is null) ? null : src.getObjectGstStruct(), (device is null) ? null : device.getDeviceStruct());
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_device_added");
 		}
 		
@@ -770,10 +835,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public  static Message newDeviceRemoved(ObjectGst src, Device device) {
+	public  static Message newDeviceRemoved(ObjectGst src, Device device)
+	{
 		auto p = gst_message_new_device_removed((src is null) ? null : src.getObjectGstStruct(), (device is null) ? null : device.getDeviceStruct());
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_device_removed");
 		}
 		
@@ -798,10 +865,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newErrorWithDetails(ObjectGst src, ErrorG error, string dbg, Structure details) {
+	public static Message newErrorWithDetails(ObjectGst src, ErrorG error, string dbg, Structure details)
+	{
 		auto p = gst_message_new_error_with_details((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbg), (details is null) ? null : details.getStructureStruct());
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_error_with_details");
 		}
 		
@@ -824,10 +893,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newInfoWithDetails(ObjectGst src, ErrorG error, string dbg, Structure details) {
+	public static Message newInfoWithDetails(ObjectGst src, ErrorG error, string dbg, Structure details)
+	{
 		auto p = gst_message_new_info_with_details((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbg), (details is null) ? null : details.getStructureStruct());
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_info_with_details");
 		}
 		
@@ -850,10 +921,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newWarningWithDetails(ObjectGst src, ErrorG error, string dbg, Structure details) {
+	public static Message newWarningWithDetails(ObjectGst src, ErrorG error, string dbg, Structure details)
+	{
 		auto p = gst_message_new_warning_with_details((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbg), (details is null) ? null : details.getStructureStruct());
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_warning_with_details");
 		}
 		
@@ -874,10 +947,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newStreamCollection(ObjectGst src, StreamCollection collection) {
+	public static Message newStreamCollection(ObjectGst src, StreamCollection collection)
+	{
 		auto p = gst_message_new_stream_collection((src is null) ? null : src.getObjectGstStruct(), (collection is null) ? null : collection.getStreamCollectionStruct());
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_stream_collection");
 		}
 		
@@ -906,10 +981,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Message newStreamsSelected(ObjectGst src, StreamCollection collection) {
+	public static Message newStreamsSelected(ObjectGst src, StreamCollection collection)
+	{
 		auto p = gst_message_new_streams_selected((src is null) ? null : src.getObjectGstStruct(), (collection is null) ? null : collection.getStreamCollectionStruct());
 		
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_streams_selected");
 		}
 		
@@ -925,7 +1002,8 @@ code: start
 	 * Returns:
 	 *  The current position in nanoseconds - GstFormat.TIME.
 	 */
-	public long queryPosition() {
+	public long queryPosition()
+	{
 		long cur_pos;
 		queryPosition( GstFormat.TIME, cur_pos );
 		return cur_pos;
@@ -937,7 +1015,8 @@ code: start
 	 * Returns:
 	 *  The duration in nanoseconds - GstFormat.TIME.
 	 */
-	public long queryDuration() {
+	public long queryDuration()
+	{
 		long cur_dur;
 		queryDuration( GstFormat.TIME, cur_dur );
 		return cur_dur;
@@ -977,9 +1056,11 @@ code: start
 	 * flags = flags for the property specified
 	 * Returns: a newly created parameter specification. [transfer full]
 	 */
-	public this(string name, string nick, string blurb, int minNum, int minDenom, int maxNum, int maxDenom, int defaultNum, int defaultDenom, GParamFlags flags) {
+	public this(string name, string nick, string blurb, int minNum, int minDenom, int maxNum, int maxDenom, int defaultNum, int defaultDenom, GParamFlags flags)
+	{
 		auto p = gst_param_spec_fraction(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minNum, minDenom, maxNum, maxDenom, defaultNum, defaultDenom, flags);
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_param_spec_fraction");
 		}
 		this(cast(GstParamSpecFraction*) p);
@@ -1012,10 +1093,12 @@ code: start
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newPosition(GstFormat format) {
+	public static Query newPosition(GstFormat format)
+	{
 		auto p = gst_query_new_position(format);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_position");
 		}
 
@@ -1031,10 +1114,12 @@ code: start
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newDuration(GstFormat format) {
+	public static Query newDuration(GstFormat format)
+	{
 		auto p = gst_query_new_duration(format);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_duration");
 		}
 
@@ -1049,10 +1134,12 @@ code: start
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newSeeking(GstFormat format) {
+	public static Query newSeeking(GstFormat format)
+	{
 		auto p = gst_query_new_seeking(format);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_seeking");
 		}
 
@@ -1065,10 +1152,12 @@ code: start
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newFormats() {
+	public static Query newFormats()
+	{
 		auto p = gst_query_new_formats();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_formats");
 		}
 
@@ -1084,10 +1173,12 @@ code: start
 	 * Returns:
 	 *  a GstQuery
 	 */
-	public static Query newSegment(GstFormat format) {
+	public static Query newSegment(GstFormat format)
+	{
 		auto p = gst_query_new_segment(format);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_segment");
 		}
 
@@ -1101,10 +1192,12 @@ code: start
 	 * pipeline.
 	 * Free-function: gst_query_unref
 	 */
-	public static Query newLatency() {
+	public static Query newLatency()
+	{
 		auto p = gst_query_new_latency();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_latency()");
 		}
 
@@ -1118,10 +1211,12 @@ code: start
 	 * Free-function: gst_query_unref
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Query newUri() {
+	public static Query newUri()
+	{
 		auto p = gst_query_new_uri();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_uri()");
 		}
 
@@ -1133,10 +1228,12 @@ code: start
 	 * Free-function: gst_query_unref
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Query newScheduling() {
+	public static Query newScheduling()
+	{
 		auto p = gst_query_new_scheduling();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_scheduling()");
 		}
 
@@ -1148,10 +1245,12 @@ code: start
 	 * Free-function: gst_query_unref
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Query newDrain() {
+	public static Query newDrain()
+	{
 		auto p = gst_query_new_drain();
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_drain()");
 		}
 
@@ -1165,10 +1264,12 @@ code: start
 	 * caps = a fixed GstCaps
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Query newAcceptCaps(Caps caps) {
+	public static Query newAcceptCaps(Caps caps)
+	{
 		auto p = gst_query_new_accept_caps((caps is null) ? null : caps.getCapsStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_query_new_accept_caps((caps is null) ? null : caps.getCapsStruct())");
 		}
 
@@ -1182,10 +1283,12 @@ inout: do_seek update
 struct: Structure
 noCode: new_from_string
 code: start
-	public static Structure fromString(string name) {
+	public static Structure fromString(string name)
+	{
 		auto p = gst_structure_new_from_string(Str.toStringz(name));
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by gst_structure_new_from_string(Str.toStringz(name))");
 		}
 
@@ -1207,7 +1310,8 @@ code: start
 	 *     size = The number of bytes to return
 	 * Returns: the requested data, or NULL if that data is not available.
 	 */
-	public ubyte[] peek(long offset, uint size) {
+	public ubyte[] peek(long offset, uint size)
+	{
 		ubyte* buff = gst_type_find_peek(gstTypeFind, offset, size);
 
 		return buff[0 .. size];

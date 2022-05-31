@@ -1,8 +1,32 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.c.functions;
 
 import std.stdio;
 import sourceview.c.types;
-import linker.loader;
+import linker.Loader;
 
 version (Windows)
 	static immutable LIBRARY_SOURCEVIEW = ["libgtksourceview-5-0.dll;gtksourceview-5-5.0.dll;gtksourceview-5.dll"];
@@ -201,7 +225,6 @@ shared static this()
 	Linker.link(gtk_source_gutter_lines_get_last, "gtk_source_gutter_lines_get_last", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_gutter_lines_get_line_yrange, "gtk_source_gutter_lines_get_line_yrange", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_gutter_lines_get_view, "gtk_source_gutter_lines_get_view", LIBRARY_SOURCEVIEW);
-	Linker.link(gtk_source_gutter_lines_get_yrange, "gtk_source_gutter_lines_get_yrange", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_gutter_lines_has_class, "gtk_source_gutter_lines_has_class", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_gutter_lines_has_qclass, "gtk_source_gutter_lines_has_qclass", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_gutter_lines_is_cursor, "gtk_source_gutter_lines_is_cursor", LIBRARY_SOURCEVIEW);
@@ -305,10 +328,12 @@ shared static this()
 	Linker.link(gtk_source_language_manager_get_type, "gtk_source_language_manager_get_type", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_language_manager_new, "gtk_source_language_manager_new", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_language_manager_get_default, "gtk_source_language_manager_get_default", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_language_manager_append_search_path, "gtk_source_language_manager_append_search_path", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_language_manager_get_language, "gtk_source_language_manager_get_language", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_language_manager_get_language_ids, "gtk_source_language_manager_get_language_ids", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_language_manager_get_search_path, "gtk_source_language_manager_get_search_path", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_language_manager_guess_language, "gtk_source_language_manager_guess_language", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_language_manager_prepend_search_path, "gtk_source_language_manager_prepend_search_path", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_language_manager_set_search_path, "gtk_source_language_manager_set_search_path", LIBRARY_SOURCEVIEW);
 
 	// sourceview.Map
@@ -528,6 +553,7 @@ shared static this()
 	Linker.link(gtk_source_style_scheme_get_description, "gtk_source_style_scheme_get_description", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_style_scheme_get_filename, "gtk_source_style_scheme_get_filename", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_style_scheme_get_id, "gtk_source_style_scheme_get_id", LIBRARY_SOURCEVIEW);
+	Linker.link(gtk_source_style_scheme_get_metadata, "gtk_source_style_scheme_get_metadata", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_style_scheme_get_name, "gtk_source_style_scheme_get_name", LIBRARY_SOURCEVIEW);
 	Linker.link(gtk_source_style_scheme_get_style, "gtk_source_style_scheme_get_style", LIBRARY_SOURCEVIEW);
 
@@ -819,7 +845,6 @@ __gshared extern(C)
 	uint function(GtkSourceGutterLines* lines) c_gtk_source_gutter_lines_get_last;
 	void function(GtkSourceGutterLines* lines, uint line, GtkSourceGutterRendererAlignmentMode mode, int* y, int* height) c_gtk_source_gutter_lines_get_line_yrange;
 	GtkTextView* function(GtkSourceGutterLines* lines) c_gtk_source_gutter_lines_get_view;
-	void function(GtkSourceGutterLines* lines, uint line, uint* lineY, uint* lineHeight) c_gtk_source_gutter_lines_get_yrange;
 	int function(GtkSourceGutterLines* lines, uint line, const(char)* name) c_gtk_source_gutter_lines_has_class;
 	int function(GtkSourceGutterLines* lines, uint line, GQuark qname) c_gtk_source_gutter_lines_has_qclass;
 	int function(GtkSourceGutterLines* lines, uint line) c_gtk_source_gutter_lines_is_cursor;
@@ -923,10 +948,12 @@ __gshared extern(C)
 	GType function() c_gtk_source_language_manager_get_type;
 	GtkSourceLanguageManager* function() c_gtk_source_language_manager_new;
 	GtkSourceLanguageManager* function() c_gtk_source_language_manager_get_default;
+	void function(GtkSourceLanguageManager* lm, const(char)* path) c_gtk_source_language_manager_append_search_path;
 	GtkSourceLanguage* function(GtkSourceLanguageManager* lm, const(char)* id) c_gtk_source_language_manager_get_language;
 	char** function(GtkSourceLanguageManager* lm) c_gtk_source_language_manager_get_language_ids;
 	char** function(GtkSourceLanguageManager* lm) c_gtk_source_language_manager_get_search_path;
-	GtkSourceLanguage* function(GtkSourceLanguageManager* lm, const(char)* filename, const(char)* contentType) c_gtk_source_language_manager_guess_language;
+	GtkSourceLanguage* function(GtkSourceLanguageManager* lm, char* filename, const(char)* contentType) c_gtk_source_language_manager_guess_language;
+	void function(GtkSourceLanguageManager* lm, const(char)* path) c_gtk_source_language_manager_prepend_search_path;
 	void function(GtkSourceLanguageManager* lm, char** dirs) c_gtk_source_language_manager_set_search_path;
 
 	// sourceview.Map
@@ -1146,6 +1173,7 @@ __gshared extern(C)
 	const(char)* function(GtkSourceStyleScheme* scheme) c_gtk_source_style_scheme_get_description;
 	const(char)* function(GtkSourceStyleScheme* scheme) c_gtk_source_style_scheme_get_filename;
 	const(char)* function(GtkSourceStyleScheme* scheme) c_gtk_source_style_scheme_get_id;
+	const(char)* function(GtkSourceStyleScheme* scheme, const(char)* name) c_gtk_source_style_scheme_get_metadata;
 	const(char)* function(GtkSourceStyleScheme* scheme) c_gtk_source_style_scheme_get_name;
 	GtkSourceStyle* function(GtkSourceStyleScheme* scheme, const(char)* styleId) c_gtk_source_style_scheme_get_style;
 
@@ -1435,7 +1463,6 @@ alias c_gtk_source_gutter_lines_get_iter_at_line gtk_source_gutter_lines_get_ite
 alias c_gtk_source_gutter_lines_get_last gtk_source_gutter_lines_get_last;
 alias c_gtk_source_gutter_lines_get_line_yrange gtk_source_gutter_lines_get_line_yrange;
 alias c_gtk_source_gutter_lines_get_view gtk_source_gutter_lines_get_view;
-alias c_gtk_source_gutter_lines_get_yrange gtk_source_gutter_lines_get_yrange;
 alias c_gtk_source_gutter_lines_has_class gtk_source_gutter_lines_has_class;
 alias c_gtk_source_gutter_lines_has_qclass gtk_source_gutter_lines_has_qclass;
 alias c_gtk_source_gutter_lines_is_cursor gtk_source_gutter_lines_is_cursor;
@@ -1539,10 +1566,12 @@ alias c_gtk_source_language_get_style_name gtk_source_language_get_style_name;
 alias c_gtk_source_language_manager_get_type gtk_source_language_manager_get_type;
 alias c_gtk_source_language_manager_new gtk_source_language_manager_new;
 alias c_gtk_source_language_manager_get_default gtk_source_language_manager_get_default;
+alias c_gtk_source_language_manager_append_search_path gtk_source_language_manager_append_search_path;
 alias c_gtk_source_language_manager_get_language gtk_source_language_manager_get_language;
 alias c_gtk_source_language_manager_get_language_ids gtk_source_language_manager_get_language_ids;
 alias c_gtk_source_language_manager_get_search_path gtk_source_language_manager_get_search_path;
 alias c_gtk_source_language_manager_guess_language gtk_source_language_manager_guess_language;
+alias c_gtk_source_language_manager_prepend_search_path gtk_source_language_manager_prepend_search_path;
 alias c_gtk_source_language_manager_set_search_path gtk_source_language_manager_set_search_path;
 
 // sourceview.Map
@@ -1762,6 +1791,7 @@ alias c_gtk_source_style_scheme_get_authors gtk_source_style_scheme_get_authors;
 alias c_gtk_source_style_scheme_get_description gtk_source_style_scheme_get_description;
 alias c_gtk_source_style_scheme_get_filename gtk_source_style_scheme_get_filename;
 alias c_gtk_source_style_scheme_get_id gtk_source_style_scheme_get_id;
+alias c_gtk_source_style_scheme_get_metadata gtk_source_style_scheme_get_metadata;
 alias c_gtk_source_style_scheme_get_name gtk_source_style_scheme_get_name;
 alias c_gtk_source_style_scheme_get_style gtk_source_style_scheme_get_style;
 

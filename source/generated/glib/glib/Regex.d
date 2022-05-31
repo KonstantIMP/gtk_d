@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.Regex;
 
 private import glib.ConstructionException;
@@ -7,7 +31,7 @@ private import glib.MatchInfo;
 private import glib.Str;
 private import glib.c.functions;
 public  import glib.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -16,7 +40,7 @@ private import linker.loader;
  * Perl regular expression.
  * 
  * Some functions accept a @start_position argument, setting it differs
- * from just passing over a shortened string and setting #G_REGEX_MATCH_NOTBOL
+ * from just passing over a shortened string and setting %G_REGEX_MATCH_NOTBOL
  * in the case of a pattern that begins with any kind of lookbehind assertion.
  * For example, consider the pattern "\Biss\B" which finds occurrences of "iss"
  * in the middle of words. ("\B" matches only if the current position in the
@@ -28,11 +52,11 @@ private import linker.loader;
  * it is able to look behind the starting point to discover that it is
  * preceded by a letter.
  * 
- * Note that, unless you set the #G_REGEX_RAW flag, all the strings passed
+ * Note that, unless you set the %G_REGEX_RAW flag, all the strings passed
  * to these functions must be encoded in UTF-8. The lengths and the positions
  * inside the strings are in bytes and not in characters, so, for instance,
  * "\xc3\xa0" (i.e. "à") is two bytes long but it is treated as a
- * single character. If you set #G_REGEX_RAW the strings can be non-valid
+ * single character. If you set %G_REGEX_RAW the strings can be non-valid
  * UTF-8 strings and a byte is treated as a character, so "\xc3\xa0" is two
  * bytes and two characters long.
  * 
@@ -47,11 +71,11 @@ private import linker.loader;
  * The behaviour of the dot, circumflex, and dollar metacharacters are
  * affected by newline characters, the default is to recognize any newline
  * character (the same characters recognized by "\R"). This can be changed
- * with #G_REGEX_NEWLINE_CR, #G_REGEX_NEWLINE_LF and #G_REGEX_NEWLINE_CRLF
- * compile options, and with #G_REGEX_MATCH_NEWLINE_ANY,
- * #G_REGEX_MATCH_NEWLINE_CR, #G_REGEX_MATCH_NEWLINE_LF and
- * #G_REGEX_MATCH_NEWLINE_CRLF match options. These settings are also
- * relevant when compiling a pattern if #G_REGEX_EXTENDED is set, and an
+ * with %G_REGEX_NEWLINE_CR, %G_REGEX_NEWLINE_LF and %G_REGEX_NEWLINE_CRLF
+ * compile options, and with %G_REGEX_MATCH_NEWLINE_ANY,
+ * %G_REGEX_MATCH_NEWLINE_CR, %G_REGEX_MATCH_NEWLINE_LF and
+ * %G_REGEX_MATCH_NEWLINE_CRLF match options. These settings are also
+ * relevant when compiling a pattern if %G_REGEX_EXTENDED is set, and an
  * unescaped "#" outside a character class is encountered. This indicates
  * a comment that lasts until after the next newline.
  * 
@@ -385,7 +409,7 @@ public class Regex
 	 * is not able to capture substrings, so backreferences do not work.
 	 *
 	 * Setting @start_position differs from just passing over a shortened
-	 * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern
+	 * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern
 	 * that begins with any kind of lookbehind assertion, such as "\b".
 	 *
 	 * Unless %G_REGEX_RAW is specified in the options, @string must be valid UTF-8.
@@ -437,7 +461,7 @@ public class Regex
 	 * flexibility in reusing #GRegex structures.
 	 *
 	 * Setting @start_position differs from just passing over a shortened
-	 * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern
+	 * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern
 	 * that begins with any kind of lookbehind assertion, such as "\b".
 	 *
 	 * Unless %G_REGEX_RAW is specified in the options, @string must be valid UTF-8.
@@ -553,12 +577,12 @@ public class Regex
 	 *
 	 * If you do not need to use backreferences use g_regex_replace_literal().
 	 *
-	 * The @replacement string must be UTF-8 encoded even if #G_REGEX_RAW was
+	 * The @replacement string must be UTF-8 encoded even if %G_REGEX_RAW was
 	 * passed to g_regex_new(). If you want to use not UTF-8 encoded strings
 	 * you can use g_regex_replace_literal().
 	 *
 	 * Setting @start_position differs from just passing over a shortened
-	 * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern that
+	 * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern that
 	 * begins with any kind of lookbehind assertion, such as "\b".
 	 *
 	 * Params:
@@ -593,7 +617,7 @@ public class Regex
 	 * @eval for that occurrence.
 	 *
 	 * Setting @start_position differs from just passing over a shortened
-	 * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern
+	 * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern
 	 * that begins with any kind of lookbehind assertion, such as "\b".
 	 *
 	 * The following example uses g_regex_replace_eval() to replace multiple
@@ -669,7 +693,7 @@ public class Regex
 	 * include backreferences use g_regex_replace().
 	 *
 	 * Setting @start_position differs from just passing over a
-	 * shortened string and setting #G_REGEX_MATCH_NOTBOL in the
+	 * shortened string and setting %G_REGEX_MATCH_NOTBOL in the
 	 * case of a pattern that begins with any kind of lookbehind
 	 * assertion, such as "\b".
 	 *
@@ -756,7 +780,7 @@ public class Regex
 	 * "a", "b" and "c".
 	 *
 	 * Setting @start_position differs from just passing over a shortened
-	 * string and setting #G_REGEX_MATCH_NOTBOL in the case of a pattern
+	 * string and setting %G_REGEX_MATCH_NOTBOL in the case of a pattern
 	 * that begins with any kind of lookbehind assertion, such as "\b".
 	 *
 	 * Params:

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdk.GLContext;
 
 private import gdk.Display;
@@ -16,7 +40,7 @@ private import gobject.ObjectG;
  * 
  * `GdkGLContext`s are created for a surface using
  * [method@Gdk.Surface.create_gl_context], and the context will match
- * the the characteristics of the surface.
+ * the characteristics of the surface.
  * 
  * A `GdkGLContext` is not tied to any particular normal framebuffer.
  * For instance, it cannot draw to the surface back buffer. The GDK
@@ -122,6 +146,32 @@ public class GLContext : DrawContext
 		}
 
 		return ObjectG.getDObject!(GLContext)(cast(GdkGLContext*) __p);
+	}
+
+	/**
+	 * Gets the allowed APIs set via gdk_gl_context_set_allowed_apis().
+	 *
+	 * Returns: the allowed APIs
+	 *
+	 * Since: 4.6
+	 */
+	public GdkGLAPI getAllowedApis()
+	{
+		return gdk_gl_context_get_allowed_apis(gdkGLContext);
+	}
+
+	/**
+	 * Gets the API currently in use.
+	 *
+	 * If the renderer has not been realized yet, 0 is returned.
+	 *
+	 * Returns: the currently used API
+	 *
+	 * Since: 4.6
+	 */
+	public GdkGLAPI getApi()
+	{
+		return gdk_gl_context_get_api(gdkGLContext);
 	}
 
 	/**
@@ -323,6 +373,25 @@ public class GLContext : DrawContext
 		}
 
 		return __p;
+	}
+
+	/**
+	 * Sets the allowed APIs. When gdk_gl_context_realize() is called, only the
+	 * allowed APIs will be tried. If you set this to 0, realizing will always fail.
+	 *
+	 * If you set it on a realized context, the property will not have any effect.
+	 * It is only relevant during gdk_gl_context_realize().
+	 *
+	 * By default, all APIs are allowed.
+	 *
+	 * Params:
+	 *     apis = the allowed APIs
+	 *
+	 * Since: 4.6
+	 */
+	public void setAllowedApis(GdkGLAPI apis)
+	{
+		gdk_gl_context_set_allowed_apis(gdkGLContext, apis);
 	}
 
 	/**

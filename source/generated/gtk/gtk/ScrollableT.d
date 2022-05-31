@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.ScrollableT;
 
 public  import glib.MemorySlice;
@@ -20,13 +44,11 @@ public  import gtk.c.types;
  * All scrollable widgets should do the following.
  * 
  * - When a parent widget sets the scrollable child widget’s adjustments,
- * the widget should populate the adjustments’
- * [property@Gtk.Adjustment:lower],
- * [property@Gtk.Adjustment:upper],
- * [property@Gtk.Adjustment:step-increment],
- * [property@Gtk.Adjustment:page-increment] and
- * [property@Gtk.Adjustment:page-size] properties and connect to the
- * [signal@Gtk.Adjustment::value-changed] signal.
+ * the widget should connect to the [signal@Gtk.Adjustment::value-changed]
+ * signal. The child widget should then populate the adjustments’ properties
+ * as soon as possible, which usually means queueing an allocation right away
+ * and populating the properties in the [vfunc@Gtk.Widget.size_allocate]
+ * implementation.
  * 
  * - Because its preferred size is the size for a fully expanded widget,
  * the scrollable widget must be able to cope with underallocations.
@@ -34,7 +56,8 @@ public  import gtk.c.types;
  * [vfunc@Gtk.Widget.size_allocate] implementation.
  * 
  * - When the parent allocates space to the scrollable child widget,
- * the widget should update the adjustments’ properties with new values.
+ * the widget must ensure the adjustments’ property values are correct and up
+ * to date, for example using [method@Gtk.Adjustment.configure].
  * 
  * - When any of the adjustments emits the [signal@Gtk.Adjustment::value-changed]
  * signal, the scrollable widget should scroll its contents.

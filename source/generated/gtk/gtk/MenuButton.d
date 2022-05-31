@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.MenuButton;
 
 private import gio.MenuModel;
@@ -59,8 +83,9 @@ private import std.algorithm;
  * `GtkMenuButton` has a single CSS node with name `menubutton`
  * which contains a `button` node with a `.toggle` style class.
  * 
- * If the button contains only an icon or an arrow, it will have the
- * `.image-button` style class, if it contains both, it will have the
+ * If the button contains an icon, it will have the `.image-button` style class,
+ * if it contains text, it will have `.text-button` style class. If an arrow is
+ * visible in addition to an icon, text or a custom child, it will also have
  * `.arrow-button` style class.
  * 
  * Inside the toggle button content, there is an `arrow` node for
@@ -144,6 +169,25 @@ public class MenuButton : Widget
 	public bool getAlwaysShowArrow()
 	{
 		return gtk_menu_button_get_always_show_arrow(gtkMenuButton) != 0;
+	}
+
+	/**
+	 * Gets the child widget of @menu_button.
+	 *
+	 * Returns: the child widget of @menu_button
+	 *
+	 * Since: 4.6
+	 */
+	public Widget getChild()
+	{
+		auto __p = gtk_menu_button_get_child(gtkMenuButton);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(Widget)(cast(GtkWidget*) __p);
 	}
 
 	/**
@@ -264,7 +308,8 @@ public class MenuButton : Widget
 	}
 
 	/**
-	 * Sets whether to show a dropdown arrow even when using an icon.
+	 * Sets whether to show a dropdown arrow even when using an icon or a custom
+	 * child.
 	 *
 	 * Params:
 	 *     alwaysShowArrow = hether to show a dropdown arrow even when using an icon
@@ -274,6 +319,26 @@ public class MenuButton : Widget
 	public void setAlwaysShowArrow(bool alwaysShowArrow)
 	{
 		gtk_menu_button_set_always_show_arrow(gtkMenuButton, alwaysShowArrow);
+	}
+
+	/**
+	 * Sets the child widget of @menu_button.
+	 *
+	 * Setting a child resets [property@Gtk.MenuButton:label] and
+	 * [property@Gtk.MenuButton:icon-name].
+	 *
+	 * If [property@Gtk.MenuButton:always-show-arrow] is set to `TRUE` and
+	 * [property@Gtk.MenuButton:direction] is not `GTK_ARROW_NONE`, a dropdown arrow
+	 * will be shown next to the child.
+	 *
+	 * Params:
+	 *     child = the child widget
+	 *
+	 * Since: 4.6
+	 */
+	public void setChild(Widget child)
+	{
+		gtk_menu_button_set_child(gtkMenuButton, (child is null) ? null : child.getWidgetStruct());
 	}
 
 	/**
@@ -336,6 +401,13 @@ public class MenuButton : Widget
 	/**
 	 * Sets the name of an icon to show inside the menu button.
 	 *
+	 * Setting icon name resets [property@Gtk.MenuButton:label] and
+	 * [property@Gtk.MenuButton:child].
+	 *
+	 * If [property@Gtk.MenuButton:always-show-arrow] is set to `TRUE` and
+	 * [property@Gtk.MenuButton:direction] is not `GTK_ARROW_NONE`, a dropdown arrow
+	 * will be shown next to the icon.
+	 *
 	 * Params:
 	 *     iconName = the icon name
 	 */
@@ -346,6 +418,12 @@ public class MenuButton : Widget
 
 	/**
 	 * Sets the label to show inside the menu button.
+	 *
+	 * Setting a label resets [property@Gtk.MenuButton:icon-name] and
+	 * [property@Gtk.MenuButton:child].
+	 *
+	 * If [property@Gtk.MenuButton:direction] is not `GTK_ARROW_NONE`, a dropdown
+	 * arrow will be shown next to the label.
 	 *
 	 * Params:
 	 *     label = the label

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.SplitButton;
 
 private import adw.c.functions;
@@ -23,6 +47,11 @@ private import std.algorithm;
 
 /**
  * A combined button and dropdown widget.
+ * 
+ * <picture>
+ * <source srcset="split-button-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="split-button.png" alt="split-button">
+ * </picture>
  * 
  * `AdwSplitButton` is typically used to present a set of actions in a menu,
  * but allow access to one of them with a single click.
@@ -52,7 +81,7 @@ private import std.algorithm;
  * 
  * ## Accessibility
  * 
- * `AdwSplitButton` uses the `GTK_ACCESSIBLE_ROLE_BUTTON` role.
+ * `AdwSplitButton` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
  *
  * Since: 1.0
  */
@@ -87,7 +116,6 @@ public class SplitButton : Widget, ActionableIF
 	// add the Actionable capabilities
 	mixin ActionableT!(AdwSplitButton);
 
-	alias getDirection = Widget.getDirection;
 	/**
 	 * Gets the direction in which the popup will be popped up.
 	 *
@@ -95,7 +123,7 @@ public class SplitButton : Widget, ActionableIF
 	 *
 	 * Since: 1.0
 	 */
-	public GtkArrowType getDirection()
+	public GtkArrowType getButtonDirection()
 	{
 		return adw_split_button_get_direction(adwSplitButton);
 	}
@@ -152,7 +180,7 @@ public class SplitButton : Widget, ActionableIF
 	/**
 	 * Gets the name of the icon used to automatically populate the button.
 	 *
-	 * If the icon name has not been set with [method@Adw.SplitButton.set_icon_name]
+	 * If the icon name has not been set with [method@SplitButton.set_icon_name]
 	 * the return value will be `NULL`.
 	 *
 	 * Returns: the icon name
@@ -340,8 +368,8 @@ public class SplitButton : Widget, ActionableIF
 	/**
 	 * Emitted to animate press then release.
 	 *
-	 * This is an action signal. Applications should never connect
-	 * to this signal, but use the [signal@Adw.SplitButton::clicked] signal.
+	 * This is an action signal. Applications should never connect to this signal,
+	 * but use the [signal@SplitButton::clicked] signal.
 	 *
 	 * Since: 1.0
 	 */

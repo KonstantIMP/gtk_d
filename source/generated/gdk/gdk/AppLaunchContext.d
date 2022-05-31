@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdk.AppLaunchContext;
 
 private import gdk.Display;
@@ -13,8 +37,7 @@ private import gobject.ObjectG;
  * `GdkAppLaunchContext` handles launching an application in a graphical context.
  * 
  * It is an implementation of `GAppLaunchContext` that provides startup
- * notification and allows to launch applications on a specific screen
- * or workspace.
+ * notification and allows to launch applications on a specific workspace.
  * 
  * ## Launching an application
  * 
@@ -23,7 +46,6 @@ private import gobject.ObjectG;
  * 
  * context = gdk_display_get_app_launch_context (display);
  * 
- * gdk_app_launch_context_set_display (display);
  * gdk_app_launch_context_set_timestamp (gdk_event_get_time (event));
  * 
  * if (!g_app_info_launch_default_for_uri ("http://www.gtk.org", context, &error))
@@ -90,6 +112,10 @@ public class AppLaunchContext : DGioAppLaunchContext
 	 * This only works when running under a window manager that
 	 * supports multiple workspaces, as described in the
 	 * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec).
+	 * Specifically this sets the `_NET_WM_DESKTOP` property described
+	 * in that spec.
+	 *
+	 * This only works when using the X11 backend.
 	 *
 	 * When the workspace is not specified or @desktop is set to -1,
 	 * it is up to the window manager to pick one, typically it will

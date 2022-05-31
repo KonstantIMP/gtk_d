@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.SearchSettings;
 
 private import glib.ConstructionException;
@@ -8,7 +32,13 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Search settings.
+ * 
+ * A `GtkSourceSearchSettings` object represents the settings of a search. The
+ * search settings can be associated with one or several
+ * [class@SearchContext]s.
+ */
 public class SearchSettings : ObjectG
 {
 	/** the main Gtk struct */
@@ -49,8 +79,6 @@ public class SearchSettings : ObjectG
 	 *
 	 * Returns: a new search settings object.
 	 *
-	 * Since: 3.10
-	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this()
@@ -67,8 +95,6 @@ public class SearchSettings : ObjectG
 
 	/**
 	 * Returns: whether to search at word boundaries.
-	 *
-	 * Since: 3.10
 	 */
 	public bool getAtWordBoundaries()
 	{
@@ -77,8 +103,6 @@ public class SearchSettings : ObjectG
 
 	/**
 	 * Returns: whether the search is case sensitive.
-	 *
-	 * Since: 3.10
 	 */
 	public bool getCaseSensitive()
 	{
@@ -87,8 +111,6 @@ public class SearchSettings : ObjectG
 
 	/**
 	 * Returns: whether to search by regular expressions.
-	 *
-	 * Since: 3.10
 	 */
 	public bool getRegexEnabled()
 	{
@@ -96,14 +118,14 @@ public class SearchSettings : ObjectG
 	}
 
 	/**
-	 * Gets the text to search. The return value must not be freed.
+	 * Gets the text to search.
 	 *
-	 * You may be interested to call gtk_source_utils_escape_search_text() after
+	 * The return value must not be freed.
+	 *
+	 * You may be interested to call [func@utils_escape_search_text] after
 	 * this function.
 	 *
 	 * Returns: the text to search, or %NULL if the search is disabled.
-	 *
-	 * Since: 3.10
 	 */
 	public string getSearchText()
 	{
@@ -112,8 +134,6 @@ public class SearchSettings : ObjectG
 
 	/**
 	 * Returns: whether to wrap around the search.
-	 *
-	 * Since: 3.10
 	 */
 	public bool getWrapAround()
 	{
@@ -121,15 +141,14 @@ public class SearchSettings : ObjectG
 	}
 
 	/**
-	 * Change whether the search is done at word boundaries. If @at_word_boundaries
-	 * is %TRUE, a search match must start and end a word. The match can span
-	 * multiple words. See also gtk_text_iter_starts_word() and
-	 * gtk_text_iter_ends_word().
+	 * Change whether the search is done at word boundaries.
+	 *
+	 * If @at_word_boundaries is %TRUE, a search match must start and end a word.
+	 * The match can span multiple words. See also [method@Gtk.TextIter.starts_word] and
+	 * [method@Gtk.TextIter.ends_word].
 	 *
 	 * Params:
 	 *     atWordBoundaries = the setting.
-	 *
-	 * Since: 3.10
 	 */
 	public void setAtWordBoundaries(bool atWordBoundaries)
 	{
@@ -141,8 +160,6 @@ public class SearchSettings : ObjectG
 	 *
 	 * Params:
 	 *     caseSensitive = the setting.
-	 *
-	 * Since: 3.10
 	 */
 	public void setCaseSensitive(bool caseSensitive)
 	{
@@ -151,17 +168,16 @@ public class SearchSettings : ObjectG
 
 	/**
 	 * Enables or disables whether to search by regular expressions.
-	 * If enabled, the #GtkSourceSearchSettings:search-text property contains the
+	 *
+	 * If enabled, the [property@SearchSettings:search-text] property contains the
 	 * pattern of the regular expression.
 	 *
-	 * #GtkSourceSearchContext uses #GRegex when regex search is enabled. See the
+	 * [class@SearchContext] uses #GRegex when regex search is enabled. See the
 	 * [Regular expression syntax](https://developer.gnome.org/glib/stable/glib-regex-syntax.html)
 	 * page in the GLib reference manual.
 	 *
 	 * Params:
 	 *     regexEnabled = the setting.
-	 *
-	 * Since: 3.10
 	 */
 	public void setRegexEnabled(bool regexEnabled)
 	{
@@ -169,17 +185,16 @@ public class SearchSettings : ObjectG
 	}
 
 	/**
-	 * Sets the text to search. If @search_text is %NULL or is empty, the search
-	 * will be disabled. A copy of @search_text will be made, so you can safely free
-	 * @search_text after a call to this function.
+	 * Sets the text to search.
 	 *
-	 * You may be interested to call gtk_source_utils_unescape_search_text() before
+	 * If @search_text is %NULL or is empty, the search will be disabled. A copy of @search_text
+	 * will be made, so you can safely free @search_text after a call to this function.
+	 *
+	 * You may be interested to call [func@utils_unescape_search_text] before
 	 * this function.
 	 *
 	 * Params:
 	 *     searchText = the nul-terminated text to search, or %NULL to disable the search.
-	 *
-	 * Since: 3.10
 	 */
 	public void setSearchText(string searchText)
 	{
@@ -187,15 +202,14 @@ public class SearchSettings : ObjectG
 	}
 
 	/**
-	 * Enables or disables the wrap around search. If @wrap_around is %TRUE, the
-	 * forward search continues at the beginning of the buffer if no search
-	 * occurrences are found. Similarly, the backward search continues to search at
+	 * Enables or disables the wrap around search.
+	 *
+	 * If @wrap_around is %TRUE, the forward search continues at the beginning of the buffer
+	 * if no search occurrences are found. Similarly, the backward search continues to search at
 	 * the end of the buffer.
 	 *
 	 * Params:
 	 *     wrapAround = the setting.
-	 *
-	 * Since: 3.10
 	 */
 	public void setWrapAround(bool wrapAround)
 	{

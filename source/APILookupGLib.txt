@@ -1,11 +1,9 @@
-﻿#
-# This file is part of gtkD.
+﻿# This file is part of gtkD.
 #
 # gtkD is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License
-# as published by the Free Software Foundation; either version 3
-# of the License, or (at your option) any later version, with
-# some exceptions, please read the COPYING file.
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2.1 of the License, or
+# (at your option) any later version.
 #
 # gtkD is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,9 +12,14 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with gtkD; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
+#############################################
+### Definitions for wrapping Gtk+ ###########
+#############################################
+
+# must start with wrap
 wrap: glib
 file: GLib-2.0.gir
 file: GModule-2.0.gir
@@ -25,26 +28,34 @@ addAliases: start
 	public alias uint uid_t;
 	public alias int pid_t;
 
-	version( Windows ) 	{
+	version( Windows )
+	{
 		alias int glong;
 		alias uint gulong;
-
-		private import core.stdc.stdio;
-
-		static if( !is(typeof(fdopen(0, null))) ) {
-			extern (C) FILE*  fdopen(int, char*);
-		}
 	}
-	else version( X86_64 ) 	{
+	else version( X86_64 )
+	{
 		alias long glong;
 		alias ulong gulong;
 	}
-	else {
+	else
+	{
 		alias int glong;
 		alias uint gulong;
 	}
 
-	struct Scoped(T) {
+	version (Windows)
+	{
+		private import core.stdc.stdio;
+
+		static if( !is(typeof(fdopen(0, null))) )
+		{
+			extern (C) FILE*  fdopen(int, char*);
+		}
+	}
+
+	struct Scoped(T)
+	{
 		T payload;
 
 		alias payload this;
@@ -52,19 +63,14 @@ addAliases: start
 		@disable this();
 		@disable this(this);
 
-		~this() {
+		~this()
+		{
 			.destroy(payload);
 		}
 	}
 
-	/**
-	 * Create Scoped GObject
-	 * Params:
-	 *   T = Type extends by GObject
-	 *   args = Arguments for scoped object created
-	 * Return: Scoped T object
-	 */
-	auto getScopedGobject(T, Args...)(auto ref Args args) if (is(T == class)) {
+	auto getScopedGobject(T, Args...)(auto ref Args args) if (is(T == class))
+	{
 		Scoped!(T) result = void;
 		result.payload = new T(args);
 
@@ -73,29 +79,23 @@ addAliases: start
 
 	/**
 	 * Get the length of a zero terminated array.
-	 * Params:
-	 *   arr = Array for counting
-	 * Returns: Num of item in the array
 	 */
-	size_t getArrayLength(T)(T* arr) {
-		size_t len; 
+	size_t getArrayLength(T)(T* arr)
+	{
+		size_t len;
 
 		for ( ; arr[len]; len++ ){}
 
 		return len;
 	}
 
-	unittest {
+	unittest
+	{
 		assert(getArrayLength("aaaaaaaaa\0".ptr) == 9);
 	}
 
-	/**
-	 * Memory allocator for GObject types
-	 * Params:
-	 *   Type = Type for memory allocation
-	 * Return: Ptr to the allocated object
-	 */
-	Type* gMalloc(Type)() {
+	Type* gMalloc(Type)()
+	{
 		import glib.c.functions;
 		return cast(Type*)g_malloc0(Type.sizeof);
 	}
@@ -104,13 +104,16 @@ addAliases: start
 addAliases: end
 
 addEnums: start
-	enum GPriority {
+
+	enum GPriority
+	{
 		HIGH = -100,
 		DEFAULT = 0,
 		HIGH_IDLE = 100,
 		DEFAULT_IDLE = 200,
 		LOW = 300
 	}
+
 addEnums: end
 
 noConstant: DIR_SEPARATOR
@@ -157,7 +160,8 @@ code: start
 	 *
 	 * Since: 2.12
 	 */
-	public static size_t decodeStep(string inn, ref ubyte[] output, ref int state, ref uint save) {
+	public static size_t decodeStep(string inn, ref ubyte[] output, ref int state, ref uint save)
+	{
 		auto p = g_base64_decode_step(Str.toStringz(inn), cast(int)inn.length, cast(char*)output.ptr, &state, &save);
 
 		return p;
@@ -192,7 +196,8 @@ code: start
 	 *
 	 * Since: 2.16
 	 */
-	public void getDigest(ref ubyte[] buffer) {
+	public void getDigest(ref ubyte[] buffer)
+	{
 		size_t digestLen = buffer.length;
 
 		g_checksum_get_digest(gChecksum, buffer.ptr, &digestLen);
@@ -204,82 +209,32 @@ code: end
 struct: ConstructionException
 namespace:
 code: start
-	/**
-	 * Exception class for construction errors
-	 */
-	class ConstructionException : Exception {
-		this(string message) {
+	class ConstructionException : Exception
+	{
+		this(string message)
+		{
 			super(message);
+		}
+
+		override string toString()
+		{
+			return "Construction failure, " ~ msg;
 		}
 	}
 code: end
 
 struct: DateTime
 structWrap: gpointer DateTime
-noCode: new_utc
-noCode: new_local
 noCode: new_now_utc
 noCode: new_now_local
 noCode: new_from_unix_local
 noCode: new_from_unix_utc
 noCode: new_from_timeval_local
 noCode: new_from_timeval_utc
+noCode: new_local
+noCode: new_utc
 noCode: hash
 code: start
-	/**
-	 * Creates new DateTime with the current time
-	 * Params:
-	 *     utc = Utc or local
-	 * Returns: a #GDateTime, or %NULL
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this(bool utc = true) {
-		GDateTime * p;
-
-		if (utc) p = g_date_time_new_now_utc();
-		else p = g_date_time_new_now_local();
-
-		if(p is null) {
-			throw new ConstructionException("null returned by g_date_time_new_from_now_local/utc");
-		}
-		this(cast(GDateTime*) p);
-	}
-
-	/**
-	 * Creates a new #GDateTime corresponding to the given date and time in
-	 * UTC or local.
-	 *
-	 * This call is equivalent to calling g_date_time_new() with the time
-	 * zone returned by g_time_zone_new_utc/local().
-	 *
-	 * Params:
-	 *     year = the year component of the date
-	 *     month = the month component of the date
-	 *     day = the day component of the date
-	 *     hour = the hour component of the date
-	 *     minute = the minute component of the date
-	 *     seconds = the number of seconds past the minute
-	 *     utc = For changing between utc and local
-	 *
-	 * Returns: a #GDateTime, or %NULL
-	 *
-	 * Since: 2.26
-	 *
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this(int year, int month, int day, int hour, int minute, double seconds, bool utc = true) {
-		GDateTime* __p;
-		
-		if (utc) __p = g_date_time_new_utc(year, month, day, hour, minute, seconds);
-		else __p = g_date_time_new_local(year, month, day, hour, minute, seconds);
-
-		if(__p is null) {
-			throw new ConstructionException("null returned by new_utc");
-		}
-
-		this(cast(GDateTime*) __p);
-	}
-
 	/**
 	 * Creates a DateTime corresponding to the given Unix time t
 	 * Unix time is the number of seconds that have elapsed since 1970-01-01
@@ -298,13 +253,21 @@ code: start
 	 *
 	 * Since: 2.26
 	 */
-	public this (long t, bool utc = true) {
+	public this (long t, bool utc = true)
+	{
 		GDateTime* p;
 
-		if ( utc ) p = g_date_time_new_from_unix_utc(t);
-		else p = g_date_time_new_from_unix_local(t);
+		if ( utc )
+		{
+			p = g_date_time_new_from_unix_utc(t);
+		}
+		else
+		{
+			p = g_date_time_new_from_unix_local(t);
+		}
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by g_date_time_new_from_unix_local(t)");
 		}
 		this(cast(GDateTime*) p);
@@ -329,25 +292,29 @@ code: start
 	 *
 	 * Since: 2.26
 	 */
-	public this (ref GTimeVal tv, bool utc = true) {
+	public this (ref GTimeVal tv, bool utc = true)
+	{
 		GDateTime* p;
 
-		if ( utc ) p = g_date_time_new_from_timeval_utc(&tv);
-		else p = g_date_time_new_from_timeval_local(&tv);
+		if ( utc )
+		{
+			p = g_date_time_new_from_timeval_utc(&tv);
+		}
+		else
+		{
+			p = g_date_time_new_from_timeval_local(&tv);
+		}
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by g_date_time_new_from_timeval_local((tv is null) ? null : tv.getTimeValStruct())");
 		}
 		this(cast(GDateTime*) p);
 	}
 
-	/**
-	 * Equal objects
-	 * Params:
-	 *     rhs = Source
-	 * Return: true if ok
-	 */
-	override bool opEquals(Object rhs) {
+	/** */
+	override bool opEquals(Object rhs)
+	{
 		DateTime date = cast(DateTime)rhs;
 
 		if ( date is null )
@@ -356,11 +323,9 @@ code: start
 		return equal(date) != 0;
 	}
 
-	/** 
-	 * Compare DateTime objects
-	 * Return: true is the same
-	 */
-	override int opCmp(Object rhs) 	{
+	/** */
+	override int opCmp(Object rhs)
+	{
 		DateTime date = cast(DateTime)rhs;
 
 		if ( date is null )
@@ -369,11 +334,9 @@ code: start
 		return compare(date);
 	}
 
-	/** 
-	 * Translate the object to the hash
-	 * Return: Hash of the DateTime
-	 */
-	override nothrow @trusted hash_t toHash() {
+	/** */
+	override nothrow @trusted hash_t toHash()
+	{
 		return hash();
 	}
 
@@ -384,11 +347,14 @@ code: start
 	 * datetime = a GDateTime
 	 * Returns: a guint containing the hash
 	 */
-	public nothrow @trusted uint hash() {
-		try	{
+	public nothrow @trusted uint hash()
+	{
+		try
+		{
 			return g_date_time_hash(gDateTime);
 		}
-		catch(Exception e) {
+		catch(Exception e)
+		{
 			return 0;
 		}
 	}
@@ -409,13 +375,12 @@ namespace:
 import: glib.ErrorG
 import: glib.Str
 code: start
-	/**
-	 * Class for representing GException as D std exception
-	 */
-	class GException : Exception {
+	class GException : Exception
+	{
 		ErrorG error;
 
-		this(ErrorG error) {
+		this(ErrorG error)
+		{
 			super( Str.toString(error.getErrorGStruct().message) );
 			this.error = error;
 		}
@@ -453,7 +418,8 @@ code: start
 	 *
 	 * Since: 2.30
 	 */
-	public void getDigest(ref ubyte[] buffer) {
+	public void getDigest(ref ubyte[] buffer)
+	{
 		size_t digestLen = buffer.length;
 
 		g_hmac_get_digest(gHmac, buffer.ptr, &digestLen);
@@ -489,7 +455,8 @@ code: start
 	 *    	dlg = the delegate to be executed
 	 *    	fireNow = When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, bool fireNow=false) {
+	this(bool delegate() dlg, bool fireNow=false)
+	{
 		if ( fireNow && !dlg() )
 			return;
 
@@ -504,7 +471,8 @@ code: start
 	 *      priority = Priority for the idle function
 	 *    	fireNow = When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, GPriority priority, bool fireNow=false) {
+	this(bool delegate() dlg, GPriority priority, bool fireNow=false)
+	{
 		this.priority = priority;
 
 		if ( fireNow && !dlg() )
@@ -514,10 +482,9 @@ code: start
 		idleID = g_idle_add_full(priority, cast(GSourceFunc)&idleCallback, cast(void*)this, cast(GDestroyNotify)&destroyIdleNotify);
 	}
 
-	/**
-	 * Stop the idle 
-	 */
-	public void stop() {
+	/** */
+	public void stop()
+	{
 		if ( idleID > 0 )
 			g_source_remove(idleID);
 	}
@@ -525,17 +492,19 @@ code: start
 	/**
 	 * Removes the idle from gtk
 	 */
-	~this() {
+	~this()
+	{
 		stop();
 	}
 
 	/**
 	 * Adds a new delegate to this idle cycle
 	 * Params:
-	 *    	dlg = Delegate for adding
-	 *    	fireNow = Time for connect
+	 *    	dlg =
+	 *    	fireNow =
 	 */
-	public void addListener(bool delegate() dlg, bool fireNow=false) {
+	public void addListener(bool delegate() dlg, bool fireNow=false)
+	{
 		if ( fireNow && !dlg() )
 			return;
 
@@ -549,15 +518,19 @@ code: start
 	 * Executes all delegates on the execution list
 	 * Returns: false if the callback should be removed.
 	 */
-	extern(C) static bool idleCallback(Idle idle) {
+	extern(C) static bool idleCallback(Idle idle)
+	{
 		bool runAgain = false;
 		int i = 0;
 
-		while ( i<idle.idleListeners.length ) {
-			if ( !idle.idleListeners[i]() ) {
+		while ( i<idle.idleListeners.length )
+		{
+			if ( !idle.idleListeners[i]() )
+			{
 				idle.idleListeners = idle.idleListeners[0..i] ~ idle.idleListeners[i+1..$];
 			}
-			else {
+			else
+			{
 				runAgain = true;
 				++i;
 			}
@@ -569,7 +542,8 @@ code: start
 	/*
 	 * Reset the idle object when it's destroyed on the GTK side.
 	 */
-	extern(C) static void destroyIdleNotify(Idle idle) {
+	extern(C) static void destroyIdleNotify(Idle idle)
+	{
 		idle.idleListeners.length = 0;
 		idle.idleID = 0;
 	}
@@ -591,11 +565,9 @@ version: end
 import: gobject.ObjectG
 import: glib.Str
 code: start
-  	/** 
-	 * Getter for the list's data
-	 * Returns: List's data 
-	 */
-	@property void* data() {
+  	/** */
+	@property void* data()
+	{
 		return gList.data;
 	}
 
@@ -603,8 +575,10 @@ code: start
 	 * get the next element
 	 * Returns: the next element, or NULL if there are no more elements.
 	 */
-	@property ListG next() {
-		if ( gList.next is null ) {
+	@property ListG next()
+	{
+		if ( gList.next is null )
+		{
 			return null;
 		}
 
@@ -615,8 +589,10 @@ code: start
 	 * get the previous element
 	 * Returns: the previous element, or NULL if there are no more elements.
 	 */
-	@property ListG previous() {
-		if ( gList.prev is null ) {
+	@property ListG previous()
+	{
+		if ( gList.prev is null )
+		{
 			return null;
 		}
 
@@ -627,12 +603,15 @@ code: start
 	 * Turn the list into a D array of the desiered type.
 	 * Type T wraps should match the type of the data.
 	 */
-	public T[] toArray(T, TC = getCType!T)() if ( is(T == class) ) {
+	public T[] toArray(T, TC = getCType!T)()
+		if ( is(T == class) )
+	{
 		T[] arr = new T[length()];
 		ListG list = this;
 		size_t count;
 
-		while(list !is null && count < arr.length) {
+		while(list !is null && count < arr.length)
+		{
 			arr[count] = ObjectG.getDObject!(T)(cast(TC)list.data);
 			list = list.next();
 			count++;
@@ -642,12 +621,15 @@ code: start
 	}
 
 	/** Ditto */
-	public T[] toArray(T)() if ( is ( T == string ) ) {
+	public T[] toArray(T)()
+		if ( is ( T == string ) )
+	{
 		T[] arr = new T[length()];
 		ListG list = this;
 		size_t count;
 
-		while(list !is null && count < arr.length) {
+		while(list !is null && count < arr.length)
+		{
 			arr[count] = Str.toString(cast(char*)list.data);
 			list = list.next();
 			count++;
@@ -656,20 +638,16 @@ code: start
 		return arr;
 	}
 
-	/**
-	 * Getter for base C-type 
-	 * Params:
-	 *     T = Type for c-type getting
-	 * Returns: Ptr to the C type or the void*
-	 */
-	private template getCType(T) {
+	private template getCType(T)
+	{
 		static if ( is(T == class) )
 			alias getCType = typeof(T.tupleof[0]);
 		else
 			alias getCType = void*;
 	}
 
-	unittest {
+	unittest
+	{
 		import gobject.Value;
 
 		auto list = new ListG(null);
@@ -698,11 +676,8 @@ class: SimpleXML
 struct: MemorySlice
 namespace:
 code: start
-	/**
-	 * Create slice for Glist
-	 * Return: A new slice
-	 */
-	public T* sliceNew(T)() {
+	public T* sliceNew(T)()
+	{
 		// We cant use sliceAlloc for the GLib array types.
 		// the actual array structs are larger than the ones used in the API.
 		static if ( is( T == GArray ) )
@@ -715,30 +690,18 @@ code: start
 			return cast(T*)g_slice_alloc0(T.sizeof);
 	}
 	
-	/**
-	 * Allocate memory for a slice
-	 * Returns: allocated memory
-	 */
-	public T* sliceAlloc(T)() {
+	public T* sliceAlloc(T)()
+	{
 		return cast(T*)g_slice_alloc0(T.sizeof);
 	}
 
-	/**
-	 * Create copy og the slice
-	 * Params:
-	 *    memBlock = Memory for slice creating
-	 * Returns: Copy of the slice
-	 */
-	public T* sliceDup(T)(T* memBlock) {
+	public T* sliceDup(T)(T* memBlock)
+	{
 		return cast(T*)g_slice_copy(T.sizeof, memBlock);
 	}
  
-	/**
-	 * Free allocated for slice memory
-	 * Params:
-	 *     memBlock = Memory for free
-	 */
-	public void sliceFree(T)(T* memBlock) {
+	public void sliceFree(T)(T* memBlock)
+ 	{
  		 g_slice_free1(T.sizeof, memBlock);
  	}
 code: end
@@ -755,7 +718,8 @@ code: start
 	/**
 	 * Number of pointers in the array
 	 */
-	public uint len() pure {
+	public uint len() pure
+	{
 		return gPtrArray.len;
 	}
 
@@ -765,7 +729,8 @@ code: start
 	 * This does not perform bounds checking on the given index, so
 	 * you are responsible for checking it against the array length.
 	 */
-	public void* index(uint idx) {
+	public void* index(uint idx)
+	{
 		return (gPtrArray.pdata)[idx];
 	}
 code: end
@@ -793,11 +758,9 @@ version: end
 import: gobject.ObjectG
 import: glib.Str
 code: start
-  	/** 
-	 * Getter for SLists data
-	 * Returns: Data of the Slist
-	 */
-	@property void* data() {
+  	/** */
+	@property void* data()
+	{
 		return gSList.data;
 	}
 
@@ -805,8 +768,10 @@ code: start
 	 * get the next element
 	 * Returns: the next element, or NULL if there are no more elements.
 	 */
-	@property ListSG next() {
-		if ( gSList.next is null ) {
+	@property ListSG next()
+	{
+		if ( gSList.next is null )
+		{
 			return null;
 		}
 
@@ -817,12 +782,15 @@ code: start
 	 * Turn the list into a D array of the desiered type.
 	 * Type T wraps should match the type of the data.
 	 */
-	public T[] toArray(T, TC = getCType!T)() if ( is(T == class) ) {
+	public T[] toArray(T, TC = getCType!T)()
+		if ( is(T == class) )
+	{
 		T[] arr = new T[length()];
 		ListSG list = this;
 		size_t count;
 
-		while(list !is null && count < arr.length) {
+		while(list !is null && count < arr.length)
+		{
 			arr[count] = ObjectG.getDObject!(T)(cast(TC)list.data);
 			list = list.next();
 			count++;
@@ -832,12 +800,15 @@ code: start
 	}
 
 	/** Ditto */
-	public T[] toArray(T)() if ( is ( T == string ) ) {
+	public T[] toArray(T)()
+		if ( is ( T == string ) )
+	{
 		T[] arr = new T[length()];
 		ListSG list = this;
 		size_t count;
 
-		while(list !is null && count < arr.length) {
+		while(list !is null && count < arr.length)
+		{
 			arr[count] = Str.toString(cast(char*)list.data);
 			list = list.next();
 			count++;
@@ -846,20 +817,16 @@ code: start
 		return arr;
 	}
 
-	/**
-	 * Getter for base C-type 
-	 * Params:
-	 *     T = Type for c-type getting
-	 * Returns: Ptr to the C type or the void*
-	 */
-	private template getCType(T) {
+	private template getCType(T)
+	{
 		static if ( is(T == class) )
 			alias getCType = typeof(T.tupleof[0]);
 		else
 			alias getCType = void*;
 	}
 
-	unittest {
+	unittest
+	{
 		import gobject.Value;
 
 		auto list = new ListSG(null);
@@ -889,7 +856,8 @@ import: std.traits
 #noCode: spawn_async_with_pipes
 code: start
 	//we need fdopen.
-	version(Posix) {
+	version(Posix)
+	{
 		private import core.sys.posix.stdio;
 	}
 	//fdopen for Windows is defined in glib.c.types.
@@ -919,22 +887,18 @@ code: start
 
 	/**
 	 * Creates a Spawn for execution.
-	 * Params: 
-	 *     program = App for spawb
-	 *     envp = Environment variables
 	 */
-	public this(string program, string[] envp=null) {
+	public this(string program, string[] envp=null)
+	{
 		argv ~= program;
 		this.envp = envp;
 	}
 
 	/**
 	 * Creates a Spawn for execution.
-	 * Params: 
-	 *     program = App for spawb
-	 *     envp = Environment variables
 	 */
-	public this(string[] program, string[] envp=null) {
+	public this(string[] program, string[] envp=null)
+	{
 		argv = program;
 		this.envp = envp;
 	}
@@ -942,37 +906,45 @@ code: start
 	/**
 	 * Adds a delegate to be notified on the end of the child process.
 	 * Params:
-	 *    	dlg = Delegate for adding
+	 *    	dlg =
 	 */
-	public void addChildWatch(ChildWatch dlg) {
+	public void addChildWatch(ChildWatch dlg)
+	{
 		externalWatch = dlg;
 	}
 
 	/**
 	 * Closes all open streams and child process.
 	 */
-	public void close() {
-		if (stdIn != 0 ) {
+	public void close()
+	{
+		if (stdIn != 0 )
+		{
 			fclose(standardInput);
 			stdIn = 0;
 		}
-		if (stdOut != 0 ) {
+		if (stdOut != 0 )
+		{
 			fclose(standardOutput);
 			stdOut = 0;
 		}
-		if (stdErr != 0 ) {
+		if (stdErr != 0 )
+		{
 			fclose(standardError);
 			stdErr = 0;
 		}
-
-		static if ( isPointer!(GPid) ) {
-			if ( childPid !is null ) {
+		static if ( isPointer!(GPid) )
+		{
+			if ( childPid !is null )
+			{
 				closePid(childPid);
 				childPid = null;
 			}
 		}
-		else {
-			if ( childPid != 0 ) {
+		else
+		{
+			if ( childPid != 0 )
+			{
 				closePid(childPid);
 				childPid = 0;
 			}
@@ -981,18 +953,19 @@ code: start
 
 	/**
 	 * Adds a parameter to the execution program
-	 * Params:
-	 *     parm = Params for adding
 	 */
-	public void addParm(string parm) {
+	public void addParm(string parm)
+	{
 		argv ~= parm;
 	}
 
 	/**
 	 * Gets the last error message
 	 */
-	public string getLastError() {
-		if ( error != null ) {
+	public string getLastError()
+	{
+		if ( error != null )
+		{
 			return Str.toString(error.message);
 		}
 		return "";
@@ -1004,7 +977,8 @@ code: start
 	public int execAsyncWithPipes(
 		ChildWatch externalWatch = null,
 		bool delegate(string) readOutput = null,
-		bool delegate(string) readError = null ) {
+		bool delegate(string) readError = null )
+	{
 		int result = g_spawn_async_with_pipes(
 		Str.toStringz(workingDirectory),
 		Str.toStringzArray(argv),
@@ -1019,17 +993,20 @@ code: start
 		&error
 		);
 
-		if ( result != 0 ) 	{
+		if ( result != 0 )
+		{
 			this.externalWatch = externalWatch;
 			g_child_watch_add(childPid, cast(GChildWatchFunc)(&childWatchCallback), cast(void*)this);
 			standardInput = fdopen(stdIn, Str.toStringz("w"));
 			standardOutput = fdopen(stdOut, Str.toStringz("r"));
 			standardError = fdopen(stdErr, Str.toStringz("r"));
 
-			if ( readOutput !is null ) {
+			if ( readOutput !is null )
+			{
 				(new ReadFile(standardOutput, readOutput)).start();
 			}
-			if ( readError !is null ) {
+			if ( readError !is null )
+			{
 				(new ReadFile(standardError, readError)).start();
 			}
 		}
@@ -1037,36 +1014,29 @@ code: start
 		return result;
 	}
 
-	/**
-	 * Class for reading file in a thread
-	 */
-	class ReadFile : Thread {
+	class ReadFile : Thread
+	{
 		bool delegate(string) read;
 		FILE* file;
 
 		int lineCount;
 
-		/**
-		 * Open a file for reading
-		 * Params:
-		 *     file = file for reading
-		 *     read = Function for reading
-		 */
-		this(FILE* file, bool delegate (string) read ) {
+		this(FILE* file, bool delegate (string) read )
+		{
 			this.file = file;
 			this.read = read;
 
 			super(&run);
 		}
 
-		/**
-		 * Create a new thread and start reading
-		 */
-		public void run() {
+		public void run()
+		{
 			string line = readLine(file);
-			while( line !is null ) {
+			while( line !is null )
+			{
 				++lineCount;
-				if ( read !is null ) {
+				if ( read !is null )
+				{
 					read(line);
 				}
 				line = readLine(file);
@@ -1074,15 +1044,12 @@ code: start
 		}
 	}
 
-	/**
-	 * Read line from file in a thread
-	 * Params:
-	 *     stream = File for reading
-	 *     max = Max length of the reading string
-	 */
-	private string readLine(FILE* stream, int max=4096) {
-		if ( feof(stream) ) {
-			if ( externalWatch !is null ) {
+	private string readLine(FILE* stream, int max=4096)
+	{
+		if ( feof(stream) )
+		{
+			if ( externalWatch !is null )
+			{
 				externalWatch(this);
 			}
 			return null;
@@ -1090,7 +1057,8 @@ code: start
 		string line;
 		line.length = max+1;
 		char* lineP = fgets(Str.toStringz(line), max, stream);
-		if ( lineP is null ) {
+		if ( lineP is null )
+		{
 			return "";
 		}
 		size_t l = strlen(line.ptr);
@@ -1099,7 +1067,8 @@ code: start
 		return line[0..l];
 	}
 
-	extern(C) static void childWatchCallback(int pid, int status, Spawn spawn) {
+	extern(C) static void childWatchCallback(int pid, int status, Spawn spawn)
+	{
 		//writefln("Spawn.childWatchCallback %s %s", pid, status);
 		spawn.exitStatus = status;
 		if ( spawn.externalWatch !is null )
@@ -1109,33 +1078,31 @@ code: start
 		spawn.close();
 	}
 
-	/**
-	 * Does the reading end?
-	 * Return: True if yes
-	 */
-	public bool endOfOutput() {
+
+	public bool endOfOutput()
+	{
 		if ( standardOutput is null ) return true;
 		return feof(standardOutput) != 0;
 	}
 
-	/**
-	 * Is reading ended with errors?
-	 * Return: True if yes
-	 */
-	public bool endOfError() {
+	public bool endOfError()
+	{
 		if ( standardError is null ) return true;
 		return feof(standardError) != 0;
 	}
 
-	string getOutputString() {
+	string getOutputString()
+	{
 		return Str.toString(strOutput);
 	}
 
-	string getErrorString() {
+	string getErrorString()
+	{
 		return Str.toString(strError);
 	}
 
-	int getExitStatus() {
+	int getExitStatus()
+	{
 		return exitStatus;
 	}
 
@@ -1147,10 +1114,13 @@ code: start
 	public int commandLineSync(
 		ChildWatch externalWatch = null,
 		bool delegate(string) readOutput = null,
-		bool delegate(string) readError = null ) {
+		bool delegate(string) readError = null )
+	{
 		string commandLine;
-		foreach ( count, string arg; argv) 	{
-			if ( count > 0 ) {
+		foreach ( count, string arg; argv)
+		{
+			if ( count > 0 )
+			{
 				commandLine ~= ' ';
 			}
 			commandLine ~= arg;
@@ -1161,17 +1131,22 @@ code: start
 			&strError,
 			&exitStatus,
 			&error);
-		if ( readOutput != null ) {
-			foreach ( string line ; splitLines(Str.toString(strOutput)) ) {
+		if ( readOutput != null )
+		{
+			foreach ( string line ; splitLines(Str.toString(strOutput)) )
+			{
 				readOutput(line);
 			}
 		}
-		if ( readError != null ) {
-			foreach ( string line ; splitLines(Str.toString(strError)) ) {
+		if ( readError != null )
+		{
+			foreach ( string line ; splitLines(Str.toString(strError)) )
+			{
 				readError(line);
 			}
 		}
-		if ( externalWatch != null ) {
+		if ( externalWatch != null )
+		{
 			externalWatch(this);
 		}
 		return status;
@@ -1187,7 +1162,8 @@ code: start
 	 * Convert C-style 0 terminated string s to char[] string.
 	 * copied from phobos
 	 */
-	public static string toString(const(char)* s, size_t len = 0) pure {
+	public static string toString(const(char)* s, size_t len = 0) pure
+	{
 		if ( s is null )
 			return cast(string)null;
 
@@ -1201,14 +1177,17 @@ code: start
 	 * Convert array of chars s[] to a C-style 0 terminated string.
 	 * copied from phobos
 	 */
-	public static char* toStringz(string s) pure {
+	public static char* toStringz(string s) pure
+	{
 		if ( s is null ) return null;
 		char[] copy;
 
-		if (s.length == 0) {
+		if (s.length == 0)
+		{
 			copy = "\0".dup;
 		}
-		else {
+		else
+		{
 			// Need to make a copy
 			copy = new char[s.length + 1];
 			copy[0..s.length] = s[];
@@ -1219,13 +1198,16 @@ code: start
 	}
 
 	/** */
-	public static char** toStringzArray(string[] args) pure {
-		if ( args is null ) {
+	public static char** toStringzArray(string[] args) pure
+	{
+		if ( args is null )
+		{
 			return null;
 		}
 		char** argv = (new char*[args.length + 1]).ptr;
 		int argc = 0;
-		foreach (string p; args) {
+		foreach (string p; args)
+		{
 			argv[argc++] = cast(char*)(p.dup~'\0');
 		}
 		argv[argc] = null;
@@ -1234,13 +1216,16 @@ code: start
 	}
 
 	/** */
-	public static char*** toStringzArray(string[][] args) pure {
-		if ( args is null ) {
+	public static char*** toStringzArray(string[][] args) pure
+	{
+		if ( args is null )
+		{
 			return null;
 		}
 		char**[] argv = new char**[args.length + 1];
 		int argc = 0;
-		foreach( string[] p; args ) {
+		foreach( string[] p; args )
+		{
 			argv[argc++] = toStringzArray(p);
 		}
 		argv[argc] = null;
@@ -1249,13 +1234,16 @@ code: start
 	}
 
 	/** */
-	public static string[] toStringArray(const(char*)* args) pure {
-		if ( args is null ) {
+	public static string[] toStringArray(const(char*)* args) pure
+	{
+		if ( args is null )
+		{
 			return null;
 		}
 		string[] argv;
 
-		while ( *args !is null ) {
+		while ( *args !is null )
+		{
 			argv ~= toString(*args);
 			args++;
 		}
@@ -1264,10 +1252,12 @@ code: start
 	}
 
 	/** */
-	public static string[] toStringArray(const(char*)* args, size_t len) pure {
+	public static string[] toStringArray(const(char*)* args, size_t len) pure
+	{
 		string[] argv = new string[len];
 
-		for ( int i; i < len; i++ ) {
+		for ( int i; i < len; i++ )
+		{
 			argv[i] = toString(args[i]);
 		}
 
@@ -1275,14 +1265,17 @@ code: start
 	}
 
 	/** */
-	public static string[][] toStringArray(char*** args) pure {
+	public static string[][] toStringArray(char*** args) pure
+	{
 		string[][] argv;
 
-		if ( args is null ) {
+		if ( args is null )
+		{
 			return null;
 		}
 
-		while ( *args !is null ) {
+		while ( *args !is null )
+		{
 			argv ~= toStringArray(*args);
 			args++;
 		}
@@ -1291,18 +1284,22 @@ code: start
 	}
 
 	/** */
-	public static void freeString(char* str) {
+	public static void freeString(char* str)
+	{
 		g_free(str);
 	}
 
 	/** */
-	public static void freeStringArray(char** str) {
+	public static void freeStringArray(char** str)
+	{
 		g_strfreev(str);
 	}
 
 	/** */
-	public static void freeStringArray(char*** str) {
-		while ( *str !is null ) {
+	public static void freeStringArray(char*** str)
+	{
+		while ( *str !is null )
+		{
 			g_strfreev(*str);
 			str++;
 		}
@@ -1342,7 +1339,8 @@ code: start
 	 *    	delegate() = 	the delegate to be executed
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(uint interval, bool delegate() dlg, bool fireNow=false) {
+	this(uint interval, bool delegate() dlg, bool fireNow=false)
+	{
 		if ( fireNow && !dlg() )
 			return;
 
@@ -1350,7 +1348,8 @@ code: start
 		timeoutID = g_timeout_add_full(GPriority.DEFAULT, interval, cast(GSourceFunc)&timeoutCallback, cast(void*)this, cast(GDestroyNotify)&destroyTimeoutNotify);
 	}
 
-	this(Duration interval, bool delegate() dlg, bool fireNow=false) {
+	this(Duration interval, bool delegate() dlg, bool fireNow=false)
+	{
 		this(interval.total!"msecs".to!uint, dlg, fireNow);
 	}
 
@@ -1362,7 +1361,8 @@ code: start
 	 *      priority = Priority for the timeout function
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(uint interval, bool delegate() dlg, GPriority priority, bool fireNow=false) {
+	this(uint interval, bool delegate() dlg, GPriority priority, bool fireNow=false)
+	{
 		if ( fireNow && !dlg() )
 			return;
 
@@ -1370,7 +1370,8 @@ code: start
 		timeoutID = g_timeout_add_full(priority, interval, cast(GSourceFunc)&timeoutCallback, cast(void*)this, cast(GDestroyNotify)&destroyTimeoutNotify);
 	}
 
-	this(Duration interval, bool delegate() dlg, GPriority priority, bool fireNow=false) {
+	this(Duration interval, bool delegate() dlg, GPriority priority, bool fireNow=false)
+	{
 		this(interval.total!"msecs".to!uint, dlg, priority, fireNow);
 	}
 
@@ -1381,7 +1382,8 @@ code: start
 	 *      seconds = interval in seconds.
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, uint seconds, bool fireNow=false) {
+	this(bool delegate() dlg, uint seconds, bool fireNow=false)
+	{
 		if ( fireNow && !dlg() )
 			return;
 
@@ -1389,7 +1391,8 @@ code: start
 		timeoutID = g_timeout_add_seconds_full(GPriority.DEFAULT, seconds, cast(GSourceFunc)&timeoutCallback, cast(void*)this, cast(GDestroyNotify)&destroyTimeoutNotify);
 	}
 
-	this(bool delegate() dlg, Duration seconds, bool fireNow=false) {
+	this(bool delegate() dlg, Duration seconds, bool fireNow=false)
+	{
 		this(dlg, seconds.total!"seconds".to!uint, fireNow);
 	}
 
@@ -1401,7 +1404,8 @@ code: start
 	 *      priority = Priority for the timeout function
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, uint seconds, GPriority priority, bool fireNow=false) {
+	this(bool delegate() dlg, uint seconds, GPriority priority, bool fireNow=false)
+	{
 		if ( fireNow && !dlg() )
 			return;
 
@@ -1409,13 +1413,16 @@ code: start
 		timeoutID = g_timeout_add_seconds_full(priority, seconds, cast(GSourceFunc)&timeoutCallback, cast(void*)this, cast(GDestroyNotify)&destroyTimeoutNotify);
 	}
 
-	this(bool delegate() dlg, Duration seconds, GPriority priority, bool fireNow=false) {
+	this(bool delegate() dlg, Duration seconds, GPriority priority, bool fireNow=false)
+	{
 		this(dlg, seconds.total!"seconds".to!uint, priority, fireNow);
 	}
 
 	/** Removes the timeout from gtk */
-	public void stop() {
-		if ( timeoutID > 0 ) {
+	public void stop()
+	{
+		if ( timeoutID > 0 )
+		{
 			g_source_remove(timeoutID);
 		}
 	}
@@ -1423,7 +1430,8 @@ code: start
 	/**
 	 * Removes the timeout from gtk
 	 */
-	~this() {
+	~this()
+	{
 		stop();
 	}
 
@@ -1433,7 +1441,8 @@ code: start
 	 *    	dlg =
 	 *    	fireNow =
 	 */
-	public void addListener(bool delegate() dlg, bool fireNow=false) {
+	public void addListener(bool delegate() dlg, bool fireNow=false)
+	{
 		if ( fireNow && !dlg() )
 			return;
 
@@ -1446,15 +1455,19 @@ code: start
 	 *    	timeout =
 	 * Returns:
 	 */
-	extern(C) static bool timeoutCallback(Timeout timeout) {
+	extern(C) static bool timeoutCallback(Timeout timeout)
+	{
 		bool runAgain = false;
 		int i = 0;
 
-		while ( i<timeout.timeoutListeners.length ) {
-			if ( !timeout.timeoutListeners[i]() ) {
+		while ( i<timeout.timeoutListeners.length )
+		{
+			if ( !timeout.timeoutListeners[i]() )
+			{
 				timeout.timeoutListeners = timeout.timeoutListeners[0..i] ~ timeout.timeoutListeners[i+1..$];
 			}
-			else {
+			else
+			{
 				runAgain = true;
 				++i;
 			}
@@ -1466,7 +1479,8 @@ code: start
 	/*
 	 * Reset the timeout object when it's destroyed on the GTK side.
 	 */
-	extern(C) static void destroyTimeoutNotify(Timeout timeout) {
+	extern(C) static void destroyTimeoutNotify(Timeout timeout)
+	{
 		timeout.timeoutListeners.length = 0;
 		timeout.timeoutID = 0;
 	}
@@ -1476,125 +1490,6 @@ struct: TimeZone
 noCode: new_local
 noCode: new_utc
 noCode: new_identifier
-code: start
-	/**
-	 * Creates a #GTimeZone corresponding to UTC.
-	 *
-	 * This is equivalent to calling g_time_zone_new() with a value like
-	 * "Z", "UTC", "+00", etc or local.
-	 *
-	 * You should release the return value by calling g_time_zone_unref()
-	 * when you are done with it.
-	 *
-	 * Params:
-	 *     utc = Utc or local mode
-	 *      
-	 * Returns: the universal timezone
-	 *
-	 * Since: 2.26
-	 *
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this(bool utc = true) {
-		GTimeZone* __p;
-		
-		if (utc) __p = g_time_zone_new_utc();
-		else __p = g_time_zone_new_local();
-
-		if(__p is null) {
-			throw new ConstructionException("null returned by new_utc");
-		}
-
-		this(cast(GTimeZone*) __p);
-	}
-
-	/**
-	 * Creates a #GTimeZone corresponding to @identifier. If @identifier cannot be
-	 * parsed or loaded, %NULL is returned.
-	 *
-	 * @identifier can either be an RFC3339/ISO 8601 time offset or
-	 * something that would pass as a valid value for the `TZ` environment
-	 * variable (including %NULL).
-	 *
-	 * In Windows, @identifier can also be the unlocalized name of a time
-	 * zone for standard time, for example "Pacific Standard Time".
-	 *
-	 * Valid RFC3339 time offsets are `"Z"` (for UTC) or
-	 * `"±hh:mm"`.  ISO 8601 additionally specifies
-	 * `"±hhmm"` and `"±hh"`.  Offsets are
-	 * time values to be added to Coordinated Universal Time (UTC) to get
-	 * the local time.
-	 *
-	 * In UNIX, the `TZ` environment variable typically corresponds
-	 * to the name of a file in the zoneinfo database, an absolute path to a file
-	 * somewhere else, or a string in
-	 * "std offset [dst [offset],start[/time],end[/time]]" (POSIX) format.
-	 * There  are  no spaces in the specification. The name of standard
-	 * and daylight savings time zone must be three or more alphabetic
-	 * characters. Offsets are time values to be added to local time to
-	 * get Coordinated Universal Time (UTC) and should be
-	 * `"[±]hh[[:]mm[:ss]]"`.  Dates are either
-	 * `"Jn"` (Julian day with n between 1 and 365, leap
-	 * years not counted), `"n"` (zero-based Julian day
-	 * with n between 0 and 365) or `"Mm.w.d"` (day d
-	 * (0 <= d <= 6) of week w (1 <= w <= 5) of month m (1 <= m <= 12), day
-	 * 0 is a Sunday).  Times are in local wall clock time, the default is
-	 * 02:00:00.
-	 *
-	 * In Windows, the "tzn[+|–]hh[:mm[:ss]][dzn]" format is used, but also
-	 * accepts POSIX format.  The Windows format uses US rules for all time
-	 * zones; daylight savings time is 60 minutes behind the standard time
-	 * with date and time of change taken from Pacific Standard Time.
-	 * Offsets are time values to be added to the local time to get
-	 * Coordinated Universal Time (UTC).
-	 *
-	 * g_time_zone_new_local() calls this function with the value of the
-	 * `TZ` environment variable. This function itself is independent of
-	 * the value of `TZ`, but if @identifier is %NULL then `/etc/localtime`
-	 * will be consulted to discover the correct time zone on UNIX and the
-	 * registry will be consulted or GetTimeZoneInformation() will be used
-	 * to get the local time zone on Windows.
-	 *
-	 * If intervals are not available, only time zone rules from `TZ`
-	 * environment variable or other means, then they will be computed
-	 * from year 1900 to 2037.  If the maximum year for the rules is
-	 * available and it is greater than 2037, then it will followed
-	 * instead.
-	 *
-	 * See
-	 * [RFC3339 §5.6](http://tools.ietf.org/html/rfc3339#section-5.6)
-	 * for a precise definition of valid RFC3339 time offsets
-	 * (the `time-offset` expansion) and ISO 8601 for the
-	 * full list of valid time offsets.  See
-	 * [The GNU C Library manual](http://www.gnu.org/s/libc/manual/html_node/TZ-Variable.html)
-	 * for an explanation of the possible
-	 * values of the `TZ` environment variable. See
-	 * [Microsoft Time Zone Index Values](http://msdn.microsoft.com/en-us/library/ms912391%28v=winembedded.11%29.aspx)
-	 * for the list of time zones on Windows.
-	 *
-	 * You should release the return value by calling g_time_zone_unref()
-	 * when you are done with it.
-	 *
-	 * Params:
-	 *     identifier = a timezone identifier
-	 *
-	 * Returns: the requested timezone, or %NULL on
-	 *     failure
-	 *
-	 * Since: 2.68
-	 *
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public static TimeZone newIdentifier(string identifier) {
-		auto __p = g_time_zone_new_identifier(Str.toStringz(identifier));
-
-		if(__p is null) {
-			throw new ConstructionException("null returned by new_identifier");
-		}
-
-		return new TimeZone(cast(GTimeZone*) __p);
-	}
-code: end
 
 struct: Tree
 class: BBTree
@@ -1620,7 +1515,8 @@ code: start
 	 *
 	 * Since: 2.8
 	 */
-	public static string buildFilename(string[] firstElement ... ) {
+	public static string buildFilename(string[] firstElement ... )
+	{
 		return Str.toString(g_build_filenamev(Str.toStringzArray(firstElement)));
 	}
 
@@ -1637,7 +1533,8 @@ code: start
 	 *
 	 * Since: 2.8
 	 */
-	public static string buildPath(string separator, string[] firstElement ... ) {
+	public static string buildPath(string separator, string[] firstElement ... )
+	{
 		return Str.toString(g_build_pathv(Str.toStringz(separator), Str.toStringzArray(firstElement)));
 	}
 code: end
@@ -1660,9 +1557,11 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Variant fromObjectPath(string path) {
+	public static Variant fromObjectPath(string path)
+	{
 		auto p = g_variant_new_object_path(Str.toStringz(path));
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by g_variant_new_object_path");
 		}
 		return new Variant(cast(GVariant*) p);
@@ -1677,7 +1576,8 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Variant fromSignature(string signature) {
+	public static Variant fromSignature(string signature)
+	{
 		auto p = g_variant_new_signature(Str.toStringz(signature));
 		if(p is null)
 		{
@@ -1696,9 +1596,11 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Variant fromByteString(string byteString) {
+	public static Variant fromByteString(string byteString)
+	{
 		auto p = g_variant_new_bytestring(Str.toStringz(byteString));
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by g_variant_new_bytestring");
 		}
 		return new Variant(cast(GVariant*) p);
@@ -1717,10 +1619,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Variant fromObjv(string[] strv) {
+	public static Variant fromObjv(string[] strv)
+	{
 		// GVariant * g_variant_new_objv (const gchar * const *strv,  gssize length);
 		auto p = g_variant_new_objv(Str.toStringzArray(strv), strv.length);
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by g_variant_new_objv(strv, length)");
 		}
 		return new Variant(cast(GVariant*) p);
@@ -1737,9 +1641,11 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static Variant fromByteStringArray(string[] strv) {
+	public static Variant fromByteStringArray(string[] strv)
+	{
 		auto p = g_variant_new_bytestring_array(Str.toStringzArray(strv), strv.length);
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by g_variant_new_bytestring_array(strv, length)");
 		}
 		return new Variant(cast(GVariant*) p);
@@ -1764,10 +1670,12 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static VariantType newMaybe(VariantType element) {
+	public static VariantType newMaybe(VariantType element)
+	{
 		auto p = g_variant_type_new_maybe((element is null) ? null : element.getVariantTypeStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_maybe");
 		}
 

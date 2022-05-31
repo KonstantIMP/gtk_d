@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.StyleSchemePreview;
 
 private import glib.ConstructionException;
@@ -18,7 +42,16 @@ public  import sourceview.c.types;
 private import std.algorithm;
 
 
-/** */
+/**
+ * A preview widget for [class@StyleScheme].
+ * 
+ * This widget provides a convenient [class@Gtk.Widget] to preview a [class@StyleScheme].
+ * 
+ * The [property@StyleSchemePreview:selected] property can be used to manage
+ * the selection state of a single preview widget.
+ *
+ * Since: 5.4
+ */
 public class StyleSchemePreview : Widget, ActionableIF
 {
 	/** the main Gtk struct */

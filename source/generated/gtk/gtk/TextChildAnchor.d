@@ -1,6 +1,31 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.TextChildAnchor;
 
 private import glib.ConstructionException;
+private import glib.Str;
 private import gobject.ObjectG;
 private import gtk.Widget;
 private import gtk.c.functions;
@@ -67,6 +92,30 @@ public class TextChildAnchor : ObjectG
 		if(__p is null)
 		{
 			throw new ConstructionException("null returned by new");
+		}
+
+		this(cast(GtkTextChildAnchor*) __p, true);
+	}
+
+	/**
+	 * Creates a new `GtkTextChildAnchor` with the given replacement character.
+	 *
+	 * Usually you would then insert it into a `GtkTextBuffer` with
+	 * [method@Gtk.TextBuffer.insert_child_anchor].
+	 *
+	 * Returns: a new `GtkTextChildAnchor`
+	 *
+	 * Since: 4.6
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(string character)
+	{
+		auto __p = gtk_text_child_anchor_new_with_replacement(Str.toStringz(character));
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_with_replacement");
 		}
 
 		this(cast(GtkTextChildAnchor*) __p, true);

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.c.types;
 
 public import gdk.c.types;
@@ -121,8 +145,6 @@ alias GtkSourceFileLoaderError FileLoaderError;
 
 /**
  * An error code used with the %GTK_SOURCE_FILE_SAVER_ERROR domain.
- *
- * Since: 3.14
  */
 public enum GtkSourceFileSaverError
 {
@@ -140,9 +162,7 @@ public enum GtkSourceFileSaverError
 alias GtkSourceFileSaverError FileSaverError;
 
 /**
- * Flags to define the behavior of a #GtkSourceFileSaver.
- *
- * Since: 3.14
+ * Flags to define the behavior of a [flags@FileSaverFlags].
  */
 public enum GtkSourceFileSaverFlags
 {
@@ -256,8 +276,6 @@ alias GtkSourceSortFlags SortFlags;
  *
  * If a line contains only white spaces (no text), the white spaces match both
  * %GTK_SOURCE_SPACE_LOCATION_LEADING and %GTK_SOURCE_SPACE_LOCATION_TRAILING.
- *
- * Since: 3.24
  */
 public enum GtkSourceSpaceLocationFlags
 {
@@ -287,8 +305,6 @@ alias GtkSourceSpaceLocationFlags SpaceLocationFlags;
 
 /**
  * #GtkSourceSpaceTypeFlags contains flags for white space types.
- *
- * Since: 3.24
  */
 public enum GtkSourceSpaceTypeFlags
 {
@@ -583,8 +599,6 @@ struct GtkSourceIndenter;
 
 /**
  * The virtual function table for #GtkSourceIndenter.
- *
- * Since: 5.0
  */
 struct GtkSourceIndenterInterface
 {
@@ -596,7 +610,7 @@ struct GtkSourceIndenterInterface
 	 *     view = a #GtkSourceView
 	 *     location = the location where @ch is to be inserted
 	 *     state = modifier state for the insertion
-	 *     keyval = the keyval pressed such as %GDK_KEY_Return
+	 *     keyval = the keyval pressed such as [const@Gdk.KEY_Return]
 	 * Returns: %TRUE if indentation should be automatically triggered;
 	 *     otherwise %FALSE and no indentation will be performed.
 	 */
@@ -838,19 +852,17 @@ struct GtkSourceVimIMContextClass
 
 /**
  * Type definition for a function that will be called to create a
- * #GMountOperation. This is useful for creating a #GtkMountOperation.
+ * [class@Gio.MountOperation]. This is useful for creating a [class@Gtk.MountOperation].
  *
  * Params:
  *     file = a #GtkSourceFile.
  *     userdata = user data
- *
- * Since: 3.14
  */
 public alias extern(C) GMountOperation* function(GtkSourceFile* file, void* userdata) GtkSourceMountOperationFactory;
 
 /**
  * This function is called incrementally to process additional background work.
- * A deadline is provided which can be checked using g_get_monotonic_time() so
+ * A deadline is provided which can be checked using [func@GLib.get_monotonic_time] so
  * that additional work can be processed each frame.
  *
  * This is useful for situations where you are incrementally performing

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.GutterRendererPixbuf;
 
 private import gdk.PaintableIF;
@@ -12,7 +36,12 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Renders a pixbuf in the gutter.
+ * 
+ * A `GtkSourceGutterRendererPixbuf` can be used to render an image in a cell of
+ * [class@Gutter].
+ */
 public class GutterRendererPixbuf : GutterRenderer
 {
 	/** the main Gtk struct */
@@ -91,12 +120,10 @@ public class GutterRendererPixbuf : GutterRenderer
 	}
 
 	/**
-	 * Gets a #GdkPaintable that was set with
-	 * gtk_source_gutter_renderer_pixbuf_set_paintable()
+	 * Gets a [iface@Gdk.Paintable] that was set with
+	 * [method@GutterRendererPixbuf.set_paintable]
 	 *
 	 * Returns: a #GdkPaintable or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public PaintableIF getPaintable()
 	{
@@ -134,8 +161,6 @@ public class GutterRendererPixbuf : GutterRenderer
 	 *
 	 * Params:
 	 *     paintable = a #GdkPaintable
-	 *
-	 * Since: 5.0
 	 */
 	public void overlayPaintable(PaintableIF paintable)
 	{

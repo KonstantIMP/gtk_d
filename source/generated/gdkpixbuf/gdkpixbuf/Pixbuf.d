@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdkpixbuf.Pixbuf;
 
 private import gdkpixbuf.PixbufFormat;
@@ -211,7 +235,8 @@ public class Pixbuf : ObjectG, IconIF, LoadableIconIF
 	 *
 	 * Throws: GException on failure.
 	 */
-	public bool saveToBuffer(out ubyte[] buffer, string type, string[] optionKeys, string[] optionValues) {
+	public bool saveToBuffer(out ubyte[] buffer, string type, string[] optionKeys, string[] optionValues)
+	{
 		char* outbuffer = null;
 		size_t bufferSize;
 		GError* err = null;
@@ -245,7 +270,8 @@ public class Pixbuf : ObjectG, IconIF, LoadableIconIF
 	 *
 	 * Throws: GException on failure.
 	 */
-	public static Pixbuf newFromResource(string resourcePath) {
+	public static Pixbuf newFromResource(string resourcePath)
+	{
 		GError* err = null;
 
 		auto p = gdk_pixbuf_new_from_resource(Str.toStringz(resourcePath), &err);
@@ -287,7 +313,8 @@ public class Pixbuf : ObjectG, IconIF, LoadableIconIF
 	 *
 	 * Throws: GException on failure.
 	 */
-	public static Pixbuf newFromResource(string resourcePath, int width, int height, bool preserveAspectRatio) {
+	public static Pixbuf newFromResource(string resourcePath, int width, int height, bool preserveAspectRatio)
+	{
 		GError* err = null;
 
 		auto p = gdk_pixbuf_new_from_resource_at_scale(Str.toStringz(resourcePath), width, height, preserveAspectRatio, &err);
@@ -310,7 +337,8 @@ public class Pixbuf : ObjectG, IconIF, LoadableIconIF
 	 *     This function will cause an implicit copy of the pixbuf data if the
 	 *     pixbuf was created from read-only data.
 	 */
-	public char* getPixels() {
+	public char* getPixels()
+	{
 		return gdk_pixbuf_get_pixels(gdkPixbuf);
 	}
 
@@ -1426,7 +1454,7 @@ public class Pixbuf : ObjectG, IconIF, LoadableIconIF
 	 * This function will cause an implicit copy of the pixbuf data if the
 	 * pixbuf was created from read-only data.
 	 *
-	 * Please see the section on [image data](#image-data) for information
+	 * Please see the section on [image data](class.Pixbuf.html#image-data) for information
 	 * about how the pixel data is stored in memory.
 	 *
 	 * Returns: A pointer to the pixbuf's

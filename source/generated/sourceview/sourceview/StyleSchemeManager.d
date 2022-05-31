@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.StyleSchemeManager;
 
 private import glib.ConstructionException;
@@ -9,7 +33,9 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Provides access to [class@StyleScheme]s.
+ */
 public class StyleSchemeManager : ObjectG
 {
 	/** the main Gtk struct */
@@ -46,8 +72,10 @@ public class StyleSchemeManager : ObjectG
 	}
 
 	/**
-	 * Creates a new style manager. If you do not need more than one style
-	 * manager then use gtk_source_style_scheme_manager_get_default() instead.
+	 * Creates a new style manager.
+	 *
+	 * If you do not need more than one style manager
+	 * then use [func@StyleSchemeManager.get_default] instead.
 	 *
 	 * Returns: a new #GtkSourceStyleSchemeManager.
 	 *
@@ -86,7 +114,8 @@ public class StyleSchemeManager : ObjectG
 	/**
 	 * Appends @path to the list of directories where the @manager looks for
 	 * style scheme files.
-	 * See gtk_source_style_scheme_manager_set_search_path() for details.
+	 *
+	 * See [method@StyleSchemeManager.set_search_path] for details.
 	 *
 	 * Params:
 	 *     path = a directory or a filename.
@@ -97,9 +126,10 @@ public class StyleSchemeManager : ObjectG
 	}
 
 	/**
-	 * Mark any currently cached information about the available style scehems
-	 * as invalid. All the available style schemes will be reloaded next time
-	 * the @manager is accessed.
+	 * Mark any currently cached information about the available style schems
+	 * as invalid.
+	 *
+	 * All the available style schemes will be reloaded next time the @manager is accessed.
 	 */
 	public void forceRescan()
 	{
@@ -142,7 +172,8 @@ public class StyleSchemeManager : ObjectG
 
 	/**
 	 * Returns the current search path for the @manager.
-	 * See gtk_source_style_scheme_manager_set_search_path() for details.
+	 *
+	 * See [method@StyleSchemeManager.set_search_path] for details.
 	 *
 	 * Returns: a %NULL-terminated array
 	 *     of string containing the search path.
@@ -156,7 +187,8 @@ public class StyleSchemeManager : ObjectG
 	/**
 	 * Prepends @path to the list of directories where the @manager looks
 	 * for style scheme files.
-	 * See gtk_source_style_scheme_manager_set_search_path() for details.
+	 *
+	 * See [method@StyleSchemeManager.set_search_path] for details.
 	 *
 	 * Params:
 	 *     path = a directory or a filename.

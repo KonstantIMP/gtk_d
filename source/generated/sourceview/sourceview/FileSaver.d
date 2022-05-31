@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.FileSaver;
 
 private import gio.AsyncResultIF;
@@ -14,7 +38,16 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Save a [class@Buffer] into a file.
+ * 
+ * A `GtkSourceFileSaver` object permits to save a [class@Buffer] into a
+ * [iface@Gio.File].
+ * 
+ * A file saver should be used only for one save operation, including errors
+ * handling. If an error occurs, you can reconfigure the saver and relaunch the
+ * operation with [method@FileSaver.save_async].
+ */
 public class FileSaver : ObjectG
 {
 	/** the main Gtk struct */
@@ -52,18 +85,16 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Creates a new #GtkSourceFileSaver object. The @buffer will be saved to the
-	 * #GtkSourceFile's location.
+	 * [class@File]'s location.
 	 *
 	 * This constructor is suitable for a simple "save" operation, when the @file
-	 * already contains a non-%NULL #GtkSourceFile:location.
+	 * already contains a non-%NULL [property@File:location].
 	 *
 	 * Params:
 	 *     buffer = the #GtkSourceBuffer to save.
 	 *     file = the #GtkSourceFile.
 	 *
 	 * Returns: a new #GtkSourceFileSaver object.
-	 *
-	 * Since: 3.14
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -80,10 +111,11 @@ public class FileSaver : ObjectG
 	}
 
 	/**
-	 * Creates a new #GtkSourceFileSaver object with a target location. When the
-	 * file saving is finished successfully, @target_location is set to the @file's
-	 * #GtkSourceFile:location property. If an error occurs, the previous valid
-	 * location is still available in #GtkSourceFile.
+	 * Creates a new #GtkSourceFileSaver object with a target location.
+	 *
+	 * When the file saving is finished successfully, @target_location is set to the @file's
+	 * [property@File:location] property. If an error occurs, the previous valid
+	 * location is still available in [class@File].
 	 *
 	 * This constructor is suitable for a "save as" operation, or for saving a new
 	 * buffer for the first time.
@@ -94,8 +126,6 @@ public class FileSaver : ObjectG
 	 *     targetLocation = the #GFile where to save the buffer to.
 	 *
 	 * Returns: a new #GtkSourceFileSaver object.
-	 *
-	 * Since: 3.14
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -113,8 +143,6 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Returns: the #GtkSourceBuffer to save.
-	 *
-	 * Since: 3.14
 	 */
 	public Buffer getBuffer()
 	{
@@ -130,8 +158,6 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Returns: the compression type.
-	 *
-	 * Since: 3.14
 	 */
 	public GtkSourceCompressionType getCompressionType()
 	{
@@ -140,8 +166,6 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Returns: the encoding.
-	 *
-	 * Since: 3.14
 	 */
 	public Encoding getEncoding()
 	{
@@ -157,8 +181,6 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Returns: the #GtkSourceFile.
-	 *
-	 * Since: 3.14
 	 */
 	public File getFile()
 	{
@@ -174,8 +196,6 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Returns: the flags.
-	 *
-	 * Since: 3.14
 	 */
 	public GtkSourceFileSaverFlags getFlags()
 	{
@@ -184,8 +204,6 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Returns: the #GFile where to save the buffer to.
-	 *
-	 * Since: 3.14
 	 */
 	public FileIF getLocation()
 	{
@@ -201,8 +219,6 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Returns: the newline type.
-	 *
-	 * Since: 3.14
 	 */
 	public GtkSourceNewlineType getNewlineType()
 	{
@@ -210,8 +226,9 @@ public class FileSaver : ObjectG
 	}
 
 	/**
-	 * Saves asynchronously the buffer into the file. See the #GAsyncResult
-	 * documentation to know how to use this function.
+	 * Saves asynchronously the buffer into the file.
+	 *
+	 * See the [iface@Gio.AsyncResult] documentation to know how to use this function.
 	 *
 	 * Params:
 	 *     ioPriority = the I/O priority of the request. E.g. %G_PRIORITY_LOW,
@@ -226,8 +243,6 @@ public class FileSaver : ObjectG
 	 *     callback = a #GAsyncReadyCallback to call when the request is
 	 *         satisfied.
 	 *     userData = user data to pass to @callback.
-	 *
-	 * Since: 3.14
 	 */
 	public void saveAsync(int ioPriority, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData, GDestroyNotify progressCallbackNotify, GAsyncReadyCallback callback, void* userData)
 	{
@@ -235,21 +250,19 @@ public class FileSaver : ObjectG
 	}
 
 	/**
-	 * Finishes a file saving started with gtk_source_file_saver_save_async().
+	 * Finishes a file saving started with [method@FileSaver.save_async].
 	 *
-	 * If the file has been saved successfully, the following #GtkSourceFile
+	 * If the file has been saved successfully, the following [class@File]
 	 * properties will be updated: the location, the encoding, the newline type and
 	 * the compression type.
 	 *
-	 * Since the 3.20 version, gtk_text_buffer_set_modified() is called with %FALSE
+	 * Since the 3.20 version, [method@Gtk.TextBuffer.set_modified] is called with %FALSE
 	 * if the file has been saved successfully.
 	 *
 	 * Params:
 	 *     result = a #GAsyncResult.
 	 *
 	 * Returns: whether the file was saved successfully.
-	 *
-	 * Since: 3.14
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -273,8 +286,6 @@ public class FileSaver : ObjectG
 	 *
 	 * Params:
 	 *     compressionType = the new compression type.
-	 *
-	 * Since: 3.14
 	 */
 	public void setCompressionType(GtkSourceCompressionType compressionType)
 	{
@@ -283,12 +294,11 @@ public class FileSaver : ObjectG
 
 	/**
 	 * Sets the encoding. If @encoding is %NULL, the UTF-8 encoding will be set.
+	 *
 	 * By default the encoding is taken from the #GtkSourceFile.
 	 *
 	 * Params:
 	 *     encoding = the new encoding, or %NULL for UTF-8.
-	 *
-	 * Since: 3.14
 	 */
 	public void setEncoding(Encoding encoding)
 	{
@@ -307,8 +317,6 @@ public class FileSaver : ObjectG
 	 *
 	 * Params:
 	 *     newlineType = the new newline type.
-	 *
-	 * Since: 3.14
 	 */
 	public void setNewlineType(GtkSourceNewlineType newlineType)
 	{

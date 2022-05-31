@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.PadController;
 
 private import gdk.Device;
@@ -19,7 +43,7 @@ public  import gtk.c.types;
  * 
  * These buttons and sensors have no implicit meaning, and by default they
  * perform no action. `GtkPadController` is provided to map those to
- * `GAction` objects, thus letting the application give them a more
+ * [iface@Gio.Action] objects, thus letting the application give them a more
  * semantic meaning.
  * 
  * Buttons and sensors are not constrained to triggering a single action,
@@ -32,10 +56,10 @@ public  import gtk.c.types;
  * different modes. See [method@Gdk.DevicePad.get_n_groups] and
  * [method@Gdk.DevicePad.get_group_n_modes].
  * 
- * Each of the actions that a given button/strip/ring performs for a given
- * mode is defined by a [struct@Gtk.PadActionEntry]. It contains an action
- * name that will be looked up in the given `GActionGroup` and activated
- * whenever the specified input element and mode are triggered.
+ * Each of the actions that a given button/strip/ring performs for a given mode
+ * is defined by a [struct@Gtk.PadActionEntry]. It contains an action name that
+ * will be looked up in the given [iface@Gio.ActionGroup] and activated whenever
+ * the specified input element and mode are triggered.
  * 
  * A simple example of `GtkPadController` usage: Assigning button 1 in all
  * modes and pad devices to an "invert-selection" action:

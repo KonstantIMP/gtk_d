@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.File;
 
 private import gio.FileIF;
@@ -8,7 +32,17 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * On-disk representation of a [class@Buffer].
+ * 
+ * A `GtkSourceFile` object is the on-disk representation of a [class@Buffer].
+ * With a `GtkSourceFile`, you can create and configure a [class@FileLoader]
+ * and [class@FileSaver] which take by default the values of the
+ * `GtkSourceFile` properties (except for the file loader which auto-detect some
+ * properties). On a successful load or save operation, the `GtkSourceFile`
+ * properties are updated. If an operation fails, the `GtkSourceFile` properties
+ * have still the previous valid values.
+ */
 public class File : ObjectG
 {
 	/** the main Gtk struct */
@@ -47,8 +81,6 @@ public class File : ObjectG
 	/**
 	 * Returns: a new #GtkSourceFile object.
 	 *
-	 * Since: 3.14
-	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this()
@@ -67,14 +99,12 @@ public class File : ObjectG
 	 * Checks synchronously the file on disk, to know whether the file is externally
 	 * modified, or has been deleted, and whether the file is read-only.
 	 *
-	 * #GtkSourceFile doesn't create a #GFileMonitor to track those properties, so
-	 * this function needs to be called instead. Creating lots of #GFileMonitor's
+	 * #GtkSourceFile doesn't create a [class@Gio.FileMonitor] to track those properties, so
+	 * this function needs to be called instead. Creating lots of [class@Gio.FileMonitor]'s
 	 * would take lots of resources.
 	 *
 	 * Since this function is synchronous, it is advised to call it only on local
-	 * files. See gtk_source_file_is_local().
-	 *
-	 * Since: 3.18
+	 * files. See [method@File.is_local].
 	 */
 	public void checkFileOnDisk()
 	{
@@ -83,8 +113,6 @@ public class File : ObjectG
 
 	/**
 	 * Returns: the compression type.
-	 *
-	 * Since: 3.14
 	 */
 	public GtkSourceCompressionType getCompressionType()
 	{
@@ -96,8 +124,6 @@ public class File : ObjectG
 	 * operation, the encoding is non-%NULL.
 	 *
 	 * Returns: the character encoding.
-	 *
-	 * Since: 3.14
 	 */
 	public Encoding getEncoding()
 	{
@@ -113,8 +139,6 @@ public class File : ObjectG
 
 	/**
 	 * Returns: the #GFile.
-	 *
-	 * Since: 3.14
 	 */
 	public FileIF getLocation()
 	{
@@ -130,8 +154,6 @@ public class File : ObjectG
 
 	/**
 	 * Returns: the newline type.
-	 *
-	 * Since: 3.14
 	 */
 	public GtkSourceNewlineType getNewlineType()
 	{
@@ -140,14 +162,12 @@ public class File : ObjectG
 
 	/**
 	 * Returns whether the file has been deleted. If the
-	 * #GtkSourceFile:location is %NULL, returns %FALSE.
+	 * [property@File:location] is %NULL, returns %FALSE.
 	 *
 	 * To have an up-to-date value, you must first call
-	 * gtk_source_file_check_file_on_disk().
+	 * [method@File.check_file_on_disk].
 	 *
 	 * Returns: whether the file has been deleted.
-	 *
-	 * Since: 3.18
 	 */
 	public bool isDeleted()
 	{
@@ -156,14 +176,12 @@ public class File : ObjectG
 
 	/**
 	 * Returns whether the file is externally modified. If the
-	 * #GtkSourceFile:location is %NULL, returns %FALSE.
+	 * [property@File:location] is %NULL, returns %FALSE.
 	 *
 	 * To have an up-to-date value, you must first call
-	 * gtk_source_file_check_file_on_disk().
+	 * [method@File.check_file_on_disk].
 	 *
 	 * Returns: whether the file is externally modified.
-	 *
-	 * Since: 3.18
 	 */
 	public bool isExternallyModified()
 	{
@@ -171,12 +189,10 @@ public class File : ObjectG
 	}
 
 	/**
-	 * Returns whether the file is local. If the #GtkSourceFile:location is %NULL,
+	 * Returns whether the file is local. If the [property@File:location] is %NULL,
 	 * returns %FALSE.
 	 *
 	 * Returns: whether the file is local.
-	 *
-	 * Since: 3.18
 	 */
 	public bool isLocal()
 	{
@@ -185,14 +201,12 @@ public class File : ObjectG
 
 	/**
 	 * Returns whether the file is read-only. If the
-	 * #GtkSourceFile:location is %NULL, returns %FALSE.
+	 * [property@File:location] is %NULL, returns %FALSE.
 	 *
 	 * To have an up-to-date value, you must first call
-	 * gtk_source_file_check_file_on_disk().
+	 * [method@File.check_file_on_disk].
 	 *
 	 * Returns: whether the file is read-only.
-	 *
-	 * Since: 3.18
 	 */
 	public bool isReadonly()
 	{
@@ -204,8 +218,6 @@ public class File : ObjectG
 	 *
 	 * Params:
 	 *     location = the new #GFile, or %NULL.
-	 *
-	 * Since: 3.14
 	 */
 	public void setLocation(FileIF location)
 	{
@@ -213,11 +225,12 @@ public class File : ObjectG
 	}
 
 	/**
-	 * Sets a #GtkSourceMountOperationFactory function that will be called when a
-	 * #GMountOperation must be created. This is useful for creating a
-	 * #GtkMountOperation with the parent #GtkWindow.
+	 * Sets a [callback@MountOperationFactory] function that will be called when a
+	 * [class@Gio.MountOperation] must be created.
 	 *
-	 * If a mount operation factory isn't set, g_mount_operation_new() will be
+	 * This is useful for creating a [class@Gtk.MountOperation] with the parent [class@Gtk.Window].
+	 *
+	 * If a mount operation factory isn't set, [ctor@Gio.MountOperation.new] will be
 	 * called.
 	 *
 	 * Params:
@@ -226,8 +239,6 @@ public class File : ObjectG
 	 *     userData = the data to pass to the @callback function.
 	 *     notify = function to call on @user_data when the @callback is no
 	 *         longer needed, or %NULL.
-	 *
-	 * Since: 3.14
 	 */
 	public void setMountOperationFactory(GtkSourceMountOperationFactory callback, void* userData, GDestroyNotify notify)
 	{

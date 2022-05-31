@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.ButtonContent;
 
 private import adw.c.functions;
@@ -18,11 +42,16 @@ private import gtk.Widget;
 /**
  * A helper widget for creating buttons.
  * 
+ * <picture>
+ * <source srcset="button-content-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="button-content.png" alt="button-content">
+ * </picture>
+ * 
  * `AdwButtonContent` is a box-like widget with an icon and a label.
  * 
  * It's intended to be used as a direct child of [class@Gtk.Button],
- * [class@Gtk.MenuButton] or [class@Adw.SplitButton], when they need to habe
- * both an icon and a label, as follows:
+ * [class@Gtk.MenuButton] or [class@SplitButton], when they need to have both an
+ * icon and a label, as follows:
  * 
  * ```xml
  * <object class="GtkButton">
@@ -47,7 +76,7 @@ private import gtk.Widget;
  * ╰── label
  * ```
  * 
- * `AdwSplitButton`'s CSS node is called `buttoncontent`. It contains the
+ * `AdwButtonContent`'s CSS node is called `buttoncontent`. It contains the
  * subnodes `image` and `label`.
  * 
  * When inside a `GtkButton` or `AdwSplitButton`, the button will receive the
@@ -56,7 +85,7 @@ private import gtk.Widget;
  * 
  * ## Accessibility
  * 
- * `AdwSplitButton` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
+ * `AdwButtonContent` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
  *
  * Since: 1.0
  */

@@ -17,7 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
  
- module cairo.c.functions-compiletime;
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion alities on the wrap.utils pakage
+
+
+module cairo.c.functions;
 
 private import std.stdio;
 private import cairo.c.types;

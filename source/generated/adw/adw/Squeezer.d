@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.Squeezer;
 
 private import adw.SqueezerPage;
@@ -20,13 +44,22 @@ private import gtk.Widget;
 /**
  * A best fit container.
  * 
+ * <picture>
+ * <source srcset="squeezer-wide-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="squeezer-wide.png" alt="squeezer-wide">
+ * </picture>
+ * <picture>
+ * <source srcset="squeezer-narrow-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="squeezer-narrow.png" alt="squeezer-narrow">
+ * </picture>
+ * 
  * The `AdwSqueezer` widget is a container which only shows the first of its
  * children that fits in the available size. It is convenient to offer different
  * widgets to represent the same data with different levels of detail, making
  * the widget seem to squeeze itself to fit in the available space.
  * 
  * Transitions between children can be animated as fades. This can be controlled
- * with [property@Adw.Squeezer:transition-type].
+ * with [property@Squeezer:transition-type].
  * 
  * ## CSS nodes
  * 
@@ -99,7 +132,7 @@ public class Squeezer : Widget, OrientableIF
 	 * Params:
 	 *     child = the widget to add
 	 *
-	 * Returns: the [class@Adw.SqueezerPage] for @child
+	 * Returns: the [class@SqueezerPage] for @child
 	 *
 	 * Since: 1.0
 	 */
@@ -152,7 +185,7 @@ public class Squeezer : Widget, OrientableIF
 	}
 
 	/**
-	 * Returns the [class@Adw.SqueezerPage] object for @child.
+	 * Returns the [class@SqueezerPage] object for @child.
 	 *
 	 * Params:
 	 *     child = a child of @self

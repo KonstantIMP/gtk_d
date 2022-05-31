@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.Language;
 
 private import glib.Str;
@@ -7,7 +31,15 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Represents a syntax highlighted language.
+ * 
+ * A `GtkSourceLanguage` represents a programming or markup language, affecting
+ * syntax highlighting and [context classes](./class.Buffer.html#context-classes).
+ * 
+ * Use [class@LanguageManager] to obtain a `GtkSourceLanguage` instance, and
+ * [method@Buffer.set_language] to apply it to a [class@Buffer].
+ */
 public class Language : ObjectG
 {
 	/** the main Gtk struct */
@@ -44,8 +76,9 @@ public class Language : ObjectG
 	}
 
 	/**
-	 * Returns the globs associated to this language. This is just
-	 * an utility wrapper around gtk_source_language_get_metadata() to
+	 * Returns the globs associated to this language.
+	 *
+	 * This is just an utility wrapper around [method@Language.get_metadata] to
 	 * retrieve the "globs" metadata property and split it into an array.
 	 *
 	 * Returns: a newly-allocated %NULL terminated array containing the globs or %NULL
@@ -71,9 +104,10 @@ public class Language : ObjectG
 	}
 
 	/**
-	 * Returns the ID of the language. The ID is not locale-dependent.
-	 * The returned string is owned by @language and should not be freed
-	 * or modified.
+	 * Returns the ID of the language.
+	 *
+	 * The ID is not locale-dependent.The returned string is owned by @language
+	 * and should not be freed or modified.
 	 *
 	 * Returns: the ID of @language.
 	 */
@@ -98,8 +132,9 @@ public class Language : ObjectG
 	}
 
 	/**
-	 * Returns the mime types associated to this language. This is just
-	 * an utility wrapper around gtk_source_language_get_metadata() to
+	 * Returns the mime types associated to this language.
+	 *
+	 * This is just an utility wrapper around [method@Language.get_metadata] to
 	 * retrieve the "mimetypes" metadata property and split it into an
 	 * array.
 	 *
@@ -117,6 +152,7 @@ public class Language : ObjectG
 
 	/**
 	 * Returns the localized name of the language.
+	 *
 	 * The returned string is owned by @language and should not be freed
 	 * or modified.
 	 *
@@ -129,6 +165,7 @@ public class Language : ObjectG
 
 	/**
 	 * Returns the localized section of the language.
+	 *
 	 * Each language belong to a section (ex. HTML belongs to the
 	 * Markup section).
 	 * The returned string is owned by @language and should not be freed
@@ -152,8 +189,6 @@ public class Language : ObjectG
 	 *     specified @style_id is not present in the current style scheme or %NULL
 	 *     if the style has no fallback defined.
 	 *     The returned string is owned by the @language and must not be modified.
-	 *
-	 * Since: 3.4
 	 */
 	public string getStyleFallback(string styleId)
 	{

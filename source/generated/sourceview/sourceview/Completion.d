@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.Completion;
 
 private import glib.Str;
@@ -12,7 +36,43 @@ public  import sourceview.c.types;
 private import std.algorithm;
 
 
-/** */
+/**
+ * Main Completion Object.
+ * 
+ * The completion system helps the user when they writes some text,
+ * such as words, command names, functions, and suchlike. Proposals can
+ * be shown, to complete the text the user is writing. Each proposal can
+ * contain an additional piece of information (for example
+ * documentation), that is displayed when the "Details" button is
+ * clicked.
+ * 
+ * Proposals are created via a [iface@CompletionProvider]. There can
+ * be for example a provider to complete words (see [class@CompletionWords]),
+ * another provider for the completion of
+ * function names, etc. To add a provider, call
+ * [method@Completion.add_provider].
+ * 
+ * When several providers match, they are all shown in the completion
+ * window, but one can switch between providers: see the
+ * #GtkSourceCompletion::move-page signal. It is also possible to
+ * activate the first proposals with key bindings, see the
+ * #GtkSourceCompletion:accelerators property.
+ * 
+ * The [iface@CompletionProposal] interface represents a proposal.
+ * 
+ * If a proposal contains extra information (see
+ * %GTK_SOURCE_COMPLETION_COLUMN_DETAILS), it will be
+ * displayed in a supplemental details window, which appears when
+ * the "Details" button is clicked.
+ * 
+ * Each [class@View] object is associated with a [class@Completion]
+ * instance. This instance can be obtained with
+ * [method@View.get_completion]. The [class@View] class contains also the
+ * [signal@View::show-completion] signal.
+ * 
+ * A same [iface@CompletionProvider] object can be used for several
+ * `GtkSourceCompletion`'s.
+ */
 public class Completion : ObjectG
 {
 	/** the main Gtk struct */
@@ -49,7 +109,7 @@ public class Completion : ObjectG
 	}
 
 	/**
-	 * This will add &lt;b&gt; tags around matched characters in @haystack
+	 * This will add `<b>` tags around matched characters in @haystack
 	 * based on @casefold_query.
 	 *
 	 * Params:
@@ -57,8 +117,6 @@ public class Completion : ObjectG
 	 *     casefoldQuery = the typed-text used to highlight @haystack
 	 *
 	 * Returns: a #PangoAttrList or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public static PgAttributeList fuzzyHighlight(string haystack, string casefoldQuery)
 	{
@@ -74,7 +132,9 @@ public class Completion : ObjectG
 
 	/**
 	 * This helper function can do a fuzzy match for you giving a haystack and
-	 * casefolded needle. Casefold your needle using g_utf8_casefold() before
+	 * casefolded needle.
+	 *
+	 * Casefold your needle using [func@GLib.utf8_casefold] before
 	 * running the query.
 	 *
 	 * Score will be set with the score of the match upon success. Otherwise,
@@ -86,8 +146,6 @@ public class Completion : ObjectG
 	 *     priority = An optional location for the score of the match
 	 *
 	 * Returns: %TRUE if @haystack matched @casefold_needle, otherwise %FALSE.
-	 *
-	 * Since: 5.0
 	 */
 	public static bool fuzzyMatch(string haystack, string casefoldNeedle, out uint priority)
 	{
@@ -95,13 +153,11 @@ public class Completion : ObjectG
 	}
 
 	/**
-	 * Adds an #GtkSourceCompletionProvider to the list of providers to be queried
+	 * Adds a [iface@CompletionProvider] to the list of providers to be queried
 	 * for completion results.
 	 *
 	 * Params:
-	 *     provider = an #GtkSourceCompletionProvider
-	 *
-	 * Since: 5.0
+	 *     provider = a #GtkSourceCompletionProvider
 	 */
 	public void addProvider(CompletionProviderIF provider)
 	{
@@ -115,11 +171,9 @@ public class Completion : ObjectG
 	}
 
 	/**
-	 * Gets the connected #GtkSourceView's #GtkSourceBuffer
+	 * Gets the connected [class@View]'s [class@Buffer]
 	 *
 	 * Returns: A #GtkSourceBuffer
-	 *
-	 * Since: 5.0
 	 */
 	public Buffer getBuffer()
 	{
@@ -140,11 +194,9 @@ public class Completion : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkSourceView that owns the #GtkSourceCompletion.
+	 * Gets the [class@View] that owns the [class@Completion].
 	 *
 	 * Returns: A #GtkSourceView
-	 *
-	 * Since: 5.0
 	 */
 	public View getView()
 	{
@@ -163,8 +215,6 @@ public class Completion : ObjectG
 	 *
 	 * When the "hide" signal is emitted, the completion window will be
 	 * dismissed.
-	 *
-	 * Since: 5.0
 	 */
 	public void hide()
 	{
@@ -172,13 +222,11 @@ public class Completion : ObjectG
 	}
 
 	/**
-	 * Removes an #GtkSourceCompletionProvider previously added with
-	 * gtk_source_completion_add_provider().
+	 * Removes a [iface@CompletionProvider] previously added with
+	 * [method@Completion.add_provider].
 	 *
 	 * Params:
-	 *     provider = an #GtkSourceCompletionProvider
-	 *
-	 * Since: 5.0
+	 *     provider = a #GtkSourceCompletionProvider
 	 */
 	public void removeProvider(CompletionProviderIF provider)
 	{
@@ -196,8 +244,6 @@ public class Completion : ObjectG
 	 *
 	 * When the "show" signal is emitted, the completion window will be
 	 * displayed if there are any results available.
-	 *
-	 * Since: 5.0
 	 */
 	public void show()
 	{
@@ -213,8 +259,6 @@ public class Completion : ObjectG
 	/**
 	 * The "hide" signal is emitted when the completion window should
 	 * be hidden.
-	 *
-	 * Since: 5.0
 	 */
 	gulong addOnHide(void delegate(Completion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -226,9 +270,7 @@ public class Completion : ObjectG
 	 * added to the completion.
 	 *
 	 * Params:
-	 *     provider = an #GtkSourceCompletionProvider
-	 *
-	 * Since: 5.0
+	 *     provider = a #GtkSourceCompletionProvider
 	 */
 	gulong addOnProviderAdded(void delegate(CompletionProviderIF, Completion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -240,9 +282,7 @@ public class Completion : ObjectG
 	 * been removed from the completion.
 	 *
 	 * Params:
-	 *     provider = an #GtkSourceCompletionProvider
-	 *
-	 * Since: 5.0
+	 *     provider = a #GtkSourceCompletionProvider
 	 */
 	gulong addOnProviderRemoved(void delegate(CompletionProviderIF, Completion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -252,8 +292,6 @@ public class Completion : ObjectG
 	/**
 	 * The "show" signal is emitted when the completion window should
 	 * be shown.
-	 *
-	 * Since: 5.0
 	 */
 	gulong addOnShow(void delegate(Completion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

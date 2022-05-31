@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.StyleManager;
 
 private import adw.c.functions;
@@ -13,7 +37,7 @@ private import gobject.ObjectG;
  * styles, such as whether to use dark or high contrast appearance.
  * 
  * It allows to set the color scheme via the
- * [property@Adw.StyleManager:color-scheme] property, and to query the current
+ * [property@StyleManager:color-scheme] property, and to query the current
  * appearance, as well as whether a system-wide color scheme preference exists.
  *
  * Since: 1.0
@@ -59,7 +83,7 @@ public class StyleManager : ObjectG
 	 * It manages all [class@Gdk.Display] instances unless the style manager for
 	 * that display has an override.
 	 *
-	 * See [func@Adw.StyleManager.get_for_display].
+	 * See [func@StyleManager.get_for_display].
 	 *
 	 * Returns: the default style manager
 	 *
@@ -83,7 +107,7 @@ public class StyleManager : ObjectG
 	 * It can be used to override styles for that specific display instead of the
 	 * whole application.
 	 *
-	 * Most applications should use [func@Adw.StyleManager.get_default] instead.
+	 * Most applications should use [func@StyleManager.get_default] instead.
 	 *
 	 * Params:
 	 *     display = a `GdkDisplay`
@@ -132,7 +156,7 @@ public class StyleManager : ObjectG
 	 * Gets the display the style manager is associated with.
 	 *
 	 * The display will be `NULL` for the style manager returned by
-	 * [func@Adw.StyleManager.get_default].
+	 * [func@StyleManager.get_default].
 	 *
 	 * Returns: (nullable): the display
 	 *
@@ -179,8 +203,8 @@ public class StyleManager : ObjectG
 	 *
 	 * The effective appearance will be decided based on the application color
 	 * scheme and the system preferred color scheme. The
-	 * [property@Adw.StyleManager:dark] property can be used to query the
-	 * current effective appearance.
+	 * [property@StyleManager:dark] property can be used to query the current
+	 * effective appearance.
 	 *
 	 * Params:
 	 *     colorScheme = the color scheme

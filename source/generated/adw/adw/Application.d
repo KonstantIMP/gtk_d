@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.Application;
 
 private import adw.StyleManager;
@@ -12,10 +36,10 @@ private import gtk.Application : DGtkApplication = Application;
 /**
  * A base class for Adwaita applications.
  * 
- * `AdwApplication` handles library initialization by calling [func@Adw.init] in
- * the default [signal@Gio.Application::startup] signal handler, in turn
- * chaining up as required by [class@Gtk.Application]. Therefore, any subclass
- * of `AdwApplication` should always chain up its `startup` handler before using
+ * `AdwApplication` handles library initialization by calling [func@init] in the
+ * default [signal@Gio.Application::startup] signal handler, in turn chaining up
+ * as required by [class@Gtk.Application]. Therefore, any subclass of
+ * `AdwApplication` should always chain up its `startup` handler before using
  * any Adwaita or GTK API.
  * 
  * ## Automatic Resources
@@ -29,13 +53,13 @@ private import gtk.Application : DGtkApplication = Application;
  * - `style.css` contains styles that are always present.
  * 
  * - `style-dark.css` contains styles only used when
- * [property@Adw.StyleManager:dark] is `TRUE`.
+ * [property@StyleManager:dark] is `TRUE`.
  * 
  * - `style-hc.css` contains styles used when the system high contrast
  * preference is enabled.
  * 
  * - `style-hc-dark.css` contains styles used when the system high contrast
- * preference is enabled and [property@Adw.StyleManager:dark] is `TRUE`.
+ * preference is enabled and [property@StyleManager:dark] is `TRUE`.
  *
  * Since: 1.0
  */

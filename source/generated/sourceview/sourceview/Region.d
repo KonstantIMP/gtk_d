@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.Region;
 
 private import glib.ConstructionException;
@@ -12,7 +36,50 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Region utility.
+ * 
+ * A `GtkSourceRegion` permits to store a group of subregions of a
+ * [class@Gtk.TextBuffer]. `GtkSourceRegion` stores the subregions with pairs of
+ * [class@Gtk.TextMark]'s, so the region is still valid after insertions and deletions
+ * in the [class@Gtk.TextBuffer].
+ * 
+ * The [class@Gtk.TextMark] for the start of a subregion has a left gravity, while the
+ * [class@Gtk.TextMark] for the end of a subregion has a right gravity.
+ * 
+ * The typical use-case of `GtkSourceRegion` is to scan a [class@Gtk.TextBuffer] chunk by
+ * chunk, not the whole buffer at once to not block the user interface. The
+ * `GtkSourceRegion` represents in that case the remaining region to scan. You
+ * can listen to the [signal@Gtk.TextBuffer::insert-text] and
+ * [signal@Gtk.TextBuffer::delete-range] signals to update the `GtkSourceRegion`
+ * accordingly.
+ * 
+ * To iterate through the subregions, you need to use a [struct@RegionIter],
+ * for example:
+ * ```c
+ * GtkSourceRegion *region;
+ * GtkSourceRegionIter region_iter;
+ * 
+ * gtk_source_region_get_start_region_iter (region, &region_iter);
+ * 
+ * while (!gtk_source_region_iter_is_end (&region_iter))
+ * {
+ * GtkTextIter subregion_start;
+ * GtkTextIter subregion_end;
+ * 
+ * if (!gtk_source_region_iter_get_subregion (&region_iter,
+ * &subregion_start,
+ * &subregion_end))
+ * {
+ * break;
+ * }
+ * 
+ * // Do something useful with the subregion.
+ * 
+ * gtk_source_region_iter_next (&region_iter);
+ * }
+ * ```
+ */
 public class Region : ObjectG
 {
 	/** the main Gtk struct */
@@ -54,8 +121,6 @@ public class Region : ObjectG
 	 *     buffer = a #GtkTextBuffer.
 	 * Returns: a new #GtkSourceRegion object for @buffer.
 	 *
-	 * Since: 3.22
-	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this(TextBuffer buffer)
@@ -71,12 +136,12 @@ public class Region : ObjectG
 	}
 
 	/**
-	 * Adds @region_to_add to @region. @region_to_add is not modified.
+	 * Adds @region_to_add to @region.
+	 *
+	 * @region_to_add is not modified.
 	 *
 	 * Params:
 	 *     regionToAdd = the #GtkSourceRegion to add to @region, or %NULL.
-	 *
-	 * Since: 3.22
 	 */
 	public void addRegion(Region regionToAdd)
 	{
@@ -89,8 +154,6 @@ public class Region : ObjectG
 	 * Params:
 	 *     Start = the start of the subregion.
 	 *     End = the end of the subregion.
-	 *
-	 * Since: 3.22
 	 */
 	public void addSubregion(TextIter Start, TextIter End)
 	{
@@ -108,8 +171,6 @@ public class Region : ObjectG
 	 *
 	 * Returns: %TRUE if @start and @end have been set successfully (if non-%NULL),
 	 *     or %FALSE if the @region is empty.
-	 *
-	 * Since: 3.22
 	 */
 	public bool getBounds(out TextIter start, out TextIter end)
 	{
@@ -126,8 +187,6 @@ public class Region : ObjectG
 
 	/**
 	 * Returns: the #GtkTextBuffer.
-	 *
-	 * Since: 3.22
 	 */
 	public TextBuffer getBuffer()
 	{
@@ -142,13 +201,12 @@ public class Region : ObjectG
 	}
 
 	/**
-	 * Initializes a #GtkSourceRegionIter to the first subregion of @region. If
-	 * @region is empty, @iter will be initialized to the end iterator.
+	 * Initializes a [struct@RegionIter] to the first subregion of @region.
+	 *
+	 * If @region is empty, @iter will be initialized to the end iterator.
 	 *
 	 * Params:
 	 *     iter = iterator to initialize to the first subregion.
-	 *
-	 * Since: 3.22
 	 */
 	public void getStartRegionIter(out RegionIter iter)
 	{
@@ -160,16 +218,15 @@ public class Region : ObjectG
 	}
 
 	/**
-	 * Returns the intersection between @region1 and @region2. @region1 and
-	 * @region2 are not modified.
+	 * Returns the intersection between @region1 and @region2.
+	 *
+	 * @region1 and @region2 are not modified.
 	 *
 	 * Params:
 	 *     region2 = a #GtkSourceRegion, or %NULL.
 	 *
 	 * Returns: the intersection as a #GtkSourceRegion
 	 *     object.
-	 *
-	 * Since: 3.22
 	 */
 	public Region intersectRegion(Region region2)
 	{
@@ -185,7 +242,9 @@ public class Region : ObjectG
 
 	/**
 	 * Returns the intersection between @region and the subregion delimited by
-	 * @_start and @_end. @region is not modified.
+	 * @_start and @_end.
+	 *
+	 * @region is not modified.
 	 *
 	 * Params:
 	 *     Start = the start of the subregion.
@@ -193,8 +252,6 @@ public class Region : ObjectG
 	 *
 	 * Returns: the intersection as a new
 	 *     #GtkSourceRegion.
-	 *
-	 * Since: 3.22
 	 */
 	public Region intersectSubregion(TextIter Start, TextIter End)
 	{
@@ -209,11 +266,11 @@ public class Region : ObjectG
 	}
 
 	/**
-	 * Returns whether the @region is empty. A %NULL @region is considered empty.
+	 * Returns whether the @region is empty.
+	 *
+	 * A %NULL @region is considered empty.
 	 *
 	 * Returns: whether the @region is empty.
-	 *
-	 * Since: 3.22
 	 */
 	public bool isEmpty()
 	{
@@ -221,14 +278,13 @@ public class Region : ObjectG
 	}
 
 	/**
-	 * Subtracts @region_to_subtract from @region. @region_to_subtract is not
-	 * modified.
+	 * Subtracts @region_to_subtract from @region.
+	 *
+	 * @region_to_subtract is not modified.
 	 *
 	 * Params:
 	 *     regionToSubtract = the #GtkSourceRegion to subtract from
 	 *         @region, or %NULL.
-	 *
-	 * Since: 3.22
 	 */
 	public void subtractRegion(Region regionToSubtract)
 	{
@@ -241,8 +297,6 @@ public class Region : ObjectG
 	 * Params:
 	 *     Start = the start of the subregion.
 	 *     End = the end of the subregion.
-	 *
-	 * Since: 3.22
 	 */
 	public void subtractSubregion(TextIter Start, TextIter End)
 	{
@@ -257,8 +311,6 @@ public class Region : ObjectG
 	 *
 	 * Returns: a string represention of @region. Free
 	 *     with g_free() when no longer needed.
-	 *
-	 * Since: 3.22
 	 */
 	public override string toString()
 	{

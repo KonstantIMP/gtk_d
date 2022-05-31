@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.FileLoader;
 
 private import gio.AsyncResultIF;
@@ -16,7 +40,26 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Load a file into a GtkSourceBuffer.
+ * 
+ * A `GtkSourceFileLoader` object permits to load the contents of a [iface@Gio.File] or a
+ * [class@Gio.InputStream] into a [class@Buffer].
+ * 
+ * A file loader should be used only for one load operation, including errors
+ * handling. If an error occurs, you can reconfigure the loader and relaunch the
+ * operation with [method@FileLoader.load_async].
+ * 
+ * Running a `GtkSourceFileLoader` is an undoable action for the
+ * [class@Buffer].
+ * 
+ * After a file loading, the buffer is reset to the contents provided by the
+ * [iface@Gio.File] or [class@Gio.InputStream], so the buffer is set as “unmodified”, that is,
+ * [method@Gtk.TextBuffer.set_modified] is called with %FALSE. If the contents isn't
+ * saved somewhere (for example if you load from stdin), then you should
+ * probably call [method@Gtk.TextBuffer.set_modified] with %TRUE after calling
+ * [method@FileLoader.load_finish].
+ */
 public class FileLoader : ObjectG
 {
 	/** the main Gtk struct */
@@ -53,10 +96,11 @@ public class FileLoader : ObjectG
 	}
 
 	/**
-	 * Creates a new #GtkSourceFileLoader object. The contents is read from the
-	 * #GtkSourceFile's location. If not already done, call
-	 * gtk_source_file_set_location() before calling this constructor. The previous
-	 * location is anyway not needed, because as soon as the file loading begins,
+	 * Creates a new `GtkSourceFileLoader` object. The contents is read from the
+	 * [class@File]'s location.
+	 *
+	 * If not already done, call [method@File.set_location] before calling this constructor.
+	 * The previous location is anyway not needed, because as soon as the file loading begins,
 	 * the @buffer is emptied.
 	 *
 	 * Params:
@@ -64,8 +108,6 @@ public class FileLoader : ObjectG
 	 *     file = the #GtkSourceFile.
 	 *
 	 * Returns: a new #GtkSourceFileLoader object.
-	 *
-	 * Since: 3.14
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -91,8 +133,6 @@ public class FileLoader : ObjectG
 	 *
 	 * Returns: a new #GtkSourceFileLoader object.
 	 *
-	 * Since: 3.14
-	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this(Buffer buffer, File file, InputStream stream)
@@ -109,8 +149,6 @@ public class FileLoader : ObjectG
 
 	/**
 	 * Returns: the #GtkSourceBuffer to load the contents into.
-	 *
-	 * Since: 3.14
 	 */
 	public Buffer getBuffer()
 	{
@@ -126,8 +164,6 @@ public class FileLoader : ObjectG
 
 	/**
 	 * Returns: the detected compression type.
-	 *
-	 * Since: 3.14
 	 */
 	public GtkSourceCompressionType getCompressionType()
 	{
@@ -136,8 +172,6 @@ public class FileLoader : ObjectG
 
 	/**
 	 * Returns: the detected file encoding.
-	 *
-	 * Since: 3.14
 	 */
 	public Encoding getEncoding()
 	{
@@ -153,8 +187,6 @@ public class FileLoader : ObjectG
 
 	/**
 	 * Returns: the #GtkSourceFile.
-	 *
-	 * Since: 3.14
 	 */
 	public File getFile()
 	{
@@ -171,8 +203,6 @@ public class FileLoader : ObjectG
 	/**
 	 * Returns: the #GInputStream to load, or %NULL
 	 *     if a #GFile is used.
-	 *
-	 * Since: 3.14
 	 */
 	public InputStream getInputStream()
 	{
@@ -189,8 +219,6 @@ public class FileLoader : ObjectG
 	/**
 	 * Returns: the #GFile to load, or %NULL
 	 *     if an input stream is used.
-	 *
-	 * Since: 3.14
 	 */
 	public FileIF getLocation()
 	{
@@ -206,8 +234,6 @@ public class FileLoader : ObjectG
 
 	/**
 	 * Returns: the detected newline type.
-	 *
-	 * Since: 3.14
 	 */
 	public GtkSourceNewlineType getNewlineType()
 	{
@@ -215,8 +241,9 @@ public class FileLoader : ObjectG
 	}
 
 	/**
-	 * Loads asynchronously the file or input stream contents into the
-	 * #GtkSourceBuffer. See the #GAsyncResult documentation to know how to use this
+	 * Loads asynchronously the file or input stream contents into the [class@Buffer].
+	 *
+	 * See the [iface@Gio.AsyncResult] documentation to know how to use this
 	 * function.
 	 *
 	 * Params:
@@ -232,8 +259,6 @@ public class FileLoader : ObjectG
 	 *     callback = a #GAsyncReadyCallback to call when the request is
 	 *         satisfied.
 	 *     userData = user data to pass to @callback.
-	 *
-	 * Since: 3.14
 	 */
 	public void loadAsync(int ioPriority, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData, GDestroyNotify progressCallbackNotify, GAsyncReadyCallback callback, void* userData)
 	{
@@ -241,9 +266,9 @@ public class FileLoader : ObjectG
 	}
 
 	/**
-	 * Finishes a file loading started with gtk_source_file_loader_load_async().
+	 * Finishes a file loading started with [method@FileLoader.load_async].
 	 *
-	 * If the contents has been loaded, the following #GtkSourceFile properties will
+	 * If the contents has been loaded, the following [class@File] properties will
 	 * be updated: the location, the encoding, the newline type and the compression
 	 * type.
 	 *
@@ -251,8 +276,6 @@ public class FileLoader : ObjectG
 	 *     result = a #GAsyncResult.
 	 *
 	 * Returns: whether the contents has been loaded successfully.
-	 *
-	 * Since: 3.14
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -271,23 +294,21 @@ public class FileLoader : ObjectG
 	}
 
 	/**
-	 * Sets the candidate encodings for the file loading. The encodings are tried in
-	 * the same order as the list.
+	 * Sets the candidate encodings for the file loading.
+	 *
+	 * The encodings are tried in the same order as the list.
 	 *
 	 * For convenience, @candidate_encodings can contain duplicates. Only the first
 	 * occurrence of a duplicated encoding is kept in the list.
 	 *
 	 * By default the candidate encodings are (in that order in the list):
-	 * 1. If set, the #GtkSourceFile's encoding as returned by
-	 * gtk_source_file_get_encoding().
-	 * 2. The default candidates as returned by
-	 * gtk_source_encoding_get_default_candidates().
+	 *
+	 * 1. If set, the [class@File]'s encoding as returned by [method@File.get_encoding].
+	 * 2. The default candidates as returned by [func@Encoding.get_default_candidates].
 	 *
 	 * Params:
 	 *     candidateEncodings = a list of
 	 *         #GtkSourceEncoding<!-- -->s.
-	 *
-	 * Since: 3.14
 	 */
 	public void setCandidateEncodings(ListSG candidateEncodings)
 	{

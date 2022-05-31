@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.Util;
 
 private import glib.Str;
@@ -20,7 +44,8 @@ public struct Util
 	 *
 	 * Since: 2.8
 	 */
-	public static string buildFilename(string[] firstElement ... ) {
+	public static string buildFilename(string[] firstElement ... )
+	{
 		return Str.toString(g_build_filenamev(Str.toStringzArray(firstElement)));
 	}
 
@@ -37,7 +62,8 @@ public struct Util
 	 *
 	 * Since: 2.8
 	 */
-	public static string buildPath(string separator, string[] firstElement ... ) {
+	public static string buildPath(string separator, string[] firstElement ... )
+	{
 		return Str.toString(g_build_pathv(Str.toStringz(separator), Str.toStringzArray(firstElement)));
 	}
 
@@ -735,9 +761,9 @@ public struct Util
 	 * Params:
 	 *     directory = the logical id of special directory
 	 *
-	 * Returns: the path to the specified special directory, or
-	 *     %NULL if the logical id was not found. The returned string is owned by
-	 *     GLib and should not be modified or freed.
+	 * Returns: the path to the specified special
+	 *     directory, or %NULL if the logical id was not found. The returned string is
+	 *     owned by GLib and should not be modified or freed.
 	 *
 	 * Since: 2.14
 	 */
@@ -840,8 +866,8 @@ public struct Util
 	 * Params:
 	 *     fileName = the name of the file
 	 *
-	 * Returns: a newly allocated string containing the last
-	 *     component of the filename
+	 * Returns: a newly allocated string
+	 *     containing the last component of the filename
 	 */
 	public static string pathGetBasename(string fileName)
 	{
@@ -992,7 +1018,9 @@ public struct Util
 	 * #GtkApplication::startup handler. The program name is found by
 	 * taking the last component of @argv[0].
 	 *
-	 * Note that for thread-safety reasons this function can only be called once.
+	 * Since GLib 2.72, this function can be called multiple times
+	 * and is fully thread safe. Prior to GLib 2.72, this function
+	 * could only be called once per process.
 	 *
 	 * Params:
 	 *     prgname = the name of the program.

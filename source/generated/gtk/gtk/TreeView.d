@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.TreeView;
 
 private import gdk.ContentFormats;
@@ -1649,17 +1673,18 @@ public class TreeView : Widget, ScrollableIF
 
 	/**
 	 * The "row-activated" signal is emitted when the method
-	 * gtk_tree_view_row_activated() is called.
+	 * [`method@Gtk.TreeView.row_activated`] is called.
 	 *
 	 * This signal is emitted when the user double-clicks a treeview row with the
 	 * [property@Gtk.TreeView:activate-on-single-click] property set to %FALSE,
 	 * or when the user single-clicks a row when that property set to %TRUE.
 	 *
 	 * This signal is also emitted when a non-editable row is selected and one
-	 * of the keys: <kbd>Space</kbd>, <kbd>Shift</kbd>+<kbd>Space</kbd>, <kbd>Return</kbd> or <kbd>Enter</kbd> is pressed.
+	 * of the keys: <kbd>Space</kbd>, <kbd>Shift</kbd>+<kbd>Space</kbd>,
+	 * <kbd>Return</kbd> or <kbd>Enter</kbd> is pressed.
 	 *
 	 * For selection handling refer to the
-	 * [tree widget conceptual overview][TreeWidget]
+	 * [tree widget conceptual overview](section-tree-widget.html)
 	 * as well as `GtkTreeSelection`.
 	 *
 	 * Params:

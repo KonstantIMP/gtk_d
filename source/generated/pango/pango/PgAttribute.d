@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgAttribute;
 
 private import glib.ErrorG;
@@ -6,7 +30,11 @@ private import glib.SimpleXML;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
+private import pango.PgAttributeFontDesc;
+private import pango.PgAttributeLanguage;
 private import pango.PgAttributeList;
+private import pango.PgAttributeShape;
+private import pango.PgAttributeSize;
 private import pango.c.functions;
 public  import pango.c.types;
 
@@ -55,6 +83,169 @@ public class PgAttribute
 	public static GType getType()
 	{
 		return pango_attribute_get_type();
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrColor`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrColor`,
+	 *     or %NULL if it's not a color attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PangoAttrColor* asColor()
+	{
+		return pango_attribute_as_color(pangoAttribute);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrFloat`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrFloat`,
+	 *     or %NULL if it's not a floating point attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PangoAttrFloat* asFloat()
+	{
+		return pango_attribute_as_float(pangoAttribute);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrFontDesc`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrFontDesc`,
+	 *     or %NULL if it's not a font description attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PgAttributeFontDesc asFontDesc()
+	{
+		auto __p = pango_attribute_as_font_desc(pangoAttribute);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgAttributeFontDesc)(cast(PangoAttrFontDesc*) __p);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrFontFeatures`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrFontFeatures`,
+	 *     or %NULL if it's not a font features attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PangoAttrFontFeatures* asFontFeatures()
+	{
+		return pango_attribute_as_font_features(pangoAttribute);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrInt`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrInt`,
+	 *     or %NULL if it's not an integer attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PangoAttrInt* asInt()
+	{
+		return pango_attribute_as_int(pangoAttribute);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrLanguage`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrLanguage`,
+	 *     or %NULL if it's not a language attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PgAttributeLanguage asLanguage()
+	{
+		auto __p = pango_attribute_as_language(pangoAttribute);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgAttributeLanguage)(cast(PangoAttrLanguage*) __p);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrShape`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrShape`,
+	 *     or %NULL if it's not a shape attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PgAttributeShape asShape()
+	{
+		auto __p = pango_attribute_as_shape(pangoAttribute);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgAttributeShape)(cast(PangoAttrShape*) __p);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrSize`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrSize`,
+	 *     or NULL if it's not a size attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PgAttributeSize asSize()
+	{
+		auto __p = pango_attribute_as_size(pangoAttribute);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgAttributeSize)(cast(PangoAttrSize*) __p);
+	}
+
+	/**
+	 * Returns the attribute cast to `PangoAttrString`.
+	 *
+	 * This is mainly useful for language bindings.
+	 *
+	 * Returns: The attribute as `PangoAttrString`,
+	 *     or %NULL if it's not a string attribute
+	 *
+	 * Since: 1.50
+	 */
+	public PangoAttrString* asString()
+	{
+		return pango_attribute_as_string(pangoAttribute);
 	}
 
 	/**
@@ -619,9 +810,9 @@ public class PgAttribute
 	/**
 	 * Finishes parsing markup.
 	 *
-	 * After feeding a Pango markup parser some data with g_markup_parse_context_parse(),
+	 * After feeding a Pango markup parser some data with [method@GLib.MarkupParseContext.parse],
 	 * use this function to get the list of attributes and text out of the
-	 * markup. This function will not free @context, use g_markup_parse_context_free()
+	 * markup. This function will not free @context, use [method@GLib.MarkupParseContext.free]
 	 * to do so.
 	 *
 	 * Params:
@@ -670,20 +861,20 @@ public class PgAttribute
 	 * when calling [func@markup_parser_finish]. Two @accel_marker characters
 	 * following each other produce a single literal @accel_marker character.
 	 *
-	 * To feed markup to the parser, use g_markup_parse_context_parse()
-	 * on the returned `GMarkupParseContext`. When done with feeding markup
+	 * To feed markup to the parser, use [method@GLib.MarkupParseContext.parse]
+	 * on the returned [struct@GLib.MarkupParseContext]. When done with feeding markup
 	 * to the parser, use [func@markup_parser_finish] to get the data out
-	 * of it, and then use g_markup_parse_context_free() to free it.
+	 * of it, and then use [method@GLib.MarkupParseContext.free] to free it.
 	 *
 	 * This function is designed for applications that read Pango markup
 	 * from streams. To simply parse a string containing Pango markup,
-	 * the [func@parse_markup] API is recommended instead.
+	 * the [func@Pango.parse_markup] API is recommended instead.
 	 *
 	 * Params:
 	 *     accelMarker = character that precedes an accelerator, or 0 for none
 	 *
 	 * Returns: a `GMarkupParseContext` that should be
-	 *     destroyed with g_markup_parse_context_free().
+	 *     destroyed with [method@GLib.MarkupParseContext.free].
 	 *
 	 * Since: 1.31.0
 	 */
@@ -719,7 +910,7 @@ public class PgAttribute
 	 * for @error.
 	 *
 	 * Params:
-	 *     markupText = markup to parse (see the Pango Markup docs)
+	 *     markupText = markup to parse (see the [Pango Markup](pango_markup.html) docs)
 	 *     length = length of @markup_text, or -1 if nul-terminated
 	 *     accelMarker = character that precedes an accelerator, or 0 for none
 	 *     attrList = address of return location for a `PangoAttrList`

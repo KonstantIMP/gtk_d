@@ -1,7 +1,35 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgFont;
 
+private import glib.Bytes;
+private import glib.ErrorG;
+private import glib.GException;
 private import gobject.ObjectG;
 private import harfbuzz.feature_t;
+private import pango.PgContext;
 private import pango.PgCoverage;
 private import pango.PgFontDescription;
 private import pango.PgFontFace;
@@ -67,6 +95,44 @@ public class PgFont : ObjectG
 		}
 
 		pango_font_descriptions_free(descsArray.ptr, cast(int)descs.length);
+	}
+
+	/**
+	 * Loads data previously created via [method@Pango.Font.serialize].
+	 *
+	 * For a discussion of the supported format, see that function.
+	 *
+	 * Note: to verify that the returned font is identical to
+	 * the one that was serialized, you can compare @bytes to the
+	 * result of serializing the font again.
+	 *
+	 * Params:
+	 *     context = a `PangoContext`
+	 *     bytes = the bytes containing the data
+	 *
+	 * Returns: a new `PangoFont`
+	 *
+	 * Since: 1.50
+	 *
+	 * Throws: GException on failure.
+	 */
+	public static PgFont deserialize(PgContext context, Bytes bytes)
+	{
+		GError* err = null;
+
+		auto __p = pango_font_deserialize((context is null) ? null : context.getPgContextStruct(), (bytes is null) ? null : bytes.getBytesStruct(), &err);
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgFont)(cast(PangoFont*) __p, true);
 	}
 
 	/**
@@ -237,7 +303,7 @@ public class PgFont : ObjectG
 	 *
 	 * Note that the objects returned by this function are cached
 	 * and immutable. If you need to make changes to the `hb_font_t`,
-	 * use hb_font_create_sub_font().
+	 * use [hb_font_create_sub_font()](https://harfbuzz.github.io/harfbuzz-hb-font.html#hb-font-create-sub-font).
 	 *
 	 * Returns: the `hb_font_t` object
 	 *     backing the font
@@ -247,6 +313,38 @@ public class PgFont : ObjectG
 	public hb_font_t* getHbFont()
 	{
 		return pango_font_get_hb_font(pangoFont);
+	}
+
+	/**
+	 * Returns the languages that are supported by @font.
+	 *
+	 * If the font backend does not provide this information,
+	 * %NULL is returned. For the fontconfig backend, this
+	 * corresponds to the FC_LANG member of the FcPattern.
+	 *
+	 * The returned array is only valid as long as the font
+	 * and its fontmap are valid.
+	 *
+	 * Returns: an array of `PangoLanguage`
+	 *
+	 * Since: 1.50
+	 */
+	public PgLanguage[] getLanguages()
+	{
+		auto __p = pango_font_get_languages(pangoFont);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		PgLanguage[] arr = new PgLanguage[getArrayLength(__p)];
+		for(int i = 0; i < getArrayLength(__p); i++)
+		{
+			arr[i] = ObjectG.getDObject!(PgLanguage)(cast(PangoLanguage*) __p[i]);
+		}
+
+		return arr;
 	}
 
 	/**
@@ -282,15 +380,42 @@ public class PgFont : ObjectG
 	/**
 	 * Returns whether the font provides a glyph for this character.
 	 *
-	 * Returns %TRUE if @font can render @wc
-	 *
 	 * Params:
 	 *     wc = a Unicode character
+	 *
+	 * Returns: `TRUE` if @font can render @wc
 	 *
 	 * Since: 1.44
 	 */
 	public bool hasChar(dchar wc)
 	{
 		return pango_font_has_char(pangoFont, wc) != 0;
+	}
+
+	/**
+	 * Serializes the @font in a way that can be uniquely identified.
+	 *
+	 * There are no guarantees about the format of the output across different
+	 * versions of Pango.
+	 *
+	 * The intended use of this function is testing, benchmarking and debugging.
+	 * The format is not meant as a permanent storage format.
+	 *
+	 * To recreate a font from its serialized form, use [func@Pango.Font.deserialize].
+	 *
+	 * Returns: a `GBytes` containing the serialized form of @font
+	 *
+	 * Since: 1.50
+	 */
+	public Bytes serialize()
+	{
+		auto __p = pango_font_serialize(pangoFont);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new Bytes(cast(GBytes*) __p, true);
 	}
 }

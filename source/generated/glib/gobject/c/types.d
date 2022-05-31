@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gobject.c.types;
 
 public import glib.c.types;
@@ -24,7 +48,8 @@ public alias GVaClosureMarshal GSignalCVaMarshaller;
 /**
  * A value which represents the unique identifier of a registered type.
  */
-enum GType : size_t {
+enum GType : size_t
+{
 	INVALID = 0<<2,
 	NONE = 1<<2,
 	INTERFACE = 2<<2,
@@ -360,6 +385,8 @@ public enum GTypeFundamentalFlags
 alias GTypeFundamentalFlags TypeFundamentalFlags;
 
 struct GBinding;
+
+struct GBindingGroup;
 
 /**
  * A #GCClosure is a specialization of #GClosure for C function callbacks.
@@ -1057,6 +1084,8 @@ struct GParameter
 	GValue value;
 }
 
+struct GSignalGroup;
+
 /**
  * The #GSignalInvocationHint structure is used to pass on additional information
  * to callbacks during a signal emission.
@@ -1753,7 +1782,7 @@ public alias extern(C) int function(GSignalInvocationHint* ihint, GValue* return
  * Emission hooks allow you to tie a hook to the signal type, so that it will
  * trap all emissions of that signal, from any object.
  *
- * You may not attach these to signals created with the #G_SIGNAL_NO_HOOKS flag.
+ * You may not attach these to signals created with the %G_SIGNAL_NO_HOOKS flag.
  *
  * Params:
  *     ihint = Signal invocation hint, see #GSignalInvocationHint.
@@ -1901,6 +1930,11 @@ public alias extern(C) void function(GValue* srcValue, GValue* destValue) GValue
  * Since the object is already being disposed when the #GWeakNotify is called,
  * there's not much you could do with the object, apart from e.g. using its
  * address as hash-index or the like.
+ *
+ * In particular, this means it’s invalid to call g_object_ref(),
+ * g_weak_ref_init(), g_weak_ref_set(), g_object_add_toggle_ref(),
+ * g_object_weak_ref(), g_object_add_weak_pointer() or any function which calls
+ * them on the object from this callback.
  *
  * Params:
  *     data = data that was provided when the weak reference was established

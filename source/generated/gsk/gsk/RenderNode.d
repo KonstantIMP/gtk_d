@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gsk.RenderNode;
 
 private import cairo.Context;
@@ -10,12 +34,12 @@ private import gobject.ObjectG;
 private import graphene.Rect;
 private import gsk.c.functions;
 public  import gsk.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
  * `GskRenderNode` is the basic block in a scene graph to be
- * rendered using `GskRenderer`.
+ * rendered using [class@Gsk.Renderer].
  * 
  * Each node has a parent, except the top-level node; each node may have
  * children nodes.
@@ -71,7 +95,7 @@ public class RenderNode
 	}
 
 	/**
-	 * Loads data previously created via gsk_render_node_serialize().
+	 * Loads data previously created via [method@Gsk.RenderNode.serialize].
 	 *
 	 * For a discussion of the supported format, see that function.
 	 *
@@ -99,7 +123,7 @@ public class RenderNode
 	 *
 	 * Typically, you'll use this function to implement fallback rendering
 	 * of `GskRenderNode`s on an intermediate Cairo context, instead of using
-	 * the drawing context associated to a `GdkSurface`'s rendering buffer.
+	 * the drawing context associated to a [class@Gdk.Surface]'s rendering buffer.
 	 *
 	 * For advanced nodes that cannot be supported using Cairo, in particular
 	 * for nodes doing 3D operations, this function may fail.
@@ -194,8 +218,8 @@ public class RenderNode
 	}
 
 	/**
-	 * This function is equivalent to calling gsk_render_node_serialize()
-	 * followed by g_file_set_contents().
+	 * This function is equivalent to calling [method@Gsk.RenderNode.serialize]
+	 * followed by [func@GLib.file_set_contents].
 	 *
 	 * See those two functions for details on the arguments.
 	 *

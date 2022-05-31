@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.PrintCompositor;
 
 private import glib.ConstructionException;
@@ -12,7 +36,22 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Compose a [class@Buffer] for printing.
+ * 
+ * The `GtkSourcePrintCompositor` object is used to compose a [class@Buffer]
+ * for printing. You can set various configuration options to customize the
+ * printed output. `GtkSourcePrintCompositor` is designed to be used with the
+ * high-level printing API of gtk+, i.e. [class@Gtk.PrintOperation].
+ * 
+ * The margins specified in this object are the layout margins: they define the
+ * blank space bordering the printed area of the pages. They must not be
+ * confused with the "print margins", i.e. the parts of the page that the
+ * printer cannot print on, defined in the [class@Gtk.PageSetup] objects. If the
+ * specified layout margins are smaller than the "print margins", the latter
+ * ones are used as a fallback by the `GtkSourcePrintCompositor` object, so that
+ * the printed area is not clipped.
+ */
 public class PrintCompositor : ObjectG
 {
 	/** the main Gtk struct */
@@ -56,8 +95,6 @@ public class PrintCompositor : ObjectG
 	 *
 	 * Returns: a new print compositor object.
 	 *
-	 * Since: 2.2
-	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this(Buffer buffer)
@@ -75,18 +112,17 @@ public class PrintCompositor : ObjectG
 	/**
 	 * Creates a new print compositor that can be used to print the buffer
 	 * associated with @view.
+	 *
 	 * This constructor sets some configuration properties to make the
 	 * printed output match @view as much as possible.  The properties set are
-	 * #GtkSourcePrintCompositor:tab-width, #GtkSourcePrintCompositor:highlight-syntax,
-	 * #GtkSourcePrintCompositor:wrap-mode, #GtkSourcePrintCompositor:body-font-name and
-	 * #GtkSourcePrintCompositor:print-line-numbers.
+	 * [property@PrintCompositor:tab-width], [property@PrintCompositor:highlight-syntax],
+	 * [property@PrintCompositor:wrap-mode], [property@PrintCompositor:body-font-name] and
+	 * [property@PrintCompositor:print-line-numbers].
 	 *
 	 * Params:
 	 *     view = a #GtkSourceView to get configuration from.
 	 *
 	 * Returns: a new print compositor object.
-	 *
-	 * Since: 2.2
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -105,10 +141,10 @@ public class PrintCompositor : ObjectG
 	/**
 	 * Draw page @page_nr for printing on the the Cairo context encapsuled in @context.
 	 *
-	 * This method has been designed to be called in the handler of the #GtkPrintOperation::draw_page signal
+	 * This method has been designed to be called in the handler of the [signal@Gtk.PrintOperation::draw_page] signal
 	 * as shown in the following example:
 	 *
-	 * <informalexample><programlisting>
+	 * ```c
 	 * // Signal handler for the GtkPrintOperation::draw_page signal
 	 *
 	 * static void
@@ -125,7 +161,7 @@ public class PrintCompositor : ObjectG
 	 * context,
 	 * page_nr);
 	 * }
-	 * </programlisting></informalexample>
+	 * ```
 	 *
 	 * Params:
 	 *     context = the #GtkPrintContext encapsulating the context information that is required when
@@ -138,13 +174,12 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Returns the name of the font used to print the text body. The returned string
-	 * must be freed with g_free().
+	 * Returns the name of the font used to print the text body.
+	 *
+	 * The returned string must be freed with g_free().
 	 *
 	 * Returns: a new string containing the name of the font used to print the
 	 *     text body.
-	 *
-	 * Since: 2.2
 	 */
 	public string getBodyFontName()
 	{
@@ -161,8 +196,6 @@ public class PrintCompositor : ObjectG
 	 *     unit = the unit for the return value.
 	 *
 	 * Returns: the bottom margin.
-	 *
-	 * Since: 2.2
 	 */
 	public double getBottomMargin(GtkUnit unit)
 	{
@@ -170,13 +203,12 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkSourceBuffer associated with the compositor. The returned
-	 * object reference is owned by the compositor object and
+	 * Gets the [class@Buffer] associated with the compositor.
+	 *
+	 * The returned object reference is owned by the compositor object and
 	 * should not be unreferenced.
 	 *
 	 * Returns: the #GtkSourceBuffer associated with the compositor.
-	 *
-	 * Since: 2.2
 	 */
 	public Buffer getBuffer()
 	{
@@ -192,12 +224,11 @@ public class PrintCompositor : ObjectG
 
 	/**
 	 * Returns the name of the font used to print the page footer.
+	 *
 	 * The returned string must be freed with g_free().
 	 *
 	 * Returns: a new string containing the name of the font used to print
 	 *     the page footer.
-	 *
-	 * Since: 2.2
 	 */
 	public string getFooterFontName()
 	{
@@ -209,12 +240,11 @@ public class PrintCompositor : ObjectG
 
 	/**
 	 * Returns the name of the font used to print the page header.
+	 *
 	 * The returned string must be freed with g_free().
 	 *
 	 * Returns: a new string containing the name of the font used to print
 	 *     the page header.
-	 *
-	 * Since: 2.2
 	 */
 	public string getHeaderFontName()
 	{
@@ -226,12 +256,11 @@ public class PrintCompositor : ObjectG
 
 	/**
 	 * Determines whether the printed text will be highlighted according to the
-	 * buffer rules.  Note that highlighting will happen
-	 * only if the buffer to print has highlighting activated.
+	 * buffer rules.
+	 *
+	 * Note that highlighting will happen only if the buffer to print has highlighting activated.
 	 *
 	 * Returns: %TRUE if the printed output will be highlighted.
-	 *
-	 * Since: 2.2
 	 */
 	public bool getHighlightSyntax()
 	{
@@ -245,8 +274,6 @@ public class PrintCompositor : ObjectG
 	 *     unit = the unit for the return value.
 	 *
 	 * Returns: the left margin
-	 *
-	 * Since: 2.2
 	 */
 	public double getLeftMargin(GtkUnit unit)
 	{
@@ -255,12 +282,11 @@ public class PrintCompositor : ObjectG
 
 	/**
 	 * Returns the name of the font used to print line numbers on the left margin.
+	 *
 	 * The returned string must be freed with g_free().
 	 *
 	 * Returns: a new string containing the name of the font used to print
 	 *     line numbers on the left margin.
-	 *
-	 * Since: 2.2
 	 */
 	public string getLineNumbersFontName()
 	{
@@ -276,8 +302,6 @@ public class PrintCompositor : ObjectG
 	 *
 	 * Returns: the number of pages in the document or <code>-1</code> if the
 	 *     document has not been completely paginated.
-	 *
-	 * Since: 2.2
 	 */
 	public int getNPages()
 	{
@@ -288,8 +312,6 @@ public class PrintCompositor : ObjectG
 	 * Returns the current fraction of the document pagination that has been completed.
 	 *
 	 * Returns: a fraction from 0.0 to 1.0 inclusive.
-	 *
-	 * Since: 2.2
 	 */
 	public double getPaginationProgress()
 	{
@@ -297,14 +319,13 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Determines if a footer is set to be printed for each page.  A
-	 * footer will be printed if this function returns %TRUE
-	 * <emphasis>and</emphasis> some format strings have been specified
-	 * with gtk_source_print_compositor_set_footer_format().
+	 * Determines if a footer is set to be printed for each page.
+	 *
+	 * A footer will be printed if this function returns %TRUE
+	 * **and** some format strings have been specified
+	 * with [method@PrintCompositor.set_footer_format].
 	 *
 	 * Returns: %TRUE if the footer is set to be printed.
-	 *
-	 * Since: 2.2
 	 */
 	public bool getPrintFooter()
 	{
@@ -312,14 +333,13 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Determines if a header is set to be printed for each page.  A
-	 * header will be printed if this function returns %TRUE
-	 * <emphasis>and</emphasis> some format strings have been specified
-	 * with gtk_source_print_compositor_set_header_format().
+	 * Determines if a header is set to be printed for each page.
+	 *
+	 * A header will be printed if this function returns %TRUE
+	 * **and** some format strings have been specified
+	 * with [method@PrintCompositor.set_header_format].
 	 *
 	 * Returns: %TRUE if the header is set to be printed.
-	 *
-	 * Since: 2.2
 	 */
 	public bool getPrintHeader()
 	{
@@ -327,13 +347,12 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Returns the interval used for line number printing.  If the
-	 * value is 0, no line numbers will be printed.  The default value is
+	 * Returns the interval used for line number printing.
+	 *
+	 * If the value is 0, no line numbers will be printed. The default value is
 	 * 1 (i.e. numbers printed in all lines).
 	 *
 	 * Returns: the interval of printed line numbers.
-	 *
-	 * Since: 2.2
 	 */
 	public uint getPrintLineNumbers()
 	{
@@ -347,8 +366,6 @@ public class PrintCompositor : ObjectG
 	 *     unit = the unit for the return value.
 	 *
 	 * Returns: the right margin.
-	 *
-	 * Since: 2.2
 	 */
 	public double getRightMargin(GtkUnit unit)
 	{
@@ -359,8 +376,6 @@ public class PrintCompositor : ObjectG
 	 * Returns the width of tabulation in characters for printed text.
 	 *
 	 * Returns: width of tab.
-	 *
-	 * Since: 2.2
 	 */
 	public uint getTabWidth()
 	{
@@ -374,8 +389,6 @@ public class PrintCompositor : ObjectG
 	 *     unit = the unit for the return value.
 	 *
 	 * Returns: the top margin.
-	 *
-	 * Since: 2.2
 	 */
 	public double getTopMargin(GtkUnit unit)
 	{
@@ -386,8 +399,6 @@ public class PrintCompositor : ObjectG
 	 * Gets the line wrapping mode for the printed text.
 	 *
 	 * Returns: the line wrap mode.
-	 *
-	 * Since: 2.2
 	 */
 	public GtkWrapMode getWrapMode()
 	{
@@ -412,15 +423,15 @@ public class PrintCompositor : ObjectG
 	 * Paginate the document associated with the @compositor.
 	 *
 	 * In order to support non-blocking pagination, document is paginated in small chunks.
-	 * Each time gtk_source_print_compositor_paginate() is invoked, a chunk of the document
-	 * is paginated. To paginate the entire document, gtk_source_print_compositor_paginate()
+	 * Each time [method@PrintCompositor.paginate] is invoked, a chunk of the document
+	 * is paginated. To paginate the entire document, [method@PrintCompositor.paginate]
 	 * must be invoked multiple times.
 	 * It returns %TRUE if the document has been completely paginated, otherwise it returns %FALSE.
 	 *
-	 * This method has been designed to be invoked in the handler of the #GtkPrintOperation::paginate signal,
+	 * This method has been designed to be invoked in the handler of the [signal@Gtk.PrintOperation::paginate] signal,
 	 * as shown in the following example:
 	 *
-	 * <informalexample><programlisting>
+	 * ```c
 	 * // Signal handler for the GtkPrintOperation::paginate signal
 	 *
 	 * static gboolean
@@ -444,13 +455,13 @@ public class PrintCompositor : ObjectG
 	 *
 	 * return FALSE;
 	 * }
-	 * </programlisting></informalexample>
+	 * ```
 	 *
 	 * If you don't need to do pagination in chunks, you can simply do it all in the
-	 * #GtkPrintOperation::begin-print handler, and set the number of pages from there, like
+	 * [signal@Gtk.PrintOperation::begin-print] handler, and set the number of pages from there, like
 	 * in the following example:
 	 *
-	 * <informalexample><programlisting>
+	 * ```c
 	 * // Signal handler for the GtkPrintOperation::begin-print signal
 	 *
 	 * static void
@@ -468,15 +479,13 @@ public class PrintCompositor : ObjectG
 	 * n_pages = gtk_source_print_compositor_get_n_pages (compositor);
 	 * gtk_print_operation_set_n_pages (operation, n_pages);
 	 * }
-	 * </programlisting></informalexample>
+	 * ```
 	 *
 	 * Params:
 	 *     context = the #GtkPrintContext whose parameters (e.g. paper size, print margins, etc.)
 	 *         are used by the the @compositor to paginate the document.
 	 *
 	 * Returns: %TRUE if the document has been completely paginated, %FALSE otherwise.
-	 *
-	 * Since: 2.2
 	 */
 	public bool paginate(PrintContext context)
 	{
@@ -488,16 +497,14 @@ public class PrintCompositor : ObjectG
 	 *
 	 * @font_name should be a
 	 * string representation of a font description Pango can understand.
-	 * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
+	 * (e.g. &quot;Monospace 10&quot;). See [func@Pango.FontDescription.from_string]
 	 * for a description of the format of the string representation.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     fontName = the name of the default font for the body text.
-	 *
-	 * Since: 2.2
 	 */
 	public void setBodyFontName(string fontName)
 	{
@@ -510,8 +517,6 @@ public class PrintCompositor : ObjectG
 	 * Params:
 	 *     margin = the new bottom margin in units of @unit.
 	 *     unit = the units for @margin.
-	 *
-	 * Since: 2.2
 	 */
 	public void setBottomMargin(double margin, GtkUnit unit)
 	{
@@ -519,22 +524,21 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Sets the font for printing the page footer. If
-	 * %NULL is supplied, the default font (i.e. the one being used for the
+	 * Sets the font for printing the page footer.
+	 *
+	 * If %NULL is supplied, the default font (i.e. the one being used for the
 	 * text) will be used instead.
 	 *
 	 * @font_name should be a
 	 * string representation of a font description Pango can understand.
-	 * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
+	 * (e.g. &quot;Monospace 10&quot;). See [func@Pango.FontDescription.from_string]
 	 * for a description of the format of the string representation.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     fontName = the name of the font for the footer text, or %NULL.
-	 *
-	 * Since: 2.2
 	 */
 	public void setFooterFontName(string fontName)
 	{
@@ -542,7 +546,7 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * See gtk_source_print_compositor_set_header_format() for more information
+	 * See [method@PrintCompositor.set_header_format] for more information
 	 * about the parameters.
 	 *
 	 * Params:
@@ -550,8 +554,6 @@ public class PrintCompositor : ObjectG
 	 *     left = a format string to print on the left of the footer.
 	 *     center = a format string to print on the center of the footer.
 	 *     right = a format string to print on the right of the footer.
-	 *
-	 * Since: 2.2
 	 */
 	public void setFooterFormat(bool separator, string left, string center, string right)
 	{
@@ -559,22 +561,21 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Sets the font for printing the page header. If
-	 * %NULL is supplied, the default font (i.e. the one being used for the
+	 * Sets the font for printing the page header.
+	 *
+	 * If %NULL is supplied, the default font (i.e. the one being used for the
 	 * text) will be used instead.
 	 *
 	 * @font_name should be a
 	 * string representation of a font description Pango can understand.
-	 * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
+	 * (e.g. &quot;Monospace 10&quot;). See [func@Pango.FontDescription.from_string]
 	 * for a description of the format of the string representation.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     fontName = the name of the font for header text, or %NULL.
-	 *
-	 * Since: 2.2
 	 */
 	public void setHeaderFontName(string fontName)
 	{
@@ -583,11 +584,13 @@ public class PrintCompositor : ObjectG
 
 	/**
 	 * Sets strftime like header format strings, to be printed on the
-	 * left, center and right of the top of each page.  The strings may
-	 * include strftime(3) codes which will be expanded at print time.
-	 * A subset of strftime() codes are accepted, see g_date_time_format()
+	 * left, center and right of the top of each page.
+	 *
+	 * The strings may include strftime(3) codes which will be expanded at print time.
+	 * A subset of strftime() codes are accepted, see [method@GLib.DateTime.format]
 	 * for more details on the accepted format specifiers.
 	 * Additionally the following format specifiers are accepted:
+	 *
 	 * - #N: the page number
 	 * - #Q: the page count.
 	 *
@@ -599,18 +602,16 @@ public class PrintCompositor : ObjectG
 	 *
 	 * For the header to be printed, in
 	 * addition to specifying format strings, you need to enable header
-	 * printing with gtk_source_print_compositor_set_print_header().
+	 * printing with [method@PrintCompositor.set_print_header].
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     separator = %TRUE if you want a separator line to be printed.
 	 *     left = a format string to print on the left of the header.
 	 *     center = a format string to print on the center of the header.
 	 *     right = a format string to print on the right of the header.
-	 *
-	 * Since: 2.2
 	 */
 	public void setHeaderFormat(bool separator, string left, string center, string right)
 	{
@@ -622,12 +623,10 @@ public class PrintCompositor : ObjectG
 	 * buffer rules.  Both color and font style are applied.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     highlight = whether syntax should be highlighted.
-	 *
-	 * Since: 2.2
 	 */
 	public void setHighlightSyntax(bool highlight)
 	{
@@ -640,8 +639,6 @@ public class PrintCompositor : ObjectG
 	 * Params:
 	 *     margin = the new left margin in units of @unit.
 	 *     unit = the units for @margin.
-	 *
-	 * Since: 2.2
 	 */
 	public void setLeftMargin(double margin, GtkUnit unit)
 	{
@@ -649,22 +646,21 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Sets the font for printing line numbers on the left margin.  If
-	 * %NULL is supplied, the default font (i.e. the one being used for the
+	 * Sets the font for printing line numbers on the left margin.
+	 *
+	 * If %NULL is supplied, the default font (i.e. the one being used for the
 	 * text) will be used instead.
 	 *
 	 * @font_name should be a
 	 * string representation of a font description Pango can understand.
-	 * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
+	 * (e.g. &quot;Monospace 10&quot;). See [func@Pango.FontDescription.from_string]
 	 * for a description of the format of the string representation.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     fontName = the name of the font for line numbers, or %NULL.
-	 *
-	 * Since: 2.2
 	 */
 	public void setLineNumbersFontName(string fontName)
 	{
@@ -672,21 +668,20 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Sets whether you want to print a footer in each page.  The
-	 * footer consists of three pieces of text and an optional line
+	 * Sets whether you want to print a footer in each page.
+	 *
+	 * The footer consists of three pieces of text and an optional line
 	 * separator, configurable with
-	 * gtk_source_print_compositor_set_footer_format().
+	 * [method@PrintCompositor.set_footer_format].
 	 *
 	 * Note that by default the footer format is unspecified, and if it's
 	 * empty it will not be printed, regardless of this setting.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     print = %TRUE if you want the footer to be printed.
-	 *
-	 * Since: 2.2
 	 */
 	public void setPrintFooter(bool print)
 	{
@@ -694,21 +689,19 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Sets whether you want to print a header in each page.  The
-	 * header consists of three pieces of text and an optional line
-	 * separator, configurable with
-	 * gtk_source_print_compositor_set_header_format().
+	 * Sets whether you want to print a header in each page.
+	 *
+	 * The header consists of three pieces of text and an optional line
+	 * separator, configurable with [method@PrintCompositor.set_header_format].
 	 *
 	 * Note that by default the header format is unspecified, and if it's
 	 * empty it will not be printed, regardless of this setting.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     print = %TRUE if you want the header to be printed.
-	 *
-	 * Since: 2.2
 	 */
 	public void setPrintHeader(bool print)
 	{
@@ -716,19 +709,18 @@ public class PrintCompositor : ObjectG
 	}
 
 	/**
-	 * Sets the interval for printed line numbers.  If @interval is 0 no
-	 * numbers will be printed.  If greater than 0, a number will be
+	 * Sets the interval for printed line numbers.
+	 *
+	 * If @interval is 0 no numbers will be printed. If greater than 0, a number will be
 	 * printed every @interval lines (i.e. 1 will print all line numbers).
 	 *
 	 * Maximum accepted value for @interval is 100.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     interval = interval for printed line numbers.
-	 *
-	 * Since: 2.2
 	 */
 	public void setPrintLineNumbers(uint interval)
 	{
@@ -741,8 +733,6 @@ public class PrintCompositor : ObjectG
 	 * Params:
 	 *     margin = the new right margin in units of @unit.
 	 *     unit = the units for @margin.
-	 *
-	 * Since: 2.2
 	 */
 	public void setRightMargin(double margin, GtkUnit unit)
 	{
@@ -753,12 +743,10 @@ public class PrintCompositor : ObjectG
 	 * Sets the width of tabulation in characters for printed text.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     width = width of tab in characters.
-	 *
-	 * Since: 2.2
 	 */
 	public void setTabWidth(uint width)
 	{
@@ -771,8 +759,6 @@ public class PrintCompositor : ObjectG
 	 * Params:
 	 *     margin = the new top margin in units of @unit
 	 *     unit = the units for @margin
-	 *
-	 * Since: 2.2
 	 */
 	public void setTopMargin(double margin, GtkUnit unit)
 	{
@@ -783,12 +769,10 @@ public class PrintCompositor : ObjectG
 	 * Sets the line wrapping mode for the printed text.
 	 *
 	 * This function cannot be called anymore after the first call to the
-	 * gtk_source_print_compositor_paginate() function.
+	 * [method@PrintCompositor.paginate] function.
 	 *
 	 * Params:
 	 *     wrapMode = a #GtkWrapMode.
-	 *
-	 * Since: 2.2
 	 */
 	public void setWrapMode(GtkWrapMode wrapMode)
 	{

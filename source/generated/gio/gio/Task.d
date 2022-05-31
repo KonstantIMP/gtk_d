@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gio.Task;
 
 private import gio.AsyncResultIF;
@@ -38,6 +62,10 @@ private import gobject.Value;
  * the operation's finish function (as a #GAsyncResult), and you can
  * use g_task_propagate_pointer() or the like to extract the
  * return value.
+ * 
+ * Using #GTask requires the thread-default #GMainContext from when the
+ * #GTask was constructed to be running at least until the task has completed
+ * and its data has been freed.
  * 
  * Here is an example for using GTask as a GAsyncResult:
  * |[<!-- language="C" -->
@@ -1051,7 +1079,7 @@ public class Task : ObjectG, AsyncResultIF
 	/**
 	 * Sets @task's result to @result (by copying it) and completes the task.
 	 *
-	 * If @result is %NULL then a #GValue of type #G_TYPE_POINTER
+	 * If @result is %NULL then a #GValue of type %G_TYPE_POINTER
 	 * with a value of %NULL will be used for the result.
 	 *
 	 * This is a very generic low-level method intended primarily for use
@@ -1157,7 +1185,8 @@ public class Task : ObjectG, AsyncResultIF
 	 * name of the #GSource used for idle completion of the task.
 	 *
 	 * This function may only be called before the @task is first used in a thread
-	 * other than the one it was constructed in.
+	 * other than the one it was constructed in. It is called automatically by
+	 * g_task_set_source_tag() if not called already.
 	 *
 	 * Params:
 	 *     name = a human readable name for the task, or %NULL to unset it
@@ -1234,12 +1263,18 @@ public class Task : ObjectG, AsyncResultIF
 	}
 
 	/**
-	 * Sets @task's source tag. You can use this to tag a task return
+	 * Sets @task's source tag.
+	 *
+	 * You can use this to tag a task return
 	 * value with a particular pointer (usually a pointer to the function
 	 * doing the tagging) and then later check it using
 	 * g_task_get_source_tag() (or g_async_result_is_tagged()) in the
 	 * task's "finish" function, to figure out if the response came from a
 	 * particular place.
+	 *
+	 * A macro wrapper around this function will automatically set the
+	 * task’s name to the string form of @source_tag if it’s not already
+	 * set, for convenience.
 	 *
 	 * Params:
 	 *     sourceTag = an opaque pointer indicating the source of this task

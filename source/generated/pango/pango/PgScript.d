@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgScript;
 
 private import gobject.ObjectG;
@@ -13,13 +37,15 @@ public struct PgScript
 	/**
 	 * Looks up the script for a particular character.
 	 *
-	 * The script of a character is defined by Unicode Standard Annex \#24.
+	 * The script of a character is defined by
+	 * [Unicode Standard Annex 24: Script names](http://www.unicode.org/reports/tr24/).
+	 *
 	 * No check is made for @ch being a valid Unicode character; if you pass
 	 * in invalid character, the result is undefined.
 	 *
 	 * Note that while the return type of this function is declared
 	 * as `PangoScript`, as of Pango 1.18, this function simply returns
-	 * the return value of g_unichar_get_script(). Callers must be
+	 * the return value of [func@GLib.unichar_get_script]. Callers must be
 	 * prepared to handle unknown values.
 	 *
 	 * Deprecated: Use g_unichar_get_script()

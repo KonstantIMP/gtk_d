@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.Unicode;
 
 private import glib.ErrorG;
@@ -812,9 +836,10 @@ public struct Unicode
 	 *         words read, or %NULL. If %NULL, then %G_CONVERT_ERROR_PARTIAL_INPUT will
 	 *         be returned in case @str contains a trailing partial character. If
 	 *         an error occurs then the index of the invalid input is stored here.
+	 *         It’s guaranteed to be non-negative.
 	 *     itemsWritten = location to store number
 	 *         of bytes written, or %NULL. The value stored here does not include the
-	 *         trailing 0 byte.
+	 *         trailing 0 byte. It’s guaranteed to be non-negative.
 	 *
 	 * Returns: a pointer to a newly allocated UTF-8 string.
 	 *     This value must be freed with g_free(). If an error occurs,
@@ -872,6 +897,10 @@ public struct Unicode
 	 * faster to obtain collation keys with g_utf8_collate_key() and
 	 * compare the keys with strcmp() when sorting instead of sorting
 	 * the original strings.
+	 *
+	 * If the two strings are not comparable due to being in different collation
+	 * sequences, the result is undefined. This can happen if the strings are in
+	 * different language scripts, for example.
 	 *
 	 * Params:
 	 *     str1 = a UTF-8 encoded string
@@ -1293,10 +1322,14 @@ public struct Unicode
 	 * Copies a substring out of a UTF-8 encoded string.
 	 * The substring will contain @end_pos - @start_pos characters.
 	 *
+	 * Since GLib 2.72, `-1` can be passed to @end_pos to indicate the
+	 * end of the string.
+	 *
 	 * Params:
 	 *     str = a UTF-8 encoded string
 	 *     startPos = a character offset within @str
-	 *     endPos = another character offset within @str
+	 *     endPos = another character offset within @str,
+	 *         or `-1` to indicate the end of the string
 	 *
 	 * Returns: a newly allocated copy of the requested
 	 *     substring. Free with g_free() when no longer needed.

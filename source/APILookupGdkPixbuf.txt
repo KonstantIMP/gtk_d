@@ -1,11 +1,9 @@
-﻿#
-# This file is part of gtkD.
+﻿# This file is part of gtkD.
 #
 # gtkD is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License
-# as published by the Free Software Foundation; either version 3
-# of the License, or (at your option) any later version, with
-# some exceptions, please read the COPYING file.
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2.1 of the License, or
+# (at your option) any later version.
 #
 # gtkD is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,9 +12,14 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with gtkD; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
+#############################################
+### Definitions for wrapping Gtk+ ###########
+#############################################
+
+# must start with wrap
 wrap: gdkpixbuf
 file: GdkPixbuf-2.0.gir
 file: GdkPixdata-2.0.gir
@@ -54,7 +57,8 @@ code: start
 	 *
 	 * Throws: GException on failure.
 	 */
-	public bool saveToBuffer(out ubyte[] buffer, string type, string[] optionKeys, string[] optionValues) {
+	public bool saveToBuffer(out ubyte[] buffer, string type, string[] optionKeys, string[] optionValues)
+	{
 		char* outbuffer = null;
 		size_t bufferSize;
 		GError* err = null;
@@ -88,7 +92,8 @@ code: start
 	 *
 	 * Throws: GException on failure.
 	 */
-	public static Pixbuf newFromResource(string resourcePath) {
+	public static Pixbuf newFromResource(string resourcePath)
+	{
 		GError* err = null;
 
 		auto p = gdk_pixbuf_new_from_resource(Str.toStringz(resourcePath), &err);
@@ -130,7 +135,8 @@ code: start
 	 *
 	 * Throws: GException on failure.
 	 */
-	public static Pixbuf newFromResource(string resourcePath, int width, int height, bool preserveAspectRatio) {
+	public static Pixbuf newFromResource(string resourcePath, int width, int height, bool preserveAspectRatio)
+	{
 		GError* err = null;
 
 		auto p = gdk_pixbuf_new_from_resource_at_scale(Str.toStringz(resourcePath), width, height, preserveAspectRatio, &err);
@@ -153,7 +159,8 @@ code: start
 	 *     This function will cause an implicit copy of the pixbuf data if the
 	 *     pixbuf was created from read-only data.
 	 */
-	public char* getPixels() {
+	public char* getPixels()
+	{
 		return gdk_pixbuf_get_pixels(gdkPixbuf);
 	}
 code: end
@@ -188,18 +195,22 @@ code: start
 	 *
 	 * Throws: GException on failure.
 	 */
-	public this(string type, bool isMimeType=false) {
+	public this(string type, bool isMimeType=false)
+	{
 		GError* err = null;
 		GdkPixbufLoader* p;
 
-		if ( isMimeType ) {
+		if ( isMimeType )
+		{
 			p = cast(GdkPixbufLoader*)gdk_pixbuf_loader_new_with_mime_type(Str.toStringz(type), &err);
 		}
-		else {
+		else
+		{
 			p = cast(GdkPixbufLoader*)gdk_pixbuf_loader_new_with_type(Str.toStringz(type), &err);
 		}
 		
-		if (err !is null) {
+		if (err !is null)
+		{
 			throw new GException( new ErrorG(err) );
 		}
 		
@@ -235,7 +246,8 @@ code: start
 	 *     `TRUE`, a pointer to the newly-allocated memory for the run-length
 	 *     encoded pixel data, otherwise `NULL`.
 	 */
-	public ubyte[] fromPixbuf(Pixbuf pixbuf, bool useRle) {
+	public ubyte[] fromPixbuf(Pixbuf pixbuf, bool useRle)
+	{
 		auto __p = gdk_pixdata_from_pixbuf(gdkPixdata, (pixbuf is null) ? null : pixbuf.getPixbufStruct(), useRle);
 
 		return cast(ubyte[])__p[0 .. getArrayLength(cast(ubyte *)__p)];

@@ -1,7 +1,31 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgFontMetrics;
 
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import pango.c.functions;
 public  import pango.c.types;
 
@@ -14,6 +38,13 @@ public  import pango.c.types;
  * to a script. The fields of this structure are private to implementations
  * of a font backend. See the documentation of the corresponding getters
  * for documentation of their meaning.
+ * 
+ * For an overview of the most important metrics, see:
+ * 
+ * <picture>
+ * <source srcset="fontmetrics-dark.png" media="(prefers-color-scheme: dark)">
+ * <img alt="Font metrics" src="fontmetrics-light.png">
+ * </picture>
  */
 public class PgFontMetrics
 {
@@ -120,8 +151,8 @@ public class PgFontMetrics
 	/**
 	 * Gets the line height from a font metrics structure.
 	 *
-	 * The line height is the distance between successive baselines
-	 * in wrapped text.
+	 * The line height is the recommended distance between successive
+	 * baselines in wrapped text using this font.
 	 *
 	 * If the line height is not available, 0 is returned.
 	 *
@@ -209,6 +240,7 @@ public class PgFontMetrics
 
 	/**
 	 * Decrease the reference count of a font metrics structure by one.
+	 *
 	 * If the result is zero, frees the structure and any associated memory.
 	 */
 	public void unref()

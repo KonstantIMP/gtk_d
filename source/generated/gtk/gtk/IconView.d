@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.IconView;
 
 private import gdk.ContentFormats;
@@ -499,8 +523,15 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	 * want to convert the returned list into a list of `GtkTreeRowReferences`.
 	 * To do this, you can use gtk_tree_row_reference_new().
 	 *
-	 * To free the return value, use:
+	 * To free the return value, use `g_list_free_full`:
 	 * |[<!-- language="C" -->
+	 * GtkWidget *icon_view = gtk_icon_view_new ();
+	 * // Use icon_view
+	 *
+	 * GList *list = gtk_icon_view_get_selected_items (GTK_ICON_VIEW (icon_view));
+	 *
+	 * // use list
+	 *
 	 * g_list_free_full (list, (GDestroyNotify) gtk_tree_path_free);
 	 * ]|
 	 *
@@ -1086,7 +1117,7 @@ public class IconView : Widget, CellLayoutIF, ScrollableIF
 	}
 
 	/**
-	 * A [keybinding signal][class.Gtk.SignalAction]
+	 * A [keybinding signal][class@Gtk.SignalAction]
 	 * which gets emitted when the user selects all items.
 	 *
 	 * Applications should not connect to it, but may emit it with

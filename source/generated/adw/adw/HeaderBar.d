@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.HeaderBar;
 
 private import adw.c.functions;
@@ -18,43 +42,58 @@ private import gtk.Widget;
 /**
  * A title bar widget.
  * 
+ * <picture>
+ * <source srcset="header-bar-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="header-bar.png" alt="header-bar">
+ * </picture>
+ * 
  * `AdwHeaderBar` is similar to [class@Gtk.HeaderBar], but provides additional
  * features compared to it. Refer to `GtkHeaderBar` for details.
  * 
- * [property@Adw.HeaderBar:centering-policy] allows to enforce strict centering
- * of the title widget, this is useful for [class@Adw.ViewSwitcherTitle].
+ * [property@HeaderBar:centering-policy] allows to enforce strict centering of
+ * the title widget, this is useful for [class@ViewSwitcherTitle].
  * 
- * [property@Adw.HeaderBar:show-start-title-buttons] and
- * [property@Adw.HeaderBar:show-end-title-buttons] allow to easily create split
- * header bar layouts using [class@Adw.Leaflet], as follows:
+ * [property@HeaderBar:show-start-title-buttons] and
+ * [property@HeaderBar:show-end-title-buttons] allow to easily create split
+ * header bar layouts using [class@Leaflet], as follows:
  * 
  * ```xml
  * <object class="AdwLeaflet" id="leaflet">
  * <child>
  * <object class="GtkBox">
  * <property name="orientation">vertical</property>
+ * <child>
  * <object class="AdwHeaderBar">
  * <binding name="show-end-title-buttons">
  * <lookup name="folded">leaflet</lookup>
  * </binding>
  * </object>
- * ...
+ * </child>
+ * <!-- ... -->
  * </object>
  * </child>
- * ...
+ * <!-- ... -->
  * <child>
  * <object class="GtkBox">
  * <property name="orientation">vertical</property>
+ * <property name="hexpand">True</property>
+ * <child>
  * <object class="AdwHeaderBar">
  * <binding name="show-start-title-buttons">
  * <lookup name="folded">leaflet</lookup>
  * </binding>
  * </object>
- * ...
+ * </child>
+ * <!-- ... -->
  * </object>
  * </child>
  * </object>
  * ```
+ * 
+ * <picture>
+ * <source srcset="header-bar-split-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="header-bar-split.png" alt="header-bar-split">
+ * </picture>
  * 
  * ## CSS nodes
  * 
@@ -84,7 +123,7 @@ private import gtk.Widget;
  * 
  * ## Accessibility
  * 
- * `AdwHeaderBar` uses the %GTK_ACCESSIBLE_ROLE_GROUP role.
+ * `AdwHeaderBar` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
  *
  * Since: 1.0
  */
@@ -240,8 +279,8 @@ public class HeaderBar : Widget
 	/**
 	 * Removes a child from @self.
 	 *
-	 * The child must have been added with [method@Adw.HeaderBar.pack_start],
-	 * [method@Adw.HeaderBar.pack_end] or [property@Adw.HeaderBar:title-widget].
+	 * The child must have been added with [method@HeaderBar.pack_start],
+	 * [method@HeaderBar.pack_end] or [property@HeaderBar:title-widget].
 	 *
 	 * Params:
 	 *     child = the child to remove
@@ -270,7 +309,7 @@ public class HeaderBar : Widget
 	 * Sets the decoration layout for @self.
 	 *
 	 * Params:
-	 *     layout = a decoration layout, or `NULL` to unset the layout
+	 *     layout = a decoration layout
 	 *
 	 * Since: 1.0
 	 */

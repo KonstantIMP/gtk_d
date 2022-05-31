@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdk.Cursor;
 
 private import gdk.Texture;
@@ -19,8 +43,7 @@ private import gobject.ObjectG;
  * Cursors by themselves are not very interesting: they must be bound to a
  * window for users to see them. This is done with [method@Gdk.Surface.set_cursor]
  * or [method@Gdk.Surface.set_device_cursor]. Applications will typically
- * use higher-level GTK functions such as [method@Gtk.Widget.set_cursor]`
- * instead.
+ * use higher-level GTK functions such as [method@Gtk.Widget.set_cursor] instead.
  * 
  * Cursors are not bound to a given [class@Gdk.Display], so they can be shared.
  * However, the appearance of cursors may vary when used on different

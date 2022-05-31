@@ -1,9 +1,34 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdk.Display;
 
 private import gdk.AppLaunchContext;
 private import gdk.Clipboard;
 private import gdk.Device;
 private import gdk.Event;
+private import gdk.GLContext;
 private import gdk.MonitorGdk;
 private import gdk.Seat;
 private import gdk.Surface;
@@ -132,6 +157,42 @@ public class Display : ObjectG
 	public void close()
 	{
 		gdk_display_close(gdkDisplay);
+	}
+
+	/**
+	 * Creates a new `GdkGLContext` for the `GdkDisplay`.
+	 *
+	 * The context is disconnected from any particular surface or surface
+	 * and cannot be used to draw to any surface. It can only be used to
+	 * draw to non-surface framebuffers like textures.
+	 *
+	 * If the creation of the `GdkGLContext` failed, @error will be set.
+	 * Before using the returned `GdkGLContext`, you will need to
+	 * call [method@Gdk.GLContext.make_current] or [method@Gdk.GLContext.realize].
+	 *
+	 * Returns: the newly created `GdkGLContext`
+	 *
+	 * Since: 4.6
+	 *
+	 * Throws: GException on failure.
+	 */
+	public GLContext createGlContext()
+	{
+		GError* err = null;
+
+		auto __p = gdk_display_create_gl_context(gdkDisplay, &err);
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(GLContext)(cast(GdkGLContext*) __p, true);
 	}
 
 	/**

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.FlowBox;
 
 private import gio.ListModelIF;
@@ -118,6 +142,24 @@ public class FlowBox : Widget, OrientableIF
 		}
 
 		this(cast(GtkFlowBox*) __p);
+	}
+
+	/**
+	 * Adds @child to the end of @self.
+	 *
+	 * If a sort function is set, the widget will
+	 * actually be inserted at the calculated position.
+	 *
+	 * See also: [method@Gtk.FlowBox.insert].
+	 *
+	 * Params:
+	 *     child = the `GtkWidget` to add
+	 *
+	 * Since: 4.6
+	 */
+	public void append(Widget child)
+	{
+		gtk_flow_box_append(gtkFlowBox, (child is null) ? null : child.getWidgetStruct());
 	}
 
 	/**
@@ -325,6 +367,24 @@ public class FlowBox : Widget, OrientableIF
 	public void invalidateSort()
 	{
 		gtk_flow_box_invalidate_sort(gtkFlowBox);
+	}
+
+	/**
+	 * Adds @child to the start of @self.
+	 *
+	 * If a sort function is set, the widget will
+	 * actually be inserted at the calculated position.
+	 *
+	 * See also: [method@Gtk.FlowBox.insert].
+	 *
+	 * Params:
+	 *     child = the `GtkWidget` to add
+	 *
+	 * Since: 4.6
+	 */
+	public void prepend(Widget child)
+	{
+		gtk_flow_box_prepend(gtkFlowBox, (child is null) ? null : child.getWidgetStruct());
 	}
 
 	/**

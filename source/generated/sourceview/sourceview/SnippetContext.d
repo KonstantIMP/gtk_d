@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.SnippetContext;
 
 private import glib.ConstructionException;
@@ -10,7 +34,17 @@ public  import sourceview.c.types;
 private import std.algorithm;
 
 
-/** */
+/**
+ * Context for expanding [class@SnippetChunk].
+ * 
+ * This class is currently used primary as a hashtable. However, the longer
+ * term goal is to have it hold onto a `GjsContext` as well as other languages
+ * so that [class@SnippetChunk] can expand themselves by executing
+ * script within the context.
+ * 
+ * The [class@Snippet] will build the context and then expand each of the
+ * chunks during the insertion/edit phase.
+ */
 public class SnippetContext : ObjectG
 {
 	/** the main Gtk struct */
@@ -54,8 +88,6 @@ public class SnippetContext : ObjectG
 	 *
 	 * Returns: a #GtkSourceSnippetContext
 	 *
-	 * Since: 5.0
-	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this()
@@ -72,8 +104,6 @@ public class SnippetContext : ObjectG
 
 	/**
 	 * Removes all variables from the context.
-	 *
-	 * Since: 5.0
 	 */
 	public void clearVariables()
 	{
@@ -96,8 +126,6 @@ public class SnippetContext : ObjectG
 	 *     key = the name of the variable
 	 *
 	 * Returns: the value for the variable, or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public string getVariable(string key)
 	{
@@ -105,8 +133,9 @@ public class SnippetContext : ObjectG
 	}
 
 	/**
-	 * Sets a constatnt within the context. This is similar to
-	 * a variable set with gtk_source_snippet_context_set_variable()
+	 * Sets a constatnt within the context.
+	 *
+	 * This is similar to a variable set with [method@SnippetContext.set_variable]
 	 * but is expected to not change during use of the snippet.
 	 *
 	 * Examples would be the date or users name.
@@ -114,8 +143,6 @@ public class SnippetContext : ObjectG
 	 * Params:
 	 *     key = the constant name
 	 *     value = the value of the constant
-	 *
-	 * Since: 5.0
 	 */
 	public void setConstant(string key, string value)
 	{
@@ -149,8 +176,6 @@ public class SnippetContext : ObjectG
 	 * Params:
 	 *     key = the variable name
 	 *     value = the value for the variable
-	 *
-	 * Since: 5.0
 	 */
 	public void setVariable(string key, string value)
 	{
@@ -158,12 +183,10 @@ public class SnippetContext : ObjectG
 	}
 
 	/**
-	 * The "changed" signal is emitted when a change has been
+	 * The signal is emitted when a change has been
 	 * discovered in one of the chunks of the snippet which has
 	 * caused a variable or other dynamic data within the context
 	 * to have changed.
-	 *
-	 * Since: 5.0
 	 */
 	gulong addOnChanged(void delegate(SnippetContext) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

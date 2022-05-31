@@ -1,28 +1,60 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.c.types;
 
 public alias uint uid_t;
 public alias int pid_t;
 
-version( Windows ) 	{
+version( Windows )
+{
 	alias int glong;
-alias uint gulong;
-
-private import core.stdc.stdio;
-
-static if( !is(typeof(fdopen(0, null))) ) {
-	extern (C) FILE*  fdopen(int, char*);
+	alias uint gulong;
 }
-}
-else version( X86_64 ) 	{
+else version( X86_64 )
+{
 	alias long glong;
-alias ulong gulong;
+	alias ulong gulong;
 }
-else {
+else
+{
 	alias int glong;
-alias uint gulong;
+	alias uint gulong;
 }
 
-struct Scoped(T) {
+version (Windows)
+{
+	private import core.stdc.stdio;
+
+	static if( !is(typeof(fdopen(0, null))) )
+	{
+		extern (C) FILE*  fdopen(int, char*);
+	}
+}
+
+struct Scoped(T)
+{
 	T payload;
 
 	alias payload this;
@@ -30,19 +62,14 @@ struct Scoped(T) {
 	@disable this();
 	@disable this(this);
 
-	~this() {
+	~this()
+	{
 		.destroy(payload);
 	}
 }
 
-/**
- * Create Scoped GObject
- * Params:
- *   T = Type extends by GObject
- *   args = Arguments for scoped object created
- * Return: Scoped T object
- */
-auto getScopedGobject(T, Args...)(auto ref Args args) if (is(T == class)) {
+auto getScopedGobject(T, Args...)(auto ref Args args) if (is(T == class))
+{
 	Scoped!(T) result = void;
 	result.payload = new T(args);
 
@@ -51,11 +78,9 @@ auto getScopedGobject(T, Args...)(auto ref Args args) if (is(T == class)) {
 
 /**
  * Get the length of a zero terminated array.
- * Params:
- *   arr = Array for counting
- * Returns: Num of item in the array
  */
-size_t getArrayLength(T)(T* arr) {
+size_t getArrayLength(T)(T* arr)
+{
 	size_t len;
 
 	for ( ; arr[len]; len++ ){}
@@ -63,17 +88,13 @@ size_t getArrayLength(T)(T* arr) {
 	return len;
 }
 
-unittest {
+unittest
+{
 	assert(getArrayLength("aaaaaaaaa\0".ptr) == 9);
 }
 
-/**
- * Memory allocator for GObject types
- * Params:
- *   Type = Type for memory allocation
- * Return: Ptr to the allocated object
- */
-Type* gMalloc(Type)() {
+Type* gMalloc(Type)()
+{
 	import glib.c.functions;
 	return cast(Type*)g_malloc0(Type.sizeof);
 }
@@ -189,13 +210,16 @@ public alias int GTime;
  * A value representing an interval of time, in microseconds.
  */
 public alias long GTimeSpan;
-enum GPriority {
+
+enum GPriority
+{
 	HIGH = -100,
 	DEFAULT = 0,
 	HIGH_IDLE = 100,
 	DEFAULT_IDLE = 200,
 	LOW = 300
 }
+
 
 public enum GAsciiType
 {
@@ -417,8 +441,8 @@ public enum GDateMonth
 alias GDateMonth DateMonth;
 
 /**
- * Enumeration representing a day of the week; #G_DATE_MONDAY,
- * #G_DATE_TUESDAY, etc. #G_DATE_BAD_WEEKDAY is an invalid weekday.
+ * Enumeration representing a day of the week; %G_DATE_MONDAY,
+ * %G_DATE_TUESDAY, etc. %G_DATE_BAD_WEEKDAY is an invalid weekday.
  */
 public enum GDateWeekday
 {
@@ -1097,6 +1121,28 @@ public enum GLogWriterOutput
 alias GLogWriterOutput LogWriterOutput;
 
 /**
+ * Flags to pass to g_main_context_new_with_flags() which affect the behaviour
+ * of a #GMainContext.
+ *
+ * Since: 2.72
+ */
+public enum GMainContextFlags
+{
+	/**
+	 * Default behaviour.
+	 */
+	NONE = 0,
+	/**
+	 * Assume that polling for events will
+	 * free the thread to process other jobs. That's useful if you're using
+	 * `g_main_context_{prepare,query,check,dispatch}` to integrate GMainContext in
+	 * other event loops.
+	 */
+	OWNERLESS_POLLING = 1,
+}
+alias GMainContextFlags MainContextFlags;
+
+/**
  * A mixed enumerated type and flags field. You must specify one type
  * (string, strdup, boolean, tristate).  Additionally, you may  optionally
  * bitwise OR the type with the flag %G_MARKUP_COLLECT_OPTIONAL.
@@ -1466,8 +1512,8 @@ public enum GRegexCompileFlags
 	 * newlines). The "start of line" metacharacter ("^") matches only
 	 * at the start of the string, while the "end of line" metacharacter
 	 * ("$") matches only at the end of the string, or before a terminating
-	 * newline (unless #G_REGEX_DOLLAR_ENDONLY is set). When
-	 * #G_REGEX_MULTILINE is set, the "start of line" and "end of line"
+	 * newline (unless %G_REGEX_DOLLAR_ENDONLY is set). When
+	 * %G_REGEX_MULTILINE is set, the "start of line" and "end of line"
 	 * constructs match immediately following or immediately before any
 	 * newline in the string, respectively, as well as at the very start
 	 * and end. This can be changed within a pattern by a "(?m)" option
@@ -1502,7 +1548,7 @@ public enum GRegexCompileFlags
 	 * matches only at the end of the string. Without this option, a
 	 * dollar also matches immediately before the final character if
 	 * it is a newline (but not before any other newlines). This option
-	 * is ignored if #G_REGEX_MULTILINE is set.
+	 * is ignored if %G_REGEX_MULTILINE is set.
 	 */
 	DOLLAR_ENDONLY = 32,
 	/**
@@ -1879,7 +1925,7 @@ public enum GRegexMatchFlags
 	/**
 	 * Specifies that first character of the string is
 	 * not the beginning of a line, so the circumflex metacharacter should
-	 * not match before it. Setting this without #G_REGEX_MULTILINE (at
+	 * not match before it. Setting this without %G_REGEX_MULTILINE (at
 	 * compile time) causes circumflex never to match. This option affects
 	 * only the behaviour of the circumflex metacharacter, it does not
 	 * affect "\A".
@@ -1889,7 +1935,7 @@ public enum GRegexMatchFlags
 	 * Specifies that the end of the subject string is
 	 * not the end of a line, so the dollar metacharacter should not match
 	 * it nor (except in multiline mode) a newline immediately before it.
-	 * Setting this without #G_REGEX_MULTILINE (at compile time) causes
+	 * Setting this without %G_REGEX_MULTILINE (at compile time) causes
 	 * dollar never to match. This option affects only the behaviour of
 	 * the dollar metacharacter, it does not affect "\Z" or "\z".
 	 */
@@ -1956,18 +2002,18 @@ public enum GRegexMatchFlags
 	 */
 	BSR_ANY = 16777216,
 	/**
-	 * An alias for #G_REGEX_MATCH_PARTIAL. Since: 2.34
+	 * An alias for %G_REGEX_MATCH_PARTIAL. Since: 2.34
 	 */
 	PARTIAL_SOFT = 32768,
 	/**
 	 * Turns on the partial matching feature. In contrast to
-	 * to #G_REGEX_MATCH_PARTIAL_SOFT, this stops matching as soon as a partial match
+	 * to %G_REGEX_MATCH_PARTIAL_SOFT, this stops matching as soon as a partial match
 	 * is found, without continuing to search for a possible complete match. See
 	 * g_match_info_is_partial_match() for more information. Since: 2.34
 	 */
 	PARTIAL_HARD = 134217728,
 	/**
-	 * Like #G_REGEX_MATCH_NOTEMPTY, but only applied to
+	 * Like %G_REGEX_MATCH_NOTEMPTY, but only applied to
 	 * the start of the matched string. For anchored
 	 * patterns this can only happen for pattern containing "\K". Since: 2.34
 	 */
@@ -3354,6 +3400,30 @@ public enum GUnicodeScript
 	 * Yezidi. Since: 2.66
 	 */
 	YEZIDI = 156,
+	/**
+	 * Cypro-Minoan. Since: 2.72
+	 */
+	CYPRO_MINOAN = 157,
+	/**
+	 * Old Uyghur. Since: 2.72
+	 */
+	OLD_UYGHUR = 158,
+	/**
+	 * Tangsa. Since: 2.72
+	 */
+	TANGSA = 159,
+	/**
+	 * Toto. Since: 2.72
+	 */
+	TOTO = 160,
+	/**
+	 * Vithkuqi. Since: 2.72
+	 */
+	VITHKUQI = 161,
+	/**
+	 * Mathematical notation. Since: 2.72
+	 */
+	MATH = 162,
 }
 alias GUnicodeScript UnicodeScript;
 
@@ -4060,7 +4130,7 @@ struct GDoubleIEEE754
 struct GError
 {
 	/**
-	 * error domain, e.g. #G_FILE_ERROR
+	 * error domain, e.g. %G_FILE_ERROR
 	 */
 	GQuark domain;
 	/**
@@ -4650,14 +4720,14 @@ struct GScannerConfig
 	char* csetSkipCharacters;
 	/**
 	 * specifies the characters which can start
-	 * identifiers (the default is #G_CSET_a_2_z, "_", and #G_CSET_A_2_Z).
+	 * identifiers (the default is %G_CSET_a_2_z, "_", and %G_CSET_A_2_Z).
 	 */
 	char* csetIdentifierFirst;
 	/**
 	 * specifies the characters which can be used
 	 * in identifiers, after the first character (the default is
-	 * #G_CSET_a_2_z, "_0123456789", #G_CSET_A_2_Z, #G_CSET_LATINS,
-	 * #G_CSET_LATINC).
+	 * %G_CSET_a_2_z, "_0123456789", %G_CSET_A_2_Z, %G_CSET_LATINS,
+	 * %G_CSET_LATINC).
 	 */
 	char* csetIdentifierNth;
 	/**
@@ -5570,8 +5640,8 @@ public alias extern(C) void function() GSourceDummyMarshal;
  *     userData = data passed to the function, set when the source was
  *         created with one of the above functions
  *
- * Returns: %FALSE if the source should be removed. #G_SOURCE_CONTINUE and
- *     #G_SOURCE_REMOVE are more memorable names for the return value.
+ * Returns: %FALSE if the source should be removed. %G_SOURCE_CONTINUE and
+ *     %G_SOURCE_REMOVE are more memorable names for the return value.
  */
 public alias extern(C) int function(void* userData) GSourceFunc;
 
@@ -5786,7 +5856,7 @@ alias G_ASCII_DTOSTR_BUF_SIZE = ASCII_DTOSTR_BUF_SIZE;
 
 /**
  * Specifies one of the possible types of byte order.
- * See #G_BYTE_ORDER.
+ * See %G_BYTE_ORDER.
  */
 enum BIG_ENDIAN = 4321;
 alias G_BIG_ENDIAN = BIG_ENDIAN;
@@ -5876,7 +5946,7 @@ alias G_GINT16_MODIFIER = GINT16_MODIFIER;
 
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gint32. See also #G_GINT16_FORMAT.
+ * and printing values of type #gint32. See also %G_GINT16_FORMAT.
  */
 enum GINT32_FORMAT = "i";
 alias G_GINT32_FORMAT = GINT32_FORMAT;
@@ -5884,14 +5954,14 @@ alias G_GINT32_FORMAT = GINT32_FORMAT;
 /**
  * The platform dependent length modifier for conversion specifiers
  * for scanning and printing values of type #gint32 or #guint32. It
- * is a string literal. See also #G_GINT16_MODIFIER.
+ * is a string literal. See also %G_GINT16_MODIFIER.
  */
 enum GINT32_MODIFIER = "";
 alias G_GINT32_MODIFIER = GINT32_MODIFIER;
 
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gint64. See also #G_GINT16_FORMAT.
+ * and printing values of type #gint64. See also %G_GINT16_FORMAT.
  *
  * Some platforms do not support scanning and printing 64-bit integers,
  * even though the types are supported. On such platforms %G_GINT64_FORMAT
@@ -5950,7 +6020,7 @@ alias G_GNUC_PRETTY_FUNCTION = GNUC_PRETTY_FUNCTION;
 
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gsize. See also #G_GINT16_FORMAT.
+ * and printing values of type #gsize. See also %G_GINT16_FORMAT.
  */
 enum GSIZE_FORMAT = "lu";
 alias G_GSIZE_FORMAT = GSIZE_FORMAT;
@@ -5965,7 +6035,7 @@ alias G_GSIZE_MODIFIER = GSIZE_MODIFIER;
 
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #gssize. See also #G_GINT16_FORMAT.
+ * and printing values of type #gssize. See also %G_GINT16_FORMAT.
  */
 enum GSSIZE_FORMAT = "li";
 alias G_GSSIZE_FORMAT = GSSIZE_FORMAT;
@@ -5980,21 +6050,21 @@ alias G_GSSIZE_MODIFIER = GSSIZE_MODIFIER;
 
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #guint16. See also #G_GINT16_FORMAT
+ * and printing values of type #guint16. See also %G_GINT16_FORMAT
  */
 enum GUINT16_FORMAT = "hu";
 alias G_GUINT16_FORMAT = GUINT16_FORMAT;
 
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #guint32. See also #G_GINT16_FORMAT.
+ * and printing values of type #guint32. See also %G_GINT16_FORMAT.
  */
 enum GUINT32_FORMAT = "u";
 alias G_GUINT32_FORMAT = GUINT32_FORMAT;
 
 /**
  * This is the platform dependent conversion specifier for scanning
- * and printing values of type #guint64. See also #G_GINT16_FORMAT.
+ * and printing values of type #guint64. See also %G_GINT16_FORMAT.
  *
  * Some platforms do not support scanning and printing 64-bit integers,
  * even though the types are supported. On such platforms %G_GUINT64_FORMAT
@@ -6250,7 +6320,7 @@ alias G_KEY_FILE_DESKTOP_TYPE_LINK = KEY_FILE_DESKTOP_TYPE_LINK;
 
 /**
  * Specifies one of the possible types of byte order.
- * See #G_BYTE_ORDER.
+ * See %G_BYTE_ORDER.
  */
 enum LITTLE_ENDIAN = 1234;
 alias G_LITTLE_ENDIAN = LITTLE_ENDIAN;
@@ -6398,7 +6468,7 @@ alias G_MININT8 = MININT8;
  * application compile time, rather than from the library
  * linked against at application run time.
  */
-enum MINOR_VERSION = 70;
+enum MINOR_VERSION = 72;
 alias GLIB_MINOR_VERSION = MINOR_VERSION;
 
 enum MODULE_SUFFIX = "so";
@@ -6412,7 +6482,7 @@ alias G_MODULE_SUFFIX = MODULE_SUFFIX;
  * or %G_OPTION_ARG_FILENAME_ARRAY.
  *
  *
- * Using #G_OPTION_REMAINING instead of simply scanning `argv`
+ * Using %G_OPTION_REMAINING instead of simply scanning `argv`
  * for leftover arguments has the advantage that GOption takes care of
  * necessary encoding conversions for strings or filenames.
  */
@@ -6421,7 +6491,7 @@ alias G_OPTION_REMAINING = OPTION_REMAINING;
 
 /**
  * Specifies one of the possible types of byte order
- * (currently unused). See #G_BYTE_ORDER.
+ * (currently unused). See %G_BYTE_ORDER.
  */
 enum PDP_ENDIAN = 3412;
 alias G_PDP_ENDIAN = PDP_ENDIAN;
@@ -6470,8 +6540,8 @@ alias G_PRIORITY_HIGH = PRIORITY_HIGH;
 /**
  * Use this for high priority idle functions.
  *
- * GTK+ uses #G_PRIORITY_HIGH_IDLE + 10 for resizing operations,
- * and #G_PRIORITY_HIGH_IDLE + 20 for redrawing operations. (This is
+ * GTK+ uses %G_PRIORITY_HIGH_IDLE + 10 for resizing operations,
+ * and %G_PRIORITY_HIGH_IDLE + 20 for redrawing operations. (This is
  * done to ensure that any pending resizes are processed before any
  * pending redraws, so that widgets are not redrawn twice unnecessarily.)
  */
@@ -6554,6 +6624,7 @@ alias GLIB_SYSDEF_MSG_PEEK = SYSDEF_MSG_PEEK;
  * - g_get_user_config_dir()
  * - g_get_system_data_dirs()
  * - g_get_user_data_dir()
+ * - g_get_user_state_dir()
  * - g_get_user_runtime_dir()
  *
  * The subdirectories may not be created by the test harness; as with normal

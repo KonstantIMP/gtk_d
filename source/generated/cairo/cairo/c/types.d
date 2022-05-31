@@ -16,7 +16,12 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
- module cairo.c.types;
+ 
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+module cairo.c.types;
 
 
 public import glib.c.types;

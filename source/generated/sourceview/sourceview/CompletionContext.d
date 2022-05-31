@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.CompletionContext;
 
 private import gio.ListModelIF;
@@ -16,7 +40,24 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * The context of a completion.
+ * 
+ * `GtkSourceCompletionContext` contains information about an attept to display
+ * completion proposals to the user based on typed text in the [class@View].
+ * 
+ * When typing, [class@Completion] may use registered
+ * [iface@CompletionProvider] to determine if there may be results which
+ * could be displayed. If so, a `GtkSourceCompletionContext` is created with
+ * information that is provided to the [iface@CompletionProvider] to populate
+ * results which might be useful to the user.
+ * 
+ * [iface@CompletionProvider] are expected to provide [iface@Gio.ListModel] with
+ * [iface@CompletionProposal] which may be joined together in a list of
+ * results for the user. They are also responsible for how the contents are
+ * displayed using [class@CompletionCell] which allows for some level of
+ * customization.
+ */
 public class CompletionContext : ObjectG, ListModelIF
 {
 	/** the main Gtk struct */
@@ -57,8 +98,6 @@ public class CompletionContext : ObjectG, ListModelIF
 
 	/**
 	 * Gets the mode for which the context was activated.
-	 *
-	 * Since: 5.0
 	 */
 	public GtkSourceCompletionActivation getActivation()
 	{
@@ -81,8 +120,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 *     end = a #GtkTextIter
 	 *
 	 * Returns: %TRUE if the marks are still valid and @begin or @end was set.
-	 *
-	 * Since: 5.0
 	 */
 	public bool getBounds(out TextIter begin, out TextIter end)
 	{
@@ -104,8 +141,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 * property.
 	 *
 	 * Returns: a #GtkTextBuffer or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public Buffer getBuffer()
 	{
@@ -125,8 +160,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 * #GtkSourceCompletionProvider's.
 	 *
 	 * Returns: %TRUE if the context is busy
-	 *
-	 * Since: 5.0
 	 */
 	public bool getBusy()
 	{
@@ -137,8 +170,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 * Gets the #GtkSourceCompletion that created the context.
 	 *
 	 * Returns: an #GtkSourceCompletion or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public Completion getCompletion()
 	{
@@ -158,8 +189,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 * Out of convenience, this function will return %TRUE if @self is %NULL.
 	 *
 	 * Returns: %TRUE if there are no proposals in the context
-	 *
-	 * Since: 5.0
 	 */
 	public bool getEmpty()
 	{
@@ -170,8 +199,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 * Gets the language of the underlying buffer, if any.
 	 *
 	 * Returns: a #GtkSourceLanguage or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public Language getLanguage()
 	{
@@ -189,8 +216,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 * Gets the text view for the context.
 	 *
 	 * Returns: a #GtkSourceView or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public View getView()
 	{
@@ -208,8 +233,6 @@ public class CompletionContext : ObjectG, ListModelIF
 	 * Gets the word that is being completed up to the position of the insert mark.
 	 *
 	 * Returns: a string containing the current word
-	 *
-	 * Since: 5.0
 	 */
 	public string getWord()
 	{
@@ -221,16 +244,15 @@ public class CompletionContext : ObjectG, ListModelIF
 
 	/**
 	 * This function allows providers to update their results for a context
-	 * outside of a call to gtk_source_completion_provider_populate_async(). This
-	 * can be used to immediately return results for a provider while it does
+	 * outside of a call to [method@CompletionProvider.populate_async].
+	 *
+	 * This can be used to immediately return results for a provider while it does
 	 * additional asynchronous work. Doing so will allow the completions to
 	 * update while the operation is in progress.
 	 *
 	 * Params:
 	 *     provider = an #GtkSourceCompletionProvider
 	 *     results = a #GListModel or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public void setProposalsForProvider(CompletionProviderIF provider, ListModelIF results)
 	{

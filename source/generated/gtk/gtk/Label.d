@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.Label;
 
 private import gio.MenuModel;
@@ -466,6 +490,20 @@ public class Label : Widget
 	}
 
 	/**
+	 * Returns line wrap mode used by the label.
+	 *
+	 * See [method@Gtk.Label.set_natural_wrap_mode].
+	 *
+	 * Returns: the natural line wrap mode
+	 *
+	 * Since: 4.6
+	 */
+	public GtkNaturalWrapMode getNaturalWrapMode()
+	{
+		return gtk_label_get_natural_wrap_mode(gtkLabel);
+	}
+
+	/**
 	 * Returns whether the label is selectable.
 	 *
 	 * Returns: %TRUE if the user can copy text from the label
@@ -568,7 +606,7 @@ public class Label : Widget
 	 *
 	 * See [method@Gtk.Label.set_wrap_mode].
 	 *
-	 * Returns: %TRUE if the lines of the label are automatically wrapped.
+	 * Returns: the line wrap mode
 	 */
 	public PangoWrapMode getWrapMode()
 	{
@@ -802,6 +840,22 @@ public class Label : Widget
 	}
 
 	/**
+	 * Select the line wrapping for the natural size request.
+	 *
+	 * This only affects the natural size requested, for the actual wrapping used,
+	 * see the [property@Gtk.Label:wrap-mode] property.
+	 *
+	 * Params:
+	 *     wrapMode = the line wrapping mode
+	 *
+	 * Since: 4.6
+	 */
+	public void setNaturalWrapMode(GtkNaturalWrapMode wrapMode)
+	{
+		gtk_label_set_natural_wrap_mode(gtkLabel, wrapMode);
+	}
+
+	/**
 	 * Makes text in the label selectable.
 	 *
 	 * Selectable labels allow the user to select text from the label,
@@ -926,6 +980,9 @@ public class Label : Widget
 	 * This only affects the label if line wrapping is on. (See
 	 * [method@Gtk.Label.set_wrap]) The default is %PANGO_WRAP_WORD
 	 * which means wrap on word boundaries.
+	 *
+	 * For sizing behavior, also consider the [property@Gtk.Label:natural-wrap-mode]
+	 * property.
 	 *
 	 * Params:
 	 *     wrapMode = the line wrapping mode

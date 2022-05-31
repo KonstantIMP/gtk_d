@@ -1,10 +1,34 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgFontDescription;
 
 private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import pango.c.functions;
 public  import pango.c.types;
 
@@ -58,7 +82,8 @@ public class PgFontDescription
 	 *  family = Family
 	 *  size = Size
 	 */
-	public this(string family, int size) {
+	public this(string family, int size)
+	{
 		this();
 		setFamily(family);
 		setSize(size * PANGO_SCALE);
@@ -551,7 +576,8 @@ public class PgFontDescription
 	 * and values are clamped to their allowed range.
 	 *
 	 * Pango does not currently have a way to find supported axes of
-	 * a font. Both harfbuzz or freetype have API for this.
+	 * a font. Both harfbuzz and freetype have API for this. See
+	 * for example [hb_ot_var_get_axis_infos](https://harfbuzz.github.io/harfbuzz-hb-ot-var.html#hb-ot-var-get-axis-infos).
 	 *
 	 * Params:
 	 *     variations = a string representing the variations
@@ -667,7 +693,8 @@ public class PgFontDescription
 	 * "Normal", "Roman", "Oblique", "Italic".
 	 *
 	 * The following words are understood as variants:
-	 * "Small-Caps".
+	 * "Small-Caps", "All-Small-Caps", "Petite-Caps", "All-Petite-Caps",
+	 * "Unicase", "Title-Caps".
 	 *
 	 * The following words are understood as weights:
 	 * "Thin", "Ultra-Light", "Extra-Light", "Light", "Semi-Light",

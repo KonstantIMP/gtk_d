@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.TabBar;
 
 private import adw.TabPage;
@@ -19,7 +43,12 @@ private import std.algorithm;
 
 
 /**
- * A tab bar for [class@Adw.TabView].
+ * A tab bar for [class@TabView].
+ * 
+ * <picture>
+ * <source srcset="tab-bar-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="tab-bar.png" alt="tab-bar">
+ * </picture>
  * 
  * The `AdwTabBar` widget is a tab bar that can be used with conjunction with
  * `AdwTabView`.
@@ -299,8 +328,7 @@ public class TabBar : Widget
 	 * If a tab is hovered for a certain period of time while dragging the content,
 	 * it will be automatically selected.
 	 *
-	 * The [signal@Adw.TabBar::extra-drag-drop] signal can be used to handle the
-	 * drop.
+	 * The [signal@TabBar::extra-drag-drop] signal can be used to handle the drop.
 	 *
 	 * Params:
 	 *     actions = the supported actions
@@ -317,7 +345,7 @@ public class TabBar : Widget
 	 * This signal is emitted when content is dropped onto a tab.
 	 *
 	 * The content must be of one of the types set up via
-	 * [method@Adw.TabBar.setup_extra_drop_target].
+	 * [method@TabBar.setup_extra_drop_target].
 	 *
 	 * See [signal@Gtk.DropTarget::drop].
 	 *

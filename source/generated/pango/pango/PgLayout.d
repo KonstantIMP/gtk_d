@@ -1,6 +1,33 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgLayout;
 
+private import glib.Bytes;
 private import glib.ConstructionException;
+private import glib.ErrorG;
+private import glib.GException;
 private import glib.ListSG;
 private import glib.Str;
 private import glib.c.functions;
@@ -37,7 +64,20 @@ public  import pango.c.types;
  * `PangoLayout`. The following image shows adjustable parameters
  * (on the left) and font metrics (on the right):
  * 
- * ![Pango Layout Parameters](layout.png)
+ * <picture>
+ * <source srcset="layout-dark.png" media="(prefers-color-scheme: dark)">
+ * <img alt="Pango Layout Parameters" src="layout-light.png">
+ * </picture>
+ * 
+ * The following images demonstrate the effect of alignment and
+ * justification on the layout of text:
+ * 
+ * | | |
+ * | --- | --- |
+ * | ![align=left](align-left.png) | ![align=left, justify](align-left-justify.png) |
+ * | ![align=center](align-center.png) | ![align=center, justify](align-center-justify.png) |
+ * | ![align=right](align-right.png) | ![align=right, justify](align-right-justify.png) |
+ * 
  * 
  * It is possible, as well, to ignore the 2-D setup,
  * and simply treat the results of a `PangoLayout` as a list of lines.
@@ -98,6 +138,45 @@ public class PgLayout : ObjectG
 		}
 
 		this(cast(PangoLayout*) __p, true);
+	}
+
+	/**
+	 * Loads data previously created via [method@Pango.Layout.serialize].
+	 *
+	 * For a discussion of the supported format, see that function.
+	 *
+	 * Note: to verify that the returned layout is identical to
+	 * the one that was serialized, you can compare @bytes to the
+	 * result of serializing the layout again.
+	 *
+	 * Params:
+	 *     context = a `PangoContext`
+	 *     bytes = the bytes containing the data
+	 *     flags = `PangoLayoutDeserializeFlags`
+	 *
+	 * Returns: a new `PangoLayout`
+	 *
+	 * Since: 1.50
+	 *
+	 * Throws: GException on failure.
+	 */
+	public static PgLayout deserialize(PgContext context, Bytes bytes, PangoLayoutDeserializeFlags flags)
+	{
+		GError* err = null;
+
+		auto __p = pango_layout_deserialize((context is null) ? null : context.getPgContextStruct(), (bytes is null) ? null : bytes.getBytesStruct(), flags, &err);
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PgLayout)(cast(PangoLayout*) __p, true);
 	}
 
 	/**
@@ -189,6 +268,31 @@ public class PgLayout : ObjectG
 	}
 
 	/**
+	 * Given an index within a layout, determines the positions that of the
+	 * strong and weak cursors if the insertion point is at that index.
+	 *
+	 * This is a variant of [method@Pango.Layout.get_cursor_pos] that applies
+	 * font metric information about caret slope and offset to the positions
+	 * it returns.
+	 *
+	 * <picture>
+	 * <source srcset="caret-metrics-dark.png" media="(prefers-color-scheme: dark)">
+	 * <img alt="Caret metrics" src="caret-metrics-light.png">
+	 * </picture>
+	 *
+	 * Params:
+	 *     index = the byte index of the cursor
+	 *     strongPos = location to store the strong cursor position
+	 *     weakPos = location to store the weak cursor position
+	 *
+	 * Since: 1.50
+	 */
+	public void getCaretPos(int index, out PangoRectangle strongPos, out PangoRectangle weakPos)
+	{
+		pango_layout_get_caret_pos(pangoLayout, index, &strongPos, &weakPos);
+	}
+
+	/**
 	 * Returns the number of Unicode characters in the
 	 * the text of @layout.
 	 *
@@ -223,11 +327,30 @@ public class PgLayout : ObjectG
 	 * Given an index within a layout, determines the positions that of the
 	 * strong and weak cursors if the insertion point is at that index.
 	 *
-	 * The position of each cursor is stored as a zero-width rectangle.
+	 * The position of each cursor is stored as a zero-width rectangle
+	 * with the height of the run extents.
+	 *
+	 * <picture>
+	 * <source srcset="cursor-positions-dark.png" media="(prefers-color-scheme: dark)">
+	 * <img alt="Cursor positions" src="cursor-positions-light.png">
+	 * </picture>
+	 *
 	 * The strong cursor location is the location where characters of the
 	 * directionality equal to the base direction of the layout are inserted.
 	 * The weak cursor location is the location where characters of the
 	 * directionality opposite to the base direction of the layout are inserted.
+	 *
+	 * The following example shows text with both a strong and a weak cursor.
+	 *
+	 * <picture>
+	 * <source srcset="split-cursor-dark.png" media="(prefers-color-scheme: dark)">
+	 * <img alt="Strong and weak cursors" src="split-cursor-light.png">
+	 * </picture>
+	 *
+	 * The strong cursor has a little arrow pointing to the right, the weak
+	 * cursor to the left. Typing a 'c' in this situation will insert the
+	 * character after the 'b', and typing another Hebrew character, like 'ג',
+	 * will insert it at the end.
 	 *
 	 * Params:
 	 *     index = the byte index of the cursor
@@ -368,6 +491,19 @@ public class PgLayout : ObjectG
 	public bool getJustify()
 	{
 		return pango_layout_get_justify(pangoLayout) != 0;
+	}
+
+	/**
+	 * Gets whether the last line should be stretched
+	 * to fill the entire width of the layout.
+	 *
+	 * Returns: the justify value
+	 *
+	 * Since: 1.50
+	 */
+	public bool getJustifyLastLine()
+	{
+		return pango_layout_get_justify_last_line(pangoLayout) != 0;
 	}
 
 	/**
@@ -789,13 +925,12 @@ public class PgLayout : ObjectG
 	}
 
 	/**
-	 * Computes a new cursor position from an old position and a count of
-	 * positions to move visually.
+	 * Computes a new cursor position from an old position and a direction.
 	 *
-	 * If @direction is positive, then the new strong cursor position will be
-	 * one position to the right of the old cursor position. If @direction is
-	 * negative, then the new strong cursor position will be one position to
-	 * the left of the old cursor position.
+	 * If @direction is positive, then the new position will cause the strong
+	 * or weak cursor to be displayed one position to right of where it was
+	 * with the old cursor position. If @direction is negative, it will be
+	 * moved to the left.
 	 *
 	 * In the presence of bidirectional text, the correspondence between
 	 * logical and visual order will depend on the direction of the current
@@ -803,15 +938,14 @@ public class PgLayout : ObjectG
 	 * of a run.
 	 *
 	 * Motion here is in cursor positions, not in characters, so a single
-	 * call to [method@Pango.Layout.move_cursor_visually] may move the cursor
-	 * over multiple characters when multiple characters combine to form a
-	 * single grapheme.
+	 * call to this function may move the cursor over multiple characters
+	 * when multiple characters combine to form a single grapheme.
 	 *
 	 * Params:
 	 *     strong = whether the moving cursor is the strong cursor or the
 	 *         weak cursor. The strong cursor is the cursor corresponding
 	 *         to text insertion in the base direction for the layout.
-	 *     oldIndex = the byte index of the grapheme for the old index
+	 *     oldIndex = the byte index of the current cursor position
 	 *     oldTrailing = if 0, the cursor was at the leading edge of the
 	 *         grapheme indicated by @old_index, if > 0, the cursor
 	 *         was at the trailing edge.
@@ -831,6 +965,35 @@ public class PgLayout : ObjectG
 	public void moveCursorVisually(bool strong, int oldIndex, int oldTrailing, int direction, out int newIndex, out int newTrailing)
 	{
 		pango_layout_move_cursor_visually(pangoLayout, strong, oldIndex, oldTrailing, direction, &newIndex, &newTrailing);
+	}
+
+	/**
+	 * Serializes the @layout for later deserialization via [func@Pango.Layout.deserialize].
+	 *
+	 * There are no guarantees about the format of the output across different
+	 * versions of Pango and [func@Pango.Layout.deserialize] will reject data
+	 * that it cannot parse.
+	 *
+	 * The intended use of this function is testing, benchmarking and debugging.
+	 * The format is not meant as a permanent storage format.
+	 *
+	 * Params:
+	 *     flags = `PangoLayoutSerializeFlags`
+	 *
+	 * Returns: a `GBytes` containing the serialized form of @layout
+	 *
+	 * Since: 1.50
+	 */
+	public Bytes serialize(PangoLayoutSerializeFlags flags)
+	{
+		auto __p = pango_layout_serialize(pangoLayout, flags);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new Bytes(cast(GBytes*) __p, true);
 	}
 
 	/**
@@ -1000,7 +1163,13 @@ public class PgLayout : ObjectG
 	 * Note that this setting is not implemented and so is ignored in
 	 * Pango older than 1.18.
 	 *
+	 * Note that tabs and justification conflict with each other:
+	 * Justification will move content away from its tab-aligned
+	 * positions.
+	 *
 	 * The default value is %FALSE.
+	 *
+	 * Also see [method@Pango.Layout.set_justify_last_line].
 	 *
 	 * Params:
 	 *     justify = whether the lines in the layout should be justified
@@ -1008,6 +1177,25 @@ public class PgLayout : ObjectG
 	public void setJustify(bool justify)
 	{
 		pango_layout_set_justify(pangoLayout, justify);
+	}
+
+	/**
+	 * Sets whether the last line should be stretched to fill the
+	 * entire width of the layout.
+	 *
+	 * This only has an effect if [method@Pango.Layout.set_justify] has
+	 * been called as well.
+	 *
+	 * The default value is %FALSE.
+	 *
+	 * Params:
+	 *     justify = whether the last line in the layout should be justified
+	 *
+	 * Since: 1.50
+	 */
+	public void setJustifyLastLine(bool justify)
+	{
+		pango_layout_set_justify_last_line(pangoLayout, justify);
 	}
 
 	/**
@@ -1024,6 +1212,9 @@ public class PgLayout : ObjectG
 	 * set with [method@Pango.Layout.set_spacing] is ignored.
 	 *
 	 * If @factor is zero (the default), spacing is applied as before.
+	 *
+	 * Note: for semantics that are closer to the CSS line-height
+	 * property, see [func@Pango.attr_line_height_new].
 	 *
 	 * Params:
 	 *     factor = the new line spacing factor
@@ -1112,9 +1303,12 @@ public class PgLayout : ObjectG
 	 * The default value is 0.
 	 *
 	 * Note: Since 1.44, Pango is using the line height (as determined
-	 * by the font) for placing lines when the line height factor is set
+	 * by the font) for placing lines when the line spacing factor is set
 	 * to a non-zero value with [method@Pango.Layout.set_line_spacing].
 	 * In that case, the @spacing set with this function is ignored.
+	 *
+	 * Note: for semantics that are closer to the CSS line-height
+	 * property, see [func@Pango.attr_line_height_new].
 	 *
 	 * Params:
 	 *     spacing = the amount of spacing
@@ -1127,9 +1321,17 @@ public class PgLayout : ObjectG
 	/**
 	 * Sets the tabs to use for @layout, overriding the default tabs.
 	 *
+	 * `PangoLayout` will place content at the next tab position
+	 * whenever it meets a Tab character (U+0009).
+	 *
 	 * By default, tabs are every 8 spaces. If @tabs is %NULL, the
 	 * default tabs are reinstated. @tabs is copied into the layout;
 	 * you must free your copy of @tabs yourself.
+	 *
+	 * Note that tabs and justification conflict with each other:
+	 * Justification will move content away from its tab-aligned
+	 * positions. The same is true for alignments other than
+	 * %PANGO_ALIGN_LEFT.
 	 *
 	 * Params:
 	 *     tabs = a `PangoTabArray`
@@ -1189,6 +1391,41 @@ public class PgLayout : ObjectG
 	public void setWrap(PangoWrapMode wrap)
 	{
 		pango_layout_set_wrap(pangoLayout, wrap);
+	}
+
+	/**
+	 * A convenience method to serialize a layout to a file.
+	 *
+	 * It is equivalent to calling [method@Pango.Layout.serialize]
+	 * followed by [func@GLib.file_set_contents].
+	 *
+	 * See those two functions for details on the arguments.
+	 *
+	 * It is mostly intended for use inside a debugger to quickly dump
+	 * a layout to a file for later inspection.
+	 *
+	 * Params:
+	 *     flags = `PangoLayoutSerializeFlags`
+	 *     filename = the file to save it to
+	 *
+	 * Returns: %TRUE if saving was successful
+	 *
+	 * Since: 1.50
+	 *
+	 * Throws: GException on failure.
+	 */
+	public bool writeToFile(PangoLayoutSerializeFlags flags, string filename)
+	{
+		GError* err = null;
+
+		auto __p = pango_layout_write_to_file(pangoLayout, flags, Str.toStringz(filename), &err) != 0;
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		return __p;
 	}
 
 	/**

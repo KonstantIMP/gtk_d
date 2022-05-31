@@ -1,10 +1,34 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgScriptIter;
 
 private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import pango.c.functions;
 public  import pango.c.types;
 
@@ -65,7 +89,7 @@ public class PgScriptIter
 	 *
 	 * Params:
 	 *     text = a UTF-8 string
-	 *     length = length of @text, or -1 if @text is nul-terminated.
+	 *     length = length of @text, or -1 if @text is nul-terminated
 	 *
 	 * Returns: the new script iterator, initialized
 	 *     to point at the first range in the text, which should be
@@ -101,12 +125,13 @@ public class PgScriptIter
 
 	/**
 	 * Gets information about the range to which @iter currently points.
+	 *
 	 * The range is the set of locations p where *start <= p < *end.
 	 * (That is, it doesn't include the character stored at *end)
 	 *
 	 * Note that while the type of the @script argument is declared
 	 * as `PangoScript`, as of Pango 1.18, this function simply returns
-	 * GUnicodeScript values. Callers must be prepared to handle unknown
+	 * `GUnicodeScript` values. Callers must be prepared to handle unknown
 	 * values.
 	 *
 	 * Params:

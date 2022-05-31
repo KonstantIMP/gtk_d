@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.PreferencesRow;
 
 private import adw.c.functions;
@@ -21,11 +45,11 @@ private import gtk.Widget;
 /**
  * A [class@Gtk.ListBoxRow] used to present preferences.
  * 
- * The `AdwPreferencesRow` widget has a title that [class@Adw.PreferencesWindow]
+ * The `AdwPreferencesRow` widget has a title that [class@PreferencesWindow]
  * will use to let the user look for a preference. It doesn't present the title
  * in any way and lets you present the preference as you please.
  * 
- * [class@Adw.ActionRow] and its derivatives are convenient to use as preference
+ * [class@ActionRow] and its derivatives are convenient to use as preference
  * rows as they take care of presenting the preference's title while letting you
  * compose the inputs of the preference around it.
  *
@@ -100,6 +124,18 @@ public class PreferencesRow : ListBoxRow
 	}
 
 	/**
+	 * Gets whether the user can copy the title from the label
+	 *
+	 * Returns: whether the user can copy the title from the label
+	 *
+	 * Since: 1.1
+	 */
+	public bool getTitleSelectable()
+	{
+		return adw_preferences_row_get_title_selectable(adwPreferencesRow) != 0;
+	}
+
+	/**
 	 * Gets whether an embedded underline in the title indicates a mnemonic.
 	 *
 	 * Returns: whether an embedded underline in the title indicates a mnemonic
@@ -122,6 +158,19 @@ public class PreferencesRow : ListBoxRow
 	public void setTitle(string title)
 	{
 		adw_preferences_row_set_title(adwPreferencesRow, Str.toStringz(title));
+	}
+
+	/**
+	 * Sets whether the user can copy the title from the label
+	 *
+	 * Params:
+	 *     titleSelectable = `TRUE` if the user can copy the title from the label
+	 *
+	 * Since: 1.1
+	 */
+	public void setTitleSelectable(bool titleSelectable)
+	{
+		adw_preferences_row_set_title_selectable(adwPreferencesRow, titleSelectable);
 	}
 
 	/**

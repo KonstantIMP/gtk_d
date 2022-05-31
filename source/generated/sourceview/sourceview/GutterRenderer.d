@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.GutterRenderer;
 
 private import gobject.ObjectG;
@@ -17,7 +41,40 @@ public  import sourceview.c.types;
 private import std.algorithm;
 
 
-/** */
+/**
+ * Gutter cell renderer.
+ * 
+ * A `GtkSourceGutterRenderer` represents a column in a [class@Gutter]. The
+ * column contains one cell for each visible line of the [class@Gtk.TextBuffer]. Due to
+ * text wrapping, a cell can thus span multiple lines of the [class@Gtk.TextView]. In
+ * this case, [enum@GutterRendererAlignmentMode] controls the alignment of
+ * the cell.
+ * 
+ * The gutter renderer is a [class@Gtk.Widget] and is measured using the normal widget
+ * measurement facilities. The width of the gutter will be determined by the
+ * measurements of the gutter renderers.
+ * 
+ * The width of a gutter renderer generally takes into account the entire text
+ * buffer. For instance, to display the line numbers, if the buffer contains 100
+ * lines, the gutter renderer will always set its width such as three digits can
+ * be printed, even if only the first 20 lines are shown. Another strategy is to
+ * take into account only the visible lines.  In this case, only two digits are
+ * necessary to display the line numbers of the first 20 lines. To take another
+ * example, the gutter renderer for [class@Mark]s doesn't need to take
+ * into account the text buffer to announce its width. It only depends on the
+ * icons size displayed in the gutter column.
+ * 
+ * When the available size to render a cell is greater than the required size to
+ * render the cell contents, the cell contents can be aligned horizontally and
+ * vertically with [method@GutterRenderer.set_alignment_mode].
+ * 
+ * The cells rendering occurs using [vfunc@Gtk.Widget.snapshot]. Implementations
+ * should use `gtk_source_gutter_renderer_get_lines()` to retrieve information
+ * about the lines to be rendered. To help with aligning content which takes
+ * into account the padding and alignment of a cell, implementations may call
+ * [method@GutterRenderer.align_cell] for a given line number with the
+ * width and height measurement of the content they width to render.
+ */
 public class GutterRenderer : Widget
 {
 	/** the main Gtk struct */
@@ -54,8 +111,8 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Emits the #GtkSourceGutterRenderer::activate signal of the renderer. This is
-	 * called from #GtkSourceGutter and should never have to be called manually.
+	 * Emits the [signal@GutterRenderer::activate] signal of the renderer. This is
+	 * called from [class@Gutter] and should never have to be called manually.
 	 *
 	 * Params:
 	 *     iter = a #GtkTextIter at the start of the line where the renderer is activated
@@ -85,8 +142,6 @@ public class GutterRenderer : Widget
 	 *     height = the height of the content to draw
 	 *     x = the X position to render the content
 	 *     y = the Y position to render the content
-	 *
-	 * Since: 5.0
 	 */
 	public void alignCell(uint line, float width, float height, out float x, out float y)
 	{
@@ -94,8 +149,11 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Get the alignment mode. The alignment mode describes the manner in which the
-	 * renderer is aligned (see :xalign and :yalign).
+	 * Get the alignment mode.
+	 *
+	 * The alignment mode describes the manner in which the
+	 * renderer is aligned (see [property@GutterRenderer:xalign] and
+	 * [property@GutterRenderer:yalign]).
 	 *
 	 * Returns: a #GtkSourceGutterRendererAlignmentMode
 	 */
@@ -105,11 +163,9 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Gets the #GtkSourceBuffer for which the gutter renderer is drawing.
+	 * Gets the [class@Buffer] for which the gutter renderer is drawing.
 	 *
 	 * Returns: a #GtkTextBuffer or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public Buffer getBuffer()
 	{
@@ -141,10 +197,9 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Gets the "xalign" property of the #GtkSourceGutterRenderer. This may be used
-	 * to adjust where within the cell rectangle the renderer will draw.
+	 * Gets the `xalign` property.
 	 *
-	 * Since: 5.0
+	 * This may be used to adjust where within the cell rectangle the renderer will draw.
 	 */
 	public float getXalign()
 	{
@@ -152,10 +207,9 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Gets the "xpad" property of the #GtkSourceGutterRenderer. This may be used
-	 * to adjust the cell rectangle that the renderer will use to draw.
+	 * Gets the `xpad` property.
 	 *
-	 * Since: 5.0
+	 * This may be used to adjust the cell rectangle that the renderer will use to draw.
 	 */
 	public int getXpad()
 	{
@@ -163,10 +217,9 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Gets the "yalign" property of the #GtkSourceGutterRenderer. This may be used
-	 * to adjust where within the cell rectangle the renderer will draw.
+	 * Gets the `yalign` property.
 	 *
-	 * Since: 5.0
+	 * This may be used to adjust where within the cell rectangle the renderer will draw.
 	 */
 	public float getYalign()
 	{
@@ -174,10 +227,9 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Gets the "ypad" property of the #GtkSourceGutterRenderer. This may be used
-	 * to adjust the cell rectangle that the renderer will use to draw.
+	 * Gets the `ypad` property.
 	 *
-	 * Since: 5.0
+	 * This may be used to adjust the cell rectangle that the renderer will use to draw.
 	 */
 	public int getYpad()
 	{
@@ -186,7 +238,7 @@ public class GutterRenderer : Widget
 
 	/**
 	 * Get whether the renderer is activatable at the location provided. This is
-	 * called from #GtkSourceGutter to determine whether a renderer is activatable
+	 * called from [class@Gutter] to determine whether a renderer is activatable
 	 * using the mouse pointer.
 	 *
 	 * Params:
@@ -202,8 +254,8 @@ public class GutterRenderer : Widget
 
 	/**
 	 * Set the alignment mode. The alignment mode describes the manner in which the
-	 * renderer is aligned (see #GtkSourceGutterRenderer:xalign and
-	 * #GtkSourceGutterRenderer:yalign).
+	 * renderer is aligned (see [property@GutterRenderer:xalign] and
+	 * [property@GutterRenderer:yalign]).
 	 *
 	 * Params:
 	 *     mode = a #GtkSourceGutterRendererAlignmentMode
@@ -214,13 +266,12 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Adjusts the "xalign" property of the #GtkSourceGutterRenderer. This may be
-	 * used to adjust where within the cell rectangle the renderer will draw.
+	 * Adjusts the `xalign` property.
+	 *
+	 * This may be used to adjust where within the cell rectangle the renderer will draw.
 	 *
 	 * Params:
 	 *     xalign = the Y padding for the drawing cell
-	 *
-	 * Since: 5.0
 	 */
 	public void setXalign(float xalign)
 	{
@@ -228,13 +279,12 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Adjusts the "xpad" property of the #GtkSourceGutterRenderer. This may be
-	 * used to adjust the cell rectangle that the renderer will use to draw.
+	 * Adjusts the `xpad` property.
+	 *
+	 * This may be used to adjust the cell rectangle that the renderer will use to draw.
 	 *
 	 * Params:
 	 *     xpad = the Y padding for the drawing cell
-	 *
-	 * Since: 5.0
 	 */
 	public void setXpad(int xpad)
 	{
@@ -242,13 +292,12 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Adjusts the "yalign" property of the #GtkSourceGutterRenderer. This may be
-	 * used to adjust where within the cell rectangle the renderer will draw.
+	 * Adjusts the `yalign` property.
+	 *
+	 * This may be used to adjust where within the cell rectangle the renderer will draw.
 	 *
 	 * Params:
 	 *     yalign = the Y padding for the drawing cell
-	 *
-	 * Since: 5.0
 	 */
 	public void setYalign(float yalign)
 	{
@@ -256,13 +305,12 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * Adjusts the "ypad" property of the #GtkSourceGutterRenderer. This may be
-	 * used to adjust the cell rectangle that the renderer will use to draw.
+	 * Adjusts the `ypad` property.
+	 *
+	 * This may be used to adjust the cell rectangle that the renderer will use to draw.
 	 *
 	 * Params:
 	 *     ypad = the Y padding for the drawing cell
-	 *
-	 * Since: 5.0
 	 */
 	public void setYpad(int ypad)
 	{
@@ -270,7 +318,7 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * The ::activate signal is emitted when the renderer is activated.
+	 * The signal is emitted when the renderer is activated.
 	 *
 	 * Params:
 	 *     iter = a #GtkTextIter
@@ -285,8 +333,7 @@ public class GutterRenderer : Widget
 	}
 
 	/**
-	 * The ::query-activatable signal is emitted when the renderer
-	 * can possibly be activated.
+	 * The signal is emitted when the renderer can possibly be activated.
 	 *
 	 * Params:
 	 *     iter = a #GtkTextIter

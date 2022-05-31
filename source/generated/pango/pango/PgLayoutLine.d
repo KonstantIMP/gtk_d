@@ -1,9 +1,33 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgLayoutLine;
 
 private import glib.ListSG;
 private import glib.MemorySlice;
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import pango.PgLayout;
 private import pango.c.functions;
 public  import pango.c.types;
@@ -110,19 +134,6 @@ public final class PgLayoutLine
 		pangoLayoutLine.runs = value.getListSGStruct();
 	}
 
-	/**
-	 * #TRUE if this is the first line of the paragraph
-	 */
-	public @property uint isParagraphStart()
-	{
-		return pangoLayoutLine.isParagraphStart;
-	}
-
-	/** Ditto */
-	public @property void isParagraphStart(uint value)
-	{
-		pangoLayoutLine.isParagraphStart = value;
-	}
 
 	/**
 	 * #Resolved PangoDirection of line
@@ -162,8 +173,13 @@ public final class PgLayoutLine
 	}
 
 	/**
-	 * Computes the height of the line, i.e. the distance between
-	 * this and the previous lines baseline.
+	 * Computes the height of the line, as the maximum of the heights
+	 * of fonts used in this line.
+	 *
+	 * Note that the actual baseline-to-baseline distance between lines
+	 * of text is influenced by other factors, such as
+	 * [method@Pango.Layout.set_spacing] and
+	 * [method@Pango.Layout.set_line_spacing].
 	 *
 	 * Params:
 	 *     height = return location for the line height
@@ -173,6 +189,18 @@ public final class PgLayoutLine
 	public void getHeight(out int height)
 	{
 		pango_layout_line_get_height(pangoLayoutLine, &height);
+	}
+
+	/**
+	 * Returns the length of the line, in bytes.
+	 *
+	 * Returns: the length of the line
+	 *
+	 * Since: 1.50
+	 */
+	public int getLength()
+	{
+		return pango_layout_line_get_length(pangoLayoutLine);
 	}
 
 	/**
@@ -192,6 +220,31 @@ public final class PgLayoutLine
 	public void getPixelExtents(out PangoRectangle inkRect, out PangoRectangle logicalRect)
 	{
 		pango_layout_line_get_pixel_extents(pangoLayoutLine, &inkRect, &logicalRect);
+	}
+
+	/**
+	 * Returns the resolved direction of the line.
+	 *
+	 * Returns: the resolved direction of the line
+	 *
+	 * Since: 1.50
+	 */
+	public PangoDirection getResolvedDirection()
+	{
+		return pango_layout_line_get_resolved_direction(pangoLayoutLine);
+	}
+
+	/**
+	 * Returns the start index of the line, as byte index
+	 * into the text of the layout.
+	 *
+	 * Returns: the start index of the line
+	 *
+	 * Since: 1.50
+	 */
+	public int getStartIndex()
+	{
+		return pango_layout_line_get_start_index(pangoLayoutLine);
 	}
 
 	/**
@@ -241,6 +294,18 @@ public final class PgLayoutLine
 	public void indexToX(int index, bool trailing, out int xPos)
 	{
 		pango_layout_line_index_to_x(pangoLayoutLine, index, trailing, &xPos);
+	}
+
+	/**
+	 * Returns whether this is the first line of the paragraph.
+	 *
+	 * Returns: %TRUE if this is the first line
+	 *
+	 * Since: 1.50
+	 */
+	public bool isParagraphStart()
+	{
+		return pango_layout_line_is_paragraph_start(pangoLayoutLine) != 0;
 	}
 
 	alias doref = ref_;

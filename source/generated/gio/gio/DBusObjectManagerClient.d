@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gio.DBusObjectManagerClient;
 
 private import gio.AsyncInitableIF;
@@ -151,300 +175,305 @@ public class DBusObjectManagerClient : ObjectG, AsyncInitableIF, DBusObjectManag
 	 *
 	 * Since: 2.30
 	 */
-	public this (AsyncResultIF res, bool forBus = false) {
+	public this (AsyncResultIF res, bool forBus = false)
+	{
 		GError* err = null;
 		GDBusObjectManager* p;
 
-		if ( forBus ) {
+		if ( forBus )
+		{
 			p = g_dbus_object_manager_client_new_for_bus_finish((res is null) ? null : res.getAsyncResultStruct(), &err);
+		}
+		else
+		{
+			p = g_dbus_object_manager_client_new_finish((res is null) ? null : res.getAsyncResultStruct(), &err);
+		}
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		if(p is null)
+		{
+			throw new ConstructionException("null returned by g_dbus_object_manager_client_new_finish((res is null) ? null : res.getAsyncResultStruct(), &err)");
+		}
+		this(cast(GDBusObjectManagerClient*) p, true);
 	}
-	else {
-		p = g_dbus_object_manager_client_new_finish((res is null) ? null : res.getAsyncResultStruct(), &err);
-}
 
-if (err !is null) {
-	throw new GException( new ErrorG(err) );
-}
+	/**
+	 */
 
-if(p is null) {
-	throw new ConstructionException("null returned by g_dbus_object_manager_client_new_finish((res is null) ? null : res.getAsyncResultStruct(), &err)");
-}
-this(cast(GDBusObjectManagerClient*) p, true);
-}
-
-/**
- */
-
-/** */
-public static GType getType()
-{
-	return g_dbus_object_manager_client_get_type();
-}
-
-/**
- * Like g_dbus_object_manager_client_new_sync() but takes a #GBusType instead
- * of a #GDBusConnection.
- *
- * This is a synchronous failable constructor - the calling thread is
- * blocked until a reply is received. See g_dbus_object_manager_client_new_for_bus()
- * for the asynchronous version.
- *
- * Params:
- *     busType = A #GBusType.
- *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
- *     name = The owner of the control object (unique or well-known name).
- *     objectPath = The object path of the control object.
- *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
- *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
- *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
- *     cancellable = A #GCancellable or %NULL
- *
- * Returns: A
- *     #GDBusObjectManagerClient object or %NULL if @error is set. Free
- *     with g_object_unref().
- *
- * Since: 2.30
- *
- * Throws: GException on failure.
- * Throws: ConstructionException GTK+ fails to create the object.
- */
-public this(GBusType busType, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable)
-{
-	GError* err = null;
-
-	auto __p = g_dbus_object_manager_client_new_for_bus_sync(busType, flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-
-	if (err !is null)
+	/** */
+	public static GType getType()
 	{
-		throw new GException( new ErrorG(err) );
+		return g_dbus_object_manager_client_get_type();
 	}
 
-	if(__p is null)
+	/**
+	 * Like g_dbus_object_manager_client_new_sync() but takes a #GBusType instead
+	 * of a #GDBusConnection.
+	 *
+	 * This is a synchronous failable constructor - the calling thread is
+	 * blocked until a reply is received. See g_dbus_object_manager_client_new_for_bus()
+	 * for the asynchronous version.
+	 *
+	 * Params:
+	 *     busType = A #GBusType.
+	 *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
+	 *     name = The owner of the control object (unique or well-known name).
+	 *     objectPath = The object path of the control object.
+	 *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
+	 *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
+	 *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
+	 *     cancellable = A #GCancellable or %NULL
+	 *
+	 * Returns: A
+	 *     #GDBusObjectManagerClient object or %NULL if @error is set. Free
+	 *     with g_object_unref().
+	 *
+	 * Since: 2.30
+	 *
+	 * Throws: GException on failure.
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(GBusType busType, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable)
 	{
-		throw new ConstructionException("null returned by new_for_bus_sync");
+		GError* err = null;
+
+		auto __p = g_dbus_object_manager_client_new_for_bus_sync(busType, flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_for_bus_sync");
+		}
+
+		this(cast(GDBusObjectManagerClient*) __p, true);
 	}
 
-	this(cast(GDBusObjectManagerClient*) __p, true);
-}
-
-/**
- * Creates a new #GDBusObjectManagerClient object.
- *
- * This is a synchronous failable constructor - the calling thread is
- * blocked until a reply is received. See g_dbus_object_manager_client_new()
- * for the asynchronous version.
- *
- * Params:
- *     connection = A #GDBusConnection.
- *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
- *     name = The owner of the control object (unique or well-known name), or %NULL when not using a message bus connection.
- *     objectPath = The object path of the control object.
- *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
- *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
- *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
- *     cancellable = A #GCancellable or %NULL
- *
- * Returns: A
- *     #GDBusObjectManagerClient object or %NULL if @error is set. Free
- *     with g_object_unref().
- *
- * Since: 2.30
- *
- * Throws: GException on failure.
- * Throws: ConstructionException GTK+ fails to create the object.
- */
-public this(DBusConnection connection, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable)
-{
-	GError* err = null;
-
-	auto __p = g_dbus_object_manager_client_new_sync((connection is null) ? null : connection.getDBusConnectionStruct(), flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-
-	if (err !is null)
+	/**
+	 * Creates a new #GDBusObjectManagerClient object.
+	 *
+	 * This is a synchronous failable constructor - the calling thread is
+	 * blocked until a reply is received. See g_dbus_object_manager_client_new()
+	 * for the asynchronous version.
+	 *
+	 * Params:
+	 *     connection = A #GDBusConnection.
+	 *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
+	 *     name = The owner of the control object (unique or well-known name), or %NULL when not using a message bus connection.
+	 *     objectPath = The object path of the control object.
+	 *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
+	 *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
+	 *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
+	 *     cancellable = A #GCancellable or %NULL
+	 *
+	 * Returns: A
+	 *     #GDBusObjectManagerClient object or %NULL if @error is set. Free
+	 *     with g_object_unref().
+	 *
+	 * Since: 2.30
+	 *
+	 * Throws: GException on failure.
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(DBusConnection connection, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable)
 	{
-		throw new GException( new ErrorG(err) );
+		GError* err = null;
+
+		auto __p = g_dbus_object_manager_client_new_sync((connection is null) ? null : connection.getDBusConnectionStruct(), flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
+
+		if (err !is null)
+		{
+			throw new GException( new ErrorG(err) );
+		}
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_sync");
+		}
+
+		this(cast(GDBusObjectManagerClient*) __p, true);
 	}
 
-	if(__p is null)
+	/**
+	 * Asynchronously creates a new #GDBusObjectManagerClient object.
+	 *
+	 * This is an asynchronous failable constructor. When the result is
+	 * ready, @callback will be invoked in the
+	 * [thread-default main context][g-main-context-push-thread-default]
+	 * of the thread you are calling this method from. You can
+	 * then call g_dbus_object_manager_client_new_finish() to get the result. See
+	 * g_dbus_object_manager_client_new_sync() for the synchronous version.
+	 *
+	 * Params:
+	 *     connection = A #GDBusConnection.
+	 *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
+	 *     name = The owner of the control object (unique or well-known name).
+	 *     objectPath = The object path of the control object.
+	 *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
+	 *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
+	 *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
+	 *     cancellable = A #GCancellable or %NULL
+	 *     callback = A #GAsyncReadyCallback to call when the request is satisfied.
+	 *     userData = The data to pass to @callback.
+	 *
+	 * Since: 2.30
+	 */
+	public static void new_(DBusConnection connection, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
 	{
-		throw new ConstructionException("null returned by new_sync");
+		g_dbus_object_manager_client_new((connection is null) ? null : connection.getDBusConnectionStruct(), flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
 	}
 
-	this(cast(GDBusObjectManagerClient*) __p, true);
-}
-
-/**
- * Asynchronously creates a new #GDBusObjectManagerClient object.
- *
- * This is an asynchronous failable constructor. When the result is
- * ready, @callback will be invoked in the
- * [thread-default main context][g-main-context-push-thread-default]
- * of the thread you are calling this method from. You can
- * then call g_dbus_object_manager_client_new_finish() to get the result. See
- * g_dbus_object_manager_client_new_sync() for the synchronous version.
- *
- * Params:
- *     connection = A #GDBusConnection.
- *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
- *     name = The owner of the control object (unique or well-known name).
- *     objectPath = The object path of the control object.
- *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
- *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
- *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
- *     cancellable = A #GCancellable or %NULL
- *     callback = A #GAsyncReadyCallback to call when the request is satisfied.
- *     userData = The data to pass to @callback.
- *
- * Since: 2.30
- */
-public static void new_(DBusConnection connection, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-{
-	g_dbus_object_manager_client_new((connection is null) ? null : connection.getDBusConnectionStruct(), flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-}
-
-/**
- * Like g_dbus_object_manager_client_new() but takes a #GBusType instead of a
- * #GDBusConnection.
- *
- * This is an asynchronous failable constructor. When the result is
- * ready, @callback will be invoked in the
- * [thread-default main loop][g-main-context-push-thread-default]
- * of the thread you are calling this method from. You can
- * then call g_dbus_object_manager_client_new_for_bus_finish() to get the result. See
- * g_dbus_object_manager_client_new_for_bus_sync() for the synchronous version.
- *
- * Params:
- *     busType = A #GBusType.
- *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
- *     name = The owner of the control object (unique or well-known name).
- *     objectPath = The object path of the control object.
- *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
- *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
- *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
- *     cancellable = A #GCancellable or %NULL
- *     callback = A #GAsyncReadyCallback to call when the request is satisfied.
- *     userData = The data to pass to @callback.
- *
- * Since: 2.30
- */
-public static void newForBus(GBusType busType, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-{
-	g_dbus_object_manager_client_new_for_bus(busType, flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-}
-
-/**
- * Gets the #GDBusConnection used by @manager.
- *
- * Returns: A #GDBusConnection object. Do not free,
- *     the object belongs to @manager.
- *
- * Since: 2.30
- */
-public DBusConnection getConnection()
-{
-	auto __p = g_dbus_object_manager_client_get_connection(gDBusObjectManagerClient);
-
-	if(__p is null)
+	/**
+	 * Like g_dbus_object_manager_client_new() but takes a #GBusType instead of a
+	 * #GDBusConnection.
+	 *
+	 * This is an asynchronous failable constructor. When the result is
+	 * ready, @callback will be invoked in the
+	 * [thread-default main loop][g-main-context-push-thread-default]
+	 * of the thread you are calling this method from. You can
+	 * then call g_dbus_object_manager_client_new_for_bus_finish() to get the result. See
+	 * g_dbus_object_manager_client_new_for_bus_sync() for the synchronous version.
+	 *
+	 * Params:
+	 *     busType = A #GBusType.
+	 *     flags = Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
+	 *     name = The owner of the control object (unique or well-known name).
+	 *     objectPath = The object path of the control object.
+	 *     getProxyTypeFunc = A #GDBusProxyTypeFunc function or %NULL to always construct #GDBusProxy proxies.
+	 *     getProxyTypeUserData = User data to pass to @get_proxy_type_func.
+	 *     getProxyTypeDestroyNotify = Free function for @get_proxy_type_user_data or %NULL.
+	 *     cancellable = A #GCancellable or %NULL
+	 *     callback = A #GAsyncReadyCallback to call when the request is satisfied.
+	 *     userData = The data to pass to @callback.
+	 *
+	 * Since: 2.30
+	 */
+	public static void newForBus(GBusType busType, GDBusObjectManagerClientFlags flags, string name, string objectPath, GDBusProxyTypeFunc getProxyTypeFunc, void* getProxyTypeUserData, GDestroyNotify getProxyTypeDestroyNotify, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
 	{
-		return null;
+		g_dbus_object_manager_client_new_for_bus(busType, flags, Str.toStringz(name), Str.toStringz(objectPath), getProxyTypeFunc, getProxyTypeUserData, getProxyTypeDestroyNotify, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
 	}
 
-	return ObjectG.getDObject!(DBusConnection)(cast(GDBusConnection*) __p);
-}
+	/**
+	 * Gets the #GDBusConnection used by @manager.
+	 *
+	 * Returns: A #GDBusConnection object. Do not free,
+	 *     the object belongs to @manager.
+	 *
+	 * Since: 2.30
+	 */
+	public DBusConnection getConnection()
+	{
+		auto __p = g_dbus_object_manager_client_get_connection(gDBusObjectManagerClient);
 
-/**
- * Gets the flags that @manager was constructed with.
- *
- * Returns: Zero of more flags from the #GDBusObjectManagerClientFlags
- *     enumeration.
- *
- * Since: 2.30
- */
-public GDBusObjectManagerClientFlags getFlags()
-{
-	return g_dbus_object_manager_client_get_flags(gDBusObjectManagerClient);
-}
+		if(__p is null)
+		{
+			return null;
+		}
 
-/**
- * Gets the name that @manager is for, or %NULL if not a message bus
- * connection.
- *
- * Returns: A unique or well-known name. Do not free, the string
- *     belongs to @manager.
- *
- * Since: 2.30
- */
-public string getName()
-{
-	return Str.toString(g_dbus_object_manager_client_get_name(gDBusObjectManagerClient));
-}
+		return ObjectG.getDObject!(DBusConnection)(cast(GDBusConnection*) __p);
+	}
 
-/**
- * The unique name that owns the name that @manager is for or %NULL if
- * no-one currently owns that name. You can connect to the
- * #GObject::notify signal to track changes to the
- * #GDBusObjectManagerClient:name-owner property.
- *
- * Returns: The name owner or %NULL if no name owner
- *     exists. Free with g_free().
- *
- * Since: 2.30
- */
-public string getNameOwner()
-{
-	auto retStr = g_dbus_object_manager_client_get_name_owner(gDBusObjectManagerClient);
+	/**
+	 * Gets the flags that @manager was constructed with.
+	 *
+	 * Returns: Zero of more flags from the #GDBusObjectManagerClientFlags
+	 *     enumeration.
+	 *
+	 * Since: 2.30
+	 */
+	public GDBusObjectManagerClientFlags getFlags()
+	{
+		return g_dbus_object_manager_client_get_flags(gDBusObjectManagerClient);
+	}
 
-	scope(exit) Str.freeString(retStr);
-	return Str.toString(retStr);
-}
+	/**
+	 * Gets the name that @manager is for, or %NULL if not a message bus
+	 * connection.
+	 *
+	 * Returns: A unique or well-known name. Do not free, the string
+	 *     belongs to @manager.
+	 *
+	 * Since: 2.30
+	 */
+	public string getName()
+	{
+		return Str.toString(g_dbus_object_manager_client_get_name(gDBusObjectManagerClient));
+	}
 
-/**
- * Emitted when one or more D-Bus properties on proxy changes. The
- * local cache has already been updated when this signal fires. Note
- * that both @changed_properties and @invalidated_properties are
- * guaranteed to never be %NULL (either may be empty though).
- *
- * This signal exists purely as a convenience to avoid having to
- * connect signals to all interface proxies managed by @manager.
- *
- * This signal is emitted in the
- * [thread-default main context][g-main-context-push-thread-default]
- * that @manager was constructed in.
- *
- * Params:
- *     objectProxy = The #GDBusObjectProxy on which an interface has properties that are changing.
- *     interfaceProxy = The #GDBusProxy that has properties that are changing.
- *     changedProperties = A #GVariant containing the properties that changed (type: `a{sv}`).
- *     invalidatedProperties = A %NULL terminated
- *         array of properties that were invalidated.
- *
- * Since: 2.30
- */
-gulong addOnInterfaceProxyPropertiesChanged(void delegate(DBusObjectProxy, DBusProxy, Variant, string[], DBusObjectManagerClient) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-{
-	return Signals.connect(this, "interface-proxy-properties-changed", dlg, connectFlags ^ ConnectFlags.SWAPPED);
-}
+	/**
+	 * The unique name that owns the name that @manager is for or %NULL if
+	 * no-one currently owns that name. You can connect to the
+	 * #GObject::notify signal to track changes to the
+	 * #GDBusObjectManagerClient:name-owner property.
+	 *
+	 * Returns: The name owner or %NULL if no name owner
+	 *     exists. Free with g_free().
+	 *
+	 * Since: 2.30
+	 */
+	public string getNameOwner()
+	{
+		auto retStr = g_dbus_object_manager_client_get_name_owner(gDBusObjectManagerClient);
 
-/**
- * Emitted when a D-Bus signal is received on @interface_proxy.
- *
- * This signal exists purely as a convenience to avoid having to
- * connect signals to all interface proxies managed by @manager.
- *
- * This signal is emitted in the
- * [thread-default main context][g-main-context-push-thread-default]
- * that @manager was constructed in.
- *
- * Params:
- *     objectProxy = The #GDBusObjectProxy on which an interface is emitting a D-Bus signal.
- *     interfaceProxy = The #GDBusProxy that is emitting a D-Bus signal.
- *     senderName = The sender of the signal or NULL if the connection is not a bus connection.
- *     signalName = The signal name.
- *     parameters = A #GVariant tuple with parameters for the signal.
- *
- * Since: 2.30
- */
-gulong addOnInterfaceProxySignal(void delegate(DBusObjectProxy, DBusProxy, string, string, Variant, DBusObjectManagerClient) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-{
-	return Signals.connect(this, "interface-proxy-signal", dlg, connectFlags ^ ConnectFlags.SWAPPED);
-}
+		scope(exit) Str.freeString(retStr);
+		return Str.toString(retStr);
+	}
+
+	/**
+	 * Emitted when one or more D-Bus properties on proxy changes. The
+	 * local cache has already been updated when this signal fires. Note
+	 * that both @changed_properties and @invalidated_properties are
+	 * guaranteed to never be %NULL (either may be empty though).
+	 *
+	 * This signal exists purely as a convenience to avoid having to
+	 * connect signals to all interface proxies managed by @manager.
+	 *
+	 * This signal is emitted in the
+	 * [thread-default main context][g-main-context-push-thread-default]
+	 * that @manager was constructed in.
+	 *
+	 * Params:
+	 *     objectProxy = The #GDBusObjectProxy on which an interface has properties that are changing.
+	 *     interfaceProxy = The #GDBusProxy that has properties that are changing.
+	 *     changedProperties = A #GVariant containing the properties that changed (type: `a{sv}`).
+	 *     invalidatedProperties = A %NULL terminated
+	 *         array of properties that were invalidated.
+	 *
+	 * Since: 2.30
+	 */
+	gulong addOnInterfaceProxyPropertiesChanged(void delegate(DBusObjectProxy, DBusProxy, Variant, string[], DBusObjectManagerClient) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "interface-proxy-properties-changed", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
+	 * Emitted when a D-Bus signal is received on @interface_proxy.
+	 *
+	 * This signal exists purely as a convenience to avoid having to
+	 * connect signals to all interface proxies managed by @manager.
+	 *
+	 * This signal is emitted in the
+	 * [thread-default main context][g-main-context-push-thread-default]
+	 * that @manager was constructed in.
+	 *
+	 * Params:
+	 *     objectProxy = The #GDBusObjectProxy on which an interface is emitting a D-Bus signal.
+	 *     interfaceProxy = The #GDBusProxy that is emitting a D-Bus signal.
+	 *     senderName = The sender of the signal or NULL if the connection is not a bus connection.
+	 *     signalName = The signal name.
+	 *     parameters = A #GVariant tuple with parameters for the signal.
+	 *
+	 * Since: 2.30
+	 */
+	gulong addOnInterfaceProxySignal(void delegate(DBusObjectProxy, DBusProxy, string, string, Variant, DBusObjectManagerClient) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "interface-proxy-signal", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
 }

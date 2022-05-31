@@ -16,11 +16,17 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
- module cairo.c.functions;
+ 
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
+module cairo.c.functions;
 
 private import std.stdio;
 private import cairo.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 version (Windows)
 	static immutable LIBRARY_CAIRO = ["libcairo-2.dll;cairo.dll"];

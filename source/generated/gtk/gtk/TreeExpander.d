@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.TreeExpander;
 
 private import glib.ConstructionException;
@@ -121,6 +145,18 @@ public class TreeExpander : Widget
 	}
 
 	/**
+	 * TreeExpander indents the child by the width of an expander-icon if it is not expandable.
+	 *
+	 * Returns: TRUE if the child should be indented when not expandable. Otherwise FALSE.
+	 *
+	 * Since: 4.6
+	 */
+	public bool getIndentForIcon()
+	{
+		return gtk_tree_expander_get_indent_for_icon(gtkTreeExpander) != 0;
+	}
+
+	/**
 	 * Forwards the item set on the `GtkTreeListRow` that @self is managing.
 	 *
 	 * This call is essentially equivalent to calling:
@@ -169,6 +205,19 @@ public class TreeExpander : Widget
 	public void setChild(Widget child)
 	{
 		gtk_tree_expander_set_child(gtkTreeExpander, (child is null) ? null : child.getWidgetStruct());
+	}
+
+	/**
+	 * Sets if the TreeExpander should indent the child by the width of an expander-icon when it is not expandable.
+	 *
+	 * Params:
+	 *     indentForIcon = TRUE if the child should be indented without expander. Otherwise FALSE.
+	 *
+	 * Since: 4.6
+	 */
+	public void setIndentForIcon(bool indentForIcon)
+	{
+		gtk_tree_expander_set_indent_for_icon(gtkTreeExpander, indentForIcon);
 	}
 
 	/**

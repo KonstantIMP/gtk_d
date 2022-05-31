@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module shumate.c.types;
 
 public import gdk.c.types;
@@ -57,7 +81,7 @@ public enum ShumateState
 alias ShumateState State;
 
 /**
- * Error codes in the [error@StyleError] domain.
+ * Error codes that occurs while parsing the style in [class@VectorRenderer].
  */
 public enum ShumateStyleError
 {
@@ -164,7 +188,8 @@ struct ShumateDataSourceClass
 	 * Params:
 	 *     self = a [class@DataSource]
 	 *     result = a #GAsyncResult provided to callback
-	 * Returns: The requested data, or %NULL if an error occurred
+	 * Returns: The requested data, or %NULL if an
+	 *     error occurred
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -189,20 +214,6 @@ struct ShumateLayer
 struct ShumateLayerClass
 {
 	GtkWidgetClass parentClass;
-	/**
-	 *
-	 * Params:
-	 *     self = a [class@Layer]
-	 * Returns: the license text
-	 */
-	extern(C) const(char)* function(ShumateLayer* self) getLicense;
-	/**
-	 *
-	 * Params:
-	 *     self = a [class@Layer]
-	 * Returns: a URI
-	 */
-	extern(C) const(char)* function(ShumateLayer* self) getLicenseUri;
 }
 
 struct ShumateLicense;
@@ -265,6 +276,16 @@ struct ShumateMapSourceClass
 	GObjectClass parentClass;
 	/** */
 	extern(C) void function(ShumateMapSource* self, ShumateTile* tile, GCancellable* cancellable, GAsyncReadyCallback callback, void* userData) fillTileAsync;
+	/**
+	 *
+	 * Params:
+	 *     self = a #ShumateMapSource
+	 *     result = a #GAsyncResult provided to callback
+	 * Returns: %TRUE if the tile was filled with valid data, otherwise %FALSE
+	 *
+	 * Throws: GException on failure.
+	 */
+	extern(C) int function(ShumateMapSource* self, GAsyncResult* result, GError** err) fillTileFinish;
 }
 
 struct ShumateMapSourceRegistry;
@@ -335,6 +356,13 @@ struct ShumateScaleClass
 	GtkWidgetClass parentClass;
 }
 
+struct ShumateSimpleMap;
+
+struct ShumateSimpleMapClass
+{
+	GtkWidgetClass parentClass;
+}
+
 struct ShumateTile
 {
 	GtkWidget parentInstance;
@@ -369,7 +397,7 @@ struct ShumateViewportClass
 /**
  * The major version of libshumate (1, if %SHUMATE_VERSION is 1.2.3)
  */
-enum MAJOR_VERSION = 0;
+enum MAJOR_VERSION = 1;
 alias SHUMATE_MAJOR_VERSION = MAJOR_VERSION;
 
 /**

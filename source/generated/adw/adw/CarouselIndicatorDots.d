@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.CarouselIndicatorDots;
 
 private import adw.Carousel;
@@ -17,14 +41,19 @@ private import gtk.Widget;
 
 
 /**
- * A dots indicator for [class@Adw.Carousel].
+ * A dots indicator for [class@Carousel].
+ * 
+ * <picture>
+ * <source srcset="carousel-indicator-dots-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="carousel-indicator-dots.png" alt="carousel-indicator-dots">
+ * </picture>
  * 
  * The `AdwCarouselIndicatorDots` widget shows a set of dots for each page of a
- * given [class@Adw.Carousel]. The dot representing the carousel's active page
- * is larger and more opaque than the others, the transition to the active and
+ * given [class@Carousel]. The dot representing the carousel's active page is
+ * larger and more opaque than the others, the transition to the active and
  * inactive state is gradual to match the carousel's position.
  * 
- * See also [class@Adw.CarouselIndicatorLines].
+ * See also [class@CarouselIndicatorLines].
  * 
  * ## CSS nodes
  * 

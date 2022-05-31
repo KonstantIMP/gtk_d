@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.StatusPage;
 
 private import adw.c.functions;
@@ -19,6 +43,11 @@ private import gtk.Widget;
 /**
  * A page used for empty/error states and similar use-cases.
  * 
+ * <picture>
+ * <source srcset="status-page-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="status-page.png" alt="status-page">
+ * </picture>
+ * 
  * The `AdwStatusPage` widget can have an icon, a title, a description and a
  * custom widget which is displayed below them.
  * 
@@ -26,8 +55,9 @@ private import gtk.Widget;
  * 
  * `AdwStatusPage` has a main CSS node with name `statuspage`.
  * 
- * `AdwStatusPage` can use the `.compact` style class for when it needs to fit
- * into a small space such a sidebar or a popover.
+ * `AdwStatusPage` can use the
+ * [`.compact`](style-classes.html#compact-status-page) style class for when it
+ * needs to fit into a small space such a sidebar or a popover.
  *
  * Since: 1.0
  */

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module atk.c.types;
 
 public import glib.c.types;
@@ -1128,9 +1152,13 @@ public enum AtkStateType
 	 */
 	READ_ONLY = 42,
 	/**
+	 * Indicates this object is collapsed. @Since: ATK-2.38
+	 */
+	COLLAPSED = 43,
+	/**
 	 * Not a valid state, used for finding end of enumeration
 	 */
-	LAST_DEFINED = 43,
+	LAST_DEFINED = 44,
 }
 alias AtkStateType StateType;
 
@@ -3142,7 +3170,7 @@ public alias extern(C) void function(AtkObject* obj, AtkPropertyValues* vals) At
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum BINARY_AGE = 23610;
+enum BINARY_AGE = 23810;
 alias ATK_BINARY_AGE = BINARY_AGE;
 
 /**
@@ -3174,7 +3202,7 @@ alias ATK_MICRO_VERSION = MICRO_VERSION;
  * application compile time, rather than from the library linked
  * against at application run time.
  */
-enum MINOR_VERSION = 36;
+enum MINOR_VERSION = 38;
 alias ATK_MINOR_VERSION = MINOR_VERSION;
 
 /**

@@ -1,10 +1,34 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.VariantType;
 
 private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
 public  import glib.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -206,634 +230,636 @@ public class VariantType
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public static VariantType newMaybe(VariantType element) {
+	public static VariantType newMaybe(VariantType element)
+	{
 		auto p = g_variant_type_new_maybe((element is null) ? null : element.getVariantTypeStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_maybe");
+		}
+
+		return new VariantType(cast(GVariantType*) p);
 	}
 
-	return new VariantType(cast(GVariantType*) p);
-}
+	/**
+	 */
 
-/**
- */
-
-/**
- * Creates a new #GVariantType corresponding to the type string given
- * by @type_string.  It is appropriate to call g_variant_type_free() on
- * the return value.
- *
- * It is a programmer error to call this function with an invalid type
- * string.  Use g_variant_type_string_is_valid() if you are unsure.
- *
- * Params:
- *     typeString = a valid GVariant type string
- *
- * Returns: a new #GVariantType
- *
- * Since: 2.24
- *
- * Throws: ConstructionException GTK+ fails to create the object.
- */
-public this(string typeString)
-{
-	auto __p = g_variant_type_new(Str.toStringz(typeString));
-
-	if(__p is null)
+	/**
+	 * Creates a new #GVariantType corresponding to the type string given
+	 * by @type_string.  It is appropriate to call g_variant_type_free() on
+	 * the return value.
+	 *
+	 * It is a programmer error to call this function with an invalid type
+	 * string.  Use g_variant_type_string_is_valid() if you are unsure.
+	 *
+	 * Params:
+	 *     typeString = a valid GVariant type string
+	 *
+	 * Returns: a new #GVariantType
+	 *
+	 * Since: 2.24
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(string typeString)
 	{
-		throw new ConstructionException("null returned by new");
+		auto __p = g_variant_type_new(Str.toStringz(typeString));
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new");
+		}
+
+		this(cast(GVariantType*) __p);
 	}
 
-	this(cast(GVariantType*) __p);
-}
-
-/**
- * Constructs the type corresponding to an array of elements of the
- * type @type.
- *
- * It is appropriate to call g_variant_type_free() on the return value.
- *
- * Params:
- *     element = a #GVariantType
- *
- * Returns: a new array #GVariantType
- *
- *     Since 2.24
- *
- * Throws: ConstructionException GTK+ fails to create the object.
- */
-public this(VariantType element)
-{
-	auto __p = g_variant_type_new_array((element is null) ? null : element.getVariantTypeStruct());
-
-	if(__p is null)
+	/**
+	 * Constructs the type corresponding to an array of elements of the
+	 * type @type.
+	 *
+	 * It is appropriate to call g_variant_type_free() on the return value.
+	 *
+	 * Params:
+	 *     element = a #GVariantType
+	 *
+	 * Returns: a new array #GVariantType
+	 *
+	 *     Since 2.24
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(VariantType element)
 	{
-		throw new ConstructionException("null returned by new_array");
+		auto __p = g_variant_type_new_array((element is null) ? null : element.getVariantTypeStruct());
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_array");
+		}
+
+		this(cast(GVariantType*) __p);
 	}
 
-	this(cast(GVariantType*) __p);
-}
-
-/**
- * Constructs the type corresponding to a dictionary entry with a key
- * of type @key and a value of type @value.
- *
- * It is appropriate to call g_variant_type_free() on the return value.
- *
- * Params:
- *     key = a basic #GVariantType
- *     value = a #GVariantType
- *
- * Returns: a new dictionary entry #GVariantType
- *
- *     Since 2.24
- *
- * Throws: ConstructionException GTK+ fails to create the object.
- */
-public this(VariantType key, VariantType value)
-{
-	auto __p = g_variant_type_new_dict_entry((key is null) ? null : key.getVariantTypeStruct(), (value is null) ? null : value.getVariantTypeStruct());
-
-	if(__p is null)
+	/**
+	 * Constructs the type corresponding to a dictionary entry with a key
+	 * of type @key and a value of type @value.
+	 *
+	 * It is appropriate to call g_variant_type_free() on the return value.
+	 *
+	 * Params:
+	 *     key = a basic #GVariantType
+	 *     value = a #GVariantType
+	 *
+	 * Returns: a new dictionary entry #GVariantType
+	 *
+	 *     Since 2.24
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(VariantType key, VariantType value)
 	{
-		throw new ConstructionException("null returned by new_dict_entry");
+		auto __p = g_variant_type_new_dict_entry((key is null) ? null : key.getVariantTypeStruct(), (value is null) ? null : value.getVariantTypeStruct());
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_dict_entry");
+		}
+
+		this(cast(GVariantType*) __p);
 	}
 
-	this(cast(GVariantType*) __p);
-}
-
-/**
- * Constructs a new tuple type, from @items.
- *
- * @length is the number of items in @items, or -1 to indicate that
- * @items is %NULL-terminated.
- *
- * It is appropriate to call g_variant_type_free() on the return value.
- *
- * Params:
- *     items = an array of #GVariantTypes, one for each item
- *
- * Returns: a new tuple #GVariantType
- *
- *     Since 2.24
- *
- * Throws: ConstructionException GTK+ fails to create the object.
- */
-public this(VariantType[] items)
-{
-	GVariantType*[] itemsArray = new GVariantType*[items.length];
-	for ( int i = 0; i < items.length; i++ )
+	/**
+	 * Constructs a new tuple type, from @items.
+	 *
+	 * @length is the number of items in @items, or -1 to indicate that
+	 * @items is %NULL-terminated.
+	 *
+	 * It is appropriate to call g_variant_type_free() on the return value.
+	 *
+	 * Params:
+	 *     items = an array of #GVariantTypes, one for each item
+	 *
+	 * Returns: a new tuple #GVariantType
+	 *
+	 *     Since 2.24
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(VariantType[] items)
 	{
-		itemsArray[i] = items[i].getVariantTypeStruct();
+		GVariantType*[] itemsArray = new GVariantType*[items.length];
+		for ( int i = 0; i < items.length; i++ )
+		{
+			itemsArray[i] = items[i].getVariantTypeStruct();
+		}
+
+		auto __p = g_variant_type_new_tuple(itemsArray.ptr, cast(int)items.length);
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_tuple");
+		}
+
+		this(cast(GVariantType*) __p);
 	}
 
-	auto __p = g_variant_type_new_tuple(itemsArray.ptr, cast(int)items.length);
-
-	if(__p is null)
+	/**
+	 * Makes a copy of a #GVariantType.  It is appropriate to call
+	 * g_variant_type_free() on the return value.  @type may not be %NULL.
+	 *
+	 * Returns: a new #GVariantType
+	 *
+	 *     Since 2.24
+	 */
+	public VariantType copy()
 	{
-		throw new ConstructionException("null returned by new_tuple");
+		auto __p = g_variant_type_copy(gVariantType);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new VariantType(cast(GVariantType*) __p, true);
 	}
 
-	this(cast(GVariantType*) __p);
-}
-
-/**
- * Makes a copy of a #GVariantType.  It is appropriate to call
- * g_variant_type_free() on the return value.  @type may not be %NULL.
- *
- * Returns: a new #GVariantType
- *
- *     Since 2.24
- */
-public VariantType copy()
-{
-	auto __p = g_variant_type_copy(gVariantType);
-
-	if(__p is null)
+	/**
+	 * Returns a newly-allocated copy of the type string corresponding to
+	 * @type.  The returned string is nul-terminated.  It is appropriate to
+	 * call g_free() on the return value.
+	 *
+	 * Returns: the corresponding type string
+	 *
+	 *     Since 2.24
+	 */
+	public string dupString()
 	{
-		return null;
+		auto retStr = g_variant_type_dup_string(gVariantType);
+
+		scope(exit) Str.freeString(retStr);
+		return Str.toString(retStr);
 	}
 
-	return new VariantType(cast(GVariantType*) __p, true);
-}
-
-/**
- * Returns a newly-allocated copy of the type string corresponding to
- * @type.  The returned string is nul-terminated.  It is appropriate to
- * call g_free() on the return value.
- *
- * Returns: the corresponding type string
- *
- *     Since 2.24
- */
-public string dupString()
-{
-	auto retStr = g_variant_type_dup_string(gVariantType);
-
-	scope(exit) Str.freeString(retStr);
-	return Str.toString(retStr);
-}
-
-/**
- * Determines the element type of an array or maybe type.
- *
- * This function may only be used with array or maybe types.
- *
- * Returns: the element type of @type
- *
- *     Since 2.24
- */
-public VariantType element()
-{
-	auto __p = g_variant_type_element(gVariantType);
-
-	if(__p is null)
+	/**
+	 * Determines the element type of an array or maybe type.
+	 *
+	 * This function may only be used with array or maybe types.
+	 *
+	 * Returns: the element type of @type
+	 *
+	 *     Since 2.24
+	 */
+	public VariantType element()
 	{
-		return null;
+		auto __p = g_variant_type_element(gVariantType);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new VariantType(cast(GVariantType*) __p);
 	}
 
-	return new VariantType(cast(GVariantType*) __p);
-}
-
-/**
- * Compares @type1 and @type2 for equality.
- *
- * Only returns %TRUE if the types are exactly equal.  Even if one type
- * is an indefinite type and the other is a subtype of it, %FALSE will
- * be returned if they are not exactly equal.  If you want to check for
- * subtypes, use g_variant_type_is_subtype_of().
- *
- * The argument types of @type1 and @type2 are only #gconstpointer to
- * allow use with #GHashTable without function pointer casting.  For
- * both arguments, a valid #GVariantType must be provided.
- *
- * Params:
- *     type2 = a #GVariantType
- *
- * Returns: %TRUE if @type1 and @type2 are exactly equal
- *
- *     Since 2.24
- */
-public bool equal(VariantType type2)
-{
-	return g_variant_type_equal(gVariantType, (type2 is null) ? null : type2.getVariantTypeStruct()) != 0;
-}
-
-/**
- * Determines the first item type of a tuple or dictionary entry
- * type.
- *
- * This function may only be used with tuple or dictionary entry types,
- * but must not be used with the generic tuple type
- * %G_VARIANT_TYPE_TUPLE.
- *
- * In the case of a dictionary entry type, this returns the type of
- * the key.
- *
- * %NULL is returned in case of @type being %G_VARIANT_TYPE_UNIT.
- *
- * This call, together with g_variant_type_next() provides an iterator
- * interface over tuple and dictionary entry types.
- *
- * Returns: the first item type of @type, or %NULL
- *
- *     Since 2.24
- */
-public VariantType first()
-{
-	auto __p = g_variant_type_first(gVariantType);
-
-	if(__p is null)
+	/**
+	 * Compares @type1 and @type2 for equality.
+	 *
+	 * Only returns %TRUE if the types are exactly equal.  Even if one type
+	 * is an indefinite type and the other is a subtype of it, %FALSE will
+	 * be returned if they are not exactly equal.  If you want to check for
+	 * subtypes, use g_variant_type_is_subtype_of().
+	 *
+	 * The argument types of @type1 and @type2 are only #gconstpointer to
+	 * allow use with #GHashTable without function pointer casting.  For
+	 * both arguments, a valid #GVariantType must be provided.
+	 *
+	 * Params:
+	 *     type2 = a #GVariantType
+	 *
+	 * Returns: %TRUE if @type1 and @type2 are exactly equal
+	 *
+	 *     Since 2.24
+	 */
+	public bool equal(VariantType type2)
 	{
-		return null;
+		return g_variant_type_equal(gVariantType, (type2 is null) ? null : type2.getVariantTypeStruct()) != 0;
 	}
 
-	return new VariantType(cast(GVariantType*) __p);
-}
-
-/**
- * Frees a #GVariantType that was allocated with
- * g_variant_type_copy(), g_variant_type_new() or one of the container
- * type constructor functions.
- *
- * In the case that @type is %NULL, this function does nothing.
- *
- * Since 2.24
- */
-public void free()
-{
-	g_variant_type_free(gVariantType);
-	ownedRef = false;
-}
-
-/**
- * Returns the length of the type string corresponding to the given
- * @type.  This function must be used to determine the valid extent of
- * the memory region returned by g_variant_type_peek_string().
- *
- * Returns: the length of the corresponding type string
- *
- *     Since 2.24
- */
-public size_t getStringLength()
-{
-	return g_variant_type_get_string_length(gVariantType);
-}
-
-/**
- * Hashes @type.
- *
- * The argument type of @type is only #gconstpointer to allow use with
- * #GHashTable without function pointer casting.  A valid
- * #GVariantType must be provided.
- *
- * Returns: the hash value
- *
- *     Since 2.24
- */
-public uint hash()
-{
-	return g_variant_type_hash(gVariantType);
-}
-
-/**
- * Determines if the given @type is an array type.  This is true if the
- * type string for @type starts with an 'a'.
- *
- * This function returns %TRUE for any indefinite type for which every
- * definite subtype is an array type -- %G_VARIANT_TYPE_ARRAY, for
- * example.
- *
- * Returns: %TRUE if @type is an array type
- *
- *     Since 2.24
- */
-public bool isArray()
-{
-	return g_variant_type_is_array(gVariantType) != 0;
-}
-
-/**
- * Determines if the given @type is a basic type.
- *
- * Basic types are booleans, bytes, integers, doubles, strings, object
- * paths and signatures.
- *
- * Only a basic type may be used as the key of a dictionary entry.
- *
- * This function returns %FALSE for all indefinite types except
- * %G_VARIANT_TYPE_BASIC.
- *
- * Returns: %TRUE if @type is a basic type
- *
- *     Since 2.24
- */
-public bool isBasic()
-{
-	return g_variant_type_is_basic(gVariantType) != 0;
-}
-
-/**
- * Determines if the given @type is a container type.
- *
- * Container types are any array, maybe, tuple, or dictionary
- * entry types plus the variant type.
- *
- * This function returns %TRUE for any indefinite type for which every
- * definite subtype is a container -- %G_VARIANT_TYPE_ARRAY, for
- * example.
- *
- * Returns: %TRUE if @type is a container type
- *
- *     Since 2.24
- */
-public bool isContainer()
-{
-	return g_variant_type_is_container(gVariantType) != 0;
-}
-
-/**
- * Determines if the given @type is definite (ie: not indefinite).
- *
- * A type is definite if its type string does not contain any indefinite
- * type characters ('*', '?', or 'r').
- *
- * A #GVariant instance may not have an indefinite type, so calling
- * this function on the result of g_variant_get_type() will always
- * result in %TRUE being returned.  Calling this function on an
- * indefinite type like %G_VARIANT_TYPE_ARRAY, however, will result in
- * %FALSE being returned.
- *
- * Returns: %TRUE if @type is definite
- *
- *     Since 2.24
- */
-public bool isDefinite()
-{
-	return g_variant_type_is_definite(gVariantType) != 0;
-}
-
-/**
- * Determines if the given @type is a dictionary entry type.  This is
- * true if the type string for @type starts with a '{'.
- *
- * This function returns %TRUE for any indefinite type for which every
- * definite subtype is a dictionary entry type --
- * %G_VARIANT_TYPE_DICT_ENTRY, for example.
- *
- * Returns: %TRUE if @type is a dictionary entry type
- *
- *     Since 2.24
- */
-public bool isDictEntry()
-{
-	return g_variant_type_is_dict_entry(gVariantType) != 0;
-}
-
-/**
- * Determines if the given @type is a maybe type.  This is true if the
- * type string for @type starts with an 'm'.
- *
- * This function returns %TRUE for any indefinite type for which every
- * definite subtype is a maybe type -- %G_VARIANT_TYPE_MAYBE, for
- * example.
- *
- * Returns: %TRUE if @type is a maybe type
- *
- *     Since 2.24
- */
-public bool isMaybe()
-{
-	return g_variant_type_is_maybe(gVariantType) != 0;
-}
-
-/**
- * Checks if @type is a subtype of @supertype.
- *
- * This function returns %TRUE if @type is a subtype of @supertype.  All
- * types are considered to be subtypes of themselves.  Aside from that,
- * only indefinite types can have subtypes.
- *
- * Params:
- *     supertype = a #GVariantType
- *
- * Returns: %TRUE if @type is a subtype of @supertype
- *
- *     Since 2.24
- */
-public bool isSubtypeOf(VariantType supertype)
-{
-	return g_variant_type_is_subtype_of(gVariantType, (supertype is null) ? null : supertype.getVariantTypeStruct()) != 0;
-}
-
-/**
- * Determines if the given @type is a tuple type.  This is true if the
- * type string for @type starts with a '(' or if @type is
- * %G_VARIANT_TYPE_TUPLE.
- *
- * This function returns %TRUE for any indefinite type for which every
- * definite subtype is a tuple type -- %G_VARIANT_TYPE_TUPLE, for
- * example.
- *
- * Returns: %TRUE if @type is a tuple type
- *
- *     Since 2.24
- */
-public bool isTuple()
-{
-	return g_variant_type_is_tuple(gVariantType) != 0;
-}
-
-/**
- * Determines if the given @type is the variant type.
- *
- * Returns: %TRUE if @type is the variant type
- *
- *     Since 2.24
- */
-public bool isVariant()
-{
-	return g_variant_type_is_variant(gVariantType) != 0;
-}
-
-/**
- * Determines the key type of a dictionary entry type.
- *
- * This function may only be used with a dictionary entry type.  Other
- * than the additional restriction, this call is equivalent to
- * g_variant_type_first().
- *
- * Returns: the key type of the dictionary entry
- *
- *     Since 2.24
- */
-public VariantType key()
-{
-	auto __p = g_variant_type_key(gVariantType);
-
-	if(__p is null)
+	/**
+	 * Determines the first item type of a tuple or dictionary entry
+	 * type.
+	 *
+	 * This function may only be used with tuple or dictionary entry types,
+	 * but must not be used with the generic tuple type
+	 * %G_VARIANT_TYPE_TUPLE.
+	 *
+	 * In the case of a dictionary entry type, this returns the type of
+	 * the key.
+	 *
+	 * %NULL is returned in case of @type being %G_VARIANT_TYPE_UNIT.
+	 *
+	 * This call, together with g_variant_type_next() provides an iterator
+	 * interface over tuple and dictionary entry types.
+	 *
+	 * Returns: the first item type of @type, or %NULL
+	 *
+	 *     Since 2.24
+	 */
+	public VariantType first()
 	{
-		return null;
+		auto __p = g_variant_type_first(gVariantType);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new VariantType(cast(GVariantType*) __p);
 	}
 
-	return new VariantType(cast(GVariantType*) __p);
-}
-
-/**
- * Determines the number of items contained in a tuple or
- * dictionary entry type.
- *
- * This function may only be used with tuple or dictionary entry types,
- * but must not be used with the generic tuple type
- * %G_VARIANT_TYPE_TUPLE.
- *
- * In the case of a dictionary entry type, this function will always
- * return 2.
- *
- * Returns: the number of items in @type
- *
- *     Since 2.24
- */
-public size_t nItems()
-{
-	return g_variant_type_n_items(gVariantType);
-}
-
-/**
- * Determines the next item type of a tuple or dictionary entry
- * type.
- *
- * @type must be the result of a previous call to
- * g_variant_type_first() or g_variant_type_next().
- *
- * If called on the key type of a dictionary entry then this call
- * returns the value type.  If called on the value type of a dictionary
- * entry then this call returns %NULL.
- *
- * For tuples, %NULL is returned when @type is the last item in a tuple.
- *
- * Returns: the next #GVariantType after @type, or %NULL
- *
- *     Since 2.24
- */
-public VariantType next()
-{
-	auto __p = g_variant_type_next(gVariantType);
-
-	if(__p is null)
+	/**
+	 * Frees a #GVariantType that was allocated with
+	 * g_variant_type_copy(), g_variant_type_new() or one of the container
+	 * type constructor functions.
+	 *
+	 * In the case that @type is %NULL, this function does nothing.
+	 *
+	 * Since 2.24
+	 */
+	public void free()
 	{
-		return null;
+		g_variant_type_free(gVariantType);
+		ownedRef = false;
 	}
 
-	return new VariantType(cast(GVariantType*) __p);
-}
-
-/**
- * Returns the type string corresponding to the given @type.  The
- * result is not nul-terminated; in order to determine its length you
- * must call g_variant_type_get_string_length().
- *
- * To get a nul-terminated string, see g_variant_type_dup_string().
- *
- * Returns: the corresponding type string (not nul-terminated)
- *
- *     Since 2.24
- */
-public string peekString()
-{
-	return Str.toString(g_variant_type_peek_string(gVariantType));
-}
-
-/**
- * Determines the value type of a dictionary entry type.
- *
- * This function may only be used with a dictionary entry type.
- *
- * Returns: the value type of the dictionary entry
- *
- *     Since 2.24
- */
-public VariantType value()
-{
-	auto __p = g_variant_type_value(gVariantType);
-
-	if(__p is null)
+	/**
+	 * Returns the length of the type string corresponding to the given
+	 * @type.  This function must be used to determine the valid extent of
+	 * the memory region returned by g_variant_type_peek_string().
+	 *
+	 * Returns: the length of the corresponding type string
+	 *
+	 *     Since 2.24
+	 */
+	public size_t getStringLength()
 	{
-		return null;
+		return g_variant_type_get_string_length(gVariantType);
 	}
 
-	return new VariantType(cast(GVariantType*) __p);
-}
-
-/** */
-public static VariantType checked(string arg0)
-{
-	auto __p = g_variant_type_checked_(Str.toStringz(arg0));
-
-	if(__p is null)
+	/**
+	 * Hashes @type.
+	 *
+	 * The argument type of @type is only #gconstpointer to allow use with
+	 * #GHashTable without function pointer casting.  A valid
+	 * #GVariantType must be provided.
+	 *
+	 * Returns: the hash value
+	 *
+	 *     Since 2.24
+	 */
+	public uint hash()
 	{
-		return null;
+		return g_variant_type_hash(gVariantType);
 	}
 
-	return new VariantType(cast(GVariantType*) __p);
-}
+	/**
+	 * Determines if the given @type is an array type.  This is true if the
+	 * type string for @type starts with an 'a'.
+	 *
+	 * This function returns %TRUE for any indefinite type for which every
+	 * definite subtype is an array type -- %G_VARIANT_TYPE_ARRAY, for
+	 * example.
+	 *
+	 * Returns: %TRUE if @type is an array type
+	 *
+	 *     Since 2.24
+	 */
+	public bool isArray()
+	{
+		return g_variant_type_is_array(gVariantType) != 0;
+	}
 
-/** */
-public static size_t stringGetDepth(string typeString)
-{
-	return g_variant_type_string_get_depth_(Str.toStringz(typeString));
-}
+	/**
+	 * Determines if the given @type is a basic type.
+	 *
+	 * Basic types are booleans, bytes, integers, doubles, strings, object
+	 * paths and signatures.
+	 *
+	 * Only a basic type may be used as the key of a dictionary entry.
+	 *
+	 * This function returns %FALSE for all indefinite types except
+	 * %G_VARIANT_TYPE_BASIC.
+	 *
+	 * Returns: %TRUE if @type is a basic type
+	 *
+	 *     Since 2.24
+	 */
+	public bool isBasic()
+	{
+		return g_variant_type_is_basic(gVariantType) != 0;
+	}
 
-/**
- * Checks if @type_string is a valid GVariant type string.  This call is
- * equivalent to calling g_variant_type_string_scan() and confirming
- * that the following character is a nul terminator.
- *
- * Params:
- *     typeString = a pointer to any string
- *
- * Returns: %TRUE if @type_string is exactly one valid type string
- *
- *     Since 2.24
- */
-public static bool stringIsValid(string typeString)
-{
-	return g_variant_type_string_is_valid(Str.toStringz(typeString)) != 0;
-}
+	/**
+	 * Determines if the given @type is a container type.
+	 *
+	 * Container types are any array, maybe, tuple, or dictionary
+	 * entry types plus the variant type.
+	 *
+	 * This function returns %TRUE for any indefinite type for which every
+	 * definite subtype is a container -- %G_VARIANT_TYPE_ARRAY, for
+	 * example.
+	 *
+	 * Returns: %TRUE if @type is a container type
+	 *
+	 *     Since 2.24
+	 */
+	public bool isContainer()
+	{
+		return g_variant_type_is_container(gVariantType) != 0;
+	}
 
-/**
- * Scan for a single complete and valid GVariant type string in @string.
- * The memory pointed to by @limit (or bytes beyond it) is never
- * accessed.
- *
- * If a valid type string is found, @endptr is updated to point to the
- * first character past the end of the string that was found and %TRUE
- * is returned.
- *
- * If there is no valid type string starting at @string, or if the type
- * string does not end before @limit then %FALSE is returned.
- *
- * For the simple case of checking if a string is a valid type string,
- * see g_variant_type_string_is_valid().
- *
- * Params:
- *     string_ = a pointer to any string
- *     limit = the end of @string, or %NULL
- *     endptr = location to store the end pointer, or %NULL
- *
- * Returns: %TRUE if a valid type string was found
- *
- * Since: 2.24
- */
-public static bool stringScan(string string_, string limit, out string endptr)
-{
-	char* outendptr = null;
+	/**
+	 * Determines if the given @type is definite (ie: not indefinite).
+	 *
+	 * A type is definite if its type string does not contain any indefinite
+	 * type characters ('*', '?', or 'r').
+	 *
+	 * A #GVariant instance may not have an indefinite type, so calling
+	 * this function on the result of g_variant_get_type() will always
+	 * result in %TRUE being returned.  Calling this function on an
+	 * indefinite type like %G_VARIANT_TYPE_ARRAY, however, will result in
+	 * %FALSE being returned.
+	 *
+	 * Returns: %TRUE if @type is definite
+	 *
+	 *     Since 2.24
+	 */
+	public bool isDefinite()
+	{
+		return g_variant_type_is_definite(gVariantType) != 0;
+	}
 
-	auto __p = g_variant_type_string_scan(Str.toStringz(string_), Str.toStringz(limit), &outendptr) != 0;
+	/**
+	 * Determines if the given @type is a dictionary entry type.  This is
+	 * true if the type string for @type starts with a '{'.
+	 *
+	 * This function returns %TRUE for any indefinite type for which every
+	 * definite subtype is a dictionary entry type --
+	 * %G_VARIANT_TYPE_DICT_ENTRY, for example.
+	 *
+	 * Returns: %TRUE if @type is a dictionary entry type
+	 *
+	 *     Since 2.24
+	 */
+	public bool isDictEntry()
+	{
+		return g_variant_type_is_dict_entry(gVariantType) != 0;
+	}
 
-	endptr = Str.toString(outendptr);
+	/**
+	 * Determines if the given @type is a maybe type.  This is true if the
+	 * type string for @type starts with an 'm'.
+	 *
+	 * This function returns %TRUE for any indefinite type for which every
+	 * definite subtype is a maybe type -- %G_VARIANT_TYPE_MAYBE, for
+	 * example.
+	 *
+	 * Returns: %TRUE if @type is a maybe type
+	 *
+	 *     Since 2.24
+	 */
+	public bool isMaybe()
+	{
+		return g_variant_type_is_maybe(gVariantType) != 0;
+	}
 
-	return __p;
-}
+	/**
+	 * Checks if @type is a subtype of @supertype.
+	 *
+	 * This function returns %TRUE if @type is a subtype of @supertype.  All
+	 * types are considered to be subtypes of themselves.  Aside from that,
+	 * only indefinite types can have subtypes.
+	 *
+	 * Params:
+	 *     supertype = a #GVariantType
+	 *
+	 * Returns: %TRUE if @type is a subtype of @supertype
+	 *
+	 *     Since 2.24
+	 */
+	public bool isSubtypeOf(VariantType supertype)
+	{
+		return g_variant_type_is_subtype_of(gVariantType, (supertype is null) ? null : supertype.getVariantTypeStruct()) != 0;
+	}
+
+	/**
+	 * Determines if the given @type is a tuple type.  This is true if the
+	 * type string for @type starts with a '(' or if @type is
+	 * %G_VARIANT_TYPE_TUPLE.
+	 *
+	 * This function returns %TRUE for any indefinite type for which every
+	 * definite subtype is a tuple type -- %G_VARIANT_TYPE_TUPLE, for
+	 * example.
+	 *
+	 * Returns: %TRUE if @type is a tuple type
+	 *
+	 *     Since 2.24
+	 */
+	public bool isTuple()
+	{
+		return g_variant_type_is_tuple(gVariantType) != 0;
+	}
+
+	/**
+	 * Determines if the given @type is the variant type.
+	 *
+	 * Returns: %TRUE if @type is the variant type
+	 *
+	 *     Since 2.24
+	 */
+	public bool isVariant()
+	{
+		return g_variant_type_is_variant(gVariantType) != 0;
+	}
+
+	/**
+	 * Determines the key type of a dictionary entry type.
+	 *
+	 * This function may only be used with a dictionary entry type.  Other
+	 * than the additional restriction, this call is equivalent to
+	 * g_variant_type_first().
+	 *
+	 * Returns: the key type of the dictionary entry
+	 *
+	 *     Since 2.24
+	 */
+	public VariantType key()
+	{
+		auto __p = g_variant_type_key(gVariantType);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new VariantType(cast(GVariantType*) __p);
+	}
+
+	/**
+	 * Determines the number of items contained in a tuple or
+	 * dictionary entry type.
+	 *
+	 * This function may only be used with tuple or dictionary entry types,
+	 * but must not be used with the generic tuple type
+	 * %G_VARIANT_TYPE_TUPLE.
+	 *
+	 * In the case of a dictionary entry type, this function will always
+	 * return 2.
+	 *
+	 * Returns: the number of items in @type
+	 *
+	 *     Since 2.24
+	 */
+	public size_t nItems()
+	{
+		return g_variant_type_n_items(gVariantType);
+	}
+
+	/**
+	 * Determines the next item type of a tuple or dictionary entry
+	 * type.
+	 *
+	 * @type must be the result of a previous call to
+	 * g_variant_type_first() or g_variant_type_next().
+	 *
+	 * If called on the key type of a dictionary entry then this call
+	 * returns the value type.  If called on the value type of a dictionary
+	 * entry then this call returns %NULL.
+	 *
+	 * For tuples, %NULL is returned when @type is the last item in a tuple.
+	 *
+	 * Returns: the next #GVariantType after @type, or %NULL
+	 *
+	 *     Since 2.24
+	 */
+	public VariantType next()
+	{
+		auto __p = g_variant_type_next(gVariantType);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new VariantType(cast(GVariantType*) __p);
+	}
+
+	/**
+	 * Returns the type string corresponding to the given @type.  The
+	 * result is not nul-terminated; in order to determine its length you
+	 * must call g_variant_type_get_string_length().
+	 *
+	 * To get a nul-terminated string, see g_variant_type_dup_string().
+	 *
+	 * Returns: the corresponding type string (not nul-terminated)
+	 *
+	 *     Since 2.24
+	 */
+	public string peekString()
+	{
+		return Str.toString(g_variant_type_peek_string(gVariantType));
+	}
+
+	/**
+	 * Determines the value type of a dictionary entry type.
+	 *
+	 * This function may only be used with a dictionary entry type.
+	 *
+	 * Returns: the value type of the dictionary entry
+	 *
+	 *     Since 2.24
+	 */
+	public VariantType value()
+	{
+		auto __p = g_variant_type_value(gVariantType);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new VariantType(cast(GVariantType*) __p);
+	}
+
+	/** */
+	public static VariantType checked(string arg0)
+	{
+		auto __p = g_variant_type_checked_(Str.toStringz(arg0));
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return new VariantType(cast(GVariantType*) __p);
+	}
+
+	/** */
+	public static size_t stringGetDepth(string typeString)
+	{
+		return g_variant_type_string_get_depth_(Str.toStringz(typeString));
+	}
+
+	/**
+	 * Checks if @type_string is a valid GVariant type string.  This call is
+	 * equivalent to calling g_variant_type_string_scan() and confirming
+	 * that the following character is a nul terminator.
+	 *
+	 * Params:
+	 *     typeString = a pointer to any string
+	 *
+	 * Returns: %TRUE if @type_string is exactly one valid type string
+	 *
+	 *     Since 2.24
+	 */
+	public static bool stringIsValid(string typeString)
+	{
+		return g_variant_type_string_is_valid(Str.toStringz(typeString)) != 0;
+	}
+
+	/**
+	 * Scan for a single complete and valid GVariant type string in @string.
+	 * The memory pointed to by @limit (or bytes beyond it) is never
+	 * accessed.
+	 *
+	 * If a valid type string is found, @endptr is updated to point to the
+	 * first character past the end of the string that was found and %TRUE
+	 * is returned.
+	 *
+	 * If there is no valid type string starting at @string, or if the type
+	 * string does not end before @limit then %FALSE is returned.
+	 *
+	 * For the simple case of checking if a string is a valid type string,
+	 * see g_variant_type_string_is_valid().
+	 *
+	 * Params:
+	 *     string_ = a pointer to any string
+	 *     limit = the end of @string, or %NULL
+	 *     endptr = location to store the end pointer, or %NULL
+	 *
+	 * Returns: %TRUE if a valid type string was found
+	 *
+	 * Since: 2.24
+	 */
+	public static bool stringScan(string string_, string limit, out string endptr)
+	{
+		char* outendptr = null;
+
+		auto __p = g_variant_type_string_scan(Str.toStringz(string_), Str.toStringz(limit), &outendptr) != 0;
+
+		endptr = Str.toString(outendptr);
+
+		return __p;
+	}
 }

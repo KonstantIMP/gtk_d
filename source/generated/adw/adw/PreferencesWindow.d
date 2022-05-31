@@ -1,6 +1,31 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.PreferencesWindow;
 
 private import adw.PreferencesPage;
+private import adw.Toast;
 private import adw.Window;
 private import adw.c.functions;
 public  import adw.c.types;
@@ -13,6 +38,11 @@ private import gtk.Widget;
 
 /**
  * A window to present an application's preferences.
+ * 
+ * <picture>
+ * <source srcset="preferences-window-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="preferences-window.png" alt="preferences-window">
+ * </picture>
  * 
  * The `AdwPreferencesWindow` widget presents an application's preferences
  * gathered into pages and groups. The preferences are searchable by the user.
@@ -94,11 +124,24 @@ public class PreferencesWindow : Window
 	}
 
 	/**
+	 * Displays @toast.
+	 *
+	 * See [method@ToastOverlay.add_toast].
+	 *
+	 * Params:
+	 *     toast = a toast
+	 *
+	 * Since: 1.0
+	 */
+	public void addToast(Toast toast)
+	{
+		adw_preferences_window_add_toast(adwPreferencesWindow, (toast is null) ? null : toast.getToastStruct());
+	}
+
+	/**
 	 * Closes the current subpage.
 	 *
 	 * If there is no presented subpage, this does nothing.
-	 *
-	 * See [method@Adw.PreferencesWindow.close_subpage].
 	 *
 	 * Since: 1.0
 	 */
@@ -108,15 +151,15 @@ public class PreferencesWindow : Window
 	}
 
 	/**
-	 * Gets whether or not @self allows closing subpages via a swipe gesture.
+	 * Gets whether gestures and shortcuts for closing subpages are enabled.
 	 *
-	 * Returns: whether back swipe is enabled.
+	 * Returns: whether gestures and shortcuts are enabled.
 	 *
 	 * Since: 1.0
 	 */
-	public bool getCanSwipeBack()
+	public bool getCanNavigateBack()
 	{
-		return adw_preferences_window_get_can_swipe_back(adwPreferencesWindow) != 0;
+		return adw_preferences_window_get_can_navigate_back(adwPreferencesWindow) != 0;
 	}
 
 	/**
@@ -192,16 +235,16 @@ public class PreferencesWindow : Window
 	}
 
 	/**
-	 * Sets whether or not @self allows closing subpages via a swipe gesture.
+	 * Sets whether gestures and shortcuts for closing subpages are enabled.
 	 *
 	 * Params:
-	 *     canSwipeBack = the new value
+	 *     canNavigateBack = the new value
 	 *
 	 * Since: 1.0
 	 */
-	public void setCanSwipeBack(bool canSwipeBack)
+	public void setCanNavigateBack(bool canNavigateBack)
 	{
-		adw_preferences_window_set_can_swipe_back(adwPreferencesWindow, canSwipeBack);
+		adw_preferences_window_set_can_navigate_back(adwPreferencesWindow, canNavigateBack);
 	}
 
 	/**

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.GutterLines;
 
 private import glib.MemorySlice;
@@ -10,7 +34,17 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Collected information about visible lines.
+ * 
+ * The `GtkSourceGutterLines` object is used to collect information about
+ * visible lines.
+ * 
+ * Use this from your [signal@GutterRenderer::query-data] to collect the
+ * necessary information on visible lines. Doing so reduces the number of
+ * passes through the text btree allowing GtkSourceView to reach more
+ * frames-per-second while performing kinetic scrolling.
+ */
 public class GutterLines : ObjectG
 {
 	/** the main Gtk struct */
@@ -49,16 +83,14 @@ public class GutterLines : ObjectG
 	/**
 	 * Adds the class @name to @line.
 	 *
-	 * @name will be converted to a #GQuark as part of this process. A
+	 * @name will be converted to a [alias@GLib.Quark] as part of this process. A
 	 * faster version of this function is available via
-	 * gtk_source_gutter_lines_add_qclass() for situations where the #GQuark is
+	 * [method@GutterLines.add_qclass] for situations where the [alias@GLib.Quark] is
 	 * known ahead of time.
 	 *
 	 * Params:
 	 *     line = a line number starting from zero
 	 *     name = a class name
-	 *
-	 * Since: 5.0
 	 */
 	public void addClass(uint line, string name)
 	{
@@ -69,16 +101,14 @@ public class GutterLines : ObjectG
 	 * Adds the class denoted by @qname to @line.
 	 *
 	 * You may check if a line has @qname by calling
-	 * gtk_source_gutter_lines_has_qclass().
+	 * [method@GutterLines.has_qclass].
 	 *
 	 * You can remove @qname by calling
-	 * gtk_source_gutter_lines_remove_qclass().
+	 * [method@GutterLines.remove_qclass].
 	 *
 	 * Params:
 	 *     line = a line number starting from zero
 	 *     qname = a class name as a #GQuark
-	 *
-	 * Since: 5.0
 	 */
 	public void addQclass(uint line, GQuark qname)
 	{
@@ -86,11 +116,9 @@ public class GutterLines : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkTextBuffer that the #GtkSourceGutterLines represents.
+	 * Gets the [class@Gtk.TextBuffer] that the `GtkSourceGutterLines` represents.
 	 *
 	 * Returns: a #GtkTextBuffer
-	 *
-	 * Since: 5.0
 	 */
 	public TextBuffer getBuffer()
 	{
@@ -109,8 +137,6 @@ public class GutterLines : ObjectG
 	 * user visible.
 	 *
 	 * Returns: a line number starting from 0
-	 *
-	 * Since: 5.0
 	 */
 	public uint getFirst()
 	{
@@ -123,8 +149,6 @@ public class GutterLines : ObjectG
 	 * Params:
 	 *     iter = a location for a #GtkTextIter
 	 *     line = the line number
-	 *
-	 * Since: 5.0
 	 */
 	public void getIterAtLine(out TextIter iter, uint line)
 	{
@@ -140,8 +164,6 @@ public class GutterLines : ObjectG
 	 * user visible.
 	 *
 	 * Returns: a line number starting from 0
-	 *
-	 * Since: 5.0
 	 */
 	public uint getLast()
 	{
@@ -158,8 +180,6 @@ public class GutterLines : ObjectG
 	 *     mode = a #GtkSourceGutterRendererAlignmentMode
 	 *     y = a location for the Y position in widget coordinates
 	 *     height = the line height based on @mode
-	 *
-	 * Since: 5.0
 	 */
 	public void getLineYrange(uint line, GtkSourceGutterRendererAlignmentMode mode, out int y, out int height)
 	{
@@ -167,11 +187,9 @@ public class GutterLines : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkTextView that the #GtkSourceGutterLines represents.
+	 * Gets the [class@Gtk.TextView] that the `GtkSourceGutterLines` represents.
 	 *
 	 * Returns: a #GtkTextView
-	 *
-	 * Since: 5.0
 	 */
 	public TextView getView()
 	{
@@ -185,18 +203,12 @@ public class GutterLines : ObjectG
 		return ObjectG.getDObject!(TextView)(cast(GtkTextView*) __p);
 	}
 
-	/** */
-	public void getYrange(uint line, uint* lineY, uint* lineHeight)
-	{
-		gtk_source_gutter_lines_get_yrange(gtkSourceGutterLines, line, lineY, lineHeight);
-	}
-
 	/**
-	 * Checks to see if gtk_source_gutter_lines_add_class() was called with
+	 * Checks to see if [method@GutterLines.add_class] was called with
 	 * the @name for @line.
 	 *
 	 * A faster version of this function is provided via
-	 * gtk_source_gutter_lines_has_qclass() for situations where the quark
+	 * [method@GutterLines.has_qclass] for situations where the quark
 	 * is known ahead of time.
 	 *
 	 * Params:
@@ -204,8 +216,6 @@ public class GutterLines : ObjectG
 	 *     name = a class name that may be converted, to a #GQuark
 	 *
 	 * Returns: %TRUE if @line contains @name
-	 *
-	 * Since: 5.0
 	 */
 	public bool hasClass(uint line, string name)
 	{
@@ -213,7 +223,7 @@ public class GutterLines : ObjectG
 	}
 
 	/**
-	 * Checks to see if gtk_source_gutter_lines_add_qclass() was called with
+	 * Checks to see if [method@GutterLines.add_qclass] was called with
 	 * the quark denoted by @qname for @line.
 	 *
 	 * Params:
@@ -221,8 +231,6 @@ public class GutterLines : ObjectG
 	 *     qname = a #GQuark containing the class name
 	 *
 	 * Returns: %TRUE if @line contains @qname
-	 *
-	 * Since: 5.0
 	 */
 	public bool hasQclass(uint line, GQuark qname)
 	{
@@ -236,8 +244,6 @@ public class GutterLines : ObjectG
 	 *     line = a line number starting from zero
 	 *
 	 * Returns: %TRUE if the insertion cursor is on @line
-	 *
-	 * Since: 5.0
 	 */
 	public bool isCursor(uint line)
 	{
@@ -252,8 +258,6 @@ public class GutterLines : ObjectG
 	 *     line = a line number starting from zero
 	 *
 	 * Returns: %TRUE if the line is prelit
-	 *
-	 * Since: 5.0
 	 */
 	public bool isPrelit(uint line)
 	{
@@ -268,8 +272,6 @@ public class GutterLines : ObjectG
 	 *     line = a line number starting from zero
 	 *
 	 * Returns: %TRUE if the line contains a selection
-	 *
-	 * Since: 5.0
 	 */
 	public bool isSelected(uint line)
 	{
@@ -280,14 +282,12 @@ public class GutterLines : ObjectG
 	 * Removes the class matching @name from @line.
 	 *
 	 * A faster version of this function is available via
-	 * gtk_source_gutter_lines_remove_qclass() for situations where the
+	 * [method@GutterLines.remove_qclass] for situations where the
 	 * #GQuark is known ahead of time.
 	 *
 	 * Params:
 	 *     line = a line number starting from zero
 	 *     name = a class name
-	 *
-	 * Since: 5.0
 	 */
 	public void removeClass(uint line, string name)
 	{
@@ -295,14 +295,12 @@ public class GutterLines : ObjectG
 	}
 
 	/**
-	 * Reverses a call to gtk_source_gutter_lines_add_qclass() by removing
-	 * the #GQuark matching @qname.
+	 * Reverses a call to [method@GutterLines.add_qclass] by removing
+	 * the [alias@GLib.Quark] matching @qname.
 	 *
 	 * Params:
 	 *     line = a line number starting from zero
 	 *     qname = a #GQuark to remove from @line
-	 *
-	 * Since: 5.0
 	 */
 	public void removeQclass(uint line, GQuark qname)
 	{

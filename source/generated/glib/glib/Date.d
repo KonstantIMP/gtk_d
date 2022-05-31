@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.Date;
 
 private import glib.ConstructionException;
@@ -6,7 +30,7 @@ private import glib.Str;
 private import glib.TimeVal;
 private import glib.c.functions;
 public  import glib.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -167,16 +191,19 @@ public final class Date
 	}
 
 	/**
-	 * Like g_date_new(), but also sets the value of the date. Assuming the
-	 * day-month-year triplet you pass in represents an existing day, the
-	 * returned date will be valid.
+	 * Create a new #GDate representing the given day-month-year triplet.
+	 *
+	 * The triplet you pass in must represent a valid date. Use g_date_valid_dmy()
+	 * if needed to validate it. The returned #GDate is guaranteed to be non-%NULL
+	 * and valid.
 	 *
 	 * Params:
 	 *     day = day of the month
 	 *     month = month of the year
 	 *     year = year
 	 *
-	 * Returns: a newly-allocated #GDate initialized with @day, @month, and @year
+	 * Returns: a newly-allocated #GDate
+	 *     initialized with @day, @month, and @year
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -193,14 +220,17 @@ public final class Date
 	}
 
 	/**
-	 * Like g_date_new(), but also sets the value of the date. Assuming the
-	 * Julian day number you pass in is valid (greater than 0, less than an
-	 * unreasonably large number), the returned date will be valid.
+	 * Create a new #GDate representing the given Julian date.
+	 *
+	 * The @julian_day you pass in must be valid. Use g_date_valid_julian() if
+	 * needed to validate it. The returned #GDate is guaranteed to be non-%NULL and
+	 * valid.
 	 *
 	 * Params:
 	 *     julianDay = days since January 1, Year 1
 	 *
-	 * Returns: a newly-allocated #GDate initialized with @julian_day
+	 * Returns: a newly-allocated #GDate initialized
+	 *     with @julian_day
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */

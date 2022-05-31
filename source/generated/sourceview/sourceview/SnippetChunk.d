@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.SnippetChunk;
 
 private import glib.ConstructionException;
@@ -9,7 +33,14 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * A chunk of text within the source snippet.
+ * 
+ * The `GtkSourceSnippetChunk` represents a single chunk of text that
+ * may or may not be an edit point within the snippet. Chunks that are
+ * an edit point (also called a tab stop) have the
+ * [property@SnippetChunk:focus-position] property set.
+ */
 public class SnippetChunk : ObjectG
 {
 	/** the main Gtk struct */
@@ -46,10 +77,8 @@ public class SnippetChunk : ObjectG
 	}
 
 	/**
-	 * Create a new #GtkSourceSnippetChunk that can be added to
-	 * a #GtkSourceSnippet.
-	 *
-	 * Since: 5.0
+	 * Create a new `GtkSourceSnippetChunk` that can be added to
+	 * a [class@Snippet].
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -69,8 +98,6 @@ public class SnippetChunk : ObjectG
 	 * Copies the source snippet.
 	 *
 	 * Returns: A #GtkSourceSnippetChunk
-	 *
-	 * Since: 5.0
 	 */
 	public SnippetChunk copy()
 	{
@@ -88,8 +115,6 @@ public class SnippetChunk : ObjectG
 	 * Gets the context for the snippet insertion.
 	 *
 	 * Returns: A #GtkSourceSnippetContext
-	 *
-	 * Since: 5.0
 	 */
 	public SnippetContext getContext()
 	{
@@ -104,7 +129,7 @@ public class SnippetChunk : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkSourceSnippetChunk:focus-position.
+	 * Gets the [property@SnippetChunk:focus-position].
 	 *
 	 * The focus-position is used to determine how many tabs it takes for the
 	 * snippet to advanced to this chunk.
@@ -115,8 +140,6 @@ public class SnippetChunk : ObjectG
 	 * A focus-position of -1 means the chunk cannot be focused by the user.
 	 *
 	 * Returns: the focus-position
-	 *
-	 * Since: 5.0
 	 */
 	public int getFocusPosition()
 	{
@@ -128,12 +151,10 @@ public class SnippetChunk : ObjectG
 	 *
 	 * The specification is evaluated for variables when other chunks are edited
 	 * within the snippet context. If the user has changed the text, the
-	 * #GtkSourceSnippetChunk:text and #GtkSourceSnippetChunk:text-set properties
+	 * [property@SnippetChunk:text] and [property@SnippetChunk:text-set] properties
 	 * are updated.
 	 *
 	 * Returns: the specification, if any
-	 *
-	 * Since: 5.0
 	 */
 	public string getSpec()
 	{
@@ -141,15 +162,13 @@ public class SnippetChunk : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkSourceSnippetChunk:text property.
+	 * Gets the [property@SnippetChunk:text] property.
 	 *
 	 * The text property is updated when the user edits the text of the chunk.
-	 * If it has not been edited, the #GtkSourceSnippetChunk:spec property is
+	 * If it has not been edited, the [property@SnippetChunk:spec] property is
 	 * returned.
 	 *
 	 * Returns: the text of the chunk
-	 *
-	 * Since: 5.0
 	 */
 	public string getText()
 	{
@@ -157,11 +176,9 @@ public class SnippetChunk : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkSourceSnippetChunk:text-set property.
+	 * Gets the [property@SnippetChunk:text-set] property.
 	 *
 	 * This is typically set when the user has edited a snippet chunk.
-	 *
-	 * Since: 5.0
 	 */
 	public bool getTextSet()
 	{
@@ -181,7 +198,7 @@ public class SnippetChunk : ObjectG
 	}
 
 	/**
-	 * Sets the #GtkSourceSnippetChunk:focus-position property.
+	 * Sets the [property@SnippetChunk:focus-position] property.
 	 *
 	 * The focus-position is used to determine how many tabs it takes for the
 	 * snippet to advanced to this chunk.
@@ -193,8 +210,6 @@ public class SnippetChunk : ObjectG
 	 *
 	 * Params:
 	 *     focusPosition = the focus-position
-	 *
-	 * Since: 5.0
 	 */
 	public void setFocusPosition(int focusPosition)
 	{
@@ -206,13 +221,11 @@ public class SnippetChunk : ObjectG
 	 *
 	 * The specification is evaluated for variables when other chunks are edited
 	 * within the snippet context. If the user has changed the text, the
-	 * #GtkSourceSnippetChunk:text and #GtkSourceSnippetChunk:text-set properties
+	 * [property@SnippetChunk:text and] [property@SnippetChunk:text-set] properties
 	 * are updated.
 	 *
 	 * Params:
 	 *     spec = the new specification for the chunk
-	 *
-	 * Since: 5.0
 	 */
 	public void setSpec(string spec)
 	{
@@ -228,8 +241,6 @@ public class SnippetChunk : ObjectG
 	 *
 	 * Params:
 	 *     text = the text of the property
-	 *
-	 * Since: 5.0
 	 */
 	public void setText(string text)
 	{
@@ -237,15 +248,13 @@ public class SnippetChunk : ObjectG
 	}
 
 	/**
-	 * Sets the #GtkSourceSnippetChunk:text-set property.
+	 * Sets the [property@SnippetChunk:text-set] property.
 	 *
 	 * This is typically set when the user has edited a snippet chunk by the
 	 * snippet engine.
 	 *
 	 * Params:
 	 *     textSet = the property value
-	 *
-	 * Since: 5.0
 	 */
 	public void setTextSet(bool textSet)
 	{

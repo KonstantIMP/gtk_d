@@ -1,9 +1,33 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgGlyphString;
 
 private import glib.ConstructionException;
 private import glib.Str;
 private import gobject.ObjectG;
-private import linker.loader;
+private import linker.Loader;
 private import pango.PgFont;
 private import pango.c.functions;
 public  import pango.c.types;
@@ -189,8 +213,14 @@ public class PgGlyphString
 	 * Converts from character position to x position.
 	 *
 	 * The X position is measured from the left edge of the run.
-	 * Character positions are computed by dividing up each cluster
-	 * into equal portions.
+	 * Character positions are obtained using font metrics for ligatures
+	 * where available, and computed by dividing up each cluster
+	 * into equal portions, otherwise.
+	 *
+	 * <picture>
+	 * <source srcset="glyphstring-positions-dark.png" media="(prefers-color-scheme: dark)">
+	 * <img alt="Glyph positions" src="glyphstring-positions-light.png">
+	 * </picture>
 	 *
 	 * Params:
 	 *     text = the text for the run
@@ -204,6 +234,31 @@ public class PgGlyphString
 	public void indexToX(string text, int length, PangoAnalysis* analysis, int index, bool trailing, out int xPos)
 	{
 		pango_glyph_string_index_to_x(pangoGlyphString, Str.toStringz(text), length, analysis, index, trailing, &xPos);
+	}
+
+	/**
+	 * Converts from character position to x position.
+	 *
+	 * This variant of [method@Pango.GlyphString.index_to_x] additionally
+	 * accepts a `PangoLogAttr` array. The grapheme boundary information
+	 * in it can be used to disambiguate positioning inside some complex
+	 * clusters.
+	 *
+	 * Params:
+	 *     text = the text for the run
+	 *     length = the number of bytes (not characters) in @text.
+	 *     analysis = the analysis information return from [func@itemize]
+	 *     attrs = `PangoLogAttr` array for @text
+	 *     index = the byte index within @text
+	 *     trailing = whether we should compute the result for the beginning (%FALSE)
+	 *         or end (%TRUE) of the character.
+	 *     xPos = location to store result
+	 *
+	 * Since: 1.50
+	 */
+	public void indexToXFull(string text, int length, PangoAnalysis* analysis, PangoLogAttr* attrs, int index, bool trailing, out int xPos)
+	{
+		pango_glyph_string_index_to_x_full(pangoGlyphString, Str.toStringz(text), length, analysis, attrs, index, trailing, &xPos);
 	}
 
 	/**

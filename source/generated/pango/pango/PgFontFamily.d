@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgFontFamily;
 
 private import glib.Str;
@@ -119,6 +143,9 @@ public class PgFontFamily : ObjectG
 	 * A variable font is a font which has axes that can be modified to
 	 * produce different faces.
 	 *
+	 * Such axes are also known as _variations_; see
+	 * [method@Pango.FontDescription.set_variations] for more information.
+	 *
 	 * Returns: %TRUE if the family is variable
 	 *
 	 * Since: 1.44
@@ -133,6 +160,12 @@ public class PgFontFamily : ObjectG
 	 *
 	 * The faces in a family share a common design, but differ in slant, weight,
 	 * width and other aspects.
+	 *
+	 * Note that the returned faces are not in any particular order, and
+	 * multiple faces may have the same name or characteristics.
+	 *
+	 * `PangoFontFamily` also implemented the [iface@Gio.ListModel] interface
+	 * for enumerating faces.
 	 *
 	 * Params:
 	 *     faces = location to store an array of pointers to `PangoFontFace` objects,

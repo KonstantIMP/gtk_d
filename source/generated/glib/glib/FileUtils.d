@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.FileUtils;
 
 private import glib.ErrorG;
@@ -127,7 +151,7 @@ public struct FileUtils
 	 * contents and @length to the length of the file contents in bytes. The string
 	 * stored in @contents will be nul-terminated, so for text files you can pass
 	 * %NULL for the @length argument. If the call was not successful, it returns
-	 * %FALSE and sets @error. The error domain is #G_FILE_ERROR. Possible error
+	 * %FALSE and sets @error. The error domain is %G_FILE_ERROR. Possible error
 	 * codes are those in the #GFileError enumeration. In the error case,
 	 * @contents is set to %NULL and @length is set to zero.
 	 *
@@ -214,8 +238,8 @@ public struct FileUtils
 	 * Params:
 	 *     filename = the symbolic link
 	 *
-	 * Returns: A newly-allocated string with the contents of
-	 *     the symbolic link, or %NULL if an error occurred.
+	 * Returns: A newly-allocated string with
+	 *     the contents of the symbolic link, or %NULL if an error occurred.
 	 *
 	 * Since: 2.4
 	 *

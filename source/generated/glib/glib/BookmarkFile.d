@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.BookmarkFile;
 
 private import glib.ConstructionException;
@@ -7,7 +31,7 @@ private import glib.GException;
 private import glib.Str;
 private import glib.c.functions;
 public  import glib.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -118,7 +142,7 @@ public class BookmarkFile
 	 * Gets the time the bookmark for @uri was added to @bookmark
 	 *
 	 * In the event the URI cannot be found, -1 is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Deprecated: Use g_bookmark_file_get_added_date_time() instead, as
 	 * `time_t` is deprecated due to the year 2038 problem.
@@ -150,7 +174,7 @@ public class BookmarkFile
 	 * Gets the time the bookmark for @uri was added to @bookmark
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -188,11 +212,11 @@ public class BookmarkFile
 	 * The string returned in @app_exec must be freed.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
 	 * event that no application with name @app_name has registered a bookmark
 	 * for @uri,  %FALSE is returned and error is set to
-	 * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
-	 * the command line fails, an error of the #G_SHELL_ERROR domain is
+	 * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
+	 * the command line fails, an error of the %G_SHELL_ERROR domain is
 	 * set and %FALSE is returned.
 	 *
 	 * Deprecated: Use g_bookmark_file_get_application_info() instead, as
@@ -236,11 +260,11 @@ public class BookmarkFile
 	 * The string returned in @app_exec must be freed.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
 	 * event that no application with name @app_name has registered a bookmark
 	 * for @uri,  %FALSE is returned and error is set to
-	 * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
-	 * the command line fails, an error of the #G_SHELL_ERROR domain is
+	 * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED. In the event that unquoting
+	 * the command line fails, an error of the %G_SHELL_ERROR domain is
 	 * set and %FALSE is returned.
 	 *
 	 * Params:
@@ -280,7 +304,7 @@ public class BookmarkFile
 	 * bookmark for @uri.
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -312,7 +336,7 @@ public class BookmarkFile
 	 * Retrieves the description of the bookmark for @uri.
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -343,7 +367,7 @@ public class BookmarkFile
 	 * Retrieves the list of group names of the bookmark for @uri.
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * The returned array is %NULL terminated, so @length may optionally
 	 * be %NULL.
@@ -378,7 +402,7 @@ public class BookmarkFile
 	 * Gets the icon of the bookmark for @uri.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -415,9 +439,9 @@ public class BookmarkFile
 	 * Gets whether the private flag of the bookmark for @uri is set.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
 	 * event that the private flag cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -446,9 +470,9 @@ public class BookmarkFile
 	 * Retrieves the MIME type of the resource pointed by @uri.
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.  In the
 	 * event that the MIME type cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -479,7 +503,7 @@ public class BookmarkFile
 	 * Gets the time when the bookmark for @uri was last modified.
 	 *
 	 * In the event the URI cannot be found, -1 is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Deprecated: Use g_bookmark_file_get_modified_date_time() instead, as
 	 * `time_t` is deprecated due to the year 2038 problem.
@@ -511,7 +535,7 @@ public class BookmarkFile
 	 * Gets the time when the bookmark for @uri was last modified.
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -559,7 +583,7 @@ public class BookmarkFile
 	 * If @uri is %NULL, the title of @bookmark is returned.
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI or %NULL
@@ -610,7 +634,7 @@ public class BookmarkFile
 	 * Gets the time the bookmark for @uri was last visited.
 	 *
 	 * In the event the URI cannot be found, -1 is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Deprecated: Use g_bookmark_file_get_visited_date_time() instead, as
 	 * `time_t` is deprecated due to the year 2038 problem.
@@ -642,7 +666,7 @@ public class BookmarkFile
 	 * Gets the time the bookmark for @uri was last visited.
 	 *
 	 * In the event the URI cannot be found, %NULL is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -677,7 +701,7 @@ public class BookmarkFile
 	 * registered by application @name.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -708,7 +732,7 @@ public class BookmarkFile
 	 * the bookmark for @uri belongs to.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -848,7 +872,7 @@ public class BookmarkFile
 	 * %NULL, then the bookmark is removed.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 *
 	 * Params:
 	 *     oldUri = a valid URI
@@ -879,10 +903,10 @@ public class BookmarkFile
 	 * that have registered a bookmark for @uri inside @bookmark.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 * In the event that no application with name @app_name has registered
 	 * a bookmark for @uri,  %FALSE is returned and error is set to
-	 * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.
+	 * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -913,9 +937,9 @@ public class BookmarkFile
 	 * for @uri belongs to.
 	 *
 	 * In the event the URI cannot be found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 	 * In the event no group was defined, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     uri = a valid URI
@@ -1026,10 +1050,10 @@ public class BookmarkFile
 	 *
 	 * If you try to remove an application by setting its registration count to
 	 * zero, and no bookmark for @uri is found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
 	 * in the event that no application @name has registered a bookmark
 	 * for @uri,  %FALSE is returned and error is set to
-	 * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
+	 * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
 	 * for @uri is found, one is created.
 	 *
 	 * Deprecated: Use g_bookmark_file_set_application_info() instead, as
@@ -1086,10 +1110,10 @@ public class BookmarkFile
 	 *
 	 * If you try to remove an application by setting its registration count to
 	 * zero, and no bookmark for @uri is found, %FALSE is returned and
-	 * @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
+	 * @error is set to %G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND; similarly,
 	 * in the event that no application @name has registered a bookmark
 	 * for @uri,  %FALSE is returned and error is set to
-	 * #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
+	 * %G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.  Otherwise, if no bookmark
 	 * for @uri is found, one is created.
 	 *
 	 * Params:

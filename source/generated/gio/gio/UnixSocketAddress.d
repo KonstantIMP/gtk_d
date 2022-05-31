@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gio.UnixSocketAddress;
 
 private import gio.SocketAddress;
@@ -21,9 +45,13 @@ private import gobject.ObjectG;
  * errors. You can use g_unix_socket_address_abstract_names_supported()
  * to see if abstract names are supported.
  * 
- * Note that `<gio/gunixsocketaddress.h>` belongs to the UNIX-specific GIO
- * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config file
- * when using it.
+ * Since GLib 2.72, #GUnixSocketAddress is available on all platforms. It
+ * requires underlying system support (such as Windows 10 with `AF_UNIX`) at
+ * run time.
+ * 
+ * Before GLib 2.72, `<gio/gunixsocketaddress.h>` belonged to the UNIX-specific
+ * GIO interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file
+ * when using it. This is no longer necessary since GLib 2.72.
  */
 public class UnixSocketAddress : SocketAddress
 {

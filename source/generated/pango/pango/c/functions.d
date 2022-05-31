@@ -1,9 +1,33 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.c.functions;
 
 import std.stdio;
 import pango.c.types;
 import cairo.c.types;
-import linker.loader;
+import linker.Loader;
 
 version (Windows)
 	static immutable LIBRARY_PANGO = ["libpango-1.0-0.dll;pango-1.0-0.dll;pango-1.dll", "libpangocairo-1.0-0.dll;pangocairo-1.0-0.dll;pangocairo-1.dll"];
@@ -51,8 +75,10 @@ shared static this()
 	Linker.link(pango_attr_list_insert_before, "pango_attr_list_insert_before", LIBRARY_PANGO);
 	Linker.link(pango_attr_list_ref, "pango_attr_list_ref", LIBRARY_PANGO);
 	Linker.link(pango_attr_list_splice, "pango_attr_list_splice", LIBRARY_PANGO);
+	Linker.link(pango_attr_list_to_string, "pango_attr_list_to_string", LIBRARY_PANGO);
 	Linker.link(pango_attr_list_unref, "pango_attr_list_unref", LIBRARY_PANGO);
 	Linker.link(pango_attr_list_update, "pango_attr_list_update", LIBRARY_PANGO);
+	Linker.link(pango_attr_list_from_string, "pango_attr_list_from_string", LIBRARY_PANGO);
 
 	// pango.PgAttributeShape
 
@@ -67,6 +93,15 @@ shared static this()
 	// pango.PgAttribute
 
 	Linker.link(pango_attribute_get_type, "pango_attribute_get_type", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_color, "pango_attribute_as_color", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_float, "pango_attribute_as_float", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_font_desc, "pango_attribute_as_font_desc", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_font_features, "pango_attribute_as_font_features", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_int, "pango_attribute_as_int", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_language, "pango_attribute_as_language", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_shape, "pango_attribute_as_shape", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_size, "pango_attribute_as_size", LIBRARY_PANGO);
+	Linker.link(pango_attribute_as_string, "pango_attribute_as_string", LIBRARY_PANGO);
 	Linker.link(pango_attribute_copy, "pango_attribute_copy", LIBRARY_PANGO);
 	Linker.link(pango_attribute_destroy, "pango_attribute_destroy", LIBRARY_PANGO);
 	Linker.link(pango_attribute_equal, "pango_attribute_equal", LIBRARY_PANGO);
@@ -163,6 +198,7 @@ shared static this()
 
 	Linker.link(pango_font_get_type, "pango_font_get_type", LIBRARY_PANGO);
 	Linker.link(pango_font_descriptions_free, "pango_font_descriptions_free", LIBRARY_PANGO);
+	Linker.link(pango_font_deserialize, "pango_font_deserialize", LIBRARY_PANGO);
 	Linker.link(pango_font_describe, "pango_font_describe", LIBRARY_PANGO);
 	Linker.link(pango_font_describe_with_absolute_size, "pango_font_describe_with_absolute_size", LIBRARY_PANGO);
 	Linker.link(pango_font_get_coverage, "pango_font_get_coverage", LIBRARY_PANGO);
@@ -171,8 +207,10 @@ shared static this()
 	Linker.link(pango_font_get_font_map, "pango_font_get_font_map", LIBRARY_PANGO);
 	Linker.link(pango_font_get_glyph_extents, "pango_font_get_glyph_extents", LIBRARY_PANGO);
 	Linker.link(pango_font_get_hb_font, "pango_font_get_hb_font", LIBRARY_PANGO);
+	Linker.link(pango_font_get_languages, "pango_font_get_languages", LIBRARY_PANGO);
 	Linker.link(pango_font_get_metrics, "pango_font_get_metrics", LIBRARY_PANGO);
 	Linker.link(pango_font_has_char, "pango_font_has_char", LIBRARY_PANGO);
+	Linker.link(pango_font_serialize, "pango_font_serialize", LIBRARY_PANGO);
 
 	// pango.PgFontDescription
 
@@ -301,6 +339,7 @@ shared static this()
 	Linker.link(pango_glyph_string_get_logical_widths, "pango_glyph_string_get_logical_widths", LIBRARY_PANGO);
 	Linker.link(pango_glyph_string_get_width, "pango_glyph_string_get_width", LIBRARY_PANGO);
 	Linker.link(pango_glyph_string_index_to_x, "pango_glyph_string_index_to_x", LIBRARY_PANGO);
+	Linker.link(pango_glyph_string_index_to_x_full, "pango_glyph_string_index_to_x_full", LIBRARY_PANGO);
 	Linker.link(pango_glyph_string_set_size, "pango_glyph_string_set_size", LIBRARY_PANGO);
 	Linker.link(pango_glyph_string_x_to_index, "pango_glyph_string_x_to_index", LIBRARY_PANGO);
 
@@ -329,12 +368,14 @@ shared static this()
 
 	Linker.link(pango_layout_get_type, "pango_layout_get_type", LIBRARY_PANGO);
 	Linker.link(pango_layout_new, "pango_layout_new", LIBRARY_PANGO);
+	Linker.link(pango_layout_deserialize, "pango_layout_deserialize", LIBRARY_PANGO);
 	Linker.link(pango_layout_context_changed, "pango_layout_context_changed", LIBRARY_PANGO);
 	Linker.link(pango_layout_copy, "pango_layout_copy", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_alignment, "pango_layout_get_alignment", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_attributes, "pango_layout_get_attributes", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_auto_dir, "pango_layout_get_auto_dir", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_baseline, "pango_layout_get_baseline", LIBRARY_PANGO);
+	Linker.link(pango_layout_get_caret_pos, "pango_layout_get_caret_pos", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_character_count, "pango_layout_get_character_count", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_context, "pango_layout_get_context", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_cursor_pos, "pango_layout_get_cursor_pos", LIBRARY_PANGO);
@@ -346,6 +387,7 @@ shared static this()
 	Linker.link(pango_layout_get_indent, "pango_layout_get_indent", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_iter, "pango_layout_get_iter", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_justify, "pango_layout_get_justify", LIBRARY_PANGO);
+	Linker.link(pango_layout_get_justify_last_line, "pango_layout_get_justify_last_line", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_line, "pango_layout_get_line", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_line_count, "pango_layout_get_line_count", LIBRARY_PANGO);
 	Linker.link(pango_layout_get_line_readonly, "pango_layout_get_line_readonly", LIBRARY_PANGO);
@@ -370,6 +412,7 @@ shared static this()
 	Linker.link(pango_layout_is_ellipsized, "pango_layout_is_ellipsized", LIBRARY_PANGO);
 	Linker.link(pango_layout_is_wrapped, "pango_layout_is_wrapped", LIBRARY_PANGO);
 	Linker.link(pango_layout_move_cursor_visually, "pango_layout_move_cursor_visually", LIBRARY_PANGO);
+	Linker.link(pango_layout_serialize, "pango_layout_serialize", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_alignment, "pango_layout_set_alignment", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_attributes, "pango_layout_set_attributes", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_auto_dir, "pango_layout_set_auto_dir", LIBRARY_PANGO);
@@ -378,6 +421,7 @@ shared static this()
 	Linker.link(pango_layout_set_height, "pango_layout_set_height", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_indent, "pango_layout_set_indent", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_justify, "pango_layout_set_justify", LIBRARY_PANGO);
+	Linker.link(pango_layout_set_justify_last_line, "pango_layout_set_justify_last_line", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_line_spacing, "pango_layout_set_line_spacing", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_markup, "pango_layout_set_markup", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_markup_with_accel, "pango_layout_set_markup_with_accel", LIBRARY_PANGO);
@@ -387,6 +431,7 @@ shared static this()
 	Linker.link(pango_layout_set_text, "pango_layout_set_text", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_width, "pango_layout_set_width", LIBRARY_PANGO);
 	Linker.link(pango_layout_set_wrap, "pango_layout_set_wrap", LIBRARY_PANGO);
+	Linker.link(pango_layout_write_to_file, "pango_layout_write_to_file", LIBRARY_PANGO);
 	Linker.link(pango_layout_xy_to_index, "pango_layout_xy_to_index", LIBRARY_PANGO);
 
 	// pango.PgLayoutIter
@@ -406,6 +451,7 @@ shared static this()
 	Linker.link(pango_layout_iter_get_line_readonly, "pango_layout_iter_get_line_readonly", LIBRARY_PANGO);
 	Linker.link(pango_layout_iter_get_line_yrange, "pango_layout_iter_get_line_yrange", LIBRARY_PANGO);
 	Linker.link(pango_layout_iter_get_run, "pango_layout_iter_get_run", LIBRARY_PANGO);
+	Linker.link(pango_layout_iter_get_run_baseline, "pango_layout_iter_get_run_baseline", LIBRARY_PANGO);
 	Linker.link(pango_layout_iter_get_run_extents, "pango_layout_iter_get_run_extents", LIBRARY_PANGO);
 	Linker.link(pango_layout_iter_get_run_readonly, "pango_layout_iter_get_run_readonly", LIBRARY_PANGO);
 	Linker.link(pango_layout_iter_next_char, "pango_layout_iter_next_char", LIBRARY_PANGO);
@@ -418,9 +464,13 @@ shared static this()
 	Linker.link(pango_layout_line_get_type, "pango_layout_line_get_type", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_get_extents, "pango_layout_line_get_extents", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_get_height, "pango_layout_line_get_height", LIBRARY_PANGO);
+	Linker.link(pango_layout_line_get_length, "pango_layout_line_get_length", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_get_pixel_extents, "pango_layout_line_get_pixel_extents", LIBRARY_PANGO);
+	Linker.link(pango_layout_line_get_resolved_direction, "pango_layout_line_get_resolved_direction", LIBRARY_PANGO);
+	Linker.link(pango_layout_line_get_start_index, "pango_layout_line_get_start_index", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_get_x_ranges, "pango_layout_line_get_x_ranges", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_index_to_x, "pango_layout_line_index_to_x", LIBRARY_PANGO);
+	Linker.link(pango_layout_line_is_paragraph_start, "pango_layout_line_is_paragraph_start", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_ref, "pango_layout_line_ref", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_unref, "pango_layout_line_unref", LIBRARY_PANGO);
 	Linker.link(pango_layout_line_x_to_index, "pango_layout_line_x_to_index", LIBRARY_PANGO);
@@ -433,6 +483,7 @@ shared static this()
 	Linker.link(pango_matrix_free, "pango_matrix_free", LIBRARY_PANGO);
 	Linker.link(pango_matrix_get_font_scale_factor, "pango_matrix_get_font_scale_factor", LIBRARY_PANGO);
 	Linker.link(pango_matrix_get_font_scale_factors, "pango_matrix_get_font_scale_factors", LIBRARY_PANGO);
+	Linker.link(pango_matrix_get_slant_ratio, "pango_matrix_get_slant_ratio", LIBRARY_PANGO);
 	Linker.link(pango_matrix_rotate, "pango_matrix_rotate", LIBRARY_PANGO);
 	Linker.link(pango_matrix_scale, "pango_matrix_scale", LIBRARY_PANGO);
 	Linker.link(pango_matrix_transform_distance, "pango_matrix_transform_distance", LIBRARY_PANGO);
@@ -482,12 +533,18 @@ shared static this()
 	Linker.link(pango_tab_array_new_with_positions, "pango_tab_array_new_with_positions", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_copy, "pango_tab_array_copy", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_free, "pango_tab_array_free", LIBRARY_PANGO);
+	Linker.link(pango_tab_array_get_decimal_point, "pango_tab_array_get_decimal_point", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_get_positions_in_pixels, "pango_tab_array_get_positions_in_pixels", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_get_size, "pango_tab_array_get_size", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_get_tab, "pango_tab_array_get_tab", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_get_tabs, "pango_tab_array_get_tabs", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_resize, "pango_tab_array_resize", LIBRARY_PANGO);
+	Linker.link(pango_tab_array_set_decimal_point, "pango_tab_array_set_decimal_point", LIBRARY_PANGO);
+	Linker.link(pango_tab_array_set_positions_in_pixels, "pango_tab_array_set_positions_in_pixels", LIBRARY_PANGO);
 	Linker.link(pango_tab_array_set_tab, "pango_tab_array_set_tab", LIBRARY_PANGO);
+	Linker.link(pango_tab_array_sort, "pango_tab_array_sort", LIBRARY_PANGO);
+	Linker.link(pango_tab_array_to_string, "pango_tab_array_to_string", LIBRARY_PANGO);
+	Linker.link(pango_tab_array_from_string, "pango_tab_array_from_string", LIBRARY_PANGO);
 
 	// pango.PgCairoFontMap
 
@@ -601,8 +658,10 @@ __gshared extern(C)
 	void function(PangoAttrList* list, PangoAttribute* attr) c_pango_attr_list_insert_before;
 	PangoAttrList* function(PangoAttrList* list) c_pango_attr_list_ref;
 	void function(PangoAttrList* list, PangoAttrList* other, int pos, int len) c_pango_attr_list_splice;
+	char* function(PangoAttrList* list) c_pango_attr_list_to_string;
 	void function(PangoAttrList* list) c_pango_attr_list_unref;
 	void function(PangoAttrList* list, int pos, int remove, int add) c_pango_attr_list_update;
+	PangoAttrList* function(const(char)* text) c_pango_attr_list_from_string;
 
 	// pango.PgAttributeShape
 
@@ -617,6 +676,15 @@ __gshared extern(C)
 	// pango.PgAttribute
 
 	GType function() c_pango_attribute_get_type;
+	PangoAttrColor* function(PangoAttribute* attr) c_pango_attribute_as_color;
+	PangoAttrFloat* function(PangoAttribute* attr) c_pango_attribute_as_float;
+	PangoAttrFontDesc* function(PangoAttribute* attr) c_pango_attribute_as_font_desc;
+	PangoAttrFontFeatures* function(PangoAttribute* attr) c_pango_attribute_as_font_features;
+	PangoAttrInt* function(PangoAttribute* attr) c_pango_attribute_as_int;
+	PangoAttrLanguage* function(PangoAttribute* attr) c_pango_attribute_as_language;
+	PangoAttrShape* function(PangoAttribute* attr) c_pango_attribute_as_shape;
+	PangoAttrSize* function(PangoAttribute* attr) c_pango_attribute_as_size;
+	PangoAttrString* function(PangoAttribute* attr) c_pango_attribute_as_string;
 	PangoAttribute* function(PangoAttribute* attr) c_pango_attribute_copy;
 	void function(PangoAttribute* attr) c_pango_attribute_destroy;
 	int function(PangoAttribute* attr1, PangoAttribute* attr2) c_pango_attribute_equal;
@@ -687,11 +755,11 @@ __gshared extern(C)
 	void function(const(char)* text, int length, PangoAnalysis* analysis, PangoLogAttr* attrs, int attrsLen) c_pango_default_break;
 	PangoDirection function(const(char)* text, int length) c_pango_find_base_dir;
 	void function(const(char)* text, int length, int* paragraphDelimiterIndex, int* nextParagraphStart) c_pango_find_paragraph_boundary;
-	void function(const(char)* text, int length, int level, PangoLanguage* language, PangoLogAttr* logAttrs, int attrsLen) c_pango_get_log_attrs;
+	void function(const(char)* text, int length, int level, PangoLanguage* language, PangoLogAttr* attrs, int attrsLen) c_pango_get_log_attrs;
 	int function(dchar ch, dchar* mirroredCh) c_pango_get_mirror_char;
 	GList* function(PangoContext* context, const(char)* text, int startIndex, int length, PangoAttrList* attrs, PangoAttrIterator* cachedIter) c_pango_itemize;
 	GList* function(PangoContext* context, PangoDirection baseDir, const(char)* text, int startIndex, int length, PangoAttrList* attrs, PangoAttrIterator* cachedIter) c_pango_itemize_with_base_dir;
-	GList* function(GList* logicalItems) c_pango_reorder_items;
+	GList* function(GList* items) c_pango_reorder_items;
 	void function(const(char)* text, int length, PangoAnalysis* analysis, PangoGlyphString* glyphs) c_pango_shape;
 	void function(const(char)* itemText, int itemLength, const(char)* paragraphText, int paragraphLength, PangoAnalysis* analysis, PangoGlyphString* glyphs) c_pango_shape_full;
 	PangoDirection function(dchar ch) c_pango_unichar_direction;
@@ -713,6 +781,7 @@ __gshared extern(C)
 
 	GType function() c_pango_font_get_type;
 	void function(PangoFontDescription** descs, int nDescs) c_pango_font_descriptions_free;
+	PangoFont* function(PangoContext* context, GBytes* bytes, GError** err) c_pango_font_deserialize;
 	PangoFontDescription* function(PangoFont* font) c_pango_font_describe;
 	PangoFontDescription* function(PangoFont* font) c_pango_font_describe_with_absolute_size;
 	PangoCoverage* function(PangoFont* font, PangoLanguage* language) c_pango_font_get_coverage;
@@ -721,8 +790,10 @@ __gshared extern(C)
 	PangoFontMap* function(PangoFont* font) c_pango_font_get_font_map;
 	void function(PangoFont* font, PangoGlyph glyph, PangoRectangle* inkRect, PangoRectangle* logicalRect) c_pango_font_get_glyph_extents;
 	hb_font_t* function(PangoFont* font) c_pango_font_get_hb_font;
+	PangoLanguage** function(PangoFont* font) c_pango_font_get_languages;
 	PangoFontMetrics* function(PangoFont* font, PangoLanguage* language) c_pango_font_get_metrics;
 	int function(PangoFont* font, dchar wc) c_pango_font_has_char;
+	GBytes* function(PangoFont* font) c_pango_font_serialize;
 
 	// pango.PgFontDescription
 
@@ -850,9 +921,10 @@ __gshared extern(C)
 	void function(PangoGlyphString* string_) c_pango_glyph_string_free;
 	void function(PangoGlyphString* glyphs, const(char)* text, int length, int embeddingLevel, int* logicalWidths) c_pango_glyph_string_get_logical_widths;
 	int function(PangoGlyphString* glyphs) c_pango_glyph_string_get_width;
-	void function(PangoGlyphString* glyphs, char* text, int length, PangoAnalysis* analysis, int index, int trailing, int* xPos) c_pango_glyph_string_index_to_x;
+	void function(PangoGlyphString* glyphs, const(char)* text, int length, PangoAnalysis* analysis, int index, int trailing, int* xPos) c_pango_glyph_string_index_to_x;
+	void function(PangoGlyphString* glyphs, const(char)* text, int length, PangoAnalysis* analysis, PangoLogAttr* attrs, int index, int trailing, int* xPos) c_pango_glyph_string_index_to_x_full;
 	void function(PangoGlyphString* string_, int newLen) c_pango_glyph_string_set_size;
-	void function(PangoGlyphString* glyphs, char* text, int length, PangoAnalysis* analysis, int xPos, int* index, int* trailing) c_pango_glyph_string_x_to_index;
+	void function(PangoGlyphString* glyphs, const(char)* text, int length, PangoAnalysis* analysis, int xPos, int* index, int* trailing) c_pango_glyph_string_x_to_index;
 
 	// pango.PgItem
 
@@ -879,12 +951,14 @@ __gshared extern(C)
 
 	GType function() c_pango_layout_get_type;
 	PangoLayout* function(PangoContext* context) c_pango_layout_new;
+	PangoLayout* function(PangoContext* context, GBytes* bytes, PangoLayoutDeserializeFlags flags, GError** err) c_pango_layout_deserialize;
 	void function(PangoLayout* layout) c_pango_layout_context_changed;
 	PangoLayout* function(PangoLayout* src) c_pango_layout_copy;
 	PangoAlignment function(PangoLayout* layout) c_pango_layout_get_alignment;
 	PangoAttrList* function(PangoLayout* layout) c_pango_layout_get_attributes;
 	int function(PangoLayout* layout) c_pango_layout_get_auto_dir;
 	int function(PangoLayout* layout) c_pango_layout_get_baseline;
+	void function(PangoLayout* layout, int index, PangoRectangle* strongPos, PangoRectangle* weakPos) c_pango_layout_get_caret_pos;
 	int function(PangoLayout* layout) c_pango_layout_get_character_count;
 	PangoContext* function(PangoLayout* layout) c_pango_layout_get_context;
 	void function(PangoLayout* layout, int index, PangoRectangle* strongPos, PangoRectangle* weakPos) c_pango_layout_get_cursor_pos;
@@ -896,6 +970,7 @@ __gshared extern(C)
 	int function(PangoLayout* layout) c_pango_layout_get_indent;
 	PangoLayoutIter* function(PangoLayout* layout) c_pango_layout_get_iter;
 	int function(PangoLayout* layout) c_pango_layout_get_justify;
+	int function(PangoLayout* layout) c_pango_layout_get_justify_last_line;
 	PangoLayoutLine* function(PangoLayout* layout, int line) c_pango_layout_get_line;
 	int function(PangoLayout* layout) c_pango_layout_get_line_count;
 	PangoLayoutLine* function(PangoLayout* layout, int line) c_pango_layout_get_line_readonly;
@@ -920,6 +995,7 @@ __gshared extern(C)
 	int function(PangoLayout* layout) c_pango_layout_is_ellipsized;
 	int function(PangoLayout* layout) c_pango_layout_is_wrapped;
 	void function(PangoLayout* layout, int strong, int oldIndex, int oldTrailing, int direction, int* newIndex, int* newTrailing) c_pango_layout_move_cursor_visually;
+	GBytes* function(PangoLayout* layout, PangoLayoutSerializeFlags flags) c_pango_layout_serialize;
 	void function(PangoLayout* layout, PangoAlignment alignment) c_pango_layout_set_alignment;
 	void function(PangoLayout* layout, PangoAttrList* attrs) c_pango_layout_set_attributes;
 	void function(PangoLayout* layout, int autoDir) c_pango_layout_set_auto_dir;
@@ -928,6 +1004,7 @@ __gshared extern(C)
 	void function(PangoLayout* layout, int height) c_pango_layout_set_height;
 	void function(PangoLayout* layout, int indent) c_pango_layout_set_indent;
 	void function(PangoLayout* layout, int justify) c_pango_layout_set_justify;
+	void function(PangoLayout* layout, int justify) c_pango_layout_set_justify_last_line;
 	void function(PangoLayout* layout, float factor) c_pango_layout_set_line_spacing;
 	void function(PangoLayout* layout, const(char)* markup, int length) c_pango_layout_set_markup;
 	void function(PangoLayout* layout, const(char)* markup, int length, dchar accelMarker, dchar* accelChar) c_pango_layout_set_markup_with_accel;
@@ -937,6 +1014,7 @@ __gshared extern(C)
 	void function(PangoLayout* layout, const(char)* text, int length) c_pango_layout_set_text;
 	void function(PangoLayout* layout, int width) c_pango_layout_set_width;
 	void function(PangoLayout* layout, PangoWrapMode wrap) c_pango_layout_set_wrap;
+	int function(PangoLayout* layout, PangoLayoutSerializeFlags flags, char* filename, GError** err) c_pango_layout_write_to_file;
 	int function(PangoLayout* layout, int x, int y, int* index, int* trailing) c_pango_layout_xy_to_index;
 
 	// pango.PgLayoutIter
@@ -956,6 +1034,7 @@ __gshared extern(C)
 	PangoLayoutLine* function(PangoLayoutIter* iter) c_pango_layout_iter_get_line_readonly;
 	void function(PangoLayoutIter* iter, int* y0, int* y1) c_pango_layout_iter_get_line_yrange;
 	PangoLayoutRun* function(PangoLayoutIter* iter) c_pango_layout_iter_get_run;
+	int function(PangoLayoutIter* iter) c_pango_layout_iter_get_run_baseline;
 	void function(PangoLayoutIter* iter, PangoRectangle* inkRect, PangoRectangle* logicalRect) c_pango_layout_iter_get_run_extents;
 	PangoLayoutRun* function(PangoLayoutIter* iter) c_pango_layout_iter_get_run_readonly;
 	int function(PangoLayoutIter* iter) c_pango_layout_iter_next_char;
@@ -968,9 +1047,13 @@ __gshared extern(C)
 	GType function() c_pango_layout_line_get_type;
 	void function(PangoLayoutLine* line, PangoRectangle* inkRect, PangoRectangle* logicalRect) c_pango_layout_line_get_extents;
 	void function(PangoLayoutLine* line, int* height) c_pango_layout_line_get_height;
+	int function(PangoLayoutLine* line) c_pango_layout_line_get_length;
 	void function(PangoLayoutLine* layoutLine, PangoRectangle* inkRect, PangoRectangle* logicalRect) c_pango_layout_line_get_pixel_extents;
+	PangoDirection function(PangoLayoutLine* line) c_pango_layout_line_get_resolved_direction;
+	int function(PangoLayoutLine* line) c_pango_layout_line_get_start_index;
 	void function(PangoLayoutLine* line, int startIndex, int endIndex, int** ranges, int* nRanges) c_pango_layout_line_get_x_ranges;
 	void function(PangoLayoutLine* line, int index, int trailing, int* xPos) c_pango_layout_line_index_to_x;
+	int function(PangoLayoutLine* line) c_pango_layout_line_is_paragraph_start;
 	PangoLayoutLine* function(PangoLayoutLine* line) c_pango_layout_line_ref;
 	void function(PangoLayoutLine* line) c_pango_layout_line_unref;
 	int function(PangoLayoutLine* line, int xPos, int* index, int* trailing) c_pango_layout_line_x_to_index;
@@ -983,6 +1066,7 @@ __gshared extern(C)
 	void function(PangoMatrix* matrix) c_pango_matrix_free;
 	double function(PangoMatrix* matrix) c_pango_matrix_get_font_scale_factor;
 	void function(PangoMatrix* matrix, double* xscale, double* yscale) c_pango_matrix_get_font_scale_factors;
+	double function(PangoMatrix* matrix) c_pango_matrix_get_slant_ratio;
 	void function(PangoMatrix* matrix, double degrees) c_pango_matrix_rotate;
 	void function(PangoMatrix* matrix, double scaleX, double scaleY) c_pango_matrix_scale;
 	void function(PangoMatrix* matrix, double* dx, double* dy) c_pango_matrix_transform_distance;
@@ -1032,12 +1116,18 @@ __gshared extern(C)
 	PangoTabArray* function(int size, int positionsInPixels, PangoTabAlign firstAlignment, int firstPosition, ... ) c_pango_tab_array_new_with_positions;
 	PangoTabArray* function(PangoTabArray* src) c_pango_tab_array_copy;
 	void function(PangoTabArray* tabArray) c_pango_tab_array_free;
+	dchar function(PangoTabArray* tabArray, int tabIndex) c_pango_tab_array_get_decimal_point;
 	int function(PangoTabArray* tabArray) c_pango_tab_array_get_positions_in_pixels;
 	int function(PangoTabArray* tabArray) c_pango_tab_array_get_size;
 	void function(PangoTabArray* tabArray, int tabIndex, PangoTabAlign* alignment, int* location) c_pango_tab_array_get_tab;
 	void function(PangoTabArray* tabArray, PangoTabAlign** alignments, int** locations) c_pango_tab_array_get_tabs;
 	void function(PangoTabArray* tabArray, int newSize) c_pango_tab_array_resize;
+	void function(PangoTabArray* tabArray, int tabIndex, dchar decimalPoint) c_pango_tab_array_set_decimal_point;
+	void function(PangoTabArray* tabArray, int positionsInPixels) c_pango_tab_array_set_positions_in_pixels;
 	void function(PangoTabArray* tabArray, int tabIndex, PangoTabAlign alignment, int location) c_pango_tab_array_set_tab;
+	void function(PangoTabArray* tabArray) c_pango_tab_array_sort;
+	char* function(PangoTabArray* tabArray) c_pango_tab_array_to_string;
+	PangoTabArray* function(const(char)* text) c_pango_tab_array_from_string;
 
 	// pango.PgCairoFontMap
 
@@ -1149,8 +1239,10 @@ alias c_pango_attr_list_insert pango_attr_list_insert;
 alias c_pango_attr_list_insert_before pango_attr_list_insert_before;
 alias c_pango_attr_list_ref pango_attr_list_ref;
 alias c_pango_attr_list_splice pango_attr_list_splice;
+alias c_pango_attr_list_to_string pango_attr_list_to_string;
 alias c_pango_attr_list_unref pango_attr_list_unref;
 alias c_pango_attr_list_update pango_attr_list_update;
+alias c_pango_attr_list_from_string pango_attr_list_from_string;
 
 // pango.PgAttributeShape
 
@@ -1165,6 +1257,15 @@ alias c_pango_attr_size_new_absolute pango_attr_size_new_absolute;
 // pango.PgAttribute
 
 alias c_pango_attribute_get_type pango_attribute_get_type;
+alias c_pango_attribute_as_color pango_attribute_as_color;
+alias c_pango_attribute_as_float pango_attribute_as_float;
+alias c_pango_attribute_as_font_desc pango_attribute_as_font_desc;
+alias c_pango_attribute_as_font_features pango_attribute_as_font_features;
+alias c_pango_attribute_as_int pango_attribute_as_int;
+alias c_pango_attribute_as_language pango_attribute_as_language;
+alias c_pango_attribute_as_shape pango_attribute_as_shape;
+alias c_pango_attribute_as_size pango_attribute_as_size;
+alias c_pango_attribute_as_string pango_attribute_as_string;
 alias c_pango_attribute_copy pango_attribute_copy;
 alias c_pango_attribute_destroy pango_attribute_destroy;
 alias c_pango_attribute_equal pango_attribute_equal;
@@ -1261,6 +1362,7 @@ alias c_pango_coverage_unref pango_coverage_unref;
 
 alias c_pango_font_get_type pango_font_get_type;
 alias c_pango_font_descriptions_free pango_font_descriptions_free;
+alias c_pango_font_deserialize pango_font_deserialize;
 alias c_pango_font_describe pango_font_describe;
 alias c_pango_font_describe_with_absolute_size pango_font_describe_with_absolute_size;
 alias c_pango_font_get_coverage pango_font_get_coverage;
@@ -1269,8 +1371,10 @@ alias c_pango_font_get_features pango_font_get_features;
 alias c_pango_font_get_font_map pango_font_get_font_map;
 alias c_pango_font_get_glyph_extents pango_font_get_glyph_extents;
 alias c_pango_font_get_hb_font pango_font_get_hb_font;
+alias c_pango_font_get_languages pango_font_get_languages;
 alias c_pango_font_get_metrics pango_font_get_metrics;
 alias c_pango_font_has_char pango_font_has_char;
+alias c_pango_font_serialize pango_font_serialize;
 
 // pango.PgFontDescription
 
@@ -1399,6 +1503,7 @@ alias c_pango_glyph_string_free pango_glyph_string_free;
 alias c_pango_glyph_string_get_logical_widths pango_glyph_string_get_logical_widths;
 alias c_pango_glyph_string_get_width pango_glyph_string_get_width;
 alias c_pango_glyph_string_index_to_x pango_glyph_string_index_to_x;
+alias c_pango_glyph_string_index_to_x_full pango_glyph_string_index_to_x_full;
 alias c_pango_glyph_string_set_size pango_glyph_string_set_size;
 alias c_pango_glyph_string_x_to_index pango_glyph_string_x_to_index;
 
@@ -1427,12 +1532,14 @@ alias c_pango_language_get_preferred pango_language_get_preferred;
 
 alias c_pango_layout_get_type pango_layout_get_type;
 alias c_pango_layout_new pango_layout_new;
+alias c_pango_layout_deserialize pango_layout_deserialize;
 alias c_pango_layout_context_changed pango_layout_context_changed;
 alias c_pango_layout_copy pango_layout_copy;
 alias c_pango_layout_get_alignment pango_layout_get_alignment;
 alias c_pango_layout_get_attributes pango_layout_get_attributes;
 alias c_pango_layout_get_auto_dir pango_layout_get_auto_dir;
 alias c_pango_layout_get_baseline pango_layout_get_baseline;
+alias c_pango_layout_get_caret_pos pango_layout_get_caret_pos;
 alias c_pango_layout_get_character_count pango_layout_get_character_count;
 alias c_pango_layout_get_context pango_layout_get_context;
 alias c_pango_layout_get_cursor_pos pango_layout_get_cursor_pos;
@@ -1444,6 +1551,7 @@ alias c_pango_layout_get_height pango_layout_get_height;
 alias c_pango_layout_get_indent pango_layout_get_indent;
 alias c_pango_layout_get_iter pango_layout_get_iter;
 alias c_pango_layout_get_justify pango_layout_get_justify;
+alias c_pango_layout_get_justify_last_line pango_layout_get_justify_last_line;
 alias c_pango_layout_get_line pango_layout_get_line;
 alias c_pango_layout_get_line_count pango_layout_get_line_count;
 alias c_pango_layout_get_line_readonly pango_layout_get_line_readonly;
@@ -1468,6 +1576,7 @@ alias c_pango_layout_index_to_pos pango_layout_index_to_pos;
 alias c_pango_layout_is_ellipsized pango_layout_is_ellipsized;
 alias c_pango_layout_is_wrapped pango_layout_is_wrapped;
 alias c_pango_layout_move_cursor_visually pango_layout_move_cursor_visually;
+alias c_pango_layout_serialize pango_layout_serialize;
 alias c_pango_layout_set_alignment pango_layout_set_alignment;
 alias c_pango_layout_set_attributes pango_layout_set_attributes;
 alias c_pango_layout_set_auto_dir pango_layout_set_auto_dir;
@@ -1476,6 +1585,7 @@ alias c_pango_layout_set_font_description pango_layout_set_font_description;
 alias c_pango_layout_set_height pango_layout_set_height;
 alias c_pango_layout_set_indent pango_layout_set_indent;
 alias c_pango_layout_set_justify pango_layout_set_justify;
+alias c_pango_layout_set_justify_last_line pango_layout_set_justify_last_line;
 alias c_pango_layout_set_line_spacing pango_layout_set_line_spacing;
 alias c_pango_layout_set_markup pango_layout_set_markup;
 alias c_pango_layout_set_markup_with_accel pango_layout_set_markup_with_accel;
@@ -1485,6 +1595,7 @@ alias c_pango_layout_set_tabs pango_layout_set_tabs;
 alias c_pango_layout_set_text pango_layout_set_text;
 alias c_pango_layout_set_width pango_layout_set_width;
 alias c_pango_layout_set_wrap pango_layout_set_wrap;
+alias c_pango_layout_write_to_file pango_layout_write_to_file;
 alias c_pango_layout_xy_to_index pango_layout_xy_to_index;
 
 // pango.PgLayoutIter
@@ -1504,6 +1615,7 @@ alias c_pango_layout_iter_get_line_extents pango_layout_iter_get_line_extents;
 alias c_pango_layout_iter_get_line_readonly pango_layout_iter_get_line_readonly;
 alias c_pango_layout_iter_get_line_yrange pango_layout_iter_get_line_yrange;
 alias c_pango_layout_iter_get_run pango_layout_iter_get_run;
+alias c_pango_layout_iter_get_run_baseline pango_layout_iter_get_run_baseline;
 alias c_pango_layout_iter_get_run_extents pango_layout_iter_get_run_extents;
 alias c_pango_layout_iter_get_run_readonly pango_layout_iter_get_run_readonly;
 alias c_pango_layout_iter_next_char pango_layout_iter_next_char;
@@ -1516,9 +1628,13 @@ alias c_pango_layout_iter_next_run pango_layout_iter_next_run;
 alias c_pango_layout_line_get_type pango_layout_line_get_type;
 alias c_pango_layout_line_get_extents pango_layout_line_get_extents;
 alias c_pango_layout_line_get_height pango_layout_line_get_height;
+alias c_pango_layout_line_get_length pango_layout_line_get_length;
 alias c_pango_layout_line_get_pixel_extents pango_layout_line_get_pixel_extents;
+alias c_pango_layout_line_get_resolved_direction pango_layout_line_get_resolved_direction;
+alias c_pango_layout_line_get_start_index pango_layout_line_get_start_index;
 alias c_pango_layout_line_get_x_ranges pango_layout_line_get_x_ranges;
 alias c_pango_layout_line_index_to_x pango_layout_line_index_to_x;
+alias c_pango_layout_line_is_paragraph_start pango_layout_line_is_paragraph_start;
 alias c_pango_layout_line_ref pango_layout_line_ref;
 alias c_pango_layout_line_unref pango_layout_line_unref;
 alias c_pango_layout_line_x_to_index pango_layout_line_x_to_index;
@@ -1531,6 +1647,7 @@ alias c_pango_matrix_copy pango_matrix_copy;
 alias c_pango_matrix_free pango_matrix_free;
 alias c_pango_matrix_get_font_scale_factor pango_matrix_get_font_scale_factor;
 alias c_pango_matrix_get_font_scale_factors pango_matrix_get_font_scale_factors;
+alias c_pango_matrix_get_slant_ratio pango_matrix_get_slant_ratio;
 alias c_pango_matrix_rotate pango_matrix_rotate;
 alias c_pango_matrix_scale pango_matrix_scale;
 alias c_pango_matrix_transform_distance pango_matrix_transform_distance;
@@ -1580,12 +1697,18 @@ alias c_pango_tab_array_new pango_tab_array_new;
 alias c_pango_tab_array_new_with_positions pango_tab_array_new_with_positions;
 alias c_pango_tab_array_copy pango_tab_array_copy;
 alias c_pango_tab_array_free pango_tab_array_free;
+alias c_pango_tab_array_get_decimal_point pango_tab_array_get_decimal_point;
 alias c_pango_tab_array_get_positions_in_pixels pango_tab_array_get_positions_in_pixels;
 alias c_pango_tab_array_get_size pango_tab_array_get_size;
 alias c_pango_tab_array_get_tab pango_tab_array_get_tab;
 alias c_pango_tab_array_get_tabs pango_tab_array_get_tabs;
 alias c_pango_tab_array_resize pango_tab_array_resize;
+alias c_pango_tab_array_set_decimal_point pango_tab_array_set_decimal_point;
+alias c_pango_tab_array_set_positions_in_pixels pango_tab_array_set_positions_in_pixels;
 alias c_pango_tab_array_set_tab pango_tab_array_set_tab;
+alias c_pango_tab_array_sort pango_tab_array_sort;
+alias c_pango_tab_array_to_string pango_tab_array_to_string;
+alias c_pango_tab_array_from_string pango_tab_array_from_string;
 
 // pango.PgCairoFontMap
 

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gio.SocketClient;
 
 private import gio.AsyncResultIF;
@@ -670,6 +694,12 @@ public class SocketClient : ObjectG
 	 * Gets the TLS validation flags used creating TLS connections via
 	 * @client.
 	 *
+	 * This function does not work as originally designed and is impossible
+	 * to use correctly. See #GSocketClient:tls-validation-flags for more
+	 * information.
+	 *
+	 * Deprecated: Do not attempt to ignore validation errors.
+	 *
 	 * Returns: the TLS validation flags
 	 *
 	 * Since: 2.28
@@ -843,6 +873,12 @@ public class SocketClient : ObjectG
 	/**
 	 * Sets the TLS validation flags used when creating TLS connections
 	 * via @client. The default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
+	 *
+	 * This function does not work as originally designed and is impossible
+	 * to use correctly. See #GSocketClient:tls-validation-flags for more
+	 * information.
+	 *
+	 * Deprecated: Do not attempt to ignore validation errors.
 	 *
 	 * Params:
 	 *     flags = the validation flags

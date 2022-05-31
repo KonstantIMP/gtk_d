@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgFontFace;
 
 private import glib.Str;
@@ -49,8 +73,10 @@ public class PgFontFace : ObjectG
 	}
 
 	/**
-	 * Returns the family, style, variant, weight and stretch of
-	 * a `PangoFontFace`. The size field of the resulting font description
+	 * Returns a font description that matches the face.
+	 *
+	 * The resulting font description will have the family, style,
+	 * variant, weight and stretch of the face, but its size field
 	 * will be unset.
 	 *
 	 * Returns: a newly-created `PangoFontDescription` structure
@@ -70,9 +96,11 @@ public class PgFontFace : ObjectG
 	}
 
 	/**
-	 * Gets a name representing the style of this face among the
-	 * different faces in the `PangoFontFamily` for the face. The
-	 * name is suitable for displaying to users.
+	 * Gets a name representing the style of this face.
+	 *
+	 * Note that a font family may contain multiple faces
+	 * with the same name (e.g. a variable and a non-variable
+	 * face for the same style).
 	 *
 	 * Returns: the face name for the face. This string is
 	 *     owned by the face object and must not be modified or freed.
@@ -102,11 +130,13 @@ public class PgFontFace : ObjectG
 	}
 
 	/**
-	 * Returns whether a `PangoFontFace` is synthesized by the underlying
-	 * font rendering engine from another face, perhaps by shearing, emboldening,
-	 * or lightening it.
+	 * Returns whether a `PangoFontFace` is synthesized.
 	 *
-	 * Returns: whether @face is synthesized.
+	 * This will be the case if the underlying font rendering engine
+	 * creates this face from another face, by shearing, emboldening,
+	 * lightening or modifying it in some other way.
+	 *
+	 * Returns: whether @face is synthesized
 	 *
 	 * Since: 1.18
 	 */

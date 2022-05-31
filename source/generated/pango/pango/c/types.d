@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.c.types;
 
 public import cairo.c.types;
@@ -16,12 +40,14 @@ public alias uint PangoGlyph;
  * The `PangoGlyphUnit` type is used to store dimensions within
  * Pango.
  *
- * Dimensions are stored in 1/%PANGO_SCALE of a device unit.
+ * Dimensions are stored in 1/PANGO_SCALE of a device unit.
  * (A device unit might be a pixel for screen display, or
- * a point on a printer.) %PANGO_SCALE is currently 1024, and
+ * a point on a printer.) PANGO_SCALE is currently 1024, and
  * may change in the future (unlikely though), but you should not
- * depend on its exact value. The PANGO_PIXELS() macro can be used
- * to convert from glyph units into device units with correct rounding.
+ * depend on its exact value.
+ *
+ * The PANGO_PIXELS() macro can be used to convert from glyph units
+ * into device units with correct rounding.
  */
 public alias int PangoGlyphUnit;
 
@@ -38,7 +64,10 @@ public alias PangoGlyphItem PangoLayoutRun;
  * within the available space.
  *
  * If the `PangoLayout` is set to justify using [method@Pango.Layout.set_justify],
- * this only has effect for partial lines.
+ * this only affects partial lines.
+ *
+ * See [method@Pango.Layout.set_auto_dir] for how text direction affects
+ * the interpretation of `PangoAlignment` values.
  */
 public enum PangoAlignment
 {
@@ -159,7 +188,7 @@ public enum PangoAttrType
 	 */
 	GRAVITY_HINT = 22,
 	/**
-	 * OpenType font features ([struct@Pango.AttrString]). Since 1.38
+	 * OpenType font features ([struct@Pango.AttrFontFeatures]). Since 1.38
 	 */
 	FONT_FEATURES = 23,
 	/**
@@ -190,11 +219,61 @@ public enum PangoAttrType
 	 * overline color ([struct@Pango.AttrColor]). Since 1.46
 	 */
 	OVERLINE_COLOR = 30,
+	/**
+	 * line height factor ([struct@Pango.AttrFloat]). Since: 1.50
+	 */
+	LINE_HEIGHT = 31,
+	/**
+	 * line height ([struct@Pango.AttrInt]). Since: 1.50
+	 */
+	ABSOLUTE_LINE_HEIGHT = 32,
+	TEXT_TRANSFORM = 33,
+	/**
+	 * override segmentation to classify the range of the attribute as a single word ([struct@Pango.AttrInt]). Since 1.50
+	 */
+	WORD = 34,
+	/**
+	 * override segmentation to classify the range of the attribute as a single sentence ([struct@Pango.AttrInt]). Since 1.50
+	 */
+	SENTENCE = 35,
+	/**
+	 * baseline displacement ([struct@Pango.AttrInt]). Since 1.50
+	 */
+	BASELINE_SHIFT = 36,
+	/**
+	 * font-relative size change ([struct@Pango.AttrInt]). Since 1.50
+	 */
+	FONT_SCALE = 37,
+}
+
+/**
+ * An enumeration that affects baseline shifts between runs.
+ *
+ * Since: 1.50
+ */
+public enum PangoBaselineShift
+{
+	/**
+	 * Leave the baseline unchanged
+	 */
+	NONE = 0,
+	/**
+	 * Shift the baseline to the superscript position,
+	 * relative to the previous run
+	 */
+	SUPERSCRIPT = 1,
+	/**
+	 * Shift the baseline to the subscript position,
+	 * relative to the previous run
+	 */
+	SUBSCRIPT = 2,
 }
 
 /**
  * `PangoBidiType` represents the bidirectional character
- * type of a Unicode character as specified by the
+ * type of a Unicode character.
+ *
+ * The values in this enumeration are specified by the
  * [Unicode bidirectional algorithm](http://www.unicode.org/reports/tr9/).
  *
  * Deprecated: Use fribidi for this information
@@ -338,14 +417,14 @@ public enum PangoCoverageLevel
  *
  * Not every value in this enumeration makes sense for every usage of
  * `PangoDirection`; for example, the return value of [func@unichar_direction]
- * and [func@find_base_dir] cannot be %PANGO_DIRECTION_WEAK_LTR or
- * %PANGO_DIRECTION_WEAK_RTL, since every character is either neutral
- * or has a strong direction; on the other hand %PANGO_DIRECTION_NEUTRAL
+ * and [func@find_base_dir] cannot be `PANGO_DIRECTION_WEAK_LTR` or
+ * `PANGO_DIRECTION_WEAK_RTL`, since every character is either neutral
+ * or has a strong direction; on the other hand `PANGO_DIRECTION_NEUTRAL`
  * doesn't make sense to pass to [func@itemize_with_base_dir].
  *
- * The %PANGO_DIRECTION_TTB_LTR, %PANGO_DIRECTION_TTB_RTL values come from
+ * The `PANGO_DIRECTION_TTB_LTR`, `PANGO_DIRECTION_TTB_RTL` values come from
  * an earlier interpretation of this enumeration as the writing direction
- * of a block of text and are no longer used; See `PangoGravity` for how
+ * of a block of text and are no longer used. See `PangoGravity` for how
  * vertical text is handled in Pango.
  *
  * If you are interested in text direction, you should really use fribidi
@@ -364,12 +443,12 @@ public enum PangoDirection
 	RTL = 1,
 	/**
 	 * Deprecated value; treated the
-	 * same as %PANGO_DIRECTION_RTL.
+	 * same as `PANGO_DIRECTION_RTL`.
 	 */
 	TTB_LTR = 2,
 	/**
 	 * Deprecated value; treated the
-	 * same as %PANGO_DIRECTION_LTR
+	 * same as `PANGO_DIRECTION_LTR`
 	 */
 	TTB_RTL = 3,
 	/**
@@ -455,6 +534,32 @@ public enum PangoFontMask
 }
 
 /**
+ * An enumeration that affects font sizes for superscript
+ * and subscript positioning and for (emulated) Small Caps.
+ *
+ * Since: 1.50
+ */
+public enum PangoFontScale
+{
+	/**
+	 * Leave the font size unchanged
+	 */
+	NONE = 0,
+	/**
+	 * Change the font to a size suitable for superscripts
+	 */
+	SUPERSCRIPT = 1,
+	/**
+	 * Change the font to a size suitable for subscripts
+	 */
+	SUBSCRIPT = 2,
+	/**
+	 * Change the font to a size suitable for Small Caps
+	 */
+	SMALL_CAPS = 3,
+}
+
+/**
  * `PangoGravity` represents the orientation of glyphs in a segment
  * of text.
  *
@@ -474,19 +579,19 @@ public enum PangoFontMask
 public enum PangoGravity
 {
 	/**
-	 * Glyphs stand upright (default)
+	 * Glyphs stand upright (default) <img align="right" valign="center" src="m-south.png">
 	 */
 	SOUTH = 0,
 	/**
-	 * Glyphs are rotated 90 degrees clockwise
+	 * Glyphs are rotated 90 degrees counter-clockwise. <img align="right" valign="center" src="m-east.png">
 	 */
 	EAST = 1,
 	/**
-	 * Glyphs are upside-down
+	 * Glyphs are upside-down. <img align="right" valign="cener" src="m-north.png">
 	 */
 	NORTH = 2,
 	/**
-	 * Glyphs are rotated 90 degrees counter-clockwise
+	 * Glyphs are rotated 90 degrees clockwise. <img align="right" valign="center" src="m-west.png">
 	 */
 	WEST = 3,
 	/**
@@ -524,6 +629,72 @@ public enum PangoGravityHint
 	 * opposite gravities and both flow top-to-bottom for example.
 	 */
 	LINE = 2,
+}
+
+/**
+ * Errors that can be returned by [func@Pango.Layout.deserialize].
+ *
+ * Since: 1.50
+ */
+public enum PangoLayoutDeserializeError
+{
+	/**
+	 * Unspecified error
+	 */
+	INVALID = 0,
+	/**
+	 * A JSon value could not be
+	 * interpreted
+	 */
+	INVALID_VALUE = 1,
+	/**
+	 * A required JSon member was
+	 * not found
+	 */
+	MISSING_VALUE = 2,
+}
+
+/**
+ * Flags that influence the behavior of [func@Pango.Layout.deserialize].
+ *
+ * New members may be added to this enumeration over time.
+ *
+ * Since: 1.50
+ */
+public enum PangoLayoutDeserializeFlags
+{
+	/**
+	 * Default behavior
+	 */
+	DEFAULT = 0,
+	/**
+	 * Apply context information
+	 * from the serialization to the `PangoContext`
+	 */
+	CONTEXT = 1,
+}
+
+/**
+ * Flags that influence the behavior of [method@Pango.Layout.serialize].
+ *
+ * New members may be added to this enumeration over time.
+ *
+ * Since: 1.50
+ */
+public enum PangoLayoutSerializeFlags
+{
+	/**
+	 * Default behavior
+	 */
+	DEFAULT = 0,
+	/**
+	 * Include context information
+	 */
+	CONTEXT = 1,
+	/**
+	 * Include information about the formatted output
+	 */
+	OUTPUT = 2,
 }
 
 /**
@@ -582,9 +753,9 @@ public enum PangoRenderPart
  * The values correspond to the names as defined in the Unicode standard. See
  * [Unicode Standard Annex 24: Script names](http://www.unicode.org/reports/tr24/)
  *
- * Note that this enumeration is deprecated and will not be updated
- * to include values in newer versions of the Unicode standard.
- * Applications should use the `GUnicodeScript` enumeration instead,
+ * Note that this enumeration is deprecated and will not be updated to include values
+ * in newer versions of the Unicode standard. Applications should use the
+ * [enum@GLib.UnicodeScript] enumeration instead,
  * whose values are interchangeable with `PangoScript`.
  */
 public enum PangoScript
@@ -1068,18 +1239,18 @@ public enum PangoScript
  * Flags influencing the shaping process.
  *
  * `PangoShapeFlags` can be passed to [func@Pango.shape_with_flags].
+ *
+ * Since: 1.44
  */
 public enum PangoShapeFlags
 {
 	/**
-	 * Default value.
+	 * Default value
 	 */
 	NONE = 0,
 	/**
-	 * Round glyph positions
-	 * and widths to whole device units. This option should
-	 * be set if the target renderer can't do subpixel
-	 * positioning of glyphs.
+	 * Round glyph positions and widths to whole device units
+	 * This option should be set if the target renderer can't do subpixel positioning of glyphs
 	 */
 	ROUND_POSITIONS = 1,
 }
@@ -1087,6 +1258,8 @@ public enum PangoShapeFlags
 /**
  * These flags affect how Pango treats characters that are normally
  * not visible in the output.
+ *
+ * Since: 1.44
  */
 public enum PangoShowFlags
 {
@@ -1173,14 +1346,57 @@ public enum PangoStyle
 }
 
 /**
- * `PangoTabAlign` specifies where a tab stop appears relative to the text.
+ * `PangoTabAlign` specifies where the text appears relative to the tab stop
+ * position.
  */
 public enum PangoTabAlign
 {
 	/**
-	 * the tab stop appears to the left of the text.
+	 * the text appears to the right of the tab stop position
 	 */
 	LEFT = 0,
+	/**
+	 * the text appears to the left of the tab stop position
+	 * until the available space is filled. Since: 1.50
+	 */
+	RIGHT = 1,
+	/**
+	 * the text is centered at the tab stop position
+	 * until the available space is filled. Since: 1.50
+	 */
+	CENTER = 2,
+	/**
+	 * text before the first occurrence of the decimal point
+	 * character appears to the left of the tab stop position (until the available
+	 * space is filled), the rest to the right. Since: 1.50
+	 */
+	DECIMAL = 3,
+}
+
+/**
+ * An enumeration that affects how Pango treats characters during shaping.
+ *
+ * Since: 1.50
+ */
+public enum PangoTextTransform
+{
+	/**
+	 * Leave text unchanged
+	 */
+	NONE = 0,
+	/**
+	 * Display letters and numbers as lowercase
+	 */
+	LOWERCASE = 1,
+	/**
+	 * Display letters and numbers as uppercase
+	 */
+	UPPERCASE = 2,
+	/**
+	 * Display the first character of a word
+	 * in titlecase
+	 */
+	CAPITALIZE = 3,
 }
 
 /**
@@ -1255,18 +1471,45 @@ public enum PangoVariant
 	 * replaced by smaller variants of the capital characters.
 	 */
 	SMALL_CAPS = 1,
+	/**
+	 * A font with all characters
+	 * replaced by smaller variants of the capital characters. Since: 1.50
+	 */
+	ALL_SMALL_CAPS = 2,
+	/**
+	 * A font with the lower case characters
+	 * replaced by smaller variants of the capital characters.
+	 * Petite Caps can be even smaller than Small Caps. Since: 1.50
+	 */
+	PETITE_CAPS = 3,
+	/**
+	 * A font with all characters
+	 * replaced by smaller variants of the capital characters.
+	 * Petite Caps can be even smaller than Small Caps. Since: 1.50
+	 */
+	ALL_PETITE_CAPS = 4,
+	/**
+	 * A font with the upper case characters
+	 * replaced by smaller variants of the capital letters. Since: 1.50
+	 */
+	UNICASE = 5,
+	/**
+	 * A font with capital letters that
+	 * are more suitable for all-uppercase titles. Since: 1.50
+	 */
+	TITLE_CAPS = 6,
 }
 
 /**
  * An enumeration specifying the weight (boldness) of a font.
  *
- * This is a numerical value ranging from 100 to 1000, but there
- * are some predefined values.
+ * Weight is specified as a numeric value ranging from 100 to 1000.
+ * This enumeration simply provides some common, predefined values.
  */
 public enum PangoWeight
 {
 	/**
-	 * the thin weight (= 100; Since: 1.24)
+	 * the thin weight (= 100) Since: 1.24
 	 */
 	THIN = 100,
 	/**
@@ -1278,11 +1521,11 @@ public enum PangoWeight
 	 */
 	LIGHT = 300,
 	/**
-	 * the semilight weight (= 350; Since: 1.36.7)
+	 * the semilight weight (= 350) Since: 1.36.7
 	 */
 	SEMILIGHT = 350,
 	/**
-	 * the book weight (= 380; Since: 1.24)
+	 * the book weight (= 380) Since: 1.24)
 	 */
 	BOOK = 380,
 	/**
@@ -1290,7 +1533,7 @@ public enum PangoWeight
 	 */
 	NORMAL = 400,
 	/**
-	 * the normal weight (= 500; Since: 1.24)
+	 * the normal weight (= 500) Since: 1.24
 	 */
 	MEDIUM = 500,
 	/**
@@ -1310,7 +1553,7 @@ public enum PangoWeight
 	 */
 	HEAVY = 900,
 	/**
-	 * the ultraheavy weight (= 1000; Since: 1.24)
+	 * the ultraheavy weight (= 1000) Since: 1.24
 	 */
 	ULTRAHEAVY = 1000,
 }
@@ -1340,7 +1583,9 @@ public enum PangoWrapMode
 	 */
 	WORD_CHAR = 2,
 }
-struct PangoFcFontMap {
+
+struct PangoFcFontMap
+{
 	PangoFontMap parentInstance;
 	void* priv;
 }
@@ -1355,11 +1600,11 @@ struct PangoCairoFont;
 struct PangoAnalysis
 {
 	/**
-	 * unused
+	 * unused, reserved
 	 */
 	void* shapeEngine;
 	/**
-	 * unused
+	 * unused, reserved
 	 */
 	void* langEngine;
 	/**
@@ -1474,7 +1719,7 @@ struct PangoAttrFontFeatures
 	 */
 	PangoAttribute attr;
 	/**
-	 * the featues, as a string in CSS syntax
+	 * the features, as a string in CSS syntax
 	 */
 	char* features;
 }
@@ -1710,7 +1955,7 @@ struct PangoFontFaceClass
 	 *
 	 * Params:
 	 *     face = a `PangoFontFace`
-	 * Returns: whether @face is synthesized.
+	 * Returns: whether @face is synthesized
 	 */
 	extern(C) int function(PangoFontFace* face) isSynthesized;
 	/**
@@ -1902,6 +2147,19 @@ struct PangoFontsetSimpleClass;
 /**
  * The `PangoGlyphGeometry` structure contains width and positioning
  * information for a single glyph.
+ *
+ * Note that @width is not guaranteed to be the same as the glyph
+ * extents. Kerning and other positioning applied during shaping will
+ * affect both the @width and the @x_offset for the glyphs in the
+ * glyph string that results from shaping.
+ *
+ * The information in this struct is intended for rendering the glyphs,
+ * as follows:
+ *
+ * 1. Assume the current point is (x, y)
+ * 2. Render the current glyph at (x + x_offset, y + y_offset),
+ * 3. Advance the current point to (x + width, y)
+ * 4. Render the next glyph
  */
 struct PangoGlyphGeometry
 {
@@ -1949,6 +2207,21 @@ struct PangoGlyphItem
 	 * corresponding `PangoGlyphString`
 	 */
 	PangoGlyphString* glyphs;
+	/**
+	 * shift of the baseline, relative to the baseline
+	 * of the containing line. Positive values shift upwards
+	 */
+	int yOffset;
+	/**
+	 * horizontal displacement to apply before the
+	 * glyph item. Positive values shift right
+	 */
+	int startXOffset;
+	/**
+	 * horizontal displacement to apply after th
+	 * glyph item. Positive values shift right
+	 */
+	int endXOffset;
 }
 
 struct PangoGlyphItemIter
@@ -1966,17 +2239,16 @@ struct PangoGlyphItemIter
 struct PangoGlyphString
 {
 	/**
-	 * number of the glyphs in this glyph string.
+	 * number of glyphs in this glyph string
 	 */
 	int numGlyphs;
 	/**
 	 * array of glyph information
-	 * for the glyph string.
 	 */
 	PangoGlyphInfo* glyphs;
 	/**
 	 * logical cluster info, indexed by the byte index
-	 * within the text corresponding to the glyph string.
+	 * within the text corresponding to the glyph string
 	 */
 	int* logClusters;
 	int space;
@@ -1986,15 +2258,21 @@ struct PangoGlyphString
  * A `PangoGlyphVisAttr` structure communicates information between
  * the shaping and rendering phases.
  *
- * Currently, it contains only cluster start information. More attributes
- * may be added in the future.
+ * Currently, it contains cluster start and color information.
+ * More attributes may be added in the future.
+ *
+ * Clusters are stored in visual order, within the cluster, glyphs
+ * are always ordered in logical order, since visual order is meaningless;
+ * that is, in Arabic text, accent glyphs follow the glyphs for the
+ * base character.
  */
 struct PangoGlyphVisAttr
 {
 	import std.bitmanip: bitfields;
 	mixin(bitfields!(
 		uint, "isClusterStart", 1,
-		uint, "", 31
+		uint, "isColor", 1,
+		uint, "", 30
 	));
 }
 
@@ -2074,7 +2352,9 @@ struct PangoLogAttr
 		uint, "backspaceDeletesCharacter", 1,
 		uint, "isExpandableSpace", 1,
 		uint, "isWordBoundary", 1,
-		uint, "", 19
+		uint, "breakInsertsHyphen", 1,
+		uint, "breakRemovesPreceding", 1,
+		uint, "reserved", 17
 	));
 }
 
@@ -2232,8 +2512,9 @@ public alias extern(C) void* function(void* userData) PangoAttrDataCopyFunc;
 public alias extern(C) int function(PangoAttribute* attribute, void* userData) PangoAttrFilterFunc;
 
 /**
- * Callback used by pango_fontset_foreach() when enumerating
- * fonts in a fontset.
+ * Callback used when enumerating fonts in a fontset.
+ *
+ * See [method@Pango.Fontset.foreach].
  *
  * Params:
  *     fontset = a `PangoFontset`
@@ -2357,17 +2638,17 @@ alias PANGO_VERSION_MAJOR = VERSION_MAJOR;
 /**
  * The micro component of the version of Pango available at compile-time.
  */
-enum VERSION_MICRO = 10;
+enum VERSION_MICRO = 7;
 alias PANGO_VERSION_MICRO = VERSION_MICRO;
 
 /**
  * The minor component of the version of Pango available at compile-time.
  */
-enum VERSION_MINOR = 48;
+enum VERSION_MINOR = 50;
 alias PANGO_VERSION_MINOR = VERSION_MINOR;
 
 /**
  * A string literal containing the version of Pango available at compile-time.
  */
-enum VERSION_STRING = "1.48.10";
+enum VERSION_STRING = "1.50.7";
 alias PANGO_VERSION_STRING = VERSION_STRING;

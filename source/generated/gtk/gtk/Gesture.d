@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.Gesture;
 
 private import gdk.Device;
@@ -85,7 +109,7 @@ private import std.algorithm;
  * Note: if a sequence is set early to %GTK_EVENT_SEQUENCE_CLAIMED on
  * %GDK_TOUCH_BEGIN/%GDK_BUTTON_PRESS (so those events are captured before
  * reaching the event widget, this implies %GTK_PHASE_CAPTURE), one similar
- * event will emulated if the sequence changes to %GTK_EVENT_SEQUENCE_DENIED.
+ * event will be emulated if the sequence changes to %GTK_EVENT_SEQUENCE_DENIED.
  * This way event coherence is preserved before event propagation is unstopped
  * again.
  * 

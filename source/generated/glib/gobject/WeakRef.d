@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gobject.WeakRef;
 
 private import gobject.ObjectG;
@@ -22,11 +46,14 @@ public  import gobject.c.types;
  * objects.
  * 
  * If the object's #GObjectClass.dispose method results in additional
- * references to the object being held, any #GWeakRefs taken
- * before it was disposed will continue to point to %NULL.  If
- * #GWeakRefs are taken after the object is disposed and
- * re-referenced, they will continue to point to it until its refcount
+ * references to the object being held (‘re-referencing’), any #GWeakRefs taken
+ * before it was disposed will continue to point to %NULL.  Any #GWeakRefs taken
+ * during disposal and after re-referencing, or after disposal has returned due
+ * to the re-referencing, will continue to point to the object until its refcount
  * goes back to zero, at which point they too will be invalidated.
+ * 
+ * It is invalid to take a #GWeakRef on an object during #GObjectClass.dispose
+ * without first having or creating a strong reference to the object.
  */
 public class WeakRef
 {
@@ -58,7 +85,8 @@ public class WeakRef
 	}
 
 	/** */
-	this(void* object) {
+	this(void* object)
+	{
 		g_weak_ref_init(gWeakRef, object);
 	}
 

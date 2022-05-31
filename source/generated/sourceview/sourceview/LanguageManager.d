@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.LanguageManager;
 
 private import glib.ConstructionException;
@@ -9,7 +33,18 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Provides access to [class@Language]s.
+ * 
+ * `GtkSourceLanguageManager` is an object which processes language description
+ * files and creates and stores [class@Language] objects, and provides API to
+ * access them.
+ * 
+ * Use [func@LanguageManager.get_default] to retrieve the default
+ * instance of `GtkSourceLanguageManager`, and
+ * [method@LanguageManager.guess_language] to get a [class@Language] for
+ * given file name and content type.
+ */
 public class LanguageManager : ObjectG
 {
 	/** the main Gtk struct */
@@ -46,9 +81,10 @@ public class LanguageManager : ObjectG
 	}
 
 	/**
-	 * Creates a new language manager. If you do not need more than one language
-	 * manager or a private language manager instance then use
-	 * gtk_source_language_manager_get_default() instead.
+	 * Creates a new language manager.
+	 *
+	 * If you do not need more than one language manager or a private language manager
+	 * instance then use [func@LanguageManager.get_default] instead.
 	 *
 	 * Returns: a new #GtkSourceLanguageManager.
 	 *
@@ -85,7 +121,23 @@ public class LanguageManager : ObjectG
 	}
 
 	/**
-	 * Gets the #GtkSourceLanguage identified by the given @id in the language
+	 * Appends @path to the list of directories where the @manager looks for
+	 * language files.
+	 *
+	 * See [method@LanguageManager.set_search_path] for details.
+	 *
+	 * Params:
+	 *     path = a directory or a filename.
+	 *
+	 * Since: 5.4
+	 */
+	public void appendSearchPath(string path)
+	{
+		gtk_source_language_manager_append_search_path(gtkSourceLanguageManager, Str.toStringz(path));
+	}
+
+	/**
+	 * Gets the [class@Language] identified by the given @id in the language
 	 * manager.
 	 *
 	 * Params:
@@ -133,20 +185,24 @@ public class LanguageManager : ObjectG
 	}
 
 	/**
-	 * Picks a #GtkSourceLanguage for given file name and content type,
-	 * according to the information in lang files. Either @filename or
-	 * @content_type may be %NULL. This function can be used as follows:
+	 * Picks a [class@Language] for given file name and content type,
+	 * according to the information in lang files.
 	 *
-	 * <informalexample><programlisting>
+	 * Either @filename or @content_type may be %NULL. This function can be used as follows:
+	 *
+	 * ```c
 	 * GtkSourceLanguage *lang;
-	 * lang = gtk_source_language_manager_guess_language (filename, NULL);
+	 * GtkSourceLanguageManager *manager;
+	 * lm = gtk_source_language_manager_get_default ();
+	 * lang = gtk_source_language_manager_guess_language (manager, filename, NULL);
 	 * gtk_source_buffer_set_language (buffer, lang);
-	 * </programlisting></informalexample>
+	 * ```
 	 *
 	 * or
 	 *
-	 * <informalexample><programlisting>
+	 * ```c
 	 * GtkSourceLanguage *lang = NULL;
+	 * GtkSourceLanguageManager *manager;
 	 * gboolean result_uncertain;
 	 * gchar *content_type;
 	 *
@@ -157,13 +213,14 @@ public class LanguageManager : ObjectG
 	 * content_type = NULL;
 	 * }
 	 *
+	 * manager = gtk_source_language_manager_get_default ();
 	 * lang = gtk_source_language_manager_guess_language (manager, filename, content_type);
 	 * gtk_source_buffer_set_language (buffer, lang);
 	 *
 	 * g_free (content_type);
-	 * </programlisting></informalexample>
+	 * ```
 	 *
-	 * etc. Use gtk_source_language_get_mime_types() and gtk_source_language_get_globs()
+	 * etc. Use [method@Language.get_mime_types] and [method@Language.get_globs]
 	 * if you need full control over file -> language mapping.
 	 *
 	 * Params:
@@ -173,8 +230,6 @@ public class LanguageManager : ObjectG
 	 * Returns: a #GtkSourceLanguage, or %NULL if there
 	 *     is no suitable language for given @filename and/or @content_type. Return
 	 *     value is owned by @lm and should not be freed.
-	 *
-	 * Since: 2.4
 	 */
 	public Language guessLanguage(string filename, string contentType)
 	{
@@ -189,18 +244,35 @@ public class LanguageManager : ObjectG
 	}
 
 	/**
+	 * Prepends @path to the list of directories where the @manager looks
+	 * for language files.
+	 *
+	 * See [method@LanguageManager.set_search_path] for details.
+	 *
+	 * Params:
+	 *     path = a directory or a filename.
+	 *
+	 * Since: 5.4
+	 */
+	public void prependSearchPath(string path)
+	{
+		gtk_source_language_manager_prepend_search_path(gtkSourceLanguageManager, Str.toStringz(path));
+	}
+
+	/**
 	 * Sets the list of directories where the @lm looks for
 	 * language files.
+	 *
 	 * If @dirs is %NULL, the search path is reset to default.
 	 *
-	 * <note>
-	 * <para>
 	 * At the moment this function can be called only before the
 	 * language files are loaded for the first time. In practice
-	 * to set a custom search path for a #GtkSourceLanguageManager,
+	 * to set a custom search path for a `GtkSourceLanguageManager`,
 	 * you have to call this function right after creating it.
-	 * </para>
-	 * </note>
+	 *
+	 * Since GtkSourceView 5.4 this function will allow you to provide
+	 * paths in the form of "resource:///" URIs to embedded `GResource`s.
+	 * They must contain the path of a directory within the `GResource`.
 	 *
 	 * Params:
 	 *     dirs = a %NULL-terminated array of

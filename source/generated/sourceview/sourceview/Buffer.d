@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.Buffer;
 
 private import glib.ConstructionException;
@@ -19,7 +43,72 @@ public  import sourceview.c.types;
 private import std.algorithm;
 
 
-/** */
+/**
+ * Subclass of [class@Gtk.TextBuffer].
+ * 
+ * A `GtkSourceBuffer` object is the model for [class@View] widgets.
+ * It extends the [class@Gtk.TextBuffer] class by adding features useful to display
+ * and edit source code such as syntax highlighting and bracket matching.
+ * 
+ * To create a `GtkSourceBuffer` use [ctor@GtkSource.Buffer.new] or
+ * [ctor@GtkSource.Buffer.new_with_language]. The second form is just a convenience
+ * function which allows you to initially set a [class@Language]. You can also
+ * directly create a [class@View] and get its [class@Buffer] with
+ * [method@Gtk.TextView.get_buffer].
+ * 
+ * The highlighting is enabled by default, but you can disable it with
+ * [method@Buffer.set_highlight_syntax].
+ * 
+ * # Context Classes:
+ * 
+ * It is possible to retrieve some information from the syntax highlighting
+ * engine. The default context classes that are applied to regions of a
+ * `GtkSourceBuffer`:
+ * 
+ * - **comment**: the region delimits a comment;
+ * - **no-spell-check**: the region should not be spell checked;
+ * - **path**: the region delimits a path to a file;
+ * - **string**: the region delimits a string.
+ * 
+ * Custom language definition files can create their own context classes,
+ * since the functions like [method@Buffer.iter_has_context_class] take
+ * a string parameter as the context class.
+ * 
+ * `GtkSourceBuffer` provides an API to access the context classes:
+ * [method@Buffer.iter_has_context_class],
+ * [method@Buffer.get_context_classes_at_iter],
+ * [method@Buffer.iter_forward_to_context_class_toggle] and
+ * [method@Buffer.iter_backward_to_context_class_toggle].
+ * 
+ * And the [signal@GtkSource.Buffer::highlight-updated] signal permits to be notified
+ * when a context class region changes.
+ * 
+ * Each context class has also an associated [class@Gtk.TextTag] with the name
+ * `gtksourceview:context-classes:<name>`. For example to
+ * retrieve the [class@Gtk.TextTag] for the string context class, one can write:
+ * ```c
+ * GtkTextTagTable *tag_table;
+ * GtkTextTag *tag;
+ * 
+ * tag_table = gtk_text_buffer_get_tag_table (buffer);
+ * tag = gtk_text_tag_table_lookup (tag_table, "gtksourceview:context-classes:string");
+ * ```
+ * 
+ * The tag must be used for read-only purposes.
+ * 
+ * Accessing a context class via the associated [class@Gtk.TextTag] is less
+ * convenient than the `GtkSourceBuffer` API, because:
+ * 
+ * - The tag doesn't always exist, you need to listen to the
+ * [signal@Gtk.TextTagTable::tag-added] and [signal@Gtk.TextTagTable::tag-removed] signals.
+ * - Instead of the [signal@GtkSource.Buffer::highlight-updated] signal, you can listen
+ * to the [signal@Gtk.TextBuffer::apply-tag] and [signal@Gtk.TextBuffer::remove-tag] signals.
+ * 
+ * A possible use-case for accessing a context class via the associated
+ * [class@Gtk.TextTag] is to read the region but without adding a hard dependency on the
+ * GtkSourceView library (for example for a spell-checking library that wants to
+ * read the no-spell-check region).
+ */
 public class Buffer : TextBuffer
 {
 	/** the main Gtk struct */
@@ -78,15 +167,16 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Creates a new source buffer using the highlighting patterns in
-	 * @language.  This is equivalent to creating a new source buffer with
-	 * a new tag table and then calling gtk_source_buffer_set_language().
+	 * Creates a new source buffer using the highlighting patterns in `language`.
+	 *
+	 * This is equivalent to creating a new source buffer with
+	 * a new tag table and then calling [method@Buffer.set_language].
 	 *
 	 * Params:
 	 *     language = a #GtkSourceLanguage.
 	 *
 	 * Returns: a new source buffer which will highlight text
-	 *     according to the highlighting patterns in @language.
+	 *     according to the highlighting patterns in `language`.
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
@@ -103,17 +193,17 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Moves @iter to the position of the previous #GtkSourceMark of the given
-	 * category. Returns %TRUE if @iter was moved. If @category is NULL, the
+	 * Moves `iter` to the position of the previous [class@Mark] of the given
+	 * category.
+	 *
+	 * Returns %TRUE if `iter` was moved. If `category` is NULL, the
 	 * previous source mark can be of any category.
 	 *
 	 * Params:
 	 *     iter = an iterator.
 	 *     category = category to search for, or %NULL
 	 *
-	 * Returns: whether @iter was moved.
-	 *
-	 * Since: 2.2
+	 * Returns: whether `iter` was moved.
 	 */
 	public bool backwardIterToSourceMark(ref TextIter iter, string category)
 	{
@@ -123,15 +213,13 @@ public class Buffer : TextBuffer
 	/**
 	 * Changes the case of the text between the specified iterators.
 	 *
-	 * Since 5.4, this function will update the position of @start and
-	 * @end to surround the modified text.
+	 * Since 5.4, this function will update the position of `start` and
+	 * `end` to surround the modified text.
 	 *
 	 * Params:
 	 *     caseType = how to change the case.
 	 *     start = a #GtkTextIter.
 	 *     end = a #GtkTextIter.
-	 *
-	 * Since: 3.12
 	 */
 	public void changeCase(GtkSourceChangeCaseType caseType, TextIter start, TextIter end)
 	{
@@ -139,12 +227,14 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Creates a source mark in the @buffer of category @category.  A source mark is
-	 * a #GtkTextMark but organised into categories. Depending on the category
-	 * a pixbuf can be specified that will be displayed along the line of the mark.
+	 * Creates a source mark in the `buffer` of category `category`.
 	 *
-	 * Like a #GtkTextMark, a #GtkSourceMark can be anonymous if the
-	 * passed @name is %NULL.  Also, the buffer owns the marks so you
+	 * A source mark is a [class@Gtk.TextMark] but organized into categories.
+	 * Depending on the category a pixbuf can be specified that will be displayed
+	 * along the line of the mark.
+	 *
+	 * Like a [class@Gtk.TextMark], a [class@Mark] can be anonymous if the
+	 * passed `name` is %NULL.  Also, the buffer owns the marks so you
 	 * shouldn't unreference it.
 	 *
 	 * Marks always have left gravity and are moved to the beginning of
@@ -158,9 +248,7 @@ public class Buffer : TextBuffer
 	 *     category = a string defining the mark category.
 	 *     where = location to place the mark.
 	 *
-	 * Returns: a new #GtkSourceMark, owned by the buffer.
-	 *
-	 * Since: 2.2
+	 * Returns: a new [class@Mark], owned by the buffer.
 	 */
 	public Mark createSourceMark(string name, string category, TextIter where)
 	{
@@ -177,13 +265,11 @@ public class Buffer : TextBuffer
 	/**
 	 * Forces buffer to analyze and highlight the given area synchronously.
 	 *
-	 * <note>
-	 * <para>
+	 * **Note**:
+	 *
 	 * This is a potentially slow operation and should be used only
 	 * when you need to make sure that some text not currently
 	 * visible is highlighted, for instance before printing.
-	 * </para>
-	 * </note>
 	 *
 	 * Params:
 	 *     start = start of the area to highlight.
@@ -195,17 +281,17 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Moves @iter to the position of the next #GtkSourceMark of the given
-	 * @category. Returns %TRUE if @iter was moved. If @category is NULL, the
+	 * Moves `iter` to the position of the next [class@Mark] of the given
+	 * `category`.
+	 *
+	 * Returns %TRUE if `iter` was moved. If `category` is NULL, the
 	 * next source mark can be of any category.
 	 *
 	 * Params:
 	 *     iter = an iterator.
 	 *     category = category to search for, or %NULL
 	 *
-	 * Returns: whether @iter was moved.
-	 *
-	 * Since: 2.2
+	 * Returns: whether `iter` was moved.
 	 */
 	public bool forwardIterToSourceMark(ref TextIter iter, string category)
 	{
@@ -215,7 +301,7 @@ public class Buffer : TextBuffer
 	/**
 	 * Get all defined context classes at @iter.
 	 *
-	 * See the #GtkSourceBuffer description for the list of default context classes.
+	 * See the [class@Buffer] description for the list of default context classes.
 	 *
 	 * Params:
 	 *     iter = a #GtkTextIter.
@@ -223,8 +309,6 @@ public class Buffer : TextBuffer
 	 * Returns: a new %NULL
 	 *     terminated array of context class names.
 	 *     Use g_strfreev() to free the array if it is no longer needed.
-	 *
-	 * Since: 2.10
 	 */
 	public string[] getContextClassesAtIter(TextIter iter)
 	{
@@ -259,8 +343,6 @@ public class Buffer : TextBuffer
 
 	/**
 	 * Returns: whether the @buffer has an implicit trailing newline.
-	 *
-	 * Since: 3.14
 	 */
 	public bool getImplicitTrailingNewline()
 	{
@@ -268,11 +350,12 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Returns the #GtkSourceLanguage associated with the buffer,
-	 * see gtk_source_buffer_set_language().  The returned object should not be
-	 * unreferenced by the user.
+	 * Returns the [class@Language] associated with the buffer,
+	 * see [method@Buffer.set_language].
 	 *
-	 * Returns: the #GtkSourceLanguage associated
+	 * The returned object should not be unreferenced by the user.
+	 *
+	 * Returns: the [class@Language] associated
 	 *     with the buffer, or %NULL.
 	 */
 	public Language getLanguage()
@@ -288,16 +371,15 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Returns the list of marks of the given category at @iter. If @category
-	 * is %NULL it returns all marks at @iter.
+	 * Returns the list of marks of the given category at @iter.
+	 *
+	 * If @category is %NULL it returns all marks at @iter.
 	 *
 	 * Params:
 	 *     iter = an iterator.
 	 *     category = category to search for, or %NULL
 	 *
 	 * Returns: a newly allocated #GSList.
-	 *
-	 * Since: 2.2
 	 */
 	public ListSG getSourceMarksAtIter(TextIter iter, string category)
 	{
@@ -313,6 +395,7 @@ public class Buffer : TextBuffer
 
 	/**
 	 * Returns the list of marks of the given category at @line.
+	 *
 	 * If @category is %NULL, all marks at @line are returned.
 	 *
 	 * Params:
@@ -320,8 +403,6 @@ public class Buffer : TextBuffer
 	 *     category = category to search for, or %NULL
 	 *
 	 * Returns: a newly allocated #GSList.
-	 *
-	 * Since: 2.2
 	 */
 	public ListSG getSourceMarksAtLine(int line, string category)
 	{
@@ -336,11 +417,12 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Returns the #GtkSourceStyleScheme associated with the buffer,
-	 * see gtk_source_buffer_set_style_scheme().
+	 * Returns the [class@StyleScheme] associated with the buffer,
+	 * see [method@Buffer.set_style_scheme].
+	 *
 	 * The returned object should not be unreferenced by the user.
 	 *
-	 * Returns: the #GtkSourceStyleScheme
+	 * Returns: the [class@StyleScheme]
 	 *     associated with the buffer, or %NULL.
 	 */
 	public StyleScheme getStyleScheme()
@@ -356,21 +438,20 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Moves backward to the next toggle (on or off) of the context class. If no
-	 * matching context class toggles are found, returns %FALSE, otherwise %TRUE.
+	 * Moves backward to the next toggle (on or off) of the context class.
+	 *
+	 * If no matching context class toggles are found, returns %FALSE, otherwise %TRUE.
 	 * Does not return toggles located at @iter, only toggles after @iter. Sets
 	 * @iter to the location of the toggle, or to the end of the buffer if no
 	 * toggle is found.
 	 *
-	 * See the #GtkSourceBuffer description for the list of default context classes.
+	 * See the [class@Buffer] description for the list of default context classes.
 	 *
 	 * Params:
 	 *     iter = a #GtkTextIter.
 	 *     contextClass = the context class.
 	 *
 	 * Returns: whether we found a context class toggle before @iter
-	 *
-	 * Since: 2.10
 	 */
 	public bool iterBackwardToContextClassToggle(ref TextIter iter, string contextClass)
 	{
@@ -378,21 +459,20 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Moves forward to the next toggle (on or off) of the context class. If no
-	 * matching context class toggles are found, returns %FALSE, otherwise %TRUE.
+	 * Moves forward to the next toggle (on or off) of the context class.
+	 *
+	 * If no matching context class toggles are found, returns %FALSE, otherwise %TRUE.
 	 * Does not return toggles located at @iter, only toggles after @iter. Sets
 	 * @iter to the location of the toggle, or to the end of the buffer if no
 	 * toggle is found.
 	 *
-	 * See the #GtkSourceBuffer description for the list of default context classes.
+	 * See the [class@Buffer] description for the list of default context classes.
 	 *
 	 * Params:
 	 *     iter = a #GtkTextIter.
 	 *     contextClass = the context class.
 	 *
 	 * Returns: whether we found a context class toggle after @iter
-	 *
-	 * Since: 2.10
 	 */
 	public bool iterForwardToContextClassToggle(ref TextIter iter, string contextClass)
 	{
@@ -402,15 +482,13 @@ public class Buffer : TextBuffer
 	/**
 	 * Check if the class @context_class is set on @iter.
 	 *
-	 * See the #GtkSourceBuffer description for the list of default context classes.
+	 * See the [class@Buffer] description for the list of default context classes.
 	 *
 	 * Params:
 	 *     iter = a #GtkTextIter.
 	 *     contextClass = class to search for.
 	 *
 	 * Returns: whether @iter has the context class.
-	 *
-	 * Since: 2.10
 	 */
 	public bool iterHasContextClass(TextIter iter, string contextClass)
 	{
@@ -423,8 +501,6 @@ public class Buffer : TextBuffer
 	 * Params:
 	 *     start = a #GtkTextIter.
 	 *     end = a #GtkTextIter.
-	 *
-	 * Since: 3.16
 	 */
 	public void joinLines(TextIter start, TextIter end)
 	{
@@ -433,14 +509,13 @@ public class Buffer : TextBuffer
 
 	/**
 	 * Remove all marks of @category between @start and @end from the buffer.
+	 *
 	 * If @category is NULL, all marks in the range will be removed.
 	 *
 	 * Params:
 	 *     start = a #GtkTextIter.
 	 *     end = a #GtkTextIter.
 	 *     category = category to search for, or %NULL.
-	 *
-	 * Since: 2.2
 	 */
 	public void removeSourceMarks(TextIter start, TextIter end, string category)
 	{
@@ -448,8 +523,9 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Controls the bracket match highlighting function in the buffer.  If
-	 * activated, when you position your cursor over a bracket character
+	 * Controls the bracket match highlighting function in the buffer.
+	 *
+	 * If activated, when you position your cursor over a bracket character
 	 * (a parenthesis, a square bracket, etc.) the matching opening or
 	 * closing bracket character will be highlighted.
 	 *
@@ -465,11 +541,10 @@ public class Buffer : TextBuffer
 	 * Controls whether syntax is highlighted in the buffer.
 	 *
 	 * If @highlight is %TRUE, the text will be highlighted according to the syntax
-	 * patterns specified in the #GtkSourceLanguage set with
-	 * gtk_source_buffer_set_language().
+	 * patterns specified in the [class@Language] set with [method@Buffer.set_language].
 	 *
 	 * If @highlight is %FALSE, syntax highlighting is disabled and all the
-	 * #GtkTextTag objects that have been added by the syntax highlighting engine
+	 * [class@Gtk.TextTag] objects that have been added by the syntax highlighting engine
 	 * are removed from the buffer.
 	 *
 	 * Params:
@@ -483,14 +558,14 @@ public class Buffer : TextBuffer
 	/**
 	 * Sets whether the @buffer has an implicit trailing newline.
 	 *
-	 * If an explicit trailing newline is present in a #GtkTextBuffer, #GtkTextView
+	 * If an explicit trailing newline is present in a [class@Gtk.TextBuffer], [class@Gtk.TextView]
 	 * shows it as an empty line. This is generally not what the user expects.
 	 *
 	 * If @implicit_trailing_newline is %TRUE (the default value):
-	 * - when a #GtkSourceFileLoader loads the content of a file into the @buffer,
+	 * - when a [class@FileLoader] loads the content of a file into the @buffer,
 	 * the trailing newline (if present in the file) is not inserted into the
 	 * @buffer.
-	 * - when a #GtkSourceFileSaver saves the content of the @buffer into a file, a
+	 * - when a [class@FileSaver] saves the content of the @buffer into a file, a
 	 * trailing newline is added to the file.
 	 *
 	 * On the other hand, if @implicit_trailing_newline is %FALSE, the file's
@@ -499,8 +574,6 @@ public class Buffer : TextBuffer
 	 *
 	 * Params:
 	 *     implicitTrailingNewline = the new value.
-	 *
-	 * Since: 3.14
 	 */
 	public void setImplicitTrailingNewline(bool implicitTrailingNewline)
 	{
@@ -508,11 +581,11 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Associates a #GtkSourceLanguage with the buffer.
+	 * Associates a [class@Language] with the buffer.
 	 *
-	 * Note that a #GtkSourceLanguage affects not only the syntax highlighting, but
-	 * also the [context classes][context-classes]. If you want to disable just the
-	 * syntax highlighting, see gtk_source_buffer_set_highlight_syntax().
+	 * Note that a [class@Language] affects not only the syntax highlighting, but
+	 * also the [context classes](./class.Buffer.html#context-classes). If you want to disable just the
+	 * syntax highlighting, see [method@Buffer.set_highlight_syntax].
 	 *
 	 * The buffer holds a reference to @language.
 	 *
@@ -525,16 +598,16 @@ public class Buffer : TextBuffer
 	}
 
 	/**
-	 * Sets a #GtkSourceStyleScheme to be used by the buffer and the view.
+	 * Sets a [class@StyleScheme] to be used by the buffer and the view.
 	 *
-	 * Note that a #GtkSourceStyleScheme affects not only the syntax highlighting,
-	 * but also other #GtkSourceView features such as highlighting the current line,
+	 * Note that a [class@StyleScheme] affects not only the syntax highlighting,
+	 * but also other [class@View] features such as highlighting the current line,
 	 * matching brackets, the line numbers, etc.
 	 *
 	 * Instead of setting a %NULL @scheme, it is better to disable syntax
-	 * highlighting with gtk_source_buffer_set_highlight_syntax(), and setting the
-	 * #GtkSourceStyleScheme with the "classic" or "tango" ID, because those two
-	 * style schemes follow more closely the GTK+ theme (for example for the
+	 * highlighting with [method@Buffer.set_highlight_syntax], and setting the
+	 * [class@StyleScheme] with the "classic" or "tango" ID, because those two
+	 * style schemes follow more closely the GTK theme (for example for the
 	 * background color).
 	 *
 	 * The buffer holds a reference to @scheme.
@@ -555,8 +628,6 @@ public class Buffer : TextBuffer
 	 *     end = a #GtkTextIter.
 	 *     flags = #GtkSourceSortFlags specifying how the sort should behave
 	 *     column = sort considering the text starting at the given column
-	 *
-	 * Since: 3.18
 	 */
 	public void sortLines(TextIter start, TextIter end, GtkSourceSortFlags flags, int column)
 	{
@@ -571,13 +642,11 @@ public class Buffer : TextBuffer
 	 * The signal is emitted only when the @state changes, typically when
 	 * the cursor moves.
 	 *
-	 * A use-case for this signal is to show messages in a #GtkStatusbar.
+	 * A use-case for this signal is to show messages in a [class@Gtk.Statusbar].
 	 *
 	 * Params:
 	 *     iter = if found, the location of the matching bracket.
 	 *     state = state of bracket matching.
-	 *
-	 * Since: 2.12
 	 */
 	gulong addOnBracketMatched(void delegate(TextIter, GtkSourceBracketMatchType, Buffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -586,8 +655,6 @@ public class Buffer : TextBuffer
 
 	/**
 	 * The "cursor-moved" signal is emitted when then insertion mark has moved.
-	 *
-	 * Since: 5.0
 	 */
 	gulong addOnCursorMoved(void delegate(Buffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
@@ -596,7 +663,7 @@ public class Buffer : TextBuffer
 
 	/**
 	 * The ::highlight-updated signal is emitted when the syntax
-	 * highlighting and [context classes][context-classes] are updated in a
+	 * highlighting and [context classes](./class.Buffer.html#context-classes) are updated in a
 	 * certain region of the @buffer.
 	 *
 	 * Params:
@@ -613,7 +680,7 @@ public class Buffer : TextBuffer
 	 * a mark is added to, moved or removed from the @buffer.
 	 *
 	 * Params:
-	 *     mark = the #GtkSourceMark
+	 *     mark = the [class@Mark]
 	 */
 	gulong addOnSourceMarkUpdated(void delegate(TextMark, Buffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{

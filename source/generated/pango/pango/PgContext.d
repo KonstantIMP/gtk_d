@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgContext;
 
 private import glib.ConstructionException;
@@ -543,11 +567,10 @@ public class PgContext : ObjectG
 	 * Determines possible line, word, and character breaks
 	 * for a string of Unicode text with a single analysis.
 	 *
-	 * For most purposes you may want to use
-	 * [func@Pango.get_log_attrs].
+	 * For most purposes you may want to use [func@Pango.get_log_attrs].
 	 *
-	 * Deprecated: Use [func@Pango.default_break] and
-	 * [func@Pango.tailor_break]
+	 * Deprecated: Use [func@Pango.default_break],
+	 * [func@Pango.tailor_break] and [func@Pango.attr_break].
 	 *
 	 * Params:
 	 *     text = the text to process. Must be valid UTF-8
@@ -563,11 +586,13 @@ public class PgContext : ObjectG
 	/**
 	 * This is the default break algorithm.
 	 *
-	 * It applies Unicode rules without language-specific
-	 * tailoring, therefore the @analyis argument is unused
+	 * It applies rules from the [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr14/)
+	 * without language-specific tailoring, therefore the @analyis argument is unused
 	 * and can be %NULL.
 	 *
 	 * See [func@Pango.tailor_break] for language-specific breaks.
+	 *
+	 * See [func@Pango.attr_break] for attribute-based customization.
 	 *
 	 * Params:
 	 *     text = text to break. Must be valid UTF-8
@@ -607,9 +632,9 @@ public class PgContext : ObjectG
 	 * or Unicode paragraph separator character.
 	 *
 	 * The index of the run of delimiters is returned in
-	 * @paragraph_delimiter_index. The index of the start
-	 * of the paragrap (index after all delimiters) is stored
-	 * in @next_paragraph_start.
+	 * @paragraph_delimiter_index. The index of the start of the
+	 * next paragraph (index after all delimiters) is stored n
+	 * @next_paragraph_start.
 	 *
 	 * If no delimiters are found, both @paragraph_delimiter_index
 	 * and @next_paragraph_start are filled with the length of @text
@@ -631,7 +656,7 @@ public class PgContext : ObjectG
 	/**
 	 * Computes a `PangoLogAttr` for each character in @text.
 	 *
-	 * The @log_attrs array must have one `PangoLogAttr` for
+	 * The @attrs array must have one `PangoLogAttr` for
 	 * each position in @text; if @text contains N characters,
 	 * it has N+1 positions, including the last position at the
 	 * end of the text. @text should be an entire paragraph;
@@ -644,12 +669,12 @@ public class PgContext : ObjectG
 	 *     length = length in bytes of @text
 	 *     level = embedding level, or -1 if unknown
 	 *     language = language tag
-	 *     logAttrs = array with one `PangoLogAttr`
+	 *     attrs = array with one `PangoLogAttr`
 	 *         per character in @text, plus one extra, to be filled in
 	 */
-	public static void getLogAttrs(string text, int length, int level, PgLanguage language, PangoLogAttr[] logAttrs)
+	public static void getLogAttrs(string text, int length, int level, PgLanguage language, PangoLogAttr[] attrs)
 	{
-		pango_get_log_attrs(Str.toStringz(text), length, level, (language is null) ? null : language.getPgLanguageStruct(), logAttrs.ptr, cast(int)logAttrs.length);
+		pango_get_log_attrs(Str.toStringz(text), length, level, (language is null) ? null : language.getPgLanguageStruct(), attrs.ptr, cast(int)attrs.length);
 	}
 
 	/**
@@ -657,8 +682,8 @@ public class PgContext : ObjectG
 	 *
 	 * Mirror characters are determined by the Unicode mirrored property.
 	 *
-	 * Deprecated: Use g_unichar_get_mirror_char() instead; the docs for that function
-	 * provide full details.
+	 * Deprecated: Use [func@GLib.unichar_get_mirror_char] instead;
+	 * the docs for that function provide full details.
 	 *
 	 * Params:
 	 *     ch = a Unicode character
@@ -698,7 +723,7 @@ public class PgContext : ObjectG
 	 *
 	 * Returns: a `GList` of
 	 *     [struct@Pango.Item] structures. The items should be freed using
-	 *     [method@Pango.Item.free] probably in combination with g_list_free_full().
+	 *     [method@Pango.Item.free] in combination with [func@GLib.List.free_full].
 	 */
 	public static ListG itemize(PgContext context, string text, int startIndex, int length, PgAttributeList attrs, PgAttributeIterator cachedIter)
 	{
@@ -716,8 +741,8 @@ public class PgContext : ObjectG
 	 * Like `pango_itemize()`, but with an explicitly specified base direction.
 	 *
 	 * The base direction is used when computing bidirectional levels.
-	 * (see [method@Pango.Context.set_base_dir]). [func@itemize] gets the
-	 * base direction from the `PangoContext`.
+	 * [func@itemize] gets the base direction from the `PangoContext`
+	 * (see [method@Pango.Context.set_base_dir]).
 	 *
 	 * Params:
 	 *     context = a structure holding information that affects
@@ -732,7 +757,7 @@ public class PgContext : ObjectG
 	 *
 	 * Returns: a `GList` of
 	 *     [struct@Pango.Item] structures. The items should be freed using
-	 *     [method@Pango.Item.free] probably in combination with g_list_free_full().
+	 *     [method@Pango.Item.free] probably in combination with [func@GLib.List.free_full].
 	 *
 	 * Since: 1.4
 	 */
@@ -759,15 +784,15 @@ public class PgContext : ObjectG
 	 * is duplicated elsewhere in Pango for that reason.)
 	 *
 	 * Params:
-	 *     logicalItems = a `GList` of `PangoItem`
+	 *     items = a `GList` of `PangoItem`
 	 *         in logical order.
 	 *
 	 * Returns: a `GList`
 	 *     of `PangoItem` structures in visual order.
 	 */
-	public static ListG reorderItems(ListG logicalItems)
+	public static ListG reorderItems(ListG items)
 	{
-		auto __p = pango_reorder_items((logicalItems is null) ? null : logicalItems.getListGStruct());
+		auto __p = pango_reorder_items((items is null) ? null : items.getListGStruct());
 
 		if(__p is null)
 		{
@@ -781,22 +806,22 @@ public class PgContext : ObjectG
 	 * Convert the characters in @text into glyphs.
 	 *
 	 * Given a segment of text and the corresponding `PangoAnalysis` structure
-	 * returned from [func@itemize], convert the characters into glyphs. You
-	 * may also pass in only a substring of the item from [func@itemize].
+	 * returned from [func@Pango.itemize], convert the characters into glyphs. You
+	 * may also pass in only a substring of the item from [func@Pango.itemize].
 	 *
-	 * It is recommended that you use [func@shape_full] instead, since
+	 * It is recommended that you use [func@Pango.shape_full] instead, since
 	 * that API allows for shaping interaction happening across text item
 	 * boundaries.
 	 *
 	 * Note that the extra attributes in the @analyis that is returned from
-	 * [func@itemize] have indices that are relative to the entire paragraph,
+	 * [func@Pango.itemize] have indices that are relative to the entire paragraph,
 	 * so you need to subtract the item offset from their indices before
-	 * calling [func@shape].
+	 * calling [func@Pango.shape].
 	 *
 	 * Params:
 	 *     text = the text to process
 	 *     length = the length (in bytes) of @text
-	 *     analysis = `PangoAnalysis` structure from [func@itemize]
+	 *     analysis = `PangoAnalysis` structure from [func@Pango.itemize]
 	 *     glyphs = glyph string in which to store results
 	 */
 	public static void shape(string text, int length, PangoAnalysis* analysis, PgGlyphString glyphs)
@@ -808,26 +833,27 @@ public class PgContext : ObjectG
 	 * Convert the characters in @text into glyphs.
 	 *
 	 * Given a segment of text and the corresponding `PangoAnalysis` structure
-	 * returned from [func@itemize], convert the characters into glyphs. You may
-	 * also pass in only a substring of the item from [func@itemize].
+	 * returned from [func@Pango.itemize], convert the characters into glyphs.
+	 * You may also pass in only a substring of the item from [func@Pango.itemize].
 	 *
-	 * This is similar to [func@shape], except it also can optionally take
+	 * This is similar to [func@Pango.shape], except it also can optionally take
 	 * the full paragraph text as input, which will then be used to perform
 	 * certain cross-item shaping interactions. If you have access to the broader
 	 * text of which @item_text is part of, provide the broader text as
 	 * @paragraph_text. If @paragraph_text is %NULL, item text is used instead.
 	 *
 	 * Note that the extra attributes in the @analyis that is returned from
-	 * [func@itemize] have indices that are relative to the entire paragraph,
+	 * [func@Pango.itemize] have indices that are relative to the entire paragraph,
 	 * so you do not pass the full paragraph text as @paragraph_text, you need
-	 * to subtract the item offset from their indices before calling [func@shape_full].
+	 * to subtract the item offset from their indices before calling
+	 * [func@Pango.shape_full].
 	 *
 	 * Params:
 	 *     itemText = valid UTF-8 text to shape.
 	 *     itemLength = the length (in bytes) of @item_text. -1 means nul-terminated text.
-	 *     paragraphText = text of the paragraph (see details).  May be %NULL.
+	 *     paragraphText = text of the paragraph (see details).
 	 *     paragraphLength = the length (in bytes) of @paragraph_text. -1 means nul-terminated text.
-	 *     analysis = `PangoAnalysis` structure from [func@itemize].
+	 *     analysis = `PangoAnalysis` structure from [func@Pango.itemize].
 	 *     glyphs = glyph string in which to store results.
 	 *
 	 * Since: 1.32
@@ -840,13 +866,13 @@ public class PgContext : ObjectG
 	/**
 	 * Determines the inherent direction of a character.
 	 *
-	 * The inherent direction is either %PANGO_DIRECTION_LTR, %PANGO_DIRECTION_RTL,
-	 * or %PANGO_DIRECTION_NEUTRAL.
+	 * The inherent direction is either `PANGO_DIRECTION_LTR`, `PANGO_DIRECTION_RTL`,
+	 * or `PANGO_DIRECTION_NEUTRAL`.
 	 *
 	 * This function is useful to categorize characters into left-to-right
 	 * letters, right-to-left letters, and everything else. If full Unicode
-	 * bidirectional type of a character is needed,
-	 * [func@Pango.BidiType.for_unichar] can be used instead.
+	 * bidirectional type of a character is needed, [func@Pango.BidiType.for_unichar]
+	 * can be used instead.
 	 *
 	 * Params:
 	 *     ch = a Unicode character

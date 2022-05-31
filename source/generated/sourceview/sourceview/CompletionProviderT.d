@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.CompletionProviderT;
 
 public  import gio.AsyncResultIF;
@@ -17,7 +41,15 @@ public  import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Completion provider interface.
+ * 
+ * You must implement this interface to provide proposals to [class@Completion].
+ * 
+ * In most cases, implementations of this interface will want to use
+ * [vfunc@CompletionProvider.populate_async] to asynchronously populate the results
+ * to avoid blocking the main loop.
+ */
 public template CompletionProviderT(TStruct)
 {
 	/** Get the main Gtk struct */
@@ -37,13 +69,11 @@ public template CompletionProviderT(TStruct)
 	 * provider. Many providers may choose to insert a #GtkSourceSnippet with
 	 * edit points the user may cycle through.
 	 *
-	 * See also: #GtkSourceSnippet, #GtkSourceSnippetChunk, gtk_source_view_push_snippet()
+	 * See also: [class@Snippet], [class@SnippetChunk], [method@View.push_snippet]
 	 *
 	 * Params:
 	 *     context = a #GtkSourceCompletionContext
 	 *     proposal = a #GtkSourceCompletionProposal
-	 *
-	 * Since: 5.0
 	 */
 	public void activate(CompletionContext context, CompletionProposalIF proposal)
 	{
@@ -52,8 +82,9 @@ public template CompletionProviderT(TStruct)
 
 	/**
 	 * This function requests that the #GtkSourceCompletionProvider prepares
-	 * @cell to display the contents of @proposal. Based on @cells column
-	 * type, you may want to display different information.
+	 * @cell to display the contents of @proposal.
+	 *
+	 * Based on @cells column type, you may want to display different information.
 	 *
 	 * This allows for columns of information among completion proposals
 	 * resulting in better alignment of similar content (icons, return types,
@@ -63,8 +94,6 @@ public template CompletionProviderT(TStruct)
 	 *     context = a #GtkSourceCompletionContext
 	 *     proposal = a #GtkSourceCompletionProposal
 	 *     cell = a #GtkSourceCompletionCell
-	 *
-	 * Since: 5.0
 	 */
 	public void display(CompletionContext context, CompletionProposalIF proposal, CompletionCell cell)
 	{
@@ -82,8 +111,6 @@ public template CompletionProviderT(TStruct)
 	 *
 	 * Params:
 	 *     context = a #GtkSourceCompletionContext
-	 *
-	 * Since: 5.0
 	 */
 	public int getPriority(CompletionContext context)
 	{
@@ -97,8 +124,6 @@ public template CompletionProviderT(TStruct)
 	 * at some point in the future when non-%NULL.
 	 *
 	 * Returns: a title for the provider or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public string getTitle()
 	{
@@ -118,8 +143,6 @@ public template CompletionProviderT(TStruct)
 	 * Params:
 	 *     iter = a #GtkTextIter
 	 *     ch = a #gunichar of the character inserted
-	 *
-	 * Since: 5.0
 	 */
 	public bool isTrigger(TextIter iter, dchar ch)
 	{
@@ -137,10 +160,8 @@ public template CompletionProviderT(TStruct)
 	 * Params:
 	 *     context = a #GtkSourceCompletionContext
 	 *     proposal = a #GtkSourceCompletionProposal
-	 *     keyval = a keyval such as %GDK_KEY_period
+	 *     keyval = a keyval such as [const@Gdk.KEY_period]
 	 *     state = a #GdkModifierType or 0
-	 *
-	 * Since: 5.0
 	 */
 	public bool keyActivates(CompletionContext context, CompletionProposalIF proposal, uint keyval, GdkModifierType state)
 	{
@@ -149,17 +170,16 @@ public template CompletionProviderT(TStruct)
 
 	/**
 	 * Providers should return a list of alternates to @proposal or %NULL if
-	 * there are no alternates available. This can be used by the completion
-	 * view to allow the user to move laterally through similar proposals, such
-	 * as overrides of methods by the same name.
+	 * there are no alternates available.
+	 *
+	 * This can be used by the completion view to allow the user to move laterally
+	 * through similar proposals, such as overrides of methods by the same name.
 	 *
 	 * Params:
 	 *     context = a #GtkSourceCompletionContext
 	 *     proposal = a #GtkSourceCompletionProposal
 	 *
 	 * Returns: a #GPtrArray of #GtkSourceCompletionProposal or %NULL.
-	 *
-	 * Since: 5.0
 	 */
 	public PtrArray listAlternates(CompletionContext context, CompletionProposalIF proposal)
 	{
@@ -177,9 +197,9 @@ public template CompletionProviderT(TStruct)
 	 * Asynchronously requests that the provider populates the completion
 	 * results for @context.
 	 *
-	 * For providers that would like to populate a #GListModel while those
+	 * For providers that would like to populate a [iface@Gio.ListModel] while those
 	 * results are displayed to the user,
-	 * gtk_source_completion_context_set_proposals_for_provider() may be used
+	 * [method@CompletionContext.set_proposals_for_provider] may be used
 	 * to reduce latency until the user sees results.
 	 *
 	 * Params:
@@ -187,8 +207,6 @@ public template CompletionProviderT(TStruct)
 	 *     cancellable = a #GCancellable or %NULL
 	 *     callback = a callback to execute upon completion
 	 *     userData = closure data for @callback
-	 *
-	 * Since: 5.0
 	 */
 	public void populateAsync(CompletionContext context, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
 	{
@@ -202,8 +220,6 @@ public template CompletionProviderT(TStruct)
 	 *     result = a #GAsyncResult provided to callback
 	 *
 	 * Returns: a #GListModel of #GtkSourceCompletionProposal
-	 *
-	 * Since: 5.0
 	 *
 	 * Throws: GException on failure.
 	 */
@@ -228,17 +244,15 @@ public template CompletionProviderT(TStruct)
 
 	/**
 	 * This function can be used to filter results previously provided to
-	 * the #GtkSourceCompletionContext by the #GtkSourceCompletionProvider.
+	 * the [class@CompletionContext] by the #GtkSourceCompletionProvider.
 	 *
-	 * This can happen as the user types additionl text onto the word so
+	 * This can happen as the user types additional text onto the word so
 	 * that previously matched items may be removed from the list instead of
-	 * generating new #GListModel of results.
+	 * generating new [iface@Gio.ListModel] of results.
 	 *
 	 * Params:
 	 *     context = a #GtkSourceCompletionContext
 	 *     model = a #GListModel
-	 *
-	 * Since: 5.0
 	 */
 	public void refilter(CompletionContext context, ListModelIF model)
 	{

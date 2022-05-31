@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gsk.Transform;
 
 private import glib.ConstructionException;
@@ -13,7 +37,7 @@ private import graphene.Rect;
 private import graphene.Vec3;
 private import gsk.c.functions;
 public  import gsk.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -297,6 +321,29 @@ public class Transform
 	}
 
 	/**
+	 * Applies a skew transform.
+	 *
+	 * Params:
+	 *     skewX = skew factor, in degrees, on the X axis
+	 *     skewY = skew factor, in degrees, on the Y axis
+	 *
+	 * Returns: The new transform
+	 *
+	 * Since: 4.6
+	 */
+	public Transform skew(float skewX, float skewY)
+	{
+		auto __p = gsk_transform_skew(gskTransform, skewX, skewY);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(Transform)(cast(GskTransform*) __p, true);
+	}
+
+	/**
 	 * Converts a `GskTransform` to a 2D transformation matrix.
 	 *
 	 * @self must be a 2D transformation. If you are not
@@ -329,9 +376,58 @@ public class Transform
 	}
 
 	/**
+	 * Converts a `GskTransform` to 2D transformation factors.
+	 *
+	 * To recreate an equivalent transform from the factors returned
+	 * by this function, use
+	 *
+	 * gsk_transform_skew (
+	 * gsk_transform_scale (
+	 * gsk_transform_rotate (
+	 * gsk_transform_translate (NULL, &GRAPHENE_POINT_T (dx, dy)),
+	 * angle),
+	 * scale_x, scale_y),
+	 * skew_x, skew_y)
+	 *
+	 * @self must be a 2D transformation. If you are not sure, use
+	 *
+	 * gsk_transform_get_category() >= %GSK_TRANSFORM_CATEGORY_2D
+	 *
+	 * to check.
+	 *
+	 * Params:
+	 *     outSkewX = return location for the skew factor
+	 *         in the  x direction
+	 *     outSkewY = return location for the skew factor
+	 *         in the  y direction
+	 *     outScaleX = return location for the scale
+	 *         factor in the x direction
+	 *     outScaleY = return location for the scale
+	 *         factor in the y direction
+	 *     outAngle = return location for the rotation angle
+	 *     outDx = return location for the translation
+	 *         in the x direction
+	 *     outDy = return location for the translation
+	 *         in the y direction
+	 *
+	 * Since: 4.6
+	 */
+	public void to2dComponents(out float outSkewX, out float outSkewY, out float outScaleX, out float outScaleY, out float outAngle, out float outDx, out float outDy)
+	{
+		gsk_transform_to_2d_components(gskTransform, &outSkewX, &outSkewY, &outScaleX, &outScaleY, &outAngle, &outDx, &outDy);
+	}
+
+	/**
 	 * Converts a `GskTransform` to 2D affine transformation factors.
 	 *
-	 * @self must be a 2D transformation. If you are not
+	 * To recreate an equivalent transform from the factors returned
+	 * by this function, use
+	 *
+	 * gsk_transform_scale (gsk_transform_translate (NULL,
+	 * &GRAPHENE_POINT_T (dx, dy)),
+	 * sx, sy)
+	 *
+	 * @self must be a 2D affine transformation. If you are not
 	 * sure, use
 	 *
 	 * gsk_transform_get_category() >= %GSK_TRANSFORM_CATEGORY_2D_AFFINE

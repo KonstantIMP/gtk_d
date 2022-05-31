@@ -1,9 +1,33 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gdk.c.functions;
 
 import std.stdio;
 import gdk.c.types;
 import cairo.c.types;
-import linker.loader;
+import linker.Loader;
 
 version (Windows)
 	static immutable LIBRARY_GDK = ["libgtk-4-1.dll;gtk-4-4.1.dll;gtk-4.dll"];
@@ -207,6 +231,7 @@ shared static this()
 	Linker.link(gdk_display_open, "gdk_display_open", LIBRARY_GDK);
 	Linker.link(gdk_display_beep, "gdk_display_beep", LIBRARY_GDK);
 	Linker.link(gdk_display_close, "gdk_display_close", LIBRARY_GDK);
+	Linker.link(gdk_display_create_gl_context, "gdk_display_create_gl_context", LIBRARY_GDK);
 	Linker.link(gdk_display_device_is_grabbed, "gdk_display_device_is_grabbed", LIBRARY_GDK);
 	Linker.link(gdk_display_flush, "gdk_display_flush", LIBRARY_GDK);
 	Linker.link(gdk_display_get_app_launch_context, "gdk_display_get_app_launch_context", LIBRARY_GDK);
@@ -314,6 +339,11 @@ shared static this()
 
 	Linker.link(gdk_event_sequence_get_type, "gdk_event_sequence_get_type", LIBRARY_GDK);
 
+	// gdk.FileList
+
+	Linker.link(gdk_file_list_get_type, "gdk_file_list_get_type", LIBRARY_GDK);
+	Linker.link(gdk_file_list_get_files, "gdk_file_list_get_files", LIBRARY_GDK);
+
 	// gdk.FocusEvent
 
 	Linker.link(gdk_focus_event_get_type, "gdk_focus_event_get_type", LIBRARY_GDK);
@@ -350,6 +380,8 @@ shared static this()
 	Linker.link(gdk_gl_context_get_type, "gdk_gl_context_get_type", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_clear_current, "gdk_gl_context_clear_current", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_get_current, "gdk_gl_context_get_current", LIBRARY_GDK);
+	Linker.link(gdk_gl_context_get_allowed_apis, "gdk_gl_context_get_allowed_apis", LIBRARY_GDK);
+	Linker.link(gdk_gl_context_get_api, "gdk_gl_context_get_api", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_get_debug_enabled, "gdk_gl_context_get_debug_enabled", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_get_display, "gdk_gl_context_get_display", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_get_forward_compatible, "gdk_gl_context_get_forward_compatible", LIBRARY_GDK);
@@ -362,6 +394,7 @@ shared static this()
 	Linker.link(gdk_gl_context_is_shared, "gdk_gl_context_is_shared", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_make_current, "gdk_gl_context_make_current", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_realize, "gdk_gl_context_realize", LIBRARY_GDK);
+	Linker.link(gdk_gl_context_set_allowed_apis, "gdk_gl_context_set_allowed_apis", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_set_debug_enabled, "gdk_gl_context_set_debug_enabled", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_set_forward_compatible, "gdk_gl_context_set_forward_compatible", LIBRARY_GDK);
 	Linker.link(gdk_gl_context_set_required_version, "gdk_gl_context_set_required_version", LIBRARY_GDK);
@@ -547,12 +580,17 @@ shared static this()
 
 	Linker.link(gdk_texture_get_type, "gdk_texture_get_type", LIBRARY_GDK);
 	Linker.link(gdk_texture_new_for_pixbuf, "gdk_texture_new_for_pixbuf", LIBRARY_GDK);
+	Linker.link(gdk_texture_new_from_bytes, "gdk_texture_new_from_bytes", LIBRARY_GDK);
 	Linker.link(gdk_texture_new_from_file, "gdk_texture_new_from_file", LIBRARY_GDK);
+	Linker.link(gdk_texture_new_from_filename, "gdk_texture_new_from_filename", LIBRARY_GDK);
 	Linker.link(gdk_texture_new_from_resource, "gdk_texture_new_from_resource", LIBRARY_GDK);
 	Linker.link(gdk_texture_download, "gdk_texture_download", LIBRARY_GDK);
 	Linker.link(gdk_texture_get_height, "gdk_texture_get_height", LIBRARY_GDK);
 	Linker.link(gdk_texture_get_width, "gdk_texture_get_width", LIBRARY_GDK);
 	Linker.link(gdk_texture_save_to_png, "gdk_texture_save_to_png", LIBRARY_GDK);
+	Linker.link(gdk_texture_save_to_png_bytes, "gdk_texture_save_to_png_bytes", LIBRARY_GDK);
+	Linker.link(gdk_texture_save_to_tiff, "gdk_texture_save_to_tiff", LIBRARY_GDK);
+	Linker.link(gdk_texture_save_to_tiff_bytes, "gdk_texture_save_to_tiff_bytes", LIBRARY_GDK);
 
 	// gdk.Toplevel
 
@@ -815,6 +853,7 @@ __gshared extern(C)
 	GdkDisplay* function(const(char)* displayName) c_gdk_display_open;
 	void function(GdkDisplay* display) c_gdk_display_beep;
 	void function(GdkDisplay* display) c_gdk_display_close;
+	GdkGLContext* function(GdkDisplay* self, GError** err) c_gdk_display_create_gl_context;
 	int function(GdkDisplay* display, GdkDevice* device) c_gdk_display_device_is_grabbed;
 	void function(GdkDisplay* display) c_gdk_display_flush;
 	GdkAppLaunchContext* function(GdkDisplay* display) c_gdk_display_get_app_launch_context;
@@ -922,6 +961,11 @@ __gshared extern(C)
 
 	GType function() c_gdk_event_sequence_get_type;
 
+	// gdk.FileList
+
+	GType function() c_gdk_file_list_get_type;
+	GSList* function(GdkFileList* fileList) c_gdk_file_list_get_files;
+
 	// gdk.FocusEvent
 
 	GType function() c_gdk_focus_event_get_type;
@@ -958,6 +1002,8 @@ __gshared extern(C)
 	GType function() c_gdk_gl_context_get_type;
 	void function() c_gdk_gl_context_clear_current;
 	GdkGLContext* function() c_gdk_gl_context_get_current;
+	GdkGLAPI function(GdkGLContext* self) c_gdk_gl_context_get_allowed_apis;
+	GdkGLAPI function(GdkGLContext* self) c_gdk_gl_context_get_api;
 	int function(GdkGLContext* context) c_gdk_gl_context_get_debug_enabled;
 	GdkDisplay* function(GdkGLContext* context) c_gdk_gl_context_get_display;
 	int function(GdkGLContext* context) c_gdk_gl_context_get_forward_compatible;
@@ -970,6 +1016,7 @@ __gshared extern(C)
 	int function(GdkGLContext* self, GdkGLContext* other) c_gdk_gl_context_is_shared;
 	void function(GdkGLContext* context) c_gdk_gl_context_make_current;
 	int function(GdkGLContext* context, GError** err) c_gdk_gl_context_realize;
+	void function(GdkGLContext* self, GdkGLAPI apis) c_gdk_gl_context_set_allowed_apis;
 	void function(GdkGLContext* context, int enabled) c_gdk_gl_context_set_debug_enabled;
 	void function(GdkGLContext* context, int compatible) c_gdk_gl_context_set_forward_compatible;
 	void function(GdkGLContext* context, int major, int minor) c_gdk_gl_context_set_required_version;
@@ -1155,12 +1202,17 @@ __gshared extern(C)
 
 	GType function() c_gdk_texture_get_type;
 	GdkTexture* function(GdkPixbuf* pixbuf) c_gdk_texture_new_for_pixbuf;
+	GdkTexture* function(GBytes* bytes, GError** err) c_gdk_texture_new_from_bytes;
 	GdkTexture* function(GFile* file, GError** err) c_gdk_texture_new_from_file;
+	GdkTexture* function(char* path, GError** err) c_gdk_texture_new_from_filename;
 	GdkTexture* function(const(char)* resourcePath) c_gdk_texture_new_from_resource;
 	void function(GdkTexture* texture, char* data, size_t stride) c_gdk_texture_download;
 	int function(GdkTexture* texture) c_gdk_texture_get_height;
 	int function(GdkTexture* texture) c_gdk_texture_get_width;
 	int function(GdkTexture* texture, char* filename) c_gdk_texture_save_to_png;
+	GBytes* function(GdkTexture* texture) c_gdk_texture_save_to_png_bytes;
+	int function(GdkTexture* texture, char* filename) c_gdk_texture_save_to_tiff;
+	GBytes* function(GdkTexture* texture) c_gdk_texture_save_to_tiff_bytes;
 
 	// gdk.Toplevel
 
@@ -1421,6 +1473,7 @@ alias c_gdk_display_get_default gdk_display_get_default;
 alias c_gdk_display_open gdk_display_open;
 alias c_gdk_display_beep gdk_display_beep;
 alias c_gdk_display_close gdk_display_close;
+alias c_gdk_display_create_gl_context gdk_display_create_gl_context;
 alias c_gdk_display_device_is_grabbed gdk_display_device_is_grabbed;
 alias c_gdk_display_flush gdk_display_flush;
 alias c_gdk_display_get_app_launch_context gdk_display_get_app_launch_context;
@@ -1528,6 +1581,11 @@ alias c_gdk_event_unref gdk_event_unref;
 
 alias c_gdk_event_sequence_get_type gdk_event_sequence_get_type;
 
+// gdk.FileList
+
+alias c_gdk_file_list_get_type gdk_file_list_get_type;
+alias c_gdk_file_list_get_files gdk_file_list_get_files;
+
 // gdk.FocusEvent
 
 alias c_gdk_focus_event_get_type gdk_focus_event_get_type;
@@ -1564,6 +1622,8 @@ alias c_gdk_frame_timings_unref gdk_frame_timings_unref;
 alias c_gdk_gl_context_get_type gdk_gl_context_get_type;
 alias c_gdk_gl_context_clear_current gdk_gl_context_clear_current;
 alias c_gdk_gl_context_get_current gdk_gl_context_get_current;
+alias c_gdk_gl_context_get_allowed_apis gdk_gl_context_get_allowed_apis;
+alias c_gdk_gl_context_get_api gdk_gl_context_get_api;
 alias c_gdk_gl_context_get_debug_enabled gdk_gl_context_get_debug_enabled;
 alias c_gdk_gl_context_get_display gdk_gl_context_get_display;
 alias c_gdk_gl_context_get_forward_compatible gdk_gl_context_get_forward_compatible;
@@ -1576,6 +1636,7 @@ alias c_gdk_gl_context_is_legacy gdk_gl_context_is_legacy;
 alias c_gdk_gl_context_is_shared gdk_gl_context_is_shared;
 alias c_gdk_gl_context_make_current gdk_gl_context_make_current;
 alias c_gdk_gl_context_realize gdk_gl_context_realize;
+alias c_gdk_gl_context_set_allowed_apis gdk_gl_context_set_allowed_apis;
 alias c_gdk_gl_context_set_debug_enabled gdk_gl_context_set_debug_enabled;
 alias c_gdk_gl_context_set_forward_compatible gdk_gl_context_set_forward_compatible;
 alias c_gdk_gl_context_set_required_version gdk_gl_context_set_required_version;
@@ -1761,12 +1822,17 @@ alias c_gdk_surface_translate_coordinates gdk_surface_translate_coordinates;
 
 alias c_gdk_texture_get_type gdk_texture_get_type;
 alias c_gdk_texture_new_for_pixbuf gdk_texture_new_for_pixbuf;
+alias c_gdk_texture_new_from_bytes gdk_texture_new_from_bytes;
 alias c_gdk_texture_new_from_file gdk_texture_new_from_file;
+alias c_gdk_texture_new_from_filename gdk_texture_new_from_filename;
 alias c_gdk_texture_new_from_resource gdk_texture_new_from_resource;
 alias c_gdk_texture_download gdk_texture_download;
 alias c_gdk_texture_get_height gdk_texture_get_height;
 alias c_gdk_texture_get_width gdk_texture_get_width;
 alias c_gdk_texture_save_to_png gdk_texture_save_to_png;
+alias c_gdk_texture_save_to_png_bytes gdk_texture_save_to_png_bytes;
+alias c_gdk_texture_save_to_tiff gdk_texture_save_to_tiff;
+alias c_gdk_texture_save_to_tiff_bytes gdk_texture_save_to_tiff_bytes;
 
 // gdk.Toplevel
 

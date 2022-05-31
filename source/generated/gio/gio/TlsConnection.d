@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gio.TlsConnection;
 
 private import gio.AsyncResultIF;
@@ -252,6 +276,8 @@ public class TlsConnection : IOStream
 	 * certificate, after the handshake has completed or failed. (It is
 	 * not set during the emission of #GTlsConnection::accept-certificate.)
 	 *
+	 * See #GTlsConnection:peer-certificate-errors for more information.
+	 *
 	 * Returns: @conn's peer's certificate errors
 	 *
 	 * Since: 2.28
@@ -485,6 +511,9 @@ public class TlsConnection : IOStream
 	 * client-side connections, unless that bit is not set in
 	 * #GTlsClientConnection:validation-flags).
 	 *
+	 * There are nonintuitive security implications when using a non-default
+	 * database. See #GDtlsConnection:database for details.
+	 *
 	 * Params:
 	 *     database = a #GTlsDatabase
 	 *
@@ -603,6 +632,15 @@ public class TlsConnection : IOStream
 	 * certificate to be accepted despite @errors, return %TRUE from the
 	 * signal handler. Otherwise, if no handler accepts the certificate,
 	 * the handshake will fail with %G_TLS_ERROR_BAD_CERTIFICATE.
+	 *
+	 * GLib guarantees that if certificate verification fails, this signal
+	 * will be emitted with at least one error will be set in @errors, but
+	 * it does not guarantee that all possible errors will be set.
+	 * Accordingly, you may not safely decide to ignore any particular
+	 * type of error. For example, it would be incorrect to ignore
+	 * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired
+	 * certificates, because this could potentially be the only error flag
+	 * set even if other problems exist with the certificate.
 	 *
 	 * For a server-side connection, @peer_cert is the certificate
 	 * presented by the client, if this was requested via the server's

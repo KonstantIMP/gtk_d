@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gobject.Type;
 
 private import glib.Str;
@@ -15,7 +39,8 @@ public  import gobject.c.types;
 /** */
 public struct Type
 {
-	public static T* getInstanceClass(T)(ObjectG obj) {
+	public static T* getInstanceClass(T)(ObjectG obj)
+	{
 		return cast(T*) (cast(GTypeInstance*)obj.getObjectGStruct()).gClass;
 	}
 
@@ -23,7 +48,8 @@ public struct Type
 	 * Get the unique name that is assigned to the Objects type.
 	 * Returns: Static type name or NULL.
 	 */
-	public static string name(ObjectG obj) {
+	public static string name(ObjectG obj)
+	{
 		GType type = (cast(GTypeInstance*)obj.getObjectGStruct()).gClass.gType;
 
 		return name(type);
@@ -667,7 +693,7 @@ public struct Type
 	 *     plugin = #GTypePlugin structure to retrieve the #GTypeInfo from
 	 *     flags = bitwise combination of #GTypeFlags values
 	 *
-	 * Returns: the new type identifier or #G_TYPE_INVALID if registration failed
+	 * Returns: the new type identifier or %G_TYPE_INVALID if registration failed
 	 */
 	public static GType registerDynamic(GType parentType, string typeName, TypePluginIF plugin, GTypeFlags flags)
 	{

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgFontset;
 
 private import gobject.ObjectG;
@@ -10,7 +34,7 @@ public  import pango.c.types;
 /**
  * A `PangoFontset` represents a set of `PangoFont` to use when rendering text.
  * 
- * A `PAngoFontset` is the result of resolving a `PangoFontDescription`
+ * A `PangoFontset` is the result of resolving a `PangoFontDescription`
  * against a particular `PangoContext`. It has operations for finding the
  * component font for a particular Unicode character, and for finding a
  * composite set of metrics for the entire fontset.
@@ -69,8 +93,8 @@ public class PgFontset : ObjectG
 	}
 
 	/**
-	 * Returns the font in the fontset that contains the best glyph for a
-	 * Unicode character.
+	 * Returns the font in the fontset that contains the best
+	 * glyph for a Unicode character.
 	 *
 	 * Params:
 	 *     wc = a Unicode character

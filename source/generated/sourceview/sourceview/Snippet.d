@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.Snippet;
 
 private import glib.ConstructionException;
@@ -10,7 +34,20 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Quick insertion code snippets.
+ * 
+ * The `GtkSourceSnippet` represents a series of chunks that can quickly be
+ * inserted into the [class@View].
+ * 
+ * Snippets are defined in XML files which are loaded by the
+ * [class@SnippetManager]. Alternatively, applications can create snippets
+ * on demand and insert them into the [class@View] using
+ * [method@View.push_snippet].
+ * 
+ * Snippet chunks can reference other snippet chunks as well as post-process
+ * the values from other chunks such as capitalization.
+ */
 public class Snippet : ObjectG
 {
 	/** the main Gtk struct */
@@ -55,8 +92,6 @@ public class Snippet : ObjectG
 	 *
 	 * Returns: A new #GtkSourceSnippet
 	 *
-	 * Since: 5.0
-	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this(string trigger, string languageId)
@@ -78,8 +113,6 @@ public class Snippet : ObjectG
 	 *
 	 * Params:
 	 *     chunk = a #GtkSourceSnippetChunk
-	 *
-	 * Since: 5.0
 	 */
 	public void addChunk(SnippetChunk chunk)
 	{
@@ -90,8 +123,6 @@ public class Snippet : ObjectG
 	 * Does a deep copy of the snippet.
 	 *
 	 * Returns: A new #GtkSourceSnippet
-	 *
-	 * Since: 5.0
 	 */
 	public Snippet copy()
 	{
@@ -109,8 +140,6 @@ public class Snippet : ObjectG
 	 * Gets the context used for expanding the snippet.
 	 *
 	 * Returns: an #GtkSourceSnippetContext
-	 *
-	 * Since: 5.0
 	 */
 	public SnippetContext getContext()
 	{
@@ -126,8 +155,6 @@ public class Snippet : ObjectG
 
 	/**
 	 * Gets the description for the snippet.
-	 *
-	 * Since: 5.0
 	 */
 	public string getDescription()
 	{
@@ -135,12 +162,11 @@ public class Snippet : ObjectG
 	}
 
 	/**
-	 * Gets the current focus for the snippet. This is changed
-	 * as the user tabs through focus locations.
+	 * Gets the current focus for the snippet.
+	 *
+	 * This is changed as the user tabs through focus locations.
 	 *
 	 * Returns: The focus position, or -1 if unset.
-	 *
-	 * Since: 5.0
 	 */
 	public int getFocusPosition()
 	{
@@ -151,11 +177,9 @@ public class Snippet : ObjectG
 	 * Gets the language-id used for the source snippet.
 	 *
 	 * The language identifier should be one that matches a
-	 * source language #GtkSourceLanguage:id property.
+	 * source language [property@Language:id] property.
 	 *
 	 * Returns: the language identifier
-	 *
-	 * Since: 5.0
 	 */
 	public string getLanguageId()
 	{
@@ -168,8 +192,6 @@ public class Snippet : ObjectG
 	 * Note that not all chunks are editable.
 	 *
 	 * Returns: The number of chunks.
-	 *
-	 * Since: 5.0
 	 */
 	public uint getNChunks()
 	{
@@ -178,8 +200,6 @@ public class Snippet : ObjectG
 
 	/**
 	 * Gets the name for the snippet.
-	 *
-	 * Since: 5.0
 	 */
 	public string getName()
 	{
@@ -193,8 +213,6 @@ public class Snippet : ObjectG
 	 *     nth = the nth chunk to get
 	 *
 	 * Returns: an #GtkSourceSnippetChunk
-	 *
-	 * Since: 5.0
 	 */
 	public SnippetChunk getNthChunk(uint nth)
 	{
@@ -209,13 +227,12 @@ public class Snippet : ObjectG
 	}
 
 	/**
-	 * Gets the trigger for the source snippet. A trigger is
-	 * a word that can be expanded into the full snippet when
+	 * Gets the trigger for the source snippet.
+	 *
+	 * A trigger is a word that can be expanded into the full snippet when
 	 * the user presses Tab.
 	 *
 	 * Returns: A string or %NULL
-	 *
-	 * Since: 5.0
 	 */
 	public string getTrigger()
 	{
@@ -227,8 +244,6 @@ public class Snippet : ObjectG
 	 *
 	 * Params:
 	 *     description = the snippet description
-	 *
-	 * Since: 5.0
 	 */
 	public void setDescription(string description)
 	{
@@ -238,12 +253,10 @@ public class Snippet : ObjectG
 	/**
 	 * Sets the language identifier for the snippet.
 	 *
-	 * This should match the #GtkSourceLanguage:id identifier.
+	 * This should match the [property@Language:id] identifier.
 	 *
 	 * Params:
 	 *     languageId = the language identifier for the snippet
-	 *
-	 * Since: 5.0
 	 */
 	public void setLanguageId(string languageId)
 	{
@@ -255,8 +268,6 @@ public class Snippet : ObjectG
 	 *
 	 * Params:
 	 *     name = the snippet name
-	 *
-	 * Since: 5.0
 	 */
 	public void setName(string name)
 	{
@@ -268,8 +279,6 @@ public class Snippet : ObjectG
 	 *
 	 * Params:
 	 *     trigger = the trigger word
-	 *
-	 * Since: 5.0
 	 */
 	public void setTrigger(string trigger)
 	{

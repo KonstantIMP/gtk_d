@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.MemorySlice;
 
 private import glib.c.functions;
@@ -5,11 +29,8 @@ public  import glib.c.types;
 
 
 /** */
-/**
- * Create slice for Glist
- * Return: A new slice
- */
-public T* sliceNew(T)() {
+public T* sliceNew(T)()
+{
 	// We cant use sliceAlloc for the GLib array types.
 	// the actual array structs are larger than the ones used in the API.
 	static if ( is( T == GArray ) )
@@ -22,30 +43,18 @@ public T* sliceNew(T)() {
 		return cast(T*)g_slice_alloc0(T.sizeof);
 }
 
-/**
- * Allocate memory for a slice
- * Returns: allocated memory
- */
-public T* sliceAlloc(T)() {
+public T* sliceAlloc(T)()
+{
 	return cast(T*)g_slice_alloc0(T.sizeof);
 }
 
-/**
- * Create copy og the slice
- * Params:
- *    memBlock = Memory for slice creating
- * Returns: Copy of the slice
- */
-public T* sliceDup(T)(T* memBlock) {
+public T* sliceDup(T)(T* memBlock)
+{
 	return cast(T*)g_slice_copy(T.sizeof, memBlock);
 }
 
-/**
- * Free allocated for slice memory
- * Params:
- *     memBlock = Memory for free
- */
-public void sliceFree(T)(T* memBlock) {
+public void sliceFree(T)(T* memBlock)
+{
 	g_slice_free1(T.sizeof, memBlock);
 }
 

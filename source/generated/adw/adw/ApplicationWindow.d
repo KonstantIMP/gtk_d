@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module adw.ApplicationWindow;
 
 private import adw.c.functions;
@@ -24,10 +48,15 @@ private import gtk.Widget;
 /**
  * A freeform application window.
  * 
- * `AdwApplicationWindow` is a [class@Gtk.ApplicationWindow] subclass providing
- * the same features as [class@Adw.Window].
+ * <picture>
+ * <source srcset="application-window-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="application-window.png" alt="application-window">
+ * </picture>
  * 
- * See [class@Adw.Window] for details.
+ * `AdwApplicationWindow` is a [class@Gtk.ApplicationWindow] subclass providing
+ * the same features as [class@Window].
+ * 
+ * See [class@Window] for details.
  * 
  * Using [property@Gtk.Application:menubar] is not supported and may result in
  * visual glitches.
@@ -62,6 +91,16 @@ public class ApplicationWindow : DGtkApplicationWindow
 		super(cast(GtkApplicationWindow*)adwApplicationWindow, ownedRef);
 	}
 
+	/**
+	 * You should use `setContent(Widget)` instead
+	 */
+	override void setChild(Widget child)
+	{
+		setContent(child);
+	}
+
+	/**
+	 */
 
 	/** */
 	public static GType getType()

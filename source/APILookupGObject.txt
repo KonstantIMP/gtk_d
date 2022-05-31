@@ -1,11 +1,9 @@
-﻿#
-# This file is part of gtkD.
+﻿# This file is part of gtkD.
 #
 # gtkD is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License
-# as published by the Free Software Foundation; either version 3
-# of the License, or (at your option) any later version, with
-# some exceptions, please read the COPYING file.
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2.1 of the License, or
+# (at your option) any later version.
 #
 # gtkD is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,9 +12,14 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with gtkD; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
+#############################################
+### Definitions for wrapping Gtk+ ###########
+#############################################
+
+# must start with wrap
 wrap: gobject
 file: GObject-2.0.gir
 
@@ -26,7 +29,8 @@ addEnums: start
 	/**
 	 * A value which represents the unique identifier of a registered type.
 	 */
-	enum GType : size_t {
+	enum GType : size_t
+	{
 		INVALID = 0<<2,
 		NONE = 1<<2,
 		INTERFACE = 2<<2,
@@ -77,7 +81,8 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this(GCallback callbackFunc, void* userData, GClosureNotify destroyData, bool swap) {
+	public this(GCallback callbackFunc, void* userData, GClosureNotify destroyData, bool swap)
+	{
 		GClosure* p;
 
 		if ( swap )
@@ -85,7 +90,8 @@ code: start
 		else
 			p = g_cclosure_new(callbackFunc, userData, destroyData);
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new");
 		}
 
@@ -106,7 +112,8 @@ code: start
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this(GCallback callbackFunc, ObjectG object, bool swap) {
+	public this(GCallback callbackFunc, ObjectG object, bool swap)
+	{
 		GClosure* p;
 
 		if ( swap )
@@ -114,7 +121,8 @@ code: start
 		else
 			p = g_cclosure_new_object(callbackFunc, (object is null) ? null : object.getObjectGStruct());
 
-		if(p is null) {
+		if(p is null)
+		{
 			throw new ConstructionException("null returned by new_object");
 		}
 
@@ -137,7 +145,8 @@ import: std.conv
 import: std.traits
 import: std.typecons
 code: start
-	struct DGClosure(T) {
+	struct DGClosure(T)
+	{
 		GClosure closure;
 		T callback;
 	}
@@ -148,11 +157,13 @@ code: start
 	* Closures are central to the concept of asynchronous signal delivery which is widely used throughout GTK+ and GNOME applications.
 	* A closure is an abstraction, a generic representation of a callback.
 	*/
-	class DClosure : Closure {
+	class DClosure : Closure
+	{
 		private void* callback;
 
 		/** Get the main Gtk struct */
-		public GClosure* getDClosureStruct(bool transferOwnership = false) {
+		public GClosure* getDClosureStruct(bool transferOwnership = false)
+		{
 			if (transferOwnership)
 				ownedRef = false;
 			return gClosure;
@@ -161,7 +172,8 @@ code: start
 		/**
 		* Sets our main struct and passes it to the parent class.
 		*/
-		public this (GClosure* gClosure, bool ownedRef = false) {
+		public this (GClosure* gClosure, bool ownedRef = false)
+		{
 			super(gClosure, ownedRef);
 		}
 
@@ -174,7 +186,9 @@ code: start
 		*                This is usefull when using the closure for a Signal, where the instance is
 		*                 the first parameter, but when using delegates it usually isn't used.
 		*/
-		this(T)(T callback, bool swap = false) if ( isCallable!T ) {
+		this(T)(T callback, bool swap = false)
+		if ( isCallable!T )
+		{
 			GClosure* gClosure = g_closure_new_simple(DGClosure!(T).sizeof, null);
 			g_closure_ref(gClosure);
 			g_closure_sink(gClosure);
@@ -194,7 +208,8 @@ code: start
 			super(gClosure, true);
 		}
 
-		extern(C) static void d_closure_marshal(T)(GClosure* closure, GValue* return_value, uint n_param_values, /*const*/ GValue* param_values, void* invocation_hint, void* marshal_data) {
+		extern(C) static void d_closure_marshal(T)(GClosure* closure, GValue* return_value, uint n_param_values, /*const*/ GValue* param_values, void* invocation_hint, void* marshal_data)
+		{
 			DGClosure!(T)* cl = cast(DGClosure!(T)*)closure;
 
 			if ( Parameters!(T).length > n_param_values )
@@ -211,13 +226,15 @@ code: start
 			mixin(getCallbackCall!T());
 		}
 
-		private static string getCallbackCall(T)() {
+		private static string getCallbackCall(T)()
+		{
 			if (!__ctfe) assert(false);
 
 			string call;
 
 			alias Params = Parameters!T;
-			foreach ( param; Params ) {
+			foreach ( param; Params )
+			{
 				static if ( __traits(compiles, TemplateOf!param) && __traits(isSame, TemplateOf!param, glib.c.types.Scoped) )
 					call ~= "import "~moduleName!(TemplateArgsOf!(param)[0])~";\n";
 				else static if ( is(param == class) || is(param == interface) || is(param == struct) || is(param == enum) )
@@ -236,7 +253,8 @@ code: start
 				call ~= "auto ret = ";
 			call ~= "cl.callback(";
 
-			foreach ( i, param; Params ) {
+			foreach ( i, param; Params )
+			{
 				if ( i > 0 )
 					call ~= ", ";
 				call ~= getValue!param(i);
@@ -271,7 +289,8 @@ code: start
 				call ~= "g_type_is_a(return_value.gType, GType.POINTER) ? g_value_set_pointer(return_value, ret) : (g_type_is_a(return_value.gType, GType.BOXED) ? g_value_set_boxed(return_value, ret) : g_value_set_object(return_value, ret));";
 			else static if ( is(Ret == interface) )
 				call ~= "g_value_set_object(return_value, (cast(ObjectG)ret).getObjectGStruct());";
-			else static if ( is(Ret == class) ) {
+			else static if ( is(Ret == class) )
+			{
 				static if ( is(Ret == Variant) )
 					call ~= "g_value_set_variant(return_value, ret.getVariantStruct());";
 				else static if ( is(Ret == ParamSpec) )
@@ -285,7 +304,8 @@ code: start
 			return call;
 		}
 
-		private static string getValue(Param)(int index) {
+		private static string getValue(Param)(int index)
+		{
 			if (!__ctfe) assert(false);
 
 			static if ( is(Param == bool) )
@@ -318,7 +338,8 @@ code: start
 				return "getScopedGobject!("~fullyQualifiedName!(TemplateArgsOf!(Param)[0])~")(cast(typeof("~fullyQualifiedName!(TemplateArgsOf!(Param)[0])~".tupleof[0]))(g_type_is_a(param_values["~to!string(index)~"].gType, GType.POINTER) ? g_value_get_pointer(&param_values["~to!string(index)~"]) : (g_type_is_a(param_values["~to!string(index)~"].gType, GType.BOXED) ? g_value_get_boxed(&param_values["~to!string(index)~"]) : g_value_get_object(&param_values["~to!string(index)~"]))))";
 			else static if ( is(Param == interface) )
 				return "ObjectG.getDObject!("~fullyQualifiedName!Param~")(cast(GObject*)g_value_get_object(&param_values["~to!string(index)~"]))";
-			else static if ( is(Param == class) ) {
+			else static if ( is(Param == class) )
+			{
 				static if ( is(Param == Variant) )
 					return "new Variant(g_value_get_variant(&param_values["~to!string(index)~"]))";
 				else static if ( is(Param== ParamSpec) )
@@ -351,33 +372,41 @@ code: start
 	 * Sets our main struct and passes store it on the gobject.
 	 * Add a gabage collector root to the gtk+ struct so it doesn't get collect
 	 */
-	public this (GObject* gObject, bool ownedRef = false) {
+	public this (GObject* gObject, bool ownedRef = false)
+	{
 		this.gObject = gObject;
-		if ( gObject !is  null ) {
+		if ( gObject !is  null )
+		{
 			setDataFull("GObject", cast(void*)this, cast(GDestroyNotify)&destroyNotify);
 			addToggleRef(cast(GToggleNotify)&toggleNotify, cast(void*)this);
 
 			//If the refCount is larger then 1 toggleNotify isn't called
-			if (gObject.refCount > 1 && !isGcRoot) {
+			if (gObject.refCount > 1 && !isGcRoot)
+			{
 				GC.addRoot(cast(void*)this);
 				isGcRoot = true;
 			}
 
 			//Remove the floating reference if there is one.
-			if ( isFloating() ) {
+			if ( isFloating() )
+			{
 				refSink();
 				unref();
 			}
 			//If we already owned this reference remove the one added by addToggleRef.
-			else if ( ownedRef ) {
+			else if ( ownedRef )
+			{
 				unref();
 			}
 		}
 	}
 
-	extern(C) {
-		static void destroyNotify(ObjectG obj) {
-			if ( obj.isGcRoot ) {
+	extern(C)
+	{
+		static void destroyNotify(ObjectG obj)
+		{
+			if ( obj.isGcRoot )
+			{
 				GC.removeRoot(cast(void*)obj);
 				obj.isGcRoot = false;
 			}
@@ -388,30 +417,36 @@ code: start
 			obj.gObject = null;
 		}
 
-		static void toggleNotify(ObjectG obj, GObject* object, int isLastRef) {
-			if ( isLastRef && obj.isGcRoot ) {
+		static void toggleNotify(ObjectG obj, GObject* object, int isLastRef)
+		{
+			if ( isLastRef && obj.isGcRoot )
+			{
 				GC.removeRoot(cast(void*)obj);
 				obj.isGcRoot = false;
 			}
-			else if ( !obj.isGcRoot ) {
+			else if ( !obj.isGcRoot )
+			{
 				GC.addRoot(cast(void*)obj);
 				obj.isGcRoot = true;
 			}
 		}
 	}
 
-	~this() {
+	~this()
+	{
 		static if ( isPointer!(typeof(g_object_steal_data)) )
 			bool libLoaded = Linker.isLoaded(LIBRARY_GOBJECT[0]);
 		else
 			enum libLoaded = true;
 
-		if ( libLoaded && gObject !is null ) {
+		if ( libLoaded && gObject !is null )
+		{
 			// Remove the GDestroyNotify callback,
 			// for when the D object is destroyed before the C one.
 			g_object_steal_data(gObject, cast(char*)"GObject");
 
-			if ( isGcRoot ) {
+			if ( isGcRoot )
+			{
 				GC.removeRoot(cast(void*)this);
 				isGcRoot = false;
 			}
@@ -424,13 +459,15 @@ code: start
 	}
 
 	/** */
-	T opCast(T)() {
+	T opCast(T)()
+	{
 		if ( !this )
 			return null;
 
 		static if ( is(T : ObjectG)
 			&& !is(T == interface)
-			&& is(typeof(new T(cast(typeof(T.tupleof[0]))gObject, false))) ) {
+			&& is(typeof(new T(cast(typeof(T.tupleof[0]))gObject, false))) )
+		{
 			//If a regular cast works, return the result.
 			if ( auto r = cast(T)super )
 				return r;
@@ -445,12 +482,14 @@ code: start
 			//Remove the GDestroyNotify callback for the original d object.
 			g_object_steal_data(gObject, "GObject");
 			//Remove the original object as a GC root if needed.
-			if ( isGcRoot ) {
+			if ( isGcRoot )
+			{
 				GC.removeRoot(cast(void*)this);
 				isGcRoot = false;
 			}
 
-			if ( hasToggleRef() ) {
+			if ( hasToggleRef() )
+			{
 				//Add a reference for the original D object before we remove the toggle reference.
 				g_object_ref(gObject);
 				g_object_remove_toggle_ref(gObject, cast(GToggleNotify)&toggleNotify, cast(void*)this);
@@ -461,7 +500,8 @@ code: start
 		}
 		else static if ( is(T == interface)
 			&& hasStaticMember!(T, "getType")
-			&& is(ReturnType!(T.getType) == GType) ) {
+			&& is(ReturnType!(T.getType) == GType) )
+		{
 			//If a regular cast works, return the result.
 			if ( auto r = cast(T)super )
 				return r;
@@ -476,7 +516,8 @@ code: start
 			return cast(T)super;
 	}
 
-	unittest {
+	unittest
+	{
 		ObjectG obj = null;
 		
 		assert( (cast(Binding)obj) is null );
@@ -488,12 +529,15 @@ code: start
 	 *  obj = GObject containing the associations.
 	 * Returns: the D Object if found, or a newly constructed object if no such Object exists.
 	 */
-	public static RT getDObject(T, RT=T, U)(U obj, bool ownedRef = false) {
-		if ( obj is null ) {
+	public static RT getDObject(T, RT=T, U)(U obj, bool ownedRef = false)
+	{
+		if ( obj is null )
+		{
 			return null;
 		}
 
-		static if ( is(T : ObjectG) && !is(RT == interface) ) {
+		static if ( is(T : ObjectG) && !is(RT == interface) )
+		{
 			auto p = g_object_get_data(cast(GObject*)obj, Str.toStringz("GObject"));
 
 			if ( p !is null )
@@ -501,7 +545,8 @@ code: start
 			else
 				return new T(obj, ownedRef);
 		}
-		else static if ( is(RT == interface) && hasMember!(RT, "getType") && is(ReturnType!(RT.getType) == GType) ) {
+		else static if ( is(RT == interface) && hasMember!(RT, "getType") && is(ReturnType!(RT.getType) == GType) )
+		{
 			auto p = g_object_get_data(cast(GObject*)obj, Str.toStringz("GObject"));
 
 			if ( p !is null )
@@ -509,17 +554,21 @@ code: start
 			else
 				return getInterfaceInstance!RT(cast(GObject*)obj);
 		}
-		else static if ( is(typeof(new T(obj, ownedRef))) ) {
+		else static if ( is(typeof(new T(obj, ownedRef))) )
+		{
 			return new T(obj, ownedRef);
 		}
-		else {
+		else
+		{
 			return new T(obj);
 		}
 	}
 
-	private static I getInterfaceInstance(I)(GObject* instance) {
-		static class Impl: ObjectG, I {
-			public this (GObject* gObject, bool ownedRef = false) 
+	private static I getInterfaceInstance(I)(GObject* instance)
+	{
+		static class Impl: ObjectG, I
+		{
+			public this (GObject* gObject, bool ownedRef = false)
 			{
 				super(gObject, ownedRef);
 			}
@@ -552,7 +601,8 @@ code: start
 	/**
 	 * Is there a toggle ref connected to this object.
 	 */
-	private bool hasToggleRef() {
+	private bool hasToggleRef()
+	{
 		enum TOGGLE_REF_FLAG = 0x1;
 
 		if ( (g_datalist_get_flags(&gObject.qdata) & TOGGLE_REF_FLAG) != 0 )
@@ -562,21 +612,37 @@ code: start
 			return false;
 	}
 
-	public void removeGcRoot() {
-		if ( hasToggleRef() ) {
+	public void removeGcRoot()
+	{
+		if ( hasToggleRef() )
+		{
 			g_object_ref(gObject);
 			g_object_remove_toggle_ref(gObject, cast(GToggleNotify)&toggleNotify, cast(void*)this);
 		}
 
-		if ( isGcRoot ) {
+		if ( isGcRoot )
+		{
 			GC.removeRoot(cast(void*)this);
 			isGcRoot = false;
 		}
 	}
 
 	/** */
-	public void setProperty(T)(string propertyName, T value) {
+	public void setProperty(T)(string propertyName, T value)
+	{
 		setProperty(propertyName, new Value(value));
+	}
+
+	deprecated("Use the member function")
+	public static void unref(ObjectG obj)
+	{
+		obj.unref();
+	}
+
+	deprecated("Use the member function")
+	public static ObjectG doref(ObjectG obj)
+	{
+		return obj.doref();
 	}
 
 	/**
@@ -597,7 +663,8 @@ code: start
 	 *     property     = Set this if you only want to receive the signal for a specific property.
 	 *     connectFlags = The behavior of the signal's connection.
 	 */	
-	gulong addOnNotify(void delegate(ParamSpec, ObjectG) dlg, string property = "", ConnectFlags connectFlags=cast(ConnectFlags)0) {
+	gulong addOnNotify(void delegate(ParamSpec, ObjectG) dlg, string property = "", ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
 		string signalName;
 
 		if ( property == "" )
@@ -701,7 +768,8 @@ code: start
 	 * Returns: the handler ID, of type gulong (always greater than 0 for successful connections)
 	 */
 	public static gulong connect(T)(ObjectG instance, string detailedSignal, T callback, ConnectFlags connectFlags = cast(ConnectFlags)0)
-		if ( isCallable!T && !is(T == GCallback) ) {
+		if ( isCallable!T && !is(T == GCallback) )
+	{
 		bool after = (connectFlags & ConnectFlags.AFTER) != false;
 		bool swap = (connectFlags & ConnectFlags.SWAPPED) != false;
 
@@ -712,7 +780,8 @@ code: start
 		return id;
 	}
 
-	deprecated public static gulong connectData(void* instanc, string detailedSignal, GCallback cHandler, Object data, GClosureNotify destroyData, GConnectFlags connectFlags) {
+	deprecated public static gulong connectData(void* instanc, string detailedSignal, GCallback cHandler, Object data, GClosureNotify destroyData, GConnectFlags connectFlags)
+	{
 		return g_signal_connect_data(instanc, Str.toStringz(detailedSignal), cHandler, cast(void*)data, destroyData, connectFlags);
 	}
 
@@ -728,7 +797,8 @@ code: start
 	 *     instance = The instance to remove the signal handler from.
 	 *     handlerId = Handler id of the handler to be disconnected.
 	 */
-	public static void handlerDisconnect(ObjectG instance, gulong handlerId) {
+	public static void handlerDisconnect(ObjectG instance, gulong handlerId)
+	{
 		instance.signals.remove(handlerId);
 		g_signal_handler_disconnect((instance is null) ? null : instance.getObjectGStruct(), handlerId);
 	}
@@ -749,7 +819,8 @@ code: start
 	 *
 	 * Returns: the handler ID, of type gulong (always greater than 0 for successful connections)
 	 */
-	public static gulong connect(ObjectG instanc, string detailedSignal, GCallback cHandler, void* data) {
+	public static gulong connect(ObjectG instanc, string detailedSignal, GCallback cHandler, void* data)
+	{
 		return g_signal_connect_data((instanc is null) ? null : instanc.getObjectGStruct(), Str.toStringz(detailedSignal), cHandler, data, null, cast(ConnectFlags)0);
 	}
 code: end
@@ -757,7 +828,8 @@ code: end
 struct: Type
 import: gobject.ObjectG
 code: start
-	public static T* getInstanceClass(T)(ObjectG obj) {
+	public static T* getInstanceClass(T)(ObjectG obj)
+	{
 		return cast(T*) (cast(GTypeInstance*)obj.getObjectGStruct()).gClass;
 	}
 
@@ -765,7 +837,8 @@ code: start
 	 * Get the unique name that is assigned to the Objects type.
 	 * Returns: Static type name or NULL.
 	 */
-	public static string name(ObjectG obj) {
+	public static string name(ObjectG obj)
+	{
 		GType type = (cast(GTypeInstance*)obj.getObjectGStruct()).gClass.gType;
 
 		return name(type);
@@ -777,20 +850,24 @@ import: gobject.Type
 import: std.traits
 code: start
 	/** */
-	public this() {
+	public this()
+	{
 		this(new GValue);
 	}
 
 	/** */
 	this(GOBJECT)(GOBJECT obj)
-		if ( is(GOBJECT == class) && hasMember!(GOBJECT, "getType") ) {
+		if ( is(GOBJECT == class) && hasMember!(GOBJECT, "getType") )
+	{
 		this();
 		init(GOBJECT.getType());
 
-		static if ( is(GOBJECT : ObjectG) ) {
+		static if ( is(GOBJECT : ObjectG) )
+		{
 			setObject(obj);
 		}
-		else {
+		else
+		{
 			if ( Type.isA(gValue.gType, GType.BOXED) )
 				setBoxed(obj.tupleof[0]);
 			else
@@ -800,61 +877,77 @@ code: start
 
 
 	/** */
-	this(string value) {
+	this(string value)
+	{
 		this();
 		init(GType.STRING);
 		setString(value);
 	}
 
 	/** */
-	this(BOOL)(BOOL value) if( isBoolean!BOOL ) {
+	this(BOOL)(BOOL value)
+		if( isBoolean!BOOL )
+	{
 		this();
 		init(GType.BOOLEAN);
 		setBoolean(value);
 	}
 
 	/** */
-	this(CHAR)(CHAR value) if( is(CHAR == char) ) {
+	this(CHAR)(CHAR value)
+	if( is(CHAR == char) )
+	{
 		this();
 		init(GType.UCHAR);
 		setUchar(value);
 	}
 
 	/** */
-	this(INT)(INT value) if ( isIntegral!INT ) {
+	this(INT)(INT value)
+		if ( isIntegral!INT )
+	{
 		this();
 
-		static if ( is(OriginalType!INT == int) ) {
+		static if ( is(OriginalType!INT == int) )
+		{
 			init(GType.INT);
 			setInt(value);
 		}
-		else static if ( is(OriginalType!INT == uint) ) {
+		else static if ( is(OriginalType!INT == uint) )
+		{
 			init(GType.UINT);
 			setUint(value);
 		}
-		else static if ( is(OriginalType!INT == long) ) {
+		else static if ( is(OriginalType!INT == long) )
+		{
 			init(GType.INT64);
 			setInt64(value);
 		}
-		else static if ( is(OriginalType!INT == ulong) ) {
+		else static if ( is(OriginalType!INT == ulong) )
+		{
 			init(GType.UINT64);
 			setUint64(value);
 		}
-		else {
+		else
+		{
 			init(GType.INT);
 			setInt(value);
 		}
 	}
 
 	/** */
-	this(FLOAT)(FLOAT value) if ( isFloatingPoint!FLOAT ) {
+	this(FLOAT)(FLOAT value)
+		if ( isFloatingPoint!FLOAT )
+	{
 		this();
 
-		static if ( is( FLOAT == float ) ) {
+		static if ( is( FLOAT == float ) )
+		{
 			init(GType.FLOAT);
 			setFloat(value);
 		}
-		else {
+		else
+		{
 			init(GType.DOUBLE);
 			setDouble(value);
 		}
@@ -863,14 +956,16 @@ code: start
 	/**
 	 * The GType of the contianed value.
 	 */
-	public @property GType gType() {
+	public @property GType gType()
+	{
 		return gValue.gType;
 	}
 
 	/**
 	 * Retrieves a TYPE from Value, the Value must contain the appropriate type.
 	 */
-	public TYPE get(TYPE)() {
+	public TYPE get(TYPE)()
+	{
 		static if ( is(TYPE == bool) )
 			return getBoolean();
 		else static if ( is(TYPE == byte) )
@@ -916,7 +1011,8 @@ code: end
 struct: WeakRef
 code: start
 	/** */
-	this(void* object) {
+	this(void* object)
+	{
 		g_weak_ref_init(gWeakRef, object);
 	}
 code: end

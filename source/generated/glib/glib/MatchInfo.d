@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.MatchInfo;
 
 private import glib.ErrorG;
@@ -6,7 +30,7 @@ private import glib.Regex;
 private import glib.Str;
 private import glib.c.functions;
 public  import glib.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -55,7 +79,7 @@ public class MatchInfo
 	 * match done with @string against @regex and have the same syntax used by
 	 * g_regex_replace().
 	 *
-	 * The @string_to_expand must be UTF-8 encoded even if #G_REGEX_RAW was
+	 * The @string_to_expand must be UTF-8 encoded even if %G_REGEX_RAW was
 	 * passed to g_regex_new().
 	 *
 	 * The backreferences are extracted from the string passed to the match
@@ -323,19 +347,19 @@ public class MatchInfo
 	 * able to raise an error as soon as a mistake is made.
 	 *
 	 * GRegex supports the concept of partial matching by means of the
-	 * #G_REGEX_MATCH_PARTIAL_SOFT and #G_REGEX_MATCH_PARTIAL_HARD flags.
+	 * %G_REGEX_MATCH_PARTIAL_SOFT and %G_REGEX_MATCH_PARTIAL_HARD flags.
 	 * When they are used, the return code for
 	 * g_regex_match() or g_regex_match_full() is, as usual, %TRUE
 	 * for a complete match, %FALSE otherwise. But, when these functions
 	 * return %FALSE, you can check if the match was partial calling
 	 * g_match_info_is_partial_match().
 	 *
-	 * The difference between #G_REGEX_MATCH_PARTIAL_SOFT and
-	 * #G_REGEX_MATCH_PARTIAL_HARD is that when a partial match is encountered
-	 * with #G_REGEX_MATCH_PARTIAL_SOFT, matching continues to search for a
-	 * possible complete match, while with #G_REGEX_MATCH_PARTIAL_HARD matching
+	 * The difference between %G_REGEX_MATCH_PARTIAL_SOFT and
+	 * %G_REGEX_MATCH_PARTIAL_HARD is that when a partial match is encountered
+	 * with %G_REGEX_MATCH_PARTIAL_SOFT, matching continues to search for a
+	 * possible complete match, while with %G_REGEX_MATCH_PARTIAL_HARD matching
 	 * stops at the partial match.
-	 * When both #G_REGEX_MATCH_PARTIAL_SOFT and #G_REGEX_MATCH_PARTIAL_HARD
+	 * When both %G_REGEX_MATCH_PARTIAL_SOFT and %G_REGEX_MATCH_PARTIAL_HARD
 	 * are set, the latter takes precedence.
 	 *
 	 * There were formerly some restrictions on the pattern for partial matching.

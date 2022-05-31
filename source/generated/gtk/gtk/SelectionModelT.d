@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.SelectionModelT;
 
 public  import gobject.ObjectG;
@@ -24,12 +48,14 @@ public  import std.algorithm;
  * [signal@Gtk.SelectionModel::selection-changed] signal by calling the
  * [method@Gtk.SelectionModel.selection_changed] function. The positions given
  * in that signal may have their selection state changed, though that is not a
- * requirement. If new items added to the model via the ::items-changed signal
- * are selected or not is up to the implementation.
+ * requirement. If new items added to the model via the
+ * [signal@Gio.ListModel::items-changed] signal are selected or not is up to the
+ * implementation.
  * 
- * Note that items added via ::items-changed may already be selected and no
- * [Gtk.SelectionModel::selection-changed] will be emitted for them. So to
- * track which items are selected, it is necessary to listen to both signals.
+ * Note that items added via [signal@Gio.ListModel::items-changed] may already
+ * be selected and no [signal@Gtk.SelectionModel::selection-changed] will be
+ * emitted for them. So to track which items are selected, it is necessary to
+ * listen to both signals.
  * 
  * Additionally, the interface can expose functionality to select and unselect
  * items. If these functions are implemented, GTK's list widgets will allow users

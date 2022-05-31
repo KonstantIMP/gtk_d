@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.Gutter;
 
 private import gobject.ObjectG;
@@ -14,7 +38,25 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * Gutter object for [class@View].
+ * 
+ * The `GtkSourceGutter` object represents the left or right gutter of the text
+ * view. It is used by [class@View] to draw the line numbers and
+ * [class@Mark]s that might be present on a line. By packing
+ * additional [class@GutterRenderer] objects in the gutter, you can extend the
+ * gutter with your own custom drawings.
+ * 
+ * To get a `GtkSourceGutter`, use the [method@View.get_gutter] function.
+ * 
+ * The gutter works very much the same way as cells rendered in a [class@Gtk.TreeView].
+ * The concept is similar, with the exception that the gutter does not have an
+ * underlying [iface@Gtk.TreeModel]. The builtin line number renderer is at position
+ * %GTK_SOURCE_VIEW_GUTTER_POSITION_LINES (-30) and the marks renderer is at
+ * %GTK_SOURCE_VIEW_GUTTER_POSITION_MARKS (-20). The gutter sorts the renderers
+ * in ascending order, from left to right. So the marks are displayed on the
+ * right of the line numbers.
+ */
 public class Gutter : Widget
 {
 	/** the main Gtk struct */
@@ -52,8 +94,6 @@ public class Gutter : Widget
 
 	/**
 	 * Returns: the associated #GtkSourceView.
-	 *
-	 * Since: 3.24
 	 */
 	public View getView()
 	{
@@ -77,8 +117,6 @@ public class Gutter : Widget
 	 *     position = the renderer position.
 	 *
 	 * Returns: %TRUE if operation succeeded. Otherwise %FALSE.
-	 *
-	 * Since: 3.0
 	 */
 	public bool insert(GutterRenderer renderer, int position)
 	{
@@ -97,8 +135,6 @@ public class Gutter : Widget
 	 * Params:
 	 *     renderer = a #GtkCellRenderer.
 	 *     position = the new renderer position.
-	 *
-	 * Since: 2.8
 	 */
 	public void reorder(GutterRenderer renderer, int position)
 	{

@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module sourceview.StyleSchemeChooserWidget;
 
 private import glib.ConstructionException;
@@ -15,7 +39,18 @@ private import sourceview.c.functions;
 public  import sourceview.c.types;
 
 
-/** */
+/**
+ * A widget for choosing style schemes.
+ * 
+ * The `GtkSourceStyleSchemeChooserWidget` widget lets the user select a
+ * style scheme. By default, the chooser presents a predefined list
+ * of style schemes.
+ * 
+ * To change the initially selected style scheme,
+ * use [method@StyleSchemeChooser.set_style_scheme].
+ * To get the selected style scheme
+ * use [method@StyleSchemeChooser.get_style_scheme].
+ */
 public class StyleSchemeChooserWidget : Widget, StyleSchemeChooserIF
 {
 	/** the main Gtk struct */
@@ -58,8 +93,6 @@ public class StyleSchemeChooserWidget : Widget, StyleSchemeChooserIF
 	 * Creates a new #GtkSourceStyleSchemeChooserWidget.
 	 *
 	 * Returns: a new  #GtkSourceStyleSchemeChooserWidget.
-	 *
-	 * Since: 3.16
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */

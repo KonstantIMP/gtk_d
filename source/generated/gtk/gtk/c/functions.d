@@ -1,8 +1,32 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.c.functions;
 
 import std.stdio;
 import gtk.c.types;
-import linker.loader;
+import linker.Loader;
 
 version (Windows)
 	static immutable LIBRARY_GTK = ["libgtk-4-1.dll;gtk-4-4.1.dll;gtk-4.dll"];
@@ -297,6 +321,7 @@ shared static this()
 
 	// gtk.BitsetIter
 
+	Linker.link(gtk_bitset_iter_get_type, "gtk_bitset_iter_get_type", LIBRARY_GTK);
 	Linker.link(gtk_bitset_iter_get_value, "gtk_bitset_iter_get_value", LIBRARY_GTK);
 	Linker.link(gtk_bitset_iter_is_valid, "gtk_bitset_iter_is_valid", LIBRARY_GTK);
 	Linker.link(gtk_bitset_iter_next, "gtk_bitset_iter_next", LIBRARY_GTK);
@@ -1013,12 +1038,14 @@ shared static this()
 	Linker.link(gtk_drop_down_get_model, "gtk_drop_down_get_model", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_get_selected, "gtk_drop_down_get_selected", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_get_selected_item, "gtk_drop_down_get_selected_item", LIBRARY_GTK);
+	Linker.link(gtk_drop_down_get_show_arrow, "gtk_drop_down_get_show_arrow", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_set_enable_search, "gtk_drop_down_set_enable_search", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_set_expression, "gtk_drop_down_set_expression", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_set_factory, "gtk_drop_down_set_factory", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_set_list_factory, "gtk_drop_down_set_list_factory", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_set_model, "gtk_drop_down_set_model", LIBRARY_GTK);
 	Linker.link(gtk_drop_down_set_selected, "gtk_drop_down_set_selected", LIBRARY_GTK);
+	Linker.link(gtk_drop_down_set_show_arrow, "gtk_drop_down_set_show_arrow", LIBRARY_GTK);
 
 	// gtk.DropTarget
 
@@ -1406,6 +1433,7 @@ shared static this()
 
 	Linker.link(gtk_flow_box_get_type, "gtk_flow_box_get_type", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_new, "gtk_flow_box_new", LIBRARY_GTK);
+	Linker.link(gtk_flow_box_append, "gtk_flow_box_append", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_bind_model, "gtk_flow_box_bind_model", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_get_activate_on_single_click, "gtk_flow_box_get_activate_on_single_click", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_get_child_at_index, "gtk_flow_box_get_child_at_index", LIBRARY_GTK);
@@ -1420,6 +1448,7 @@ shared static this()
 	Linker.link(gtk_flow_box_insert, "gtk_flow_box_insert", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_invalidate_filter, "gtk_flow_box_invalidate_filter", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_invalidate_sort, "gtk_flow_box_invalidate_sort", LIBRARY_GTK);
+	Linker.link(gtk_flow_box_prepend, "gtk_flow_box_prepend", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_remove, "gtk_flow_box_remove", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_select_all, "gtk_flow_box_select_all", LIBRARY_GTK);
 	Linker.link(gtk_flow_box_select_child, "gtk_flow_box_select_child", LIBRARY_GTK);
@@ -1901,6 +1930,7 @@ shared static this()
 	Linker.link(gtk_label_get_max_width_chars, "gtk_label_get_max_width_chars", LIBRARY_GTK);
 	Linker.link(gtk_label_get_mnemonic_keyval, "gtk_label_get_mnemonic_keyval", LIBRARY_GTK);
 	Linker.link(gtk_label_get_mnemonic_widget, "gtk_label_get_mnemonic_widget", LIBRARY_GTK);
+	Linker.link(gtk_label_get_natural_wrap_mode, "gtk_label_get_natural_wrap_mode", LIBRARY_GTK);
 	Linker.link(gtk_label_get_selectable, "gtk_label_get_selectable", LIBRARY_GTK);
 	Linker.link(gtk_label_get_selection_bounds, "gtk_label_get_selection_bounds", LIBRARY_GTK);
 	Linker.link(gtk_label_get_single_line_mode, "gtk_label_get_single_line_mode", LIBRARY_GTK);
@@ -1923,6 +1953,7 @@ shared static this()
 	Linker.link(gtk_label_set_markup_with_mnemonic, "gtk_label_set_markup_with_mnemonic", LIBRARY_GTK);
 	Linker.link(gtk_label_set_max_width_chars, "gtk_label_set_max_width_chars", LIBRARY_GTK);
 	Linker.link(gtk_label_set_mnemonic_widget, "gtk_label_set_mnemonic_widget", LIBRARY_GTK);
+	Linker.link(gtk_label_set_natural_wrap_mode, "gtk_label_set_natural_wrap_mode", LIBRARY_GTK);
 	Linker.link(gtk_label_set_selectable, "gtk_label_set_selectable", LIBRARY_GTK);
 	Linker.link(gtk_label_set_single_line_mode, "gtk_label_set_single_line_mode", LIBRARY_GTK);
 	Linker.link(gtk_label_set_text, "gtk_label_set_text", LIBRARY_GTK);
@@ -2175,6 +2206,7 @@ shared static this()
 	Linker.link(gtk_menu_button_get_type, "gtk_menu_button_get_type", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_new, "gtk_menu_button_new", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_always_show_arrow, "gtk_menu_button_get_always_show_arrow", LIBRARY_GTK);
+	Linker.link(gtk_menu_button_get_child, "gtk_menu_button_get_child", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_direction, "gtk_menu_button_get_direction", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_has_frame, "gtk_menu_button_get_has_frame", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_get_icon_name, "gtk_menu_button_get_icon_name", LIBRARY_GTK);
@@ -2186,6 +2218,7 @@ shared static this()
 	Linker.link(gtk_menu_button_popdown, "gtk_menu_button_popdown", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_popup, "gtk_menu_button_popup", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_always_show_arrow, "gtk_menu_button_set_always_show_arrow", LIBRARY_GTK);
+	Linker.link(gtk_menu_button_set_child, "gtk_menu_button_set_child", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_create_popup_func, "gtk_menu_button_set_create_popup_func", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_direction, "gtk_menu_button_set_direction", LIBRARY_GTK);
 	Linker.link(gtk_menu_button_set_has_frame, "gtk_menu_button_set_has_frame", LIBRARY_GTK);
@@ -3436,6 +3469,11 @@ shared static this()
 	Linker.link(gtk_switch_set_active, "gtk_switch_set_active", LIBRARY_GTK);
 	Linker.link(gtk_switch_set_state, "gtk_switch_set_state", LIBRARY_GTK);
 
+	// gtk.SymbolicPaintable
+
+	Linker.link(gtk_symbolic_paintable_get_type, "gtk_symbolic_paintable_get_type", LIBRARY_GTK);
+	Linker.link(gtk_symbolic_paintable_snapshot_symbolic, "gtk_symbolic_paintable_snapshot_symbolic", LIBRARY_GTK);
+
 	// gtk.Text
 
 	Linker.link(gtk_text_get_type, "gtk_text_get_type", LIBRARY_GTK);
@@ -3555,6 +3593,7 @@ shared static this()
 
 	Linker.link(gtk_text_child_anchor_get_type, "gtk_text_child_anchor_get_type", LIBRARY_GTK);
 	Linker.link(gtk_text_child_anchor_new, "gtk_text_child_anchor_new", LIBRARY_GTK);
+	Linker.link(gtk_text_child_anchor_new_with_replacement, "gtk_text_child_anchor_new_with_replacement", LIBRARY_GTK);
 	Linker.link(gtk_text_child_anchor_get_deleted, "gtk_text_child_anchor_get_deleted", LIBRARY_GTK);
 	Linker.link(gtk_text_child_anchor_get_widgets, "gtk_text_child_anchor_get_widgets", LIBRARY_GTK);
 
@@ -3798,9 +3837,11 @@ shared static this()
 	Linker.link(gtk_tree_expander_get_type, "gtk_tree_expander_get_type", LIBRARY_GTK);
 	Linker.link(gtk_tree_expander_new, "gtk_tree_expander_new", LIBRARY_GTK);
 	Linker.link(gtk_tree_expander_get_child, "gtk_tree_expander_get_child", LIBRARY_GTK);
+	Linker.link(gtk_tree_expander_get_indent_for_icon, "gtk_tree_expander_get_indent_for_icon", LIBRARY_GTK);
 	Linker.link(gtk_tree_expander_get_item, "gtk_tree_expander_get_item", LIBRARY_GTK);
 	Linker.link(gtk_tree_expander_get_list_row, "gtk_tree_expander_get_list_row", LIBRARY_GTK);
 	Linker.link(gtk_tree_expander_set_child, "gtk_tree_expander_set_child", LIBRARY_GTK);
+	Linker.link(gtk_tree_expander_set_indent_for_icon, "gtk_tree_expander_set_indent_for_icon", LIBRARY_GTK);
 	Linker.link(gtk_tree_expander_set_list_row, "gtk_tree_expander_set_list_row", LIBRARY_GTK);
 
 	// gtk.TreeIter
@@ -4757,6 +4798,7 @@ __gshared extern(C)
 
 	// gtk.BitsetIter
 
+	GType function() c_gtk_bitset_iter_get_type;
 	uint function(GtkBitsetIter* iter) c_gtk_bitset_iter_get_value;
 	int function(GtkBitsetIter* iter) c_gtk_bitset_iter_is_valid;
 	int function(GtkBitsetIter* iter, uint* value) c_gtk_bitset_iter_next;
@@ -5356,7 +5398,7 @@ __gshared extern(C)
 	GtkCssProvider* function() c_gtk_css_provider_new;
 	void function(GtkCssProvider* cssProvider, char* data, ptrdiff_t length) c_gtk_css_provider_load_from_data;
 	void function(GtkCssProvider* cssProvider, GFile* file) c_gtk_css_provider_load_from_file;
-	void function(GtkCssProvider* cssProvider, const(char)* path) c_gtk_css_provider_load_from_path;
+	void function(GtkCssProvider* cssProvider, char* path) c_gtk_css_provider_load_from_path;
 	void function(GtkCssProvider* cssProvider, const(char)* resourcePath) c_gtk_css_provider_load_from_resource;
 	void function(GtkCssProvider* provider, const(char)* name, const(char)* variant) c_gtk_css_provider_load_named;
 	char* function(GtkCssProvider* provider) c_gtk_css_provider_to_string;
@@ -5473,12 +5515,14 @@ __gshared extern(C)
 	GListModel* function(GtkDropDown* self) c_gtk_drop_down_get_model;
 	uint function(GtkDropDown* self) c_gtk_drop_down_get_selected;
 	void* function(GtkDropDown* self) c_gtk_drop_down_get_selected_item;
+	int function(GtkDropDown* self) c_gtk_drop_down_get_show_arrow;
 	void function(GtkDropDown* self, int enableSearch) c_gtk_drop_down_set_enable_search;
 	void function(GtkDropDown* self, GtkExpression* expression) c_gtk_drop_down_set_expression;
 	void function(GtkDropDown* self, GtkListItemFactory* factory) c_gtk_drop_down_set_factory;
 	void function(GtkDropDown* self, GtkListItemFactory* factory) c_gtk_drop_down_set_list_factory;
 	void function(GtkDropDown* self, GListModel* model) c_gtk_drop_down_set_model;
 	void function(GtkDropDown* self, uint position) c_gtk_drop_down_set_selected;
+	void function(GtkDropDown* self, int showArrow) c_gtk_drop_down_set_show_arrow;
 
 	// gtk.DropTarget
 
@@ -5866,6 +5910,7 @@ __gshared extern(C)
 
 	GType function() c_gtk_flow_box_get_type;
 	GtkWidget* function() c_gtk_flow_box_new;
+	void function(GtkFlowBox* self, GtkWidget* child) c_gtk_flow_box_append;
 	void function(GtkFlowBox* box, GListModel* model, GtkFlowBoxCreateWidgetFunc createWidgetFunc, void* userData, GDestroyNotify userDataFreeFunc) c_gtk_flow_box_bind_model;
 	int function(GtkFlowBox* box) c_gtk_flow_box_get_activate_on_single_click;
 	GtkFlowBoxChild* function(GtkFlowBox* box, int idx) c_gtk_flow_box_get_child_at_index;
@@ -5880,6 +5925,7 @@ __gshared extern(C)
 	void function(GtkFlowBox* box, GtkWidget* widget, int position) c_gtk_flow_box_insert;
 	void function(GtkFlowBox* box) c_gtk_flow_box_invalidate_filter;
 	void function(GtkFlowBox* box) c_gtk_flow_box_invalidate_sort;
+	void function(GtkFlowBox* self, GtkWidget* child) c_gtk_flow_box_prepend;
 	void function(GtkFlowBox* box, GtkWidget* widget) c_gtk_flow_box_remove;
 	void function(GtkFlowBox* box) c_gtk_flow_box_select_all;
 	void function(GtkFlowBox* box, GtkFlowBoxChild* child) c_gtk_flow_box_select_child;
@@ -6361,6 +6407,7 @@ __gshared extern(C)
 	int function(GtkLabel* self) c_gtk_label_get_max_width_chars;
 	uint function(GtkLabel* self) c_gtk_label_get_mnemonic_keyval;
 	GtkWidget* function(GtkLabel* self) c_gtk_label_get_mnemonic_widget;
+	GtkNaturalWrapMode function(GtkLabel* self) c_gtk_label_get_natural_wrap_mode;
 	int function(GtkLabel* self) c_gtk_label_get_selectable;
 	int function(GtkLabel* self, int* start, int* end) c_gtk_label_get_selection_bounds;
 	int function(GtkLabel* self) c_gtk_label_get_single_line_mode;
@@ -6383,6 +6430,7 @@ __gshared extern(C)
 	void function(GtkLabel* self, const(char)* str) c_gtk_label_set_markup_with_mnemonic;
 	void function(GtkLabel* self, int nChars) c_gtk_label_set_max_width_chars;
 	void function(GtkLabel* self, GtkWidget* widget) c_gtk_label_set_mnemonic_widget;
+	void function(GtkLabel* self, GtkNaturalWrapMode wrapMode) c_gtk_label_set_natural_wrap_mode;
 	void function(GtkLabel* self, int setting) c_gtk_label_set_selectable;
 	void function(GtkLabel* self, int singleLineMode) c_gtk_label_set_single_line_mode;
 	void function(GtkLabel* self, const(char)* str) c_gtk_label_set_text;
@@ -6635,6 +6683,7 @@ __gshared extern(C)
 	GType function() c_gtk_menu_button_get_type;
 	GtkWidget* function() c_gtk_menu_button_new;
 	int function(GtkMenuButton* menuButton) c_gtk_menu_button_get_always_show_arrow;
+	GtkWidget* function(GtkMenuButton* menuButton) c_gtk_menu_button_get_child;
 	GtkArrowType function(GtkMenuButton* menuButton) c_gtk_menu_button_get_direction;
 	int function(GtkMenuButton* menuButton) c_gtk_menu_button_get_has_frame;
 	const(char)* function(GtkMenuButton* menuButton) c_gtk_menu_button_get_icon_name;
@@ -6646,6 +6695,7 @@ __gshared extern(C)
 	void function(GtkMenuButton* menuButton) c_gtk_menu_button_popdown;
 	void function(GtkMenuButton* menuButton) c_gtk_menu_button_popup;
 	void function(GtkMenuButton* menuButton, int alwaysShowArrow) c_gtk_menu_button_set_always_show_arrow;
+	void function(GtkMenuButton* menuButton, GtkWidget* child) c_gtk_menu_button_set_child;
 	void function(GtkMenuButton* menuButton, GtkMenuButtonCreatePopupFunc func, void* userData, GDestroyNotify destroyNotify) c_gtk_menu_button_set_create_popup_func;
 	void function(GtkMenuButton* menuButton, GtkArrowType direction) c_gtk_menu_button_set_direction;
 	void function(GtkMenuButton* menuButton, int hasFrame) c_gtk_menu_button_set_has_frame;
@@ -7896,6 +7946,11 @@ __gshared extern(C)
 	void function(GtkSwitch* self, int isActive) c_gtk_switch_set_active;
 	void function(GtkSwitch* self, int state) c_gtk_switch_set_state;
 
+	// gtk.SymbolicPaintable
+
+	GType function() c_gtk_symbolic_paintable_get_type;
+	void function(GtkSymbolicPaintable* paintable, GdkSnapshot* snapshot, double width, double height, GdkRGBA* colors, size_t nColors) c_gtk_symbolic_paintable_snapshot_symbolic;
+
 	// gtk.Text
 
 	GType function() c_gtk_text_get_type;
@@ -8015,6 +8070,7 @@ __gshared extern(C)
 
 	GType function() c_gtk_text_child_anchor_get_type;
 	GtkTextChildAnchor* function() c_gtk_text_child_anchor_new;
+	GtkTextChildAnchor* function(const(char)* character) c_gtk_text_child_anchor_new_with_replacement;
 	int function(GtkTextChildAnchor* anchor) c_gtk_text_child_anchor_get_deleted;
 	GtkWidget** function(GtkTextChildAnchor* anchor, uint* outLen) c_gtk_text_child_anchor_get_widgets;
 
@@ -8258,9 +8314,11 @@ __gshared extern(C)
 	GType function() c_gtk_tree_expander_get_type;
 	GtkWidget* function() c_gtk_tree_expander_new;
 	GtkWidget* function(GtkTreeExpander* self) c_gtk_tree_expander_get_child;
+	int function(GtkTreeExpander* self) c_gtk_tree_expander_get_indent_for_icon;
 	void* function(GtkTreeExpander* self) c_gtk_tree_expander_get_item;
 	GtkTreeListRow* function(GtkTreeExpander* self) c_gtk_tree_expander_get_list_row;
 	void function(GtkTreeExpander* self, GtkWidget* child) c_gtk_tree_expander_set_child;
+	void function(GtkTreeExpander* self, int indentForIcon) c_gtk_tree_expander_set_indent_for_icon;
 	void function(GtkTreeExpander* self, GtkTreeListRow* listRow) c_gtk_tree_expander_set_list_row;
 
 	// gtk.TreeIter
@@ -9215,6 +9273,7 @@ alias c_gtk_bitset_unref gtk_bitset_unref;
 
 // gtk.BitsetIter
 
+alias c_gtk_bitset_iter_get_type gtk_bitset_iter_get_type;
 alias c_gtk_bitset_iter_get_value gtk_bitset_iter_get_value;
 alias c_gtk_bitset_iter_is_valid gtk_bitset_iter_is_valid;
 alias c_gtk_bitset_iter_next gtk_bitset_iter_next;
@@ -9931,12 +9990,14 @@ alias c_gtk_drop_down_get_list_factory gtk_drop_down_get_list_factory;
 alias c_gtk_drop_down_get_model gtk_drop_down_get_model;
 alias c_gtk_drop_down_get_selected gtk_drop_down_get_selected;
 alias c_gtk_drop_down_get_selected_item gtk_drop_down_get_selected_item;
+alias c_gtk_drop_down_get_show_arrow gtk_drop_down_get_show_arrow;
 alias c_gtk_drop_down_set_enable_search gtk_drop_down_set_enable_search;
 alias c_gtk_drop_down_set_expression gtk_drop_down_set_expression;
 alias c_gtk_drop_down_set_factory gtk_drop_down_set_factory;
 alias c_gtk_drop_down_set_list_factory gtk_drop_down_set_list_factory;
 alias c_gtk_drop_down_set_model gtk_drop_down_set_model;
 alias c_gtk_drop_down_set_selected gtk_drop_down_set_selected;
+alias c_gtk_drop_down_set_show_arrow gtk_drop_down_set_show_arrow;
 
 // gtk.DropTarget
 
@@ -10324,6 +10385,7 @@ alias c_gtk_flatten_list_model_set_model gtk_flatten_list_model_set_model;
 
 alias c_gtk_flow_box_get_type gtk_flow_box_get_type;
 alias c_gtk_flow_box_new gtk_flow_box_new;
+alias c_gtk_flow_box_append gtk_flow_box_append;
 alias c_gtk_flow_box_bind_model gtk_flow_box_bind_model;
 alias c_gtk_flow_box_get_activate_on_single_click gtk_flow_box_get_activate_on_single_click;
 alias c_gtk_flow_box_get_child_at_index gtk_flow_box_get_child_at_index;
@@ -10338,6 +10400,7 @@ alias c_gtk_flow_box_get_selection_mode gtk_flow_box_get_selection_mode;
 alias c_gtk_flow_box_insert gtk_flow_box_insert;
 alias c_gtk_flow_box_invalidate_filter gtk_flow_box_invalidate_filter;
 alias c_gtk_flow_box_invalidate_sort gtk_flow_box_invalidate_sort;
+alias c_gtk_flow_box_prepend gtk_flow_box_prepend;
 alias c_gtk_flow_box_remove gtk_flow_box_remove;
 alias c_gtk_flow_box_select_all gtk_flow_box_select_all;
 alias c_gtk_flow_box_select_child gtk_flow_box_select_child;
@@ -10819,6 +10882,7 @@ alias c_gtk_label_get_lines gtk_label_get_lines;
 alias c_gtk_label_get_max_width_chars gtk_label_get_max_width_chars;
 alias c_gtk_label_get_mnemonic_keyval gtk_label_get_mnemonic_keyval;
 alias c_gtk_label_get_mnemonic_widget gtk_label_get_mnemonic_widget;
+alias c_gtk_label_get_natural_wrap_mode gtk_label_get_natural_wrap_mode;
 alias c_gtk_label_get_selectable gtk_label_get_selectable;
 alias c_gtk_label_get_selection_bounds gtk_label_get_selection_bounds;
 alias c_gtk_label_get_single_line_mode gtk_label_get_single_line_mode;
@@ -10841,6 +10905,7 @@ alias c_gtk_label_set_markup gtk_label_set_markup;
 alias c_gtk_label_set_markup_with_mnemonic gtk_label_set_markup_with_mnemonic;
 alias c_gtk_label_set_max_width_chars gtk_label_set_max_width_chars;
 alias c_gtk_label_set_mnemonic_widget gtk_label_set_mnemonic_widget;
+alias c_gtk_label_set_natural_wrap_mode gtk_label_set_natural_wrap_mode;
 alias c_gtk_label_set_selectable gtk_label_set_selectable;
 alias c_gtk_label_set_single_line_mode gtk_label_set_single_line_mode;
 alias c_gtk_label_set_text gtk_label_set_text;
@@ -11093,6 +11158,7 @@ alias c_gtk_media_stream_update gtk_media_stream_update;
 alias c_gtk_menu_button_get_type gtk_menu_button_get_type;
 alias c_gtk_menu_button_new gtk_menu_button_new;
 alias c_gtk_menu_button_get_always_show_arrow gtk_menu_button_get_always_show_arrow;
+alias c_gtk_menu_button_get_child gtk_menu_button_get_child;
 alias c_gtk_menu_button_get_direction gtk_menu_button_get_direction;
 alias c_gtk_menu_button_get_has_frame gtk_menu_button_get_has_frame;
 alias c_gtk_menu_button_get_icon_name gtk_menu_button_get_icon_name;
@@ -11104,6 +11170,7 @@ alias c_gtk_menu_button_get_use_underline gtk_menu_button_get_use_underline;
 alias c_gtk_menu_button_popdown gtk_menu_button_popdown;
 alias c_gtk_menu_button_popup gtk_menu_button_popup;
 alias c_gtk_menu_button_set_always_show_arrow gtk_menu_button_set_always_show_arrow;
+alias c_gtk_menu_button_set_child gtk_menu_button_set_child;
 alias c_gtk_menu_button_set_create_popup_func gtk_menu_button_set_create_popup_func;
 alias c_gtk_menu_button_set_direction gtk_menu_button_set_direction;
 alias c_gtk_menu_button_set_has_frame gtk_menu_button_set_has_frame;
@@ -12354,6 +12421,11 @@ alias c_gtk_switch_get_state gtk_switch_get_state;
 alias c_gtk_switch_set_active gtk_switch_set_active;
 alias c_gtk_switch_set_state gtk_switch_set_state;
 
+// gtk.SymbolicPaintable
+
+alias c_gtk_symbolic_paintable_get_type gtk_symbolic_paintable_get_type;
+alias c_gtk_symbolic_paintable_snapshot_symbolic gtk_symbolic_paintable_snapshot_symbolic;
+
 // gtk.Text
 
 alias c_gtk_text_get_type gtk_text_get_type;
@@ -12473,6 +12545,7 @@ alias c_gtk_text_buffer_undo gtk_text_buffer_undo;
 
 alias c_gtk_text_child_anchor_get_type gtk_text_child_anchor_get_type;
 alias c_gtk_text_child_anchor_new gtk_text_child_anchor_new;
+alias c_gtk_text_child_anchor_new_with_replacement gtk_text_child_anchor_new_with_replacement;
 alias c_gtk_text_child_anchor_get_deleted gtk_text_child_anchor_get_deleted;
 alias c_gtk_text_child_anchor_get_widgets gtk_text_child_anchor_get_widgets;
 
@@ -12716,9 +12789,11 @@ alias c_gtk_tree_drag_source_row_draggable gtk_tree_drag_source_row_draggable;
 alias c_gtk_tree_expander_get_type gtk_tree_expander_get_type;
 alias c_gtk_tree_expander_new gtk_tree_expander_new;
 alias c_gtk_tree_expander_get_child gtk_tree_expander_get_child;
+alias c_gtk_tree_expander_get_indent_for_icon gtk_tree_expander_get_indent_for_icon;
 alias c_gtk_tree_expander_get_item gtk_tree_expander_get_item;
 alias c_gtk_tree_expander_get_list_row gtk_tree_expander_get_list_row;
 alias c_gtk_tree_expander_set_child gtk_tree_expander_set_child;
+alias c_gtk_tree_expander_set_indent_for_icon gtk_tree_expander_set_indent_for_icon;
 alias c_gtk_tree_expander_set_list_row gtk_tree_expander_set_list_row;
 
 // gtk.TreeIter

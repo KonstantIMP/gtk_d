@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module pango.PgMiscellaneous;
 
 private import core.stdc.stdio;
@@ -16,8 +40,9 @@ public struct PgMiscellaneous
 	 * Checks if a character that should not be normally rendered.
 	 *
 	 * This includes all Unicode characters with "ZERO WIDTH" in their name,
-	 * as well as *bidi* formatting characters, and a few other ones.  This is
-	 * totally different from g_unichar_iszerowidth() and is at best misnamed.
+	 * as well as *bidi* formatting characters, and a few other ones.
+	 *
+	 * This is totally different from [func@GLib.unichar_iszerowidth] and is at best misnamed.
 	 *
 	 * Params:
 	 *     ch = a Unicode character
@@ -34,10 +59,8 @@ public struct PgMiscellaneous
 	/**
 	 * Return the bidirectional embedding levels of the input paragraph.
 	 *
-	 * The bidirectional embedding levels are defined by the Unicode Bidirectional
-	 * Algorithm available at:
-	 *
-	 * http://www.unicode.org/reports/tr9/
+	 * The bidirectional embedding levels are defined by the [Unicode Bidirectional
+	 * Algorithm](http://www.unicode.org/reports/tr9/).
 	 *
 	 * If the input base direction is a weak direction, the direction of the
 	 * characters in the text will determine the final resolved direction.
@@ -49,7 +72,7 @@ public struct PgMiscellaneous
 	 *     pbaseDir = input base direction, and output resolved direction.
 	 *
 	 * Returns: a newly allocated array of embedding levels, one item per
-	 *     character (not byte), that should be freed using g_free().
+	 *     character (not byte), that should be freed using [func@GLib.free].
 	 *
 	 * Since: 1.4
 	 */
@@ -136,7 +159,8 @@ public struct PgMiscellaneous
 	/**
 	 * Parses a font variant.
 	 *
-	 * The allowed values are "normal" and "smallcaps" or "small_caps",
+	 * The allowed values are "normal", "small-caps", "all-small-caps",
+	 * "petite-caps", "all-petite-caps", "unicase" and "title-caps",
 	 * case variations being ignored.
 	 *
 	 * Params:

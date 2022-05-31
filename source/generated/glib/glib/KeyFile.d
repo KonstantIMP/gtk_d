@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module glib.KeyFile;
 
 private import glib.Bytes;
@@ -7,7 +31,7 @@ private import glib.GException;
 private import glib.Str;
 private import glib.c.functions;
 public  import glib.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -92,9 +116,9 @@ public class KeyFile
 	 * boolean.
 	 *
 	 * If @key cannot be found then %FALSE is returned and @error is set
-	 * to #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value
+	 * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value
 	 * associated with @key cannot be interpreted as a boolean then %FALSE
-	 * is returned and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+	 * is returned and @error is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -126,9 +150,9 @@ public class KeyFile
 	 * booleans.
 	 *
 	 * If @key cannot be found then %NULL is returned and @error is set to
-	 * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
+	 * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
 	 * with @key cannot be interpreted as booleans then %NULL is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+	 * and @error is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -202,9 +226,9 @@ public class KeyFile
 	 * double. If @group_name is %NULL, the start_group is used.
 	 *
 	 * If @key cannot be found then 0.0 is returned and @error is set to
-	 * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
+	 * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
 	 * with @key cannot be interpreted as a double then 0.0 is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+	 * and @error is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -236,9 +260,9 @@ public class KeyFile
 	 * doubles.
 	 *
 	 * If @key cannot be found then %NULL is returned and @error is set to
-	 * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
+	 * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
 	 * with @key cannot be interpreted as doubles then %NULL is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+	 * and @error is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -323,10 +347,10 @@ public class KeyFile
 	 * integer.
 	 *
 	 * If @key cannot be found then 0 is returned and @error is set to
-	 * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
+	 * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
 	 * with @key cannot be interpreted as an integer, or is out of range
 	 * for a #gint, then 0 is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+	 * and @error is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -358,10 +382,10 @@ public class KeyFile
 	 * integers.
 	 *
 	 * If @key cannot be found then %NULL is returned and @error is set to
-	 * #G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
+	 * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
 	 * with @key cannot be interpreted as integers, or are out of range for
 	 * #gint, then %NULL is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
+	 * and @error is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -395,7 +419,7 @@ public class KeyFile
 	 * returned keys will be %NULL-terminated, so @length may
 	 * optionally be %NULL. In the event that the @group_name cannot
 	 * be found, %NULL is returned and @error is set to
-	 * #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+	 * %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -462,7 +486,7 @@ public class KeyFile
 	 * %G_KEY_FILE_KEEP_TRANSLATIONS in order to load strings for all locales.
 	 *
 	 * If @key cannot be found then %NULL is returned and @error is set
-	 * to #G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the value associated
+	 * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the value associated
 	 * with @key cannot be interpreted or no suitable translation can
 	 * be found then the untranslated value is returned.
 	 *
@@ -503,7 +527,7 @@ public class KeyFile
 	 * %G_KEY_FILE_KEEP_TRANSLATIONS in order to load strings for all locales.
 	 *
 	 * If @key cannot be found then %NULL is returned and @error is set
-	 * to #G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the values associated
+	 * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the values associated
 	 * with @key cannot be interpreted or no suitable translations
 	 * can be found then the untranslated values are returned. The
 	 * returned array is %NULL-terminated, so @length may optionally
@@ -559,9 +583,9 @@ public class KeyFile
 	 * like \s.
 	 *
 	 * In the event the key cannot be found, %NULL is returned and
-	 * @error is set to #G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
+	 * @error is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
 	 * event that the @group_name cannot be found, %NULL is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+	 * and @error is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -593,9 +617,9 @@ public class KeyFile
 	 * Returns the values associated with @key under @group_name.
 	 *
 	 * In the event the key cannot be found, %NULL is returned and
-	 * @error is set to #G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
+	 * @error is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
 	 * event that the @group_name cannot be found, %NULL is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+	 * and @error is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
 	 *
 	 * Params:
 	 *     groupName = a group name
@@ -659,9 +683,9 @@ public class KeyFile
 	 * Use g_key_file_get_string() to retrieve an unescaped UTF-8 string.
 	 *
 	 * In the event the key cannot be found, %NULL is returned and
-	 * @error is set to #G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
+	 * @error is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
 	 * event that the @group_name cannot be found, %NULL is returned
-	 * and @error is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+	 * and @error is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
 	 *
 	 * Params:
 	 *     groupName = a group name

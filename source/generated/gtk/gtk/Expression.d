@@ -1,3 +1,27 @@
+/*
+ * This file is part of gtkD.
+ *
+ * gtkD is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version, with
+ * some exceptions, please read the COPYING file.
+ *
+ * gtkD is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with gtkD; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
+ */
+
+// generated automatically - do not change
+// find conversion definition on APILookup.txt
+// implement new conversion functionalities on the wrap.utils pakage
+
+
 module gtk.Expression;
 
 private import glib.Str;
@@ -6,7 +30,7 @@ private import gobject.Value;
 private import gtk.ExpressionWatch;
 private import gtk.c.functions;
 public  import gtk.c.types;
-private import linker.loader;
+private import linker.Loader;
 
 
 /**
@@ -105,9 +129,9 @@ private import linker.loader;
  * 
  * `GtkBuilder` has support for creating expressions. The syntax here can be used where
  * a `GtkExpression` object is needed like in a `<property>` tag for an expression
- * property, or in a `<binding>` tag to bind a property to an expression.
+ * property, or in a `<binding name="property">` tag to bind a property to an expression.
  * 
- * To create an property expression, use the `<lookup>` element. It can have a `type`
+ * To create a property expression, use the `<lookup>` element. It can have a `type`
  * attribute to specify the object type, and a `name` attribute to specify the property
  * to look up. The content of `<lookup>` can either be an element specfiying the expression
  * to use the object, or a string that specifies the name of the object to use.
